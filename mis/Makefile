@@ -1,7 +1,8 @@
 
-# OS Commands
+# OS Specific Commands
 
 DELETE = del
+#LINUX DELETE = rm
 
 # GNU Fortran
 
@@ -11,6 +12,11 @@ FFLAGS += -g -w
 FFLAGS += -fno-range-check
 FFLAGS += -fno-automatic
 FFLAGS += -fcray-pointer
+
+# Archive
+
+AR = ar
+MOD = cr
 
 # Objects
 
@@ -26,7 +32,7 @@ all:	libnastran.a
 # Specific targets
 
 libnastran.a:	$(OBJS)
-	$(FC) $(FFLAGS) -o $@ $(OBJS)
+	$(AR) $(MOD) -o $@ $(OBJS)
 
 # Template rules
 
