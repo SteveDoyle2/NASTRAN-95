@@ -100,11 +100,19 @@ NASTRANOBJ += read.o write.o
 NASTRANOBJ += klock.o tdate.o
 NASTRANOBJ += cputim.o nastim.o waltim.o
 
+# Free to Fixed field Objects
+
+FFOBJ += dbmstf.o
+FFOBJ += dummy.o
+FFOBJ += k2b.o khrbcd.o khrfn1.o
+FFOBJ += errtrc.o
+FFOBJ += cputim.o waltim.o
+
 # Default target
 
 default:	nastrn.exe
 
-all:	nastrn.exe chkfil.exe
+all:	nastrn.exe chkfil.exe ff.exe
 
 # Specific targets
 
@@ -113,6 +121,9 @@ nastrn.exe:	nastrn.f $(NASTRANOBJ)
 
 chkfil.exe:	chkfil.f
 	$(FC) $(FFLAGS) -o $@ $<
+
+ff.exe:	ff.f $(FFOBJ)
+	$(FC) $(FFLAGS) -o $@ $< $(FFOBJ) $(LIBNASTRAN)
 
 # Template rules
 
