@@ -7,7 +7,7 @@ C
       COMMON /RESDIC/ IRDICT
       COMMON /SYSTEM/ ISYSTM(100)
       EQUIVALENCE     (ISYSTM( 2),NOUT  ), (ISYSTM(76),NOSBE),
-     1                (ISYSTM(82),ICPFLG), 
+     1                (ISYSTM(82),ICPFLG),
      2                (ISYSTM(15),DATE  )
 C
 C     SEE IF ANY MESSAGES ARE IN THE QUEUE
@@ -52,7 +52,7 @@ C
    80 FORMAT (//1X,6A4)
 C
    90 CONTINUE
-      CALL DBMSTF 
+      CALL DBMSTF
       DO 100 I = 1,4
       CLOSE ( I )
 100   CONTINUE
