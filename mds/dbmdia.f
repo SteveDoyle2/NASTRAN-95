@@ -1,12 +1,11 @@
       SUBROUTINE DBMDIA                                                         
-C********************************************************************           
-C     DBMDIA - DUMPS THE IN MEMORY DATA BASE DIRECTORY                          
-C********************************************************************           
+C********************************************************************
+C     DBMDIA - DUMPS THE IN MEMORY DATA BASE DIRECTORY
+C********************************************************************
       INCLUDE  'DSIOF.COM'                                                      
       INCLUDE  'ZZZZZZ.COM'
       COMMON / SYSTEM / ISYSBF, IWR                                             
-      INTEGER           SCRATCH(2)                                              
-      DATA              SCRATCH / 'SCRA','TCHX' /                               
+C
       IBLKSZ = ISYSBF - 4                                                       
       ITOTI  = 0                                                                
       ITOTX  = 0                                                                
@@ -23,14 +22,14 @@ C********************************************************************
       IF ( IEXTB .GE. FCB( 7, IFILEX ) ) GO TO 20
       ITOTX = ITOTX + IEXTB                                                     
       IF ( FCB( 13,I ) .NE. 0 ) GO TO 15                                        
-      FCB( 13,I ) = SCRATCH(1)                                                  
-      FCB( 14,I ) = SCRATCH(2)                                                  
+      FCB( 13,I ) = ichar('s')  ! 'SCRA'
+      FCB( 14,I ) = ichar('t')  ! 'TCHX'
 15    CONTINUE                                                                  
       WRITE ( IWR, 904 ) I, FCB( 13,I ), FCB( 14,I ), FCB( 4,I )                
      &,                  IINTB, IEXTB                                           
 20    CONTINUE                                                                  
       WRITE ( IWR, 905 ) ITOTI, ITOTX                                           
-C      WRITE ( IWR, 906 ) MAXBLK, MAXDSK, MAXALC, IBLKSZ                        
+C      WRITE ( IWR, 906 ) MAXBLK, MAXDSK, MAXALC, IBLKSZ
 700   RETURN                                                                    
 903   FORMAT(///,27X,' MEMORY DATA BASE DIRECTORY',//,                          
      &'    UNIT    NAME   CURRENT  IN-MEM'                                      
