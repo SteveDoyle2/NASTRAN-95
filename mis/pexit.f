@@ -43,7 +43,10 @@ C
    50 WRITE  (NOUT,60)
    60 FORMAT (1H )
 C
-      IF (MACH.EQ.4 .AND. NOSBE.GT.0) CALL LINK (-1,NOSBE,1)
+      IF (MACH.EQ.4 .AND. NOSBE.GT.0) THEN
+         stop 'CALL LINK (-1,NOSBE,1) in PEXIT'
+      ENDIF
+
       GO TO 90
 C
    70 J = 5
