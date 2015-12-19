@@ -112,7 +112,7 @@ FFOBJ += cputim.o waltim.o
 
 default:	nastrn.exe
 
-all:	nastrn.exe chkfil.exe ff.exe
+all:	nastrn.exe chkfil.exe ff.exe nastplot.exe
 
 # Specific targets
 
@@ -124,6 +124,9 @@ chkfil.exe:	chkfil.f
 
 ff.exe:	ff.f $(FFOBJ)
 	$(FC) $(FFLAGS) -o $@ $< $(FFOBJ) $(LIBNASTRAN)
+
+nastplot.exe:	nastplot.f
+	$(FC) $(FFLAGS) -o $@ $<
 
 # Template rules
 
