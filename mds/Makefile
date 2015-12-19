@@ -138,7 +138,10 @@ nastplot.exe:	nastplot.f
 .PHONY:	clean distclean
 
 distclean:	clean
-	-$(DELETE) libnastran.a
+	-$(DELETE) nastrn.exe
+	-$(DELETE) chkfil.exe
+	-$(DELETE) ff.exe
+	-$(DELETE) nastplot.exe
 
 clean:
 	-$(DELETE) *.o
