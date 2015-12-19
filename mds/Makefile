@@ -104,12 +104,15 @@ NASTRANOBJ += cputim.o nastim.o waltim.o
 
 default:	nastrn.exe
 
-all:	nastrn.exe
+all:	nastrn.exe chkfil.exe
 
 # Specific targets
 
 nastrn.exe:	nastrn.f $(NASTRANOBJ)
 	$(FC) $(FFLAGS) -o $@ $< $(NASTRANOBJ) $(LIBNASTRAN)
+
+chkfil.exe:	chkfil.f
+	$(FC) $(FFLAGS) -o $@ $<
 
 # Template rules
 
