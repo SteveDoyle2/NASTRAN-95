@@ -1,4 +1,8 @@
 
+# OS Commands
+
+DELETE = del
+
 # GNU Fortran
 
 FC = gfortran
@@ -34,7 +38,7 @@ libnastran.a:	$(OBJS)
 .PHONY:	clean distclean
 
 distclean:	clean
-	-rm libnastran.a
+	-$(DELETE) libnastran.a
 
 clean:
-	-rm *.o
+	-$(DELETE) *.o
