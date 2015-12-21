@@ -536,6 +536,7 @@ if ( -e $script ) then
     rm $script
 endif
 
+# Create the command script
 echo "#\!/bin/csh" >> $script
 echo ' unalias rm ' >> $script
 echo 'if ( -d ' $nasscr' ) then' >> $script
@@ -577,23 +578,26 @@ echo 'rm none' >> $script
 echo 'endif' >> $script
 # echo 'rm COS*' >> $script
 echo 'echo   ===== NASTRAN has completed problem "'$probname'" ====='>> $script
+chmod +x $script
+
+# Optionally execute the script
 clear
 echo 'The shell script '$script' was successfully created'
 echo
 echo -n 'Do you want to execute this problem now? (y or n) ===> '
-chmod +x $script
 set ans = $<
-   if ( $ans == 'y' ) then
-   echo ' '
-   echo -n 'Do you want to run in foreground or background? (f or b) ===> '
-   set ans = $<
-      if ( $ans == 'f' ) then
-      $cwd/$script
-      else
-      $cwd/$script &
-      endif
-   else echo ' '
-   echo 'Type the command "'$script'" to execute this problem intereactively'
-   echo '                            OR '
-   echo '  the command "'$script' &"  to execute this problem in batch'
-   endif
+if ( $ans == 'y' ) then
+    echo ' '
+    echo -n 'Do you want to run in foreground or background? (f or b) ===> '
+    set ans = $<
+    if ( $ans == 'f' ) then
+	$cwd/$script
+    else
+	$cwd/$script &
+    endif
+else
+    echo ' '
+    echo 'Type the command "'$script'" to execute this problem intereactively'
+    echo '                            OR '
+    echo '  the command "'$script' &"  to execute this problem in batch'
+endif
