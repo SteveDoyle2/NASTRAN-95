@@ -174,7 +174,7 @@ C
 C     ZERO INITIAL DISPLACEMENT AND VELOCITY
 C
 CRLBR SPR 94003 9/94   60 DO 70 I=1,NMODES
-      DO 70 I=1,NMODES      
+      DO 70 I=1,NMODES
       K = IUJ1+I
       Z(K) = 0.0
       K = IUDJ1+I
@@ -472,4 +472,3 @@ C
       FILE = J
       GO TO 320
       END
-
