@@ -18,28 +18,38 @@ else
     set probname = $1
 endif
 
-# set ft01=$probname.pun
+# Default memory settings
 set dbmem=12000000
 set ocmem=2000000
+
+# Fortran units
+# set ft01=$probname.pun
 set ft01=none
-set ft04=$probname.dic
 set ft03=$probname.log
+set ft04=$probname.dic
 set ft05=$probname.inp
 set ft06=$probname.out
 set ft08=none
 # set ft11=$probname.out11
 set ft11=none
-set plt2=none
-set script=$probname.cmd
-set nasscr=$cwd/temp$$
 set ft12=none
 set ft15=none
 set ft16=none
+
 set sof1=none
 set sof2=none
+
 set sft12=
+
+set plt2=none
+
+# Miscellaneous files
+set nasscr=$cwd/temp$$
 set nptp=$probname.nptp
+set script=$probname.cmd
+
 set optp=none
+
    if ( ! -e  $ft05 ) then
    set sft05='(#### does not exist ####)'
    else
