@@ -50,34 +50,35 @@ set script=$probname.cmd
 
 set optp=none
 
-   if ( ! -e  $ft05 ) then
-   set sft05='(#### does not exist ####)'
-   else
-   set sft05=
-   if ( -e nogood1 ) then
-   rm nogood1
-   endif
-   if ( -e nogood2 ) then
-   rm nogood2
-   endif
-   if ( -e nogood3 ) then
-   rm nogood3
-   endif
-   $naschk < $ft05
-	if ( -e nogood1 ) then
+if ( ! -e  $ft05 ) then
+    set sft05='(#### does not exist ####)'
+else
+    set sft05=
+    if ( -e nogood1 ) then
+	rm nogood1
+    endif
+    if ( -e nogood2 ) then
+	rm nogood2
+    endif
+    if ( -e nogood3 ) then
+	rm nogood3
+    endif
+    $naschk < $ft05
+    if ( -e nogood1 ) then
 	set ft04=$probname.dic
-        rm nogood1
-	endif
-	if ( -e nogood2 ) then
+	rm nogood1
+    endif
+    if ( -e nogood2 ) then
 	set plt2=$probname.plt
-        rm nogood2
-	endif
-	if ( -e nogood3) then
+	rm nogood2
+    endif
+    if ( -e nogood3) then
 	set ft04=$probname.dic
 	set plt2=$probname.plt
-        rm nogood3
-	endif
-   endif
+	rm nogood3
+    endif
+endif
+
 set nogo=1
 while ( $nogo != 0 )
 clear
