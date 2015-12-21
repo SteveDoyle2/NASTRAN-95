@@ -73,12 +73,11 @@ endif
 
 set nogo=1
 while ( $nogo != 0 )
-    clear
+    set nogo=1
 
-    set snasexec=
     set sft01=
-    set sft04=
     set sft03=
+    set sft04=
     set sft06=
     set sft08=
     set sft11=
@@ -88,11 +87,12 @@ while ( $nogo != 0 )
     set snptp=
     set soptp=
     set sdir=
+    set snasexec=
     set sscript=
     set ssof1=
     set ssof2=
-    set nogo=1
 
+    clear
     if ( $nptp != 'none' ) then
 	if ( -e $nptp ) then
 	    set snptp=' (#### will be replaced ####)'
