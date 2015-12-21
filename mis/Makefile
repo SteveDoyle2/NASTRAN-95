@@ -1,8 +1,8 @@
 
 # OS Specific Commands
 
-DELETE = del
-#LINUX DELETE = rm
+#WIN DELETE = del
+DELETE = rm
 
 # GNU Fortran
 
