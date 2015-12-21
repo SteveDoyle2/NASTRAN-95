@@ -1,17 +1,21 @@
 #!/usr/bin/csh
+
 unalias rm
 clear
+
 set   rfdir=~/Desktop/NASTRAN95/rf
 set nasexec=~/Desktop/NASTRAN95/mds/nastrn.exe
 set naschk=~/Desktop/NASTRAN95/mds/chkfil.exe
 set probname = $1
+
 echo ' '
-  if ( $probname == '' ) then
-  echo '                                 NASTRAN'
-  echo ' '
-  echo -n 'Please give problem id for designation of files ===> '
-  set probname = $<
-  endif
+if ( $probname == '' ) then
+    echo '                                 NASTRAN'
+    echo ' '
+    echo -n 'Please give problem id for designation of files ===> '
+    set probname = $<
+endif
+
 # set ft01=$probname.pun
 set dbmem=12000000
 set ocmem=2000000
