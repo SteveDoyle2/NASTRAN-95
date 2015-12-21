@@ -522,7 +522,7 @@ endif
 
 # Create the command script
 cat >! $script <<EOF
-#\!/bin/csh
+#!/bin/csh
 unalias rm
 if ( -d $nasscr ) then
     rm -r $nasscr
