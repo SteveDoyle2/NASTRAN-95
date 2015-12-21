@@ -54,15 +54,7 @@ if ( ! -e  $ft05 ) then
     set sft05='(#### does not exist ####)'
 else
     set sft05=
-    if ( -e nogood1 ) then
-	rm nogood1
-    endif
-    if ( -e nogood2 ) then
-	rm nogood2
-    endif
-    if ( -e nogood3 ) then
-	rm nogood3
-    endif
+    rm -f nogood1 nogood2 nogood3
     $naschk < $ft05
     if ( -e nogood1 ) then
 	set ft04=$probname.dic
@@ -209,15 +201,7 @@ while ( $nogo != 0 )
 		echo $ft05 'does not exist'
 	    else
 		set ok = i0
-		if ( -e nogood1 ) then
-		    rm nogood1
-		endif
-		if ( -e nogood2 ) then
-		    rm nogood2
-		endif
-		if ( -e nogood3 ) then
-		    rm nogood3
-		endif
+		rm -f nogood1 nogood2 nogood3
 		$naschk < $ft05
 		set sft05=
 		set nptp=$probname.nptp
