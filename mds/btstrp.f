@@ -173,7 +173,7 @@ C
 C
 C     MACHINE TYPE IS SET HERE
 C     +++++++++++++++++++++++++++++++
-  100 MACH = 7
+  100 MACH = 19
       MCHNAM = COMPUT(MACH)
       MACHOS = COMPOS(MACH)
       SYSBUF = MCONST(MACH)
