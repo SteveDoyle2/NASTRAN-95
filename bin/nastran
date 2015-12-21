@@ -495,7 +495,8 @@ end
 if ( -e $script ) then
 rm $script
 endif
-echo '#/bin/csh' >> $script
+
+echo "#\!/usr/bin/csh" >> $script
 echo ' unalias rm ' >> $script
 echo 'if ( -d ' $nasscr' ) then' >> $script
 echo 'rm -r '$nasscr >> $script
