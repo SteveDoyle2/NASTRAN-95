@@ -5,7 +5,7 @@ clear
 
 # Paths
 set   rfdir=~/Desktop/NASTRAN95/rf
-set nasexec=~/Desktop/NASTRAN95/mds/nastrn.exe
+set nasexec=~/Desktop/NASTRAN95/mds/nastran.exe
 set naschk=~/Desktop/NASTRAN95/mds/chkfil.exe
 
 echo ' '
