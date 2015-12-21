@@ -23,8 +23,8 @@ NOTE: There is no technical support available for this software.
   <tr><th>Task</th><th>Status</th></tr>
   <tr><td>Build libnastran</td><td>Complete</td></tr>
   <tr><td>Build executables</td><td>Complete</td></tr>
-  <tr><td>Modernize wrapper C shell script</td><td>In Progress</td></tr>
-  <tr><td>Create wrapper batch script</td><td>Queued</td></tr>
+  <tr><td>Modernize wrapper C shell script</td><td>Complete</td></tr>
+  <tr><td>Replace wrapper script with namelist</td><td>In Progress</td></tr>
   <tr><td>Verify input and output</td><td>Queued</td></tr>
   <tr><td>Remove machine dependent code</td><td>Queued</td></tr>
   <tr><td>Replace all Holerith contants</td><td>Queued</td></tr>
