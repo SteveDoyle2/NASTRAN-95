@@ -537,47 +537,49 @@ if ( -e $script ) then
 endif
 
 # Create the command script
-echo "#\!/bin/csh" >> $script
-echo ' unalias rm ' >> $script
-echo 'if ( -d ' $nasscr' ) then' >> $script
-echo 'rm -r '$nasscr >> $script
-echo 'endif' >> $script
-echo 'mkdir '$nasscr >> $script
-echo 'if ( -e '$nptp ' ) then'>> $script
-echo 'rm '$nptp >> $script
-echo 'endif' >> $script
-echo 'if ( -e '$ft03 ' ) then'>> $script
-echo 'rm '$ft03 >> $script
-echo 'endif' >> $script
-echo 'if ( -e '$ft01 ' ) then'>> $script
-echo 'rm '$ft01 >> $script
-echo 'endif' >> $script
-echo 'if ( -e '$ft04 ' ) then'>> $script
-echo 'rm '$ft04 >> $script
-echo 'endif' >> $script
-echo 'if ( -e '$ft06 ' ) then'>> $script
-echo 'rm '$ft06 >> $script
-echo 'endif' >> $script
-echo 'if ( -e '$plt2 ' ) then'>> $script
-echo 'rm '$plt2 >> $script
-echo 'endif' >> $script
-echo 'echo ==== NASTRAN is beginning execution of "'$probname'" ====' >> $script
-echo ' env  NPTPNM='$nptp '\' >> $script
-echo '  PLTNM='$plt2 ' DICTNM='$ft04 ' PUNCHNM='$ft01 '\' >> $script
-echo '  FTN11='$ft11 ' FTN12='$ft12 ' DIRCTY='$nasscr '\' >> $script
-echo '  LOGNM='$ft03 ' OPTPNM='$optp ' RFDIR='$rfdir '\' >> $script
-echo '  FTN13=none SOF1='$sof1 ' SOF2='$sof2  '\' >> $script
-echo '  FTN14=none FTN17=none FTN18=none FTN19=none FTN20=none \' >> $script
-echo '  FTN15='$ft15 ' FTN16='$ft16  '\' >> $script
-echo '  FTN21=none FTN22=none FTN23=none \' >> $script
-echo '  DBMEM='$dbmem ' OCMEM='$ocmem '\' >> $script
-echo    $nasexec' < '$ft05' >'$ft06 >> $script
-echo 'rm -r '$nasscr >> $script
-echo 'if ( -e none  ) then'>> $script
-echo 'rm none' >> $script
-echo 'endif' >> $script
-# echo 'rm COS*' >> $script
-echo 'echo   ===== NASTRAN has completed problem "'$probname'" ====='>> $script
+cat >! $script <<EOF
+#\!/bin/csh
+unalias rm
+if ( -d $nasscr ) then
+    rm -r $nasscr
+endif
+mkdir $nasscr
+if ( -e $nptp ) then
+    rm $nptp
+endif
+if ( -e $ft03 ) then
+    rm $ft03
+endif
+if ( -e $ft01 ) then
+    rm $ft01
+endif
+if ( -e $ft04 ) then
+    rm $ft04
+endif
+if ( -e $ft06 ) then
+    rm $ft06
+endif
+if ( -e $plt2 ) then
+    rm $plt2
+endif
+echo ==== NASTRAN is beginning execution of "$probname" ====
+env NPTPNM=$nptp \
+    PLTNM=$plt2 DICTNM=$ft04 PUNCHNM=$ft01 \
+    FTN11=$ft11 FTN12=$ft12 DIRCTY=$nasscr \
+    LOGNM=$ft03 OPTPNM=$optp RFDIR=$rfdir \
+    FTN13=none SOF1=$sof1 SOF2=$sof2 \
+    FTN14=none FTN17=none FTN18=none FTN19=none FTN20=none \
+    FTN15=$ft15 FTN16=$ft16 \
+    FTN21=none FTN22=none FTN23=none \
+    DBMEM=$dbmem OCMEM=$ocmem \
+    $nasexec < $ft05 >$ft06
+
+rm -r $nasscr
+if ( -e none  ) then
+    rm none
+endif
+echo   ===== NASTRAN has completed problem "$probname" =====
+EOF
 chmod +x $script
 
 # Optionally execute the script
