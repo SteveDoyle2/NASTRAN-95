@@ -30,6 +30,37 @@ program nastran
 
   CHARACTER*80    SDSN
   EQUIVALENCE    ( ISYSTM, SYSTM )
+
+  ! Memory namelist
+  integer :: dbmem = 12000000
+  integer :: ocmem =  2000000
+  namelist /memory/ dbmem, ocmem
+
+  ! Directories namelist
+  character(len=72) :: rfdircty, dircty
+  namelist /directories/ rfdircty, dircty
+
+  ! I/O files namelist
+  character(len=80) :: inpnm, outnm, lognm, optpnm, nptpnm, pltnm, dictnm, punchnm
+  namelist /iofiles/ inpnm, outnm, lognm, optpnm, nptpnm, pltnm, dictnm, punchnm
+
+  ! Fortran units namelist
+  character(len=80) :: ftn11, ftn12, ftn13, ftn14, ftn15
+  character(len=80) :: ftn16, ftn17, ftn18, ftn19, ftn20, ftn21
+  namelist /funits/ ftn11, ftn12, ftn13, ftn14, ftn15, &
+       ftn16, ftn17, ftn18, ftn19, ftn20, ftn21
+
+  ! SDSN files namelist
+  character(len=80) :: sof1, sof2, sof3, sof4, sof5
+  character(len=80) :: sof6, sof7, sof8, sof9, sof10
+  namelist /sdsnfiles/ sof1, sof2, sof3, sof4, sof5, sof6, sof7, sof8, sof9, sof10
+
+  ! Parameters
+  integer, parameter :: nmlunit = 999
+
+  ! Local variables
+  integer :: ios
+
   LENOPC = 14000000
 
   ! SAVE STARTING CPU TIME AND WALL CLOCK TIME IN /SYSTEM/
@@ -43,97 +74,141 @@ program nastran
   LEN = 80
   VALUE = ' '
   CALL BTSTRP
-  CALL GETENV ( 'DBMEM', VALUE )
-  READ ( VALUE, * ) IDBLEN
-  CALL GETENV ( 'OCMEM', VALUE )
-  READ ( VALUE, * ) IOCMEM
-  IF ( IOCMEM .GT. LENOPC ) THEN
-     PRINT *,' LARGEST VALUE FOR OPEN CORE ALLOWED IS:',LENOPC
-     CALL MESAGE ( -61, 0, 0 )
-  END IF
-  IF ( IDBLEN .NE. 0 ) IDBLEN = LENOPC - IOCMEM
-  LASTAD = LOCFX( IZ( IOCMEM ) )
-  IF ( IDBLEN .NE. 0 ) IDBADR = LOCFX( IZ( IOCMEM+1 ) )
-  LENOPC = IOCMEM
+
+  ! Open the namelist file
+  open (unit=nmlunit, file="nastran.nml", iostat=ios)
+  select case (ios)
+  case (0)
+     continue
+  case default
+     print *, "Error opening nastran.nml"
+     stop
+  end select
+
+  ! Read the memory namelist
+  read (unit=nmlunit, nml=memory, iostat=ios)
+  select case (ios)
+  case (0)
+     idblen = dbmem
+     iocmem = ocmem
+     if (lenopc < ocmem) then
+        print *, " Largest value for open core allowed is:", lenopc
+        call mesage ( -61, 0, 0 )
+     end if
+     if (idblen /= 0) idblen = lenopc - iocmem
+     lastad = locfx(iz(iocmem))
+     if (idblen /= 0) idbadr = locfx(iz(iocmem+1))
+     lenopc = iocmem
+  case default
+     print *, "Error reading the memory namelist."
+     stop
+  end select
+
   CALL DBMINT
   LOUT   = 3
   IRDICT = 4
   SPERLK = 1
   ISYSTM(11) = 1
-  VALUE = ' '
-  CALL GETENV ( 'RFDIR',  RFDIR  )
-  VALUE = ' '
-  CALL GETENV ( 'DIRCTY', DIRTRY )
-  LEN = INDEX( DIRTRY, ' ' ) - 1
-  DO I = 1, 90
-     IF ( I .LE. 9 ) WRITE ( TMP, 901 ) I
-     IF ( I .GT. 9 ) WRITE ( TMP, 902 ) I
-     DSNAMES( I ) = DIRTRY(1:LEN)//'/'//TMP
-  end do
-901 FORMAT('scr',I1)
-902 FORMAT('scr',I2)
 
-  CALL GETENV ( 'LOGNM', LOG )
-  DSNAMES(3) = LOG
-  CALL GETENV ( 'OPTPNM', OPTP )
-  DSNAMES(7)  = OPTP
-  CALL GETENV ( 'NPTPNM', NPTP )
-  DSNAMES(8)  = NPTP
-  CALL GETENV ( 'FTN11', OUT11 )
-  DSNAMES(11) = OUT11
-  CALL GETENV ( 'FTN12', IN12 )
-  DSNAMES(12) = IN12
-  CALL GETENV ( 'FTN13', VALUE )
-  DSNAMES(13) = VALUE
-  CALL GETENV ( 'FTN14', VALUE )
-  DSNAMES(14) = VALUE
-  CALL GETENV ( 'FTN15', VALUE )
-  DSNAMES(15) = VALUE
-  CALL GETENV ( 'FTN16', VALUE )
-  DSNAMES(16) = VALUE
-  CALL GETENV ( 'FTN17', VALUE )
-  DSNAMES(17) = VALUE
-  CALL GETENV ( 'FTN18', VALUE )
-  DSNAMES(18) = VALUE
-  CALL GETENV ( 'FTN19', VALUE )
-  DSNAMES(19) = VALUE
-  CALL GETENV ( 'FTN20', VALUE )
-  DSNAMES(20) = VALUE
-  CALL GETENV ( 'FTN21', VALUE )
-  DSNAMES(21) = VALUE
-  CALL GETENV ( 'PLTNM', PLOT )
-  DSNAMES(10) = PLOT
-  CALL GETENV ( 'DICTNM', DIC )
-  DSNAMES(4) = DIC
-  CALL GETENV ( 'PUNCHNM', PUNCH )
-  DSNAMES(1) = PUNCH
-  CALL GETENV ( 'SOF1', VALUE )
-  SDSN(1) = VALUE
-  CALL GETENV ( 'SOF2', VALUE )
-  SDSN(2) = VALUE
-  CALL GETENV ( 'SOF3', VALUE )
-  SDSN(3) = VALUE
-  CALL GETENV ( 'SOF4', VALUE )
-  SDSN(4) = VALUE
-  CALL GETENV ( 'SOF5', VALUE )
-  SDSN(5) = VALUE
-  CALL GETENV ( 'SOF6', VALUE )
-  SDSN(6) = VALUE
-  CALL GETENV ( 'SOF7', VALUE )
-  SDSN(7) = VALUE
-  CALL GETENV ( 'SOF8', VALUE )
-  SDSN(8) = VALUE
-  CALL GETENV ( 'SOF9', VALUE )
-  SDSN(9) = VALUE
-  CALL GETENV ( 'SOF10', VALUE )
-  SDSN(10) = VALUE
-  OPEN (  3, FILE=DSNAMES(3) ,STATUS='UNKNOWN')
-  IF ( DSNAMES(11) .NE. 'none' ) OPEN ( 11, FILE=DSNAMES(11),STATUS='UNKNOWN')
-  IF ( DSNAMES(12) .NE. 'none' ) OPEN ( 12, FILE=DSNAMES(12),STATUS='UNKNOWN')
-  IF ( DSNAMES(10) .NE. 'none' ) OPEN ( 10, FILE=DSNAMES(10),STATUS='UNKNOWN')
-  IF ( DSNAMES(4) .NE. 'none' ) OPEN ( 4, FILE=DSNAMES(4),STATUS='UNKNOWN')
-  IF ( DSNAMES(1) .NE. 'none' ) OPEN ( 1, FILE=DSNAMES(1),STATUS='UNKNOWN')
-  CALL XSEM00
-  STOP
+  ! Read the directories namelist
+  read (unit=nmlunit, nml=directories, iostat=ios)
+  select case (ios)
+  case (0)
+     rfdir = trim(rfdircty)
+     dirtry = trim(dircty)
+     do i = 1, 9
+        write (tmp,901) i
+        dsnames(i) = trim(dirtry)//"/"//tmp
+     end do
+     do i = 10,89
+        write (tmp,902) i
+        dsnames(i) = trim(dirtry)//"/"//tmp
+     end do
+  case default
+     print *, "Error reading the directories namelist."
+     stop
+  end select
+901 format('scr',I1)
+902 format('scr',I2)
 
+  ! Read the I/O files namelist
+  read (unit=nmlunit, nml=iofiles, iostat=ios)
+  select case (ios)
+  case (0)
+     log = trim(lognm)
+     optp = trim(optpnm)
+     nptp = trim(nptpnm)
+     plot = trim(pltnm)
+     dic = trim(dictnm)
+     punch = trim(punchnm)
+     !
+     dsnames(1) = trim(punchnm)
+     dsnames(3) = trim(lognm)
+     dsnames(4) = trim(dictnm)
+     dsnames(5) = trim(inpnm)
+     dsnames(6) = trim(outnm)
+     dsnames(7) = trim(optpnm)
+     dsnames(8) = trim(nptpnm)
+     dsnames(10) = trim(pltnm)
+  case default
+     print *, "Error reading the iofiles namelist"
+     stop
+  end select
+
+  ! Read the Fortran units namelist
+  read (unit=nmlunit, nml=funits, iostat=ios)
+  select case (ios)
+  case (0)
+     out11 = trim(ftn11)
+     in12 = trim(ftn12)
+     !
+     dsnames(11) = trim(ftn11)
+     dsnames(12) = trim(ftn12)
+     dsnames(13) = trim(ftn13)
+     dsnames(14) = trim(ftn14)
+     dsnames(15) = trim(ftn15)
+     dsnames(16) = trim(ftn16)
+     dsnames(17) = trim(ftn17)
+     dsnames(18) = trim(ftn18)
+     dsnames(19) = trim(ftn19)
+     dsnames(20) = trim(ftn20)
+     dsnames(21) = trim(ftn21)
+  case default
+     print *, "Error reading the funits namelist."
+     stop
+  end select
+
+  ! Read the SDSN files namelist
+  read (unit=nmlunit, nml=sdsnfiles, iostat=ios)
+  select case (ios)
+  case (0)
+     sdsn(1) = trim(sof1)
+     sdsn(2) = trim(sof2)
+     sdsn(3) = trim(sof3)
+     sdsn(4) = trim(sof4)
+     sdsn(5) = trim(sof5)
+     sdsn(6) = trim(sof6)
+     sdsn(7) = trim(sof7)
+     sdsn(8) = trim(sof8)
+     sdsn(9) = trim(sof9)
+     sdsn(10) = trim(sof10)
+  case default
+     print *, "Error reading the sdsnfiles namelist."
+     stop
+  end select
+
+  ! Open basic I/O files
+  open (unit=3, file=trim(lognm), status='UNKNOWN')
+  open (unit=5, file=trim(inpnm), status="OLD")
+  open (unit=6, file=trim(outnm), status="NEW")
+
+  if (punchnm(1:4) /= 'NONE') open (unit=1, file=trim(punchnm), status='UNKNOWN')
+  if (dictnm(1:4) /= 'NONE') open (unit=4, file=trim(dictnm), status='UNKNOWN')
+  if (pltnm(1:4) /= 'NONE') open (unit=10, file=trim(pltnm), status='UNKNOWN')
+  if (ftn11(1:4) /= 'NONE') open (unit=11, file=trim(ftn11), status='UNKNOWN')
+  if (ftn12(1:4) /= 'NONE') open (unit=12, file=trim(ftn12), status='UNKNOWN')
+
+  call xsem00
+
+  stop
 end program nastran
