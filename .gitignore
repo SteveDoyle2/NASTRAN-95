@@ -1,3 +1,6 @@
 
 # Object files
 *.o
+
+# Ignore the scratch directory
+scratch
