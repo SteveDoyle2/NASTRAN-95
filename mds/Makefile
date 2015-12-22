@@ -1,8 +1,8 @@
 
 # OS Specific Commands
 
-#WIN DELETE = del
-DELETE = rm
+DELETE = del
+#LNX DELETE = rm
 
 # GNU Fortran
 
@@ -110,13 +110,13 @@ FFOBJ += cputim.o waltim.o
 
 # Default target
 
-default:	nastrn.exe
+default:	nastran.exe
 
-all:	nastrn.exe chkfil.exe ff.exe nastplot.exe
+all:	nastran.exe chkfil.exe ff.exe nastplot.exe
 
 # Specific targets
 
-nastrn.exe:	nastrn.f $(NASTRANOBJ)
+nastran.exe:	nastran.f90 $(NASTRANOBJ)
 	$(FC) $(FFLAGS) -o $@ $< $(NASTRANOBJ) $(LIBNASTRAN)
 
 chkfil.exe:	chkfil.f
@@ -138,7 +138,7 @@ nastplot.exe:	nastplot.f
 .PHONY:	clean distclean
 
 distclean:	clean
-	-$(DELETE) nastrn.exe
+	-$(DELETE) nastran.exe
 	-$(DELETE) chkfil.exe
 	-$(DELETE) ff.exe
 	-$(DELETE) nastplot.exe

@@ -1,0 +1,47 @@
+&memory
+  dbmem = 12000000
+  ocmem =  2000000
+/
+
+&directories
+  rfdircty = '/cygdrive/c/Users/Thomas/Desktop/NASTRAN95/rf'
+  dircty = '/cygdrive/c/Users/Thomas/Desktop/NASTRAN95/scratch/temp'
+/
+
+&iofiles
+  inpnm = 'd01000a.inp'
+  outnm = 'd01000a.out'
+  lognm = 'd01000a.log'
+  optpnm = 'NONE'
+  nptpnm = 'd01000a.nptp'
+  pltnm = 'NONE'
+  dictnm = 'd01000a.dic'
+  punchnm = 'NONE'
+/
+
+&funits
+  ftn11 = 'NONE'
+  ftn12 = 'NONE'
+  ftn13 = 'NONE'
+  ftn14 = 'NONE'
+  ftn15 = 'NONE'
+  ftn16 = 'NONE'
+  ftn17 = 'NONE'
+  ftn18 = 'NONE'
+  ftn19 = 'NONE'
+  ftn20 = 'NONE'
+  ftn21 = 'NONE'
+/
+
+&sdsnfiles
+  sof1 = 'NONE'
+  sof2 = 'NONE'
+  sof3 = 'NONE'
+  sof4 = 'NONE'
+  sof5 = 'NONE'
+  sof6 = 'NONE'
+  sof7 = 'NONE'
+  sof8 = 'NONE'
+  sof9 = 'NONE'
+  sof10 = 'NONE'
+/
