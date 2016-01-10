@@ -699,9 +699,9 @@ C
       NAME = 'KCONEQ'        
       GO TO 100        
 C        
-      ENTRY FNXTVQ (V1,V2,V3,V4,V5,ZB,I)        
-      NAME = 'FNXTVQ'        
-      GO TO 100        
+!hgs      ENTRY FNXTVQ (V1,V2,V3,V4,V5,ZB,I)
+!hgs      NAME = 'FNXTVQ'
+!hgs      GO TO 100
 C      
       ENTRY NTRAN (I,J,K)        
       NAME = 'NTRAN'        
@@ -958,13 +958,13 @@ C ****
 C     DUMMY ROUTINES REFERENCED ONLY IN LINK 5, ALL MACHINES        
 C ****        
 C        
-      ENTRY PLBAR1 (I,J)        
-      NAME = 'PLBAR1'        
-      GO TO 100        
+!HGS      ENTRY PLBAR1 (I,J)
+!HGS      NAME = 'PLBAR1'
+!HGS      GO TO 100
 C      
-      ENTRY PLOADX        
-      NAME = 'PLOADX'        
-      GO TO 100        
+!HGS      ENTRY PLOADX
+!HGS      NAME = 'PLOADX'
+!HGS      GO TO 100
 C        
 CWKBD ENTRY ERRTRC (NAM)        
 C     ==================        

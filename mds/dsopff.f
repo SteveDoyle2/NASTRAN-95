@@ -1,5 +1,5 @@
       SUBROUTINE DSOPFF ( DSNAME, IUNIT, ISTATUS )                              
-      CHARACTER*72      DSNAME                                                  
+      CHARACTER*80      DSNAME
       COMMON / SYSTEM / SYSBUF, IWR                                             
       COMMON / MACHIN / MAC(3), LQRO
       INCLUDE          'DSIOF.COM'                                              
@@ -11,7 +11,7 @@
 701   WRITE ( IWR, 901 ) IUNIT, ISTATUS, DSNAME                                 
 901   FORMAT(//,' FATAL ERROR IN DSOPFF, UNABLE TO OPEN UNIT=',I4               
      &         ,' IOSTAT=',I5                                                   
-     &       ,/,' FILE NAME=',A72 )                                             
+     &       ,/,' FILE NAME=',A80 )
       ICCERR = ISTATUS                                                          
       CALL DSMSG  ( 101 )                                                       
       CALL MESAGE ( -61, 0, 0 )                                                 

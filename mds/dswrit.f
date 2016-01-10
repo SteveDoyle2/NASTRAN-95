@@ -9,13 +9,13 @@ c      print *,' dswrit,len,IREC,UNIT=',len,irec,iunit
       GO TO 777                                                                 
 701   WRITE( IWR, 901 ) IUNIT, IREC, MDSNAM( IUNIT )                            
 901   FORMAT(//' ERROR IN DSWRIT, BAD RECORD NO., UNIT=',I4,' REC=',I5          
-     &,      /,' FILE NAME=',A72 )                                              
+     &,      /,' FILE NAME=',A80 )
       ICCERR = ISTAT                                                            
       CALL DSMSG  ( 101 )                                                       
       CALL MESAGE ( -61, 0, 0 )                                                 
 702   WRITE( IWR, 902 ) IUNIT, IREC, ISTAT, MDSNAM( IUNIT )                     
 902   FORMAT(//', ERROR ENCOUNTERED IN DSWRCC, UNIT=',I5,' RECORD='             
-     &, I5,' STATUS=',I9,/' DSNAME=',A72 )                                      
+     &, I5,' STATUS=',I9,/' DSNAME=',A80 )
       ICCERR = ISTAT                                                            
       CALL DSMSG  ( 101 )                                                       
       CALL MESAGE ( -61, 0, 0 )                                                 

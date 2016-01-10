@@ -14,6 +14,7 @@ C                 DAY   MONTH     YEAR
 C     THESE DATES HAD TO BE INTERCHANGED FOR THE SUN
       DATE(1)=DATE1(2)
       DATE(2)=DATE1(1)
-      DATE(3)=DATE1(3)-1900
+CWUT  BAD FIX
+      DATE(3)=DATE1(3)-2000
       RETURN        
       END        

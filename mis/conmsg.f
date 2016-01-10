@@ -4,6 +4,10 @@ C
       REAL INCTIM, MODTIM 
       CHARACTER   CTIME*8,AHEAD*41,MCHNAM*11,MACHOS*7
 C
+      character (len=12) real_clock(3), time
+      integer values(8)
+      character(4) cvalues(8)
+      equivalence(values,cvalues)
       DIMENSION MESAGE(1)
       DIMENSION ICRDAT(3)
       DIMENSION IDATE(3), ITIME(3)
@@ -53,6 +57,9 @@ C
       IF (MESAGE(1).EQ.IMPYA.AND.NWORDS.EQ.1) RETURN
   300 CALL NASTIM (ITIME(1), ITIME(2), ITIME(3), CPUTMM)
       WRITE (CTIME,2056) ITIME
+      call date_and_time(real_clock(1), time, Real_clock(3),
+     1                  values)
+C
  2056 FORMAT (2( I2,':'),I2)
       IF (CTIME(4:4) .EQ. ' ') CTIME(4:4) = '0'
       IF (CTIME(7:7) .EQ. ' ') CTIME(7:7) = '0'
@@ -62,10 +69,12 @@ C
       IF (IMODTM.EQ.1) MODTIM = 0.0
       IF (IMODTM.EQ.2) MODTIM = CPUTMM - MODTIM
       MWORDS = MIN0 (NWORDS, 15)
-      IF (IMODTM.NE.2) WRITE (LOUT, 2100) CTIME, CPUTMM, INCTIM,
-     *                         (MESAGE(I), I = 1, MWORDS)
-      IF (IMODTM.EQ.2) WRITE (LOUT, 2110) CTIME, CPUTMM, INCTIM,
-     *                 MODTIM, (MESAGE(I), I = 1, MWORDS)
+      IF (IMODTM.NE.2) WRITE (LOUT,2100) time(1:2),time(3:4),time(5:10),
+     *                        CPUTMM, INCTIM,(MESAGE(I), I = 1, MWORDS)
+      IF (IMODTM.EQ.2) WRITE (LOUT,2110) time(1:2),time(3:4),time(5:10),
+     *               CPUTMM, INCTIM, MODTIM, (MESAGE(I), I = 1, MWORDS)
+      call flush(4)
+C
       LOGLIN = LOGLIN + 1
       CPUTIM = CPUTMM
       IF (IMODTM.EQ.1) MODTIM = CPUTMM
@@ -77,26 +86,26 @@ C
      *                   7X, A41, 7X, 1H*/
      *        1X , 1H*,  75X, 1H*/
      *        1X ,  77(1H*)/)
- 2055 FORMAT (1X, 2X, 'WALL', 10X,
+ 2055 FORMAT (1X, 2X, 'WALL', 15X,
      *                'TOTAL', 7X,
      *                'INCREMENTAL', 6X,
      *                'MODULE', 14X,
      *                'MODULE/'/
-     *        1X, 2X, 'CLOCK', 10X,
+     *        1X, 2X, 'CLOCK', 15X,
      *                'CPU', 12X,
      *                'CPU', 12X,
      *                'CPU', 13X,
      *                'SUBROUTINE'/
-     *        1X, 2X, 'TIME', 9X,
+     *        1X, 2X, 'TIME', 14X,
      *                'SECONDS', 8X,
      *                'SECONDS', 8X,
      *                'SECONDS', 13X,
      *                'STATUS'//
      *        1X,  78(1H-)/)
- 2100 FORMAT (1X, A8,
+ 2100 FORMAT (1X, a2,':',a2,':',a6,
      *                 4X, F10.3,  5X, F10.3, 15X,
      *                             5X, A4, 2X, 2A4, 2X, 12A4)
- 2110 FORMAT (1X, A8,
+ 2110 FORMAT (1X, a2,':',a2,':',a6,
      *                 4X, F10.3,  5X, F10.3,  5X, F10.3,
      *                             5X, A4, 2X, 2A4, 2X, 12A4)
       END

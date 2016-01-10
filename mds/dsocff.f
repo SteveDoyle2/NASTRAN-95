@@ -1,5 +1,5 @@
       SUBROUTINE DSOCFF ( DSNAME, IUNIT, ISTATUS )                              
-      CHARACTER*72      DSNAME                                                  
+      CHARACTER*80      DSNAME
       COMMON / SYSTEM / SYSBUF, IWR                                             
       COMMON / MACHIN / MAC(3), LQRO
       INCLUDE  'DSIOF.COM'                                                      
@@ -17,14 +17,14 @@ c      print *,' dsocff,nbuff=',nbuff
 701   WRITE ( IWR, 901 ) IUNIT, ISTATUS, DSNAME                                 
 901   FORMAT(//,' FATAL ERROR IN DSOCFF, UNABLE TO CLOSE UNIT=',I4              
      &,         ' STATUS='I4                                                    
-     &,       /,' FILE NAME=',A72 )                                             
+     &,       /,' FILE NAME=',A80 )
       ICCERR = ISTATUS                                                          
       CALL DSMSG  ( 101 )                                                       
       CALL MESAGE ( -61, 0, 0 )                                                 
 702   WRITE ( IWR, 902 ) IUNIT, ISTATUS, DSNAME                                 
 902   FORMAT(//,' FATAL ERROR IN DSOCFF, UNABLE TO OPEN UNIT=',I4               
      &,         ' STATUS=',I4                                                   
-     &,       /,' FILE NAME=',A72 )                                             
+     &,       /,' FILE NAME=',A80 )
       ICCERR = ISTATUS                                                          
       CALL DSMSG  ( 101 )                                                       
       CALL MESAGE ( -61, 0, 0 )                                                 

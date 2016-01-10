@@ -5,7 +5,8 @@ C********************************************************************
       INCLUDE  'DSIOF.COM'                                                      
       INCLUDE  'ZZZZZZ.COM'
       COMMON / SYSTEM / ISYSBF, IWR                                             
-C
+      INTEGER           SCRATCH(2)
+      DATA              SCRATCH / 4HSCRA , 4HTCHX /
       IBLKSZ = ISYSBF - 4                                                       
       ITOTI  = 0                                                                
       ITOTX  = 0                                                                
@@ -22,8 +23,8 @@ C
       IF ( IEXTB .GE. FCB( 7, IFILEX ) ) GO TO 20
       ITOTX = ITOTX + IEXTB                                                     
       IF ( FCB( 13,I ) .NE. 0 ) GO TO 15                                        
-      FCB( 13,I ) = ichar('s')  ! 'SCRA'
-      FCB( 14,I ) = ichar('t')  ! 'TCHX'
+      FCB( 13,I ) = SCRATCH(1)
+      FCB( 14,I ) = SCRATCH(2)
 15    CONTINUE                                                                  
       WRITE ( IWR, 904 ) I, FCB( 13,I ), FCB( 14,I ), FCB( 4,I )                
      &,                  IINTB, IEXTB                                           
@@ -37,10 +38,10 @@ C      WRITE ( IWR, 906 ) MAXBLK, MAXDSK, MAXALC, IBLKSZ
      &'                    BLOCK   BLOCKS'                                      
      &,'  BLOCKS ',/)                                                           
 904   FORMAT(I7,3X,2A4,2X,I6,2X,I6,2X,I6 )                                      
-905   FORMAT(/,' CURRENT IN-MEMORY BLOCKS =',I8                                 
-     &      ,/,' CURRENT DISK BLOCKS      =',I8 )                               
-906   FORMAT(/,' MAXIMUM IN-MEMORY BLOCKS USED                   =',I8          
-     &      ,/,' MAXIMUM DISK BLOCKS WRITTEN                     =',I8          
-     &      ,/,' BLOCKS INITIALLY ALLOCATED FOR THE IN-MEMORY DB =',I8          
-     &      ,/,' BLOCK SIZE                                      =',I8 )        
+905   FORMAT(/,' CURRENT IN-MEMORY BLOCKS =',I16
+     &      ,/,' CURRENT DISK BLOCKS      =',I16 )
+906   FORMAT(/,' MAXIMUM IN-MEMORY BLOCKS USED                   =',I16
+     &      ,/,' MAXIMUM DISK BLOCKS WRITTEN                     =',I16
+     &      ,/,' BLOCKS INITIALLY ALLOCATED FOR THE IN-MEMORY DB =',I16
+     &      ,/,' BLOCK SIZE                                      =',I16)
       END                                                                       

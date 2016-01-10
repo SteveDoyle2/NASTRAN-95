@@ -770,7 +770,10 @@ C
       LASTID = IOUT(1)
       FMT(2) = IH0
       LINE   = LINE + 2
- 1330 CALL OFPPNT (IOUT,NWDS,CFMT)                
+ 1330 continue
+!hgs revixe call to use new ofppnt: gfortran doesn't like variable format
+!     ofppnt now calls forwrt to perform write
+      CALL OFPPNT (IOUT,NWDS,FMT)
       GO TO 1700
 C
 C     ELEMENT FORCES IN HEAT PROBLEMS
