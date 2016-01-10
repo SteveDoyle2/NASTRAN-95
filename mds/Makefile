@@ -100,6 +100,49 @@ NASTRANOBJ += read.o write.o
 NASTRANOBJ += klock.o tdate.o
 NASTRANOBJ += cputim.o nastim.o waltim.o
 
+# Block Data
+
+BDDIR = ..\bd
+BDOBJ += $(BDDIR)\dpdcbd.o
+BDOBJ += $(BDDIR)\exiobd.o
+BDOBJ += $(BDDIR)\flbbd.o
+BDOBJ += $(BDDIR)\gp3bd.o
+BDOBJ += $(BDDIR)\gptabd.o
+BDOBJ += $(BDDIR)\ifp3bd.o
+BDOBJ += $(BDDIR)\ifx1bd.o
+BDOBJ += $(BDDIR)\ifx2bd.o
+BDOBJ += $(BDDIR)\ifx3bd.o
+BDOBJ += $(BDDIR)\ifx4bd.o
+BDOBJ += $(BDDIR)\ifx5bd.o
+BDOBJ += $(BDDIR)\ifx6bd.o
+BDOBJ += $(BDDIR)\ifx7bd.o
+BDOBJ += $(BDDIR)\itembd.o
+BDOBJ += $(BDDIR)\of1pbd.o
+BDOBJ += $(BDDIR)\of2pbd.o
+BDOBJ += $(BDDIR)\of3pbd.o
+BDOBJ += $(BDDIR)\of3sbd.o
+BDOBJ += $(BDDIR)\of4pbd.o
+BDOBJ += $(BDDIR)\of5pbd.o
+BDOBJ += $(BDDIR)\of6pbd.o
+BDOBJ += $(BDDIR)\of7pbd.o
+BDOBJ += $(BDDIR)\of7sbd.o
+BDOBJ += $(BDDIR)\of8pbd.o
+BDOBJ += $(BDDIR)\of9pbd.o
+BDOBJ += $(BDDIR)\ofp1bd.o
+BDOBJ += $(BDDIR)\ofp5bd.o
+BDOBJ += $(BDDIR)\ofsnbd.o
+BDOBJ += $(BDDIR)\ofssbd.o
+BDOBJ += $(BDDIR)\pla4bd.o
+BDOBJ += $(BDDIR)\plotbd.o
+BDOBJ += $(BDDIR)\readbd.o
+BDOBJ += $(BDDIR)\sdr2bd.o
+BDOBJ += $(BDDIR)\semdbd.o
+BDOBJ += $(BDDIR)\sma1bd.o
+BDOBJ += $(BDDIR)\sma2bd.o
+BDOBJ += $(BDDIR)\ta1abd.o
+BDOBJ += $(BDDIR)\tabfbd.o
+BDOBJ += $(BDDIR)\vdrbd.o
+
 # Free to Fixed field Objects
 
 FFOBJ += dbmstf.o
@@ -116,8 +159,8 @@ all:	nastran.exe chkfil.exe ff.exe nastplot.exe
 
 # Specific targets
 
-nastran.exe:	nastran.f90 $(NASTRANOBJ)
-	$(FC) $(FFLAGS) -o $@ $< $(NASTRANOBJ) $(LIBNASTRAN)
+nastran.exe:	nastran.f90 $(NASTRANOBJ) $(BDOBJ)
+	$(FC) $(FFLAGS) -o $@ $< $(NASTRANOBJ) $(BDOBJ) $(LIBNASTRAN)
 
 chkfil.exe:	chkfil.f
 	$(FC) $(FFLAGS) -o $@ $<
@@ -145,3 +188,4 @@ distclean:	clean
 
 clean:
 	-$(DELETE) *.o
+	-$(DELETE) $(BDDIR)\*.o
