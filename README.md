@@ -19,18 +19,17 @@ NOTE: There is no technical support available for this software.
 
 # Current Tasks
 
-<table>
-  <tr><th>Task</th><th>Status</th></tr>
-  <tr><td>Build libnastran</td><td>Complete</td></tr>
-  <tr><td>Build executables</td><td>Complete</td></tr>
-  <tr><td>Modernize wrapper C shell script</td><td>Complete</td></tr>
-  <tr><td>Replace wrapper script with namelist</td><td>In Progress</td></tr>
-  <tr><td>Verify input and output</td><td>Queued</td></tr>
-  <tr><td>Remove machine dependent code</td><td>Queued</td></tr>
-  <tr><td>Replace all Holerith contants</td><td>Queued</td></tr>
-  <tr><td>Remove all type coercion</td><td>Queued</td></tr>
-  <tr><td>Review the contents of the bd directory</td><td>Queued</td></tr>
-</table>
+Task                                    | Status
+:---------------------------------------|:------------:
+Build libnastran                        | Complete
+Build executables                       | Complete
+Modernize wrapper C shell script        | Complete
+Replace wrapper script with namelist    | Complete
+Verify input and output                 | In Progress
+Remove machine dependent code           | Queued
+Replace all Holerith contants           | Queued
+Remove all type coercion                | Queued
+Review the contents of the bd directory | Queued
 
 # Future Tasks
 
