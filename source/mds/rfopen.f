@@ -18,6 +18,10 @@ C            READFILE OPERATION.
 C
 C     WRITTEN BY G.CHAN/UNISYS.   10/1990
 C
+C     MIGRATION PLAN
+C     Location : NASTRAN library
+C     Fortran Module : DMAP
+C
       integer endpos
       external endpos
 C
