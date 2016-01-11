@@ -1,8 +1,11 @@
-      COMMON / DOSNAM / DIRTRY, RFDIR, INPUT, OUTPUT, LOG , PUNCH
-     &,                 PLOT,   NPTP , DIC  , OPTP  , RDIC, IN12, OUT11
-     &,                 INP1,   INP2 
-      CHARACTER * 72    DIRTRY, RFDIR, INPUT, OUTPUT, LOG , PUNCH
-      CHARACTER * 72    PLOT  , NPTP , DIC  , OPTP  , RDIC, IN12, OUT11
-      CHARACTER * 72    INP1,   INP2
-      COMMON / DSNAME / DSNAMES(89)
-      CHARACTER * 80    DSNAMES
+
+
+      character*80 dirtry, rfdir
+      character*80 input, output, log, punch
+      character*80 plot, nptp, dic, optp, rdic, in12, out11
+      character*80 inp1, inp2
+      common /dosnam/ dirtry, rfdir, input, output, log, punch, plot,
+     &     nptp, dic, optp, rdic, in12, out11, inp1, inp2
+C
+      character*80 dsnames(89)
+      common /dsname/ dsnames

@@ -17,15 +17,15 @@ program nastran
        NUMOPN, NUMCLS, NUMWRI, NUMREA, LENOPC
 
   ! INCLUDE 'NASNAMES.COM'
-  COMMON / DOSNAM / &
-       DIRTRY, RFDIR, INPUT, OUTPUT, LOG , PUNCH, &
-       PLOT,   NPTP , DIC  , OPTP  , RDIC, IN12, OUT11, &
-       INP1,   INP2
-  CHARACTER*72 DIRTRY, RFDIR, INPUT, OUTPUT, LOG , PUNCH
-  CHARACTER*72 PLOT  , NPTP , DIC  , OPTP  , RDIC, IN12, OUT11
-  CHARACTER*72 INP1,   INP2
-  COMMON / DSNAME / DSNAMES(89)
-  CHARACTER*80    DSNAMES
+  character(len=80) :: dirtry, rfdir
+  character(len=80) :: input, output, log, punch
+  character(len=80) :: plot, nptp, dic, optp, rdic, in12, out11
+  character(len=80) :: inp1, inp2
+  common /dosnam/ dirtry, rfdir, input, output, log, punch, plot, &
+       nptp, dic, optp, rdic, in12, out11, inp1, inp2
+
+  character(len=80), dimension(89) :: dsnames
+  common /dsname/ dsnames
   ! End of NASNAMES.COM
 
   CHARACTER*80    SDSN
