@@ -143,6 +143,11 @@ BDOBJ += $(BDDIR)\ta1abd.o
 BDOBJ += $(BDDIR)\tabfbd.o
 BDOBJ += $(BDDIR)\vdrbd.o
 
+# Fortran 77 Text Routines
+# https://github.com/OdonataResearchLLC/Text77
+
+TEXT77 = text77.o
+
 # Free to Fixed field Objects
 
 FFOBJ += dbmstf.o
@@ -159,8 +164,8 @@ all:	nastran.exe chkfil.exe ff.exe nastplot.exe
 
 # Specific targets
 
-nastran.exe:	nastran.f90 $(NASTRANOBJ) $(BDOBJ)
-	$(FC) $(FFLAGS) -o $@ $< $(NASTRANOBJ) $(BDOBJ) $(LIBNASTRAN)
+nastran.exe:	nastran.f90 $(NASTRANOBJ) $(BDOBJ) $(TEXT77)
+	$(FC) $(FFLAGS) -o $@ $< $(NASTRANOBJ) $(BDOBJ) $(TEXT77) $(LIBNASTRAN)
 
 chkfil.exe:	chkfil.f
 	$(FC) $(FFLAGS) -o $@ $<
