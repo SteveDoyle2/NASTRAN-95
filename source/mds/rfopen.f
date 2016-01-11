@@ -18,13 +18,18 @@ C            READFILE OPERATION.
 C
 C     WRITTEN BY G.CHAN/UNISYS.   10/1990
 C
+      integer endpos
+      external endpos
+C
       INTEGER         MEMBER(2),FACSF
       CHARACTER*1     BK,MB1(8)
       CHARACTER       MB5*5,MB6*6
       CHARACTER*8     MB8,FREE8,ADD(3)
       CHARACTER       UFM*23,UWM*25,UIM*29,SFM*25
-CWKBI
-      CHARACTER*44    RFDIR, DSN
+C
+      include 'NASNAMES.COM'
+      character*80 dsn
+C
       COMMON /XMSSG / UFM,UWM,UIM,SFM
       COMMON /MACHIN/ MACH
       COMMON /XXREAD/ IN
@@ -56,16 +61,13 @@ C
       LU = 5
       GO TO 130
 50    CONTINUE
-      RFDIR = ' '
-      CALL GETENV ( 'RFDIR', RFDIR )
-      DO 55 I = 44, 1, -1
-      IF ( RFDIR( I:I ) .EQ. ' ' ) GO TO 55
-      LENR = I
-      GO TO 56
-55    CONTINUE
-      LENR = 44
-56    DSN = ' '
-      DSN = RFDIR(1:LENR) // '/' // MB6
+      LENR = endpos(rfdir)
+C     FIXME : Handle the path separator better
+      if (mach.EQ.19) then
+         DSN = RFDIR(1:LENR) // char(92) // MB6
+      else
+         DSN = RFDIR(1:LENR) // '/' // MB6
+      end if
 CWKBR IF (J .EQ. 6) OPEN (UNIT=IN,FILE=MB6,ACCESS='SEQUENTIAL',ERR=100,
       OPEN (UNIT=IN,FILE=DSN,ACCESS='SEQUENTIAL',ERR=100,
      1                    FORM='FORMATTED',STATUS='OLD')
