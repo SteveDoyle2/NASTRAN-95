@@ -25,11 +25,11 @@ Build libnastran                        | Complete
 Build executables                       | Complete
 Modernize wrapper C shell script        | Complete
 Replace wrapper script with namelist    | Complete
+Review the contents of the bd directory | Complete
 Verify input and output                 | In Progress
 Remove machine dependent code           | Queued
 Replace all Holerith contants           | Queued
 Remove all type coercion                | Queued
-Review the contents of the bd directory | Queued
 
 # Future Tasks
 
