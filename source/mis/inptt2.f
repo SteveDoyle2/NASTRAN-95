@@ -80,8 +80,8 @@ C
       DOUBLE PRECISION DCORE(1)
       CHARACTER        UFM*23,UWM*25,UIM*29,SFM*25
 CWKBNB
-      CHARACTER*80     DSNAMES
-      COMMON /DSNAME/ DSNAMES(80)
+      character*80 dsnames(89)
+      common /dsname/ dsnames
 CWKBNE
       COMMON /XMSSG /  UFM,UWM,UIM,SFM
       COMMON /BLANK /  P1,P2,P3(2),P4,P5,P6(2)

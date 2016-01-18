@@ -114,8 +114,8 @@ C
       DOUBLE PRECISION          DZERO,    DTEMP
       CHARACTER       UFM*23,   UWM*25,   UIM*29
 CWKBNB
-      CHARACTER*80    DSNAMES
-      COMMON /DSNAME/ DSNAMES(80)
+      character*80 dsnames(89)
+      common /dsname/ dsnames
 CWKBNE
       COMMON /XMSSG / UFM,      UWM,      UIM
       COMMON /ZZZZZZ/ Z(1)

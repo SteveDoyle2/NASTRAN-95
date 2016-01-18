@@ -60,9 +60,9 @@ C
       CHARACTER*11     FMD,UNF,FM
       CHARACTER        UFM*23,UWM*25,UIM*29
 CWKBI
-      CHARACTER*80    DSNAMES
+      character*80 dsnames(89)
+      common /dsname/ dsnames
 CWKBI
-      COMMON / DSNAME / DSNAMES(80)
       COMMON /XMSSG /  UFM,UWM,UIM
       COMMON /BLANK /  P1,P2,P3
       COMMON /SYSTEM/  IBUFF,NOUT,DUM1(6),NLPP,DUM2(2),LINE,DUM3(2),

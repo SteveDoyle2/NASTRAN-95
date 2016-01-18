@@ -90,8 +90,8 @@ C
      1                IDHDR(7),IDHDRX(7),P3X(2),TAPCOD(2)
       CHARACTER       UFM*23,UWM*25,UIM*29,SFM*25
 CWKBNB
-      CHARACTER*80    DSNAMES
-      COMMON /DSNAME/ DSNAMES(80)
+      character*80 dsnames(89)
+      common /dsname/ dsnames
 CWKBNE
       COMMON /XMSSG / UFM,UWM,UIM,SFM
       COMMON /BLANK / P1,P2,P3(2),P4,P5,P6(2)
@@ -108,8 +108,8 @@ CWKBI
 C
 C     CHECK P2 AND P4 PARAMETERS
 C
-CWKBI 3/95 SPR94016      
-      LCOR   = KORSZ(X) - BUFFSZ           
+CWKBI 3/95 SPR94016
+      LCOR   = KORSZ(X) - BUFFSZ
       IF (P2 .GE. 11 .AND. P2 .LE. 21 ) GO TO 20
       J = 11
       WRITE  (NOUT,10) UWM,P2,J,INP(I)
@@ -144,7 +144,7 @@ C
       IF (P5 .NE. 0) SPARSE = .TRUE.
       ENDFIL = 0
       ENDREC = 0
-CWKBD 3/95 SPR94016      LCOR   = KORSZ(X) - BUFFSZ           
+CWKBD 3/95 SPR94016      LCOR   = KORSZ(X) - BUFFSZ
       ICRQ   =-LCOR
       IF (LCOR .LE. 0) GO TO 890
       INBUF  = LCOR + 1
