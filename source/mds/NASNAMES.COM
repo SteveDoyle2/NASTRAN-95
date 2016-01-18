@@ -9,3 +9,6 @@
 C
       character*80 dsnames(89)
       common /dsname/ dsnames
+C
+      character*1 pthsep
+      common /pthblk/ pthsep

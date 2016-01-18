@@ -2,9 +2,9 @@
       INCLUDE   'DSIOF.COM'                                                     
       INCLUDE   'NASNAMES.COM'                                                  
       CHARACTER*12 FILNAM(100)                                                  
-C                                                                               
+C
       COMMON /SYSTEM/ SYSBUF, IWR                                               
-C                                                                               
+C
       DATA FILNAM/'PUNCH','LINK' ,'LOG      ' ,'RDICT   ' , 'INPUT   '          
      *,'OUTPUT   ' , 'OPTP'    ,'NPTP.ZAP' ,'XPDT.ZAP' , 'PLOT    '          
      *,'UT1'      , 'UT2'     ,'UT3'      ,'UT4'      , 'UT5'              
@@ -29,11 +29,10 @@ C
       DO 15 K = 1, 21                                                           
       MDSNAM( K ) = FILNAM(K)                                                   
 15    CONTINUE                                                                  
-      MDSNAM( 8 ) = DIRTRY(1:LENDIR) // '/' // FILNAM( 8 )                      
-      MDSNAM( 9 ) = DIRTRY(1:LENDIR) // '/' // FILNAM( 9 )                      
+      MDSNAM( 8 ) = DIRTRY(1:LENDIR) // pthsep // FILNAM( 8 )                      
+      MDSNAM( 9 ) = DIRTRY(1:LENDIR) // pthsep // FILNAM( 9 )                      
       DO 20 K = 22, MAXFCB                                                      
-      MDSNAM( K ) = DIRTRY(1:LENDIR) // '/' // FILNAM( K )                      
+      MDSNAM( K ) = DIRTRY(1:LENDIR) // pthsep // FILNAM( K )                      
 20    CONTINUE                                                                  
 700   RETURN                                                                    
       END                                                                       
-

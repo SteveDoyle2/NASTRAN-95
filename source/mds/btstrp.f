@@ -22,6 +22,9 @@ C
       character*11 mchnam, machos
       common /chmach/ mchnam, machos
 C
+      character*1 pthsep
+      common /pthblk/ pthsep
+C
       COMMON /SEM   / A      ,MASK2  ,MASK3  ,LNKNOS(15)
       COMMON /LHPWX / LOWPW  ,HIGHPW ,NWPIC  ,NUDFLW    ,MXFL       ,
      1                KSHIFT ,MTISA
@@ -183,6 +186,12 @@ C     +++++++++++++++++++++++++++++++
       SYSBUF = MCONST(MACH)
       IBMCDC = 1
       IF (MACH.EQ.2 .OR. MACH.EQ.4) IBMCDC = 0
+C
+      if (mach.EQ.19) then
+         pthsep = char(92)      ! \
+      else
+         pthsep = char(47)      ! /
+      end if
 C
       I  = MACH + NMACH
       INTP   = MCONST(I)/100

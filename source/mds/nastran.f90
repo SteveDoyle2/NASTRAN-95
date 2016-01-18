@@ -26,6 +26,9 @@ program nastran
 
   character(len=80), dimension(89) :: dsnames
   common /dsname/ dsnames
+
+  character(len=1) :: pthsep
+  common /pthblk/ pthsep
   ! End of NASNAMES.COM
 
   CHARACTER*80    SDSN
@@ -118,11 +121,11 @@ program nastran
      dirtry = trim(dircty)
      do i = 1, 9
         write (tmp,901) i
-        dsnames(i) = trim(dirtry)//"/"//tmp
+        dsnames(i) = trim(dirtry) // pthsep // tmp
      end do
      do i = 10,89
         write (tmp,902) i
-        dsnames(i) = trim(dirtry)//"/"//tmp
+        dsnames(i) = trim(dirtry) // pthsep // tmp
      end do
   case default
      print *, "Error reading the directories namelist."

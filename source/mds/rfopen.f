@@ -66,12 +66,7 @@ C
       GO TO 130
 50    CONTINUE
       LENR = endpos(rfdir)
-C     FIXME : Handle the path separator better
-      if (mach.EQ.19) then
-         DSN = RFDIR(1:LENR) // char(92) // MB6
-      else
-         DSN = RFDIR(1:LENR) // '/' // MB6
-      end if
+      DSN = RFDIR(1:LENR) // pthsep // MB6
 CWKBR IF (J .EQ. 6) OPEN (UNIT=IN,FILE=MB6,ACCESS='SEQUENTIAL',ERR=100,
       OPEN (UNIT=IN,FILE=DSN,ACCESS='SEQUENTIAL',ERR=100,
      1                    FORM='FORMATTED',STATUS='OLD')
