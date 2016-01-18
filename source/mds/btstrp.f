@@ -10,7 +10,6 @@ C
 C                ===
 C
       EXTERNAL        LSHIFT ,RSHIFT ,ANDF   ,COMPLF
-      CHARACTER       MCHNAM*11, MACHOS*7, COMPUT(22)*11, COMPOS(22)*7
       INTEGER         SYSBUF ,OUTTAP ,TWO     ,COMPLF    ,RSHIFT     ,   
      1                FCB    ,ORDER  ,IDATE(3),
      2                ABCD   ,AK     ,RECL    ,ANDF      ,
@@ -18,7 +17,11 @@ C
      4                HIGHPW
       REAL            XX     ,YY
       COMMON /MACHIN/ MACHX  ,IHALF  ,JHALF  ,LQRO
-      COMMON /CHMACH/ MCHNAM, MACHOS
+C
+      character*11 comput(22), compos(22)
+      character*11 mchnam, machos
+      common /chmach/ mchnam, machos
+C
       COMMON /SEM   / A      ,MASK2  ,MASK3  ,LNKNOS(15)
       COMMON /LHPWX / LOWPW  ,HIGHPW ,NWPIC  ,NUDFLW    ,MXFL       ,
      1                KSHIFT ,MTISA
@@ -58,35 +61,36 @@ C           SGI    MAC   CRAY  CONVEX   NEC  FUJITSU  SUN  AMDAHL  PRIME
 C           IRIS        UNICOS                       SUNOS
 C          --10-  --11-  --12-  --13-  --14-  --15-  --16-  --17-  --18-
 C
-C           PC            DEC/   DEC/
-C         MS/DOS  DUMMY OPENVMS  OSF
+C         X86_64          DEC/   DEC/
+C         WINNT   DUMMY OPENVMS  OSF
 C          --19-  --20-  --21-  --22-
 C
 C  MACHINE NAMES
 C
-      DATA    COMPUT/
-     1        'DUMMY      ', 'IBM        ', 'UNIVAC     ',
-     2        'CDC        ', 'DEC-VAX    ', 'DEC-MIPS   ',
-     3        'SUN        ', 'IBM RS6000 ', 'HP         ',
-     4        'SGI        ', 'MACINTOCH  ', 'CRAY       ',
-     5        'CONVEX     ', 'NEC        ', 'FUJITSU    ',
-     6        'SUN        ', 'AMDAHL     ', 'PRIME      ',
-     7        'PC         ', 'DUMMY      ', 'DEC-ALPHA  ',
-     8        'DEC-ALPHA  '/
+      data comput /
+     &     'DUMMY      ', 'IBM        ', 'UNIVAC     ',
+     &     'CDC        ', 'DEC-VAX    ', 'DEC-MIPS   ',
+     &     'SUN        ', 'IBM RS6000 ', 'HP         ',
+     &     'SGI        ', 'MACINTOCH  ', 'CRAY       ',
+     &     'CONVEX     ', 'NEC        ', 'FUJITSU    ',
+     &     'SUN        ', 'AMDAHL     ', 'PRIME      ',
+     &     'X86_64     ', 'DUMMY      ', 'DEC-ALPHA  ',
+     &     'DEC-ALPHA  ' /
 C
 C  MACHINE OPERATING SYSTEM
 C
-      DATA    COMPOS/
-     1        '       ', 'MVS    ', 'FTN    ',
-     2        'FTN5   ', 'VMS    ', 'ULTRIX ',
-     3        'SOLARIS', 'AIX    ', 'HP-UX  ',
-     4        'IRIX   ', '       ', 'UNICOS ',
-     5        '       ', '       ', '       ',
-     6        'SUNOS  ', '       ', '       ',
-     7        'MS-DOS ', '       ', 'OPENVMS',
-     8        'OSF    '/
+      data compos /
+     &     '           ', 'MVS       ', 'FTN        ',
+     &     'FTN5       ', 'VMS       ', 'ULTRIX     ',
+     &     'SOLARIS    ', 'AIX       ', 'HP-UX      ',
+     &     'IRIX       ', '          ', 'UNICOS     ',
+     &     '           ', '          ', '           ',
+     &     'SUNOS      ', '          ', '           ',
+     &     'Windows_NT ', '          ', 'OPENVMS    ',
+     &     'OSF        '/
 C
-      DATA    NMACH / 22 /,    M1/
+      integer nmach /22/
+      data m1 /
 C
 C     SYSBUF  =   LENGTH OF NASTRAN I/O BUFFER
 C

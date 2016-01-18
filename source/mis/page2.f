@@ -18,15 +18,18 @@ C     SIMPLIFIED BY G.CHAN/UNISYS, AND PAGE3 ADDED  12/92
 C
       IMPLICIT INTEGER (A-Z)
       INTEGER         TITLEX(18),NAME(2),FCHAR
-      CHARACTER       MONTH(12)*3,AHEAD*30,MCHNAM*11,MACHOS*7
-      COMMON /CHMACH/ MCHNAM, MACHOS
+      CHARACTER       MONTH(12)*3,AHEAD*34
+C
+      character*11 mchnam, machos
+      common /chmach/ mchnam, machos
+C
       COMMON /MACHIN/ MACH(4)
       COMMON /SYSTEM/ IBUF,NOUT,DUM6(6),SYM,ST,PAGE,LINE,TLINE,MAXLIN,
      1                DATE(3),DUM15(15),OFP,DUM8(8),CRDATE(3)
       COMMON /OUTPUT/ TITLE(32),SUBTIT(32),LABEL(32),HEAD1(32),
      1                HEAD2(32),HEAD3(32)
       EQUIVALENCE     (TITLEX(1),TITLE(1))
-      DATA    MONTH /'JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 
+      DATA    MONTH /'JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN',
      1               'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'/
       DATA    NAME  / 4H PAG, 4HE2  /
 C
@@ -55,12 +58,11 @@ C
       WRITE (AHEAD(FCHAR:FCHAR+1),35) CRDATE(3)
    35 FORMAT (A2)
       FCHAR = FCHAR + 3
-      AHEAD(FCHAR:30) = MCHNAM(1:NCMNAM) // ' ' // MACHOS(1:NCMOS) //
+      AHEAD(FCHAR:34) = MCHNAM(1:NCMNAM) // ' ' // MACHOS(1:NCMOS) //
      1 ' NASTRAN'
 C
       WRITE  (NOUT,40) TITLEX, AHEAD, MONTH(IN),DATE(2),DATE(3),PAGE
-   40 FORMAT (1H1,4X,17A4,A2,' /',A30,'/ ',A3,1X,I2,', ',I2, 
-     1        ' / PAGE',I6)
+ 40   FORMAT (1H1,17A4,A2,' /',A34,'/ ',A3,1X,I2,', ',I2,' / PAGE',I6)
       WRITE  (NOUT,50) SUBTIT
    50 FORMAT ( 5X,31A4,A3)
       WRITE  (NOUT,60) LABEL

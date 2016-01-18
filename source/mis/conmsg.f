@@ -1,8 +1,8 @@
       SUBROUTINE CONMSG (MESAGE, NWORDS, IDUMMY)
 C
       INTEGER FCHAR
-      REAL INCTIM, MODTIM 
-      CHARACTER   CTIME*8,AHEAD*41,MCHNAM*11,MACHOS*7
+      REAL INCTIM, MODTIM
+      CHARACTER   CTIME*8,AHEAD*45
 C
       character (len=12) real_clock(3), time
       integer values(8)
@@ -12,7 +12,9 @@ C
       DIMENSION ICRDAT(3)
       DIMENSION IDATE(3), ITIME(3)
 C
-      COMMON /CHMACH/ MCHNAM, MACHOS
+      character*11 mchnam, machos
+      common /chmach/ mchnam, machos
+C
       COMMON /LOGOUT/ LOUT
       COMMON /SYSTEM/ ISYSTM(175)
 C
@@ -42,7 +44,7 @@ C
       WRITE (AHEAD(FCHAR:FCHAR+1),15) ICRDAT(3)
    15 FORMAT (A2)
       FCHAR = FCHAR + 3
-      AHEAD(FCHAR:41) = MCHNAM(1:NCMNAM) // ' ' // MACHOS(1:NCMOS) //
+      AHEAD(FCHAR:45) = MCHNAM(1:NCMNAM) // ' ' // MACHOS(1:NCMOS) //
      1 ' NASTRAN JOB'
 C
       IMODTM = 0
@@ -83,7 +85,7 @@ C
  2000 FORMAT (1H1,  77(1H*)/
      *        1X , 1H*,  75X, 1H*/
      *        1X , 1H*, 7X, 'DATE ', 2(I2, '/'), I2,
-     *                   7X, A41, 7X, 1H*/
+     *                   5X, A45, 5X, 1H*/
      *        1X , 1H*,  75X, 1H*/
      *        1X ,  77(1H*)/)
  2055 FORMAT (1X, 2X, 'WALL', 15X,

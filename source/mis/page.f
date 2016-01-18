@@ -3,8 +3,11 @@ C
 C     MASTER PAGING ROUTINE FOR NASTRAN.
 C
       INTEGER         OTPE,DATE,CRDATE,SYM,TITLEX(18),NAME(2),FCHAR
-      CHARACTER       MONTH(12)*3,AHEAD*30,MCHNAM*11,MACHOS*7
-      COMMON /CHMACH/ MCHNAM, MACHOS
+      CHARACTER       MONTH(12)*3,AHEAD*34
+C
+      character*11 mchnam, machos
+      common /chmach/ mchnam, machos
+C
       COMMON /MACHIN/ MACH(4)
       COMMON /SYSTEM/ SYSBUF,OTPE,MPCN(3),SPCN,METHOD,LOADN,SYM,ST,
      1                IPAGE,LINE,ITLINE,MAXLIN,DATE(3),DUM15(15),IOFP,
@@ -12,7 +15,7 @@ C
       COMMON /OUTPUT/ TITLE(32),SUBTIT(32),LABEL(32),HEAD1(32),
      1                HEAD2(32),HEAD3(32)
       EQUIVALENCE     (TITLEX(1),TITLE(1))
-      DATA    MONTH /'JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 
+      DATA    MONTH /'JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN',
      1               'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'/
       DATA    NAME  / 4HPAGE, 4H    /
 C
@@ -34,12 +37,11 @@ C
       WRITE (AHEAD(FCHAR:FCHAR+1),15) CRDATE(3)
    15 FORMAT (A2)
       FCHAR = FCHAR + 3
-      AHEAD(FCHAR:30) = MCHNAM(1:NCMNAM) // ' ' // MACHOS(1:NCMOS) //
+      AHEAD(FCHAR:34) = MCHNAM(1:NCMNAM) // ' ' // MACHOS(1:NCMOS) //
      1 ' NASTRAN'
 C
       WRITE  (OTPE,20) TITLEX, AHEAD, MONTH(IN),DATE(2),DATE(3),IPAGE
-   20 FORMAT (1H1,4X,17A4,A2,' /',A30,'/ ',A3,1X,I2,', ',I2, 
-     1        ' / PAGE',I6)
+ 20   FORMAT (1H1,17A4,A2,' /',A34,'/ ',A3,1X,I2,', ',I2,' / PAGE',I6)
       WRITE  (OTPE,30) SUBTIT
    30 FORMAT (5X,31A4,A3)
       WRITE  (OTPE,40) LABEL

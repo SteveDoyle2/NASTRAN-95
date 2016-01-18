@@ -14,8 +14,8 @@
                                   ****
 
 
-                             PC COMPUTER SYSTEMS     
-                                MS-DOS VERSION 
+                           X86_64 COMPUTER SYSTEMS   
+                              Windows_NT VERSION  
 
                           SYSTEM RELEASE -  1995 ED.
 
@@ -24,7 +24,7 @@
          COMPUTER SOFTWARE MANAGEMENT AND INFORMATION CENTER (COSMIC)
                  UNIVERSITY OF GEORGIA, ATHENS, GEORGIA 30602
                  PHONE: (706)542-3265      FAX: (706)542-4807
-1                                                                           /     95 PC MS-DOS NASTRAN     / JAN 10, 16 / PAGE     2
+1                                                                       / 95 X86_64 Windows_NT NASTRAN     / JAN 17, 16 / PAGE     2
                                                                                                                                     
 0                                                                                                                                   
                                                                                                          
@@ -40,12 +40,12 @@
                                                                                                          
                          ===X=    TOP OF PAGE REQUEST IF 'X' IS REPLACED BY '='                          
                                                                                                          
-1                                                                           /     95 PC MS-DOS NASTRAN     / JAN 10, 16 / PAGE     3
+1                                                                       / 95 X86_64 Windows_NT NASTRAN     / JAN 17, 16 / PAGE     3
                                                                                                                                     
 0                                                                                                                                   
 0*** USER INFORMATION MESSAGE 225, GINO TIME CONSTANTS ARE BEING COMPUTED
      (SEE NASINFO FILE FOR ELIMINATION OF THESE COMPUTATIONS)
-1                                                                           /     95 PC MS-DOS NASTRAN     / JAN 10, 16 / PAGE     4
+1                                                                       / 95 X86_64 Windows_NT NASTRAN     / JAN 17, 16 / PAGE     4
                                                                                                                                     
 0        N A S T R A N    E X E C U T I V E    C O N T R O L    D E C K    E C H O                                                  
 0                                                                                                                                   
@@ -63,7 +63,7 @@
      TIME  2                                                                         
      DIAG  14,20                                                                     
      CEND                                                                            
-1     TESTING                                                               /     95 PC MS-DOS NASTRAN     / JAN 10, 16 / PAGE     5
+1 TESTING                                                               / 95 X86_64 Windows_NT NASTRAN     / JAN 17, 16 / PAGE     5
       NASTRAN DEMONSTRATION PROBLEM NO. D01-00-0A                                                                                   
 0                                                                                                                                   
 0                                        C A S E    C O N T R O L   D E C K   E C H O                                               
@@ -78,7 +78,7 @@
 
                         (NO. OF UNSORTED BULK DATA CARDS READ =     0, INCLUDING   0 COMMENT CARDS)
 0*** USER FATAL MESSAGE 204, COLD START NO BULK DATA.
-1     TESTING                                                               /     95 PC MS-DOS NASTRAN     / JAN 10, 16 / PAGE     6
+1 TESTING                                                               / 95 X86_64 Windows_NT NASTRAN     / JAN 17, 16 / PAGE     6
       NASTRAN DEMONSTRATION PROBLEM NO. D01-00-0A                                                                                   
 0                                                                                                                                   
 0         COSMIC / NASTRAN DMAP COMPILER - SOURCE LISTING                                                                           
@@ -130,7 +130,7 @@
       19  PRTMSG   PLOTX1// $                                                     
 
       20  LABEL    P1 $                                                           
-1     TESTING                                                               /     95 PC MS-DOS NASTRAN     / JAN 10, 16 / PAGE     7
+1 TESTING                                                               / 95 X86_64 Windows_NT NASTRAN     / JAN 17, 16 / PAGE     7
       NASTRAN DEMONSTRATION PROBLEM NO. D01-00-0A                                                                                   
 
                                                                                                                                     
@@ -185,7 +185,7 @@
       40  LABEL    JMPMGG $                                                       
 
       41  COND     LBL1,GRDPNT $                                                  
-1     TESTING                                                               /     95 PC MS-DOS NASTRAN     / JAN 10, 16 / PAGE     8
+1 TESTING                                                               / 95 X86_64 Windows_NT NASTRAN     / JAN 17, 16 / PAGE     8
       NASTRAN DEMONSTRATION PROBLEM NO. D01-00-0A                                                                                   
 
                                                                                                                                     
@@ -239,7 +239,7 @@
 
       61  PURGE    KRR,KLR,QR,DM/REACT/GM/MPCF1/GO,KOO,LOO,PO,UOOV,RUOV/OMIT/PS,  
                    KFS,KSS/SINGLE/QG/NOSR $                                       
-1     TESTING                                                               /     95 PC MS-DOS NASTRAN     / JAN 10, 16 / PAGE     9
+1 TESTING                                                               / 95 X86_64 Windows_NT NASTRAN     / JAN 17, 16 / PAGE     9
       NASTRAN DEMONSTRATION PROBLEM NO. D01-00-0A                                                                                   
 
                                                                                                                                     
@@ -294,7 +294,7 @@
       83  RBMG1    USET,KAA,/KLL,KLR,KRR,,, $                                     
 
       84  LABEL    LBL6 $                                                         
-1     TESTING                                                               /     95 PC MS-DOS NASTRAN     / JAN 10, 16 / PAGE    10
+1 TESTING                                                               / 95 X86_64 Windows_NT NASTRAN     / JAN 17, 16 / PAGE    10
       NASTRAN DEMONSTRATION PROBLEM NO. D01-00-0A                                                                                   
 
                                                                                                                                     
@@ -348,7 +348,7 @@
      104  OFP      ONLES,,,,,//S,N,CARDNO $                                       
 
      105  LABEL    PLALBL2A $                                                     
-1     TESTING                                                               /     95 PC MS-DOS NASTRAN     / JAN 10, 16 / PAGE    11
+1 TESTING                                                               / 95 X86_64 Windows_NT NASTRAN     / JAN 17, 16 / PAGE    11
       NASTRAN DEMONSTRATION PROBLEM NO. D01-00-0A                                                                                   
 
                                                                                                                                     
@@ -402,7 +402,7 @@
                    OES1L,/PLOTX2/NSIL/LUSEP/JUMPPLOT/PLTFLG/S,N,PFILE $           
 
      126  PRTMSG   PLOTX2// $                                                     
-1     TESTING                                                               /     95 PC MS-DOS NASTRAN     / JAN 10, 16 / PAGE    12
+1 TESTING                                                               / 95 X86_64 Windows_NT NASTRAN     / JAN 17, 16 / PAGE    12
       NASTRAN DEMONSTRATION PROBLEM NO. D01-00-0A                                                                                   
 
                                                                                                                                     
@@ -448,7 +448,7 @@
                                         * * * END OF JOB * * *
 1
  JOB TITLE =  TESTING                                                            
- DATE:  1/10/16
- END TIME: 22:35:17
+ DATE:  1/17/16
+ END TIME: 19:11:27
  TOTAL WALL CLOCK TIME      0 SEC.
  
