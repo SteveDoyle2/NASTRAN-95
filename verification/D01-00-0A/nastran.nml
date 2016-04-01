@@ -4,8 +4,8 @@
 /
 
 &directories
-  rfdircty = 'C:\Users\Thomas\Desktop\NASTRAN95\dmap\rf'
-  dircty = 'C:\Users\Thomas\Desktop\NASTRAN95\verification\temp'
+  rfdircty = 'D:\NASTRAN95\dmap\rf'
+  dircty = 'D:\NASTRAN95\verification\temp'
 /
 
 &iofiles
