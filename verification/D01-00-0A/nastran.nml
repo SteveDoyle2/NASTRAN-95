@@ -8,17 +8,6 @@
   dircty = 'D:\NASTRAN95\verification\temp'
 /
 
-&iofiles
-  inpnm = 'd01000a.inp'
-  outnm = 'd01000a.out'
-  lognm = 'd01000a.log'
-  optpnm = 'NONE'
-  nptpnm = 'd01000a.nptp'
-  pltnm = 'NONE'
-  dictnm = 'd01000a.dic'
-  punchnm = 'NONE'
-/
-
 &funits
   ftn11 = 'NONE'
   ftn12 = 'NONE'

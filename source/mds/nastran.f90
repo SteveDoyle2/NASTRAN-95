@@ -34,6 +34,9 @@ program nastran
   CHARACTER*80    SDSN
   EQUIVALENCE    ( ISYSTM, SYSTM )
 
+  ! I/O files
+  character(len=80) :: inpnm, outnm, lognm, optpnm, nptpnm, pltnm, dictnm, punchnm
+
   ! Memory namelist
   integer :: dbmem = 12000000
   integer :: ocmem =  2000000
@@ -42,10 +45,6 @@ program nastran
   ! Directories namelist
   character(len=72) :: rfdircty, dircty
   namelist /directories/ rfdircty, dircty
-
-  ! I/O files namelist
-  character(len=80) :: inpnm, outnm, lognm, optpnm, nptpnm, pltnm, dictnm, punchnm
-  namelist /iofiles/ inpnm, outnm, lognm, optpnm, nptpnm, pltnm, dictnm, punchnm
 
   ! Fortran units namelist
   character(len=80) :: ftn11, ftn12, ftn13, ftn14, ftn15
@@ -65,6 +64,9 @@ program nastran
   integer :: ios
 
   LENOPC = 14000000
+
+  ! Process the command line
+  call nastran_cmd_line(inpnm, outnm, lognm, optpnm, nptpnm, pltnm, dictnm, punchnm)
 
   ! SAVE STARTING CPU TIME AND WALL CLOCK TIME IN /SYSTEM/
 
@@ -135,28 +137,21 @@ program nastran
 902 format('scr',I2)
 
   ! Read the I/O files namelist
-  read (unit=nmlunit, nml=iofiles, iostat=ios)
-  select case (ios)
-  case (0)
-     log = trim(lognm)
-     optp = trim(optpnm)
-     nptp = trim(nptpnm)
-     plot = trim(pltnm)
-     dic = trim(dictnm)
-     punch = trim(punchnm)
-     !
-     dsnames(1) = trim(punchnm)
-     dsnames(3) = trim(lognm)
-     dsnames(4) = trim(dictnm)
-     dsnames(5) = trim(inpnm)
-     dsnames(6) = trim(outnm)
-     dsnames(7) = trim(optpnm)
-     dsnames(8) = trim(nptpnm)
-     dsnames(10) = trim(pltnm)
-  case default
-     print *, "Error reading the iofiles namelist"
-     stop
-  end select
+  log = trim(lognm)
+  optp = trim(optpnm)
+  nptp = trim(nptpnm)
+  plot = trim(pltnm)
+  dic = trim(dictnm)
+  punch = trim(punchnm)
+  !
+  dsnames(1) = trim(punchnm)
+  dsnames(3) = trim(lognm)
+  dsnames(4) = trim(dictnm)
+  dsnames(5) = trim(inpnm)
+  dsnames(6) = trim(outnm)
+  dsnames(7) = trim(optpnm)
+  dsnames(8) = trim(nptpnm)
+  dsnames(10) = trim(pltnm)
 
   ! Read the Fortran units namelist
   read (unit=nmlunit, nml=funits, iostat=ios)
@@ -215,3 +210,89 @@ program nastran
 
   stop
 end program nastran
+
+subroutine nastran_cmd_line(inpnm, outnm, lognm, optpnm, nptpnm, pltnm, dictnm, punchnm)
+  use iso_fortran_env
+  implicit none
+
+  ! Arguments
+  character(len=*), intent(out) :: inpnm, outnm, lognm, optpnm, nptpnm
+  character(len=*), intent(out) :: pltnm, dictnm, punchnm
+
+  ! Argument flags
+  logical :: setoutnm, setlognm
+
+  ! Local variables
+  integer :: i, count, endbase, length, status
+  character(len=80) :: theArg, basename
+
+  setoutnm = .false.
+  setlognm = .false.
+  count = 0
+  do
+     ! Get the next argument
+     count = count + 1
+     call get_command_argument(count, theArg, length, status)
+     select case (status)
+     case (1:)
+        stop 'ERROR: Command line read failure.'
+     case (:-1)
+        write (error_unit, '(A,A)') 'Argument: ', trim(theArg)
+        stop 'ERROR: Truncated command line argument.'
+     case default
+        continue
+     end select
+
+     ! Process the argument
+     select case (trim(theArg))
+     case ('-o') ! Output file name
+        if (setoutnm) stop 'ERROR: Multiple output file options.'
+        count = count + 1
+        call get_command_argument(count, outnm, length, status)
+        select case (status)
+        case (1:)
+           stop 'ERROR: Output name read failure.'
+        case (:-1)
+           write (error_unit, '(A,A)') 'Output name: ', trim(outnm)
+           stop 'ERROR: Truncated output name.'
+        case default
+           setoutnm = .true.
+        end select
+     case ('-l') ! Log file name
+        if (setlognm) stop 'ERROR: Multiple log file options.'
+        count = count + 1
+        call get_command_argument(count, lognm, length, status)
+        select case (status)
+        case (1:)
+           stop 'ERROR: Log file read failure.'
+        case (:-1)
+           write (error_unit, '(A,A)') 'Log name: ', trim(lognm)
+           stop 'ERROR: Truncated log file name.'
+        case default
+           setlognm = .true.
+        end select
+     case default ! Input file name
+        if (0 < length) then
+           inpnm = trim(theArg)
+           endbase = index(inpnm,'.inp',.true.) - 1
+           basename = inpnm(1:endbase)
+           exit
+        else
+           stop 'ERROR: Must provide an input file name.'
+        end if
+     end select
+
+  end do
+
+  ! Set the arguments
+  if (.NOT.setoutnm) outnm = trim(basename) // '.out'
+  if (.NOT.setlognm) lognm = trim(basename) // '.log'
+
+  optpnm = 'NONE'
+  nptpnm = trim(basename) // '.nptp'
+  pltnm = 'NONE'
+  dictnm = trim(basename) // '.dic'
+  punchnm = 'NONE'
+
+  return
+end subroutine nastran_cmd_line
