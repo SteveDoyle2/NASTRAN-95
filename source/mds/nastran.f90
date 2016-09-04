@@ -66,7 +66,7 @@ program nastran
   LENOPC = 14000000
 
   ! Process the command line
-  call nastran_cmd_line(inpnm, outnm, lognm, optpnm, nptpnm, pltnm, dictnm, punchnm)
+  call nastran_cmd_line()
 
   ! SAVE STARTING CPU TIME AND WALL CLOCK TIME IN /SYSTEM/
 
@@ -209,90 +209,89 @@ program nastran
   call xsem00
 
   stop
+
+contains
+
+  subroutine nastran_cmd_line()
+    use iso_fortran_env
+    implicit none
+
+    ! Argument flags
+    logical :: setoutnm, setlognm
+
+    ! Local variables
+    integer :: i, count, endbase, length, status
+    character(len=80) :: theArg, basename
+
+    setoutnm = .false.
+    setlognm = .false.
+    count = 0
+    do
+       ! Get the next argument
+       count = count + 1
+       call get_command_argument(count, theArg, length, status)
+       select case (status)
+       case (1:)
+          stop 'ERROR: Command line read failure.'
+       case (:-1)
+          write (error_unit, '(A,A)') 'Argument: ', trim(theArg)
+          stop 'ERROR: Truncated command line argument.'
+       case default
+          continue
+       end select
+
+       ! Process the argument
+       select case (trim(theArg))
+       case ('-o') ! Output file name
+          if (setoutnm) stop 'ERROR: Multiple output file options.'
+          count = count + 1
+          call get_command_argument(count, outnm, length, status)
+          select case (status)
+          case (1:)
+             stop 'ERROR: Output name read failure.'
+          case (:-1)
+             write (error_unit, '(A,A)') 'Output name: ', trim(outnm)
+             stop 'ERROR: Truncated output name.'
+          case default
+             setoutnm = .true.
+          end select
+       case ('-l') ! Log file name
+          if (setlognm) stop 'ERROR: Multiple log file options.'
+          count = count + 1
+          call get_command_argument(count, lognm, length, status)
+          select case (status)
+          case (1:)
+             stop 'ERROR: Log file read failure.'
+          case (:-1)
+             write (error_unit, '(A,A)') 'Log name: ', trim(lognm)
+             stop 'ERROR: Truncated log file name.'
+          case default
+             setlognm = .true.
+          end select
+       case default ! Input file name
+          if (0 < length) then
+             inpnm = trim(theArg)
+             endbase = index(inpnm,'.inp',.true.) - 1
+             basename = inpnm(1:endbase)
+             exit
+          else
+             stop 'ERROR: Must provide an input file name.'
+          end if
+       end select
+
+    end do
+
+    ! Set the arguments
+    if (.NOT.setoutnm) outnm = trim(basename) // '.out'
+    if (.NOT.setlognm) lognm = trim(basename) // '.log'
+
+    optpnm = 'NONE'
+    nptpnm = trim(basename) // '.nptp'
+    pltnm = 'NONE'
+    dictnm = trim(basename) // '.dic'
+    punchnm = 'NONE'
+
+    return
+  end subroutine nastran_cmd_line
+
 end program nastran
-
-subroutine nastran_cmd_line(inpnm, outnm, lognm, optpnm, nptpnm, pltnm, dictnm, punchnm)
-  use iso_fortran_env
-  implicit none
-
-  ! Arguments
-  character(len=*), intent(out) :: inpnm, outnm, lognm, optpnm, nptpnm
-  character(len=*), intent(out) :: pltnm, dictnm, punchnm
-
-  ! Argument flags
-  logical :: setoutnm, setlognm
-
-  ! Local variables
-  integer :: i, count, endbase, length, status
-  character(len=80) :: theArg, basename
-
-  setoutnm = .false.
-  setlognm = .false.
-  count = 0
-  do
-     ! Get the next argument
-     count = count + 1
-     call get_command_argument(count, theArg, length, status)
-     select case (status)
-     case (1:)
-        stop 'ERROR: Command line read failure.'
-     case (:-1)
-        write (error_unit, '(A,A)') 'Argument: ', trim(theArg)
-        stop 'ERROR: Truncated command line argument.'
-     case default
-        continue
-     end select
-
-     ! Process the argument
-     select case (trim(theArg))
-     case ('-o') ! Output file name
-        if (setoutnm) stop 'ERROR: Multiple output file options.'
-        count = count + 1
-        call get_command_argument(count, outnm, length, status)
-        select case (status)
-        case (1:)
-           stop 'ERROR: Output name read failure.'
-        case (:-1)
-           write (error_unit, '(A,A)') 'Output name: ', trim(outnm)
-           stop 'ERROR: Truncated output name.'
-        case default
-           setoutnm = .true.
-        end select
-     case ('-l') ! Log file name
-        if (setlognm) stop 'ERROR: Multiple log file options.'
-        count = count + 1
-        call get_command_argument(count, lognm, length, status)
-        select case (status)
-        case (1:)
-           stop 'ERROR: Log file read failure.'
-        case (:-1)
-           write (error_unit, '(A,A)') 'Log name: ', trim(lognm)
-           stop 'ERROR: Truncated log file name.'
-        case default
-           setlognm = .true.
-        end select
-     case default ! Input file name
-        if (0 < length) then
-           inpnm = trim(theArg)
-           endbase = index(inpnm,'.inp',.true.) - 1
-           basename = inpnm(1:endbase)
-           exit
-        else
-           stop 'ERROR: Must provide an input file name.'
-        end if
-     end select
-
-  end do
-
-  ! Set the arguments
-  if (.NOT.setoutnm) outnm = trim(basename) // '.out'
-  if (.NOT.setlognm) lognm = trim(basename) // '.log'
-
-  optpnm = 'NONE'
-  nptpnm = trim(basename) // '.nptp'
-  pltnm = 'NONE'
-  dictnm = trim(basename) // '.dic'
-  punchnm = 'NONE'
-
-  return
-end subroutine nastran_cmd_line
