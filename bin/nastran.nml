@@ -5,7 +5,7 @@
 
 &directories
   rfdircty = 'dmap\rf'
-  dircty = 'verification\temp'
+  dircty = 'scratch'
 /
 
 &funits

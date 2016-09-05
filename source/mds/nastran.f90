@@ -119,25 +119,24 @@ program nastran
   ISYSTM(11) = 1
 
   ! Read the directories namelist
+
   read (unit=nmlunit, nml=directories, iostat=ios)
   select case (ios)
   case (0)
      rfdir = trim(nastran_home) // pthsep // trim(rfdircty)
      dirtry = trim(nastran_home) // pthsep // trim(dircty)
      do i = 1, 9
-        write (tmp,901) i
+        write (tmp, '("scr0",I1)') i
         dsnames(i) = trim(dirtry) // pthsep // tmp
      end do
      do i = 10,89
-        write (tmp,902) i
+        write (tmp, '("scr",I2)') i
         dsnames(i) = trim(dirtry) // pthsep // tmp
      end do
   case default
      print *, "Error reading the directories namelist."
      stop
   end select
-901 format('scr',I1)
-902 format('scr',I2)
 
   ! Read the I/O files namelist
   log = trim(lognm)
