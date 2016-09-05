@@ -4,8 +4,8 @@
 /
 
 &directories
-  rfdircty = 'D:\NASTRAN95\dmap\rf'
-  dircty = 'D:\NASTRAN95\verification\temp'
+  rfdircty = 'dmap\rf'
+  dircty = 'verification\temp'
 /
 
 &funits

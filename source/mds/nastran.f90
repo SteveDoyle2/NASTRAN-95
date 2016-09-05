@@ -122,8 +122,8 @@ program nastran
   read (unit=nmlunit, nml=directories, iostat=ios)
   select case (ios)
   case (0)
-     rfdir = trim(rfdircty)
-     dirtry = trim(dircty)
+     rfdir = trim(nastran_home) // pthsep // trim(rfdircty)
+     dirtry = trim(nastran_home) // pthsep // trim(dircty)
      do i = 1, 9
         write (tmp,901) i
         dsnames(i) = trim(dirtry) // pthsep // tmp
