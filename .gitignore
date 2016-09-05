@@ -1,3 +1,6 @@
 
+# Ignore the executables directory
+executables
+
 # Ignore the scratch directory
 scratch

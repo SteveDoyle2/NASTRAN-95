@@ -4,16 +4,16 @@ SETLOCAL
 IF [%NASTRANHOME%] == [] (GOTO HOMERR) ELSE (GOTO NASTRANCMD)
 
 :: Binary and data locations
-:: FIXME: Should install the executable in the bin directory
 :: FIXME: Should set these values in some external file
 :SETPATHS
-SET NASTRANEXE=%NASTRANHOME%\source\mds\nastran.exe
+SET NASTRANEXE=%NASTRANHOME%\executables\nastran.exe
 SET NASTRANCFG=%NASTRANHOME%\bin\nastran.nml
 IF NOT EXIST %NASTRANEXE% GOTO EXERR
 IF NOT EXIST %NASTRANCFG% GOTO CFGERR
 GOTO:EOF
 
 :: Configure the environment and execute NASA/NASTRAN
+
 :NASTRANCMD
 CALL :SETPATHS
 %NASTRANEXE% %*
