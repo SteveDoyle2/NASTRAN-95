@@ -1,5 +1,9 @@
 program nastran
 
+  ! Environment
+
+  character(len=255) :: nastran_home, nastran_cfg
+
   CHARACTER*80    VALUE
   CHARACTER*5     TMP
   INTEGER         SPERLK
@@ -58,14 +62,19 @@ program nastran
   namelist /sdsnfiles/ sof1, sof2, sof3, sof4, sof5, sof6, sof7, sof8, sof9, sof10
 
   ! Parameters
-  integer, parameter :: nmlunit = 999
+  integer, parameter :: NMLUNIT = 999
 
   ! Local variables
   integer :: ios
 
   LENOPC = 14000000
 
+  ! Get the environment
+
+  call nastran_environment()
+
   ! Process the command line
+
   call nastran_cmd_line()
 
   ! SAVE STARTING CPU TIME AND WALL CLOCK TIME IN /SYSTEM/
@@ -81,14 +90,8 @@ program nastran
   CALL BTSTRP
 
   ! Open the namelist file
-  open (unit=nmlunit, file="nastran.nml", iostat=ios)
-  select case (ios)
-  case (0)
-     continue
-  case default
-     print *, "Error opening nastran.nml"
-     stop
-  end select
+
+  call open_nastran_nml(NMLUNIT)
 
   ! Read the memory namelist
   read (unit=nmlunit, nml=memory, iostat=ios)
@@ -212,6 +215,64 @@ program nastran
 
 contains
 
+  subroutine nastran_environment()
+    use iso_fortran_env
+    implicit none
+
+    ! Local variables
+    integer :: length, status
+
+    ! NASTRAN home directory
+
+    call get_environment_variable("NASTRANHOME", nastran_home, length, status)
+    select case(status)
+    case (-1)
+       write (error_unit, '(A)') &
+            "ERROR: NASTRANHOME exceeds 255 characters."
+       stop
+    case (0)
+       continue
+    case (1)
+       write (error_unit, '(A)') &
+            "ERROR: NASTRANHOME does not exist."
+       stop
+    case (2)
+       write (error_unit, '(A)') &
+            "ERROR: Processor does not support environment variables."
+       stop
+    case default
+       write (error_unit, '(A,1X,I2)') &
+            "ERROR: Unknown environment variable status:", status
+       stop
+    end select
+
+    ! NASTRAN namelist file.
+
+    call get_environment_variable("NASTRANCFG", nastran_cfg, length, status)
+    select case(status)
+    case (-1)
+       write (error_unit, '(A)') &
+            "ERROR: NASTRANCFG exceeds 255 characters."
+       stop
+    case (0)
+       continue
+    case (1)
+       write (error_unit, '(A)') &
+            "ERROR: NASTRANCFG does not exist."
+       stop
+    case (2)
+       write (error_unit, '(A)') &
+            "ERROR: Processor does not support environment variables."
+       stop
+    case default
+       write (error_unit, '(A,1X,I2)') &
+            "ERROR: Unknown environment variable status:", status
+       stop
+    end select
+
+    return
+  end subroutine nastran_environment
+
   subroutine nastran_cmd_line()
     use iso_fortran_env
     implicit none
@@ -294,4 +355,36 @@ contains
     return
   end subroutine nastran_cmd_line
 
-end program nastran
+  subroutine open_nastran_nml(nml_unit)
+    use iso_fortran_env
+
+    ! Arguments
+    integer, intent(in) :: nml_unit
+
+    ! Local variables
+    logical :: local_nml
+    character(len=255) :: nastran_nml_file
+
+    ! Test for a project local namelist file
+    inquire(file="nastran.nml", exist=local_nml)
+
+    if (local_nml) then
+       nastran_nml_file = "nastran.nml"
+    else
+       nastran_nml_file = trim(nastran_cfg)
+    end if
+
+    open (unit=nml_unit, file=nastran_nml_file, iostat=ios)
+    select case (ios)
+    case (0)
+       continue
+    case default
+       write (error_unit, '(A,1X,A)') "ERROR: Unable to open", &
+            trim(nastran_nml_file)
+       stop
+    end select
+
+    return
+  end subroutine open_nastran_nml
+
+end program
