@@ -345,7 +345,7 @@ contains
     if (.NOT.setoutnm) outnm = trim(basename) // '.out'
     if (.NOT.setlognm) lognm = trim(basename) // '.log'
 
-    optpnm = 'NONE'
+    optpnm = trim(basename) // '.optp'
     nptpnm = trim(basename) // '.nptp'
     pltnm = 'NONE'
     dictnm = trim(basename) // '.dic'
