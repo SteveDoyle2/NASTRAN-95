@@ -347,7 +347,7 @@ contains
 
     optpnm = trim(basename) // '.optp'
     nptpnm = trim(basename) // '.nptp'
-    pltnm = 'NONE'
+    pltnm = trim(basename) // '.plt'
     dictnm = trim(basename) // '.dic'
     punchnm = 'NONE'
 
