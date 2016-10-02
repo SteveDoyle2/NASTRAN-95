@@ -40,3 +40,4 @@ Remove all type coercion                | Queued
 * Use modern data structures
 * Improve element extensibility using modern data structures
 * Use external high performance linear algebra libraries
+* Create an internal, compact, representation of element connectivity
