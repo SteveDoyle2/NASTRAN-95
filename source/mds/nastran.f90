@@ -349,7 +349,7 @@ contains
     nptpnm = trim(basename) // '.nptp'
     pltnm = trim(basename) // '.plt'
     dictnm = trim(basename) // '.dic'
-    punchnm = 'NONE'
+    punchnm = trim(basename) // '.punch'
 
     return
   end subroutine nastran_cmd_line
