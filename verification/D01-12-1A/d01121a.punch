@@ -1,0 +1,51 @@
+$  LINEAR STEADY STATE HEAT CONDUCTION THROUGH A WASHER               
+$TITLE   = LINEAR STEADY STATE HEAT CONDUCTION THROUGH A WASHER                1
+$SUBTITLE= NASTRAN DEMONSTRATION PROBLEM NO. D01-12-1A                         2
+$LABEL   = TEMPERATURE SPECIFIED AT OUTER BOUNDARY                             3
+$DISPLACEMENTS                                                                 4
+$REAL OUTPUT                                                                   5
+$SUBCASE ID =         123                                                      6
+TEMP*                  1               1    1.994187E+02                       7
+TEMP*                  1               2    1.718267E+02                       8
+TEMP*                  1               3    1.467834E+02                       9
+TEMP*                  1               4    1.231581E+02                      10
+TEMP*                  1               5    1.027777E+02                      11
+TEMP*                  1               6    8.292779E+01                      12
+TEMP*                  1               7    6.432259E+01                      13
+TEMP*                  1               8    4.684700E+01                      14
+TEMP*                  1               9    3.037104E+01                      15
+TEMP*                  1              10    1.478588E+01                      16
+TEMP*                  1              11    0.000000E+00                      17
+TEMP*                  1              12    2.034128E+02                      18
+TEMP*                  1              13    1.740188E+02                      19
+TEMP*                  1              14    1.488803E+02                      20
+TEMP*                  1              15    1.248486E+02                      21
+TEMP*                  1              16    1.028775E+02                      22
+TEMP*                  1              17    8.293189E+01                      23
+TEMP*                  1              18    6.432233E+01                      24
+TEMP*                  1              19    4.684689E+01                      25
+TEMP*                  1              20    3.037100E+01                      26
+TEMP*                  1              21    1.478588E+01                      27
+TEMP*                  1              22    0.000000E+00                      28
+TEMP*                  1             101    2.034151E+02                      29
+TEMP*                  1             102    1.740255E+02                      30
+TEMP*                  1             103    1.489236E+02                      31
+TEMP*                  1             104    1.251343E+02                      32
+TEMP*                  1             105    1.028302E+02                      33
+TEMP*                  1             106    8.291599E+01                      34
+TEMP*                  1             107    6.431886E+01                      35
+TEMP*                  1             108    4.684620E+01                      36
+TEMP*                  1             109    3.037088E+01                      37
+TEMP*                  1             110    1.478585E+01                      38
+TEMP*                  1             111    0.000000E+00                      39
+TEMP*                  1             112    1.994211E+02                      40
+TEMP*                  1             113    1.718352E+02                      41
+TEMP*                  1             114    1.468322E+02                      42
+TEMP*                  1             115    1.235158E+02                      43
+TEMP*                  1             116    1.027420E+02                      44
+TEMP*                  1             117    8.291391E+01                      45
+TEMP*                  1             118    6.431948E+01                      46
+TEMP*                  1             119    4.684640E+01                      47
+TEMP*                  1             120    3.037092E+01                      48
+TEMP*                  1             121    1.478586E+01                      49
+TEMP*                  1             122    0.000000E+00                      50
