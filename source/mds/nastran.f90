@@ -4,6 +4,10 @@ program nastran
 
   character(len=255) :: nastran_home, nastran_cfg
 
+  ! Command line
+
+  character(len=80) :: basename
+
   CHARACTER*80    VALUE
   CHARACTER*5     TMP
   INTEGER         SPERLK
@@ -51,21 +55,18 @@ program nastran
   namelist /directories/ rfdircty, dircty
 
   ! Fortran units namelist
-  character(len=80) :: ftn11, ftn12, ftn13, ftn14, ftn15
-  character(len=80) :: ftn16, ftn17, ftn18, ftn19, ftn20, ftn21
-  namelist /funits/ ftn11, ftn12, ftn13, ftn14, ftn15, &
-       ftn16, ftn17, ftn18, ftn19, ftn20, ftn21
+  character(len=80), dimension(11:21) :: ftn
+  namelist /funits/ ftn
 
   ! SDSN files namelist
-  character(len=80) :: sof1, sof2, sof3, sof4, sof5
-  character(len=80) :: sof6, sof7, sof8, sof9, sof10
-  namelist /sdsnfiles/ sof1, sof2, sof3, sof4, sof5, sof6, sof7, sof8, sof9, sof10
+  character(len=80), dimension(10) :: sof
+  namelist /sdsnfiles/ sof
 
   ! Parameters
   integer, parameter :: NMLUNIT = 999
 
   ! Local variables
-  integer :: ios
+  integer :: ids, ios
 
   LENOPC = 14000000
 
@@ -159,20 +160,27 @@ program nastran
   read (unit=nmlunit, nml=funits, iostat=ios)
   select case (ios)
   case (0)
-     out11 = trim(ftn11)
-     in12 = trim(ftn12)
+     if (ftn(11)(1:4) == 'NONE') then
+        out11 = trim(basename) // '.ftn11'
+     else
+        out11 = trim(ftn(11))
+     end if
+     dsnames(11) = out11
      !
-     dsnames(11) = trim(ftn11)
-     dsnames(12) = trim(ftn12)
-     dsnames(13) = trim(ftn13)
-     dsnames(14) = trim(ftn14)
-     dsnames(15) = trim(ftn15)
-     dsnames(16) = trim(ftn16)
-     dsnames(17) = trim(ftn17)
-     dsnames(18) = trim(ftn18)
-     dsnames(19) = trim(ftn19)
-     dsnames(20) = trim(ftn20)
-     dsnames(21) = trim(ftn21)
+     if (ftn(12)(1:4) == 'NONE') then
+        in12 = trim(basename) // '.ftn12'
+     else
+        in12 = trim(ftn(12))
+     end if
+     dsnames(12) = in12
+     !
+     do ids = 13, 21
+        if (ftn(ids)(1:4) == 'NONE') then
+           write (dsnames(ids), '(A,".ftn",I2)') trim(basename), ids
+        else
+           dsnames(ids) = trim(ftn(ids))
+        end if
+     end do
   case default
      print *, "Error reading the funits namelist."
      stop
@@ -182,16 +190,18 @@ program nastran
   read (unit=nmlunit, nml=sdsnfiles, iostat=ios)
   select case (ios)
   case (0)
-     sdsn(1) = trim(sof1)
-     sdsn(2) = trim(sof2)
-     sdsn(3) = trim(sof3)
-     sdsn(4) = trim(sof4)
-     sdsn(5) = trim(sof5)
-     sdsn(6) = trim(sof6)
-     sdsn(7) = trim(sof7)
-     sdsn(8) = trim(sof8)
-     sdsn(9) = trim(sof9)
-     sdsn(10) = trim(sof10)
+     do ids = 1, 9
+        if (sof(ids)(1:4) == 'NONE') then
+           write (sdsn(ids), '(A,".sof",I1)') trim(basename), ids
+        else
+           sdsn(ids) = trim(sof(ids))
+        end if
+     end do
+     if (sof(10)(1:4) == 'NONE') then
+        sdsn(10) = trim(basename) // '.sof10'
+     else
+        sdsn(10) = trim(sof(10))
+     end if
   case default
      print *, "Error reading the sdsnfiles namelist."
      stop
@@ -205,8 +215,8 @@ program nastran
   if (punchnm(1:4) /= 'NONE') open (unit=1, file=trim(punchnm), status='UNKNOWN')
   if (dictnm(1:4) /= 'NONE') open (unit=4, file=trim(dictnm), status='UNKNOWN')
   if (pltnm(1:4) /= 'NONE') open (unit=10, file=trim(pltnm), status='UNKNOWN')
-  if (ftn11(1:4) /= 'NONE') open (unit=11, file=trim(ftn11), status='UNKNOWN')
-  if (ftn12(1:4) /= 'NONE') open (unit=12, file=trim(ftn12), status='UNKNOWN')
+  if (ftn(11)(1:4) /= 'NONE') open (unit=11, file=trim(ftn(11)), status='UNKNOWN')
+  if (ftn(12)(1:4) /= 'NONE') open (unit=12, file=trim(ftn(12)), status='UNKNOWN')
 
   call xsem00
 
@@ -281,7 +291,7 @@ contains
 
     ! Local variables
     integer :: i, count, endbase, length, status
-    character(len=80) :: theArg, basename
+    character(len=80) :: theArg
 
     setoutnm = .false.
     setlognm = .false.
@@ -386,4 +396,4 @@ contains
     return
   end subroutine open_nastran_nml
 
-end program
+end program nastran
