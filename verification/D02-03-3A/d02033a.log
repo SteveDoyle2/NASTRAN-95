@@ -1,0 +1,599 @@
+1*****************************************************************************
+ *                                                                           *
+ *       DATE 12/26/16       LOG OF 95 X86_64 Windows_NT NASTRAN JOB         *
+ *                                                                           *
+ *****************************************************************************
+
+   WALL               TOTAL       INCREMENTAL      MODULE              MODULE/
+   CLOCK               CPU            CPU            CPU             SUBROUTINE
+   TIME              SECONDS        SECONDS        SECONDS             STATUS
+
+ ------------------------------------------------------------------------------
+
+ 17:15:51.948         0.000          0.000                    SEM1  BEGN
+ 17:15:51.949         0.000          0.000                    GNFI
+ 17:15:51.950         0.016          0.000                    TTIO
+ 17:15:51.952         0.016          0.000                    TTLP
+ 17:15:51.952         0.016          0.000                    XCSA
+ ID    D02033A,NASTRAN                                                   
+ 17:15:51.971         0.016          0.000                    ASDM  BEGN
+ 17:15:51.980         0.016          0.000                    ASDM  END 
+ 17:15:51.980         0.016          0.000                    IFP1
+ TITLE    = TRUSS DYNAMIC ANALYSIS USING AUTOMATED MODAL SYNTHESIS       
+ 17:15:51.984         0.031          0.016                    XSOR
+ 17:15:51.988         0.031          0.000                    IFP   BEGN
+ 17:15:51.988         0.031          0.000                    IFP   END 
+ 17:15:51.988         0.031          0.000                    XGPI
+ 17:15:51.991         0.031          0.000                    SEM1  END 
+ 17:15:51.991         0.031          0.000                       4  PARAM     BEGN
+ 17:15:51.991         0.031          0.000          0.000        4  PARAM     END 
+ 17:15:51.991         0.031          0.000                       4  PARAM     BEGN
+ 17:15:51.991         0.031          0.000          0.000        4  PARAM     END 
+ 17:15:51.991         0.031          0.000                    XSFA      BEGN
+ 17:15:51.991         0.031          0.000                    XSFA      END 
+ 17:15:51.991         0.031          0.000                       4  SOFUT     BEGN
+ 17:15:52.001         0.031          0.000          0.000        4  SOFUT     END 
+ 17:15:52.001         0.031          0.000                       4  MRED1     BEGN
+ 17:15:52.008         0.031          0.000          0.000        4  MRED1     END 
+ 17:15:52.008         0.031          0.000                       4  COND      BEGN
+ 17:15:52.008         0.031          0.000          0.000        4  COND      END 
+ 17:15:52.008         0.031          0.000                       4  SOFI      BEGN
+ 17:15:52.015         0.031          0.000          0.000        4  SOFI      END 
+ 17:15:52.015         0.031          0.000                       4  COND      BEGN
+ 17:15:52.015         0.031          0.000          0.000        4  COND      END 
+ 17:15:52.015         0.031          0.000                       4  EQUIV     BEGN
+ 17:15:52.015         0.031          0.000          0.000        4  EQUIV     END 
+ 17:15:52.015         0.031          0.000                       4  EQUIV     BEGN
+ 17:15:52.015         0.031          0.000          0.000        4  EQUIV     END 
+ 17:15:52.015         0.031          0.000                       4  COND      BEGN
+ 17:15:52.015         0.031          0.000          0.000        4  COND      END 
+ 17:15:52.015         0.031          0.000                       4  SCE1      BEGN
+ 17:15:52.015         0.031          0.000          0.000        4  SCE1      END 
+ 17:15:52.015         0.031          0.000                       4  READ      BEGN
+ 17:15:52.015         0.031          0.000                    GIVE  NS  BEGI  NS  
+ 17:15:52.015         0.031          0.000                    SMCO  MP  BEGN          
+ 17:15:52.015         0.031          0.000                    SMCO  MP  END           
+ 17:15:52.016         0.031          0.000                    TRAN  POSE
+ 17:15:52.016         0.031          0.000                    TRAN  POSE
+ 17:15:52.016         0.031          0.000                    MMA       BEGN
+ 17:15:52.016         0.031          0.000                    MMA3  1   BEGN
+ 17:15:52.016         0.031          0.000                    MMA3  1   END 
+   METHOD USED = 31NT  ACTUAL NUMBER OF PASSES =   1
+ 17:15:52.016         0.031          0.000                    MMA       END 
+ 17:15:52.016         0.031          0.000                    MMA       BEGN
+ 17:15:52.016         0.031          0.000                    MMA3  2   BEGN
+ 17:15:52.016         0.031          0.000                    MMA3  2   END 
+   METHOD USED = 32T   ACTUAL NUMBER OF PASSES =   1
+ 17:15:52.016         0.031          0.000                    MMA       END 
+ 17:15:52.016         0.031          0.000                    VALV  EC  BEGN
+ 17:15:52.016         0.031          0.000                    TRID  I   BEGN
+ 17:15:52.016         0.031          0.000                    TRID  I   END 
+ 17:15:52.016         0.031          0.000                    QRIT  ER  BEGN
+ 17:15:52.017         0.031          0.000                    QRIT  ER  END 
+ 17:15:52.017         0.031          0.000                    WILV  EC  BEGN
+ 17:15:52.017         0.031          0.000                    WILV  EC  END 
+ 17:15:52.017         0.031          0.000                    VALV  EC  END 
+ 17:15:52.017         0.031          0.000                    MMA       BEGN
+ 17:15:52.017         0.031          0.000                    MMA2  1   BEGN
+ 17:15:52.018         0.031          0.000                    MMA2  1   END 
+   METHOD USED = 21NT  ACTUAL NUMBER OF PASSES =   1
+ 17:15:52.018         0.031          0.000                    MMA       END 
+ 17:15:52.018         0.031          0.000                    GIVE  NS  ENDS
+ 17:15:52.018         0.031          0.000                    MMA       BEGN
+ 17:15:52.018         0.031          0.000                    MMA2  1   BEGN
+ 17:15:52.018         0.031          0.000                    MMA2  1   END 
+   METHOD USED = 21NT  ACTUAL NUMBER OF PASSES =   1
+ 17:15:52.018         0.031          0.000                    MMA       END 
+ 17:15:52.018         0.031          0.000                    MMA       BEGN
+ 17:15:52.018         0.031          0.000                    MMA1  0   BEGN
+ 17:15:52.018         0.031          0.000                    MMA1  0   END 
+   METHOD USED = 10T   ACTUAL NUMBER OF PASSES =   1
+ 17:15:52.018         0.031          0.000                    MMA       END 
+ 17:15:52.018         0.031          0.000          0.000        4  READ      END 
+ 17:15:52.018         0.031          0.000                       4  OFP       BEGN
+ 17:15:52.024         0.031          0.000          0.000        4  OFP       END 
+ 17:15:52.024         0.031          0.000                       4  EQUIV     BEGN
+ 17:15:52.024         0.031          0.000          0.000        4  EQUIV     END 
+ 17:15:52.024         0.031          0.000                       4  COND      BEGN
+ 17:15:52.024         0.031          0.000          0.000        4  COND      END 
+ 17:15:52.024         0.031          0.000                       4  UMERGE    BEGN
+ 17:15:52.024         0.031          0.000          0.000        4  UMERGE    END 
+ 17:15:52.024         0.031          0.000                       4  MRED2     BEGN
+ 17:15:52.027         0.031          0.000                    SMCO  MP  BEGN          
+ 17:15:52.027         0.031          0.000                    SMCO  MP  END           
+ 17:15:52.028         0.031          0.000                    FBSI  BEGN
+ 17:15:52.028         0.031          0.000                    FBS2  BEGN
+ 17:15:52.028         0.031          0.000                    FBS2  END 
+ 17:15:52.028         0.031          0.000                    FBSI  END 
+ 17:15:52.036         0.047          0.016                    MMA       BEGN
+       MMA - NULL MATRIX PRODUCT
+ 17:15:52.036         0.047          0.000                    MMA       END 
+ 17:15:52.041         0.047          0.000                    MMA       BEGN
+ 17:15:52.041         0.047          0.000                    MMA3  2   BEGN
+ 17:15:52.041         0.047          0.000                    MMA3  2   END 
+   METHOD USED = 32T   ACTUAL NUMBER OF PASSES =   1
+ 17:15:52.041         0.047          0.000                    MMA       END 
+ 17:15:52.041         0.047          0.000                    MPY3      BEGN
+0*** USER INFORMATION MESSAGE 6525, TRIPLE MULTIPLY TIME ESTIMATE FOR MPY3 =        0.0 SECONDS.
+ 17:15:52.041         0.047          0.000                    MMA       BEGN
+ 17:15:52.041         0.047          0.000                    MMA       END 
+ 17:15:52.041         0.047          0.000                    MMA       BEGN
+ 17:15:52.041         0.047          0.000                    MMA       END 
+0*** USER INFORMATION MESSAGE 6525, TRIPLE MULTIPLY TIME ESTIMATE FOR MPYAD - (AT*B)*A + E =        0.0 SECONDS.
+ 17:15:52.041         0.047          0.000                    MMA       BEGN
+ 17:15:52.041         0.047          0.000                    MMA       END 
+ 17:15:52.041         0.047          0.000                    MMA       BEGN
+ 17:15:52.041         0.047          0.000                    MMA       END 
+0*** USER INFORMATION MESSAGE 6525, TRIPLE MULTIPLY TIME ESTIMATE FOR MPYAD - AT*(B*A) + E =        0.0 SECONDS.
+ 17:15:52.041         0.047          0.000                    MMA       BEGN
+ 17:15:52.041         0.047          0.000                    MMA2  1   BEGN
+ 17:15:52.041         0.047          0.000                    MMA2  1   END 
+   METHOD USED = 21NT  ACTUAL NUMBER OF PASSES =   1
+ 17:15:52.041         0.047          0.000                    MMA       END 
+ 17:15:52.041         0.047          0.000                    MMA       BEGN
+ 17:15:52.041         0.047          0.000                    MMA1  0   BEGN
+ 17:15:52.041         0.047          0.000                    MMA1  0   END 
+   METHOD USED = 10T   ACTUAL NUMBER OF PASSES =   1
+ 17:15:52.041         0.047          0.000                    MMA       END 
+ 17:15:52.041         0.047          0.000                    MPY3      END 
+ 17:15:52.046         0.047          0.000                    MPY3      BEGN
+0*** USER INFORMATION MESSAGE 6525, TRIPLE MULTIPLY TIME ESTIMATE FOR MPY3 =        0.0 SECONDS.
+ 17:15:52.046         0.047          0.000                    MMA       BEGN
+ 17:15:52.046         0.047          0.000                    MMA       END 
+ 17:15:52.046         0.047          0.000                    MMA       BEGN
+ 17:15:52.046         0.047          0.000                    MMA       END 
+0*** USER INFORMATION MESSAGE 6525, TRIPLE MULTIPLY TIME ESTIMATE FOR MPYAD - (AT*B)*A + E =        0.0 SECONDS.
+ 17:15:52.046         0.047          0.000                    MMA       BEGN
+ 17:15:52.046         0.047          0.000                    MMA       END 
+ 17:15:52.046         0.047          0.000                    MMA       BEGN
+ 17:15:52.046         0.047          0.000                    MMA       END 
+0*** USER INFORMATION MESSAGE 6525, TRIPLE MULTIPLY TIME ESTIMATE FOR MPYAD - AT*(B*A) + E =        0.0 SECONDS.
+ 17:15:52.046         0.047          0.000                    MMA       BEGN
+ 17:15:52.046         0.047          0.000                    MMA3  1   BEGN
+ 17:15:52.047         0.047          0.000                    MMA3  1   END 
+   METHOD USED = 31NT  ACTUAL NUMBER OF PASSES =   1
+ 17:15:52.047         0.047          0.000                    MMA       END 
+ 17:15:52.047         0.047          0.000                    MMA       BEGN
+ 17:15:52.047         0.047          0.000                    MMA3  2   BEGN
+ 17:15:52.047         0.047          0.000                    MMA3  2   END 
+   METHOD USED = 32T   ACTUAL NUMBER OF PASSES =   1
+ 17:15:52.047         0.047          0.000                    MMA       END 
+ 17:15:52.047         0.047          0.000                    MPY3      END 
+ 17:15:52.052         0.047          0.000                    MPY3      BEGN
+ 17:15:52.052         0.047          0.000                    MMA       BEGN
+ 17:15:52.052         0.047          0.000                    MMA       END 
+0*** USER INFORMATION MESSAGE 6525, TRIPLE MULTIPLY TIME ESTIMATE FOR MPYAD - (AT*B)*A + E =        0.0 SECONDS.
+ 17:15:52.052         0.047          0.000                    MMA       BEGN
+ 17:15:52.052         0.047          0.000                    MMA3  2   BEGN
+ 17:15:52.052         0.047          0.000                    MMA3  2   END 
+   METHOD USED = 32T   ACTUAL NUMBER OF PASSES =   1
+ 17:15:52.052         0.047          0.000                    MMA       END 
+ 17:15:52.052         0.047          0.000                    MPY3      END 
+ 17:15:52.056         0.047          0.000          0.016        4  MRED2     END 
+ 17:15:52.056         0.047          0.000                       4  COND      BEGN
+ 17:15:52.056         0.047          0.000          0.000        4  COND      END 
+ 17:15:52.056         0.047          0.000                       4  SOFUT     BEGN
+ 17:15:52.059         0.047          0.000          0.000        4  SOFUT     END 
+ 17:15:52.059         0.047          0.000                       4  MRED1     BEGN
+ 17:15:52.062         0.047          0.000          0.000        4  MRED1     END 
+ 17:15:52.062         0.047          0.000                       4  COND      BEGN
+ 17:15:52.062         0.047          0.000          0.000        4  COND      END 
+ 17:15:52.062         0.047          0.000                       4  SOFI      BEGN
+ 17:15:52.064         0.047          0.000          0.000        4  SOFI      END 
+ 17:15:52.064         0.047          0.000                       4  COND      BEGN
+ 17:15:52.064         0.047          0.000          0.000        4  COND      END 
+ 17:15:52.064         0.047          0.000                       4  EQUIV     BEGN
+ 17:15:52.064         0.047          0.000          0.000        4  EQUIV     END 
+ 17:15:52.064         0.047          0.000                       4  EQUIV     BEGN
+ 17:15:52.064         0.047          0.000          0.000        4  EQUIV     END 
+ 17:15:52.064         0.047          0.000                       4  COND      BEGN
+ 17:15:52.064         0.047          0.000          0.000        4  COND      END 
+ 17:15:52.064         0.047          0.000                       4  SCE1      BEGN
+ 17:15:52.064         0.047          0.000          0.000        4  SCE1      END 
+ 17:15:52.064         0.047          0.000                       4  READ      BEGN
+ 17:15:52.064         0.047          0.000                    GIVE  NS  ENDS  NS  
+ 17:15:52.065         0.047          0.000                    SMCO  MP  BEGN          
+ 17:15:52.065         0.047          0.000                    SMCO  MP  END           
+ 17:15:52.065         0.047          0.000                    TRAN  POSE
+ 17:15:52.065         0.047          0.000                    TRAN  POSE
+ 17:15:52.065         0.047          0.000                    MMA       BEGN
+ 17:15:52.065         0.047          0.000                    MMA3  1   BEGN
+ 17:15:52.065         0.047          0.000                    MMA3  1   END 
+   METHOD USED = 31NT  ACTUAL NUMBER OF PASSES =   1
+ 17:15:52.065         0.047          0.000                    MMA       END 
+ 17:15:52.065         0.047          0.000                    MMA       BEGN
+ 17:15:52.065         0.047          0.000                    MMA3  2   BEGN
+ 17:15:52.065         0.047          0.000                    MMA3  2   END 
+   METHOD USED = 32T   ACTUAL NUMBER OF PASSES =   1
+ 17:15:52.065         0.047          0.000                    MMA       END 
+ 17:15:52.065         0.047          0.000                    VALV  EC  BEGN
+ 17:15:52.065         0.047          0.000                    TRID  I   BEGN
+ 17:15:52.065         0.047          0.000                    TRID  I   END 
+ 17:15:52.065         0.047          0.000                    QRIT  ER  BEGN
+ 17:15:52.065         0.047          0.000                    QRIT  ER  END 
+ 17:15:52.065         0.047          0.000                    WILV  EC  BEGN
+ 17:15:52.065         0.047          0.000                    WILV  EC  END 
+ 17:15:52.065         0.047          0.000                    VALV  EC  END 
+ 17:15:52.065         0.047          0.000                    MMA       BEGN
+ 17:15:52.065         0.047          0.000                    MMA2  1   BEGN
+ 17:15:52.065         0.047          0.000                    MMA2  1   END 
+   METHOD USED = 21NT  ACTUAL NUMBER OF PASSES =   1
+ 17:15:52.065         0.047          0.000                    MMA       END 
+ 17:15:52.065         0.047          0.000                    GIVE  NS  ENDS
+ 17:15:52.065         0.047          0.000                    MMA       BEGN
+ 17:15:52.065         0.047          0.000                    MMA2  1   BEGN
+ 17:15:52.065         0.047          0.000                    MMA2  1   END 
+   METHOD USED = 21NT  ACTUAL NUMBER OF PASSES =   1
+ 17:15:52.065         0.047          0.000                    MMA       END 
+ 17:15:52.065         0.047          0.000                    MMA       BEGN
+ 17:15:52.065         0.047          0.000                    MMA1  0   BEGN
+ 17:15:52.065         0.047          0.000                    MMA1  0   END 
+   METHOD USED = 10T   ACTUAL NUMBER OF PASSES =   1
+ 17:15:52.065         0.047          0.000                    MMA       END 
+ 17:15:52.065         0.047          0.000          0.000        4  READ      END 
+ 17:15:52.065         0.047          0.000                       4  OFP       BEGN
+ 17:15:52.070         0.047          0.000          0.000        4  OFP       END 
+ 17:15:52.070         0.047          0.000                       4  EQUIV     BEGN
+ 17:15:52.070         0.047          0.000          0.000        4  EQUIV     END 
+ 17:15:52.070         0.047          0.000                       4  COND      BEGN
+ 17:15:52.070         0.047          0.000          0.000        4  COND      END 
+ 17:15:52.070         0.047          0.000                       4  UMERGE    BEGN
+ 17:15:52.070         0.047          0.000          0.000        4  UMERGE    END 
+ 17:15:52.070         0.047          0.000                       4  MRED2     BEGN
+ 17:15:52.073         0.047          0.000                    SMCO  MP  BEGN          
+ 17:15:52.073         0.047          0.000                    SMCO  MP  END           
+ 17:15:52.073         0.047          0.000                    FBSI  BEGN
+ 17:15:52.073         0.047          0.000                    FBS2  BEGN
+ 17:15:52.073         0.047          0.000                    FBS2  END 
+ 17:15:52.073         0.047          0.000                    FBSI  END 
+ 17:15:52.077         0.047          0.000                    MMA       BEGN
+       MMA - NULL MATRIX PRODUCT
+ 17:15:52.078         0.047          0.000                    MMA       END 
+ 17:15:52.084         0.047          0.000                    MMA       BEGN
+ 17:15:52.084         0.047          0.000                    MMA3  2   BEGN
+ 17:15:52.084         0.047          0.000                    MMA3  2   END 
+   METHOD USED = 32T   ACTUAL NUMBER OF PASSES =   1
+ 17:15:52.084         0.047          0.000                    MMA       END 
+ 17:15:52.084         0.047          0.000                    MPY3      BEGN
+0*** USER INFORMATION MESSAGE 6525, TRIPLE MULTIPLY TIME ESTIMATE FOR MPY3 =        0.0 SECONDS.
+ 17:15:52.084         0.047          0.000                    MMA       BEGN
+ 17:15:52.084         0.047          0.000                    MMA       END 
+ 17:15:52.084         0.047          0.000                    MMA       BEGN
+ 17:15:52.084         0.047          0.000                    MMA       END 
+0*** USER INFORMATION MESSAGE 6525, TRIPLE MULTIPLY TIME ESTIMATE FOR MPYAD - (AT*B)*A + E =        0.0 SECONDS.
+ 17:15:52.084         0.047          0.000                    MMA       BEGN
+ 17:15:52.084         0.047          0.000                    MMA       END 
+ 17:15:52.084         0.047          0.000                    MMA       BEGN
+ 17:15:52.084         0.047          0.000                    MMA       END 
+0*** USER INFORMATION MESSAGE 6525, TRIPLE MULTIPLY TIME ESTIMATE FOR MPYAD - AT*(B*A) + E =        0.0 SECONDS.
+ 17:15:52.084         0.047          0.000                    MMA       BEGN
+ 17:15:52.084         0.047          0.000                    MMA2  1   BEGN
+ 17:15:52.084         0.047          0.000                    MMA2  1   END 
+   METHOD USED = 21NT  ACTUAL NUMBER OF PASSES =   1
+ 17:15:52.084         0.047          0.000                    MMA       END 
+ 17:15:52.084         0.047          0.000                    MMA       BEGN
+ 17:15:52.084         0.047          0.000                    MMA1  0   BEGN
+ 17:15:52.084         0.047          0.000                    MMA1  0   END 
+   METHOD USED = 10T   ACTUAL NUMBER OF PASSES =   1
+ 17:15:52.084         0.047          0.000                    MMA       END 
+ 17:15:52.084         0.047          0.000                    MPY3      END 
+ 17:15:52.087         0.047          0.000                    MPY3      BEGN
+0*** USER INFORMATION MESSAGE 6525, TRIPLE MULTIPLY TIME ESTIMATE FOR MPY3 =        0.0 SECONDS.
+ 17:15:52.087         0.047          0.000                    MMA       BEGN
+ 17:15:52.087         0.047          0.000                    MMA       END 
+ 17:15:52.087         0.047          0.000                    MMA       BEGN
+ 17:15:52.087         0.047          0.000                    MMA       END 
+0*** USER INFORMATION MESSAGE 6525, TRIPLE MULTIPLY TIME ESTIMATE FOR MPYAD - (AT*B)*A + E =        0.0 SECONDS.
+ 17:15:52.087         0.047          0.000                    MMA       BEGN
+ 17:15:52.087         0.047          0.000                    MMA       END 
+ 17:15:52.087         0.047          0.000                    MMA       BEGN
+ 17:15:52.087         0.047          0.000                    MMA       END 
+0*** USER INFORMATION MESSAGE 6525, TRIPLE MULTIPLY TIME ESTIMATE FOR MPYAD - AT*(B*A) + E =        0.0 SECONDS.
+ 17:15:52.087         0.047          0.000                    MMA       BEGN
+ 17:15:52.087         0.047          0.000                    MMA3  1   BEGN
+ 17:15:52.087         0.047          0.000                    MMA3  1   END 
+   METHOD USED = 31NT  ACTUAL NUMBER OF PASSES =   1
+ 17:15:52.087         0.047          0.000                    MMA       END 
+ 17:15:52.087         0.047          0.000                    MMA       BEGN
+ 17:15:52.087         0.047          0.000                    MMA3  2   BEGN
+ 17:15:52.087         0.047          0.000                    MMA3  2   END 
+   METHOD USED = 32T   ACTUAL NUMBER OF PASSES =   1
+ 17:15:52.087         0.047          0.000                    MMA       END 
+ 17:15:52.087         0.047          0.000                    MPY3      END 
+ 17:15:52.092         0.047          0.000                    MPY3      BEGN
+ 17:15:52.092         0.047          0.000                    MMA       BEGN
+ 17:15:52.092         0.047          0.000                    MMA       END 
+0*** USER INFORMATION MESSAGE 6525, TRIPLE MULTIPLY TIME ESTIMATE FOR MPYAD - (AT*B)*A + E =        0.0 SECONDS.
+ 17:15:52.092         0.047          0.000                    MMA       BEGN
+ 17:15:52.092         0.047          0.000                    MMA3  2   BEGN
+ 17:15:52.092         0.047          0.000                    MMA3  2   END 
+   METHOD USED = 32T   ACTUAL NUMBER OF PASSES =   1
+ 17:15:52.092         0.047          0.000                    MMA       END 
+ 17:15:52.092         0.047          0.000                    MPY3      END 
+ 17:15:52.096         0.047          0.000          0.000        4  MRED2     END 
+ 17:15:52.096         0.047          0.000                       4  COND      BEGN
+ 17:15:52.096         0.047          0.000          0.000        4  COND      END 
+ 17:15:52.096         0.047          0.000                       4  SOFUT     BEGN
+ 17:15:52.100         0.047          0.000          0.000        4  SOFUT     END 
+ 17:15:52.100         0.047          0.000                       4  COMB1     BEGN
+ 17:15:52.106         0.047          0.000          0.000        4  COMB1     END 
+ 17:15:52.106         0.047          0.000                       4  COND      BEGN
+ 17:15:52.106         0.047          0.000          0.000        4  COND      END 
+ 17:15:52.106         0.047          0.000                       4  COMB2     BEGN
+ 17:15:52.112         0.047          0.000                    MPY3      BEGN
+0*** USER INFORMATION MESSAGE 6525, TRIPLE MULTIPLY TIME ESTIMATE FOR MPY3 =        0.0 SECONDS.
+ 17:15:52.112         0.047          0.000                    MMA       BEGN
+ 17:15:52.112         0.047          0.000                    MMA       END 
+ 17:15:52.112         0.047          0.000                    MMA       BEGN
+ 17:15:52.112         0.047          0.000                    MMA       END 
+0*** USER INFORMATION MESSAGE 6525, TRIPLE MULTIPLY TIME ESTIMATE FOR MPYAD - (AT*B)*A + E =        0.0 SECONDS.
+ 17:15:52.112         0.047          0.000                    MMA       BEGN
+ 17:15:52.112         0.047          0.000                    MMA       END 
+ 17:15:52.112         0.047          0.000                    MMA       BEGN
+ 17:15:52.112         0.047          0.000                    MMA       END 
+0*** USER INFORMATION MESSAGE 6525, TRIPLE MULTIPLY TIME ESTIMATE FOR MPYAD - AT*(B*A) + E =        0.0 SECONDS.
+ 17:15:52.112         0.047          0.000                    MMA       BEGN
+ 17:15:52.112         0.047          0.000                    MMA3  1   BEGN
+ 17:15:52.112         0.047          0.000                    MMA3  1   END 
+   METHOD USED = 31NT  ACTUAL NUMBER OF PASSES =   1
+ 17:15:52.112         0.047          0.000                    MMA       END 
+ 17:15:52.112         0.047          0.000                    MMA       BEGN
+ 17:15:52.112         0.047          0.000                    MMA3  2   BEGN
+ 17:15:52.112         0.047          0.000                    MMA3  2   END 
+   METHOD USED = 32T   ACTUAL NUMBER OF PASSES =   1
+ 17:15:52.112         0.047          0.000                    MMA       END 
+ 17:15:52.112         0.047          0.000                    MPY3      END 
+ 17:15:52.119         0.047          0.000                    MPY3      BEGN
+0*** USER INFORMATION MESSAGE 6525, TRIPLE MULTIPLY TIME ESTIMATE FOR MPY3 =        0.0 SECONDS.
+ 17:15:52.119         0.047          0.000                    MMA       BEGN
+ 17:15:52.119         0.047          0.000                    MMA       END 
+ 17:15:52.119         0.047          0.000                    MMA       BEGN
+ 17:15:52.119         0.047          0.000                    MMA       END 
+0*** USER INFORMATION MESSAGE 6525, TRIPLE MULTIPLY TIME ESTIMATE FOR MPYAD - (AT*B)*A + E =        0.0 SECONDS.
+ 17:15:52.119         0.047          0.000                    MMA       BEGN
+ 17:15:52.119         0.047          0.000                    MMA       END 
+ 17:15:52.119         0.047          0.000                    MMA       BEGN
+ 17:15:52.119         0.047          0.000                    MMA       END 
+0*** USER INFORMATION MESSAGE 6525, TRIPLE MULTIPLY TIME ESTIMATE FOR MPYAD - AT*(B*A) + E =        0.0 SECONDS.
+ 17:15:52.119         0.047          0.000                    MMA       BEGN
+ 17:15:52.119         0.047          0.000                    MMA3  1   BEGN
+ 17:15:52.119         0.047          0.000                    MMA3  1   END 
+   METHOD USED = 31NT  ACTUAL NUMBER OF PASSES =   1
+ 17:15:52.119         0.047          0.000                    MMA       END 
+ 17:15:52.119         0.047          0.000                    MMA       BEGN
+ 17:15:52.119         0.047          0.000                    MMA3  2   BEGN
+ 17:15:52.119         0.047          0.000                    MMA3  2   END 
+   METHOD USED = 32T   ACTUAL NUMBER OF PASSES =   1
+ 17:15:52.119         0.047          0.000                    MMA       END 
+ 17:15:52.119         0.047          0.000                    MPY3      END 
+ 17:15:52.125         0.047          0.000          0.000        4  COMB2     END 
+ 17:15:52.125         0.047          0.000                       4  SOFO      BEGN
+ 17:15:52.131         0.047          0.000          0.000        4  SOFO      END 
+ 17:15:52.131         0.047          0.000                       4  COMB2     BEGN
+ 17:15:52.136         0.047          0.000                    MPY3      BEGN
+0*** USER INFORMATION MESSAGE 6525, TRIPLE MULTIPLY TIME ESTIMATE FOR MPY3 =        0.0 SECONDS.
+ 17:15:52.136         0.047          0.000                    MMA       BEGN
+ 17:15:52.136         0.047          0.000                    MMA       END 
+ 17:15:52.136         0.047          0.000                    MMA       BEGN
+ 17:15:52.136         0.047          0.000                    MMA       END 
+0*** USER INFORMATION MESSAGE 6525, TRIPLE MULTIPLY TIME ESTIMATE FOR MPYAD - (AT*B)*A + E =        0.0 SECONDS.
+ 17:15:52.136         0.047          0.000                    MMA       BEGN
+ 17:15:52.136         0.047          0.000                    MMA       END 
+ 17:15:52.136         0.047          0.000                    MMA       BEGN
+ 17:15:52.136         0.047          0.000                    MMA       END 
+0*** USER INFORMATION MESSAGE 6525, TRIPLE MULTIPLY TIME ESTIMATE FOR MPYAD - AT*(B*A) + E =        0.0 SECONDS.
+ 17:15:52.136         0.047          0.000                    MMA       BEGN
+ 17:15:52.136         0.047          0.000                    MMA1  1   BEGN
+ 17:15:52.136         0.047          0.000                    MMA1  1   END 
+   METHOD USED = 11NT  ACTUAL NUMBER OF PASSES =   1
+ 17:15:52.136         0.047          0.000                    MMA       END 
+ 17:15:52.136         0.047          0.000                    MMA       BEGN
+ 17:15:52.136         0.047          0.000                    MMA3  2   BEGN
+ 17:15:52.136         0.047          0.000                    MMA3  2   END 
+   METHOD USED = 32T   ACTUAL NUMBER OF PASSES =   1
+ 17:15:52.136         0.047          0.000                    MMA       END 
+ 17:15:52.136         0.047          0.000                    MPY3      END 
+ 17:15:52.143         0.047          0.000                    MPY3      BEGN
+0*** USER INFORMATION MESSAGE 6525, TRIPLE MULTIPLY TIME ESTIMATE FOR MPY3 =        0.0 SECONDS.
+ 17:15:52.143         0.047          0.000                    MMA       BEGN
+ 17:15:52.143         0.047          0.000                    MMA       END 
+ 17:15:52.143         0.047          0.000                    MMA       BEGN
+ 17:15:52.143         0.047          0.000                    MMA       END 
+0*** USER INFORMATION MESSAGE 6525, TRIPLE MULTIPLY TIME ESTIMATE FOR MPYAD - (AT*B)*A + E =        0.0 SECONDS.
+ 17:15:52.143         0.047          0.000                    MMA       BEGN
+ 17:15:52.143         0.047          0.000                    MMA       END 
+ 17:15:52.143         0.047          0.000                    MMA       BEGN
+ 17:15:52.143         0.047          0.000                    MMA       END 
+0*** USER INFORMATION MESSAGE 6525, TRIPLE MULTIPLY TIME ESTIMATE FOR MPYAD - AT*(B*A) + E =        0.0 SECONDS.
+ 17:15:52.143         0.047          0.000                    MMA       BEGN
+ 17:15:52.143         0.047          0.000                    MMA1  1   BEGN
+ 17:15:52.143         0.047          0.000                    MMA1  1   END 
+   METHOD USED = 11NT  ACTUAL NUMBER OF PASSES =   1
+ 17:15:52.143         0.047          0.000                    MMA       END 
+ 17:15:52.143         0.047          0.000                    MMA       BEGN
+ 17:15:52.143         0.047          0.000                    MMA3  2   BEGN
+ 17:15:52.143         0.047          0.000                    MMA3  2   END 
+   METHOD USED = 32T   ACTUAL NUMBER OF PASSES =   1
+ 17:15:52.143         0.047          0.000                    MMA       END 
+ 17:15:52.143         0.047          0.000                    MPY3      END 
+ 17:15:52.148         0.047          0.000          0.000        4  COMB2     END 
+ 17:15:52.148         0.047          0.000                       4  SOFO      BEGN
+ 17:15:52.152         0.047          0.000          0.000        4  SOFO      END 
+ 17:15:52.152         0.047          0.000                       4  COMB2     BEGN
+ 17:15:52.156         0.047          0.000                    MMA       BEGN
+ 17:15:52.156         0.047          0.000                    MMA2  1   BEGN
+ 17:15:52.156         0.047          0.000                    MMA2  1   END 
+   METHOD USED = 21T   ACTUAL NUMBER OF PASSES =   1
+ 17:15:52.156         0.047          0.000                    MMA       END 
+ 17:15:52.160         0.047          0.000                    MMA       BEGN
+ 17:15:52.160         0.047          0.000                    MMA2  1   BEGN
+ 17:15:52.160         0.047          0.000                    MMA2  1   END 
+   METHOD USED = 21T   ACTUAL NUMBER OF PASSES =   1
+ 17:15:52.160         0.047          0.000                    MMA       END 
+ 17:15:52.164         0.047          0.000          0.000        4  COMB2     END 
+ 17:15:52.164         0.047          0.000                       4  SOFO      BEGN
+ 17:15:52.167         0.047          0.000          0.000        4  SOFO      END 
+ 17:15:52.167         0.047          0.000                       4  SOFUT     BEGN
+ 17:15:52.171         0.047          0.000          0.000        4  SOFUT     END 
+ 17:15:52.171         0.047          0.000                       4  MRED1     BEGN
+ 17:15:52.176         0.047          0.000          0.000        4  MRED1     END 
+ 17:15:52.176         0.047          0.000                       4  COND      BEGN
+ 17:15:52.176         0.047          0.000          0.000        4  COND      END 
+ 17:15:52.176         0.047          0.000                       4  SOFI      BEGN
+ 17:15:52.179         0.047          0.000          0.000        4  SOFI      END 
+ 17:15:52.179         0.047          0.000                       4  COND      BEGN
+ 17:15:52.179         0.047          0.000          0.000        4  COND      END 
+ 17:15:52.179         0.047          0.000                       4  EQUIV     BEGN
+ 17:15:52.180         0.047          0.000          0.000        4  EQUIV     END 
+ 17:15:52.180         0.047          0.000                       4  EQUIV     BEGN
+ 17:15:52.180         0.047          0.000          0.000        4  EQUIV     END 
+ 17:15:52.180         0.047          0.000                       4  COND      BEGN
+ 17:15:52.180         0.047          0.000          0.000        4  COND      END 
+ 17:15:52.180         0.047          0.000                       4  SCE1      BEGN
+ 17:15:52.180         0.047          0.000          0.000        4  SCE1      END 
+ 17:15:52.180         0.047          0.000                       4  READ      BEGN
+ 17:15:52.180         0.047          0.000                    GIVE  NS  ENDS  NS  
+ 17:15:52.180         0.047          0.000                    SMCO  MP  BEGN          
+ 17:15:52.180         0.047          0.000                    SMCO  MP  END           
+ 17:15:52.180         0.047          0.000                    TRAN  POSE
+ 17:15:52.180         0.047          0.000                    TRAN  POSE
+ 17:15:52.180         0.047          0.000                    MMA       BEGN
+ 17:15:52.180         0.047          0.000                    MMA3  1   BEGN
+ 17:15:52.180         0.047          0.000                    MMA3  1   END 
+   METHOD USED = 31NT  ACTUAL NUMBER OF PASSES =   1
+ 17:15:52.180         0.047          0.000                    MMA       END 
+ 17:15:52.180         0.047          0.000                    MMA       BEGN
+ 17:15:52.180         0.047          0.000                    MMA3  2   BEGN
+ 17:15:52.180         0.047          0.000                    MMA3  2   END 
+   METHOD USED = 32T   ACTUAL NUMBER OF PASSES =   1
+ 17:15:52.180         0.047          0.000                    MMA       END 
+ 17:15:52.180         0.047          0.000                    VALV  EC  BEGN
+ 17:15:52.180         0.047          0.000                    TRID  I   BEGN
+ 17:15:52.180         0.047          0.000                    TRID  I   END 
+ 17:15:52.180         0.047          0.000                    QRIT  ER  BEGN
+ 17:15:52.180         0.047          0.000                    QRIT  ER  END 
+ 17:15:52.180         0.047          0.000                    WILV  EC  BEGN
+ 17:15:52.180         0.047          0.000                    WILV  EC  END 
+ 17:15:52.180         0.047          0.000                    VALV  EC  END 
+ 17:15:52.180         0.047          0.000                    MMA       BEGN
+ 17:15:52.180         0.047          0.000                    MMA2  1   BEGN
+ 17:15:52.180         0.047          0.000                    MMA2  1   END 
+   METHOD USED = 21NT  ACTUAL NUMBER OF PASSES =   1
+ 17:15:52.180         0.047          0.000                    MMA       END 
+ 17:15:52.180         0.047          0.000                    GIVE  NS  ENDS
+ 17:15:52.181         0.047          0.000                    MMA       BEGN
+ 17:15:52.181         0.047          0.000                    MMA1  0   BEGN
+ 17:15:52.181         0.047          0.000                    MMA1  0   END 
+   METHOD USED = 10NT  ACTUAL NUMBER OF PASSES =   1
+ 17:15:52.181         0.047          0.000                    MMA       END 
+ 17:15:52.181         0.047          0.000                    MMA       BEGN
+ 17:15:52.181         0.047          0.000                    MMA1  0   BEGN
+ 17:15:52.181         0.047          0.000                    MMA1  0   END 
+   METHOD USED = 10T   ACTUAL NUMBER OF PASSES =   1
+ 17:15:52.181         0.047          0.000                    MMA       END 
+ 17:15:52.181         0.047          0.000          0.000        4  READ      END 
+ 17:15:52.181         0.047          0.000                       4  OFP       BEGN
+ 17:15:52.184         0.047          0.000          0.000        4  OFP       END 
+ 17:15:52.184         0.047          0.000                       4  EQUIV     BEGN
+ 17:15:52.184         0.047          0.000          0.000        4  EQUIV     END 
+ 17:15:52.184         0.047          0.000                       4  COND      BEGN
+ 17:15:52.184         0.047          0.000          0.000        4  COND      END 
+ 17:15:52.184         0.047          0.000                       4  UMERGE    BEGN
+ 17:15:52.184         0.047          0.000          0.000        4  UMERGE    END 
+ 17:15:52.184         0.047          0.000                       4  MRED2     BEGN
+ 17:15:52.188         0.047          0.000                    SMCO  MP  BEGN          
+ 17:15:52.188         0.047          0.000                    SMCO  MP  END           
+ 17:15:52.188         0.047          0.000                    FBSI  BEGN
+ 17:15:52.188         0.047          0.000                    FBS2  BEGN
+ 17:15:52.188         0.047          0.000                    FBS2  END 
+ 17:15:52.188         0.047          0.000                    FBSI  END 
+ 17:15:52.192         0.047          0.000                    MMA       BEGN
+ 17:15:52.192         0.047          0.000                    MMA3  1   BEGN
+ 17:15:52.193         0.047          0.000                    MMA3  1   END 
+   METHOD USED = 31NT  ACTUAL NUMBER OF PASSES =   1
+ 17:15:52.193         0.047          0.000                    MMA       END 
+ 17:15:52.198         0.047          0.000                    MMA       BEGN
+ 17:15:52.198         0.047          0.000                    MMA3  1   BEGN
+ 17:15:52.198         0.047          0.000                    MMA3  1   END 
+   METHOD USED = 31T   ACTUAL NUMBER OF PASSES =   1
+ 17:15:52.198         0.047          0.000                    MMA       END 
+ 17:15:52.198         0.047          0.000                    MPY3      BEGN
+0*** USER INFORMATION MESSAGE 6525, TRIPLE MULTIPLY TIME ESTIMATE FOR MPY3 =        0.0 SECONDS.
+ 17:15:52.198         0.047          0.000                    MMA       BEGN
+ 17:15:52.198         0.047          0.000                    MMA       END 
+ 17:15:52.198         0.047          0.000                    MMA       BEGN
+ 17:15:52.198         0.047          0.000                    MMA       END 
+0*** USER INFORMATION MESSAGE 6525, TRIPLE MULTIPLY TIME ESTIMATE FOR MPYAD - (AT*B)*A + E =        0.0 SECONDS.
+ 17:15:52.198         0.047          0.000                    MMA       BEGN
+ 17:15:52.198         0.047          0.000                    MMA       END 
+ 17:15:52.198         0.047          0.000                    MMA       BEGN
+ 17:15:52.198         0.047          0.000                    MMA       END 
+0*** USER INFORMATION MESSAGE 6525, TRIPLE MULTIPLY TIME ESTIMATE FOR MPYAD - AT*(B*A) + E =        0.0 SECONDS.
+ 17:15:52.198         0.047          0.000                    MMA       BEGN
+ 17:15:52.198         0.047          0.000                    MMA2  1   BEGN
+ 17:15:52.198         0.047          0.000                    MMA2  1   END 
+   METHOD USED = 21NT  ACTUAL NUMBER OF PASSES =   1
+ 17:15:52.198         0.047          0.000                    MMA       END 
+ 17:15:52.198         0.047          0.000                    MMA       BEGN
+ 17:15:52.198         0.047          0.000                    MMA1  0   BEGN
+ 17:15:52.198         0.047          0.000                    MMA1  0   END 
+   METHOD USED = 10T   ACTUAL NUMBER OF PASSES =   1
+ 17:15:52.198         0.047          0.000                    MMA       END 
+ 17:15:52.198         0.047          0.000                    MPY3      END 
+ 17:15:52.201         0.047          0.000                    MPY3      BEGN
+0*** USER INFORMATION MESSAGE 6525, TRIPLE MULTIPLY TIME ESTIMATE FOR MPY3 =        0.0 SECONDS.
+ 17:15:52.201         0.047          0.000                    MMA       BEGN
+ 17:15:52.201         0.047          0.000                    MMA       END 
+ 17:15:52.201         0.047          0.000                    MMA       BEGN
+ 17:15:52.201         0.047          0.000                    MMA       END 
+0*** USER INFORMATION MESSAGE 6525, TRIPLE MULTIPLY TIME ESTIMATE FOR MPYAD - (AT*B)*A + E =        0.0 SECONDS.
+ 17:15:52.201         0.047          0.000                    MMA       BEGN
+ 17:15:52.201         0.047          0.000                    MMA       END 
+ 17:15:52.201         0.047          0.000                    MMA       BEGN
+ 17:15:52.201         0.047          0.000                    MMA       END 
+0*** USER INFORMATION MESSAGE 6525, TRIPLE MULTIPLY TIME ESTIMATE FOR MPYAD - AT*(B*A) + E =        0.0 SECONDS.
+ 17:15:52.201         0.047          0.000                    MMA       BEGN
+ 17:15:52.201         0.047          0.000                    MMA3  1   BEGN
+ 17:15:52.201         0.047          0.000                    MMA3  1   END 
+   METHOD USED = 31NT  ACTUAL NUMBER OF PASSES =   1
+ 17:15:52.201         0.047          0.000                    MMA       END 
+ 17:15:52.201         0.047          0.000                    MMA       BEGN
+ 17:15:52.201         0.047          0.000                    MMA2  1   BEGN
+ 17:15:52.201         0.047          0.000                    MMA2  1   END 
+   METHOD USED = 21T   ACTUAL NUMBER OF PASSES =   1
+ 17:15:52.201         0.047          0.000                    MMA       END 
+ 17:15:52.201         0.047          0.000                    MPY3      END 
+ 17:15:52.207         0.047          0.000                    MPY3      BEGN
+ 17:15:52.207         0.047          0.000                    MMA       BEGN
+ 17:15:52.207         0.047          0.000                    MMA       END 
+0*** USER INFORMATION MESSAGE 6525, TRIPLE MULTIPLY TIME ESTIMATE FOR MPYAD - (AT*B)*A + E =        0.0 SECONDS.
+ 17:15:52.207         0.047          0.000                    MMA       BEGN
+ 17:15:52.207         0.047          0.000                    MMA3  2   BEGN
+ 17:15:52.207         0.047          0.000                    MMA3  2   END 
+   METHOD USED = 32T   ACTUAL NUMBER OF PASSES =   1
+ 17:15:52.207         0.047          0.000                    MMA       END 
+ 17:15:52.207         0.047          0.000                    MPY3      END 
+ 17:15:52.220         0.047          0.000          0.000        4  MRED2     END 
+ 17:15:52.220         0.047          0.000                       4  COND      BEGN
+ 17:15:52.220         0.047          0.000          0.000        4  COND      END 
+ 17:15:52.220         0.047          0.000                       4  SOFUT     BEGN
+ 17:15:52.233         0.047          0.000          0.000        4  SOFUT     END 
+ 17:15:52.233         0.047          0.000                       4  JUMP      BEGN
+ 17:15:52.233         0.047          0.000          0.000        4  JUMP      END 
+ 17:15:52.233         0.047          0.000                     103  PURGE     BEGN
+ 17:15:52.233         0.047          0.000          0.000      103  PURGE     END 
+ 17:15:52.234         0.047          0.000                     104  EXIT      BEGN
+1     STATISTICS ON IN-MEMORY DATA BASE AND DISK I/O USAGE
+
+         LENGTH (IN WORDS) OF OPEN CORE ALLOCATED                   2000000
+         LENGTH (IN WORDS) OF IN-MEMORY DATA BASE ALLOCATED        12000000
+         NUMBER OF BLOCKS USED IN THE IN-MEMORY DATA BASE                49
+         NUMBER OF BLOCKS ALLOCATED FOR THE IN-MEMORY DATA            11661
+         PERCENTAGE OF IN-MEMORY DATA USED                                0%
+         TOTAL BLOCKS WRITTEN TO DISK                              40000004
+         BLOCK SIZE (IN WORDS)                                         1024
+         NUMBER OF OPENS TO DISK FILES                                   53
+         NUMBER OF CLOSES TO DISK FILES                                  53
+         NUMBER OF WRITES TO DISK FILES                                 172
+         NUMBER OF READS FROM DISK FILES                                314
+         MEMORY (IN WORDS) NOT USED BY IN-MEM. DATA BASE           11995196
