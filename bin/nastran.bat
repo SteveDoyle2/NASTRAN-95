@@ -1,6 +1,7 @@
 @ECHO OFF
 SETLOCAL
 
+IF [%1] == [] (GOTO USAGE)
 IF [%NASTRANHOME%] == [] (GOTO HOMERR) ELSE (GOTO NASTRANCMD)
 
 :: Binary and data locations
@@ -23,14 +24,14 @@ GOTO:EOF
 
 :USAGE
 ECHO:
-ECHO USAGE: nastran [-o output file] [-l log file] <input>
+ECHO USAGE: nastran [-o output file] [-l log file] ^<input^>
 ECHO:
 ECHO   Mandatory argument
 ECHO     input : Top level input file with executive and case control
 ECHO:
 ECHO   Optional arguments
-ECHO     -o : Optional output file name, defaults to <input>.out
-ECHO     -l : Optional log file name, default to <input>.log
+ECHO     -o : Optional output file name, defaults to ^<input^>.out
+ECHO     -l : Optional log file name, default to ^<input^>.log
 GOTO:EOF
 
 :HOMERR
