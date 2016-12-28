@@ -1,8 +1,8 @@
+
 # NASTRAN-95
 
 NASTRAN has been released under the
 [NASA Open Source Agreement version 1.3](https://github.com/nasa/NASTRAN-95/raw/master/NASA%20Open%20Source%20Agreement-NASTRAN%2095.doc).
-
 
 NASTRAN is the NASA Structural Analysis System, a finite element
 analysis program (FEA) completed in the early 1970's. It was the first
@@ -19,18 +19,18 @@ NOTE: There is no technical support available for this software.
 
 # Current Tasks
 
-<table>
-  <tr><th>Task</th><th>Status</th></tr>
-  <tr><td>Build libnastran</td><td>Complete</td></tr>
-  <tr><td>Build executables</td><td>Complete</td></tr>
-  <tr><td>Modernize wrapper C shell script</td><td>Complete</td></tr>
-  <tr><td>Replace wrapper script with namelist</td><td>In Progress</td></tr>
-  <tr><td>Verify input and output</td><td>Queued</td></tr>
-  <tr><td>Remove machine dependent code</td><td>Queued</td></tr>
-  <tr><td>Replace all Holerith contants</td><td>Queued</td></tr>
-  <tr><td>Remove all type coercion</td><td>Queued</td></tr>
-  <tr><td>Review the contents of the bd directory</td><td>Queued</td></tr>
-</table>
+Task                                    | Status
+:---------------------------------------|:------------:
+Build libnastran                        | Complete
+Build executables                       | Complete
+Modernize wrapper C shell script        | Complete
+Replace wrapper script with namelist    | Complete
+Review the contents of the bd directory | Complete
+Verify input and output                 | Complete
+Automate verification                   | In progress
+Remove machine dependent code           | Queued
+Replace all Holerith contants           | Queued
+Remove all type coercion                | Queued
 
 # Future Tasks
 

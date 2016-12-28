@@ -1,0 +1,36 @@
+&memory
+  dbmem = 12000000
+  ocmem =  2000000
+/
+
+&directories
+  rfdircty = 'dmap\rf'
+  dircty = 'scratch'
+/
+
+&funits
+  ftn(11) = 'NONE'
+  ftn(12) = 'NONE'
+  ftn(13) = 'NONE'
+  ftn(14) = 'NONE'
+  ftn(15) = 'NONE'
+  ftn(16) = 'NONE'
+  ftn(17) = 'NONE'
+  ftn(18) = 'NONE'
+  ftn(19) = 'NONE'
+  ftn(20) = 'NONE'
+  ftn(21) = 'NONE'
+/
+
+&sdsnfiles
+  sof( 1) = 'NONE'
+  sof( 2) = 'NONE'
+  sof( 3) = 'NONE'
+  sof( 4) = 'NONE'
+  sof( 5) = 'NONE'
+  sof( 6) = 'NONE'
+  sof( 7) = 'NONE'
+  sof( 8) = 'NONE'
+  sof( 9) = 'NONE'
+  sof(10) = 'NONE'
+/

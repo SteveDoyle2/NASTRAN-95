@@ -1,0 +1,6 @@
+RESTART  T04021A ,NASTRAN ,12/27/16,   55216,
+         1,   XVPS    ,   FLAGS = 0,   REEL =  1,   FILE =      6
+         2,   REENTER AT DMAP SEQUENCE NUMBER    92
+         3,   KDGG    ,   FLAGS = 0,   REEL =  1,   FILE =      7
+         4,   XVPS    ,   FLAGS = 0,   REEL =  1,   FILE =      8
+$ END OF CHECKPOINT DICTIONARY

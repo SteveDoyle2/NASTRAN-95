@@ -1,3 +1,0 @@
-      SUBROUTINE UMFFD
-      RETURN
-      END
