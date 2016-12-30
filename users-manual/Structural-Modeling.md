@@ -14,12 +14,12 @@ basic framework for the structural model. All other parts of the
 structural model are referenced either directly or indirectly to the
 grid points.
 
-Two general types of grid points are used in defining the structural model.
-They are:
+Two general types of grid points are used in defining the structural
+model. They are:
 
 1. Geometric grid point - a point in three-dimensional space at which
    three components of translation and three components of rotation
-   are defined.  The coordinates of each grid point are specified by
+   are defined. The coordinates of each grid point are specified by
    you.
 2. Scalar point - a point in vector space at which one degree of
    freedom is defined. Scalar points can be coupled to geometric grid
@@ -50,7 +50,7 @@ Various kinds of constraints can be applied to the grid
 points. Single- point constraints are used to specify boundary
 conditions, including enforced displacements of grid
 points. Multipoint constraints and rigid elements are used to specify
-linear relationships among selected degrees of freedom.  Omitted
+linear relationships among selected degrees of freedom. Omitted
 points are used as a tool in matrix partitioning and for reducing the
 number of degrees of freedom used in dynamic analysis. Free-body
 supports are used to remove stress-free motions in static analysis and
@@ -110,10 +110,10 @@ radial, meridional, and azimuthal directions as indicated in Figure
 1.2-1c. Each geometric grid point may have a unique displacement
 coordinate system associated with it. The collection of all
 displacement coordinate systems is known as the global coordinate
-system.  All matrices are formed and all displacements are output in
+system. All matrices are formed and all displacements are output in
 the global coordinate system. The symbols T1, T2, and T3 on the
 printed output indicate translations in the 1, 2, and 3-directions,
-respectively, for each grid point.  The symbols R1, R2, and R3
+respectively, for each grid point. The symbols R1, R2, and R3
 indicate rotations (in radians) about the three axes.
 
 Provision is also made on the GRID card to apply single-point
@@ -217,12 +217,12 @@ proceeds. If the sequencing is as shown in Figure 1.2-2c, the band
 portion of the matrix will be the same as that for Figure
 1.2-2a. However, the connection between grid points 1 and 8 will
 create a number of active columns on the right hand side of the
-matrix.  The solution times will be the same for the sequence shown in
+matrix. The solution times will be the same for the sequence shown in
 Figure 1.2-2b or 1.2-2c, because the number of active columns in each
 sequence is the same.
 
 Examples of grid point sequencing for surfaces are shown in Figure
-1.2-3.  For plain or curved surfaces with a pattern of grid points
+1.2-3. For plain or curved surfaces with a pattern of grid points
 that tends to be rectangular, the sequencing shown in Figure 1.2-3a
 will result in a band matrix having good solution times. The semiband
 will be proportional to the number of grid points along the short
@@ -276,7 +276,7 @@ points 1 through 9 are associated with the first substructure, and
 grid points 10 through 30 are associated with the second
 substructure. In the example, each of the substructures was sequenced
 for band matrices. However, other schemes could also be considered for
-sequencing the individual substructures.  Figure 1.2-5 shows the
+sequencing the individual substructures. Figure 1.2-5 shows the
 nonzero terms in the triangular factor. The X's indicate terms which
 are nonzero in the original matrix. The zeros indicate nonzero terms
 created during the decomposition. The maximum number of active columns
@@ -438,7 +438,7 @@ NASTRAN BANDTRUN = 1 option can be used to force BANDIT to generate
 new SEQGP cards to replace the old SEQGP set already in the input Bulk
 Data Deck. In all instances when BANDIT is executed, NASTRAN will
 issue a page of summary to keep you informed of the basic resequencing
-computations.  You may refer to Reference 1 for the definition of the
+computations. You may refer to Reference 1 for the definition of the
 technical terms used.
 
 The BANDIT procedure automatically counts the number of grid points
@@ -508,14 +508,14 @@ of BANDIT in NASTRAN restarts should be noted:
 
 Some of the characteristics of the structural model are introduced as
 properties of grid points, rather than as properties of structural
-elements.  Any of the various forms of direct matrix input are
+elements. Any of the various forms of direct matrix input are
 considered as describing the structural model in terms of properties
 of grid points.
 
 Thermal fields are defined by specifying the temperatures at grid
-points.  The TEMP card is used to specify the temperature at grid
+points. The TEMP card is used to specify the temperature at grid
 points for use in connection with thermal loading and
-temperature-dependent material properties.  The TEMPD card is used to
+temperature-dependent material properties. The TEMPD card is used to
 specify a default temperature, in order to avoid a large number of
 duplicate entries on a TEMP card when the temperature is uniform over
 a large portion of the structure. The TEMPAX card is used for conical
