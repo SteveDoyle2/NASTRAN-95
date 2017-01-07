@@ -548,3 +548,96 @@ input that is used for hydroelastic problems (see Section 1.7).
 2. Chan, G. C., "BANDIT in NASTRAN," Eleventh NASTRAN Users'
    Colloquium, NASA Conference Publication, May 1983, San Francisco,
    California, pp. 1-5.
+
+
+# 1.3 STRUCTURAL ELEMENTS
+
+## 1.3.1 Element Definition
+
+Structural elements are defined on connection cards that identify the
+grid points to which the elements are connected. The mnemonics for all
+such cards have a prefix of the letter "C", followed by an indication
+of the type of element, such as CBAR and CROD. The order of the grid
+point identification defines the positive direction of the axis of a
+one-dimensional element and the positive surface of a plate
+element. The connection cards include additional orientation
+information when required. Except for the simplest elements, each
+connection card references a property definition card. If many
+elements have the same properties, this system of referencing
+eliminates a large number of duplicate entries.
+
+The property definition cards define geometric properties such as
+thicknesses, cross-sectional areas, and moments of inertia. The
+mnemonics for all such cards have a prefix of the letter "P", followed
+by some, or all, of the characters used on the associated connection
+card, such as PBAR and PROD.  Other included items are the
+nonstructural mass and the location of points where stresses will be
+calculated. Except for the simplest elements, each property definition
+card will reference a material property card.
+
+In some cases, the same finite element can be defined by using
+different bulk data cards. These alternate cards have been provided
+for your convenience. In the case of a rod element, the normal
+definition is accomplished with a connection card (CROD) which
+references a property card (PROD). However, an alternate definition
+uses a CONROD card which combines connection and property information
+on a single card. This is more convenient if a large number of rod
+elements all have different properties.
+
+In the case of plate elements, a different property card is provided
+for each type of element, such as membrane or sandwich plates. Thus,
+each property card contains only the information required for a single
+type of plate element, and in most cases, a single card has sufficient
+space for all of the property information. In order to maintain
+uniformity in the relationship between connection cards and property
+cards, a number of connection card types contain the same information,
+such as the connection cards for the various types of triangular
+elements. Also, the property cards for triangular and quadrilateral
+elements of the same type contain the same information.
+
+The material property definition cards are used to define the
+properties for each of the materials used in the structural model. The
+MAT1 card is used to define the properties for isotropic
+materials. The MAT1 card may be referenced by any of the structural
+elements. The MATS1 card specifies table references for isotropic
+material properties that are stress dependent. The TABLES1 card
+defines a tabular stress-strain function for use in piecewise linear
+analysis. The MATT1 card specifies table references for isotropic
+material properties that are temperature dependent. The TABLEM1,
+TABLEM2, TABLEM3, and TABLEM4 cards define four different types of
+tabular functions for use in generating temperature-dependent material
+properties.
+
+The MAT2 card is used to define the properties for anisotropic
+materials.  The MAT2 card may only be referenced by triangular or
+quadrilateral membrane and bending elements. The MAT2 card specifies
+the relationship between the inplane stresses and strains. The
+material is assumed to be infinitely rigid in transverse shear. The
+angle between the material coordinate system and the element
+coordinate system is specified on the connection cards. The MATT2 card
+specifies table references for anisotropic material properties that
+are temperature dependent. This card may reference any of the TABLEM1,
+TABLEM2, TABLEM3, or TABLEM4 cards.
+
+The MAT3 card is used to define the properties for orthotropic
+materials used in the modeling of axisymmetric shells. This card may
+only be referenced by CTRIARG, CTRIAAX, CTRAPRG, CTRAPAX, and PTORDRG
+cards. The MATT3 card specifies table references for use in generating
+temperature-dependent properties for this type of material.
+
+The GENEL card is used to define general elements whose properties are
+defined in terms of deflection influence coefficients or stiffness
+matrices, and which can be connected between any number of grid
+points. One of the important uses of the general element is the
+representation of part of a structure by means of experimentally
+measured data. No output data is prepared for the general
+element. Detail information on the general element is given in Section
+5.7 of the Theoretical Manual.
+
+Dummy elements are provided in order to allow you to investigate new
+structural elements with a minimum expenditure of time and money. A
+dummy element is defined with a CDUMi (i = index of element type, 1 <=
+i <= 9) card and its properties are defined with the PDUMi card. The
+ADUMi card is used to define the items on the connection and property
+cards. Detailed instructions for coding dummy element routines are
+given in Section 6.8.5 of the Programmer's Manual.
