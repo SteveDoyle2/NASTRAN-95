@@ -1,5 +1,5 @@
 
-# Introduction
+# 1.1 Introduction
 
 NASTRAN embodies a lumped element approach, wherein the distributed
 physical properties of a structure are represented by a model
@@ -74,9 +74,9 @@ for each rigid format in Section 3.
 
 **Figure 1.1-1. Structural model**
 
-# Grid Points
+# 1.2 Grid Points
 
-## Grid Point Definition
+## 1.2.1 Grid Point Definition
 
 Geometric grid points are defined on GRID bulk data cards by
 specifying their coordinates in either the basic or a local coordinate
@@ -159,7 +159,7 @@ on a fluid-structure interface (see Section 1.7).
 
 **Figure 1.2-1. Displacement coordinate systems**
 
-## Grid Point Sequencing
+## 1.2.2 Grid Point Sequencing
 
 The external identification numbers used for grid points may be
 selected in any manner you desire. However, in order to reduce the
@@ -175,7 +175,7 @@ squares of the number of active columns in each row of the triangular
 factor. The equation solution time (forward/backward substitution) is
 proportional to the number of nonzero terms in the triangular factor.
 
-## Manual Grid Point Resequencing
+## 1.2.2.1 Manual Grid Point Resequencing
 
 In order to allow arbitrary grid point numbers and still preserve
 sparsity in the triangular decomposition factor to the greatest extent
@@ -401,7 +401,7 @@ reference to the positions of the added terms in the dynamic matrices.
 
 **Figure 1.2-7. Matrix for square model example**
 
-## Automatic Grid Point Resequencing Using the BANDIT Procedure
+## 1.2.2.2 Automatic Grid Point Resequencing Using the BANDIT Procedure
 
 If you want reduced matrix reduction and equation solution times, you
 can manually resequence your grid points by the use of SEQGP cards as
@@ -421,7 +421,7 @@ program. These SEQGP cards are added to your input data (replacing any
 SEQGP cards already input, if so specified) for subsequent processing
 by the program.
 
-### BANDIT Options
+### 1.2.2.2.1 BANDIT Options
 
 The execution of the BANDIT operations in NASTRAN is controlled by
 several parameters. These parameters can be specified by means of the
@@ -464,7 +464,7 @@ main reasons for this are that BANDIT does not consider individual
 degrees of freedom and, in addition, cannot distinguish one MPC set
 from another.
 
-### Cases for Which BANDIT Computations are Skipped
+### 1.2.2.2.2 Cases for Which BANDIT Computations are Skipped
 
 The BANDIT computations in NASTRAN are unconditionally skipped over if
 any of the following conditions exists:
@@ -476,7 +476,7 @@ any of the following conditions exists:
     - DMI (Direct Matrix Input) data
 3. It is a substructure Phase 2 run.
 
-### BANDIT in Restarts
+### 1.2.2.2.3 BANDIT in Restarts
 
 At the beginning of a NASTRAN job, the Preface (or Link 1) modules
 read and process the Executive, Case Control, and Bulk Data decks. The
@@ -504,7 +504,7 @@ of BANDIT in NASTRAN restarts should be noted:
    BANDIT = -1 option on the NASTRAN card can be used to stop BANDIT
    execution unconditionally.)
 
-## Grid Point Properties
+## 1.2.3 Grid Point Properties
 
 Some of the characteristics of the structural model are introduced as
 properties of grid points, rather than as properties of structural
