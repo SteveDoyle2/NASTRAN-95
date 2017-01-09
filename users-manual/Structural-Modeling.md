@@ -549,7 +549,6 @@ input that is used for hydroelastic problems (see Section 1.7).
    Colloquium, NASA Conference Publication, May 1983, San Francisco,
    California, pp. 1-5.
 
-
 # 1.3 STRUCTURAL ELEMENTS
 
 ## 1.3.1 Element Definition
@@ -641,3 +640,189 @@ i <= 9) card and its properties are defined with the PDUMi card. The
 ADUMi card is used to define the items on the connection and property
 cards. Detailed instructions for coding dummy element routines are
 given in Section 6.8.5 of the Programmer's Manual.
+
+## 1.3.2 Beam Elements
+
+### 1.3.2.1 Simple Beam or Bar Element
+
+The simple beam or bar element is defined with a CBAR card and its
+properties (constant over the length) are defined with a PBAR
+card. The bar element includes extension, torsion, bending in two
+perpendicular planes, and the associated shears. The shear center is
+assumed to coincide with the elastic axis. Any five of the six forces
+at either end of the element may be set equal to zero by using the pin
+flags on the CBAR card. The integers 1 to 6 represent the axial force,
+shearing force in Plane 1, shearing force in Plane 2, axial torque,
+moment in Plane 2, and moment in Plane 1, respectively. The structural
+and nonstructural mass of the bar are lumped at the ends of the
+element, unless coupled mass is requested with a PARAM COUPMASS card
+(see PARAM bulk data card). Theoretical aspects of the bar element are
+treated in Section 5.2 of the Theoretical Manual.
+
+The element coordinate system is shown in Figure 1.3-1a. End a is
+offset from grid point a an amount measured by vector wa and end b is
+offset from grid point b an amount measured by vector wb. The vectors
+wa and wb are measured in the global coordinates of the connected grid
+point. The x-axis of the element coordinate system is defined by a
+line connecting end a to end b of the bar element. The orientation of
+the bar element is described in terms of two reference planes. The
+reference planes are defined with the aid of vector v. This vector may
+be defined directly with three components in the global system at end
+a of the bar or by a line drawn from end a to a third referenced grid
+point. The first reference plane (Plane 1) is defined by the x-axis
+and the vector v. The second reference plane (Plane 2) is defined by
+the vector cross product (x x v) and the x-axis. The subscripts 1 and
+2 refer to forces and geometric properties associated with bending in
+planes 1 and 2, respectively. The reference planes are not necessarily
+principal planes. The coincidence of the reference planes and the
+principal planes is indicated by a zero product of inertia (I12) on
+the PBAR card. If shearing deformations are included, the reference
+axes and the principal axes must coincide. When pin flags and offsets
+are used, the effect of the pin is to free the force at the end of the
+element x-axis of the beam, not at the grid point. The positive
+directions for element forces are shown in Figure 1.3-1b. The
+following element forces, either real or complex (depending on the
+rigid format), are output on request:
+
+- Bending moments at both ends in the two reference planes.
+- Shears in the two reference planes.
+- Average axial force.
+- Torque about the bar axis.
+
+The following real element stresses are output on request:
+
+- Average axial stress.
+- Extensional stress due to bending at four points on the
+  cross-section at both ends. (Optional; calculated only if you enter
+  stress recovery points on PBAR card.)
+- Maximum and minimum extensional stresses at both ends.
+- Margins of safety in tension and compression for the whole
+  element. (Optional; calculated only if you enter stress limits on
+  MAT1 card.)
+
+Tensile stresses are given a positive sign and compressive stresses a
+negative sign. Only the average axial stress and the extensional
+stresses due to bending are available as complex stresses. The stress
+recovery coefficients on the PBAR card are used to locate points on
+the cross-section for stress recovery. The subscript 1 is associated
+with the distance of a stress recovery point from plane 2. The
+subscript 2 is associated with the distance from plane 1.
+
+The use of the BAROR card avoids unnecessary repetition of input when
+a large number of bar elements either have the same property
+identification number or have their reference axes oriented in the
+same manner. This card is used to define default values on the CBAR
+card for the property identification number and the orientation vector
+for the reference axes. The default values are used only when the
+corresponding fields on the CBAR card are blank.
+
+### 1.3.2.2  Curved Beam or Elbow Element
+
+The curved beam or elbow element is a three-dimensional element with
+extension, torsion, and bending capabilities and the associated
+shears. No offset of the elastic axis is allowed nor are pin releases
+permitted to eliminate the connection between motions at the ends of
+the element and the adjacent grid points.
+
+The elbow element was initially developed to facilitate the analysis
+of pipe networks by using it as a curved pipe element. However, the
+input format is general enough to allow application to beams of
+general cross section. An important assumption in the development of
+the element is that the radius of curvature is much larger than the
+cross section depth.
+
+The element is defined with a CELBOW card and its properties (constant
+over the length) are defined with a PELBOW card. There are six degrees
+of freedom at each end of the element: translations in the local x, y,
+z directions and rotations about the local x, y, z axes. The
+structural and nonstructural mass of the element are lumped at the
+ends of the element.
+
+The specified properties of the elbow element are its area; its
+moments of inertia, I1 and I2 (the product of inertia is assumed to be
+zero); its torsional constant, J; the radius of curvature; the angle
+between end-a and end-b; the factors K1 and K2 for computing
+transverse shear stiffness; the nonstructural mass per unit length,
+NSM; the stress intensification factor, C; and the flexibility
+correction factors, Kx, Ky, and Kz. The stress intensification factor
+C is applied to the bending stress only. The flexibility correction
+factors Kx, Ky, and Kz are generally greater than 1.0 and are used as
+divisors to reduce the respective moments of inertia. These are
+discussed further towards the end of this section.
+
+The material properties, obtained by reference to a materials
+properties table, include the elastic moduli, E and G, density, rho,
+and the thermal expansion coefficient, \\( \alpha \\), determined at the
+average temperature of the element.
+
+The plane of the element is defined by two grid points, A and B, and a
+vector v from grid point A directed toward the center of
+curvature. Plane 1 of the element cross section lies in this
+plane. Plane 2 is normal to Plane 1 and contains the vector v. The
+area moments of inertia, I1 and I2, are defined as for the BAR
+element. The cross product of inertia, I12, is neglected. This
+assumption requires that at least one axis of the element cross
+section be an axis of symmetry.
+
+The following element forces are output on request:
+
+- Bending moments at both ends in the two reference planes
+- Transverse shear force at both ends in the two reference planes
+- Axial force at both ends
+- Torque at both ends
+
+The following element stresses are output on request:
+
+- Average axial stress at both ends
+- Bending stresses at four points on the cross section at both
+  ends. The points are specified by you.
+- Maximum and minimum extensional stresses at both ends.
+- Margins of safety in tension and compression (Optional, output only
+  if you enter stress limits on MAT1 card)
+
+Stress Intensification Factor and Flexibility Correction Factors
+
+When a plane pipe network, consisting of both straight and curved
+sections, is analyzed by simple beam theory as an indeterminate
+system, the computed support reactions are greater than actually would
+be measured in an experiment. The apparent decrease in stiffness in
+such a case is due to an ovalization of the pipe in the curved
+sections. The ovalization also yields a stress distribution different
+from that computed by simple beam theory.
+
+When a curved beam or elbow element is used as a curved pipe element,
+there are two factors available that can be specified to account for
+the differences in its behavior compared to curved beams. These are
+the stress intensification factor and the flexibility correction
+factors.
+
+The maximum stress, \\( \sigma_{max} \\), in a curved pipe element is
+given by
+
+\begin{equation} \sigma_{max} = C \frac{Mc}{I}\end{equation}
+
+where C is a stress intensification factor,
+
+    M = bending moment,
+    c = fiber distance, and
+    I = plane (area) moment of inertia of the cross section.
+
+In general, the factor C mentioned above may be regarded as a stress
+correction factor in curved beam analysis.
+
+The effect of the ovalization of the pipe in curved sections is to
+reduce the stiffness parameter EI (E: modulus of elasticity) of the
+curved pipe to a fictitious value. Thus, for the elbow element,
+
+\begin{equation}
+(EI1)^{'} = \frac{EI1}{K\_y} \mbox{ , } (1.0 < K\_y) \mbox{, and}
+\end{equation}`
+
+\begin{equation}
+(EI2)^{'} = \frac{EI2}{K\_z} \mbox{ , } (1.0 < K\_z)
+\end{equation}
+
+where Ky and Kz are the stiffness correction factors corresponding to
+planes 1 and 2, respectively. The stiffness correction factor, Kz,
+corresponds to the torsional behavior and is generally taken to be
+1.0.
