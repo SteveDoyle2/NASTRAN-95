@@ -847,10 +847,10 @@ and torque are output on request in either the real or complex
 form. The positive directions for these forces are indicated in Figure
 1.3-2. The following real element stresses are output on request:
 
-  -  Axial stress
-  -  Torsional stress
-  -  Margin of safety for axial stress
-  -  Margin of safety for torsional stress.
+- Axial stress
+- Torsional stress
+- Margin of safety for axial stress
+- Margin of safety for torsional stress.
 
 Positive directions are the same as those indicated in Figure 1.3-2
 for element forces. Only the axial stress and the torsional stress are
@@ -896,3 +896,187 @@ cross-section. If mass calculations are being made, the density will
 also have to be adjusted on a MAT1 card. The element coordinate system
 and directions for positive forces are shown in Figure 1.3-4. Stress
 recovery is similar to that for shear panels.
+
+## 1.3.5  Plate and Membrane Elements
+
+NASTRAN includes two different shapes of plate and membrane elements
+(triangular and quadrilateral) and two different stress systems
+(inplane and bending) which are uncoupled. There are different forms
+of elements available that are defined by connection cards as follows:
+
+1. Plate (Bending) Elements
+
+   a. CTRBSC - basic unit from which the bending properties of the
+   other plate elements are formed.
+
+   b. CTRPLT - triangular element with zero inplane stiffness and
+   finite bending stiffness.
+
+   c. CTRPLT1 - a higher order triangular element with zero inplane
+   stiffness and finite bending stiffness. Uses quintic polynomial
+   representation for transverse displacements and bilinear variation
+   for temperature and thickness.
+
+   d. CQDPLT - quadrilateral element with zero inplane stiffness and
+   finite bending stiffness.
+
+2. Membrane (Inplane) Elements
+
+   a. CTRMEM - triangular element with finite inplane stiffness and
+   zero bending stiffness.
+
+   b. CTRIM6 - triangular element with finite inplane stiffness and
+   zero bending stiffness. Uses quadratic polynomial representation
+   for membrane displacements and bilinear variation for temperature
+   and thickness.
+
+   c. CQDMEM - quadrilateral element consisting of four overlapping
+   CTRMEM elements.
+
+   d. CQDMEM1 - an isoparametric quadrilateral membrane element.
+
+   e. CQDMEM2 - a quadrilateral membrane element consisting of four
+   non- overlapping CTRMEM elements.
+
+   f. CIS2D8 - a quadriparabolic isoparametric membrane element. May
+   be reduced to a triangular element under specified conditions.
+
+3. Plate and Membrane Elements
+
+   a. CTRIA1 - triangular element with both inplane and bending
+   stiffness. It is designed for sandwich plates which can have
+   different materials referenced for membrane, bending, and
+   transverse shear properties.
+
+   b. CTRIA2 - triangular element with both inplane and bending
+   stiffness that assumes a solid homogeneous cross-section.
+
+   c. CQUAD1 - quadrilateral element with both inplane and bending
+   stiffness. It is designed for sandwich plates which can have
+   different materials referenced for membrane, bending, and
+   transverse shear properties.
+
+   d. CQUAD2 - quadrilateral element with both inplane and bending
+   stiffness that assumes a solid homogeneous cross-section.
+
+Theoretical aspects of these elements are treated in Section 5.8 of
+the Theoretical Manual.
+
+The properties for the above elements are defined on their associated
+Pxxxxxx cards (PTRBSC, PTRPLT, etc.). All of the properties of the
+elements are assumed uniform over their surfaces, except for the
+CTRIM6 and CTRPLT1 elements. Anisotropic material may be specified for
+all these elements.  Transverse shear flexibility may be included for
+all bending elements on an optional basis, except for homogeneous
+elements (CTRIA2 and CQUAD2), where this effect is automatically
+included. Structural mass is calculated only for elements that specify
+a membrane thickness and is based only on the membrane
+thickness. Nonstructural mass can be specified for all plate elements,
+except the basic bending triangle. Only lumped mass procedures are
+used for membrane elements, except for the CIS2D8 element. Coupled
+mass procedures may be requested for elements that include bending
+stiffness with the PARAM COUPMASS card (see PARAM bulk data
+card). Differential stiffness matrices are generated for the following
+elements: CTRMEM, CTRIA1, CTRIA2, CQDMEM, CQUAD1, CQUAD2.  The
+following elements may have nonlinear material characteristics in
+Piecewise Linear Analysis: CTRMEM, CTRIA1, CTRIA2, CQDMEM, CQUAD1,
+CQUAD2.
+
+The element coordinate systems for the triangular and quadrilateral
+elements are shown in Figure 1.3-5. The integers 1, 2, 3, and 4 refer
+to the order of the connected grid points on the connection cards
+defining the elements. A similar connection scheme for elements with
+mid-side grid points would be defined by six or eight integers on the
+connection card. The angle é is the orientation angle for anisotropic
+materials.
+
+Average values of element forces are calculated for all plate elements
+(except the CTRPLT1) having a finite bending stiffness. The element
+forces for the CTRPLT1 are calculated at the corners and centroid of
+the element. The positive directions for plate element forces in the
+element coordinate system are shown in Figure 1.3-6a. The following
+element forces per unit of length, either real or complex, are output
+on request:
+
+-  Bending moments on the x and y faces.
+-  Twisting moment.
+-  Shear forces on the x and y faces.
+
+The CQDMEM2 is the only membrane element for which element forces are
+calculated. The positive directions for these forces are shown in
+Figure 1.3- 3b, and the force output has the same interpretation as
+the force output for the shear panel discussed previously.
+
+Average values of the membrane stresses are calculated for the
+triangular and quadrilateral membrane elements, with the exception of
+the CQDMEM1 and CTRIM6 elements. For the CQDMEM1 element, in which the
+stress field varies, the stresses are evaluated at the intersection of
+diagonals (in a mean plane if the element is warped.) For the CTRIM6
+element, the stresses are calculated at the corners and centroid of
+the element. The positive directions for the membrane stresses are
+shown in Figure 1.3-6b. The stresses for the CQDMEM2 element are
+calculated in the material coordinate system. The material coordinate
+system is defined by the material orientation angle on the CQDMEM2
+card. The stresses for all other membrane elements are calculated in
+the element coordinate system. For the CIS2D8 element, the stresses
+are computed at the Gaussian quadrature points and extrapolated to the
+grid points.
+
+The following real membrane stresses are output on request:
+
+-  Normal stresses in the x and y directions
+-  Shear stress on the x face in the y direction
+-  Angle between the x-axis and the major principal axis
+-  Major and minor principal stresses
+-  Maximum shear stress
+
+Only the normal stresses and shearing stress are available in the
+complex form.
+
+If an element has bending stiffness, the average stresses are
+calculated on the two faces of the plate for homogeneous plates and at
+two specified points on the cross-section for other plate
+elements. The distances to the specified points are given on the
+property cards. The positive directions for these fiber distances are
+defined according to the right-hand sequence of the grid points
+specified on the connection card. These distances are identified in
+the output and must be nonzero in order to obtain nonzero stress
+output. The same stresses are calculated for each of the faces as are
+calculated for membrane elements.
+
+In the case of composite plate elements (CTRIA1, CTRIA21, CQUAD1, and
+CQUAD2 only), the stresses mentioned above can also be requested in a
+material coordinate system which is specified on a MAT1 or MAT2
+card. In place of the fiber distances, the output in this case
+identifies the specified material coordinate system as well as an
+output code. This latter code is set to 1 or 2 according as the
+material x-axis or the y-axis is chosen as the reference axis.
+
+The element stresses in material coordinate system computed above (for
+CTRIA1, CTRIA2, CQUAD1, and CQUAD2 elements) can also be requested at
+the connected grid points. These stresses (at grid points) are
+obtained by interpolation. The output code in this case is set to
+(10*N + projection code) where N is the number of independent points
+used in the interpolation and the projection code is an integer which
+is set to 1, 2, or 3 according as the material x-axis, y-axis, or the
+z-axis is normal to projection.
+
+In the case of composite plate elements (CTRIA1, CTRIA2, CQUAD1, and
+CQUAD2 only), strains and curvatures are also output on request. The
+options available and the output formats are similar to those
+available in the case of stresses as described above.
+
+The quadrilateral elements are intended for use when the surfaces are
+reasonably flat and the geometry is nearly rectangular. For these
+conditions, the quadrilateral elements eliminate the modeling bias
+associated with the use of triangular elements, and quadrilaterals
+give more accurate results for the same mesh size. If the surfaces are
+highly warped, curved, or swept, triangular elements should be
+used. Under extreme conditions quadrilateral elements will give
+results that are considerably less accurate than triangular elements
+for the sane mesh size. Quadrilateral elements should be kept as
+nearly square as practicable, as the accuracy tends to deteriorate as
+the aspect ratio of the quadrilateral increases. Triangular elements
+should be kept as nearly equilateral as practicable, because the
+accuracy tends to deteriorate as the angles become obtuse and as the
+ratio of the longest to the shortest side increases.
