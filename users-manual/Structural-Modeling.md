@@ -861,3 +861,38 @@ extensional and torsional viscous damping properties rather than
 stiffness properties. The viscous damper element is defined with a
 CVISC card and its properties with a PVISC card. This element is used
 in the direct formulation of dynamic matrices.
+
+## 1.3.4 Shear Panels and Twist Panels
+
+The shear panel is defined with a CSHEAR card and its properties with
+a PSHEAR card. A shear panel is a two-dimensional structural element
+that resists the action of tangential forces applied to its edges, but
+does not resist the action of normal forces. The structural and
+nonstructural mass of the shear panel are lumped at the connected grid
+points. Details of the shear panel element are discussed in Section
+5.3 of the Theoretical Manual.
+
+The element coordinate system for a shear panel is shown in Figure
+1.3-3a.  The integers 1, 2, 3, and 4 refer to the order of the
+connected grid points on the CSHEAR card. The element forces are
+output on request in either the real or complex form. The positive
+directions for these forces are indicated in Figure 1.3-3b. These
+forces consist of the forces applied to the element at the corners in
+the direction of the sides, kick forces at the corners in a direction
+normal to the plane formed by the two adjacent edges, and "shear
+flows" (force per unit length) along the four edges. The shear
+stresses are calculated at the corners in skewed coordinates parallel
+to the exterior edges. The average of the four corner stresses and the
+maximum stress are output on request in either the real or complex
+form. A margin of safety is also output when the stresses are real.
+
+The twist panel performs the same function for bending action that the
+shear panel performs for membrane action. The twist panel is defined
+with a CTWIST card and its properties with a PTWIST card. In
+calculating the stiffness matrix, a twist panel is assumed to be
+solid. For built-up panels, the thickness in the PTWIST card must be
+adjusted to give the correct moment of inertia of the
+cross-section. If mass calculations are being made, the density will
+also have to be adjusted on a MAT1 card. The element coordinate system
+and directions for positive forces are shown in Figure 1.3-4. Stress
+recovery is similar to that for shear panels.
