@@ -816,7 +816,7 @@ curved pipe to a fictitious value. Thus, for the elbow element,
 
 \begin{equation}
 (EI1)^{'} = \frac{EI1}{K\_y} \mbox{ , } (1.0 < K\_y) \mbox{, and}
-\end{equation}`
+\end{equation}
 
 \begin{equation}
 (EI2)^{'} = \frac{EI2}{K\_z} \mbox{ , } (1.0 < K\_z)
@@ -826,3 +826,38 @@ where Ky and Kz are the stiffness correction factors corresponding to
 planes 1 and 2, respectively. The stiffness correction factor, Kz,
 corresponds to the torsional behavior and is generally taken to be
 1.0.
+
+## 1.3.3  Rod Element
+
+The rod element is defined with a CROD card and its properties with a
+PROD card. The rod element includes extensional and torsional
+properties. The CONROD card is an alternate form that includes both
+the connection and property information on a single card. The tube
+element is a specialized form that is assumed to have a circular
+cross-section. The tube element is defined with a CTUBE card and its
+properties with a PTUBE card. The structural and nonstructural mass of
+the rod are lumped at the adjacent grid points unless coupled mass is
+requested with the PARAM COUPMASS card (see PARAM bulk data
+card). Theoretical aspects of the rod element are treated in Section
+5.2 of the Theoretical Manual.
+
+The x-axis of the element coordinate system is defined by a line
+connecting end a to end b as shown in Figure 1.3-2. The axial force
+and torque are output on request in either the real or complex
+form. The positive directions for these forces are indicated in Figure
+1.3-2. The following real element stresses are output on request:
+
+  -  Axial stress
+  -  Torsional stress
+  -  Margin of safety for axial stress
+  -  Margin of safety for torsional stress.
+
+Positive directions are the same as those indicated in Figure 1.3-2
+for element forces. Only the axial stress and the torsional stress are
+available as complex stresses.
+
+Another kind of rod element is the viscous damper, which has
+extensional and torsional viscous damping properties rather than
+stiffness properties. The viscous damper element is defined with a
+CVISC card and its properties with a PVISC card. This element is used
+in the direct formulation of dynamic matrices.
