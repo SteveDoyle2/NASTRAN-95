@@ -1080,3 +1080,230 @@ the aspect ratio of the quadrilateral increases. Triangular elements
 should be kept as nearly equilateral as practicable, because the
 accuracy tends to deteriorate as the angles become obtuse and as the
 ratio of the longest to the shortest side increases.
+
+## 1.3.6  Axisymmetric Shell Elements
+
+The properties of axisymmetric shells can be specified with either of
+two elements, the conical shell (CONEAX) or the toroidal ring
+(TORDRG). However, these cannot be used together in the same
+model. Also available for thick shells of revolution are the
+axisymmetric solid elements (TRIARG, TRAPRG, TRIAAX, and TRAPAX) which
+are described in the next section. Thin shell (TRSHL) modeling is
+described in Section 1.3.12.
+
+### 1.3.6.1  Conical Shell (CONEAX) Element
+
+The properties of the conical shell element are assumed to be
+symmetrical with respect to the axis of the shell. However, the loads
+and deflections need not be axisymmetric, as they are expanded in
+Fourier series with respect to the aximuthal coordinate. Due to
+symmetry, the resulting load and deformation systems for different
+harmonic orders are independent, a fact that results in a large time
+saving when the use of the conical shell element is compared with an
+equivalent model constructed from plate elements. Theoretical aspects
+of the conical shell element are treated in Section 5.9 of the
+Theoretical Manual.
+
+The conical shell element may be combined with TRIAAX and TRAPAX
+elements only. The existence of a conical shell problem is defined by
+the AXIC card.  This card also indicates the number of harmonics
+desired in the problem formulation. Only a limited number of bulk data
+cards are allowed when using conical shell elements. The list of
+allowable cards is given on the AXIC card description in Section
+2.4.2.
+
+The geometry of a problem using the conical shell element is described
+with RINGAX cards instead of GRID cards. The RINGAX cards describe
+concentric circles about the basic z-axis, with their locations given
+by radii and z- coordinates as shown in Figure 1.3-7. The degrees of
+freedom defined by each RINGAX card are the Fourier coefficients of
+the motion with respect to angular position around the circle. For
+example the radial motion, \\( u_r \\), at any angle, \\( \phi \\), is
+described by the equation:
+
+\begin{equation}
+u\_r(\phi) = \sum^N\_{n=0} u^n\_r \cos(n\phi) + \sum^N\_{n=0} u^{n*}\_r \sin(n\phi)
+\end{equation}
+
+where \\( u_r^n \\) and \\( u\_r^{n\*} \\) are the Fourier
+coefficients of radial motion for the n-harmonic. For calculation
+purposes the series is limited to N harmonics as defined by the AXIC
+card. The first sum in the above equation describes symmetric motion
+with respect to the \\( \phi = 0 \\) plane. The second sum with the
+"starred" (\*) superscripts describes the antisymmetric motion. Thus
+each RINGAX data card will produce six times (N+l) degrees of freedom
+for each series.
+
+The selection of symmetric or antisymmetric solutions is controlled by
+the AXISYM card in the Case Control Deck. For general loading
+conditions, a combination of the symmetric and antisymmetric solutions
+must be made, using the SYMCOM card in the Case Control Deck (Section
+2.3 of User's Manual).
+
+Since you are rarely interested in applying loads in terms of Fourier
+harmonics and interpreting your data by manually performing the above
+summations, NASTRAN is provided with special cards which automatically
+perform these operations. The POINTAX card is used like a GRID card to
+define physical points on the structure for loading and
+output. Sections of the circle may be defined by a SECTAX card, which
+defines a sector with two angles and a referenced RINGAX card. The
+POINTAX and SECTAX cards define six degrees of freedom each. The
+implied coordinate system for these points is a cylindrical system \\(
+(r, \phi, z) \\) and their applied loads must be described in this
+coordinate system. Since the displacements of these points are
+dependent on the harmonic motions, they nay not be constrained in any
+manner.
+
+The conical shell element is connected to two RINGAX points with a
+CCONEAX card. The properties of the conical shell element are
+described on the PCONEAX card. The RINGAX points must be placed on the
+neutral surface of the element and the points for stress calculation
+must be given on the PCONEAX card relative to the neutral surface. Up
+to fourteen angular positions around the element may be specified for
+stress and force output. These values will be calculated midway
+between the two connected rings.
+
+The structure defined with RINGAX and CCONEAX cards must be
+constrained in a special manner. All harmonics may be constrained for
+a particular degree of freedom on a ring by using permanent
+single-point constraints on the RINGAX cards. Specified harmonics of
+each degree of freedom on a ring may be constrained with a SPCAX
+card. This card is the same as the SPC card except that a harmonic
+must be specified. The MPCAX, OMITAX, and SUPAX data cards correspond
+the MPC, OMIT, and SUPORT data except that harmonics must be
+specified. SPCADD and MPCADD cards may be used to combine constraint
+sets in the usual manner.
+
+The stiffness matrix includes five degrees of freedom per grid circle
+per harmonic when transverse shear flexibility is included. Since the
+rotation about the normal to the surface is not included, either the
+fourth or the sixth degree of freedom (depending upon the situation)
+must be constrained to zero when the angle between the meridional
+generators of two adjacent elements is zero. When the transverse shear
+flexibility is not included, only four independent degrees of freedom
+are used, and the fourth and sixth degrees of freedom must be
+constrained to zero for all rings. These constraints can be
+conveniently specified on the RINGAX card.
+
+The conical shell structure may be loaded in various
+ways. Concentrated forces may be described by FORCE and MOMENT cards
+applied to POINTAX points. Pressure loads may be input in the PRESAX
+data card which defines an area bounded by two rings and two
+angles. Temperature fields are described by a paired list of angles
+and temperatures around a ring as required by the TEMPAX card. Direct
+loads on the harmonics of a RINGAX point are given by the FORCEAX and
+MOMAX card. Since the implied coordinate system is cylindrical, the
+loads are given in the r, \\(\phi\\), and z directions. The value of a
+harmonic load \\(F\_n\\) is the total load on the whole ring of radius
+r. If a sinusoidal load per unit length of maximum value \\(a\_n\\) is
+given, the value on the FORCEAX card must be
+
+\begin{equation}
+F\_n = 2 \alpha r a\_n
+\end{equation} n = 0,
+
+\begin{equation}
+F\_n = \alpha r a\_n
+\end{equation} n > 0.
+
+Displacements of rings and forces in conical shell elements can be
+requested in two ways:
+
+1. The harmonic coefficients of displacements on a ring or forces in a
+   conical element.
+2. The displacements at specified points or the average value over a
+   specified sector of a ring. The forces in the element at specified
+   azimuths or average values over specified sectors of a conical
+   element.
+
+Harmonic output is requested by ring number for displacements and
+conical shell element number for element forces. The number of
+harmonics that will be output for any request is a constant for any
+single execution. This number is controlled by the HARMONICS card in
+the Case Control Deck (see Section 2.3).
+
+The following element forces per unit of width are output either as
+harmonic coefficients or at specified locations on request:
+
+- Bending moments on the u and v faces
+- Twisting moments
+- Shearing forces on the u and v faces
+
+The following element stresses are calculated at two specified points
+on the cross-section of the element and output either as harmonic
+coefficients or at specified locations on request:
+
+- Normal stresses in u and v directions
+- Shearing stress on the u face in the v direction
+- Angle between the u-axis and the major principal axis
+- Major and minor principal stresses
+- Maximum shear stress
+
+The manner in which the data cards for the CONEAX element (as well as
+for the TRAPAX and TRIAAX elements) are processed is described in
+Section 1.3.7.3.
+
+### 1.3.6.2  Toroidal Ring (TORDRG) Element
+
+The cylindrical coordinate system for the toroidal ring is implied by
+the use of the toroidal element, and hence, no explicit definition is
+required.  The toroidal element may use orthotropic materials. The
+axes of orthotropy are assumed to coincide with the element coordinate
+axes.
+
+Deformation behavior of the toroidal element is described by five
+degrees of freedom for each of the two grid rings which it
+connects. The degrees of freedom in the implicit coordinate system
+are:
+
+1. \\( \bar{u} \\) - radial displacement
+2. Not defined for toroidal element (must be constrained)
+3. \\( \bar{w| \\) - axial displacement
+4. \\( \prime{w} = \deriv{w}{e} \\) slope in e-direction
+5. \\( \prime{u} = \deriv{u}{e} \\) strain in e-direction
+6. \\( \pprime{w} = \dderiv{w}{e} \\) curvature in ze-plane
+
+The displacements u and w are in the basic coordinate system, and
+hence can be expressed in other local coordinate systems if
+desired. However, the quantities \\( \prime{u} \\), \\( \prime{w} \\),
+and \\( \pprime{w} \\) are always in the element coordinate system.
+
+The toroidal ring element connectivity is defined with a CTORDRG card
+and its properties with a PTORDRG card and, in the limit, this element
+becomes a cap element (see Section 5.10 of the Theoretical
+Manual). The integers 1 and 2 refer to the order of the connected grid
+points on the CTORDRG card. The grid points must lie in the r-z plane
+of the basic coordinate system and they must lie to the right of the
+axis of symmetry. The angles à1 and à2 are the angles of curvature and
+are defined as the angle measured in degrees from the axis of symmetry
+to a line which is perpendicular to the tangent to the surface at grid
+points 1 and 2 respectively. For conic rings \\( \alpha\_1 = \alpha\_2
+\\) and for cylindrical rings \\( \alpha\_1 = \alpha\_2 = 90\degrees
+\\). Toroidal elements may be connected to form closed figures in the
+r-z plane, but slope discontinuities are not permitted at connection
+points.
+
+The following forces, evaluated at each end of the toroidal element,
+are output on request:
+
+- Radial force
+- Axial force
+- Meridional moment
+- A generalized force which corresponds to the \\( \prime{w} \\)
+  degree of freedom.
+- A generalized force which corresponds to the \\( \pprime{w} \\)
+  degree of freedom.
+
+The first three forces are referenced to the global coordinate system
+and the two generalized forces are referenced to the element
+coordinate system. For a definition of the generalized forces see
+Section 5.10 of the Theoretical Manual.
+
+The following stresses, evaluated at both ends and the midspan of each
+element, are output on request:
+
+- Tangential membrane stress (Force per unit length)
+- Circumferential membrane stress (Force per unit length)
+- Tangential bending stress (Moment per unit length)
+- Circumferential bending stress (Moment per unit length)
+- Shearing stress (Force per unit length)
