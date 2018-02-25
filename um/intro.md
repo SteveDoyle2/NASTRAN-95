@@ -1,4 +1,4 @@
-=PAGE=
+
    The User's Manual is one of four manuals that constitute the documentation
 for NASTRAN, the other three being the Theoretical Manual, the Programmer's
 Manual, and the Demonstration Problem Manual. Although the User's Manual
@@ -73,7 +73,7 @@ on which NASTRAN has been implemented. Samples of the printer output and of
 structure plots and response plots can be obtained by executing these
 demonstration problems. The printer output for these problems is also
 available on microfiche. 
-=PAGE=
+
 1. STRUCTURAL MODELING
 
 1.1 INTRODUCTION
@@ -729,9 +729,9 @@ available on microfiche.
 
 7.1 NASTRAN DICTIONARY
 
-=PAGE=
-1.1  INTRODUCTION
 
+1.1  INTRODUCTION
+=================
    NASTRAN embodies a lumped element approach, wherein the distributed 
 physical properties of a structure are represented by a model consisting of a 
 finite number of idealized substructures or elements that are interconnected 
@@ -795,57 +795,57 @@ structural models. Detailed instructions for each of the bulk data cards and
 case control cards are given in Section 2. Additional information on the case 
 control cards and use of parameters is given for each rigid format in Section 
 3. 
-=PAGE=
 
-ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿         ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿         ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-³       SEQGP        ³         ³      CORDi      ³         ³                   ³
-³    Grid Point      ³         ³   Coordinate    ³         ³     Grid Point    ³
-³     Sequence       ÃÄÄÄÄ¿    ³     System      ³    ÚÄÄÄÄ´     Properties    ³
-³                    ³    ³    ³   Definition    ³    ³    ³                   ³
-ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ    ³    ÀÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÙ    ³    ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
-                          ³            ³              ³
-ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿    ³    ÚÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄ¿    ³    ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-³    CONSTRAINTS     ³    ÀÄÄÄÄ´      GRID       ÃÄÄÄÄÙ    ³       Cxxx        ³
-³    Single Point    ÃÄÄÄÄÄÄÄÄÄ´   Grid Point    ÃÄÄÄÄÄÄÄÄÄ´      Element      ³
-³     Multipoint     ³    ÚÄÄÄÄ´   Definition    ³         ³     Definition    ³
-³   Rigid Elements   ³    ³    ³                 ³         ³                   ³
-³   Omitted Points   ³    ³    ÀÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÙ         ÀÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÙ
-³     Free Body      ³    ³            ³                             ³
-³     Supports       ³    ³            ³                             ³
-ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ    ³            ³                             ³
-                          ³            ³                             ³
-ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿    ³    ÚÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄ¿         ÚÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄ¿
-³      DPHASE        ³    ³    ³  STATIC LOADS   ³         ³      Pxxx         ³
-³      DELAY         ³    ³    ³  Concentrated   ³         ³     Property      ³
-³      DAREA         ÃÄÄÄÄÙ    ³    Pressure     ³         ³    Definition     ³
-³                    ³         ³     Gravity     ³         ÀÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÙ
-ÀÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÙ         ³   Centrifugal   ³                   ³
-          ³                    ³     Thermal     ³                   ³
-          ³                    ³   Deformation   ³                   ³
-          ³                    ³  Displacement   ³                   ³
-          ³                    ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ                   ³
-ÚÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄ¿                                     ÚÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄ¿
-³    DYNAMIC LOADS   ³                                     ³      MATxx        ³
-³    Time Dependent  ³                                     ³     Material      ³
-³      Frequency     ³                                     ³    Definition     ³
-³      Dependent     ³                                     ÀÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÙ
-ÀÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÙ                                               ³
-          ³                                                          ³
-ÚÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄ¿                                     ÚÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄ¿
-³                    ³                                     ³     TABLEMi       ³
-³     TABLEDi        ³                                     ³     TABLES1       ³
-³                    ³                                     ³                   ³
-ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ                                     ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+
++--------------------+         +-----------------+         +-------------------+
+|       SEQGP        |         |      CORDi      |         |                   |
+|    Grid Point      |         |   Coordinate    |         |     Grid Point    |
+|     Sequence       +----+    |     System      |    +----+     Properties    |
+|                    |    |    |   Definition    |    |    |                   |
++--------------------+    |    +-------+---------+    |    +-------------------+
+                          |            |              |
++--------------------+    |    +-------+---------+    |    +-------------------+
+|    CONSTRAINTS     |    +----+      GRID       +----+    |       Cxxx        |
+|    Single Point    +---------+   Grid Point    +---------+      Element      |
+|     Multipoint     |    +----+   Definition    |         |     Definition    |
+|   Rigid Elements   |    |    |                 |         |                   |
+|   Omitted Points   |    |    +-------+---------+         +---------+---------+
+|     Free Body      |    |            |                             |
+|     Supports       |    |            |                             |
++--------------------+    |            |                             |
+                          |            |                             |
++--------------------+    |    +-------+---------+         +---------+---------+
+|      DPHASE        |    |    |  STATIC LOADS   |         |      Pxxx         |
+|      DELAY         |    |    |  Concentrated   |         |     Property      |
+|      DAREA         +----+    |    Pressure     |         |    Definition     |
+|                    |         |     Gravity     |         +---------+---------+
++---------+----------+         |   Centrifugal   |                   |
+          |                    |     Thermal     |                   |
+          |                    |   Deformation   |                   |
+          |                    |  Displacement   |                   |
+          |                    +-----------------+                   |
++---------+----------+                                     +---------+---------+
+|    DYNAMIC LOADS   |                                     |      MATxx        |
+|    Time Dependent  |                                     |     Material      |
+|      Frequency     |                                     |    Definition     |
+|      Dependent     |                                     +---------+---------+
++---------+----------+                                               |
+          |                                                          |
++---------+----------+                                     +---------+---------+
+|                    |                                     |     TABLEMi       |
+|     TABLEDi        |                                     |     TABLES1       |
+|                    |                                     |                   |
++--------------------+                                     +-------------------+
 
 
 
                         Figure 1.1-1. Structural model
 
-=PAGE=
+
 1.2  GRID POINTS
-
+================
 1.2.1  Grid Point Definition
-
+----------------------------
    Geometric grid points are defined on GRID bulk data cards by specifying
 their coordinates in either the basic or a local coordinate system. The
 implicitly defined basic coordinate system is rectangular, except when using
@@ -911,7 +911,7 @@ matrix input used in dynamic analyses and are defined on EPOINT cards.
 fluid-structure interface (see Section 1.7).
 
 1.2.2  Grid Point Sequencing
-
+----------------------------
    The external identification numbers used for grid points may be selected in
 any manner you desire. However, in order to reduce the number of active
 columns, and, hence, to substantially reduce computing times when using the
@@ -926,7 +926,7 @@ time (forward/backward substitution) is proportional to the number of nonzero
 terms in the triangular factor.
 
 1.2.2.1  Manual Grid Point Resequencing
-
+---------------------------------------
    In order to allow arbitrary grid point numbers and still preserve sparsity
 in the triangular decomposition factor to the greatest extent possible,
 provision is made for you to resequence the grid point numbers for internal
@@ -1046,7 +1046,7 @@ determined by direct reference to the positions of the added terms in the
 dynamic matrices.
 
 1.2.2.2  Automatic Grid Point Resequencing Using the BANDIT Procedure
-
+---------------------------------------------------------------------
    If you want reduced matrix reduction and equation solution times, you can
 manually resequence your grid points by the use of SEQGP cards as per the
 guidelines outlined in the previous section. However, in order to relieve you
@@ -1065,7 +1065,7 @@ to your input data (replacing any SEQGP cards already input, if so specified)
 for subsequent processing by the program.
 
 1.2.2.2.1  BANDIT Options
-
+-------------------------
    The execution of the BANDIT operations in NASTRAN is controlled by several
 parameters. These parameters can be specified by means of the NASTRAN card and
 are fully described in Section 2.1. All of these parameters have default
@@ -1103,7 +1103,7 @@ consider individual degrees of freedom and, in addition, cannot distinguish
 one MPC set from another.
 
 1.2.2.2.2  Cases for Which BANDIT Computations are Skipped
-
+----------------------------------------------------------
    The BANDIT computations in NASTRAN are unconditionally skipped over if any
 of the following conditions exists:
 
@@ -1120,7 +1120,7 @@ of the following conditions exists:
    3. It is a substructure Phase 2 run.
 
 1.2.2.2.3  BANDIT in Restarts
-
+-----------------------------
    At the beginning of a NASTRAN job, the Preface (or Link 1) modules read and
 process the Executive, Case Control, and Bulk Data decks. The SEQGP cards
 generated by BANDIT are added directly to the NASTRAN data base (specifically,
@@ -1187,44 +1187,44 @@ REFERENCES
 
 2. Chan, G. C., "BANDIT in NASTRAN," Eleventh NASTRAN Users' Colloquium, NASA
    Conference Publication, May 1983, San Francisco, California, pp. 1-5.
-=PAGE=
+
                                      z
-                                     ³     u3
-                                     ³     ³
-                                     ³     ³ P
-                                   G2*     *ÄÄÄÄÄÄÄÄ u2
-                                     ³    /³
-(a) Rectangular                     /³   / ³
-                                   / ³  /  ³ Z
-                                  /  ³ u1  ³
-                               G3*   ³     ³
-                                 ³ G1*ÄÄÄÄÄÄÄÄÄÄ*ÄÄÄÄÄÄÄÄÄÄ y
-                                 ³  /      ³   /
-                                 ³ /       ³  /
-                                 ³/        ³ / X
-                                 /         ³/
-                                /ÄÄÄÄÄÄÄÄÄÄ*
+                                     |     u3
+                                     |     |
+                                     |     | P
+                                   G2*     *-------- u2
+                                     |    /|
+(a) Rectangular                     /|   / |
+                                   / |  /  | Z
+                                  /  | u1  |
+                               G3*   |     |
+                                 | G1*----------*---------- y
+                                 |  /      |   /
+                                 | /       |  /
+                                 |/        | / X
+                                 /         |/
+                                /----------*
                                /     Y
                               x
 
 
 
                                      z     u3 - z direction
-                                     ³     ³  u2 - é direction
-                                     ³     ³ /
-                                     ³     ³/
-                                   G2*   p ³\
-                                     ³     ³ \
-(b) Cylindrical                     /³     ³  \
-                                   / ³     ³   u1 - r direction
-                                  /  ³     ³Z
-                               G3*   ³     ³
-                                 ³ G1*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄy
-                                 ³  / \    ³
-                                 ³ / é \R  ³
-                                 ³/     \  ³
-                                 /       \ ³
-                                /         \³
+                                     |     |  u2 - é direction
+                                     |     | /
+                                     |     |/
+                                   G2*   p |\
+                                     |     | \
+(b) Cylindrical                     /|     |  \
+                                   / |     |   u1 - r direction
+                                  /  |     |Z
+                               G3*   |     |
+                                 | G1*---------------------y
+                                 |  / \    |
+                                 | / é \R  |
+                                 |/     \  |
+                                 /       \ |
+                                /         \|
                                /
                               *
 
@@ -1232,125 +1232,125 @@ REFERENCES
 
                                               u1 - p direction
                                      z        /     .u3 - í direction
-                                     ³       /   .
-                                     ³      / .
-                                     ³    P*
-                                   G2*    /³ \
-                                    /³ é / ³  \
-(c) Spherical                      / ³  /  ³   u2 - é direction
-                                  /  ³ /R  ³
-                               G3*   ³/    ³
-                                 ³ G1*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄy
-                                 ³  / \    ³
-                                 ³ / è \   ³
-                                 ³/     \  ³
-                                 /       \ ³
-                                /         \³
+                                     |       /   .
+                                     |      / .
+                                     |    P*
+                                   G2*    /| \
+                                    /| é / |  \
+(c) Spherical                      / |  /  |   u2 - é direction
+                                  /  | /R  |
+                               G3*   |/    |
+                                 | G1*---------------------y
+                                 |  / \    |
+                                 | / è \   |
+                                 |/     \  |
+                                 /       \ |
+                                /         \|
                                /
                               x
 
 
                  Figure 1.2-1. Displacement coordinate systems
-=PAGE=
+
                             6
-                           /³    5    4    3    2    1
-(a)                        /ÃÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄ´
-                           /³
+                           /|    5    4    3    2    1
+(a)                        /+----+----+----+----+----+
+                           /|
                            /
 
 
 
                              3           1            2
-                             ÚÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄ¿
-                             ³                        ³
-                             ³                        ³
-                             ³                        ³
-(b)                         5Å                        Å4
-                             ³                        ³
-                             ³                        ³
-                             ³                        ³
-                             ÀÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÙ
+                             +-----------+------------+
+                             |                        |
+                             |                        |
+                             |                        |
+(b)                         5+                        +4
+                             |                        |
+                             |                        |
+                             |                        |
+                             +-----------+------------+
                              7           8            6
 
 
 
                              8           1            2
-                             ÚÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄ¿
-                             ³                        ³
-                             ³                        ³
-                             ³                        ³
-(c)                         7Å                        Å3
-                             ³                        ³
-                             ³                        ³
-                             ³                        ³
-                             ÀÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÙ
+                             +-----------+------------+
+                             |                        |
+                             |                        |
+                             |                        |
+(c)                         7+                        +3
+                             |                        |
+                             |                        |
+                             |                        |
+                             +-----------+------------+
                              6           5            4
 
 
         Figure 1.2-2. Grid point sequencing for one-dimensional systems
-=PAGE=
+
                     4           8        12       16       20
-                      ÚÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄ¿
-                      ³        ³        ³        ³        ³
-                    3 ³        ³7       ³11      ³15      ³19
-                      ÃÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄ´
-(a)                   ³        ³        ³        ³        ³
-                    2 ³        ³6       ³10      ³14      ³18
-                      ÃÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄ´
-                      ³        ³        ³        ³        ³
-                      ³        ³        ³        ³        ³
-                      ÀÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÙ
+                      +--------+--------+--------+--------+
+                      |        |        |        |        |
+                    3 |        |7       |11      |15      |19
+                      +--------+--------+--------+--------+
+(a)                   |        |        |        |        |
+                    2 |        |6       |10      |14      |18
+                      +--------+--------+--------+--------+
+                      |        |        |        |        |
+                      |        |        |        |        |
+                      +--------+--------+--------+--------+
                     1           5        9        13       17
 
 
 
                    20           12       4        8        16
-                      ÚÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄ¿
-                      ³        ³        ³        ³        ³
-                   19 ³        ³11      ³3       ³7       ³15
-                      ÃÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄ´
-(b)                   ³        ³        ³        ³        ³
-                   18 ³        ³10      ³2       ³6       ³14
-                      ÃÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄ´
-                      ³        ³        ³        ³        ³
-                      ³        ³        ³        ³        ³
-                      ÀÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÙ
+                      +--------+--------+--------+--------+
+                      |        |        |        |        |
+                   19 |        |11      |3       |7       |15
+                      +--------+--------+--------+--------+
+(b)                   |        |        |        |        |
+                   18 |        |10      |2       |6       |14
+                      +--------+--------+--------+--------+
+                      |        |        |        |        |
+                      |        |        |        |        |
+                      +--------+--------+--------+--------+
                    17           9        1        5        13
 
 
 
                        12               9               6
-                       ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-                       ³ \  11          ³8         5   /³
-                       ³   \ÚÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄ¿ /  ³
-                       ³    ³\          ³          ³    ³
-                       ³    ³  \ 10     ³7    4  / ³    ³
-                       ³    ³    ÚÄÄÄÄÄÄÅÄÄÄÄÄ¿/   ³    ³
-(c)                    ³    ³    ³ \    ³    /³    ³    ³
-                       ³    ³    ³   \  ³  /  ³    ³    ³
-                       ³    ³    ³     \³/    ³    ³    ³
-                       ÀÄÄÄÄÁÄÄÄÄÁÄÄÄÄÄÄÁÄÄÄÄÄÁÄÄÄÄÁÄÄÄÄÙ
+                       +----------------+---------------+
+                       | \  11          |8         5   /|
+                       |   \+-----------+----------+ /  |
+                       |    |\          |          |    |
+                       |    |  \ 10     |7    4  / |    |
+                       |    |    +------+-----+/   |    |
+(c)                    |    |    | \    |    /|    |    |
+                       |    |    |   \  |  /  |    |    |
+                       |    |    |     \|/    |    |    |
+                       +----+----+------+-----+----+----+
                       15    14   13     16    1    2    3
 
 
                Figure 1.2-3. Grid point sequencing for surfaces
-=PAGE=
-                              ÚÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄ¿
-                              ³3       ³2       ³1
-                              ³        ³        ³
-                              ÃÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄ´
-                              ³6       ³5       ³4
-                              ³        ³        ³
-                              ÃÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄ´
-                              ³9       ³8       ³7
-                              ³        ³        ³
-            ÚÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄ¿
-            ³28      ³25      ³22      ³19      ³16      ³13      ³10
-            ³        ³        ³        ³        ³        ³        ³
-            ÃÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄ´
-            ³29      ³26      ³23      ³20      ³17      ³14      ³11
-            ³        ³        ³        ³        ³        ³        ³
-            ÀÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÙ
+
+                              +--------+--------+
+                              |3       |2       |1
+                              |        |        |
+                              +--------+--------+
+                              |6       |5       |4
+                              |        |        |
+                              +--------+--------+
+                              |9       |8       |7
+                              |        |        |
+            +--------+--------+--------+--------+--------+--------+
+            |28      |25      |22      |19      |16      |13      |10
+            |        |        |        |        |        |        |
+            +--------+--------+--------+--------+--------+--------+
+            |29      |26      |23      |20      |17      |14      |11
+            |        |        |        |        |        |        |
+            +--------+--------+--------+--------+--------+--------+
              30       27       24       21       18       15       12
 
 
@@ -1391,26 +1391,26 @@ REFERENCES
 
 
              Figure 1.2-5. Matrix for substructure example
-=PAGE=
-                                      ³
-                                      ³
-                                      ³
-                    ÚÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄ¿
-                    ³13      ³14      ³23      ³10      ³9
-                    ³        ³        ³        ³        ³
-                    ÃÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄ´
-                    ³15      ³16      ³24      ³12      ³11
-                    ³        ³        ³        ³        ³
-              ÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄ
-                    ³17      ³18      ³25      ³22      ³21
-                    ³        ³        ³        ³        ³
-                    ÃÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄ´
-                    ³3       ³4       ³20      ³8       ³7
-                    ³        ³        ³        ³        ³
-                    ÀÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÙ
-                     1        2       ³19       6        5
-                                      ³
-                                      ³
+
+                                      |
+                                      |
+                                      |
+                    +--------+--------+--------+--------+
+                    |13      |14      |23      |10      |9
+                    |        |        |        |        |
+                    +--------+--------+--------+--------+
+                    |15      |16      |24      |12      |11
+                    |        |        |        |        |
+              ------+--------+--------+--------+--------+------
+                    |17      |18      |25      |22      |21
+                    |        |        |        |        |
+                    +--------+--------+--------+--------+
+                    |3       |4       |20      |8       |7
+                    |        |        |        |        |
+                    +--------+--------+--------+--------+
+                     1        2       |19       6        5
+                                      |
+                                      |
 
 
              Figure 1.2-6. Grid point sequencing for square model
@@ -1446,11 +1446,11 @@ REFERENCES
 
              Figure 1.2-7. Matrix for square model example
 
-=PAGE=
+
 1.3  STRUCTURAL ELEMENTS
-
+------------------------
 1.3.1  Element Definition
-
+-------------------------
    Structural elements are defined on connection cards that identify the grid
 points to which the elements are connected. The mnemonics for all such cards
 have a prefix of the letter "C", followed by an indication of the type of
@@ -1532,9 +1532,9 @@ for coding dummy element routines are given in Section 6.8.5 of the
 Programmer's Manual.
 
 1.3.2  Beam Elements
-
+--------------------
 1.3.2.1  Simple Beam or Bar Element
-
+-----------------------------------
    The simple beam or bar element is defined with a CBAR card and its
 properties (constant over the length) are defined with a PBAR card. The bar
 element includes extension, torsion, bending in two perpendicular planes, and
@@ -1608,7 +1608,7 @@ number and the orientation vector for the reference axes. The default values
 are used only when the corresponding fields on the CBAR card are blank.
 
 1.3.2.2  Curved Beam or Elbow Element
-
+-------------------------------------
    The curved beam or elbow element is a three-dimensional element with
 extension, torsion, and bending capabilities and the associated shears. No
 offset of the elastic axis is allowed nor are pin releases permitted to
@@ -1640,7 +1640,7 @@ are discussed further towards the end of this section.
 
    The material properties, obtained by reference to a materials properties
 table, include the elastic moduli, E and G, density, rho, and the thermal
-expansion coefficient, à, determined at the average temperature of the
+expansion coefficient, +, determined at the average temperature of the
 element.
 
    The plane of the element is defined by two grid points, A and B, and a
@@ -1674,7 +1674,7 @@ axis of symmetry.
       you enter stress limits on MAT1 card)
 
 Stress Intensification Factor and Flexibility Correction Factors
-
+----------------------------------------------------------------
    When a plane pipe network, consisting of both straight and curved sections,
 is analyzed by simple beam theory as an indeterminate system, the computed
 support reactions are greater than actually would be measured in an
@@ -1687,10 +1687,10 @@ are two factors available that can be specified to account for the differences
 in its behavior compared to curved beams. These are the stress intensification
 factor and the flexibility correction factors.
 
-   The maximum stress, åmax, in a curved pipe element is given by
+   The maximum stress, +max, in a curved pipe element is given by
 
                   Mc
-      åmax  =  C ÄÄÄÄ
+      +max  =  C ----
                    I
 
 where C is a stress intensification factor,
@@ -1709,11 +1709,11 @@ the stiffness parameter EI (E:  modulus of elasticity) of the curved pipe to a
 fictitious value. Thus, for the elbow element,
 
               EI1
-   (EI1)'  =  ÄÄÄ   ,   (Ky > 1.0), and
+   (EI1)'  =  ---   ,   (Ky > 1.0), and
               Ky
 
               EI2
-   (EI2)'  =  ÄÄÄ   ,   (Kz > 1.0)
+   (EI2)'  =  ---   ,   (Kz > 1.0)
               Kz
 
 where Ky and Kz are the stiffness correction factors corresponding to planes 1
@@ -1790,7 +1790,7 @@ system and directions for positive forces are shown in Figure 1.3-4. Stress
 recovery is similar to that for shear panels.
 
 1.3.5  Plate and Membrane Elements
-
+----------------------------------
    NASTRAN includes two different shapes of plate and membrane elements
 (triangular and quadrilateral) and two different stress systems (inplane and
 bending) which are uncoupled. There are different forms of elements available
@@ -1967,7 +1967,7 @@ deteriorate as the angles become obtuse and as the ratio of the longest to the
 shortest side increases.
 
 1.3.6  Axisymmetric Shell Elements
-
+----------------------------------
    The properties of axisymmetric shells can be specified with either of two
 elements, the conical shell (CONEAX) or the toroidal ring (TORDRG). However,
 these cannot be used together in the same model. Also available for thick
@@ -2003,7 +2003,7 @@ position around the circle. For example the radial motion, ur, at any angle,
 í, is described by the equation:
 
                N     n           N     n*
-   ur (í)  =   ä   ur  cos ní +  ä   ur   sin ní                    (1)
+   ur (í)  =   -   ur  cos ní +  -   ur   sin ní                    (1)
               n=0               n=0
 
 where urn and urn* are the Fourier coefficients of radial motion for the n-
@@ -2070,9 +2070,9 @@ are given in the r, í, and z directions. The value of a harmonic load Fn is
 the total load on the whole ring of radius r. If a sinusoidal load per unit
 length of maximum value an is given, the value on the FORCEAX card must be
 
-   Fn  =  2ã r an             n = 0 ,                               (2)
+   Fn  =  2+ r an             n = 0 ,                               (2)
 
-   Fn  =  ã r  an             n > 0 .                               (3)
+   Fn  =  + r  an             n > 0 .                               (3)
 
    Displacements of rings and forces in conical shell elements can be
 requested in two ways:
@@ -2116,7 +2116,7 @@ at specified locations on request:
 the TRAPAX and TRIAAX elements) are processed is described in Section 1.3.7.3.
 
 1.3.6.2  Toroidal Ring (TORDRG) Element
-
+---------------------------------------
    The cylindrical coordinate system for the toroidal ring is implied by the
 use of the toroidal element, and hence, no explicit definition is required.
 The toroidal element may use orthotropic materials. The axes of orthotropy are
@@ -2147,11 +2147,11 @@ its properties with a PTORDRG card and, in the limit, this element becomes a
 cap element (see Section 5.10 of the Theoretical Manual). The integers 1 and 2
 refer to the order of the connected grid points on the CTORDRG card. The grid
 points must lie in the r-z plane of the basic coordinate system and they must
-lie to the right of the axis of symmetry. The angles à1 and à2 are the angles
+lie to the right of the axis of symmetry. The angles +1 and +2 are the angles
 of curvature and are defined as the angle measured in degrees from the axis of
 symmetry to a line which is perpendicular to the tangent to the surface at
-grid points 1 and 2 respectively. For conic rings à1 = à2 and for cylindrical
-rings à1 = à2 = 90 degrees. Toroidal elements may be connected to form closed
+grid points 1 and 2 respectively. For conic rings +1 = +2 and for cylindrical
+rings +1 = +2 = 90 degrees. Toroidal elements may be connected to form closed
 figures in the r-z plane, but slope discontinuities are not permitted at
 connection points.
 
@@ -2187,7 +2187,7 @@ element, are output on request:
    -  Shearing stress (Force per unit length)
 
 1.3.7  Axisymmetric Solid Elements
-
+----------------------------------
    Two sets of elements are provided for representing thick axisymmetric shell
 and/or solid structures (see Section 5.11 of the Theoretical Manual). The
 first set, the triangular ring TRIARG and trapezoidal ring TRAPRG, is
@@ -2201,7 +2201,7 @@ any other elements except the combination of TRIAAX and TRAPAX elements with
 the conical shell element (CONEAX).
 
 1.3.7.1  TRIARG and TRAPRG Elements
-
+-----------------------------------
    The triangular and trapezoidal ring elements may be used for modeling
 axisymmetric thick-walled structures of arbitrary profile. In the limiting
 case only the TRAPRG element may become a solid core element.
@@ -2249,7 +2249,7 @@ are provided at a point of average radius and average z-distance from the four
 points.
 
 1.3.7.2  TRIAAX and TRAPAX Elements
-
+-----------------------------------
    The two solid of revolution elements which are provided for representing
 nonaxisymmetric loadings on axisymmetric structures with thick or solid cross
 sections are the TRIAAX and TRAPAX elements. These define a triangle and a
@@ -2338,7 +2338,7 @@ well as at a fifth "grid point" on the TRAPAX element, which is located an
 average radius and average length from the four corner points.
 
 1.3.7.3  Data Processing for the CONEAX, TRAPAX, and TRIAAX Axisymmetric Elements
-
+---------------------------------------------------------------------------------
    The data cards submitted by you for the CONEAX, TRAPAX, and TRIAAX
 axisymmetric elements are processed by the NASTRAN Preface to produce
 equivalent grid point, element connection, constraint, and load data card
@@ -2368,7 +2368,7 @@ purposes. (See, for instance, the description of the SET card in Section
 4.2.2.4.)
 
 1.3.8  Scalar Elements
-
+----------------------
    Scalar elements are connected between pairs of degrees of freedom (at
 either scalar or geometric grid points) or between one degree of freedom and
 ground. Scalar elements are available as springs, masses, and viscous dampers.
@@ -2408,7 +2408,7 @@ manner similar to the scalar spring definitions. The associated PDAMP card
 contains only a value for the scalar damper.
 
 1.3.9  Mass
-
+-----------
    Inertia properties are specified directly as mass elements attached to grid
 points and indirectly as the properties of matrix structural elements. In
 addition, dynamic analysis mass matrix coefficients may be specified that are
@@ -2420,18 +2420,18 @@ treatment of inertia properties is given in Section 5.5 of the Theoretical
 Manual.
 
 1.3.9.1  Lumped Mass
-
+--------------------
    The partitions of the lumped mass matrix are explained in Section 5.5.3 of
 the Theoretical Manual, but to aid you the form is repeated here in Equation
 1.
 
-         Ú                  ¿       Ú                  ¿
-         ³ Scalar ³ 1st     ³       ³ m      ³ N       ³
-         ³        ³ Moment  ³       ³  ij    ³  ij     ³
-   M =   ³ ÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄ ³   =   ³ ÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄ ³            (1)
-         ³ 1st    ³ 2nd     ³       ³    T   ³ I       ³
-         ³ Moment ³ Moment  ³       ³ N      ³  ij     ³
-         À                  Ù       À  ij              Ù
+         +                  +       +                  +
+         | Scalar | 1st     |       | m      | N       |
+         |        | Moment  |       |  ij    |  ij     |
+   M =   | -------+-------- |   =   | -------+-------- |            (1)
+         | 1st    | 2nd     |       |    T   | I       |
+         | Moment | Moment  |       | N      |  ij     |
+         +                  +       +  ij              +
 
    The only portion of the lumped mass matrix that is automatically generated
 is the scalar partition. This implies that no first moment and second moment
@@ -2456,7 +2456,7 @@ independent of the elastic properties of elements. There are no other
 automatic routines for providing mass terms for the lumped mass approach.
 
 1.3.9.2  Coupled Mass
-
+---------------------
    In the coupled mass approach, properties of mass pertaining to a single
 structural element include off-diagonal coefficients that couple action at
 adjacent grid points. For further amplification of the techniques used in the
@@ -2482,7 +2482,7 @@ coordinates, thereby coupling them together. Mathematically, these operations
 and the element coupled mass formulations described above are closely related.
 
 1.3.9.3  Mass Input
-
+-------------------
    In many cases it may be desired to add mass terms to the structure in
 addition to those generated by the structural elements. For instance, in a
 lumped mass formulation any additional masses involving rotational degrees of
@@ -2531,7 +2531,7 @@ be made by direct matrix input through DMIG cards. The information from these
 several sources will be summed in the formation of the final mass matrix.
 
 1.3.9.4  Output from the Grid Point Weight Generator
-
+----------------------------------------------------
    The Grid Point Weight Generator (GPWG) module computes the rigid body mass
 properties of an entire structure with respect to your specified point and
 with respect to the center of mass.
@@ -2589,7 +2589,7 @@ from an eigenvalue analysis of the I(S) matrix.
    Q is the coordinate transformation between the S axes and the Q axes.
 
 1.3.9.5  Bulk Data Cards for Mass
-
+---------------------------------
    A summary chart is given in Table 1.3-1 to help in the selection of the
 method of input for a given type of mass information. Descriptions of
 individual cards for the entering of mass information into the bulk data are
@@ -2669,49 +2669,49 @@ second moment properties of the rigid body structure, and the center of
 gravity distances with respect to your specified reference grid points. It
 also computes the 6 x 6 matrix of mass properties with respect to the center
 of mass and the orientation of the principal mass axes.
-=PAGE=
+
 Table 1.3-1. Bulk Data Card Choices for Mass Properties Versus Method of Mass 
 Representation. 
 
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
-              ³                   Representation Method
-              ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄ
-              ³           Lumped              ³      Coupled      ³ Grid
-              ÃÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄ´ Point
-              ³Automatic ³       Manual       ³ Automatic ³ Manual³ Weight
-              ³          ÃÄÄÄÄÄÂÄÄÄÄÄÄÂÄÄÄÄÄÄÄ´           ³       ³ Generator
-              ³          ³All  ³ R.F.s³ DMAP  ³           ³       ³ (Total
-              ³          ³R.F.s³ 7,8,9³ or R.F³           ³       ³  Structure)
-Mass Property ³          ³     ³      ³ ALTER ³           ³       ³
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÅÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄ
-Translational ³Element   ³MASSi³MASSi ³DMI    ³PARAM      ³DMIG   ³PARAM GRDPNT
-Mass (Scalar) ³Routines  ³CONM1³CONM1 ³ ³     ³COUPMASS + ³DMIGAX ³     ³
-              ³C (elem.)+³CONM2³CONM2 ³ ³     ³PARAM CP   ³  ³    ³     ³
-              ³P (elem.)+³  ³  ³DMIG  ³ ³     ³(element)  ³  ³    ³     ³
-              ³MATi      ³  ³  ³DIMGAX³ ³     ³OMIT       ³  ³    ³     ³
-              ³for struct³  ³  ³   ³  ³ ³     ³OMIT1      ³  ³    ³     ³
-              ³and non-  ³  ³  ³   ³  ³ ³     ³OMITAX     ³  ³    ³     ³
-              ³struct.   ³  ³  ³   ³  ³ ³     ³ASET       ³  ³    ³     ³
-              ³contribs. ³  ³  ³   ³  ³ ³     ³    ³      ³  ³    ³     ³
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄ´  ³  ³   ³  ³ ³     ³    ³      ³  ³    ³     ³
-First Moment  ³          ³  ³  ³   ³  ³ ³     ³    ³      ³  ³    ³     ³
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄ´  ³  ³   ³  ³ ³     ³    ³      ³  ³    ³     ³
-Second Moment*³          ³  ³  ³   ³  ³ ³     ³    ³      ³  ³    ³     ³
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÁÄÄÄÄÄÄÁÄÄÄÄÄÄÄ´    ³      ³  ³    ÃÄÄÄÄÄÄÄÄÄÄÄÄ
-All Order     ³                               ³    ³      ³  ³    ³
-Moments and   ³                               ³    ³      ³  ³    ³
-Off-Diagonal  ³                               ³    ³      ³  ³    ³
-Properties    ³                               ³    ³      ³  ³    ³
-Between       ³                               ³    ³      ³  ³    ³
-Grid Points   ³                               ³    ³      ³  ³    ³
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÙ
+--------------+---------------------------------------------------------------
+              |                   Representation Method
+              +-------------------------------+-------------------+-----------
+              |           Lumped              |      Coupled      | Grid
+              +----------+--------------------+-----------+-------+ Point
+              |Automatic |       Manual       | Automatic | Manual| Weight
+              |          +-----+------+-------+           |       | Generator
+              |          |All  | R.F.s| DMAP  |           |       | (Total
+              |          |R.F.s| 7,8,9| or R.F|           |       |  Structure)
+Mass Property |          |     |      | ALTER |           |       |
+--------------+----------+-----+------+-------+-----------+-------+------------
+Translational |Element   |MASSi|MASSi |DMI    |PARAM      |DMIG   |PARAM GRDPNT
+Mass (Scalar) |Routines  |CONM1|CONM1 | |     |COUPMASS + |DMIGAX |     |
+              |C (elem.)+|CONM2|CONM2 | |     |PARAM CP   |  |    |     |
+              |P (elem.)+|  |  |DMIG  | |     |(element)  |  |    |     |
+              |MATi      |  |  |DIMGAX| |     |OMIT       |  |    |     |
+              |for struct|  |  |   |  | |     |OMIT1      |  |    |     |
+              |and non-  |  |  |   |  | |     |OMITAX     |  |    |     |
+              |struct.   |  |  |   |  | |     |ASET       |  |    |     |
+              |contribs. |  |  |   |  | |     |    |      |  |    |     |
+--------------+----------+  |  |   |  | |     |    |      |  |    |     |
+First Moment  |          |  |  |   |  | |     |    |      |  |    |     |
+--------------+----------+  |  |   |  | |     |    |      |  |    |     |
+Second Moment*|          |  |  |   |  | |     |    |      |  |    |     |
+--------------+----------+-----+------+-------+    |      |  |    +------------
+All Order     |                               |    |      |  |    |
+Moments and   |                               |    |      |  |    |
+Off-Diagonal  |                               |    |      |  |    |
+Properties    |                               |    |      |  |    |
+Between       |                               |    |      |  |    |
+Grid Points   |                               |    |      |  |    |
+--------------+-------------------------------+-----------+-------+
 
 * No torsional moment of inertia is generated for BAR elements when COUPMASS
 and CPBAR are specified. Also, in the case of plate elements, no second moment
 properties are computed with respect to the axis normal to the elements.
 
 1.3.10  Solid Polyhedron Elements
-
+---------------------------------
    Three types of solid polyhedron elements are provided for the general solid
 structures (see Section 1.3.7 for axisymmetric structures with axisymmetric
 loads). These elements (see Figure 1.3-12) are a tetrahedron, a wedge, and a
@@ -2732,12 +2732,12 @@ implemented.
    The output stresses are given in the basic coordinate system. In addition
 to the six normal and shear stresses, output also includes the pressure
 
-   po = - 1/3 (åx + åy + åz)
+   po = - 1/3 (+x + +y + +z)
 
 and the octahedral stress
 
                       2            2            2       2       2       2 1/2
-   åo  = 1/3[(åx - åy)  + (åy - åz)  + (åz - åx)  + 6çyz  + 6çzx  + 6çxy )
+   +o  = 1/3[(+x - +y)  + (+y - +z)  + (+z - +x)  + 6çyz  + 6çzx  + 6çxy )
 
 The stresses in the tetrahedra are constant. The stresses in the wedge and the
 hexahedron are obtained as the weighted average of the stresses in the
@@ -2745,7 +2745,7 @@ subtetrahedra. The weighting factor for each tetrahedron is proportional to
 its volume.
 
 1.3.11  Isoparametric Solid Hexahedron Elements
-
+-----------------------------------------------
    Three types of isoparametric solid hexahedron elements are provided for
 general solid structures. These elements (see Figure 1.3-13) are a linear, a
 quadratic, and a cubic isoparametrIc hexahedron. The theory is given in
@@ -2784,15 +2784,15 @@ the element. In addition to the six normal and shear stresses, output also
 includes the principal stresses (Sx, Sy, and Sz), the direction cosines of the
 principal planes, the mean stress
 
-   ån = - 1/3 (åx + åy + åz)
+   +n = - 1/3 (+x + +y + +z)
 
 and the octahedral shear stress
 
                       2            2            2  1/2
-   åo = {1/3[(Sx + ån)  + (Sy + ån)  + (Sz + ån) ]}
+   +o = {1/3[(Sx + +n)  + (Sy + +n)  + (Sz + +n) ]}
 
 1.3.12  Shallow Shell Element
-
+-----------------------------
    A higher order shallow triangular shell element (TRSHL) formulated from the
 TRIM6 and TRPLT1 elements is available. The inplane and bending properties are
 coupled and the geometry of the element may be curved. If the element is flat
@@ -2805,7 +2805,7 @@ degrees of freedom in the element coordinate system: that is, the membrane
 displacements, u and v, parallel to the x and y axes, the transverse
 displacement, w, in the z-direction normal to the x-y plane (with positive
 direction outward from the paper) and the rotations of the normal to the
-shell, à and á, about the x-z and y-z planes (with positive directions
+shell, + and +, about the x-z and y-z planes (with positive directions
 following from the right-hand rule). The element, thus, has 30 degrees of
 freedom in the element coordinate system.
 
@@ -2858,103 +2858,103 @@ The stresses will be calculated at the specified fiber distances from the
 elastic axis defined on the property card and are always calculated at the top
 and bottom fibers for the centroid of the element. The sign conventions for
 the stresses are the same as previously discussed in Section 1.3.5.
-=PAGE=
+
                                y  b(grid) x
-                               ³I2=Iyy ³ /
-                               ³     wb³/b(end)
-                               ³Plane 1/
-                               ³ V1/³ /
-(a) Element coordinate         ³  / ³/
-    system                     ³ /  /ÄÄÄ
-                               ³/  /   /Plane 2
-                               ³  /   /
-                               ³ /   /
-                         wa    ³/   /
-                        ÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄz
+                               |I2=Iyy | /
+                               |     wb|/b(end)
+                               |Plane 1/
+                               | V1/| /
+(a) Element coordinate         |  / |/
+    system                     | /  /---
+                               |/  /   /Plane 2
+                               |  /   /
+                               | /   /
+                         wa    |/   /
+                        -------+-----------------z
                       a(grid)  a(end)     I1=Izz
 
 
 
                             y                    v1
-                            ³                    ³
-                            ³                    ³
-                            ³                    ³
-               M1a (inplane)ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿  ³  M1b (inplane)
-            Fx ÄÄÄÄÄÄÄÄÄÄ¿  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄx
-               T (CCW    ³  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ        Fx    T (CCW
-                 about x)³  a     Plane 1     b                 about Tx)
+                            |                    |
+                            |                    |
+                            |                    |
+               M1a (inplane)+-----------------+  |  M1b (inplane)
+            Fx ----------+  +-----------------+--+-----------------x
+               T (CCW    |  +-----------------+        Fx    T (CCW
+                 about x)|  a     Plane 1     b                 about Tx)
                          v1
 
 
 
                             z                    v2
-(b) Element forces          ³                    ³
-                            ³                    ³
-                            ³                    ³
-               M2a (inplane)ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿  ³  M2b (inplane)
-               ÄÄÄÄÄÄÄÄÄÄ¿  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄx
-                         ³  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
-                         ³        Plane 2
+(b) Element forces          |                    |
+                            |                    |
+                            |                    |
+               M2a (inplane)+-----------------+  |  M2b (inplane)
+               ----------+  +-----------------+--+-----------------x
+                         |  +-----------------+
+                         |        Plane 2
                          v2
 
 
         Figure 1.3-1. Bar element coordinate system and element forces
-=PAGE=
+
                    P                        P
-                 <ÄÄÄÄ                    ÄÄÄÄ>
-              ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ x
+                 <----                    ---->
+              -------------------------------------- x
                T     a                    b       T (clockwise about x)
                (counterclockwise
                 about x)
 
         Figure 1.3-2. Rod element coordinate system and element forces
-=PAGE=
+
                               y
-                              ³
-                              ³
-                              ³4            3
-                              ÃÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-  (a) Coordinate system       ³             ³
-                              ³             ³
-                              ³             ³
-                              ³             ³
-                              ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄx
+                              |
+                              |
+                              |4            3
+                              +-------------+
+  (a) Coordinate system       |             |
+                              |             |
+                              |             |
+                              |             |
+                              +-------------+-----x
                                1            2
 
 
 
                             K4                 K3
                                \ F41              \ F32
-                                \³      ÄÄÄÄÄq3    \³
-                            F43ÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄF34
-                                 ³4                3³
-                                 ³                  ³
-  (b) Corner forces and          ³                  ³
-      shear flows              ³ ³                  ³ q2
-                               ³ ³                  ³ ³
-                              q4 ³                  ³ ³
-                                 ³                  ³
-                            K1   ³             K2   ³
-                               \ ³                \ ³
-                                \³                 \³
-                            F12ÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄF21
-                                 ³ 1     q1ÄÄÄÄ     ³ 2
+                                \|      -----q3    \|
+                            F43--+------------------+--F34
+                                 |4                3|
+                                 |                  |
+  (b) Corner forces and          |                  |
+      shear flows              | |                  | q2
+                               | |                  | |
+                              q4 |                  | |
+                                 |                  |
+                            K1   |             K2   |
+                               \ |                \ |
+                                \|                 \|
+                            F12--+------------------+--F21
+                                 | 1     q1----     | 2
                                  F14                F23
 
 
 Figure 1.3-3. Coordinate system and element forces for shear panel and CQDMEM2
 elements
-=PAGE=
+
                               y         M13
-                              ³          \
-                              ³           \
-                              ³4           \ 3
-                              ÃÄÄÄÄÄÄÄÄÄÄÄÄÄ¿    M24
-                             /³             ³   /
-                            / ³             ³  /
-                           /  ³             ³ /
-                       M24    ³             ³/
-                              ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄx
+                              |          \
+                              |           \
+                              |4           \ 3
+                              +-------------+    M24
+                             /|             |   /
+                            / |             |  /
+                           /  |             | /
+                       M24    |             |/
+                              +-------------+-----x
                              1 \            2
                                 \
                                  \
@@ -2962,22 +2962,22 @@ elements
 
 
         Figure 1.3-4. Twist panel coordinate system and element forces
-=PAGE=
+
                               y
-                              ³
-                             3³\
-                              ³ \
-                              ³  \
-                              ³   \
-                              ³    \
-                              ³     \
-                              ³      \
-                              ³       \
-                              ³        \
-                              ³   /     \
-                              ³  /       \
-                              ³ / é       \
-                              ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄx
+                              |
+                             3|\
+                              | \
+                              |  \
+                              |   \
+                              |    \
+                              |     \
+                              |      \
+                              |       \
+                              |        \
+                              |   /     \
+                              |  /       \
+                              | / é       \
+                              +-------------------x
                                1           2
 
                                        (a)
@@ -2985,176 +2985,176 @@ elements
 
 
                               y
-                              ³
-                              ³
-                             4ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿3
-                              ³               ³
-                              ³               ³
-                              ³               ³
-                              ³   /           ³
-                              ³  /            ³
-                              ³ / é           ³
-                              ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄx
+                              |
+                              |
+                             4+---------------+3
+                              |               |
+                              |               |
+                              |               |
+                              |   /           |
+                              |  /            |
+                              | / é           |
+                              +---------------+---x
                                1              2
 
                                        (b)
 
 
           Figure 1.3-5. Plate and membrane element coordinate systems
-=PAGE=
+
                                             Vy
-                                            ³
-                                            ³
-  (a) Plate element forces                  ÀÄÄÄÄÄMy
+                                            |
+                                            |
+  (a) Plate element forces                  +-----My
                                            /
                                  y        /
                                 /       Mxy
                         Mx     /
-                       /      ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-                      /      /                  /³
-                     /      /                  / ³
-             MxyÄÄÄÄ¿   z  /                  / /        Vx
-                    ³   ³ /                  / /         ³
-                    ³   ³/                  / /          ³
-                   Vx   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ /           ÀÄÄÄÄÄMxy
-                        ³                  ³/ÄÄÄÄx      /
-                        ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ           /
+                       /      -------------------+
+                      /      /                  /|
+                     /      /                  / |
+             Mxy----+   z  /                  / /        Vx
+                    |   | /                  / /         |
+                    |   |/                  / /          |
+                   Vx   +------------------+ /           +-----Mxy
+                        |                  |/----x      /
+                        +------------------+           /
                                                      Mx
                                Mxy
                               /
                              /
                             /
-                     MyÄÄÄÄ¿
-                           ³
-                           ³
+                     My----+
+                           |
+                           |
                           Vy
 
 
 
-                                        å
+                                        +
                                          y
-                                        ³
-                                       ÄÅÄÄÄ ç
+                                        |
+                                       -+--- ç
   (b) Membrane element stresses               xy
-                                    ÚÄÄÄÄÄÄÄ¿
-                                    ³       ³  ³
-                            å ÄÄÄÅ  ³       ³  ÅÄÄÄ å
-                             x   ³  ³       ³        x
-                                ç   ³       ³
-                                 xy ÀÄÄÄÄÄÄÄÙ
+                                    +-------+
+                                    |       |  |
+                            + ---+  |       |  +--- +
+                             x   |  |       |        x
+                                ç   |       |
+                                 xy +-------+
 
-                                     ÄÄÄÅÄ
-                                        ³
-                                        å
+                                     ---+-
+                                        |
+                                        +
                                          y
 
 
        Figure 1.3-6. Forces and stresses in plate and membrane elements
-=PAGE=
+
                              z          uz - displacement coordinates
-                             ³          ³
-                             ³          ³éz (rotation)
-                             ³    uí    ³    ur
-                             ³      \   ³   /
-                             ³     éí\  ³  /ér (rotation)
-                             ³(rotat.)\ ³ /
-                             ³         \³/
-                             ³          /
-                             ³         /
-                             ³        /
-                             ³    RB /
-                             ³      /
-                             ³     /
-                             ³    /    /
-                             ³   /    /
-                             ³  /    /
-                             ³ /    /
-                             ³/í   / RA
-                             ÃÄÄÄÄ/
-                             ³   /
-                             ³  /
-                             ³ /
-                             ³/í
-                             ÀÄÄÄÄ
+                             |          |
+                             |          |éz (rotation)
+                             |    uí    |    ur
+                             |      \   |   /
+                             |     éí\  |  /ér (rotation)
+                             |(rotat.)\ | /
+                             |         \|/
+                             |          /
+                             |         /
+                             |        /
+                             |    RB /
+                             |      /
+                             |     /
+                             |    /    /
+                             |   /    /
+                             |  /    /
+                             | /    /
+                             |/í   / RA
+                             +----/
+                             |   /
+                             |  /
+                             | /
+                             |/í
+                             +----
 
                Figure 1.3-7. Geometry for conical shell element
-=PAGE=
+
                This figure is not included in the machine readable
                documentation because of complex graphics.
 
              Figure 1.3-8. Toroidal ring element coordinate system
-=PAGE=
+
                This figure is not included in the machine readable
                documentation because of complex graphics.
 
                   Figure 1.3-9. Stresses for toroidal element
-=PAGE=
+
          z,w,Fz
-           ³
-           ³
-           ³                          3
-           ³                          /\
-           ³                         /  \
-           ³                        /    \
-           ³                       /      \   w2,Fz2
-           ³                      /        \  ³
-           ³                     /          \ ³
-  Axis of  ³                    /            \³
-  symmetry ³                    ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄu2,Fr2
-           ³                   1              2
-           ³
-           ³
-           ³
-           ³
-           ³
-           ³    /
-           ³   /
-           ³  /
-           ³ /
-           ³/ é (Material orientation)
-           ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄr,u,Fr
+           |
+           |
+           |                          3
+           |                          /\
+           |                         /  \
+           |                        /    \
+           |                       /      \   w2,Fz2
+           |                      /        \  |
+           |                     /          \ |
+  Axis of  |                    /            \|
+  symmetry |                    --------------+-------u2,Fr2
+           |                   1              2
+           |
+           |
+           |
+           |
+           |
+           |    /
+           |   /
+           |  /
+           | /
+           |/ é (Material orientation)
+           +------------------------------------------------------------r,u,Fr
 
            Figure 1.3-10. Triangular ring element coordinate system
-=PAGE=
+
           z,w
-           ³
-           ³
-           ³
-           ³                       4    Z3=Z4      3
-           ³                        ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
-           ³                       /              /
-           ³                      /              /
-           ³                     /              /
-           ³                    /              /
-  Axis of  ³                   /              /
-  symmetry ³                   ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
-           ³                  1    Z1=Z2      2
-           ³
-           ³
-           ³
-           ³
-           ³
-           ³    /
-           ³   /
-           ³  /
-           ³ /
-           ³/ é (Material orientation)
-           ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄr,u
+           |
+           |
+           |
+           |                       4    Z3=Z4      3
+           |                        ---------------
+           |                       /              /
+           |                      /              /
+           |                     /              /
+           |                    /              /
+  Axis of  |                   /              /
+  symmetry |                   ---------------
+           |                  1    Z1=Z2      2
+           |
+           |
+           |
+           |
+           |
+           |    /
+           |   /
+           |  /
+           | /
+           |/ é (Material orientation)
+           +------------------------------------------------------------r,u
 
            Figure 1.3-11. Trapezoidal ring element coordinate system
-=PAGE=
+
                                          G4
                                          *
-  (a) Tetrahedron                       /³\
-                                       / ³ \
-                                      /  ³  \
-                                     /   ³   \
-                                  G1*    ³    \
-                                    \ .  ³     \
-                                     \  .³      \
-                                      \  ³ .     \
-                                       \ ³    .   \
-                                         *ÄÄÄÄÄÄÄÄÄ*
+  (a) Tetrahedron                       /|\
+                                       / | \
+                                      /  |  \
+                                     /   |   \
+                                  G1*    |    \
+                                    \ .  |     \
+                                     \  .|      \
+                                      \  | .     \
+                                       \ |    .   \
+                                         *---------*
                                         G2          G3
 
 
@@ -3163,103 +3163,103 @@ elements
                                       /\   /\
   (b) Wedge and one of its           /  \ /  \
       six decompositions            /    *G5  \
-                                 G1*Ä Ä Ä³Ä Ä Ä*G3
-                                    \    ³    /
-                                     \   ³   /
-                                      \  ³  /
-                                       \ ³ /
+                                 G1*- - -|- - -*G3
+                                    \    |    /
+                                     \   |   /
+                                      \  |  /
+                                       \ | /
                                          *
                                          G2
 
 
                                          G6
                                          *
-                                        /³\
-                                       / ³ \
-                                      /  ³  \
-                                     /   ³   \
-                                  G1*    ³    \
-                                    \ .  ³     \
-                                     \  .³      \
-                                      \  ³ .     \
-                                       \ ³    .   \
-                                         *ÄÄÄÄÄÄÄÄÄ*
+                                        /|\
+                                       / | \
+                                      /  |  \
+                                     /   |   \
+                                  G1*    |    \
+                                    \ .  |     \
+                                     \  .|      \
+                                      \  | .     \
+                                       \ |    .   \
+                                         *---------*
                                         G2          G3
 
 
 
                          G8                            G7
-  (c) Hexahedron         *ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*
-                        /|                            /³
-                       /                             / ³
-                      /  |                          /  ³
+  (c) Hexahedron         *-----------------------------*
+                        /|                            /|
+                       /                             / |
+                      /  |                          /  |
                      /                          G6 /   |
-                  G5*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*    ³
-                    ³    *G4_ _ _ _ _ _ _ _ _ _ _ ³_ _ *G3
-                    ³    /                        ³    /
+                  G5*-----------------------------*    |
+                    |    *G4_ _ _ _ _ _ _ _ _ _ _ |_ _ *G3
+                    |    /                        |    /
                     |                             |   /
-                    ³  /                          ³  /
-                    ³                             ³ /
-                    ³/                            ³/
-                  G1*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*G2
+                    |  /                          |  /
+                    |                             | /
+                    |/                            |/
+                  G1*-----------------------------*G2
 
 
           Figure 1.3-12. Polyhedron elements and their subtetrahedra
-=PAGE=
+
                          7                             6
-                         *ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*
-  (a) Linear            /|                            /³
-                       /                             / ³
-                      /  |                          /  ³
-                     /                           5 /   ³
-                   8*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*    ³
-                    ³    *3 _ _ _ _ _ _ _ _ _ _ _ ³_ _ *2
-                    ³    /                        ³    /
-                    ³                             ³   /
-                    ³  /                          ³  /
-                    ³                             ³ /
-                    ³/                            ³/
-                   4*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*1
+                         *-----------------------------*
+  (a) Linear            /|                            /|
+                       /                             / |
+                      /  |                          /  |
+                     /                           5 /   |
+                   8*-----------------------------*    |
+                    |    *3 _ _ _ _ _ _ _ _ _ _ _ |_ _ *2
+                    |    /                        |    /
+                    |                             |   /
+                    |  /                          |  /
+                    |                             | /
+                    |/                            |/
+                   4*-----------------------------*1
 
 
 
                          17            16              15
-                         *ÄÄÄÄÄÄÄÄÄÄÄÄÄ*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*
-  (b) Quadratic         /                             /³
-                       / |                         14* ³
-                    18*  *11                        /  ³
+                         *-------------*---------------*
+  (b) Quadratic         /                             /|
+                       / |                         14* |
+                    18*  *11                        /  |
                      /   |         20           13 /   *10
-                  19*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*    ³
-                    ³    *5 _ _ _ _ _ _*_ _ _ _ _ ³_ _ *3
-                    ³    /             4          ³    /
+                  19*--------------*--------------*    |
+                    |    *5 _ _ _ _ _ _*_ _ _ _ _ |_ _ *3
+                    |    /             4          |    /
                   12*   *6                        *9  /
-                    ³  /                          ³  *2
-                    ³ /                           ³ /
-                    ³/                            ³/
-                    *ÄÄÄÄÄÄÄÄÄÄÄÄÄ*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*
+                    |  /                          |  *2
+                    | /                           | /
+                    |/                            |/
+                    *-------------*---------------*
                     7             8               1
 
 
 
                          27       26        25         24
-                         *ÄÄÄÄÄÄÄÄ*ÄÄÄÄÄÄÄÄÄ*ÄÄÄÄÄÄÄÄÄÄ*
-  (c) Cubic           28*|                            /³
+                         *--------*---------*----------*
+  (c) Cubic           28*|                            /|
                        / *19                       23* *18
-                    29*  |                          /  ³
+                    29*  |                          /  |
                      /   *15 31      32          22*   *14
-                  30*ÄÄÄÄÄÄÄÄ*ÄÄÄÄÄÄÄ*ÄÄÄÄÄÄÄÄÄÄÄÄ*21  ³
-                    ³    *7 _ _ *6_ _ _ _*5 _ _ _ ³_ _ *4
+                  30*--------*-------*------------*21  |
+                    |    *7 _ _ *6_ _ _ _*5 _ _ _ |_ _ *4
                   20*    /                      17*    /
                     |   *8                        |   *3
                   16*  /                        13*  /
-                    ³ *9                          ³ *2
-                    ³/                            ³/
-                    *ÄÄÄÄÄÄÄÄ*ÄÄÄÄÄÄÄÄÄ*ÄÄÄÄÄÄÄÄÄÄ*1
+                    | *9                          | *2
+                    |/                            |/
+                    *--------*---------*----------*1
                     10       11        12
 
 
             Figure 1.3-13. Isoparametric solid hexahedron elements
-=PAGE=
+
                                    *G5
                                   / \
                            ye    /   \      .
@@ -3273,9 +3273,9 @@ elements
 
 Figure 1.3-14. Triangular shallow shell element geometry and coordinate systems
 
-=PAGE=
-1.4  CONSTRAINTS AND PARTITIONING
 
+1.4  CONSTRAINTS AND PARTITIONING
+=================================
    Structural matrices are initially assembled in terms of all structural grid
 points, which excludes only the extra scalar points introduced for dynamic
 analysis. These matrices are generated with six degrees of freedom for each
@@ -3302,7 +3302,7 @@ definition of constraints:
 The latter type does not produce constraint forces in static analysis.
 
 1.4.1  Single-Point Constraints
-
+-------------------------------
    A single-point constraint applies a fixed value to a translational or
 rotational component at a geometric grid point or to a scalar point. One of
 the most common uses of single-point constraints is to specify the boundary
@@ -3359,7 +3359,7 @@ be made at the subcase level. Also, only zero displacements can be specified
 on the GRID card.
 
 1.4.2  Multipoint Constraints and Rigid Elements
-
+------------------------------------------------
    Multipoint constraints and rigid elements are used to constrain one or more
 degrees of freedom to be equal to linear combinations of the values of other
 degrees of freedom. In the former case, you must explicitly provide the
@@ -3368,7 +3368,7 @@ connection data and the program internally generates the required
 coefficients.
 
 1.4.2.1  Multipoint Constraints
-
+-------------------------------
    Each multipoint constraint is described by a single equation that specifies
 a linear relationship for two or more degrees of freedom. Multiple sets of
 multipoint constraints can be provided in the Bulk Data Deck, with selections
@@ -3414,7 +3414,7 @@ multipoint constraints are:
 on MPC, MPCADD, and MPCAX cards.
 
 1.4.2.2  Rigid Elements
-
+-----------------------
    Rigid elements provide a convenient means of specifying very stiff
 connections. You do not provide the required coefficients directly. The
 program internally generates them from the connection data. Rigid elements are
@@ -3447,7 +3447,7 @@ often find it useful to turn on DIAGs 21 and 22 in the Executive Control Deck
 to obtain the GP4 definition of sets of degrees of freedom.
 
 1.4.3  Free Body Supports
-
+-------------------------
    In the following discussion, a free body is defined as a structure that is
 capable of motion without internal stress; that is, it has one or more rigid
 body degrees of freedom. The stiffness matrix for a free body is singular with
@@ -3511,7 +3511,7 @@ without removing the singularities in the stiffness matrix associated with the
 rigid body motions.
 
 1.4.4  Partitioning
-
+-------------------
    A two-way partitioning scheme is provided as an optional feature for the
 NASTRAN model. The partitions are defined by listing the degrees of freedom
 for one of the partitions on the OMIT card. These degrees of freedom are
@@ -3571,7 +3571,7 @@ scattered grid points in the omitted set. If the points in the omitted set are
 uncoupled, the sparseness in the matrices will be well preserved.
 
 1.4.5  The Nested Vector Set Concept Used to Represent Components of Displacement
-
+---------------------------------------------------------------------------------
    In constructing the matrices used in the displacement approach, each row
 and/or column of a matrix is associated closely with a grid point, a scalar
 point, or an extra point. Every grid point has 6 degrees of freedom associated
@@ -3638,24 +3638,24 @@ method.
 
    The nesting of vector sets is depicted by the following diagram:
 
-   Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä ¿ Ä Ä¿
-   um                                                          ³    ³
-   Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä ¿     ³    ³
-   us                                                    ³     ³    ³
-   Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä ¿       ³     ³    ³
-   uo                                            ³       ³     ³    ³
-   Ä Ä Ä Ä Ä Ä Ä Ä Â Ä Ä Ä Ä Ä Ä Ä Ä ¿           ³       Ã un  Ã ug Ã up
-   ur              ³                 ³           Ã uf    ³     ³    ³
-                   ³                 Ã ua        ³       ³     ³    ³
-                   Ã ud              ³           ³       ³     ³    ³
-   ul              ³                 ³           ³       ³     ³    ³
-   Ä Ä Ä Ä Ä Ä Ä Ä ³ Ä Ä Ä Ä Ä Ä Ä Ä Å Ä Ä Ä Ä Ä Á Ä Ä Ä Á Ä Ä Ù    ³
-   ue              ³                 ³                              ³
-   Ä Ä Ä Ä Ä Ä Ä Ä Å Ä Ä Ä Ä Ä Ä Ä Ä ³ Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä ÄÙ
-   îo              ³                 Ã uh
-                   Ã îi              ³
-   îf              ³                 ³
-   Ä Ä Ä Ä Ä Ä Ä Ä Ù Ä Ä Ä Ä Ä Ä Ä Ä Ù
+   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - + - -+
+   um                                                          |    |
+   - - - - - - - - - - - - - - - - - - - - - - - - - - - +     |    |
+   us                                                    |     |    |
+   - - - - - - - - - - - - - - - - - - - - - - - +       |     |    |
+   uo                                            |       |     |    |
+   - - - - - - - - + - - - - - - - - +           |       + un  + ug + up
+   ur              |                 |           + uf    |     |    |
+                   |                 + ua        |       |     |    |
+                   + ud              |           |       |     |    |
+   ul              |                 |           |       |     |    |
+   - - - - - - - - | - - - - - - - - + - - - - - + - - - + - - +    |
+   ue              |                 |                              |
+   - - - - - - - - + - - - - - - - - | - - - - - - - - - - - - - - -+
+   îo              |                 + uh
+                   + îi              |
+   îf              |                 |
+   - - - - - - - - + - - - - - - - - +
 
    The data block USET (USETD in dynamics) is central to this set
 classification. Each word of USET corresponds to a degree of freedom in the
@@ -3697,22 +3697,22 @@ sets:
    The nesting of the vector sets in the aero approach is indicated in the
 following diagram:
 
-   Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä ¿
-   uk                                            ³
-   Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä ¿           ³
-   usA                               ³           ³
-   Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä ¿         ³           Ã upA
-                           ³         Ã ups       ³
-                           Ã up      ³           ³
-                           ³         ³           ³
-   Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Ä Á Ä Ä Ä Ä Á Ä Ä Ä Ä Ä Ù
+   - - - - - - - - - - - - - - - - - - - - - - - +
+   uk                                            |
+   - - - - - - - - - - - - - - - - - +           |
+   usA                               |           |
+   - - - - - - - - - - - - +         |           + upA
+                           |         + ups       |
+                           + up      |           |
+                           |         |           |
+   - - - - - - - - - - - - + - - - - + - - - - - +
 
 The upa set replaces the up set for output at grid, scalar, and extra points.
-=PAGE=
+
 1.5  APPLIED LOADS
-
+==================
 1.5.1  Static Loads
-
+-------------------
 In NASTRAN, static loads are applied to geometric and scalar grid points in a
 variety of ways, including:
 
@@ -3859,14 +3859,14 @@ the Theoretical Manual. The DLOAD card is used to define linear combinations
 of frequency-dependent loads that are defined on RLOAD1 or RLOAD2 cards. The
 RLOAD1 card defines a frequency-dependent load of the form 
 
-                              i(é-2ãfç)
+                              i(é-2+fç)
    {P(f)}  = {A[C(f) + iD(f)]e         }                            (1)
 
 where A is defined on a DAREA card, C(f) and D(f) are defined on TABLEDi
 cards, é is defined on a DPHASE card and ç is defined on a DELAY card. The
 RLOAD2 card defines a frequency-dependent load of the form 
 
-                    i{í(f)+é-2ãfç}
+                    i{í(f)+é-2+fç}
    {P(f)}  = {AB(f)e              }                                 (2)
 
 where A is defined on a DAREA card, B(f) and í(f) are defined on TABLEDi
@@ -3900,11 +3900,11 @@ where A is defined on a DAREA card, ç is defined on a DELAY card, and F(t-ç)
 is defined on a TABLEDi card. The TLOAD2 card defines a time-dependent load of
 the form 
 
-                Ú
-                ³ {0} ,. t~ < 0  or t~ > T2 - T1
-   {P(t)}   =   ³     B  Ct~                                        (5)
-                ³ {At~  e   cos(2ãft~+P)}, 0 <= t~ <= T2 - T1
-                À
+                +
+                | {0} ,. t~ < 0  or t~ > T2 - T1
+   {P(t)}   =   |     B  Ct~                                        (5)
+                | {At~  e   cos(2+ft~+P)}, 0 <= t~ <= T2 - T1
+                +
 
 where t~  =  t - T1  - ç, and A and ç are defined as above. The coefficients
 on the DAREA and DELAY cards may be different for each loaded degree of
@@ -3938,19 +3938,19 @@ where xj and yk are any permissible pair of displacement or velocity
 components. They may be the same. The NOLIN3 card defines a nonlinear load of
 the form 
 
-              Ú        A
-              ³ Si (xj)    , xj > 0
-   Pi(t)    = ³                                                     (8)
-              ³ 0          , xj <= 0
-              À
+              +        A
+              | Si (xj)    , xj > 0
+   Pi(t)    = |                                                     (8)
+              | 0          , xj <= 0
+              +
 
 where A is an exponent. The NOLIN4 card defines a nonlinear load of the form
 
-              Ú          A
-              ³ -Si (-xj)  , xj < 0
-   Pi(t)    = ³                                                     (9)
-              ³ 0          , xj >= 0
-              À
+              +          A
+              | -Si (-xj)  , xj < 0
+   Pi(t)    = |                                                     (9)
+              | 0          , xj >= 0
+              +
 
    Nonlinear loads applied to a massless system without damping will not
 converge to a steady solution. Use of DIAG 10 (Section 2.2.1) will cause the
@@ -3958,9 +3958,9 @@ nonlinear term {Nn+1} to be replaced by 1/3 {Nn+1 + Nn + Nn-1} where Nn+1, Nn,
 and Nn-1 are the values of the nonlinear loads at time steps preceding the
 solution time step. Section 11.4 of the Theoretical Manual discusses the
 integration of coupled equations.
-=PAGE=
-1.6  DYNAMIC MATRICES
 
+1.6  DYNAMIC MATRICES
+=====================
    The dynamic matrices are defined as the stiffness, mass, and damping
 matrices used in either the direct or modal formulation of dynamics problems.
 The assembly of dynamics matrices is discussed in Section 9.3 of the
@@ -4031,7 +4031,7 @@ points introduced for dynamic analysis.
 stiffness and mass matrices generated by the structural matrix assembler.
 
 1.6.1  Direct Formulation
-
+-------------------------
    In the direct method of dynamic problem formulation, the degrees of freedom
 are simply the displacements at grid points. The dynamic matrices are
 assembled from the direct input matrices and the stiffness, mass, and damping
@@ -4083,7 +4083,7 @@ W4 (see PARAM bulk data card). If ş3 and ş4 are omitted, the corresponding
 terms are ignored.
 
 1.6.2  Modal Formulation
-
+------------------------
    In the modal method of dynamic problem formulation, the vibration modes of
 the structure in a selected frequency range are used as degrees of freedom,
 thereby reducing the number of degrees of freedom while maintaining accuracy
@@ -4113,10 +4113,10 @@ eigenvalue analysis. The matrix [mi] is the modal mass matrix with
 off-diagonal terms (which should be zero) omitted. The modal damping matrix
 [bi] and stiffness matrix [ki] are obtained from [mi] by:
 
-   [bi]  =  [2ãfi g(fi) mi]                                         (7)
+   [bi]  =  [2+fi g(fi) mi]                                         (7)
 
                2  2
-   [ki]  =  [4ã  fi  mi]                                            (8)
+   [ki]  =  [4+  fi  mi]                                            (8)
 
 where fi is the frequency of the ith normal mode and g(fi) is obtained by
 interpolation of a table supplied by you to represent the variation of
@@ -4136,9 +4136,9 @@ more accurate displacement vector for the structure by static analysis. This
 improved displacement vector is used in the stress recovery operation. The
 mode acceleration method is selected with the PARAM card MODACC (see PARAM
 bulk data card).
-=PAGE=
-1.7  HYDROELASTIC MODELING
 
+1.7  HYDROELASTIC MODELING
+==========================
    There are two methods of hydroelastic modeling available in NASTRAN. One is
 the axisymmetric hydroelastic modeling capability and the other is the
 three-dimensional hydroelastic modeling capability. These are described in
@@ -4163,9 +4163,9 @@ may be modeled arbitrarily using conventional NASTRAN elements. The fluids are
 assumed to be incompressible, irrotational, and non-viscous.
 
 1.7.1  Axisymmetric Hydroelastic Modeling
-
+-----------------------------------------
 1.7.1.1  Solution of the NASTRAN Fluid Model
-
+--------------------------------------------
    The NASTRAN axisymmetric hydroelastic option allows you to solve a wide
 variety of fluid problems having structural interfaces, compressibility, and
 gravity effects. A complete derivation of the NASTRAN model and an explanation
@@ -4230,7 +4230,7 @@ are as follows:
       describing the pressure function, P(í), in the following equation:
 
                    N   n          N   n*
-      P(í) =  po + ä  p  cos ní + ä  p   sin ní    0< N <100
+      P(í) =  po + -  p  cos ní + -  p   sin ní    0< N <100
                    n=1            n=1
 
       where the set of harmonics 0, n, and n* are selected by you. If you want
@@ -4272,7 +4272,7 @@ are as follows:
       HARMONICS = N is used to select up to the Nth harmonic for output.
 
 1.7.1.2  Hydroelastic Input Data
-
+--------------------------------
    A number of special NASTRAN data cards are required for fluid analysis
 problems. These cards are compatible with structural NASTRAN data. A brief
 description of the uses for each bulk data card follows.
@@ -4382,19 +4382,19 @@ solution is performed correctly only for those harmonic coefficients that are
 compatible with the symmetry conditions as illustrated in the following
 example for quarter symmetry, M = 4.
 
-ÚÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-³         ³           ³          Plane 2          ³
-³         ³           ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄ´
-³ Series  ³  Plane 1  ³   S         ³       A     ³
-ÃÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄ´
-³ Cosine  ³     S     ³  0,2,4,...  ³   1,3,5,... ³
-³         ³           ³             ³             ³
-³         ³     A     ³  none       ³   none      ³
-³         ³           ³             ³             ³
-³ Sine    ³     S     ³  none       ³   none      ³
-³         ³           ³             ³             ³
-³ (*)     ³     A     ³  1,3,5,...  ³   2,4,6,... ³
-ÀÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
++---------+-----------+---------------------------+
+|         |           |          Plane 2          |
+|         |           +-------------+-------------+
+| Series  |  Plane 1  |   S         |       A     |
++---------+-----------+-------------+-------------+
+| Cosine  |     S     |  0,2,4,...  |   1,3,5,... |
+|         |           |             |             |
+|         |     A     |  none       |   none      |
+|         |           |             |             |
+| Sine    |     S     |  none       |   none      |
+|         |           |             |             |
+| (*)     |     A     |  1,3,5,...  |   2,4,6,... |
++---------+-----------+-------------+-------------+
 
 DMIAX
 
@@ -4405,7 +4405,7 @@ degrees of freedom. A matrix may be defined with either DMIG or DMIAX cards,
 but not with both.
 
 1.7.1.3  Rigid Formats
-
+----------------------
    The characteristics of the fluid analysis problems which cause restrictions
 on the type of solution are:
 
@@ -4480,7 +4480,7 @@ the capability may be provided by means of an ALTER using the same logic as in
 the direct formulations.
 
 1.7.1.4  Hydroelastic Data Processing
-
+-------------------------------------
    The fluid related data cards submitted by you are processed by the NASTRAN
 Preface to produce equivalent grid point, scalar point, element connection,
 and constraint data card images. Each specified harmonic, N, of the Fourier
@@ -4546,9 +4546,9 @@ are displacements, scalar elements connected to them will have a different
 meaning from that in the structural case.
 
 1.7.2  Three-Dimensional Hydroelastic Modeling
-
+----------------------------------------------
 1.7.2.1  Solution Approach
-
+--------------------------
    The three-dimensional hydroelasticity capability in NASTRAN allows for the
 solution of problems involving interacting, arbitrarily-shaped structures and
 fluids. It is intended for the vibration analysis of fluid-filled tanks in an
@@ -4638,7 +4638,7 @@ formulation of the solution equations. These are:
       each bulk data card.
 
 1.7.2.2  Executive Control Deck
-
+-------------------------------
    The hydroelastic Executive Control Deck is similar to that for the standard
 normal modes analysis, Rigid Format 3. When running the hydroelastic analyses,
 you must insert one of the special DMAP ALTER packages into your Executive
@@ -4681,7 +4681,7 @@ formulation. These parameters are all described in Section 1.7.2.4 under the
 description of the hydroelastic Bulk Data Deck.
 
 1.7.2.3  Case Control Deck
-
+--------------------------
    The Case Control data for normal modes analysis, Rigid Format 3, is not
 modified for direct hydroelastic solutions. For modal formulation, the data is
 similar except that two sets of subcases must be provided. The first set must
@@ -4701,7 +4701,7 @@ Direct Formulation:
    DISP = ALL
 
 Modal Formulation:
-
+------------------
    TITLE =
    SPC = 10
    SUBCASE 1
@@ -4714,7 +4714,7 @@ Modal Formulation:
       DISP =   ALL
 
 Modal Formulation with Selective Output Requests:
-
+-------------------------------------------------
    TITLE =
    SPC = 10
    SUBCASE 1
@@ -4738,7 +4738,7 @@ In the third and last example above, the eigenvectors for only the first two
 structure modes and the first three combined modes will be printed.
 
 Hydroelastic Output Control
-
+---------------------------
    The structure printout and plotting Case Control requests are used to
 control both the fluid and structure outputs. The following data is available:
 
@@ -4764,7 +4764,7 @@ control both the fluid and structure outputs. The following data is available:
       the Case Control Deck section.
 
 1.7.2.4  Bulk Data Deck
-
+-----------------------
    The bulk data cards that pertain specifically to three-dimensional
 hydroelastic modeling are CFFREE, CFHEXi (i = 1 or 2), CFLSTR, CFTETRA,
 CFWEDGE, and MATF. These are all described in Section 2.4 along with all other
@@ -4804,7 +4804,7 @@ described below. They are used to:
       previous checkpoint run.
 
 Direct Formulation Parameters
-
+-----------------------------
    1. COMPTYP (optional) default = -1
 
       Controls the type of compressibility calculations performed. A negative
@@ -4844,7 +4844,7 @@ Direct Formulation Parameters
       unchanged structure.
 
 Modal Formulation Parameters
-
+----------------------------
    1. KCOMP (optional) default = 1.0
 
       (same as direct formulation parameter)
@@ -4872,15 +4872,15 @@ Modal Formulation Parameters
       indicates all available modes are to be used.
 
 REFERENCE
-
+=========
 1. Final Report, NASTRAN Hydroelastic Modal Studies, Volume I, Introduction,
    Theory and Results, (by Universal Analytics, Inc.), National Aeronautics
    and Space Administration, NASA-CR-150393, May 1977.
-=PAGE=
+
 1.8  HEAT TRANSFER PROBLEMS
-
+===========================
 1.8.1  Introduction to NASTRAN Heat Transfer
-
+--------------------------------------------
    NASTRAN heat flow capability may be used either as a separate analysis to
 determine temperatures and fluxes, or to determine temperature inputs for
 structural problems. Steady and transient problems can be solved, including
@@ -4916,25 +4916,25 @@ elements requiring properties), PLOTEL, SEQiP, SLOAD, SPCi, SPCADD, SPOINT,
 TABLEDi, TABLEMi, TEMPii, TF, TLOADi, and TSTEP.
 
 1.8.2  Heat Transfer Elements
-
+-----------------------------
    The basic heat conduction elements are the same as NASTRAN structural
 elements. These elements are shown in the following table:
 
-ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-³                     Heat Conduction Elements                         ³
-ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
-³ Type               ³               Elements                          ³
-ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
-³ Linear             ³ BAR, ROD, CONROD, TUBE                          ³
-³                    ³                                                 ³
-³ Membrane           ³ TRMEM, TRIA1, TRIA2, QDMEM, QUAD1, QUAD2        ³
-³                    ³                                                 ³
-³ Solid of Revolution³ TRIARG, TRAPRG                                  ³
-³                    ³                                                 ³
-³ Solid              ³ TETRA, WEDGE, HEXA1, HEXA2, IHEX1, IHEX2, IHEX3 ³
-³                    ³                                                 ³
-³ Scalar             ³ CELASi, CDMAPi                                  ³
-ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
++----------------------------------------------------------------------+
+|                     Heat Conduction Elements                         |
++--------------------+-------------------------------------------------+
+| Type               |               Elements                          |
++--------------------+-------------------------------------------------+
+| Linear             | BAR, ROD, CONROD, TUBE                          |
+|                    |                                                 |
+| Membrane           | TRMEM, TRIA1, TRIA2, QDMEM, QUAD1, QUAD2        |
+|                    |                                                 |
+| Solid of Revolution| TRIARG, TRAPRG                                  |
+|                    |                                                 |
+| Solid              | TETRA, WEDGE, HEXA1, HEXA2, IHEX1, IHEX2, IHEX3 |
+|                    |                                                 |
+| Scalar             | CELASi, CDMAPi                                  |
++--------------------+-------------------------------------------------+
 
 A connection card (Cxxx) and, if applicable, a property card (Pxxx) is defined
 for each of these elements. Linear elements have a constant cross-sectional
@@ -5020,7 +5020,7 @@ having only two entries on the MPC data card, with equal (but opposite in
 sign) coefficients.
 
 1.8.4  Thermal Loads
-
+--------------------
    Thermal "loads" may be boundary heat fluxes or volume heat addition. As in
 the case of structural analysis, the method of specifying loads is different
 for static and transient analysis. The HBDY element is used for boundaries of
@@ -5042,14 +5042,14 @@ thermal load will be the sum of all loads applied. This means the LOAD SIDs
 and DAREA SIDs must be the same when referenced on a TLOADi card.
 
 1.8.5  Linear Static Analysis
-
+-----------------------------
    Linear static analysis uses APProach HEAT, SOLution 1. The rigid format is
 the same as that used for static structural analysis. This implies that
 several loading conditions and constraint sets can be solved in one job, by
 using subcases in the Case Control deck.
 
 1.8.6  Nonlinear Static Analysis
-
+--------------------------------
    Nonlinear static analysis uses APProach HEAT, SOLution 3. This rigid format
 will allow temperature dependent conductivities of the elements, nonlinear
 radiation exchange, and a limited use of multipoint constraints. There is no
@@ -5091,7 +5091,7 @@ of the residual (error) loads to the applied loads on the unconstrained
 degrees of freedom.
 
 1.8.7  Transient Analysis
-
+-------------------------
    Transient analysis uses APProach HEAT, SOLution 9. This rigid format may
 include conduction, film heat transfer, nonlinear radiation, and NASTRAN
 nonlinear elements. Extra points are used as in structural transient analysis.
@@ -5127,50 +5127,50 @@ if the heat conduction model is the same as the structural model, the same
 grid, connection, and property cards can be used for both, and the temperature
 cards for the structural analysis are produced by the heat conduction
 analysis. The output request in Case Control is THERMAL(PUNCH).
-=PAGE=
-ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿         ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿         ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-³       SEQGP        ³         ³      CORDi      ³         ³                   ³
-³    Grid Point      ³         ³   Coordinate    ³         ³     Grid Point    ³
-³     Sequence       ÃÄÄÄÄ¿    ³     System      ³    ÚÄÄÄÄ´     Properties    ³
-³                    ³    ³    ³   Definition    ³    ³    ³                   ³
-ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ    ³    ÀÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÙ    ³    ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
-                          ³            ³              ³
-ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿    ³    ÚÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄ¿    ³    ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-³    CONSTRAINTS     ³    ÀÄÄÄÄ´      GRID       ÃÄÄÄÄÙ    ³       Cxxx        ³
-³    Single Point    ÃÄÄÄÄÄÄÄÄÄ´   Grid Point    ÃÄÄÄÄÄÄÄÄÄ´   Conduction &    ³
-³     Multipoint     ³    ÚÄÄÄÄ´   Definition    ³         ³  Boundary Element ³
-³  (Omitted Points)  ³    ³    ³                 ³         ³     Definition    ³
-³                    ³    ³    ÀÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÙ         ÀÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÙ
-³                    ³    ³            ³                             ³
-³                    ³    ³            ³                             ³
-ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ    ³            ³                             ³
-                          ³            ³                             ³
-ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿    ³    ÚÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄ¿         ÚÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄ¿
-³  CONSTANT FACTORS  ³    ³    ³  STATIC THERMAL ³         ³      Pxxx         ³
-³     Load Scale     ³    ³    ³      LOADS      ³         ³     Property      ³
-³     Load Delay     ÃÄÄÄÄÙ    ³  Internal Heat  ³         ³    Definition     ³
-³                    ³         ³   Generation    ³         ÀÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÙ
-ÀÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÙ         ³  Boundary Heat  ³                   ³
-          ³                    ³     Fluxes      ³                   ³
-          ³                    ³Directional Heat ³                   ³
-          ³                    ³     Source      ³                   ³
-          ³                    ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ                   ³
-ÚÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄ¿                                     ÚÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄ¿
-³  DYNAMIC THERMAL   ³                                     ³      MATxx        ³
-³       LOADS        ³                                     ³     Material      ³
-³   Time Dependent   ³                                     ³    Definition     ³
-³   Thermal Loads    ³                                     ÀÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÙ
-ÀÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÙ                                               ³
-          ³                                                          ³
-ÚÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄ¿                                     ÚÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄ¿
-³     TABLEDi        ³                                     ³     TABLEMi       ³
-³   Table (Time)     ³                                     ³Table (Temperature)³
-³                    ³                                     ³                   ³
-ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ                                     ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+
++--------------------+         +-----------------+         +-------------------+
+|       SEQGP        |         |      CORDi      |         |                   |
+|    Grid Point      |         |   Coordinate    |         |     Grid Point    |
+|     Sequence       +----+    |     System      |    +----+     Properties    |
+|                    |    |    |   Definition    |    |    |                   |
++--------------------+    |    +-------+---------+    |    +-------------------+
+                          |            |              |
++--------------------+    |    +-------+---------+    |    +-------------------+
+|    CONSTRAINTS     |    +----+      GRID       +----+    |       Cxxx        |
+|    Single Point    +---------+   Grid Point    +---------+   Conduction &    |
+|     Multipoint     |    +----+   Definition    |         |  Boundary Element |
+|  (Omitted Points)  |    |    |                 |         |     Definition    |
+|                    |    |    +-------+---------+         +---------+---------+
+|                    |    |            |                             |
+|                    |    |            |                             |
++--------------------+    |            |                             |
+                          |            |                             |
++--------------------+    |    +-------+---------+         +---------+---------+
+|  CONSTANT FACTORS  |    |    |  STATIC THERMAL |         |      Pxxx         |
+|     Load Scale     |    |    |      LOADS      |         |     Property      |
+|     Load Delay     +----+    |  Internal Heat  |         |    Definition     |
+|                    |         |   Generation    |         +---------+---------+
++---------+----------+         |  Boundary Heat  |                   |
+          |                    |     Fluxes      |                   |
+          |                    |Directional Heat |                   |
+          |                    |     Source      |                   |
+          |                    +-----------------+                   |
++---------+----------+                                     +---------+---------+
+|  DYNAMIC THERMAL   |                                     |      MATxx        |
+|       LOADS        |                                     |     Material      |
+|   Time Dependent   |                                     |    Definition     |
+|   Thermal Loads    |                                     +---------+---------+
++---------+----------+                                               |
+          |                                                          |
++---------+----------+                                     +---------+---------+
+|     TABLEDi        |                                     |     TABLEMi       |
+|   Table (Time)     |                                     |Table (Temperature)|
+|                    |                                     |                   |
++--------------------+                                     +-------------------+
 
 
                   Figure 1.8-1. Thermal model diagram
-=PAGE=
+
 Type = POINT
 
                                    
@@ -5219,11 +5219,11 @@ triangles and x = 4 for quadrilaterals.
 
   Figure 1.8-2. HBDY element orientation (for QVECT flux) (concluded)
 
-=PAGE=
+
 1.9  ACOUSTIC CAVITY MODELING
-
+=============================
 1.9.1  Data Card Functions
-
+--------------------------
    The NASTRAN structural analysis system is used as the basis for acoustic
 cavity analysis. Many of the structural analysis options, such as selecting
 boundary conditions, applying loading conditions, and selecting output data,
@@ -5296,7 +5296,7 @@ reader is referred to Sections 1.4 and 1.5 for instruction in the use of these
 cards.
 
 1.9.2  Assumptions and Limitations
-
+----------------------------------
    The accuracy of the acoustic model will be dependent on the selection of
 the mesh of finite elements. The assumption for each element is that the
 pressure field has a linear variation over the cross section and a sinusoidal
@@ -5352,9 +5352,9 @@ card "SET n INCLUDE PLOTEL" must be used, where n is a set number.
 
                Figure 1.9-1. Modeling errors for various shapes
 
-=PAGE=
-1.10  SUBSTRUCTURING
 
+1.10  SUBSTRUCTURING
+====================
    Substructuring is an analytical technique used to facilitate the solution 
 of structural problems by subdividing the structural models into smaller, more 
 manageable components. The most elementary component, or basic substructure, 
@@ -5421,7 +5421,7 @@ substructuring, followed by the automated multi-stage substructuring
 capabilities. 
 
 1.10.1  Manual Single-Stage Substructuring
-
+------------------------------------------
    The theoretical basis for NASTRAN manual substructuring is given in Section 
 4.3 of the Theoretical Manual. This technique may be used with any of the 
 rigid formats, except Piecewise Linear Analysis. The following sections 
@@ -5486,7 +5486,7 @@ for changes in the model can be substantially reduced if the unchanged
 substructures are initially combined into a single intermediate substructure. 
 
 1.10.1.1  Basic Manual Substructure Analysis
-
+--------------------------------------------
    Basic manual substructure analysis will be described with reference to the 
 simple beam structure shown in Figure 1.10-1. The beam is arbitrarily 
 separated into two substructures, referred to as substructure 1 and 
@@ -5610,7 +5610,7 @@ in Table 1.10-9. Comments are restricted to cards that are different from
 those presented for the Phase 3 run of substructure 1. 
 
 1.10.1.2  Loads and Boundary Conditions
-
+---------------------------------------
    The single load and the single boundary condition for the sample problem 
 defined in Section 1.10.1.1 were introduced in Phase 1. It is also possible to 
 introduce loads and boundary conditions in Phase 2. In this case, the loaded 
@@ -5743,7 +5743,7 @@ vector for each boundary condition. Also, appropriate modifications would have
 to be made to the suggested DMAP sequence for Phase 2. 
 
 1.10.1.3  Normal Modes Analysis
-
+-------------------------------
    Substructuring for normal modes analysis is performed in much the same way 
 as that for static analysis. A NASTRAN Data Deck for use in Phase 1 of a 
 Normal Modes Analysis (Rigid Format 3) is shown in Table 1.10-13. 
@@ -5793,7 +5793,7 @@ incremented one for each substructure in order to point to the proper
 eigenvector partition. 
 
 1.10.1.4  Dynamic Analysis
-
+--------------------------
    Manual substructuring may be used with any of the other dynamics rigid 
 formats. The NASTRAN Data Decks will be similar to those used for Normal Modes 
 Analysis. All dynamic loads must be applied in Phase 2. If the SUPORT card is 
@@ -5828,7 +5828,7 @@ desired for dependent response quantities or element stresses and forces, a
 Phase 3 run must be made for each substructure of interest. 
 
 1.10.1.5  DMAP Loops for Phase 2
-
+--------------------------------
    The DMAP sequences for the substructure example in Section 1.10.1.1 use 
 repeated blocks of code for each substructure. Cards 209 through 215 are 
 associated with input for substructure 1. Cards 216 through 222 perform the 
@@ -5876,7 +5876,7 @@ the Bulk Data Deck for Phase 2. If Phase 3 runs are not required, no output
 sequence is necessary. 
 
 1.10.1.6  Identical Substructures
-
+---------------------------------
    In the case of identical substructures, the substructuring procedures can 
 be organized to take full advantage of the repetitive parts. The substructures 
 only have to appear identical in Phase 1. The loading conditions and boundary 
@@ -5948,7 +5948,7 @@ consequent saving in data generation effort.
 128  SPC     101     1       12
 129  ENDDATA
 
-=PAGE=
+
 Table 1.10-2. Comments for Phase 1, Substructure 1 Data Deck.
 
 Card
@@ -6004,7 +6004,7 @@ No.      Refer to Table 1.10-1 for input cards described below.
  128     Defines single-point constraint set 101. Components 1 and 2 are
          constrained at grid point 1 in substructure 1.
 
-=PAGE=
+
 Table 1.10-3. Data Deck for Phase 1, Substructure 2.
 
 150a NASTRAN    FILES = (INPT,NPTP)
@@ -6046,7 +6046,7 @@ Table 1.10-3. Data Deck for Phase 1, Substructure 2.
 181  PBAR    10      11      60.     500.
 182  SPC     201     6       2
 183  ENDDATA
-=PAGE=
+
 Table 1.10-4. Comments for Phase 1, Substructure 2 Data Deck.
 
 Card
@@ -6069,7 +6069,7 @@ No.      Refer to Table 1.10-3 for input cards described below.
  175     point 3 has arbitrarily been placed in substructure 2.
 
  182     Defines single-point constraint set 201 at grid point 6, component 2.
-=PAGE=
+
 Table 1.10-5. Data Deck for Phase 2
 
 200  NASTRAN    FILES = (INPT,INP1,1NP2)
@@ -6134,7 +6134,7 @@ Table 1.10-5. Data Deck for Phase 2
 239  ENDALTER
 240  CEND
 241  TITLE = PHASE TWO
-=PAGE=
+
 Table 1.10-5. Data Deck for Phase 2 (continued)
 
 242  BEGIN BULK
@@ -6146,7 +6146,7 @@ Table 1.10-5. Data Deck for Phase 2 (continued)
 246  DMI     PGT     1       1       0.0
 247  SPOINT  1       THRU    3
 248  ENDDATA
-=PAGE=
+
 Table 1.10-6. Comments for Phase 2 Data Deck
 
 Card
@@ -6214,7 +6214,7 @@ No.      Refer to Table 1.10-5 for input cards described below.
 
  221     Insert the module ADD to add the loads applied to substructure 2 to the
          load vector for substructure 1, and designate the output as PT02.
-=PAGE=
+
 Table 1.10-6. Comments for Phase 2 Data Deck (continued)
 
 Card
@@ -6283,7 +6283,7 @@ No.      Refer to Table 1.10-5 for input cards described below.
  246
 
  247     Definition of the three scalar points for the pseudostructure.
-=PAGE=
+
 Table 1.10-7. Data Deck for Phase 3, Substructure 1
 
 300  NASTRAN    FILES = (INPT,OPTP)
@@ -6311,7 +6311,7 @@ Table 1.10-7. Data Deck for Phase 3, Substructure 1
 319     (No Bulk Data)
 320  ENDDATA
 
-=PAGE=
+
 Table 1.10-8. Comments for Phase 3, Substructure 1 Data Deck
 
 Card
@@ -6357,7 +6357,7 @@ No.      Refer to Table 1.10-7 for input cards described below.
 
  320     End of NASTRAN Data Deck.
 
-=PAGE=
+
 Table 1.10-9. Data Deck for Phase 3, Substructure 2
 
 350a NASTRAN    FILES = (INPT,OPTP)
@@ -6384,7 +6384,7 @@ Table 1.10-9. Data Deck for Phase 3, Substructure 2
 367  BEGIN BULK
 368     (No Bulk Data)
 369  ENDDATA
-=PAGE=
+
 Table 1.10-10. Comments for Phase 3, Substructure 2 Data Deck
 
 Card
@@ -6400,7 +6400,7 @@ No.      Refer to Table 1.10-9 for input cards described below.
 
  365     The request for printed output of the load vectors will show nonzero
          loads applied to grid points 3 and 4.
-=PAGE=
+
 Table 1.10-11. Instructions for Modified Phase 2 Data Deck
 
  1. Remove card 116, SPC set selection for Phase 1 substructure 1, and request
@@ -6437,7 +6437,7 @@ Table 1.10-11. Instructions for Modified Phase 2 Data Deck
 
 11. Replace card 247 as shown in Table 1.10-12 to modify the definition of the
     pseudostructure to contain 12 scalar points.
-=PAGE=
+
 Table 1.10-12. New Data for Modified Phase 2
 
      1       2       3       4       5       6       7       8       9       10
@@ -6455,7 +6455,7 @@ Table 1.10-12. New Data for Modified Phase 2
 246a SLOAD   202     5       1000.   8       1000.
 246b SPC1    201             1       2       11
 247  SPOINT  1       THRU    12
-=PAGE=
+
 Table 1.10-13. Phase 1 Normal Modes Analysis Data Deck
 
 NASTRAN   FILES = (INPT,NPTP)
@@ -6473,7 +6473,7 @@ CEND
 BEGIN BULK
    (Bulk Data Deck)
 ENDDATA
-=PAGE=
+
 Table 1.10-14. Phase 2 Normal Modes Analysis Data Deck
 
 NASTRAN   FILES = (INPT,INP1,INP2)
@@ -6520,7 +6520,7 @@ CEND
 BEGIN BULK
   (Bulk Data Deck)
 ENDDATA
-=PAGE=
+
 Table 1.10-15. Phase 3 Normal Modes Analysis Data Deck
 
 NASTRAN   FILES = (INPT,OPTP)
@@ -6542,40 +6542,40 @@ CEND
 BEGIN BULK
    (No Bulk Data)
 ENDDATA
-=PAGE=
+
        Y
-         ³                   ³P        ³P
-         ³1        2        3³        4³        5         6
-         *ÄÄÄÂÄÂÄÄÄ*ÄÄÄÂÄÂÄÄÄ*ÄÄÄÂÄÂÄÄÄ*ÄÄÄÂÄÂÄÄÄ*ÄÄÄÂÄÂÄÄÄ*ÄÄÄÄÄ X
-       ÄÄÁÄÄ ³1³       ³2³       ³3³       ³4³       ³5³ ÄÄÁÄÄ
-       ///// ÀÄÙ       ÀÄÙ       ÀÄÙ       ÀÄÙ       ÀÄÙ /////
-         ³                                                 ³
-         ³                                                 ³
-         ³                                                 ³
-         ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+         |                   |P        |P
+         |1        2        3|        4|        5         6
+         *---+-+---*---+-+---*---+-+---*---+-+---*---+-+---*----- X
+       --+-- |1|       |2|       |3|       |4|       |5| --+--
+       ///// +-+       +-+       +-+       +-+       +-+ /////
+         |                                                 |
+         |                                                 |
+         |                                                 |
+         +-------------------------------------------------+
                           5 @ 20 ft. = 100 ft.
 
 
 
          Substructure 1                    Substructure 2
 
-                                     ³P        ³P
-          1        2        3       3³        4³        5         6
-         *ÄÄÄÂÄÂÄÄÄ*ÄÄÄÂÄÂÄÄÄ*       *ÄÄÄÂÄÂÄÄÄ*ÄÄÄÂÄÂÄÄÄ*ÄÄÄÂÄÂÄÄÄ*ÄÄ
-       ÄÄÁÄÄ ³1³       ³2³               ³3³       ³4³       ³5³ ÄÄÁÄÄ
-       ///// ÀÄÙ       ÀÄÙ               ÀÄÙ       ÀÄÙ       ÀÄÙ /////
-         ³         ³         ³       ³         ³         ³         ³
-         ³         ³         ³       ³         ³         ³         ³
-         ÃÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄ´       ÃÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄ´
+                                     |P        |P
+          1        2        3       3|        4|        5         6
+         *---+-+---*---+-+---*       *---+-+---*---+-+---*---+-+---*--
+       --+-- |1|       |2|               |3|       |4|       |5| --+--
+       ///// +-+       +-+               +-+       +-+       +-+ /////
+         |         |         |       |         |         |         |
+         |         |         |       |         |         |         |
+         +---------+---------+       +---------+---------+---------+
              240"      240"              240"     240"      240"
 
 
 
      2   Grid point numbers
 
-    ÚÄ¿
-    ³3³  Element numbers
-    ÀÄÙ
+    +-+
+    |3|  Element numbers
+    +-+
 
                 6
      E = 30 x 10  psi
@@ -6588,9 +6588,9 @@ ENDDATA
 
                  Figure 1.10-1. Manual substructuring problem
 
-=PAGE=
-1.10.2  Automated Multi-Stage Substructuring
 
+1.10.2  Automated Multi-Stage Substructuring
+--------------------------------------------
    Large and complex structural analysis problems can be solved for static and 
 dynamic response and/or normal mode shapes using the automated multi-stage 
 substructuring features of NASTRAN. As with all substructuring approaches, you 
@@ -6617,7 +6617,7 @@ are described below. The theory is presented in Section 4.6 of the Theoretical
 Manual. 
 
 1.10.2.1  Basic Concepts
-
+------------------------
    Automated substructuring analysis is available for use with NASTRAN Rigid 
 Formats 1, 2, 3, 8, and 9. This provides capability for static analysis, 
 static analysis with inertial relief for unsupported structures, and normal 
@@ -6694,7 +6694,7 @@ Section 5.9. Descriptions of the corresponding modules provided for
 substructuring are found in the NASTRAN Programmer's Manual. 
 
 1.10.2.2  Substructure Operations and Control Functions
-
+-------------------------------------------------------
    User control of the automated multi-stage substructuring system is obtained 
 via the Substructure Control Deck commands. The key terms used to describe 
 these commands and their functions are defined in Table 1.10-16. A summary of 
@@ -6838,7 +6838,7 @@ planning also will be an invaluable aid to the task of data preparation and
 proper sequencing of the individual steps in the analysis. 
 
 1.10.2.3  Input Data Checking and Interpretation of Output
-
+----------------------------------------------------------
    The automated substructuring system provides several methods for input data 
 checking, diagnostic output, and substructure-oriented data output. 
 
@@ -7028,7 +7028,7 @@ stored in the "CSTM" item for that pseudostructure.
 
                       BGSS ITEM FOR SUBSTRUCTURE WINDMILL
 
-       INTERNAL      CSTM ID           ÄÄÄÄÄÄÄÄşCOORDINATESşÄÄÄÄÄÄÄÄÄÄÄ
+       INTERNAL      CSTM ID           --------şCOORDINATESş-----------
        POINT ID.        NO.            X1               X2           X3
 
           1             0         -0.500000E+01    0.100000E+02    0.E+00
@@ -7108,18 +7108,18 @@ loads, {u} is the displacement vector, [K] is the stiffness, [B] is the
 damping, [M] is the mass, w2 are eigenvalues from a real modes analysis, and p 
 are complex eigenvalues from a complex modal reduction. 
 
-   ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-   ³ Rigid Format    ³     Equation for Forces of Constraint            ³
-   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
-   ³                 ³                                                  ³
-   ³ 1 and 2         ³     {Q} = [K]{u}                          - {P}  ³
-   ³                 ³                                                  ³
-   ³   3             ³     {Q} = [K]{u}            - [M][w2]{u}         ³
-   ³                 ³                                                  ³
-   ³   3             ³     {Q} = [K]{u} + [B][p]{u} +  [M][p2]{u}       ³
-   ³                 ³                        .           ..            ³
-   ³ 8 and 9         ³     Q   = [K]{u} + [B]{u}    + [M]{u}     - {P}  ³
-   ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+   +-----------------+--------------------------------------------------+
+   | Rigid Format    |     Equation for Forces of Constraint            |
+   +-----------------+--------------------------------------------------+
+   |                 |                                                  |
+   | 1 and 2         |     {Q} = [K]{u}                          - {P}  |
+   |                 |                                                  |
+   |   3             |     {Q} = [K]{u}            - [M][w2]{u}         |
+   |                 |                                                  |
+   |   3             |     {Q} = [K]{u} + [B][p]{u} +  [M][p2]{u}       |
+   |                 |                        .           ..            |
+   | 8 and 9         |     Q   = [K]{u} + [B]{u}    + [M]{u}     - {P}  |
+   +-----------------+--------------------------------------------------+
 
    The force vectors {Q} contain all the terms due to
 
@@ -7140,15 +7140,15 @@ provide especially useful information, that is, the forces of substructure
 interconnection as shown below. 
 
                          -F1              F1
-       ÚÄÄÄÄÄÄÄÄÄÄ¿ÄÄÄÄÄÄÄ                 ÄÄÄÄÄÄÄÚÄÄÄÄÄÄÄÄÄÄ¿
-       ³          ³                               ³          ³
-       ³          ³                               ³    B     ³
-       ³          ³      -F2             F2       ³          ³
-       ³    A     ³ÄÄÄÄÄÄÄÄÄ             ÄÄÄÄÄÄÄÄÄÃÄÄÄÄÄÄÄÄÄÄ´
-       ³          ³                               ³          ³
-       ³          ³                               ³    C     ³
-       ³          ³                               ³          ³
-       ÀÄÄÄÄÄÄÄÄÄÄÙ                               ÀÄÄÄÄÄÄÄÄÄÄÙ
+       +----------+-------                 -------+----------+
+       |          |                               |          |
+       |          |                               |    B     |
+       |          |      -F2             F2       |          |
+       |    A     |---------             ---------+----------+
+       |          |                               |          |
+       |          |                               |    C     |
+       |          |                               |          |
+       +----------+                               +----------+
 
        Substructure A                              Substructure BC
 
@@ -7159,22 +7159,22 @@ substructure B and C, acting at their common grid point. The separate
 contributions to F2 from each B and C may be determined by using the RECOVER 
 command for the component substructures B and C individually, as shown below. 
 
-                                                      ÚÄÄÄÄÄÄÄÄÄÄ¿
-                                                      ³          ³
-                ÚÄÄÄÄÄÄÄÄÄÄ¿                          ³    B     ³
-                ³          ³                 F2B      ³          ³
-                ³    B     ³                 ÄÄÄÄÄÄÄÄÄÀÄÄÄÄÄÄÄÄÄÄÙ
-       F2       ³          ³
-       ÄÄÄÄÄÄÄÄÄÃÄÄÄÄÄÄÄÄÄÄ´   =                           +
-                ³          ³                 F2C
-                ³    C     ³                 ÄÄÄÄÄÄÄÄÄÚÄÄÄÄÄÄÄÄÄÄ¿
-                ³          ³                          ³          ³
-                ÀÄÄÄÄÄÄÄÄÄÄÙ                          ³    C     ³
-                                                      ³          ³
-                                                      ÀÄÄÄÄÄÄÄÄÄÄÙ
+                                                      +----------+
+                                                      |          |
+                +----------+                          |    B     |
+                |          |                 F2B      |          |
+                |    B     |                 ---------+----------+
+       F2       |          |
+       ---------+----------+   =                           +
+                |          |                 F2C
+                |    C     |                 ---------+----------+
+                |          |                          |          |
+                +----------+                          |    C     |
+                                                      |          |
+                                                      +----------+
 
 1.10.2.4  Substructure Operating File (SOF)
-
+-------------------------------------------
    The data required for each basic substructure and for all subsequent 
 combinatIons of substructures are stored on the Substructure Operating File 
 (SOF). The SOF data are stored in direct access format on disk or drum during 
@@ -7208,16 +7208,16 @@ would be chained together to form the single logical file for use in the
 analysis of larger problems. The figure below shows the basic arrangement of 
 an SOF on disk or drum. 
 
-       ÚÄÄÄÄÄÄÄÄÄÄ¿                  ÚÄÄÄÄÄÄÄÄÄÄ¿
-       ÃÄÄÄÄÄÄÄÄÄÄ´                  ÃÄÄÄÄÄÄÄÄÄÄ´
-       ³ SOF(1)   ³Ä Ä Ä Ä Ä Ä Ä Ä Ä ³ SOF(2)   ³ Ä Ä¿
-       ÃÄÄÄÄÄÄÄÄÄÄ´                  ÃÄÄÄÄÄÄÄÄÄÄ´    
-       ³          ³                  ³          ³    ³
-       ÃÄÄÄÄÄÄÄÄÄÄ´                  ³          ³
-       ³ SOF(1)   ³Ä Ä Ä Ä Ä¿        ÃÄÄÄÄÄÄÄÄÄÄ´    ³
-       ÃÄÄÄÄÄÄÄÄÄÄ´         À Ä Ä Ä Ä³ SOF(3)   ³ Ä ÄÙ
-       ³          ³                  ÃÄÄÄÄÄÄÄÄÄÄ´
-       ÀÄÄÄÄÄÄÄÄÄÄÙ                  ÀÄÄÄÄÄÄÄÄÄÄÙ
+       +----------+                  +----------+
+       +----------+                  +----------+
+       | SOF(1)   |- - - - - - - - - | SOF(2)   | - -+
+       +----------+                  +----------+    
+       |          |                  |          |    |
+       +----------+                  |          |
+       | SOF(1)   |- - - - -+        +----------+    |
+       +----------+         + - - - -| SOF(3)   | - -+
+       |          |                  +----------+
+       +----------+                  +----------+
 
 
    Each physical file comprising the SOF is a direct access file. These disk 
@@ -7266,7 +7266,7 @@ may be selectively stored on a backup tape for later retrieval, thus releasing
 needed space for subsequent operations. 
 
 1.10.2.5  The Case Control Deck for Automated Substructure Analyses
-
+-------------------------------------------------------------------
    The Case Control Deck for substructuring analysis controls loading 
 conditions, constraint set selection, output requests, and method of analysis 
 just as in any non-substructuring analysis. However, in a substructuring 
@@ -7326,7 +7326,7 @@ correction data to the Phase 3 output processing of element forces and
 stresses. 
 
 1.10.2.6  User Aids for Automated Substructure Analyses
-
+-------------------------------------------------------
    The following suggestions, recommendations, and cautions should be 
 considered when using automated multi-stage substructuring. The automated 
 substructuring capability offers you flexibility in the performance of an 
@@ -7485,7 +7485,7 @@ evaluated using only the Phase 3 recovery calculations. Of course, care must
 be taken to maintain compatibility with the degree of freedom list defining 
 the solution displacement vector. That is, the boundary grid points and 
 connections should not be changed. 
-=PAGE=
+
 Table 1.10-16. Definitions of Substructure Terminology
 
 Basic Substructure      - A structure formulated from finite elements in Phase
@@ -7541,7 +7541,7 @@ Solution Structure      - The resulting substructure to be used in the solve
 
 Solve Operation         - To obtain solutions using the present structural
                           matrices and user-defined input data.
-=PAGE=
+
 Table 1.10-17. Summary of Substructure Commands
 
                        # Mandatory Control Cards     * Required Subcommand
@@ -7611,7 +7611,7 @@ Table 1.10-17. Summary of Substructure Commands
     RSAVE         - Indicates the decomposition product of the interior point
                     stiffness matrix is to be saved on the SOF
     OUTPUT        - Specifies optional output requests
-=PAGE=
+
 Table 1.10-17. Summary of Substructure Commands (continued)
 
   MREDUCE         - Reduces substructure matrices using a normal modes
@@ -7677,7 +7677,7 @@ Table 1.10-17. Summary of Substructure Commands (continued)
   BRECOVER         - Basic substructure data recovery, Phase 3.
 
   PLOT             - Initiates substructure undeformed plots.
-=PAGE=
+
 Table 1.10-18. Substructure Bulk Data Card Summary
 
      Bulk Data Used By Substructure Commands REDUCE, MREDUCE, and CREDUCE
@@ -7725,7 +7725,7 @@ Table 1.10-18. Substructure Bulk Data Card Summary
 
   TICS      - Specifies transient initial conditions.
 
-=PAGE=
+
 Table 1.10-19. Substructure Item Descriptions
 
  EQSS     External grid point and internal point equivalence data.
@@ -7778,82 +7778,82 @@ Table 1.10-19. Substructure Item Descriptions
 
  HLFT     Left side H transformation matrix from unsymmetric CREDUCE operation.
 
-=PAGE=
+
      Job Control Deck
        :
        :
 
-     NASTRAN              ¿
-                          ³
-     ID                   ³
-                          ³
-     APP DISP,SUBS        ³
-                          ³
-     RESTART              ³ Executive Control Deck
-       :                  ³
-       :                  ³
-     (optional)           ³
-                          ³
-     CEND                 Ù
+     NASTRAN              +
+                          |
+     ID                   |
+                          |
+     APP DISP,SUBS        |
+                          |
+     RESTART              | Executive Control Deck
+       :                  |
+       :                  |
+     (optional)           |
+                          |
+     CEND                 +
 
-     SUBSTRUCTURE         ¿
-                          ³
-     SOF                  ³
-       :                  ³ Substructure Control Deck
-       :                  ³
-                          ³
-     ENDSUBS              Ù
+     SUBSTRUCTURE         +
+                          |
+     SOF                  |
+       :                  | Substructure Control Deck
+       :                  |
+                          |
+     ENDSUBS              +
 
-     TITLE =              ¿
-       :                  ³ Case Control Deck
-       :                  Ù
+     TITLE =              +
+       :                  | Case Control Deck
+       :                  +
 
-     BEGIN BULK           ¿
-       :                  ³
-       :                  ³ Bulk Data Deck
-                          ³
-     ENDDATA              Ù
+     BEGIN BULK           +
+       :                  |
+       :                  | Bulk Data Deck
+                          |
+     ENDDATA              +
 
 
 
                  Figure 1.10-2. Substructuring input data deck
-=PAGE=
-        ÚÄÄÄÄ¿ ÚÄÄÄÄ¿ ÚÄÄÄÄ¿ ÚÄÄÄÄ¿ ÚÄÄÄÄ¿ ÚÄÄÄÄ¿ ÚÄÄÄÄ¿ ÚÄÄÄÄ¿ ÚÄÄÄÄ¿ ÚÄÄÄÄ¿
-Phase 1 ³ A  ³ ³ B  ³ ³ xa ³ ³ xb ³ ³ E  ³ ³ ya ³ ³ yb ³ ³ yxa³ ³ yxb³ ³ ye ³
-Phase 2 ÀÄÂÄÄÙ ÀÄÂÄÄÙ ÀÄÂÄÄÙ ÀÄÂÄÄÙ ÀÄÂÄÄÙ ÀÄÂÄÄÙ ÀÄÂÄÄÙ ÀÄÂÄÄÙ ÀÄÂÄÄÙ ÀÄÂÄÄÙ
-COMBINE   ÀÄÄÂÄÄÄÙ      ÀÄÄÂÄÄÄÙ      ³      ÀÄÄÂÄÄÄÙ      ÀÄÄÂÄÄÄÙ      ³
-  ³          ³    EQUIV    ³          ³         ³             ³          ³
-  ³        ÚÄÁÄÄ¿ÄÄÄÄÄÄÄÄÚÄÁÄÄ¿       ³       ÚÄÁÄÄ¿        ÚÄÁÄÄ¿       ³
-  ³        ³ C  ³ PREFIX ³ D  ³       ³       ³ yc ³        ³ yd ³       ³
-  ³        ÀÄÂÄÄÙ = X    ÀÄÂÄÄÙ       ³       ÀÄÂÄÄÙ        ÀÄÂÄÄÙ       ³
-COMBINE      ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÙ         ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÙ
-  ³                        ³                                  ³
-  ³                      ÚÄÁÄÄ¿                             ÚÄÁÄÄ¿
-  ³                      ³ F  ³                             ³ yf ³       Phase 3
-  ³                      ÀÄÂÄÄÙ                             ÀÄÂÄÄÙ          ³
-  ³                        ³                                  ³             ³
-REDUCE                   ÚÄÁÄÄ¿ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÚÄÁÄÄ¿          ³
-  ³                      ³ F  ³    EQUIV PREFIX = Y         ³ H  ³          ³
-  ³                      ÀÄÂÄÄÙ                             ÀÄÂÄÄÙ          ³
-COMBINE                    ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ             ³
-  ³                                         ³                               ³
-  ³                                       ÚÄÁÄÄ¿                            ³
-  ³                                       ³ I  ³                            ³
-  ³                                       ÀÄÄÄÄÙ                            ³
-SOLVE ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ RECOVER
+
+        +----+ +----+ +----+ +----+ +----+ +----+ +----+ +----+ +----+ +----+
+Phase 1 | A  | | B  | | xa | | xb | | E  | | ya | | yb | | yxa| | yxb| | ye |
+Phase 2 +-+--+ +-+--+ +-+--+ +-+--+ +-+--+ +-+--+ +-+--+ +-+--+ +-+--+ +-+--+
+COMBINE   +--+---+      +--+---+      |      +--+---+      +--+---+      |
+  |          |    EQUIV    |          |         |             |          |
+  |        +-+--+--------+-+--+       |       +-+--+        +-+--+       |
+  |        | C  | PREFIX | D  |       |       | yc |        | yd |       |
+  |        +-+--+ = X    +-+--+       |       +-+--+        +-+--+       |
+COMBINE      +-------------+----------+         +-------------+----------+
+  |                        |                                  |
+  |                      +-+--+                             +-+--+
+  |                      | F  |                             | yf |       Phase 3
+  |                      +-+--+                             +-+--+          |
+  |                        |                                  |             |
+REDUCE                   +-+--+-----------------------------+-+--+          |
+  |                      | F  |    EQUIV PREFIX = Y         | H  |          |
+  |                      +-+--+                             +-+--+          |
+COMBINE                    +----------------+-----------------+             |
+  |                                         |                               |
+  |                                       +-+--+                            |
+  |                                       | I  |                            |
+  |                                       +----+                            |
+SOLVE ------------------------------------------------------------------ RECOVER
 
 
-ÚÄÄÄÄ¿
-³ A  ³  Primary Substructures
-ÀÄÄÄÄÙ
-ÚÄÄÄÄ¿
-³ xa ³  Image Substructures
-ÀÄÄÄÄÙ
++----+
+| A  |  Primary Substructures
++----+
++----+
+| xa |  Image Substructures
++----+
 
 
 
              Figure 1.10-3. Example of multi-stage substructuring
-=PAGE=
+
 SUBSTRUCTURE OPERATING FILE TABLE OF CONTENTS
 
 
@@ -7875,57 +7875,57 @@ NO.  NAME  TYPE SS PS LL CS HL--------------------------------------------------
 
 
 
-         ÚÄÄÄÄÄÄÄÄ¿   ÚÄÄÄÄÄÄÄÄ¿   ÚÄÄÄÄÄÄÄÄ¿   ÚÄÄÄÄÄÄÄÄ¿   ÚÄÄÄÄÄÄÄÄ¿
-         ³  RING  ³   ³  VANE  ³   ³ VANER  ³   ³ VANEB  ³   ³ VANEL  ³
-         ÀÄÄÄÂÄÄÄÄÙ   ÀÄÄÄÂÄÄÄÄÙ   ÀÄÄÄÂÄÄÄÄÙ   ÀÄÄÄÂÄÄÄÄÙ   ÀÄÄÄÂÄÄÄÄÙ
-             ÀÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÙ
-                                       ³
-                                   ÚÄÄÄÁÄÄÄÄ¿
-                                   ³WINDMILL³
-                                   ÀÄÄÄÄÄÄÄÄÙ
+         +--------+   +--------+   +--------+   +--------+   +--------+
+         |  RING  |   |  VANE  |   | VANER  |   | VANEB  |   | VANEL  |
+         +---+----+   +---+----+   +---+----+   +---+----+   +---+----+
+             +------------+------------+------------+------------+
+                                       |
+                                   +---+----+
+                                   |WINDMILL|
+                                   +--------+
 
 
 
     Figure 1.10-4. Sample of substructure operating file table of contents
-=PAGE=
-                             ¿    ÚÄÄÄÄÄÄÄÄÄÄ¿    Ú
-           NASTRAN Data Deck ÃÄÄÄÄ´          ÃÄÄÄÄ´ Printout and Plots
-                             Ù    ³          ³    À
-                                  ³ PHASE 1  ³
-                             ¿    ³          ³    Ú
-         OPTP from Prior Run ÃÄÄÄÄ´          ÃÄÄÄÄ´ NPTP and SOF for Input to
-                             Ù    ÀÄÄÄÄÂÄÄÄÄÄÙ    À  Phase 2 Run on Other
-                                       ³             Computer
-                                       ³
+
+                             +    +----------+    +
+           NASTRAN Data Deck +----+          +----+ Printout and Plots
+                             +    |          |    +
+                                  | PHASE 1  |
+                             +    |          |    +
+         OPTP from Prior Run +----+          +----+ NPTP and SOF for Input to
+                             +    +----+-----+    +  Phase 2 Run on Other
+                                       |             Computer
+                                       |
                                       SOF Substructure Operating File
 
 
 
-                             ¿    ÚÄÄÄÄÄÄÄÄÄÄ¿    Ú
-           NASTRAN Data Deck ÃÄÄÄÄ´          ÃÄÄÄÄ´ Printout and Plots
-                             Ù    ³          ³    À
-                                  ³ PHASE 2  ³
-                             ¿    ³          ³    Ú
-  SOFs from Prior Phase 1 or ÃÄÄÄÄ´          ÃÄÄÄÄ´ SOF for Input to Other
-   Phase 2 Runs on Other     Ù    ÀÄÄÄÄÂÄÄÄÄÄÙ    À  Computer Phase 2 or Phase
-   Computers                           ³             3 Runs
-                                       ³
+                             +    +----------+    +
+           NASTRAN Data Deck +----+          +----+ Printout and Plots
+                             +    |          |    +
+                                  | PHASE 2  |
+                             +    |          |    +
+  SOFs from Prior Phase 1 or +----+          +----+ SOF for Input to Other
+   Phase 2 Runs on Other     +    +----+-----+    +  Computer Phase 2 or Phase
+   Computers                           |             3 Runs
+                                       |
                                       SOF Substructure Operating File
 
 
 
 
-                             ¿    ÚÄÄÄÄÄÄÄÄÄÄ¿
-           NASTRAN Data Deck ÃÄÄÄÄ´          ³
-                             Ù    ³          ³
-    SOF from Prior Phase 2 ÃÄÄÄÄÄÄ´ PHASE 3  ³
-    Run on Other Computer    ¿    ³          ³    Ú
-           OPTP from Phase 1 ÃÄÄÄÄ´          ÃÄÄÄÄ´ NPTP
-                             Ù    ÀÄÄÂÄÄÄÄÂÄÄÙ    À
-                                     ³    ³
-                                     ³    ³
-                                     ³   SOF Substructure Operating File
-                                     ³
+                             +    +----------+
+           NASTRAN Data Deck +----+          |
+                             +    |          |
+    SOF from Prior Phase 2 +------+ PHASE 3  |
+    Run on Other Computer    +    |          |    +
+           OPTP from Phase 1 +----+          +----+ NPTP
+                             +    +--+----+--+    +
+                                     |    |
+                                     |    |
+                                     |   SOF Substructure Operating File
+                                     |
                                      Printout of
                                      Final Results
                                      and Plots
@@ -7938,7 +7938,7 @@ Note: If all processing is performed on the same computer, SOF tape output is
 
  Figure 1.10-5. Data file organization for NASTRAN multi-stage substructuring
 
-=PAGE=
+
 1.11  AEROELASTIC MODELING
 
 1.11.1  Introduction
@@ -8203,12 +8203,12 @@ Theordorsen function C(k). An approximate form for this function is given by
 
                  b
           N       n
-   C(k) = ä   ÄÄÄÄÄÄÄÄÄ                                             (1)
-         n=0  1-i á /k
+   C(k) = -   ---------                                             (1)
+         n=0  1-i + /k
                    n
 
-where á0 = 0, may be selected for computing lags. The choice of parameters bn
-and án is left to you so that you may select values suitable for your
+where +0 = 0, may be selected for computing lags. The choice of parameters bn
+and +n is left to you so that you may select values suitable for your
 requirement. Reference 3 gives values for various Mach numbers and aspect
 ratios.
 
@@ -8225,22 +8225,22 @@ local downwash) may be modified to agree with the Van Dyke theory and to
 account for sweepback effects. The resulting strip parameters will depend upon
 the wing thickness distribution and spanwise variation of initial angle of
 attack, which must be supplied by you. The point pressure function is given by
-Cp = -(4/m)[C1 + 2C2 mgx + 3C3m2 (gx2 + à02)] v, where
+Cp = -(4/m)[C1 + 2C2 mgx + 3C3m2 (gx2 + +02)] v, where
 
-   ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-   ³ Coefficient   ³    Van Dyke theory with Sweep            ³  Piston Theory ³
-   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
-   ³     _         ³        2    2 1/2                        ³                ³
-   ³     C         ³    m/(m  - s )                           ³     1          ³
-   ³      1        ³                                          ³                ³
-   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
-   ³     _         ³      4          2  2    2      2    2 2  ³                ³
-   ³     C         ³    [m (ç+1) - 4s (m  - s )]/4(m  - s )   ³  (ç+1)/4       ³
-   ³      2        ³                                          ³                ³
-   ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
-   ³     C         ³    (ç+1)/12                              ³  (ç+1)/12      ³
-   ³      3        ³                                          ³                ³
-   ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+   +---------------+------------------------------------------+----------------+
+   | Coefficient   |    Van Dyke theory with Sweep            |  Piston Theory |
+   +---------------+------------------------------------------+----------------+
+   |     _         |        2    2 1/2                        |                |
+   |     C         |    m/(m  - s )                           |     1          |
+   |      1        |                                          |                |
+   +---------------+------------------------------------------+----------------+
+   |     _         |      4          2  2    2      2    2 2  |                |
+   |     C         |    [m (ç+1) - 4s (m  - s )]/4(m  - s )   |  (ç+1)/4       |
+   |      2        |                                          |                |
+   +---------------+------------------------------------------+----------------+
+   |     C         |    (ç+1)/12                              |  (ç+1)/12      |
+   |      3        |                                          |                |
+   +---------------+------------------------------------------+----------------+
 
 and where
 
@@ -8254,7 +8254,7 @@ and where
 
    v  unsteady dimensionless downwash
 
-   ào initial angle of attack
+   +o initial angle of attack
 
    y  ratio of specific heats = 1.4
 
@@ -8267,7 +8267,7 @@ thickness integrals are input on AEFACT data cards, see the thickness integral
 definitions on the CAERO5 data card.
 
 1.11.3  The Interconnection Between Structure and Aerodynamic Models
-
+--------------------------------------------------------------------
    The interpolation between the structural and aerodynamic degrees of freedom
 is based upon the theory of splines (Figure 1.11-6). High aspect ratio wings,
 bodies, or other beamlike structures should use linear splines. Low aspect
@@ -8452,30 +8452,30 @@ PARAM bulk data cards.
 assumed, as in the NASTRAN modal dynamic rigid format. A parameter KDAMP = -1
 can be used to substitute modal structural damping; the modal stiffness is
 multiplied by [1+ig(w)].
-=PAGE=
+
                This figure is not included in the machine readable
                documentation because of complex graphics.
 
    Figure 1.11-1. An aerodynamic doublet-lattice panel subdivided into boxes
 
-=PAGE=
+
                This figure is not included in the machine readable
                documentation because of complex graphics.
 
 Figure 1.11-2a. N5KA example with three panels (ten boxes), two bodies (nine
 slender body elements), and seven interference elements
-=PAGE=
+
                This figure is not included in the machine readable
                documentation because of complex graphics.
 
 Figure 1.11-2b. N5KA example with three panels (ten boxes), two bodies (nine
 slender body elements), and seven interference elements
-=PAGE=
+
                This figure is not included in the machine readable
                documentation because of complex graphics.
 
                         Figure 1.11-3. Mach box surface
-=PAGE=
+
                   GRAPHIC DISPLAY OF REGIONS ON MAIN SEMISPAN
 
 MACH NUMBER   1.300     BOX WIDTH     .052064         BOX LENGTH       .043248
@@ -8510,17 +8510,17 @@ MACH NUMBER   1.300     BOX WIDTH     .052064         BOX LENGTH       .043248
                   (b) Surface as generated by program
 
    Figure 1.11-4. Mach box surface showing Mach boxes and diaphragm
-=PAGE=
+
                This figure is not included in the machine readable
                documentation because of complex graphics.
 
               Figure 1.11-5. Strip theory example lifting surface
-=PAGE=
+
                This figure is not included in the machine readable
                documentation because of complex graphics.
 
               Figure 1.11-6. Splines and their coordinate systems
-=PAGE=
+
 Table 1.11-1. Aerodynamic Elements
 
                 Doublet    Lifting Body
@@ -8555,7 +8555,7 @@ Displacement    3,5        3,5 z-bodies 3           3,5 No      3,5 No control
 Components Used            2,6 y-bodies             control     3,5,6 Control
 at Connection                                       3,5,6
 Points                                              Control
-=PAGE=
+
 Table 1.11-2. Flutter Analysis Methods
 
                  "K"                  "KE"                 "PK"
@@ -8591,7 +8591,7 @@ Method        available, selected  Hessenberg            Hessenberg
 
 
 * No CMETHOD card is used.
-=PAGE=
+
 REFERENCES
 
 1. Giesing, J.P., T. P. Kalman, and W. P. Rodden, "Subsonic Unsteady
@@ -8611,7 +8611,7 @@ REFERENCES
    682, 691; Addison-Wesley; 1955.
 
 
-=PAGE=
+
 1.12  CYCLIC SYMMETRY
 
    Many structures, including pressure vessels, rotating machines, and
@@ -8646,7 +8646,7 @@ structure segments n = 1, 2, etc. and the harmonic indices k = 0, 1, 2, etc.
 is 
 
     n   _o   KMAX _kc              _kx
-   u  = u  +  ä  [u   cos(n-1)ka + u   sin(n-1)ka]                  (1)
+   u  = u  +  -  [u   cos(n-1)ka + u   sin(n-1)ka]                  (1)
              k=1
 
 where
@@ -8664,8 +8664,8 @@ where
      KMAX is the limit (KMAX <= N/2) of k. (If all values of k are used, the
      transformation is exact),
 
-            2ã
-     a  =  ÄÄÄÄÄ is the circumferential angle for each segment.
+            2+
+     a  =  ----- is the circumferential angle for each segment.
            NSEGS
 
 In dihedral symmetry the repeated request may be divided into two half
@@ -8759,7 +8759,7 @@ set are normally sequenced with the cosine terms alternating with the sine
 terms. You may request an alternate sequence on the PARAM card, CYCSEQ, which
 orders all cosine terms before all sine terms. The latter may improve
 efficiency when all of the interior points have been omitted.
-=PAGE=
+
       1.You model one segment.
 
       2.Each segment has its own coordinate system which rotates with
@@ -8774,7 +8774,7 @@ efficiency when all of the interior points have been omitted.
                documentation because of complex graphics.
 
                       Figure 1.12-1. Rotational symmetry
-=PAGE=
+
       1.You model one-half segment (an R segment). The L half segments
         are mirror images of the R half segments.
 
@@ -8792,7 +8792,7 @@ efficiency when all of the interior points have been omitted.
 
                        Figure 1.12-2. Dihedral symmetry
 
-=PAGE=
+
 1.13  FULLY STRESSED DESIGN
 
    The fully stressed design option is part of the static analysis rigid
@@ -8810,26 +8810,26 @@ loads.
 conditions using the initial values for all element properties. A new
 property, P2, will be scaled such that 
 
-                 à
-   P  = P  [ÄÄÄÄÄÄÄÄÄÄÄÄ]                                           (1)
-    2    1   à + (1-à)ç
+                 +
+   P  = P  [------------]                                           (1)
+    2    1   + + (1-+)ç
 
 where P1 is the current property value and ç is an iteration factor with a
-default value of unity. The scale factor, à, is defined as follows: 
+default value of unity. The scale factor, +, is defined as follows: 
 
-             å
-   à = Max (ÄÄÄ)                                                    (2)
-             å
+             +
+   + = Max (---)                                                    (2)
+             +
               l
 
-where à is a stress value and ål is a stress limit. The maximum value of à is
+where + is a stress value and +l is a stress limit. The maximum value of + is
 taken for all loading conditions. Values of ç smaller than unity limit the
 property change in a single iteration, and thereby tend to improve the
 stability of the process. The maximum change in any property is limited by 
 
            P
             2
-   K    < ÄÄÄ < K                                                   (3)
+   K    < --- < K                                                   (3)
     min    P     max
             i
 
@@ -8840,10 +8840,10 @@ user-supplied limits.
 by having all selected element properties reach the specified limits, or by
 satisfying the following convergence criteria: 
 
-   |å - å |
+   |+ - + |
    |     l|
-   ÄÄÄÄÄÄÄÄ  < î                                                    (4)
-      å 
+   --------  < î                                                    (4)
+      + 
        l
 
 where î is a user-supplied convergence limit.
@@ -8869,7 +8869,7 @@ stressed design capability:
       values of the element properties. 
 
    The detailed definitions of the scale factors for each of the element types
-are given in Table 1.13-1. The symbols åt, åc, and ås represent the limiting
+are given in Table 1.13-1. The symbols +t, +c, and +s represent the limiting
 stress values in tension, compression, and shear, given on the structural
 material cards. All of the properties listed for each element are scaled in
 the same way, that is, both the area and torsional constant for the ROD are
@@ -8877,45 +8877,45 @@ modified using the same scale factor.
 
          Table 1.13-1. Scale Factors for Fully Stressed Design
 
-ÚÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-³Element³Stress Value Used         ³Scale Factor (à)   ³Properties Changed    ³
-ÃÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
-³ROD    ³Axial Tension (å1)        ³Max (å1/åt,å2/åc,  ³Area (A)              ³
-³TUBE   ³Axial Compression (å2)    ³     ç/ås)         ³Torsional Constant (J)³
-³       ³Torsion (ç)               ³                   ³                      ³
-ÃÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
-³       ³             Ú            ³                   ³                      ³
-³BAR    ³Fiber Stress ³End a (åa1) ³Max (åa1/åt,åb1/åt,³Area (A)              ³
-³       ³Tension      ³End b (åb1) ³     åa2/åc,åb2/åc)³Torsional Constant (J)³
-³       ³             À            ³                   ³Moments of Inertia    ³
-³       ³             Ú            ³                   ³(I1, I2, I12)         ³
-³ELBOW  ³Fiber Stress ³End a (åa2) ³                   ³(I12 for BAR only)    ³
-³       ³Compression  ³End b (åb2) ³                   ³                      ³
-³       ³             À            ³                   ³                      ³
-ÃÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
-³TRMEM  ³Principal Tension (å1)    ³Max (å1/åt,å2/åc,  ³Thickness (t)         ³
-³QDMEM  ³Principal Compression (å2)³     çm/ås)        ³(Thicknesses t1, t2,  ³
-³QDMEM1 ³Maximum Shear (çm)        ³                   ³t3 for TRIM6)         ³
-³QDMEM2 ³                          ³                   ³                      ³
-³IS2D8  ³                          ³                   ³                      ³
-³TRIM6  ³                          ³                   ³                      ³
-ÃÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
-³TRPLT  ³Same as Above             ³Same as Above      ³Moment of Inertia (I) ³
-³QDPLT  ³(Fiber Distances z1 & z2) ³                   ³                      ³
-³TRBSC  ³                          ³                   ³                      ³
-ÃÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
-³TRIA1  ³Same as Above             ³Same as Above      ³Moment of Inertia (I) ³
-³QUAD1  ³                          ³                   ³Membrane Thickness    ³
-³       ³                          ³                   ³ (t1)                 ³
-ÃÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
-³TRIA2  ³Same as Above             ³Same as Above      ³Thickness (t)         ³
-³QUAD2  ³                          ³                   ³                      ³
-ÃÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
-³SHEAR  ³Maximum Shear (çm)        ³ çm                ³Thickness (t)         ³
-³       ³                          ³ÄÄÄÄ               ³                      ³
-³       ³                          ³ ås                ³                      ³
-ÀÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
-=PAGE=
++-------+--------------------------+-------------------+----------------------+
+|Element|Stress Value Used         |Scale Factor (+)   |Properties Changed    |
++-------+--------------------------+-------------------+----------------------+
+|ROD    |Axial Tension (+1)        |Max (+1/+t,+2/+c,  |Area (A)              |
+|TUBE   |Axial Compression (+2)    |     ç/+s)         |Torsional Constant (J)|
+|       |Torsion (ç)               |                   |                      |
++-------+--------------------------+-------------------+----------------------+
+|       |             +            |                   |                      |
+|BAR    |Fiber Stress |End a (+a1) |Max (+a1/+t,+b1/+t,|Area (A)              |
+|       |Tension      |End b (+b1) |     +a2/+c,+b2/+c)|Torsional Constant (J)|
+|       |             +            |                   |Moments of Inertia    |
+|       |             +            |                   |(I1, I2, I12)         |
+|ELBOW  |Fiber Stress |End a (+a2) |                   |(I12 for BAR only)    |
+|       |Compression  |End b (+b2) |                   |                      |
+|       |             +            |                   |                      |
++-------+--------------------------+-------------------+----------------------+
+|TRMEM  |Principal Tension (+1)    |Max (+1/+t,+2/+c,  |Thickness (t)         |
+|QDMEM  |Principal Compression (+2)|     çm/+s)        |(Thicknesses t1, t2,  |
+|QDMEM1 |Maximum Shear (çm)        |                   |t3 for TRIM6)         |
+|QDMEM2 |                          |                   |                      |
+|IS2D8  |                          |                   |                      |
+|TRIM6  |                          |                   |                      |
++-------+--------------------------+-------------------+----------------------+
+|TRPLT  |Same as Above             |Same as Above      |Moment of Inertia (I) |
+|QDPLT  |(Fiber Distances z1 & z2) |                   |                      |
+|TRBSC  |                          |                   |                      |
++-------+--------------------------+-------------------+----------------------+
+|TRIA1  |Same as Above             |Same as Above      |Moment of Inertia (I) |
+|QUAD1  |                          |                   |Membrane Thickness    |
+|       |                          |                   | (t1)                 |
++-------+--------------------------+-------------------+----------------------+
+|TRIA2  |Same as Above             |Same as Above      |Thickness (t)         |
+|QUAD2  |                          |                   |                      |
++-------+--------------------------+-------------------+----------------------+
+|SHEAR  |Maximum Shear (çm)        | çm                |Thickness (t)         |
+|       |                          |----               |                      |
+|       |                          | +s                |                      |
++-------+--------------------------+-------------------+----------------------+
+
 1.14  THE CONGRUENT FEATURE
 
 1.14.1  Introduction
@@ -9052,7 +9052,7 @@ which the EMG module CPU times are reduced by more than 99 percent.
 Table 1.14-1. Examples of Congruent Feature Usage in NASTRAN Demonstration Problems
 
                     Congruent Element Data    Module CPU Times (sec)*
-                   ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ  ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+                   -------------------------  -----------------------
                                       No. of   (a)        (b)         Saving in
  Ex.  Demo. Prob.  Element  No. of    CNGRNT  Using      Not Using    Module CPU
  No.  No.          Type     Elements  Sets    Congruent  Congruent    Time (%)**
@@ -9077,7 +9077,7 @@ Table 1.14-1. Examples of Congruent Feature Usage in NASTRAN Demonstration Probl
 
 * All problems were run on the IBM S/360-95 computer.
 ** ((b-a)/b)*100
-=PAGE=
+
 1.15  MAGNETIC FIELD PROBLEMS
 
 1.15.1  Introduction
@@ -9097,13 +9097,13 @@ V * D = p                                                        (1)
 
 V * B = 0                                                        (2)
 
-           àB
-V x E = - ÄÄÄÄ                                                   (3)
-           àt
+           +B
+V x E = - ----                                                   (3)
+           +t
 
-             àD
-V x H = J + ÄÄÄÄ                                                 (4)
-             àt
+             +D
+V x H = J + ----                                                 (4)
+             +t
 
 where
 
@@ -9125,7 +9125,7 @@ Additional relations are:
 
 D = îE
 
-J = åE
+J = +E
 
 B = æH
 
@@ -9133,7 +9133,7 @@ where
 
 î = permittivity
 
-å = conductivity
++ = conductivity
 
 æ = magnetic permeability
 
@@ -9194,7 +9194,7 @@ Most applications require only prolate spheroidal coordinates. The solution
 of Laplace's equation in these coordinates is
 
             ì   n                                 m      (Qmn(î))
-í(î,ş,é) =  ä   ä  [A   cos (mé) + B   sin (mé)] P  (ş) [ÄÄÄÄÄÄÄÄÄ](10)
+í(î,ş,é) =  -   -  [A   cos (mé) + B   sin (mé)] P  (ş) [---------](10)
            n=0 m=0   mn             mn            n      (Qmn(îo))
 
 where
@@ -9209,15 +9209,15 @@ where
 P  ,Q   = Legendre functions of the first and second kind, respectively
  n   n
 
-    ¿                      2ã            +1
-Amn ³ =  îm        (n-m)! ô  cos        ô
-Bmn ³    ÄÄÄ(2n+1) ÄÄÄÄÄÄ |  sin (mé)dé | ío(ş,é)Pmn(ş) dş
-    Ù    4ã        (n+m)! õ             õ
+    +                      2+            +1
+Amn | =  îm        (n-m)! ô  cos        ô
+Bmn |    ---(2n+1) ------ |  sin (mé)dé | ío(ş,é)Pmn(ş) dş
+    +    4+        (n+m)! õ             õ
                           0             -1
-     Ú
-     ³ 1, m = 0
-îm = ³ 2, m > 0
-     À
+     +
+     | 1, m = 0
+îm = | 2, m > 0
+     +
 
 ío(ş,é) = distribution of potential í on prolate spheroidal surface î=îo
 
@@ -9492,7 +9492,7 @@ REFERENCE
 1.  Hurwitz, M. M., and Brooks, E. W., "The Solution of Magnetostatic Field
     Problems with NASTRAN," David W. Taylor Naval Ship Research and Development
     Center, DTNSRDC-82/106, December 1982.
-=PAGE=
+
 1.16  DYNAMIC DESIGN-ANALYSIS
 
 1.16.1  Introduction
@@ -9514,11 +9514,11 @@ Approach DISP)
 
    Step 2. Compute the participation factor for each mode:
 
-            ä M  X
+            - M  X
             i  i  ia
-      P  = ÄÄÄÄÄÄÄÄÄÄÄ                                              (1)
+      P  = -----------                                              (1)
        a          2
-            ä M  X 
+            - M  X 
             i  i  ia
 
 where Mi is the mass of the ith degree-of-freedom and Xia is the ith component
@@ -9563,7 +9563,7 @@ as:
 
    Step 3. Compute the "effective mass" in each mode:
 
-      M  = P  ä M  X                                                (5)
+      M  = P  - M  X                                                (5)
        a    a i  i  ia
 
    Thus,
@@ -9640,7 +9640,7 @@ However, from dynamics,
 or
 
          -1              1
-      [K]  [M] {í }  =  ÄÄÄ  {í }                                  (14)
+      [K]  [M] {í }  =  ---  {í }                                  (14)
                  a       2     a
                         w
                          a
@@ -9649,7 +9649,7 @@ Using Equation 14 in Equation 12 yields
 
                      P  V
                       a  a
-      {u }  =  {í } ÄÄÄÄÄÄ                                         (15)
+      {u }  =  {í } ------                                         (15)
         a        a    w
                        a
 
@@ -9662,7 +9662,7 @@ Research Laboratory) sums of stresses (see Reference 3) for each element as
 follows:
 
               |   |                    2
-      S   =   |S  | +  sqrt(ä     (S  ) )                          (16)
+      S   =   |S  | +  sqrt(-     (S  ) )                          (16)
        j      | jm|         b.NE.m  jb
 
 where Sjm = maximum stress at the jth point (taken over the modes under
@@ -9738,7 +9738,7 @@ for velocity is
 
                    V +W
                     b
-      V  =  V  V  ÄÄÄÄÄÄ                                           (17)
+      V  =  V  V  ------                                           (17)
              f  a  V +W
                     c
 
@@ -9761,7 +9761,7 @@ first form is the same as that for velocity
 
                     A +W
                      b
-      A = A  A  A  ÄÄÄÄÄÄÄ                                         (18)
+      A = A  A  A  -------                                         (18)
            f  a  b  A +W
                      c
 
@@ -9784,7 +9784,7 @@ Equation 9, that is,
 Finally, the matrix
 
                 1
-      A'     = ÄÄÄ  A                                              (21)
+      A'     = ---  A                                              (21)
          min     2   min
                 w
 
@@ -9839,7 +9839,7 @@ considered, the resulting static load matrix is of order n x (ml).
 described are performed, except that matrix [PHIG] = [í] replaces [MP] and
 
                   1
-      [PVOW]  =  ÄÄÄÄ [A   ]                                       (23)
+      [PVOW]  =  ---- [A   ]                                       (23)
                    2    min
                   w
 
@@ -9876,7 +9876,7 @@ maximum responses for a given direction for each requested element. The NRL
 sum stress for a given component is
 
              |    |               2
-      S  =   |S   | +  sqrt(ä  (S  ) )                             (24)
+      S  =   |S   | +  sqrt(-  (S  ) )                             (24)
              | max|         j    j
                             .NE.max
 
@@ -10099,7 +10099,7 @@ REFERENCES
 
 3. "Shock Design Criteria for Surface Ships," Naval Sea Systems Command,
    Report NAVSEA 0908-LP-000-3010, May 1976.
-=PAGE=
+
 1.17  PIEZOELECTRIC MODELING
 
 1.17.1  Introduction
@@ -10117,22 +10117,22 @@ series, thus allowing non-axisymmetric loads.
 
    The constitutive relations of a piezoelectric material may be written as
 
-      Ú   ¿      Ú   E        ¿  Ú   ¿
-      ³{å}³      ³ [c ] [e]   ³  ³{î}³
-      ³   ³  =   ³            ³  ³   ³                              (1)
-      ³   ³      ³    T     S ³  ³   ³
-      ³{D}³      ³ [e]  - [î ]³  ³{E}³
-      À   Ù      À            Ù  À   Ù
+      +   +      +   E        +  +   +
+      |{+}|      | [c ] [e]   |  |{î}|
+      |   |  =   |            |  |   |                              (1)
+      |   |      |    T     S |  |   |
+      |{D}|      | [e]  - [î ]|  |{E}|
+      +   +      +            +  +   +
 
 where
 
                                                                T
-      {å}  =  stress components =  ³ å  ,å  ,å  ,å  ,å  ,å   ³
-                                   À  rr  zz  éé  rz  ré  zé Ù
+      {+}  =  stress components =  | +  ,+  ,+  ,+  ,+  ,+   |
+                                   +  rr  zz  éé  rz  ré  zé +
 
                                                                     T
-      {D}  =  components of electric flux density =  ³ D  ,D  ,D   ³
-                                                     À  rr  zz  éé Ù
+      {D}  =  components of electric flux density =  | D  ,D  ,D   |
+                                                     +  rr  zz  éé +
 
       {î}  =  mechanical strain components
 
@@ -10148,12 +10148,12 @@ where
 
    The displacement vector of a point within an element is taken to be
 
-             Ú   ¿
-             ³ u ³
-       _     ³ v ³
-      {u}  = ³ w ³                                                  (2)
-             ³ í ³
-             À   Ù
+             +   +
+             | u |
+       _     | v |
+      {u}  = | w |                                                  (2)
+             | í |
+             +   +
 
 where u, v, and w are the ring displacements in the radial, tangential, and
 axial directions, respectively, and í is the electric potential. The latter
@@ -10165,12 +10165,12 @@ form as the Fourier series for radial displacement u, as given in Section
 
 The "stiffness" matrix for the Nth harmonic is
 
-                                 Ú  E        ¿
-                                 ³[c ]   [e] ³
-        (N)         ô ô   (N) T  ³           ³    (N)
-      [K   ]  =  ã  | | [B   ]   ³   T     S ³  [B   ] rdrdz        (3)
-                    õ õ          ³[e]   -[î ]³
-                    r z          À           Ù
+                                 +  E        +
+                                 |[c ]   [e] |
+        (N)         ô ô   (N) T  |           |    (N)
+      [K   ]  =  +  | | [B   ]   |   T     S |  [B   ] rdrdz        (3)
+                    õ õ          |[e]   -[î ]|
+                    r z          +           +
 
 where [B(N)] is the matrix of "strain"-"displacement" coefficients for the Nth
 harmonic.
@@ -10178,21 +10178,21 @@ harmonic.
    Equations 2 and 3 indicate that the matrix equation to be solved for static
 analysis may be partitioned as follows:
 
-      Ú            ¿  Ú   ¿      Ú    ¿
-      ³[K  ]  [K  ]³  ³{ë}³      ³{Fë}³
-      ³  ëë     ëí ³  ³   ³  =   ³  ë ³                             (4)
-      ³[K  ]  [K]  ³  ³{í}³      ³{Fí}³
-      À  íë     íí Ù  À   Ù      À  í Ù
+      +            +  +   +      +    +
+      |[K  ]  [K  ]|  |{ë}|      |{Fë}|
+      |  ëë     ëí |  |   |  =   |  ë |                             (4)
+      |[K  ]  [K]  |  |{í}|      |{Fí}|
+      +  íë     íí +  +   +      +  í +
 
 where
 
                                         T
-      {ë}  = ³ u ,v ,w , ..., u ,v ,w  ³
-             À  1  1  1        n  n  n Ù
+      {ë}  = | u ,v ,w , ..., u ,v ,w  |
+             +  1  1  1        n  n  n +
 
                             T
-      {d}  = ³ í , ..., í  ³
-             À  1        n Ù
+      {d}  = | í , ..., í  |
+             +  1        n +
 
       {F } =  vector of structural forces
         ë
@@ -10254,30 +10254,30 @@ account.
 modeling. All these cards define piezoelectric material properties. These
 properties are usually described by the following matrices:
 
-              Ú                                    ¿
-              ³ SE11  SE12  SE13    0     0     0  ³
-        E     ³ SE12  SE11  SE13    0     0     0  ³
-      [S ] =  ³ SE13  SE13  SE33    0     0     0  ³                (5)
-              ³   0     0     0   SE44    0     0  ³
-              ³   0     0     0     0   SE44    0  ³
-              ³   0     0     0     0     0   SE66 ³
-              À                                    Ù
+              +                                    +
+              | SE11  SE12  SE13    0     0     0  |
+        E     | SE12  SE11  SE13    0     0     0  |
+      [S ] =  | SE13  SE13  SE33    0     0     0  |                (5)
+              |   0     0     0   SE44    0     0  |
+              |   0     0     0     0   SE44    0  |
+              |   0     0     0     0     0   SE66 |
+              +                                    +
 
 where
 
       SE66 = 2 ( SE11 - SE12 )
 
-              Ú                                    ¿
-              ³   0     0     0     0    d15    0  ³
-      [d]  =  ³   0     0     0    d15    0     0  ³                (6)
-              ³  d31   d31   d33    0     0     0  ³
-              À                                    Ù
+              +                                    +
+              |   0     0     0     0    d15    0  |
+      [d]  =  |   0     0     0    d15    0     0  |                (6)
+              |  d31   d31   d33    0     0     0  |
+              +                                    +
 
-              Ú                  ¿
-        S     ³ îS11    0     0  ³
-      [î ] =  ³   0   îS11    0  ³                                  (7)
-              ³   0     0   îS33 ³
-              À                  Ù
+              +                  +
+        S     | îS11    0     0  |
+      [î ] =  |   0   îS11    0  |                                  (7)
+              |   0     0   îS33 |
+              +                  +
 
    The matrices in Equation 1 are computed as follows:
 
@@ -10401,7 +10401,7 @@ REFERENCE
 1. Lipman, R. R., and Hurwitz, M. M., "Piezoelectric Finite Elements for
    NASTRAN," David W. Taylor Naval Ship Research and Development Center,
    Report Number DTNSRDC-80/045, April 1980.
-=PAGE=
+
 1.18  FORCED VIBRATION ANALYSIS OF ROTATING CYCLIC STRUCTURES AND
 TURBOSYSTEMS
 
@@ -10516,7 +10516,7 @@ turbosystems, a number of coordinate systems are employed. These are described
 below. Figure 1.18-2 illustrates the use of these coordinate systems for a
 bladed disc and Figure 1.18-3 illustrates these for an advanced turbopropeller
 with its axis of rotation at an angle with respect to the tunnel mean flow.
-=PAGE=
+
       1.Vector ê is the angular velocity of the XBYBZB (Basic) coordinate
         system with respect to the XIYIZI (Inertial) coordinate system.
 
@@ -10529,23 +10529,23 @@ with its axis of rotation at an angle with respect to the tunnel mean flow.
                documentation because of complex graphics.
 
           Figure 1.18-1. Cyclic sector and side numbering convention
-=PAGE=
+
                This figure is not included in the machine readable
                documentation because of complex graphics.
 
 Figure 1.18-2. NASTRAN model of a 12-bladed disc showing the coordinate systems
-=PAGE=
+
                This figure is not included in the machine readable
                documentation because of complex graphics.
 
  Figure 1.18-3. Coordinate systems for an aerodynamically excited turbosystem
-=PAGE=
+
                This figure is not included in the machine readable
                documentation because of complex graphics.
 
 Figure 1.18-4. Turboprop axis inclination angle and tunnel coordinate system
 orientation in uniform inflow case
-=PAGE=
+
    The following coordinate systems are used for general rotating cyclic
 structures as well as aerodynamically excited turbosystems.
 
@@ -10683,113 +10683,113 @@ TLOADi bulk data cards.
 
    - functions of frequency for various circumferential harmonic indices
 (PARAM CYCIO = -1)
-=PAGE=
+
                                       ENTER
-                                        ³
-                       ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-                       ³   Finite element model of one  ³
-                       ³    cyclic sector, rotational   ³
-                       ³    speed, constraints, loads   ³
-                       ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
-                                        ³
-ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿       ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-³ Differential ³       ³    Generation of stiffness,    ³
-³  Stiffness   ÃÄÄÄÄÄÄÄ´        mass and damping        ³
-³   Matrix     ³       ³            matrices            ³
-ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ       ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
-                                        ³
-                       ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-                       ³ Application of constraints and ³
-                       ³ partitioning to stiffness, mass³
-                       ³      and damping matrices      ³
-                       ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
-                                        ³
+                                        |
+                       +----------------+---------------+
+                       |   Finite element model of one  |
+                       |    cyclic sector, rotational   |
+                       |    speed, constraints, loads   |
+                       +----------------+---------------+
+                                        |
++--------------+       +----------------+---------------+
+| Differential |       |    Generation of stiffness,    |
+|  Stiffness   +-------+        mass and damping        |
+|   Matrix     |       |            matrices            |
++--------------+       +----------------+---------------+
+                                        |
+                       +----------------+---------------+
+                       | Application of constraints and |
+                       | partitioning to stiffness, mass|
+                       |      and damping matrices      |
+                       +----------------+---------------+
+                                        |
 
            Frequency dependent       Type of      General, periodic in time
-                ÚÄÄÄÄÄÄÄÄÄÄÄÄÄ   Applied Loads   ÄÄÄÄÄÄÄÄÄÄ¿
-                ³                                          ³
-Circumferential ³                     Circumferential      ³
-Harmonic        ³       Segment       Harmonic             ³       Segment
+                +-------------   Applied Loads   ----------+
+                |                                          |
+Circumferential |                     Circumferential      |
+Harmonic        |       Segment       Harmonic             |       Segment
 Dependent    Type of    Dependent     Dependent          Type of   Dependent
-    ÚÄÄÄÄÄ Input/Output ÄÄÄÄÄ¿               ÚÄÄÄÄÄÄÄÄ Input/Output ÄÄ¿
-    ³                        ³               ³                        ³
-    ³                        ³      ÚÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄ¿      ÚÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄ¿
-    ³                        ³      ³Fourier decomp.  ³      ³Fourier decomp.  ³
-    ³                        ³      ³Phase 1 (time)   ³      ³Phase 1 (time)   ³
-    ³                        ³      ÀÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÙ      ÀÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÙ
-    ³                        ³               ³                        ³
-    ³               ÚÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄ¿      ³               ÚÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄ¿
-    ³               ³Fourier decomp.  ³      ³               ³Fourier decomp.  ³
-    ³               ³Phase 2 (circum.)³      ³               ³Phase 2 (circum.)³
-    ³               ÀÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÙ      ³               ÀÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÙ
-    ³                        ³               ³                        ³
-    ³                        ³               ³                        ³
-    ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
-                                       ³
-                                       ³
-                       ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-                       ³ Application of constraints and ³
-                       ³  partitioning to load matrices ³
-                       ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
-                                       ³
+    +----- Input/Output -----+               +-------- Input/Output --+
+    |                        |               |                        |
+    |                        |      +--------+--------+      +--------+--------+
+    |                        |      |Fourier decomp.  |      |Fourier decomp.  |
+    |                        |      |Phase 1 (time)   |      |Phase 1 (time)   |
+    |                        |      +--------+--------+      +--------+--------+
+    |                        |               |                        |
+    |               +--------+--------+      |               +--------+--------+
+    |               |Fourier decomp.  |      |               |Fourier decomp.  |
+    |               |Phase 2 (circum.)|      |               |Phase 2 (circum.)|
+    |               +--------+--------+      |               +--------+--------+
+    |                        |               |                        |
+    |                        |               |                        |
+    +------------------------+---------+-----+------------------------+
+                                       |
+                                       |
+                       +---------------+----------------+
+                       | Application of constraints and |
+                       |  partitioning to load matrices |
+                       +---------------+----------------+
+                                       |
                                        A
 
 
 Figure 1.18-5a. Overall flowchart for direct forced vibration analysis of
 rotating cyclic structures
-=PAGE=
+
                                         A
-                                        ³
-                                        ³
+                                        |
+                                        |
 
                                   Selection of
-         ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ  circumferential harmonic
-         ³                          index, k
-         ³                        k   <= k <= k
-         ³                         min         max
-         ³                              ³
-         ³                              ³
-         ³      ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-         ³      ³   Application of intersegment compatibility   ³
-         ³      ³    constraints to stiffness, mass, damping    ³
-         ³      ³               and load matrices               ³
-         ³      ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
-         ³                              ³
-         ³                              ³
-         ³      ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-         ³      ³            Solution of independent            ³
-         ³      ³            harmonic displacements             ³
-         ³      ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
-         ³                              ³
-         ³                              ³
-         ³               No
-         ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ  Increment k by 1
+         +----------------  circumferential harmonic
+         |                          index, k
+         |                        k   <= k <= k
+         |                         min         max
+         |                              |
+         |                              |
+         |      +-----------------------+-----------------------+
+         |      |   Application of intersegment compatibility   |
+         |      |    constraints to stiffness, mass, damping    |
+         |      |               and load matrices               |
+         |      +-----------------------+-----------------------+
+         |                              |
+         |                              |
+         |      +-----------------------+-----------------------+
+         |      |            Solution of independent            |
+         |      |            harmonic displacements             |
+         |      +-----------------------+-----------------------+
+         |                              |
+         |                              |
+         |               No
+         +--------------------  Increment k by 1
                                    k > k    ?
                                         max
 
-                                        ³ Yes
-                                        ³
-                ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-                ³   Recovery of segment-dependent independent   ³
-                ³ displacements (Inverse Phase 2, if necessary) ³
-                ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
-                                        ³
-                ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-                ³       Recover of dependent displacements      ³
-                ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
-                                        ³
-                ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-                ³      Output requests for displacements,       ³
-                ³         stresses, loads, plots, etc.          ³
-                ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
-                                        ³
-                                        ³
+                                        | Yes
+                                        |
+                +-----------------------+-----------------------+
+                |   Recovery of segment-dependent independent   |
+                | displacements (Inverse Phase 2, if necessary) |
+                +-----------------------+-----------------------+
+                                        |
+                +-----------------------+-----------------------+
+                |       Recover of dependent displacements      |
+                +-----------------------+-----------------------+
+                                        |
+                +-----------------------+-----------------------+
+                |      Output requests for displacements,       |
+                |         stresses, loads, plots, etc.          |
+                +-----------------------+-----------------------+
+                                        |
+                                        |
                                        EXIT
 
 
 Figure 1.18-5b. Overall flowchart for direct forced vibration analysis of
 rotating cyclic structures
-=PAGE=
+
    Base acceleration is specified as:
 
    - function of frequency (PARAM CYCIO = -1 only)
@@ -11115,13 +11115,13 @@ Referring to Equation 1 in Section 1.18.2, all but the [M2]{Ro} and {P}non-aero
 terms are retained in the analysis. Real cyclic modes of a user-selected
 circumferential harmonic index are used to pose and solve the problem.
 
-=PAGE=
+
                This figure is not included in the machine readable
                documentation because of complex graphics.
 
 Figure 1.18-6. NASTRAN aerodynamic model of turboprop blade for 2-D cascade
 theories
-=PAGE=
+
    Figure 1.18-7 presents a schematic flowchart of this capability.
 
    The theoretical development of this capability is discussed in detail in
@@ -11152,99 +11152,99 @@ aerodynamic model is generally chosen as a subset of the structural model as
 indicated in Figure 1.18-7.
 
    The aerodynamic grid is specified on STREAML1 bulk data cards.
-=PAGE=
+
                                     START
-                                      ³
-                                      ³
-ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿  ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿   ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-³  Osc. airloads    ³  ³      Finite element model     ³   ³  Total stiffness  ³
-³      from         ÃÄÄ´      of one cyclic sector,    ÃÄÄÄ´      matrix       ³
-³  pre-processor,   ³  ³        RPM, constraints,      ³   ³  (elastic plus    ³
-³    AIRLOADS       ³  ³ circumferential harmonic index³   ³   differential)   ³
-ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ   ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
-                                      ³
-                       ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-                       ³       Generation of mass,     ³
-                       ³       damping, loads, and     ³
-                       ³    stiffness (if necessary)   ³
-                       ³            matrices           ³
-                       ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
-                                      ³
-                       ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-                       ³         Application of        ³
-                       ³    constraints to stiffness,  ³
-                       ³       mass, damping, and      ³
-                       ³         loads matrices        ³
-                       ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
-                                      ³
-                       ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-                       ³         Application of        ³
-                       ³          inter-segment        ³
-                       ³          compatibility        ³
-                       ³           constraints         ³
-                       ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
-                                      ³
-                       ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-                       ³       Natural frequencies     ³
-                       ³               and             ³
-                       ³           mode shapes         ³
-                       ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
-                                      ³
-                       ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-                       ³       Generalized motion      ³
-                       ³           aerodynamic         ³
-                       ³           matrix list         ³
-                       ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
-                                      ³
-                                      ³
+                                      |
+                                      |
++-------------------+  +--------------+----------------+   +-------------------+
+|  Osc. airloads    |  |      Finite element model     |   |  Total stiffness  |
+|      from         +--+      of one cyclic sector,    +---+      matrix       |
+|  pre-processor,   |  |        RPM, constraints,      |   |  (elastic plus    |
+|    AIRLOADS       |  | circumferential harmonic index|   |   differential)   |
++-------------------+  +--------------+----------------+   +-------------------+
+                                      |
+                       +--------------+----------------+
+                       |       Generation of mass,     |
+                       |       damping, loads, and     |
+                       |    stiffness (if necessary)   |
+                       |            matrices           |
+                       +--------------+----------------+
+                                      |
+                       +--------------+----------------+
+                       |         Application of        |
+                       |    constraints to stiffness,  |
+                       |       mass, damping, and      |
+                       |         loads matrices        |
+                       +--------------+----------------+
+                                      |
+                       +--------------+----------------+
+                       |         Application of        |
+                       |          inter-segment        |
+                       |          compatibility        |
+                       |           constraints         |
+                       +--------------+----------------+
+                                      |
+                       +--------------+----------------+
+                       |       Natural frequencies     |
+                       |               and             |
+                       |           mode shapes         |
+                       +--------------+----------------+
+                                      |
+                       +--------------+----------------+
+                       |       Generalized motion      |
+                       |           aerodynamic         |
+                       |           matrix list         |
+                       +--------------+----------------+
+                                      |
+                                      |
                                       X
 
 Figure 1.18-7a. Overall flowchart of modal forced vibration analysis 
 capability for aerodynamically excited turbosystems 
-=PAGE=
+
                                       X
-                                      ³
-                       ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-                       ³           Generalized         ³
-                       ³     equations of motion for   ³
-                       ³     aerodynamically forced    ³
-                       ³           vibrations          ³
-                       ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
-                                      ³
-                       ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-                       ³           Solution of         ³
-                       ³           independent         ³
-                       ³            harmonic           ³
-                       ³        modal coordinates      ³
-                       ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
-                                      ³
-                       ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-                       ³           Independent         ³
-                       ³            harmonic           ³
-                       ³          displacements        ³
-                       ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
-                                      ³
-                       ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-                       ³           Recovery of         ³
-                       ³            dependent          ³
-                       ³            harmonic           ³
-                       ³          displacements        ³
-                       ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
-                                      ³
-                       ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-                       ³       Output requests for     ³
-                       ³         displacements,        ³
-                       ³            stresses,          ³
-                       ³           plots, etc.         ³
-                       ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
-                                      ³
-                                      ³
+                                      |
+                       +--------------+----------------+
+                       |           Generalized         |
+                       |     equations of motion for   |
+                       |     aerodynamically forced    |
+                       |           vibrations          |
+                       +--------------+----------------+
+                                      |
+                       +--------------+----------------+
+                       |           Solution of         |
+                       |           independent         |
+                       |            harmonic           |
+                       |        modal coordinates      |
+                       +--------------+----------------+
+                                      |
+                       +--------------+----------------+
+                       |           Independent         |
+                       |            harmonic           |
+                       |          displacements        |
+                       +--------------+----------------+
+                                      |
+                       +--------------+----------------+
+                       |           Recovery of         |
+                       |            dependent          |
+                       |            harmonic           |
+                       |          displacements        |
+                       +--------------+----------------+
+                                      |
+                       +--------------+----------------+
+                       |       Output requests for     |
+                       |         displacements,        |
+                       |            stresses,          |
+                       |           plots, etc.         |
+                       +--------------+----------------+
+                                      |
+                                      |
                                      EXIT
 
 Figure 1.18-7b. Overall flowchart of modal forced vibration analysis 
 capability for aerodynamically excited turbosystems
 
-=PAGE=
+
 1.18.6.2  Executive Control Deck 
 
    The salient points are noted as follows:
@@ -11547,28 +11547,28 @@ analysis of aerodynamically excited turbosystems:
       Referring to the sketch below, a positive interblade phase angle implies
       that blade 1 of the two-dimensional cascade leads the reference blade 0.
 
-                     ³                    ³
-                     ³                   .³  Blade 1
-                     ³         1     .    ³
-                     ³           .        ³
-                     ³      .             ³
-                     ³ .                  ³
-                     ³                    ³
-                     ³                   .³  Blade 0 (ref.)
-                     ³         0     .    ³
-                     ³           .        ³
-                     ³      .             ³
-                     ³ .                  ³
-                     ³                    ³
-                     ³                   .³
-                     ³               .    ³
-                     ³           .        ³
-                     ³      .             ³
-                     ³ .       ³          ³
-                     ³         ³          ³
-                               ³
-                               ³
-=PAGE=
+                     |                    |
+                     |                   .|  Blade 1
+                     |         1     .    |
+                     |           .        |
+                     |      .             |
+                     | .                  |
+                     |                    |
+                     |                   .|  Blade 0 (ref.)
+                     |         0     .    |
+                     |           .        |
+                     |      .             |
+                     | .                  |
+                     |                    |
+                     |                   .|
+                     |               .    |
+                     |           .        |
+                     |      .             |
+                     | .       |          |
+                     |         |          |
+                               |
+                               |
+
 REFERENCES
 
 1. Elchuri, V., and Smith, G. C. C., "Finite Element Forced Vibration Analysis
@@ -11587,7 +11587,7 @@ REFERENCES
 5. Elchuri, V., and Pamidi, P. R., "AIRLOADS: A Program for Oscillatory
    Airloads on Blades of Turbosystems in Spatially Non-Uniform Inflow," NASA
    CR 174968, July 1985.
-=PAGE=
+
 1.19  STATIC AEROTHERMOELASTIC DESIGN/ANALYSIS OF AXIAL-FLOW COMPRESSORS
 
 1.19.1  Introduction
@@ -11650,112 +11650,112 @@ Finally, {P}non-aero represents all non-aerodynamic loads.
 identically, only one rotationally cyclic sector is modeled and analyzed
 (Figure 1.19-1), with the intersector boundary conditions imposed via
 multipoint constraints (MPCs).
-=PAGE=
+
                This figure is not included in the machine readable
                documentation because of complex graphics. 
 
 Figure 1.19-1. Bladed-disc aerodynamic grid and the basic coordinate system
-=PAGE=
-            ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-            ³ Compressor Bladed-Disc Sector Geometry, Constraints, ³
-            ³  Stiffness Matrix, Non-Aerodynamic Loads + Operating ³
-            ³    Point (Flow Rate, Speed, Loss Parameters, Etc.)   ³
-            ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
-                                        ³
-                                        ³
-            ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-            ³      Aerodynamic Pressure and Temperature Loads,     ³
-            ³               A                                      ³
-            ³             {P } on Undeformed Blade, ALG            ³
-            ³               g                                      ³
-            ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
-                                        ³
-                                        ³
-            ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-            ³  Total Loads {P } (Aerodynamic and Non-Aerodynamic)  ³
-            ³                g                                     ³
-            ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
-                                        ³
-                                        ³
-            ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-            ³   Independent Displacements {u } (Linear Solution)   ³
-            ³                               l                      ³
-            ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
-                                        ³
-                                        ³
-            ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-            ³        Dependent Displacements, Stresses, Etc.       ³
-            ³                   (Linear Solution)                  ³
-            ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
-                                        ³
-                                        ³
+
+            +------------------------------------------------------+
+            | Compressor Bladed-Disc Sector Geometry, Constraints, |
+            |  Stiffness Matrix, Non-Aerodynamic Loads + Operating |
+            |    Point (Flow Rate, Speed, Loss Parameters, Etc.)   |
+            +---------------------------+--------------------------+
+                                        |
+                                        |
+            +---------------------------+--------------------------+
+            |      Aerodynamic Pressure and Temperature Loads,     |
+            |               A                                      |
+            |             {P } on Undeformed Blade, ALG            |
+            |               g                                      |
+            +---------------------------+--------------------------+
+                                        |
+                                        |
+            +---------------------------+--------------------------+
+            |  Total Loads {P } (Aerodynamic and Non-Aerodynamic)  |
+            |                g                                     |
+            +---------------------------+--------------------------+
+                                        |
+                                        |
+            +---------------------------+--------------------------+
+            |   Independent Displacements {u } (Linear Solution)   |
+            |                               l                      |
+            +---------------------------+--------------------------+
+                                        |
+                                        |
+            +---------------------------+--------------------------+
+            |        Dependent Displacements, Stresses, Etc.       |
+            |                   (Linear Solution)                  |
+            +---------------------------+--------------------------+
+                                        |
+                                        |
                                         A
 
 
  Figure 1.19-2a. Simplified problem flow for static aerothermoelastic
 design/analysis rigid format for axial-flow compressors
-=PAGE=
+
                                         A
-                                        ³
-                                        ³
-              ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-              ³                                        d         ³
-              ³        Differential Stiffness Matrix [K  ]       ³
-              ³                                        gg        ³
-              ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
-ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
-³                                       ³
-³             ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-³             ³                                    b             ³
-³             ³           Total Stiffness Matrix [K  ]           ³
-³             ³                                    ll            ³
-³             ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
-³                                       ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-³                                       ³                                      ³
-³             ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿             ³
-³             ³                                               A  ³             ³
-³             ³  Aerodynamic Pressure and Temperature Loads {P } ³             ³
-³             ³                                               g  ³             ³
-³             ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ             ³
-³                                       ³                                      ³
-³             ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿            ³
-³             ³Total Loads {P  } (Aerodynamic and Non-Aerodynamic)³            ³
-³ Outer       ³              g2                                   ³      Inner ³
-³ Loop        ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ      Loop  ³
-³                                       ³                                      ³
-³             ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿            ³
-³             ³                                      b            ³            ³
-³             ³          Independent Displacements {u }           ³            ³
-³             ³                                      l            ³            ³
-³             ³               (Non-Linear Solution)               ³            ³
-³             ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ            ³
-³                                       ³                                      ³
-³             ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿            ³
-³             ³      Dependent Displacements, Stresses, Etc.      ³            ³
-³             ³               (Non-Linear Solution)               ³            ³
-³             ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ            ³
-³                                       ³                                      ³
-³                                       ³                                      ³
-³                                                                              ³
-³  Adjustment to             No    Convergence    No                      d    ³
-ÀÄÄ  d             ÄÄÄÄÄÄÄÄÄÄÄÄÄ  Checks, DSCHK  ÄÄÄÄÄÄÄÄÄÄNo change in [K  ] ÄÙ
+                                        |
+                                        |
+              +-------------------------+------------------------+
+              |                                        d         |
+              |        Differential Stiffness Matrix [K  ]       |
+              |                                        gg        |
+              +-------------------------+------------------------+
++---------------------------------------+
+|                                       |
+|             +-------------------------+------------------------+
+|             |                                    b             |
+|             |           Total Stiffness Matrix [K  ]           |
+|             |                                    ll            |
+|             +-------------------------+------------------------+
+|                                       +--------------------------------------+
+|                                       |                                      |
+|             +-------------------------+------------------------+             |
+|             |                                               A  |             |
+|             |  Aerodynamic Pressure and Temperature Loads {P } |             |
+|             |                                               g  |             |
+|             +-------------------------+------------------------+             |
+|                                       |                                      |
+|             +-------------------------+-------------------------+            |
+|             |Total Loads {P  } (Aerodynamic and Non-Aerodynamic)|            |
+| Outer       |              g2                                   |      Inner |
+| Loop        +-------------------------+-------------------------+      Loop  |
+|                                       |                                      |
+|             +-------------------------+-------------------------+            |
+|             |                                      b            |            |
+|             |          Independent Displacements {u }           |            |
+|             |                                      l            |            |
+|             |               (Non-Linear Solution)               |            |
+|             +-------------------------+-------------------------+            |
+|                                       |                                      |
+|             +-------------------------+-------------------------+            |
+|             |      Dependent Displacements, Stresses, Etc.      |            |
+|             |               (Non-Linear Solution)               |            |
+|             +-------------------------+-------------------------+            |
+|                                       |                                      |
+|                                       |                                      |
+|                                                                              |
+|  Adjustment to             No    Convergence    No                      d    |
++--  d             -------------  Checks, DSCHK  ----------No change in [K  ] -+
    [K  ] necessary                                                        gg
-     gg                                 ³ Yes
-              ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-              ³                      b                            ³
-              ³ Final Displacement {u }, Deformed Blade Geometry, ³  Point b on
-              ³                      g                            ³  the map
-              ³   Stress, Etc. + Operating Point Pressure Ratio   ³
-              ³             and other Flow Parameters             ³
-              ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
-                                        ³
-                                        ³
+     gg                                 | Yes
+              +-------------------------+-------------------------+
+              |                      b                            |
+              | Final Displacement {u }, Deformed Blade Geometry, |  Point b on
+              |                      g                            |  the map
+              |   Stress, Etc. + Operating Point Pressure Ratio   |
+              |             and other Flow Parameters             |
+              +-------------------------+-------------------------+
+                                        |
+                                        |
                                       EXIT
 
 
  Figure 1.19-2b. Simplified problem flow for static aerothermoelastic
 design/analysis rigid format for axial-flow compressors
-=PAGE=
+
 1.19.2.3  NASTRAN Implementation
 
    A rigid format (DISP APP R.F. 16) has been developed specifically for the
@@ -11904,41 +11904,41 @@ with an asterisk.
 (cont.)   IPRINT ISPLIT INAST IRLE IRTE NSIGN
 
           ZINNER ZOUTER SCALE STACKX PLTSZE
-                                                                 ¿
-          KPTS IFANGS                                            ³ Occurs
-                                                                 ³
-          XSTA RSTA      - Occurs KPTS times                     ³ NSTNS
-                                                                 ³
-          R BLAFOR       - Occurs NLINES times                   ³ times
-                                                                 Ù
-                                                                 ¿
-          ZR B1 B2 PP QQ RLE                                     ³ Occurs
-                                                                 ³
-          TC TE Z CORD DELX DELY                                 ³ NSPEC
-                                                                 ³
-          S BS - Only if ISECN = 1  or 3                         ³ times
-                                                                 Ù
-                                                                 ¿
-          NRAD NDPTS NDATR NSWITC NLE NTE                        ³
-                                                                 ³
-          XKSHPE SPEED                                           ³
-                                                                 ³
-          NOUT1 NOUT2 NOUT3 - Refers to leading edge station     ³
-                                                                 ³
-          NR NTERP NMACH NLOSS NL1       ¿ Occurs                ³ This group
-                                         ³ for each              ³ is used to
-(cont.)   NL2 NEVAL NCURVE NLITER NDEL   ³ station               ³ generate
-                                         ³ within                ³ LOG5 data
-(cont.)   NOUT1 NOUT2 NOUT3 NBLADE       ³ blade or              ³ for the
-                                         ³ at trailing           ³ aerodynamic
-          R XLOSS  ]-Occurs NR times     Ù edge                  ³ section
-                                                                 ³
-          RTE                            ¿ Occurs                ³
-                                         ³ NRAD                  ³
-          DM DVFRAC ]-Occurs NDPTS times Ù times                 ³
-                                                                 ³
-       *  RDTE DELTAD AC ]-Occurs NDATR times                    ³
-                                                                 Ù
+                                                                 +
+          KPTS IFANGS                                            | Occurs
+                                                                 |
+          XSTA RSTA      - Occurs KPTS times                     | NSTNS
+                                                                 |
+          R BLAFOR       - Occurs NLINES times                   | times
+                                                                 +
+                                                                 +
+          ZR B1 B2 PP QQ RLE                                     | Occurs
+                                                                 |
+          TC TE Z CORD DELX DELY                                 | NSPEC
+                                                                 |
+          S BS - Only if ISECN = 1  or 3                         | times
+                                                                 +
+                                                                 +
+          NRAD NDPTS NDATR NSWITC NLE NTE                        |
+                                                                 |
+          XKSHPE SPEED                                           |
+                                                                 |
+          NOUT1 NOUT2 NOUT3 - Refers to leading edge station     |
+                                                                 |
+          NR NTERP NMACH NLOSS NL1       + Occurs                | This group
+                                         | for each              | is used to
+(cont.)   NL2 NEVAL NCURVE NLITER NDEL   | station               | generate
+                                         | within                | LOG5 data
+(cont.)   NOUT1 NOUT2 NOUT3 NBLADE       | blade or              | for the
+                                         | at trailing           | aerodynamic
+          R XLOSS  ]-Occurs NR times     + edge                  | section
+                                                                 |
+          RTE                            + Occurs                |
+                                         | NRAD                  |
+          DM DVFRAC ]-Occurs NDPTS times + times                 |
+                                                                 |
+       *  RDTE DELTAD AC ]-Occurs NDATR times                    |
+                                                                 +
 
 1.19.4.1.3  Aerodynamic Section
 
@@ -11960,50 +11960,50 @@ last record in this set is indicated with a double asterisk.
           XSCALE PSCALE RLOW PLOW XMMAX RCONST
 
           CONTR CONMX
-                                                     ¿
-          FLOW SPDFAC                                ³
-                                                     ³
-          NSPEC                                      ³ Occurs
-                                                     ³ NSTNS
-          XSTN RSTN - Occurs NSPEC times             ³ times
-                                                     Ù
-                                                     ¿
-          NDATA NTERP NDIMEN NMACH                   ³ Inlet
-                                                     ³ condition
-          DATAC DATA1 DATA2 DATA3  - Occurs          ³ specification
-                                     NDATA times     ³
-                                                     Ù
-                                                               ¿
-(LOG5)    NDATA NTERP NDIMEN NMACH NWORK                       ³
-                                                               ³
-(cont.)   NLOSS NL1 NL2 NEVAL NCURVE NLITER                    ³
-                                                               ³
-(cont.)   NDEL NOUT1 NOUT2 NOUT3 NBLADE                        ³
-                                                               ³ For stations
-(LOG5)    SPEED - If NDATA > 0                                 ³ 2 through
-                                                ¿              ³ NSTNS
-(LOG5)    DATAC DATA1 DATA2 DATA3 DATA4         ³              ³
-                                                ³ Occurs       ³
-(cont.)   DATA5                                 ³ NDATA        ³
-                                                ³ times        ³
-(LOG5)    DATA6 DATA7 DATA8 DATA9               ³              ³
-                                                Ù              ³
-          DELC DELTA - Occurs NDEL times                       ³
-                                                               Ù
+                                                     +
+          FLOW SPDFAC                                |
+                                                     |
+          NSPEC                                      | Occurs
+                                                     | NSTNS
+          XSTN RSTN - Occurs NSPEC times             | times
+                                                     +
+                                                     +
+          NDATA NTERP NDIMEN NMACH                   | Inlet
+                                                     | condition
+          DATAC DATA1 DATA2 DATA3  - Occurs          | specification
+                                     NDATA times     |
+                                                     +
+                                                               +
+(LOG5)    NDATA NTERP NDIMEN NMACH NWORK                       |
+                                                               |
+(cont.)   NLOSS NL1 NL2 NEVAL NCURVE NLITER                    |
+                                                               |
+(cont.)   NDEL NOUT1 NOUT2 NOUT3 NBLADE                        |
+                                                               | For stations
+(LOG5)    SPEED - If NDATA > 0                                 | 2 through
+                                                +              | NSTNS
+(LOG5)    DATAC DATA1 DATA2 DATA3 DATA4         |              |
+                                                | Occurs       |
+(cont.)   DATA5                                 | NDATA        |
+                                                | times        |
+(LOG5)    DATA6 DATA7 DATA8 DATA9               |              |
+                                                +              |
+          DELC DELTA - Occurs NDEL times                       |
+                                                               +
           WBLOCK BBLOCK BDIST - Occurs NSTNS times
-                                                     ¿
-          NDIFF                                      ³ Occurs
-                                                     ³ NSET1
-          DIFF FDHUB FDMID FDTIP - Occurs NDIFF      ³ times
-                                   times             ³
-                                                     Ù
-                                                     ¿
-          NM NRAD                                    ³
-                                           ¿         ³ Occurs
-          TERAD                            ³ Occurs  ³ NSET2
-                                           ³ NRAD    ³ times
-          DM WFRAC - Occurs NM times       ³ times   ³
-                                           Ù         Ù
+                                                     +
+          NDIFF                                      | Occurs
+                                                     | NSET1
+          DIFF FDHUB FDMID FDTIP - Occurs NDIFF      | times
+                                   times             |
+                                                     +
+                                                     +
+          NM NRAD                                    |
+                                           +         | Occurs
+          TERAD                            | Occurs  | NSET2
+                                           | NRAD    | times
+          DM WFRAC - Occurs NM times       | times   |
+                                           +         +
           DELF(1) DELF(2)....DELF(NSTRMS) - if NSPLIT = 1 (6 per card)
                                             or NREAD = 1
 
@@ -12872,7 +12872,7 @@ numbering scheme adopted is illustrated in Figure 1.19-3.
                documentation because of complex graphics.
 
         Figure 1.19-3. Grid point and element numbering scheme.
-=PAGE=
+
 1.19.5.2  Aerodynamic Section
 
 1.19.5.2.1  Normal Output
@@ -12898,7 +12898,7 @@ The whirl angle is defined by
 
                V
                 é
-      tan à = ÄÄÄÄÄ                                                 (2)
+      tan + = -----                                                 (2)
                V
                 m
 
@@ -12913,8 +12913,8 @@ determination of diffusion factors. The following definition is used:
 
                 V         V    V
                  2r        é1r  é2r
-      D = 1 -  ÄÄÄÄÄ  +  ÄÄÄÄÄÄÄÄÄÄÄ                                (3)
-                V         2å V
+      D = 1 -  -----  +  -----------                                (3)
+                V         2+ V
                  1r           1r
 
    Inlet conditions (subscript 1) are taken from the station defined by the
@@ -13244,8 +13244,8 @@ for each element is given by an average of either three or four values at
 surrounding meshpoints. The pressure difference at each meshpoint is computed
 from the equation
 
-                 2ãrp                        dS     Vm    d  (rVé)
-      delta p = ÄÄÄÄÄÄ  { sin á cos á g J + ÄÄÄÄ + ÄÄÄÄ  ÄÄÄÄ      }(4)
+                 2+rp                        dS     Vm    d  (rVé)
+      delta p = ------  { sin + cos + g J + ---- + ----  ----      }(4)
                   N                          dM     r     dm
 
 and as follows. At the blade leading edge, a forward difference is used to
@@ -13277,7 +13277,7 @@ REFERENCES
 
 4. Hearsey, R. M., "A Revised Computer Program for Axial Compressor Design,"
    ARL-75-0001, Vols. I and II, Wright-Patterson AFB, January 1975.
-=PAGE=
+
 1.20  MODAL FLUTTER ANALYSIS OF AXIAL-FLOW TURBOMACHINES AND ADVANCED
 TURBOPROPELLERS
 
@@ -13418,118 +13418,118 @@ with the plane WAU. ş shown in Figure 1.20-2 is positive.
 
    AD is the projection of AC (BA extended to C) in the plane WAU. Angle lAD
 represents the stagger angle ş, and is shown positive.
-=PAGE=
-                   ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-                   ³    F. E. Model of one cyclic sector     ³
-                   ³    of n-bladed turbomachine stage or    ³
-                   ³ advanced turboprop, and given operating ³
-                   ³  conditions to be examined for flutter  ³
-                   ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
-                                        ³
-Oscillatory                             ³                         Steady State
-Aerodynamic   ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ Centrifugal
-Data          ³                         ³                       ³ Loads
-              ³                         ³         ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-              ³                         ³         ³                          d ³
-ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿          ³         ³ Differential Stiffness, K  ³
-³Generalized Oscillatory     ³          ³         ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
-³Aerodynamic Loads           ³          ³                       ³
-³                            ³          ³                       ³
-³    Q  (å,k)                ³    í     ³         ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-³     ii                     ÃÄÄÄÄÄÄÄÄÄÄ³ÄÄÄÄÄÄÄÄÄ´  Natural Frequencies and   ³
-³                            ³          ³         ³          Modes, í          ³
-³* Subsonic Relative Inflow  ³          ³         ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
-³* Supersonic Relative Inflow³          ³                       ³
-³* Subsonic Relative Inflow  ³          ³                       ³
-³  with Blade Sweep          ³          ³         ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ          ³         ³  Generalized Mass, Damping ³
-              ³                         ³         ³        and Stiffness       ³
-              ³                         ³         ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
-              ³                         ³                       ³
-              ³                         ³                       ³
-              ³                         ³                       ³
-              ³                         ³                       ³
-              ³           ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿        ³
-              ³           ³   Flutter Loop Parameters  ³        ³
-              ³           ³         å, k, p            ³        ³
-              ³           ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ        ³
-              ³                         ³                       ³
-              ³                         ³                       ³
-              ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
-                                        ³
+
+                   +-----------------------------------------+
+                   |    F. E. Model of one cyclic sector     |
+                   |    of n-bladed turbomachine stage or    |
+                   | advanced turboprop, and given operating |
+                   |  conditions to be examined for flutter  |
+                   +--------------------+--------------------+
+                                        |
+Oscillatory                             |                         Steady State
+Aerodynamic   +-------------------------+-----------------------+ Centrifugal
+Data          |                         |                       | Loads
+              |                         |         +-------------+--------------+
+              |                         |         |                          d |
++-------------+--------------+          |         | Differential Stiffness, K  |
+|Generalized Oscillatory     |          |         +-------------+--------------+
+|Aerodynamic Loads           |          |                       |
+|                            |          |                       |
+|    Q  (+,k)                |    í     |         +-------------+--------------+
+|     ii                     +----------|---------+  Natural Frequencies and   |
+|                            |          |         |          Modes, í          |
+|* Subsonic Relative Inflow  |          |         +-------------+--------------+
+|* Supersonic Relative Inflow|          |                       |
+|* Subsonic Relative Inflow  |          |                       |
+|  with Blade Sweep          |          |         +-------------+--------------+
++-------------+--------------+          |         |  Generalized Mass, Damping |
+              |                         |         |        and Stiffness       |
+              |                         |         +-------------+--------------+
+              |                         |                       |
+              |                         |                       |
+              |                         |                       |
+              |                         |                       |
+              |           +-------------+--------------+        |
+              |           |   Flutter Loop Parameters  |        |
+              |           |         +, k, p            |        |
+              |           +-------------+--------------+        |
+              |                         |                       |
+              |                         |                       |
+              +-------------------------+-----------------------+
+                                        |
                                         A
 
 
 Figure 1.20-1a. Overall flowchart of blade cyclic modal flutter analysis rigid
 format for axial-flow turbomachines and advanced turbopropellers
-=PAGE=
-                                        A
-                                        ³
-                                        ³
-                       ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-    ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´            Select å            ³
-    ³                  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
-    ³                                   ³
-    ³                  ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-    ³     ÚÄÄÄÄÄÄÄÄÄÄÄÄ´            Select k            ³
-    ³     ³            ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
-    ³     ³                             ³
-    ³     ³            ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-    ³     ³     ÚÄÄÄÄÄÄ´            Select p            ³
-    ³     ³     ³      ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
-    ³     ³     ³                       ³
-    ³     ³     ³      ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-    ³     ³     ³      ³ Select or Interpolate Q  (å,k) ³
-    ³     ³     ³      ³                        ii      ³
-    ³     ³     ³      ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
-    ³     ³     ³                       ³
-    ³     ³     ³                       ³
-    ³     ³     ³      ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-    ³     ³     ³      ³   Formulate Flutter Equations  ³
-    ³     ³     ³      ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
-    ³     ³     ³                       ³
-    ³     ³     ³      ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿   ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-    ³     ³     ³      ³       Complex Eigenvalues      ÃÄÄÄ´ V-g and V-f Plots³
-    ³     ³     ³      ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ   ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
-    ³     ³     ³                       ³
-    ³     ³     ³               Yes
-    ³     ³     ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ Other p?
-    ³     ³
-    ³     ³                             ³ No
-    ³     ³                             ³
-    ³     ³                     Yes
-    ³     ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ Other k?
-    ³
-    ³                                   ³ No
-    ³                                   ³
-    ³                           Yes
-    ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ Other å?
 
-                                        ³ No
-                                        ³
-                                        ³
+                                        A
+                                        |
+                                        |
+                       +----------------+---------------+
+    +------------------+            Select +            |
+    |                  +----------------+---------------+
+    |                                   |
+    |                  +----------------+---------------+
+    |     +------------+            Select k            |
+    |     |            +----------------+---------------+
+    |     |                             |
+    |     |            +----------------+---------------+
+    |     |     +------+            Select p            |
+    |     |     |      +----------------+---------------+
+    |     |     |                       |
+    |     |     |      +----------------+---------------+
+    |     |     |      | Select or Interpolate Q  (+,k) |
+    |     |     |      |                        ii      |
+    |     |     |      +----------------+---------------+
+    |     |     |                       |
+    |     |     |                       |
+    |     |     |      +----------------+---------------+
+    |     |     |      |   Formulate Flutter Equations  |
+    |     |     |      +----------------+---------------+
+    |     |     |                       |
+    |     |     |      +----------------+---------------+   +------------------+
+    |     |     |      |       Complex Eigenvalues      +---+ V-g and V-f Plots|
+    |     |     |      +----------------+---------------+   +------------------+
+    |     |     |                       |
+    |     |     |               Yes
+    |     |     +------------------- Other p?
+    |     |
+    |     |                             | No
+    |     |                             |
+    |     |                     Yes
+    |     +------------------------- Other k?
+    |
+    |                                   | No
+    |                                   |
+    |                           Yes
+    +------------------------------- Other +?
+
+                                        | No
+                                        |
+                                        |
                                       STOP
 
 
 Figure 1.20-1b. Overall flowchart of blade cyclic modal flutter analysis rigid
 format for axial-flow turbomachines and advanced turbopropellers
-=PAGE=
+
                This figure is not included in the machine readable
                documentation because of complex graphics.
 
      Figure 1.20-2. Rotational cyclic sector of an axial-flow turbomachine
-=PAGE=
+
                This figure is not included in the machine readable
                documentation because of complex graphics.
 
 Figure 1.20-3. NASTRAN structural and aerodynamic models of an advanced
 turbopropeller for flutter analysis
-=PAGE=
+
                This figure is not included in the machine readable
                documentation because of complex graphics.
 
 Figure 1.20-4. Definitions of some parameters for swept blade aerodynamics
-=PAGE=
+
    A local coordinate system xyz is internally defined at the leading edge
 point A of the chord AB such that x is directed along AB. y is defined normal
 to the "mean" surface containing the points A-, A, A+, B+, B, and B-. The unit
@@ -13538,7 +13538,7 @@ vector along y, for the sense of ê shown in Figure 1.20-2, is given by
                  ___      __         __     ___
       ^         (A B ) x (AB)       (AB) x (A B )
       _    1  |   - +                        + -
-      j = ÄÄÄ |ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ  +  ÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+      j = --- |----------------  +  --------------
            2  |   ___      __         __     ___
               ||J(A B ) x (AB)|     |(AB) x (A B )|
                    - +                        + -
@@ -13554,27 +13554,27 @@ MKAEROi bulk data cards (see Section 2.4). Referring to the sketch below, a
 positive interblade phase angle implies that blade 1 of the two-dimensional
 cascade leads the reference blade 0.
 
-                             ³                    ³
-                             ³                   .³  Blade 1
-                             ³         1     .    ³
-                             ³           .        ³
-                             ³      .             ³
-                             ³ .                  ³
-                             ³                    ³
-                             ³                   .³  Blade 0 (ref.)
-                             ³         0     .    ³
-                             ³           .        ³
-                             ³      .             ³
-                             ³ .                  ³
-                             ³                    ³
-                             ³                   .³
-                             ³               .    ³
-                             ³           .        ³
-                             ³      .             ³
-                             ³ .       ³          ³
-                             ³         ³          ³
-                                       ³
-                                       ³
+                             |                    |
+                             |                   .|  Blade 1
+                             |         1     .    |
+                             |           .        |
+                             |      .             |
+                             | .                  |
+                             |                    |
+                             |                   .|  Blade 0 (ref.)
+                             |         0     .    |
+                             |           .        |
+                             |      .             |
+                             | .                  |
+                             |                    |
+                             |                   .|
+                             |               .    |
+                             |           .        |
+                             |      .             |
+                             | .       |          |
+                             |         |          |
+                                       |
+                                       |
 
    The cascade relative inflow Mach number varies along the blade span. Based
 on this number at a given streamline, either the subsonic or the supersonic
@@ -13644,7 +13644,7 @@ following modeling points should be noted:
    3. PARAM MTYPE must be set to COSlNE (the default) as KINDEX = 0.
 
 REFERENCES
-
+==========
 1. Elchuri, V., Smith, G. C. C., Gallo, A. M., and Dale, B. J., "NASTRAN Level
    16 Theoretical, User's, Programmer's, and Demonstration Manuals Updates for
    Aeroelastic Analysis of Bladed Discs," NASA CRs 159823-159826, March 1980.

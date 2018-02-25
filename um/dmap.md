@@ -1,5 +1,6 @@
-=PAGE=
-5.1  INTRODUCTION
+
+5.1  INTRODUCTION
+==================
 
    In addition to using the rigid formats provided automatically by NASTRAN,
 you may wish to execute a series of modules in a different manner than
@@ -37,7 +38,7 @@ from each of the automated multi-stage substructuring commands invoked by you.
 of general utility to you but have not been permanently incorporated into the
 rigid formats.
 
-=PAGE=
+
 5.2  DMAP RULES
 
    Grammatically, DMAP instructions consist of two types: Executive Operation
@@ -53,6 +54,7 @@ The remaining statements consist of Executive Operation instructions and
 Functional Module calls.
 
 5.2.1  DMAP Rules for Functional Module Instructions
+====================================================
 
    The primary characteristic of the Functional Module DMAP instruction is its
 prescribed format. The general form of the Functional Module DMAP statement
@@ -92,6 +94,7 @@ be either a BCD value or null. The absence of a BCD value indicates that the
 Data Block is not needed for a particular application.
 
 5.2.1.1  Functional Module DMAP Statements
+------------------------------------------
 
    Each Functional Module DMAP statement must conform to the MPL regarding:
 
@@ -105,6 +108,7 @@ Data Block is not needed for a particular application.
 rules.
 
 5.2.1.2  Functional Module Names
+--------------------------------
 
    The only Functional Module DMAP names allowed are those contained in the
 MPL. Therefore, if you want to add a module, you must either use one of the
@@ -112,7 +116,7 @@ User Module names provided (see Section 5.6) or add a name to the MPL. The
 Programmer's Manual should be consulted when adding a new module to NASTRAN.
 
 5.2.1.3  Functional Module Input Data Blocks
-
+--------------------------------------------
    In most cases an input data block should have been previously defined in a
 DMAP program before it is used. However, there may be instances in which a
 module can handle, or may even expect, a data block that is undefined at the
@@ -137,7 +141,7 @@ used as input. Also, see the "error-level" option on the XDMAP compiler option
 card, which you may invoke to terminate execution in the event of such errors.
 
 5.2.1.4  Functional Module Output Data Blocks
-
+---------------------------------------------
    In general, a data block name will appear as output only once. However,
 there are cases in which an output data block may be of no subsequent use in a
 DMAP program. In such a case the name may be used again, but caution should be
@@ -147,7 +151,7 @@ Section 5.2.1.3. Potentially fatal error messages will warn you if possible
 ambiguities may occur from these usages.
 
 5.2.1.5  Functional Module Parameters
-
+-------------------------------------
    Parameters may serve many purposes in a DMAP program. They may pass data
 values into and out from a module, or they may be used as flags to control the
 computational flow within the module or the DMAP program. There are two
@@ -220,8 +224,8 @@ simplifications may be used are:
 in the MPL and may not be changed. The types and examples of values as they
 would be written in DMAP are given below:
 
-   PARAMETER TYPE                 VALUE EXAMPLES
-
+   PARAMETER TYPE                 VALUE Examples
+--------
    Integer                        7        -2          0
    Real                          -3.6       2.4+5      0.01-3
    BCD                            VAR01     STRING3    B3R56
@@ -286,7 +290,7 @@ be input, output, or both; initial value is the first of
               4. 0
 
 5.2.1.6  DMAP Compiler Options - The XDMAP Instruction (see Section 5.7)
-
+------------------------------------------------------------------------
    You can elect several options when compiling and executing a DMAP program
 by including an XDMAP compiler option instruction in the program. Similarly,
 the Rigid Formats may be altered by replacing the BEGIN statement with XDMAP
@@ -328,7 +332,7 @@ appear when all default values are elected, but may be replaced with a BEGIN
 instruction.
 
 5.2.1.7  Extended Error Handling Facility
-
+-----------------------------------------
    There are three levels of error messages generated during the compilation
 of a DMAP sequence. These levels are WARNING MESSAGE, POTENTIALLY FATAL ERROR
 MESSAGE, and FATAL ERROR MESSAGE. You have, through available compiler
@@ -340,7 +344,7 @@ or incorrect execution of the DMAP sequence. The default value for the error
 level is that of the FATAL ERROR MESSAGE.
 
 5.2.2  DMAP Rules for Executive Operation Instructions
-
+------------------------------------------------------
    Each executive operation statement has its own format which is generally
 open-ended, meaning the number of inputs, outputs, etc. is not prescribed.
 Executive operation instructions or statements are divided into general
@@ -361,7 +365,7 @@ The rules associated with the executive operation instructions are distinct
 for each instruction and are discussed individually in Section 5.7.
 
 5.2.3  Techniques and Examples of Executive Module Usage
-
+--------------------------------------------------------
    Even though the DMAP program may be interpretable by the DMAP compiler this
 does not guarantee that the program will yield the desired results. Therefore,
 this section is provided to acquaint you with techniques and examples used in
@@ -386,7 +390,7 @@ block as input or output will be informed that the purged data block is not
 available for use.
 
 5.2.3.1  The REPT and FILE Instructions (see Section 5.7)
-
+---------------------------------------------------------
    The DMAP instructions bounded by the REPT instruction and the label
 referenced by the REPT instruction are referred to as a loop. The location
 referenced by the REPT is called the top of the loop. In many respects a DMAP
@@ -411,20 +415,20 @@ File Processor are considered referenced outside of all DMAP loops.
 
 Example Using REPT and FILE Instructions
 
-      Ú
-      ³ BEGIN     $
-      ³ FILE      X=SAVE / Y=APPEND / Z=APPEND $
-      ³ LABEL     L1 $
-      ³ MOD1      B/W,Y $
-      ³ COND      L3,PX $
-DMAP  ³ MOD2      A/X/V,N,PX=0 $
-loop  ³ SAVE      PX $
-      ³ LABEL     L3 $
-      ³ MOD3      W,X,Y/Z $
-      ³ REPT      L1,1 $
-      ³ MOD4      Z// $
-      ³ END       $
-      À
+      +
+      | BEGIN     $
+      | FILE      X=SAVE / Y=APPEND / Z=APPEND $
+      | LABEL     L1 $
+      | MOD1      B/W,Y $
+      | COND      L3,PX $
+DMAP  | MOD2      A/X/V,N,PX=0 $
+loop  | SAVE      PX $
+      | LABEL     L3 $
+      | MOD3      W,X,Y/Z $
+      | REPT      L1,1 $
+      | MOD4      Z// $
+      | END       $
+      +
 
    Assume that MOD2 sets PX < 0 when it is executed. Note that Z is declared
 APPEND, whereas Y will be saved since it is an internal data block that is to
@@ -479,7 +483,7 @@ executed
   END                                      Normal termination of problem.
 
 5.2.3.2  The EQUIV Instruction (see Section 5.7)
-
+------------------------------------------------
    There are no restrictions on the status of data blocks referenced in an
 EQUIV instruction. Consider the instruction EQUIV A,B1,...,BN/P $ when P < 0.
 Data blocks B1,...,BN take on all the characteristics of data block A
@@ -504,11 +508,11 @@ Example of EQUIV Instruction
 
          BEGIN     $
          MOD1      A/B  $
-      Ú  LABEL     L1  $
-DMAP  ³  EQUIV     B,BB/BREAK  $
-loop  ³  MOD2      B/BB  $
-      ³  EQUIV     BB,B/LINK  $
-      À  REPT      L1,1  $
+      +  LABEL     L1  $
+DMAP  |  EQUIV     B,BB/BREAK  $
+loop  |  MOD2      B/BB  $
+      |  EQUIV     BB,B/LINK  $
+      +  REPT      L1,1  $
          MOD3      BB//  $
          END
 
@@ -558,10 +562,10 @@ could be written as follows and the same results achieved.
 
          BEGIN     $
          MOD1      A/B  $
-      Ú  LABEL     L1  $
-DMAP  ³  MOD2      B/BB  $
-loop  ³  EQUIV     BB,B/LINK  $
-      À  REPT      L1,1  $
+      +  LABEL     L1  $
+DMAP  |  MOD2      B/BB  $
+loop  |  EQUIV     BB,B/LINK  $
+      +  REPT      L1,1  $
          MOD3      B//  $
          END
 
@@ -569,7 +573,7 @@ Data block BB is now internal; therefore, the instruction EQUIV B,BB/BREAK $
 is not needed.
 
 5.2.3.3  The PURGE Instruction (see Section 5.7)
-
+------------------------------------------------
    The status of a data block is changed to purged by explicitly or implicitly
 purging it. A data block is explicitly purged through the PURGE instruction,
 whereas it is implicitly purged if it is not created by the functional module
@@ -677,15 +681,15 @@ Example of Unpurging
          FILE     X=SAVE/Y=SAVE  $
          FILE     Z=APPEND $
          MOD1     IP/A  $
-       Ú LABEL    L1  $
-       ³ COND     L2,NPX  $
-       ³ PURGE    X/NPX  $
-       ³ MOD2     A/X,Y/V,Y,PX=0/V,N,NPX=0 $
-DMAP   ³ SAVE     PX,NPX $
-loop   ³ PURGE    X/PX  $
-       ³ LABEL    L2  $
-       ³ MOD3     X,Y/Z  $
-       À REPT     L1,2  $
+       + LABEL    L1  $
+       | COND     L2,NPX  $
+       | PURGE    X/NPX  $
+       | MOD2     A/X,Y/V,Y,PX=0/V,N,NPX=0 $
+DMAP   | SAVE     PX,NPX $
+loop   | PURGE    X/PX  $
+       | LABEL    L2  $
+       | MOD3     X,Y/Z  $
+       + REPT     L1,2  $
          MOD4     Z// $
          END      $
 
@@ -793,9 +797,9 @@ and all secondary data blocks in each EQUIV instruction. The only exceptions
 to this are the CASESS, CASEI, and CASECC data blocks appearing as output in
 substructure analyses.
 
-=PAGE=
-5.3  INDEX OF DMAP MODULE DESCRIPTIONS
 
+5.3  INDEX OF DMAP MODULE DESCRIPTIONS
+======================================
    Descriptions of all nonstructurally oriented modules are contained herein,
 arranged alphabetically by category as indicated by the lists below.
 Descriptions for the structurally oriented modules are contained in Section 4
@@ -930,9 +934,9 @@ By precision is meant one of the following:
         1        Single precision numbers
         2        Double precision numbers
 
-=PAGE=
-5.4  MATRIX OPERATION MODULES
 
+5.4  MATRIX OPERATION MODULES
+=============================
 Module                   Basic Operation                        Page
 
 ADD           [X] = a[A] + b[B]                                5.4-2
@@ -950,11 +954,11 @@ FBS           [X] = +/- ([L][U])   [B]                         5.4-7
 
 MATGEN        Generate certain kinds of matrices               5.4-?
 
-                      Ú           ¿
-                      ³ A11 ³ A12 ³
-MERGE         [A] <=  ³ ÄÄÄÄÅÄÄÄÄ ³                            5.4-8
-                      ³ A21 ³ A22 ³
-                      À           Ù
+                      +           +
+                      | A11 | A12 |
+MERGE         [A] <=  | ----+---- |                            5.4-8
+                      | A21 | A22 |
+                      +           +
                                                  T
 MPYAD         [X] = +/- [A][B] +/- [C] or +/- [A] [B] +/- C   5.4-10
 
@@ -962,11 +966,11 @@ MPYAD         [X] = +/- [A][B] +/- [C] or +/- [A] [B] +/- C   5.4-10
 MPY3          [X] = [A] [B][A] + [C], [A] [B] + [C] or        5.4-12
               [B][A] + [C]
 
-                      Ú           ¿
-                      ³ A11 ³ A12 ³
-PARTN         [A] =>  ³ ÄÄÄÄÅÄÄÄÄ ³                           5.4-13
-                      ³ A21 ³ A22 ³
-                      À           Ù
+                      +           +
+                      | A11 | A12 |
+PARTN         [A] =>  | ----+---- |                           5.4-13
+                      | A21 | A22 |
+                      +           +
 
 SDCMPS        [A] => [L][U]                                   5.4-17
 
@@ -977,40 +981,40 @@ SOLVE         [X] = +/- [A]   [B]                             5.4-22
 
                        T
 TRNSP         [X] = [A]                                       5.4-23
-                         Ú      ¿
-                         ³ PHIA ³
-UMERGE        {PHIF} <=  ³ ÄÄÄÄ ³                             5.4-24
-                         ³ PHIO ³
-                         À      Ù
+                         +      +
+                         | PHIA |
+UMERGE        {PHIF} <=  | ---- |                             5.4-24
+                         | PHIO |
+                         +      +
 
-                        Ú           ¿
-                        ³ Kjj ³ Kjl ³
-UPARTN        [K  ] =   ³ ÄÄÄÄÅÄÄÄÄ ³                         5.4-26
-                ii      ³ Klj ³ Kll ³
-                        À           Ù
-=PAGE=
+                        +           +
+                        | Kjj | Kjl |
+UPARTN        [K  ] =   | ----+---- |                         5.4-26
+                ii      | Klj | Kll |
+                        +           +
+
 ADD - Matrix Add
 
 Purpose
-
+-------
 To compute [X] = a[A] + b[B] where a and b are scale factors.
 
 DMAP Calling Sequence
-
+---------------------
 ADD   A,B / X / C,Y, ALPHA=(1.0,2.0)     / C,Y, BETA=(3.0,4.0)
               / C,Y,DALPHA=(5.D+0,6.D-1) / C,Y,DBETA=(7.D+2,8.D-3)  $
 
 Input Data Blocks
-
+-----------------
 A       Any GINO matrix.
 B       Any GINO matrix.
 
 Output Data Blocks
-
+------------------
 X       Matrix.
 
 Parameters
-
+----------
 ALPHA   Input-complex-single precision. This is the scalar multiplier for
         [A]. (See Remark 7 for default if DALPHA is purged.)
 
@@ -1028,7 +1032,7 @@ Subroutines
 DADD
 
 Method
-
+------
 The parameters are checked. If [A] is not purged, the number of columns, rows,
 and form of [X] are set to those of [A]. Otherwise the [B] descriptors are
 used. The flags for the type of [X] (see Remark 2) and multiply-add operations
@@ -1036,7 +1040,7 @@ are set before calling subroutine SADD, which performs the actual scalar
 multiplication and matrix addition.
 
 Remarks
-
+-------
 1.Matrix [A] and/or matrix [B] may be purged, in which case the corresponding
 term in the matrix sum will be assumed null. The input data blocks must be
 unique.
@@ -1063,29 +1067,30 @@ BETA, DALPHA, or DBETA is complex.
 7.The defaults are ALPHA = (1.0,0.0) if DALPHA is purged, and BETA =
 (1.0,0.0) if DBETA is purged. ALPHA and DALPHA cannot both be specified;
 neither can BETA and DBETA.
-=PAGE=
+
 ADD5 - Matrix Add
+=================
 
 Purpose
-
+-------
 To compute [X] = a[A] + b[B] + c[C] + d[D] + e[E] where a, b, c, d, and e are
 scale factors.
 
 DMAP Calling Sequence
-
+---------------------
 ADD5 A,B,C,D,E / X / C,Y,ALPHA=(1.0,2.0) / C,Y,BETA=(3.O,4.O) /
                      C,Y,GAMMA=(5.0,6.0) / C,Y,DELTA=(7.0,8.0) /
                      C,Y,EPSLN=(9.0,1.0) $
 
 Input Data Blocks
-
+-----------------
 A, B, C, D, and E must be distinct matrices.
 
 NOTE: Any of the matrices may be purged, in which case the corresponding term
 in the matrix sum will be assumed null. The input data blocks must be unique.
 
 Output Data Blocks
-
+------------------
 X       Matrix.
 
 The type of [X] is maximum of the types of A, B, C, D, E, a, b, c, d, e. The
@@ -1094,7 +1099,7 @@ size of [X] is the size of the first nonpurged input.
 NOTE: [X] cannot be purged.
 
 Parameters
-
+----------
 ALPHA   Input-complex-single precision, default = (1.0, 0.0). This is a,
         the scalar multiplier for [A].
 
@@ -1112,32 +1117,33 @@ EPSLN   Input-complex-single precision, default = (1.0, 0.0). This is e,
 
 NOTE: If Im(ALPHA), Im(BETA), Im(GAMMA), Im(DELTA), or Im(EPSLN) = 0.0, the
 corresponding parameter will be considered real.
-=PAGE=
+
 DECOMP - Matrix Decomposition
+=============================
 
 Purpose
-
+-------
 To decompose a square matrix [A] into upper and lower triangular factors [U]
 and [L].
 
 [A]  =>  [L][U]
 
 DMAP Calling Sequence
-
+---------------------
 DECOMP   A / L,U / V,Y,KSYM / V,Y,CHOLSKY / V,N,MINDIAG / V,N,DET /
              V,N,POWER / V,N,SING $
 
 Input Data Blocks
-
+-----------------
 A       A square matrix.
 
 Output Data Blocks
-
+------------------
 L       Nonstandard lower triangular factor of [A].
 U       Nonstandard upper triangular factor of [A].
 
 Parameters
-
+----------
 KSYM    Input-Integer, default = 0. 1, use symmetric decomposition. 0, use
         unsymmetric decomposition.
 
@@ -1156,7 +1162,7 @@ POWER   Output-Integer, default = 0. Integer POWER of 10 by which DET
 SING    Output-Integer, default = 0. SING is set to -1 if [A] Is singular.
 
 Remarks
-
+-------
 1.Non-standard triangular factor matrix data blocks are used to improve the
 efficiency of the back substitution process in module FBS. The format of
 these data blocks is given in Section 2 of the Programmer's Manual.
@@ -1169,30 +1175,30 @@ written as [U]) cannot be input to FBS.
 
 4.Variable parameters output from functional modules must be SAVEd if they
 are to be subsequently used. See the Executive Module SAVE description.
-=PAGE=
+
 DIAGONAL - Strip Diagonal From Matrix
-
+=====================================
 Purpose
-
+-------
 To remove the real part of the diagonal from a matrix, raise each term to a
 specified power, and output a column vector, a square symmetric matrix, or a
 diagonal matrix.
 
 DMAP Calling Sequence
-
+---------------------
 DIAGONAL A/B/C,Y,OPT=COLUMN/V,Y,POWER=1. $
 
 Input Data Blocks
-
+-----------------
 A       Can be any square or diagonal matrix.
 
 Output Data Blocks
-
+------------------
 B       Either a real column vector, a symmetric matrix, or a diagonal
         matrix containing the diagonal of A.
 
 Parameters
-
+----------
 OPT     Input-BCD, default = COLUMN.
 
         COLUMN     produces column vector output (labeled as a general
@@ -1205,36 +1211,37 @@ POWER   Input-Real single precision, default = 1.0. Exponent to which the
         real part of each diagonal element is raised.
 
 Remarks
-
+-------
 1.The module checks for special cases of POWER = 0.0, 0.5, 1.0, and 2.0.
 
 2.The precision of the output matrix matches the precision of the input
 matrix.
-=PAGE=
+
 FBS - Matrix Forward-Backward Substitution
+==========================================
 
 Purpose
-
+-------
 To solve the matrix equation [L][U][X] = +/- [B] where [L] and [U] are the
 lower and upper triangular factors of a matrix previously obtained via
 Functional Module DECOMP.
 
 DMAP Calling Sequence
-
+---------------------
 FBS  L,U,B / X / V,Y,SYM / V,Y,SIGN / V,Y,PREC / V,Y,TYPE $
 
 Input Data Blocks
-
+-----------------
 L       Nonstandard lower triangular factor.
 U       Nonstandard upper triangular factor.
 B       Rectangular matrix.
 
 Output Data Blocks
-
+------------------
 X       Rectangular matrix having the same dimensions as [B].
 
 Parameters
-
+----------
 SYM     Input-Integer-default = 0; 1 - matrix [L][U] is symmetric; -1
         -matrix [L][U] is unsymmetric; 0 - reset to 1 or -1 depending upon
         [U] being purged or not respectively.
@@ -1259,37 +1266,37 @@ TYPE    Input-Integer-default = 0; 1 - output type of matrix [X] is real
         Output-Integer - TYPE used.
 
 Remarks
-
+-------
 1.Non-standard triangular factor matrix data blocks are used to improve the
 efficiency of the back substitution process. The format of these data
 blocks is given in Section 2 of the Programmer's Manual.
 
 2.The matrix manipulating utility modules should be cautiously employed when
 dealing with non-standard matrix data blocks.
-=PAGE=
+
 MATGEN - Matrix Generator
-
+=========================
 Purpose
-
+-------
 To generate different kinds of matrices for later use in other matrix
 operation modules.
 
 DMAP Calling Sequence
-
+---------------------
 MATGEN  TABLE/MAT/P1/P2/P3/P4/P5/P6/P7/P8/P9/P10/P11 $
 
 Input Data Blocks
-
+-----------------
 TABLE   Optional tabular data for use in generating the matrix. (This data
         may be assumed to be entered by DTI cards.) For P1 = 9, TABLE is
         the EQEXIN table. For P1 = 11, TABLE is the USET table.
 
 Output Data Blocks
-
+------------------
 MAT     Standard matrix data block.
 
 Parameters
-
+----------
 P1      Input-integer-no default. Option selection parameter as described
         below.
 
@@ -1355,7 +1362,7 @@ P1 = 6  Generate a partitioning vector for use in PARTN or MERGE.
         If
 
           10
-           ä   Pi < P2
+           -   Pi < P2
           i=3
 
         the remaining terms contain zeros.
@@ -1363,7 +1370,7 @@ P1 = 6  Generate a partitioning vector for use in PARTN or MERGE.
         If
 
           10
-           ä   Pi > P2
+           -   Pi > P2
           i=3
 
         the terms are ignored after P2.
@@ -1410,27 +1417,27 @@ P1 = 9  Generate a transformation between external and internal sequence
 P1 = 10 Not used.
 
 P1 = 11 Not available.
-=PAGE=
+
 MERGE - Matrix Merge
 
 Purpose
-
+-------
 To form the matrix [A] from its partitions:
 
-                ÃÄÄÄ CP ÄÄÄÄ´
-              Â Ú           ¿
-              ³ ³ A11 ³ A12 ³ = 0
-    [A] <=   RP ³ ÄÄÄÄÅÄÄÄÄ ³
-              ³ ³ A21 ³ A22 ³ not equal 0
-              Á À           Ù
+                +--- CP ----+
+              + +           +
+              | | A11 | A12 | = 0
+    [A] <=   RP | ----+---- |
+              | | A21 | A22 | not equal 0
+              + +           +
                   = 0   not equal 0
 
 DMAP Calling Sequence
-
+---------------------
 MERGE A11,A21,A12,A22,CP,RP / A / V,Y,SYM / V,Y,TYPE / V,Y,FORM $
 
 Input Data Blocks
-
+-----------------
 A11     Matrix.
 A21     Matrix.
 A12     Matrix.
@@ -1439,7 +1446,7 @@ CP      Column partitioning vector (see below) - Single precision column vector.
 RP      Row partitioning vector (see below) - Single precision column vector.
 
 NOTES
-
+-----
 1. Any or all of [A11], [A12], [A21], [A22] can be purged. When all are purged 
 this implies [A] = [0].
 2. {RP} and {CP} may not both be purged.
@@ -1447,13 +1454,13 @@ this implies [A] = [0].
 4. [A11], [A12], [A21], [A22] must be unique matrices. 
 
 Output Data Blocks
-
+------------------
 A       Merged matrix from [A11], [A12], [A21], [A22].
 
 NOTE: [A] cannot be purged.
 
 Parameters
-
+----------
 SYM     Input-Integer, default = -1. SYM < 0, {CP} is used for {RP}. SYM >= 0, 
         {CP} and {RP} are distinct. 
 
@@ -1462,7 +1469,7 @@ TYPE    Input-Integer, default = 0. Type of [A] - see Remark 4.
 FORM    Input-Integer, default = 0. Form of [A] - see Remark 3.
 
 Remarks
-
+-------
 1. MERGE is the inverse of PARTN in the sense that if [A11], [A12], [A21], 
 [A22] were produced by PARTN using {RP}, {CP}, FORM, SYM, and TYPE from [A], 
 MERGE will produce [A]. See PARTN for options on {RP}, {CP}, and SYM. 
@@ -1472,54 +1479,54 @@ MERGE will produce [A]. See PARTN for options on {RP}, {CP}, and SYM.
 3. When FORM = 0, a compatible matrix [A] results as shown in the following 
 table: 
 
-                       ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-                       ³                    FORM OF A22                   ³
-                       ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
-                       ³   Square        ³  Rectangular   ³  Symmetric    ³
-ÚÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
-³      ³  Square       ³   Square        ³  Rectangular   ³  Rectangular  ³
-³ FORM ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
-³  OF  ³  Rectangular  ³   Rectangular   ³  Rectangular   ³  Rectangular  ³
-³ A11  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
-³      ³  Symmetric    ³   Rectangular   ³  Rectangular   ³  Symmetric    ³
-ÀÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+                       +--------------------------------------------------+
+                       |                    FORM OF A22                   |
+                       +-----------------+----------------+---------------+
+                       |   Square        |  Rectangular   |  Symmetric    |
++------+---------------+-----------------+----------------+---------------+
+|      |  Square       |   Square        |  Rectangular   |  Rectangular  |
+| FORM +---------------+-----------------+----------------+---------------+
+|  OF  |  Rectangular  |   Rectangular   |  Rectangular   |  Rectangular  |
+| A11  +---------------+-----------------+----------------+---------------+
+|      |  Symmetric    |   Rectangular   |  Rectangular   |  Symmetric    |
++------+---------------+-----------------+----------------+---------------+
 
 4. If TYPE = 0, the type of the output matrix wilt be the maximum type of 
 [A11], [A12], [A21], and [A22]. 
-=PAGE=
+
 MPYAD - Matrix Multiply and Add
-
+===============================
 Purpose
-
+-------
 MPYAD computes the multiplication of two matrices and, optionally, addition of 
 a third matrix to the product. By means of parameters, you may compute +/- 
 [A][B] +/- [C] = [X], or +/- [A]T[B] +/- [C] = [X]. 
 
 DMAP Calling Sequence
-
+---------------------
 MPYAD  A,B,C / X / V,N,T / V,N,SIGNAB / V,N,SIGNC / V,N,TYPEX $
 
 Input Data Blocks
-
+-----------------
 A       Left hand matrix in the matrix product [A][B].
 B       Right hand matrix in the matrix product [A][B].
 C       Matrix to be added to [A][B].
 
 NOTES
-
+-----
 1.If no matrix is to be added, [C] must be purged.
 2.[A], [B], [C] must be physically different data blocks.
 3.[A] and [B] must not be purged.
 4.[A], [B], and [C] must be conformable. This condition is checked by MPYAD.
 
 Output Data Blocks
-
+------------------
 X       Matrix resulting from the MPYAD operation.
 
 NOTE: [X] cannot be purged.
 
 Parameters
-
+----------
 T       Input-Integer, no default; 1 - compute [A]T[B]; 0 - compute [A][B].
 
 SIGNAB  Input-Integer, default = 1; +1 - compute [A][B]; 0 - omit [A][B]; -1 - 
@@ -1537,7 +1544,7 @@ TYPEX   Input-Integer, default = 0; 0 - logical choice based on input; 1 -
         Output-Integer; TYPEX used.
 
 Examples
-
+--------
 1. [X] = [A][B]+[C]     ([X] see notes)
    MPYAD  A,B,C / X / C,N,0 $
 
@@ -1552,39 +1559,39 @@ NOTES: The precision of [X] is determined from the input matrices in that if
 any one of these matrices is specified as double precision, then [X] will also 
 be double precision. If the precision for the input matrices is not specified, 
 the precision of the system flag will be used. 
-=PAGE=
+
 MPY3 - Triple Matrix Multiply
-
+=============================
 Purpose
-
+-------
 To compute the matrix product [X]=[A]T[B][A]+[C], [X]=[A]T[B]+[C], or 
 [X]=[B][A]+[C] for sparse A matrix and dense B matrix. 
 
 DMAP Calling Sequence
-
+---------------------
 MPY3 A,B,C /X/ V,N,CODE / V,N,PREC $
 
 Input Data Blocks
-
+-----------------
 A       Matrix[A].
 B       Matrix[B].
 C       Matrix[C].
 
 NOTES
-
+-----
 1.If no matrix is to be added, [C] must be purged.
 2.[A], [B], and [C] must be physically different data blocks.
 3.[A] and [B] must not be purged.
 4.[A], [B], and [C] must be conformable.
 
 Output Data Blocks
-
+------------------
 X       Matrix resulting from the triple matrix multiplication.
 
 NOTE: [X] cannot be purged.
 
 Parameters
-
+----------
 CODE    Input-Integer, default = 0. If CODE = 0, ATBA + C is performed. If 
         CODE = 1, ATB + C is performed via MPYAD. If CODE = 2, BA + C is 
         performed. 
@@ -1594,49 +1601,49 @@ PREC    Input-Integer, default = 0. If PREC = 0, output precision is the
         precision. If PREC = 2, output is in real double precision. 
 
 Remarks
-
+-------
 1. See Section 4.157 of the Programmer's Manual for a detailed description of 
 the MPY3 module. 
-=PAGE=
+
 PARTN - Matrix Partition
-
+========================
 Purpose
-
+-------
 To partition [A] into [A11], [A12], [A21], and [A22]:
 
-                 ÃÄÄÄ CP ÄÄÄÄ´
-               Â Ú           ¿
-               ³ ³ A11 ³ A12 ³ = 0
-     [A] =>   RP ³ ÄÄÄÄÅÄÄÄÄ ³
-               ³ ³ A21 ³ A22 ³ not equal 0
-               Á À           Ù
+                 +--- CP ----+
+               + +           +
+               | | A11 | A12 | = 0
+     [A] =>   RP | ----+---- |
+               | | A21 | A22 | not equal 0
+               + +           +
                    = 0   not equal 0
 
 DMAP Calling Sequence
-
+---------------------
 PARTN A,CP,RP / A11,A21,A12,A22 / V,Y,SYM / V,Y,TYPE / V,Y,F11 /
                 V,Y,F21 / V,Y,F12 / V,Y,F22 $
 
 Input Data Blocks
-
+-----------------
 A       Matrix to be partitioned.
 CP      Column partitioning vector - single precision column vector.
 RP      Row partitioning vector - single precision column vector.
 
 Output Data Blocks
-
+------------------
 A11     Upper left partition of [A].
 A21     Lower left partition of [A].
 A12     Upper right partition of [A].
 A22     Lower right partItion of [A].
 
 NOTES
-
+-----
 1.Any or all output data blocks may be purged.
 2.For size of outputs see Method section below.
 
 Parameters
-
+----------
 SYM     Input-Integer, default = -1. SYM chooses between a symmetric partition 
         and one unsymmetric partition. If SYM < 0, {CP} is used as {RP}. If 
         SYM >= 0, {CP} and {RP} are distinct. 
@@ -1652,17 +1659,17 @@ F12     Input-Integer, default = 0. Form of [A12]. See Remark 7.
 F22     Input-Integer, default = 0. Form of [A22]. See Remark 7.
 
 Method
-
+------
 Let NC = number of nonzero terms in {CP}.
 Let NR = number of nonzero terms In {RP}.
 Let NROWA = number of rows In [A].
 Let NCOLA = number of columns In [A].
 
-CASE 1 {CP} purged and SYM >= 0.                           Ú   ¿
-[A11] is a (NROWA - NR) by NCOLA matrix.                   ³A11³
-[A21] is a NR by NCOLA matrix.                      [A] -> ³ÄÄÄ³
-[A12] is not written.                                      ³A21³
-[A22] is not written.                                      À   Ù
+CASE 1 {CP} purged and SYM >= 0.                           +   +
+[A11] is a (NROWA - NR) by NCOLA matrix.                   |A11|
+[A21] is a NR by NCOLA matrix.                      [A] -> |---|
+[A12] is not written.                                      |A21|
+[A22] is not written.                                      +   +
 
 CASE 2 {RP} purged and SYM >= 0.
 [A11] is a NROWA by (NCOLA - NC) matrix.
@@ -1670,29 +1677,29 @@ CASE 2 {RP} purged and SYM >= 0.
 [A12] is a NROWA by NC matrix.
 [A22] is not written.
 
-CASE 3 SYM < 0 ({RP} must be purged)                        Ú           ¿
-[A11] is a (NROWA - NC) by (NCOLA - NC) matrix.             ³ A11 ³ A12 ³
-[A21] is a NC by (NCOLA - NC) matrix.               [A] ->  ³ ÄÄÄÄÅÄÄÄÄ ³
-[A12] is a (NROWA - NC) by NC matrix.                       ³ A21 ³ A22 ³
-[A22] is a NC by NC matrix.                                 À           Ù
+CASE 3 SYM < 0 ({RP} must be purged)                        +           +
+[A11] is a (NROWA - NC) by (NCOLA - NC) matrix.             | A11 | A12 |
+[A21] is a NC by (NCOLA - NC) matrix.               [A] ->  | ----+---- |
+[A12] is a (NROWA - NC) by NC matrix.                       | A21 | A22 |
+[A22] is a NC by NC matrix.                                 +           +
 
-CASE 4 neither {CP} nor {RP} purged and SYM >=0             Ú           ¿
-[A11] is a (NROWA - NR) by (NCOLA - NC) matrix.             ³ A11 ³ A12 ³
-[A21] is a NR by (NCOLA - NC) matrix.               [A] ->  ³ ÄÄÄÄÅÄÄÄÄ ³
-[A12] is a (NROWA - NR) by NC matrix.                       ³ A21 ³ A22 ³
-[A22] is a NR by NC matrix.                                 À           Ù
+CASE 4 neither {CP} nor {RP} purged and SYM >=0             +           +
+[A11] is a (NROWA - NR) by (NCOLA - NC) matrix.             | A11 | A12 |
+[A21] is a NR by (NCOLA - NC) matrix.               [A] ->  | ----+---- |
+[A12] is a (NROWA - NR) by NC matrix.                       | A21 | A22 |
+[A22] is a NR by NC matrix.                                 +           +
 
 Remarks
-
+-------
 1.If [A] is purged, PARTN will cause all output data blocks to be purged.
 
 2.If {CP} is purged, [A] is partitioned as follows:
 
-       Ú   ¿
-       ³A11³
-[A] => ³ÄÄÄ³
-       ³A21³
-       À   Ù
+       +   +
+       |A11|
+[A] => |---|
+       |A21|
+       +   +
 
 3.If {RP} is purged and SYM >= 0, [A] is partitioned as follows:
 
@@ -1700,22 +1707,22 @@ Remarks
 
 4.If {RP} is purged and SYM < 0, [A] is partitioned as follows:
 
-        Ú           ¿
-        ³ A11 ³ A12 ³
-[A] =>  ³ ÄÄÄÄÅÄÄÄÄ ³
-        ³ A21 ³ A22 ³
-        À           Ù
+        +           +
+        | A11 | A12 |
+[A] =>  | ----+---- |
+        | A21 | A22 |
+        +           +
 
 where {CP} is used as both the row and column partitioner.
 
 5.{RP} and {CP} cannot both be purged.
 
 6.
-        Ú           ¿
-        ³ A11 ³ A12 ³
-[A] =>  ³ ÄÄÄÄÅÄÄÄÄ ³
-        ³ A21 ³ A22 ³
-        À           Ù
+        +           +
+        | A11 | A12 |
+[A] =>  | ----+---- |
+        | A21 | A22 |
+        +           +
 
 Let [A] be a m by n order matrix. Let {CP} be a n order column vector 
 containing q zero elements. Let {RP} be a m order column vector containing p 
@@ -1740,15 +1747,15 @@ matrix will be output with a compatible form entered in the trailer.
 matrix [A]. 
 
 Examples
-
+--------
 1.Let [A], {CP} and {RP} be defined as follows:
 
                                            É   »
-         Ú                  ¿              º1.0º              É   »
-         ³1.0  2.0  3.0  4.0³              º0.0º              º0.0º
-  [A] =  ³5.0  6.0  7.0  8.0³  ,  {CP} =   º1.0º   ,  {RP} =  º0.0º
-         ³9.0 10.0 11.0 12.0³              º1.0º              º1.0º
-         À                  Ù              È   ¼              È   ¼
+         +                  +              º1.0º              É   »
+         |1.0  2.0  3.0  4.0|              º0.0º              º0.0º
+  [A] =  |5.0  6.0  7.0  8.0|  ,  {CP} =   º1.0º   ,  {RP} =  º0.0º
+         |9.0 10.0 11.0 12.0|              º1.0º              º1.0º
+         +                  +              È   ¼              È   ¼
 
 Then, the DMAP instruction
 
@@ -1756,10 +1763,10 @@ Then, the DMAP instruction
 
 will create the real double precision matrices
 
-          Ú   ¿                            Ú               ¿
-          ³2.0³                            ³1.0   3.0   4.0³
-  [A11] = ³6.0³   ,  F11 = 2       [A12] = ³5.0   7.0   8.0³  ,  F12 = 2
-          À   Ù                            À               Ù
+          +   +                            +               +
+          |2.0|                            |1.0   3.0   4.0|
+  [A11] = |6.0|   ,  F11 = 2       [A12] = |5.0   7.0   8.0|  ,  F12 = 2
+          +   +                            +               +
 
   [A21] = [10.0]  ,  F21 = 1       [A22] = [9.0  11.0  12.0]  ,  F22 = 2
 
@@ -1769,11 +1776,11 @@ will create the real double precision matrices
 
 the resulting matrices would be
 
-          Ú    ¿                            Ú               ¿
-          ³2.0 ³                            ³1.0   3.0   4.0³
-  [A11] = ³6.0 ³                    [A12] = ³5.0   7.0   8.0³
-          ³10.0³                            ³9.0  11.0  12.0³
-          À    Ù                            À               Ù
+          +    +                            +               +
+          |2.0 |                            |1.0   3.0   4.0|
+  [A11] = |6.0 |                    [A12] = |5.0   7.0   8.0|
+          |10.0|                            |9.0  11.0  12.0|
+          +    +                            +               +
   [A21] = purged                    [A22] = purged
 
 3.If, in Example 1, the DMAP instruction were written as
@@ -1782,17 +1789,17 @@ the resulting matrices would be
 
 the resulting matrices would be
 
-             Ú                  ¿
-             ³1.0  2.0  3.0  4.0³
-    [A11] =  ³5.0  6.0  7.0  8.0³     [A12] = purged
-             À                  Ù
+             +                  +
+             |1.0  2.0  3.0  4.0|
+    [A11] =  |5.0  6.0  7.0  8.0|     [A12] = purged
+             +                  +
 
     [A21] =  [9.0 10.0 11.0 12.0]     [A22] = purged
-=PAGE=
+
 SDCMPS - Symmetric Decomposition
-
+================================
 Purpose
-
+-------
 To decompose a matrix [A] into upper and lower triangular factors [U] and [L].
 
 [A] => [L][U]
@@ -1802,13 +1809,13 @@ external identification numbers. Various user exit controls for error
 conditions are available. 
 
 DMAP Calling Sequence
-
+---------------------
 SDCMPS USET,GPL,SIL,A / L,U / V,Y,SYM / V,Y,DIAGCK / V,Y,DIAGET /
                         V,Y,PDEFCK / V,N,SING / V,Y,SET / V,Y,CHOLSKY /
                         V,N,DET / V,N,MINDIA / V,N,POWER / V,Y,SUBNAM $
 
 Input Data Blocks
-
+-----------------
 USET    Displacement Set Definition Table.
 GPL     Grid Point List.
 SIL     Scalar Index List.
@@ -1818,12 +1825,12 @@ NOTE: Error conditions will be identified by column number if USET, GPL, or
 SIL are purged for non-substructuring problems. 
 
 Output Data Blocks
-
+------------------
 L       Lower triangular factor of [A].
 U       Upper triangular factor of [A].
 
 Parameters
-
+----------
 SYM     Input-Integer, default = 0. 1, use symmetric decomposition. -1, use 
         unsymmetric decomposition. 0, use decomposition based on input matrix 
         form. 
@@ -1876,7 +1883,7 @@ SUBNAM  Input-BCD, default = NONE. Name of substructure being solved. Not
         necessary unless this is a substructuring problem. 
 
 Remarks
-
+-------
 1. Non-standard triangular factor matrix data blocks are used to improve the 
 efficiency of the back substitution process in module FBS. The format of these 
 data blocks is given in Section 2 of the Programmer's Manual. 
@@ -1901,7 +1908,7 @@ if decomposition is to be continued.
 
                1-p
               2
-     e   = ÄÄÄÄÄÄÄÄÄÄ
+     e   = ----------
       s    |Dii/Aii|
 
 where p is the number of bits in the mantissa (machine dependent), Dii is the 
@@ -1923,7 +1930,7 @@ Absolute values greater than 1 replace the variable CLOSE documented in
 Section 3.5.14.4 of the Programmer's Manual. 
 
 Examples
-
+--------
 1. To use the SDCMPS module in a static analysis (Rigid Format 1), modules 
 SMP1 and RBMG2 must be removed. For this case, the required ALTERs are as 
 follows: 
@@ -1982,39 +1989,39 @@ ENDALTER  $
 
 The input parameters SYM, DIAGCK, DIAGET, and PDEFCK may be changed from the 
 values illustrated above as indicated under Example 1. 
-=PAGE=
+
 SMPYAD - Matrix Series Multiply and Add
-
+=======================================
 Purpose
-
+-------
 To multiply a series of matrices together and, optionally, add another matrix 
 to the product: 
 
     [X]  =  [A][B][C][D][E] +/- [F]
 
 DMAP Calling Sequence
-
+---------------------
 SMPYAD   A,B,C,D,E,F / X / C,N,n / V,N,SIGNX / V,N,SIGNF / V,N,PX / V,N,TA /
          V,N,TB / V,N,TC / V,N,TD $
 
 Input Data Blocks
-
+-----------------
 A, B, C, D, E Up to 5 matrices to be multiplied together, from left to right.
 F             Matrix to be added to the above product.
 
 NOTES
-
+-----
 1.  If one of the five multiplication matrices is required in the product (see 
     parameter n below) and is purged, the entire calculation is skipped. 
 2.  If the [F] matrix is purged, no matrix will be added to the product.
 3.  The input matrices must be conformable. This condition is checked by SMPYAD.
 
 Output Data Blocks
-
+------------------
 X             Resultant matrix (may not be pre-purged).
 
 Parameters
-
+----------
 n             number of matrices involved in the product, counting from the 
               left (Input-Integer). 
 
@@ -2033,7 +2040,7 @@ TA, TB,TC, TD transpose indicators for the [A],[B],[C], and [D] matrices; (1
               untransposed) (Input-Integer). 
 
 NOTE
-
+----
 All the parameters except n have default values as follows:
 
     SIGNX  =  1 (sign of product is plus)
@@ -2045,7 +2052,7 @@ All the parameters except n have default values as follows:
     cannot be transposed.) 
 
 Method
-
+------
 The method is the same as for the MPYAD module with the following additional remarks:
 
 1.  None of the matrices may be diagonal.
@@ -2057,7 +2064,7 @@ The method is the same as for the MPYAD module with the following additional rem
     first product calculated is the product of matrix n-l and matrix n. 
 
 Examples
-
+--------
 1.  To compute [X] = [A][B]T[C]-[F], use
 
     SMPYAD  A,B,C,,,F / X / C,N,3 / C,N,1 / C,N,-1 / C,N,0 / C,N,0 / C,N,1 $
@@ -2066,34 +2073,34 @@ Examples
 
     SMPYAD  U,V,W,X,Y, / Z / C,N,5 / C,N,-1 / C,N,0 / C,M,0 / C,N,1 / C,N,1 /
             C,N,1 / C,N,1 $
-=PAGE=
+
 SOLVE - Linear System Solver
-
+============================
 Purpose
-
+-------
 To solve the Matrix Equation
 
     [A][X]  =  +/- [B]
 
 DMAP Calling Sequence
-
+---------------------
 SOLVE   A,B / X / V,Y,SYM / V,Y,SIGN / V,Y,PREC / V,Y,TYPE  $
 
 Input Data Blocks
-
+-----------------
 A             Square real or complex matrix.
 B             Rectangular real or complex matrix (if purged, the identity 
               matrix is assumed). 
 
 Output Data Blocks
-
+------------------
 X             A rectangular matrix.
 
 NOTE: A standard matrix trailer will be written, identifying [X] as a rectangular matrix with the same
 dimensions as [B] and the type specified.
 
 Parameters
-
+----------
 SYM           Input-Integer, default = 0; -1 - use unsymmetric decomposition; 
               1 -use symmetric decomposition; 0 - logical choice based on 
               input matrices. 
@@ -2118,63 +2125,63 @@ TYPE          Input-Integer, default = 0; 0 - logical choice based on input; 1
               Output-Integer, TYPE used.
 
 Method
-
+------
 Depending on the SYM flag and the type of [A], one of subroutines SDCOMP, 
 DECOMP, or CDECOMP is called to form [A] = [L][U]. One of FBS or GFBS is then 
 called to solve [L][Y] = +/- [B] and [U][X] = [Y], as appropriate. 
-=PAGE=
+
 TRNSP - Matrix Transpose
 
 Purpose
-
+-------
 To form [A]T given [A].
 
 DMAP Calling Sequence
-
+---------------------
 TRNSP A/X $
 
 Input Data Blocks
-
+-----------------
 A             Any matrix data block.
 
 NOTE: If [A] is purged, TRNSP will cause [X] to be purged.
 
 Output Data Blocks
-
+------------------
 X             The matrix transpose of [A].
 
 NOTE: [X] cannot be purged.
 
 Parameters
-
+----------
 None.
 
 Remarks
-
+-------
 1.  Transposition of large full matrices is very expensive and should be 
     avoided if possible (see Section 2.1.4 of the Theoretical Manual). 
 
 2.  TRNSP uses an algorithm which assumes that the matrix is dense. This 
     algorithm is extremely inefficient for sparse matrices. Sparse matrices 
     should be transposed by using MPYAD. 
-=PAGE=
+
 UMERGE - Merge Two Matrices
 
 Purpose
-
+-------
 To merge two column matrices (such as load vectors or displacement vectors) into a single matrix.
 
 DMAP Calling Sequence
-
+---------------------
 UMERGE  USET,PHIA,PHIO / PHIF / V,N,MAJOR=F / V,N,SUB0=A / V,N,SUB1=L $
 
 Input Data Blocks
-
+-----------------
 USET          Displacement set definitions.
 PHIA, PHIO    Any matrices.
 
 NOTES
-
+-----
 1.  The set definitions may be USET (statics), USETD (dynamics), HUSET (heat 
     transfer), or USETA (aeroelastic). 
 2.  USET, USETD, HUSET, or USETA may not be purged.
@@ -2184,18 +2191,18 @@ NOTES
 
        É       »      É      »
        º PHIA  º      º      º
-       º ÄÄÄÄ  º ==>  º PHIF º
+       º ----  º ==>  º PHIF º
        º PHIO  º      º      º
        È       ¼      È      ¼
 
 Output Data Blocks
-
+------------------
 PHIF          Matrix.
 
 NOTE: PHIF cannot be purged.
 
 Parameters
-
+----------
 MAJOR         BCD value from table below (Input, no default).
 SUB0          BCD value from table below (Input, no default).
 SUB1          BCD value from table below (Input, no default).
@@ -2224,25 +2231,25 @@ NOTE: The set equation MAJOR = SUB0 + SUB1 should hold.
                    SA                      UsA
                    K                       Uk
                    PA                      UpA
-=PAGE=
+
 UPARTN - Partition a Matrix
-
+===========================
 Purpose
-
+-------
 To perform symmetric partitioning of matrices (particularly to allow you to 
 split long running modules such as SMP1). 
 
 DMAP Calling Sequence
-
+---------------------
 UPARTN  USET,KII / KJJ,KLJ,KJL,KLL / V,N,MAJOR=I / V,N,SUB0=J / V,N,SUB1=L $
 
 Input Data Blocks
-
+-----------------
 USET          Displacement set definitions.
 KII           Any displacement matrix.
 
 NOTES
-
+-----
 1.  The set definitions may be USET (statics), USETD (dynamics), HUSET (heat 
     transfer), or USETA (aeroelastic). 
 2.  USET may not be purged.
@@ -2250,22 +2257,22 @@ NOTES
     output matrices to be purged. 
 
 Output Data Blocks
-
+------------------
 KJJ, KLJ, KJL, KII  Matrix partitions
 
 NOTES
-
+-----
 1.  Any or all output data block(s) may be purged.
 2.  UPARTN forms:
 
-                 Ú           ¿
-                 ³ Kjj ³ Kjl ³
-       [Kii] =>  ³ ÄÄÄÄÅÄÄÄÄ ³
-                 ³ Klj ³ Kll ³
-                 À           Ù
+                 +           +
+                 | Kjj | Kjl |
+       [Kii] =>  | ----+---- |
+                 | Klj | Kll |
+                 +           +
 
 Parameters
-
+----------
 MAJOR         BCD value from table below (Input, no default).
 SUB0          BCD value from table below (Input, no default).
 SUB1          BCD value from table below (Input, no default).
@@ -2296,23 +2303,23 @@ NOTE: The set equation MAJOR = SUB0 + SUB1 should hold.
                    PA                      UpA
 
 Example
-
+-------
 In Rigid Format 2, module SMP1 performs the following calculations. SMP1 
 partitions the constrained stiffness and mass matrices 
 
-              Ú _         ¿
-              ³ Kaa ³ Kao ³
-    [Kff] =>  ³ ÄÄÄÄÅÄÄÄÄ ³
-              ³ Koa ³ Koo ³
-              À           Ù
+              + _         +
+              | Kaa | Kao |
+    [Kff] =>  | ----+---- |
+              | Koa | Koo |
+              +           +
 
 and
 
-              Ú _         ¿
-              ³ Maa ³ Mao ³
-    [Mff] =>  ³ ÄÄÄÄÅÄÄÄÄ ³
-              ³ Moa ³ Moo ³
-              À           Ù
+              + _         +
+              | Maa | Mao |
+    [Mff] =>  | ----+---- |
+              | Moa | Moo |
+              +           +
 
 solves for transformation matrix
 
@@ -2345,9 +2352,9 @@ module.
 Thus, in the above manner, a long running module can be broken down into 
 several smaller steps and the intermediate results can be checkpointed. 
 
-=PAGE=
-5.5  UTILITY MODULES
 
+5.5  UTILITY MODULES
+====================
 Module                      Basic Function                         Page
 
 COPY      Generate a physical copy of a data block                5.5-3
@@ -2429,47 +2436,48 @@ The data block names corresponding to the various matrix and table data blocks
 used in the Rigid Format DMAP sequences may be found in Volume II or in the 
 NASTRAN mnemonic dictionary, Section 7. 
 
-=PAGE=
+
 COPY - Copy Data Block
+======================
 
 Purpose
-
+-------
 To generate a physical copy of a data block.
 
 DMAP Calling Sequence
-
+---------------------
 COPY  DB1 / DB2 / PARAM  $
 
 Input Data Blocks
-
+-----------------
 DB1        Any NASTRAN data block.
 
 Output Data Blocks
-
+------------------
 DB2        Any valid NASTRAN data block name.
 
 Parameters
-
+----------
 PARAM   If PARAM <= 0, the copy will be performed - Input-Integer, default =
         -1.
 
 Method
-
+------
 If PARAM > 0, a return is made; otherwise a physical copy of the input data
 block is generated. See Remark 2 below.
 
 Remarks
-
+-------
 1. The input data block may not be purged.
 
 2. If PARAM <  0, the output data block will have the name of the input data
    block in its header record. If PARAM = 0, the output data block will have
    its own name in its header record.
-=PAGE=
+
 DATABASE - Save Data on User Tape
-
+=================================
 Purpose
-
+-------
 To save following data on user tape, formatted, or unformatted for user
 external use:
 
@@ -2488,11 +2496,11 @@ external use:
       the grid point masses.
 
 DMAP Calling Sequence
-
+---------------------
 DATABASE  EQEXIN,BGPDT,GEOM2,CSTM,O1,O2,O3//C,N,OUTTP/C,N,FORMAT/C,N,BASIC  $
 
 Input Data Blocks
-
+-----------------
 EQEXIN     External-internal grid tables. Must be present.
 
 BGPDT   Basic Grid Point Definition Table. If purged, no grid point data sent
@@ -2529,23 +2537,23 @@ Output Data Block
 No GINO output data block.
 
 Parameters
-
+----------
 OUTTP      User output tape. Must be one of the UT1, UT2, INPT, INP1, ...,
            INP9 files; tape or disc file. (Default INP1, FORTRAN Unit 15)
 
-ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-³ FORTRAN LOGICAL  ³                       ³
-³  UNIT, OUTTP     ³    USER FILE CODE     ³
-ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
-³      11          ³    UT1  (CDC only)    ³
-³      12          ³    UT2  (CDC only)    ³
-³      14          ³    INPT (UNIVAC,VAX)  ³
-³      15          ³    INP1 (All          ³
-³      16          ³    INP2  machines     ³
-³       :          ³      :   except       ³
-³      23          ³    INP9  CDC)         ³
-³      24          ³    INPT (IBM only)    ³
-ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
++------------------+-----------------------+
+| FORTRAN LOGICAL  |                       |
+|  UNIT, OUTTP     |    USER FILE CODE     |
++------------------+-----------------------+
+|      11          |    UT1  (CDC only)    |
+|      12          |    UT2  (CDC only)    |
+|      14          |    INPT (UNIVAC,VAX)  |
+|      15          |    INP1 (All          |
+|      16          |    INP2  machines     |
+|       :          |      :   except       |
+|      23          |    INP9  CDC)         |
+|      24          |    INPT (IBM only)    |
++------------------+-----------------------+
 
 FORMAT     = 0, unformatted output to OUTTP tape (default).
            = 1, formatted.
@@ -2555,7 +2563,7 @@ BASIC      = 0, displacement vectors in NASTRAN's global coordinate system
            = 1, displacement vectors in basic rectangular coordinate system.
 
 Example
-
+-------
 DATABASE   EQEXIN,BGPDT,GEOM2,,,, /C,N,15/C,N,+1    $
 DATABASE   EQEXIN,BGPDT,,CSTM,OUGV,,/C,N,16         $
 
@@ -2569,7 +2577,7 @@ Subroutine
 DBASE   Subroutine for DATABASE Module.
 
 Method
-
+------
 There are three independent sets of data to be copied out to user tape OUTTP:
 grids data, connecting elements data, and displacement vectors (velocities,
 accelerations, eigenvectors, stresses, and forces). If BGPDT file is purged
@@ -2590,18 +2598,18 @@ in the OUTTP tape.
 
 FOR UNFORMATTED TAPE - GRID POINT DATA IN ONE LONG RECORD:
 
-ÚÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-³ RECORD ³ WORD  ³             CONTENT (UNFORMATTED)                       ³
-ÃÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
-³    1   ³  1-2  ³ "GRID PTS--------", a 16-letter identification. (BCD*)  ³
-³    2   ³   1   ³ No. of words (this first word not included) in this     ³
-³        ³       ³ record. (Integer)                                       ³
-³        ³   2   ³ External grid ID. (Sorted, integer)                     ³
-³        ³   3   ³ 0 (Not used; reserved for future use)                   ³
-³        ³ 4,5,6 ³ x,y,z coordinates in basic rect. coord. system.         ³
-³        ³       ³ (single precision real)                                 ³
-³        ³   :   ³ Repeat words 2 thru 6 as many times as there are grids  ³
-ÀÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
++--------+-------+---------------------------------------------------------+
+| RECORD | WORD  |             CONTENT (UNFORMATTED)                       |
++--------+-------+---------------------------------------------------------+
+|    1   |  1-2  | "GRID PTS--------", a 16-letter identification. (BCD*)  |
+|    2   |   1   | No. of words (this first word not included) in this     |
+|        |       | record. (Integer)                                       |
+|        |   2   | External grid ID. (Sorted, integer)                     |
+|        |   3   | 0 (Not used; reserved for future use)                   |
+|        | 4,5,6 | x,y,z coordinates in basic rect. coord. system.         |
+|        |       | (single precision real)                                 |
+|        |   :   | Repeat words 2 thru 6 as many times as there are grids  |
++--------+-------+---------------------------------------------------------+
 * Throughout, "BCD" = alphanumeric characters
 
 (Total number of grid points = (WORD 1 of record 2)/5)
@@ -2612,28 +2620,28 @@ To read the second record into array XYZ, one can use
 
 FOR FORMATTED TAPE - GRID POINT DATA IN MULTIPLE SHORT RECORDS:
 
-ÚÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄ¿
-³ RECORD ³  WORD   ³            CONTENT                    ³ FORMAT  ³
-ÃÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄ´
-³        ³         ³                                       ³         ³
-³    1   ³   1,2   ³  "GRID PTS--------" identification    ³   4A4   ³
-³    2   ³    1    ³  Total number of grid points          ³    I8   ³
-³    3   ³    1    ³  External grid ID (Sorted)            ³    I8   ³
-³        ³    2    ³  0 (Not used; reserved for future use)³    I8   ³
-³        ³  3,4,5  ³  x,y,z coordinates in basic rect.     ³  3E12.6 ³
-³        ³         ³  coordinate system.                   ³         ³
-³    :   ³   1-5   ³  Repeat record 3 as many times as     ³         ³
-³        ³         ³  there are grids                      ³         ³
-ÀÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÙ
++--------+---------+---------------------------------------+---------+
+| RECORD |  WORD   |            CONTENT                    | FORMAT  |
++--------+---------+---------------------------------------+---------+
+|        |         |                                       |         |
+|    1   |   1,2   |  "GRID PTS--------" identification    |   4A4   |
+|    2   |    1    |  Total number of grid points          |    I8   |
+|    3   |    1    |  External grid ID (Sorted)            |    I8   |
+|        |    2    |  0 (Not used; reserved for future use)|    I8   |
+|        |  3,4,5  |  x,y,z coordinates in basic rect.     |  3E12.6 |
+|        |         |  coordinate system.                   |         |
+|    :   |   1-5   |  Repeat record 3 as many times as     |         |
+|        |         |  there are grids                      |         |
++--------+---------+---------------------------------------+---------+
 
 If GEOM2 file is present, the elements data will be generated next. An element
 identification record is written out first.
 
-ÚÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄ¿
-³ RECORD ³ WORD  ³   CONTENT (FORMATTED or UNFORMATTED)     ³ FORMAT  ³
-ÃÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄ´
-³    1   ³  1-2  ³ "ELEMENTS--------", identification. BCD  ³   4A4   ³
-ÀÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÙ
++--------+-------+------------------------------------------+---------+
+| RECORD | WORD  |   CONTENT (FORMATTED or UNFORMATTED)     | FORMAT  |
++--------+-------+------------------------------------------+---------+
+|    1   |  1-2  | "ELEMENTS--------", identification. BCD  |   4A4   |
++--------+-------+------------------------------------------+---------+
 
 The element data in GEOM2 file will be written out to the OUTTP file almost in
 the same way, and same order as the original data. A header record is written
@@ -2645,62 +2653,62 @@ order; and within each type, the elements are sorted by their element IDs.
 
 ELEMENT HEADER RECORD FOR THE UNFORMATTED OUTPUT TAPE:
 
-ÚÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-³ RECORD ³ WORD ³             CONTENT (UNFORMATTED)                   ³
-ÃÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
-³    2   ³ 1-2  ³  Element name. (BCD)                                ³
-³        ³  3   ³  Element type number, according to GPTABD order.    ³
-³        ³      ³  (Integer)                                          ³
-³        ³  4   ³  Element symbol. (2 letters)                        ³
-³        ³  5   ³  Number of grid points per element. (Integer)       ³
-³        ³  6   ³  Total no. of elements of this current element type.³
-³        ³      ³  (Integer)                                          ³
-³        ³  7   ³  No. of words in next record = WORD5 + 2 (Integer)  ³
-³        ³  8   ³  No. of 132-column lines needed in next record if   ³
-³        ³      ³  OUTTP is written with a format. (Integer)          ³
-ÀÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
++--------+------+-----------------------------------------------------+
+| RECORD | WORD |             CONTENT (UNFORMATTED)                   |
++--------+------+-----------------------------------------------------+
+|    2   | 1-2  |  Element name. (BCD)                                |
+|        |  3   |  Element type number, according to GPTABD order.    |
+|        |      |  (Integer)                                          |
+|        |  4   |  Element symbol. (2 letters)                        |
+|        |  5   |  Number of grid points per element. (Integer)       |
+|        |  6   |  Total no. of elements of this current element type.|
+|        |      |  (Integer)                                          |
+|        |  7   |  No. of words in next record = WORD5 + 2 (Integer)  |
+|        |  8   |  No. of 132-column lines needed in next record if   |
+|        |      |  OUTTP is written with a format. (Integer)          |
++--------+------+-----------------------------------------------------+
 
 ELEMENT RECORDS; repeat as many times as there are elements not of the same
 type (that is, a record for each element type):
 
-ÚÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-³ RECORD ³ WORD  ³             CONTENT (UNFORMATTED)                     ³
-ÃÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
-³    3   ³  1    ³ Element ID. (Integer)                                 ³
-³        ³  2    ³ Property ID. (Positive Integer); or                   ³
-³        ³       ³ 0 (Element has no property ID nor material ID); or    ³
-³        ³       ³ Material ID. (Element has no property ID, but it has  ³
-³        ³       ³ a material ID. (Negative Integer)                     ³
-³        ³  3    ³ 0 (Not used; reserved for future use, integer)        ³
-³        ³4,5,...³ Element connecting (external) grid points. (Integers) ³
-³        ³  :    ³ Repeat words 1,2,3,4... as many times as there are    ³
-³        ³       ³ elements of this same type.                           ³
-³        ³       ³ (See WORD 6 in header record)                         ³
-ÀÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
++--------+-------+-------------------------------------------------------+
+| RECORD | WORD  |             CONTENT (UNFORMATTED)                     |
++--------+-------+-------------------------------------------------------+
+|    3   |  1    | Element ID. (Integer)                                 |
+|        |  2    | Property ID. (Positive Integer); or                   |
+|        |       | 0 (Element has no property ID nor material ID); or    |
+|        |       | Material ID. (Element has no property ID, but it has  |
+|        |       | a material ID. (Negative Integer)                     |
+|        |  3    | 0 (Not used; reserved for future use, integer)        |
+|        |4,5,...| Element connecting (external) grid points. (Integers) |
+|        |  :    | Repeat words 1,2,3,4... as many times as there are    |
+|        |       | elements of this same type.                           |
+|        |       | (See WORD 6 in header record)                         |
++--------+-------+-------------------------------------------------------+
 
 FOR FORMATTED TAPE
 
 ELEMENT HEADER RECORD, IN 8-COLUMN FORMAT:
 
-ÚÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄ¿
-³ RECORD ³ COLUMNS ³            CONTENT                      ³ FORMAT    ³
-ÃÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄ´
-³    2   ³  1- 8   ³ "ELEMENT "                              ³ 8 letters ³
-³        ³  9-16   ³ Element name                            ³     2A4   ³
-³        ³ 17-24   ³ "  TYPE ="                              ³ 8 letters ³
-³        ³ 25-28   ³ Elem. type no. according to GPTABD      ³      I4   ³
-³        ³ 29,30   ³ Blank                                   ³      2X   ³
-³        ³ 31-32   ³ Element symbol                          ³      A2   ³
-³        ³ 33-40   ³ " GRIDS ="                              ³ 8 letters ³
-³        ³ 41-48   ³ No. of grids per element                ³      I8   ³
-³        ³ 49-56   ³ " TOTAL ="                              ³ 8 letters ³
-³        ³ 57-64   ³ Total no. of elements of this elem. type³      I8   ³
-³        ³ 65-72   ³ " WDS/EL="                              ³ 8 letters ³
-³        ³ 73-80   ³ No. of words per element in next records³      I8   ³
-³        ³ 81-88   ³ " LINES ="                              ³ 8 letters ³
-³        ³ 89-96   ³ No. of lines (records) needed on next   ³      I8   ³
-³        ³         ³ record for this element type            ³           ³
-ÀÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÙ
++--------+---------+-----------------------------------------+-----------+
+| RECORD | COLUMNS |            CONTENT                      | FORMAT    |
++--------+---------+-----------------------------------------+-----------+
+|    2   |  1- 8   | "ELEMENT "                              | 8 letters |
+|        |  9-16   | Element name                            |     2A4   |
+|        | 17-24   | "  TYPE ="                              | 8 letters |
+|        | 25-28   | Elem. type no. according to GPTABD      |      I4   |
+|        | 29,30   | Blank                                   |      2X   |
+|        | 31-32   | Element symbol                          |      A2   |
+|        | 33-40   | " GRIDS ="                              | 8 letters |
+|        | 41-48   | No. of grids per element                |      I8   |
+|        | 49-56   | " TOTAL ="                              | 8 letters |
+|        | 57-64   | Total no. of elements of this elem. type|      I8   |
+|        | 65-72   | " WDS/EL="                              | 8 letters |
+|        | 73-80   | No. of words per element in next records|      I8   |
+|        | 81-88   | " LINES ="                              | 8 letters |
+|        | 89-96   | No. of lines (records) needed on next   |      I8   |
+|        |         | record for this element type            |           |
++--------+---------+-----------------------------------------+-----------+
 
 A printout of this header record may look like this: (the ---+++ line is for
 video aid; it is not part of the record)
@@ -2712,24 +2720,24 @@ ELEMENT RECORDS (FORMATTED)
 
 There should be (TOTAL X LINES) records in each element type:
 
-ÚÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄ¿
-³ RECORD ³ WORD ³                 CONTENT                          ³ FORMAT ³
-ÃÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄ´
-³    3   ³  1   ³   Element ID.                                    ³  I8    ³
-³        ³  2   ³   Property ID. (Positive integer); or            ³  I8    ³
-³        ³      ³   0 (Element has no property nor material ID); or³        ³
-³        ³      ³   Material ID. (Element has no property ID,      ³        ³
-³        ³      ³   but it has a material ID)                      ³        ³
-³        ³  3   ³   0 (Not used; reserved for future use)          ³  I8    ³
-³        ³ 4-16 ³   First 13 external connecting grid points       ³ 13I8   ³
-³    4   ³      ³   (IF NEEDED, and LINES in header record = 2)    ³        ³
-³        ³ 1-15 ³   Next 15 Grid points                            ³8X,15I8 ³
-³    5   ³      ³   (IF NEEDED, and LINES in header record = 3)    ³        ³
-³        ³ 1-15 ³   More grid points                               ³8X,15I8 ³
-³    :   ³  :   ³   Repeat element record 3 (and possible 4 and 5) ³        ³
-³        ³      ³   as many times as there are elements of the     ³        ³
-³        ³      ³   same type.                                     ³        ³
-ÀÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÙ
++--------+------+--------------------------------------------------+--------+
+| RECORD | WORD |                 CONTENT                          | FORMAT |
++--------+------+--------------------------------------------------+--------+
+|    3   |  1   |   Element ID.                                    |  I8    |
+|        |  2   |   Property ID. (Positive integer); or            |  I8    |
+|        |      |   0 (Element has no property nor material ID); or|        |
+|        |      |   Material ID. (Element has no property ID,      |        |
+|        |      |   but it has a material ID)                      |        |
+|        |  3   |   0 (Not used; reserved for future use)          |  I8    |
+|        | 4-16 |   First 13 external connecting grid points       | 13I8   |
+|    4   |      |   (IF NEEDED, and LINES in header record = 2)    |        |
+|        | 1-15 |   Next 15 Grid points                            |8X,15I8 |
+|    5   |      |   (IF NEEDED, and LINES in header record = 3)    |        |
+|        | 1-15 |   More grid points                               |8X,15I8 |
+|    :   |  :   |   Repeat element record 3 (and possible 4 and 5) |        |
+|        |      |   as many times as there are elements of the     |        |
+|        |      |   same type.                                     |        |
++--------+------+--------------------------------------------------+--------+
 
 Repeat the header record and the element records as many times as there are
 different types of elements.
@@ -2756,18 +2764,18 @@ other data types. The output data are sorted by their external grid ID
 numbers. The displacement records in OUTTP also begin with an identification
 record:
 
-ÚÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄ¿
-³ RECORD ³ WORD ³    CONTENT (FORMATTED OR UNFORMATTED)     ³ FORMAT ³
-ÃÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄ´
-³    1   ³  1-2 ³  "DISPLCNT--------" identification*. BCD  ³   4A4  ³
-³        ³      ³  (* or "VELOCITY--------",                ³        ³
-³        ³      ³        "ACCELERN--------",                ³        ³
-³        ³      ³        "LOADINGS--------",                ³        ³
-³        ³      ³        "G FORCES--------",                ³        ³
-³        ³      ³        "EIGENVCR--------",                ³        ³
-³        ³      ³        "E STRESS--------",                ³        ³
-³        ³      ³        "E FORCES--------")                ³        ³
-ÀÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÙ
++--------+------+-------------------------------------------+--------+
+| RECORD | WORD |    CONTENT (FORMATTED OR UNFORMATTED)     | FORMAT |
++--------+------+-------------------------------------------+--------+
+|    1   |  1-2 |  "DISPLCNT--------" identification*. BCD  |   4A4  |
+|        |      |  (* or "VELOCITY--------",                |        |
+|        |      |        "ACCELERN--------",                |        |
+|        |      |        "LOADINGS--------",                |        |
+|        |      |        "G FORCES--------",                |        |
+|        |      |        "EIGENVCR--------",                |        |
+|        |      |        "E STRESS--------",                |        |
+|        |      |        "E FORCES--------")                |        |
++--------+------+-------------------------------------------+--------+
 
 The original displacement data in NASTRAN are always in the global coordinate
 system. If the parameter BASIC is zero (default), the displacement vectors
@@ -2788,20 +2796,20 @@ the grid point displacement vectors.
 
 DISPLACEMENT HEADER RECORD FOR UNFORMATTED TAPE
 
-ÚÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-³ RECORD ³  WORD  ³          CONTENT (UNFORMATTED)            ³
-ÃÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
-³    2   ³  1     ³ Subcase or mode number. (Integer)         ³
-³        ³  2     ³ Zero or frequency. (Real)                 ³
-³        ³  3     ³ Number of words per entry in next record. ³
-³        ³ 4-5    ³ Original data file name, 2 BCD words      ³
-³        ³ 6-7    ³ " GLOBAL " if BASIC=0, 2 BCD words        ³
-³        ³        ³ "  BASIC " if BASIC=1                     ³
-³        ³ 8-13   ³ CODE (See note below; 6 integers)         ³
-³        ³ 14-45  ³ Title,    32 BCD words                    ³
-³        ³ 46-77  ³ Subtitle, 32 BCD words                    ³
-³        ³ 78-109 ³ Label,    32 BCD words                    ³
-ÀÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
++--------+--------+-------------------------------------------+
+| RECORD |  WORD  |          CONTENT (UNFORMATTED)            |
++--------+--------+-------------------------------------------+
+|    2   |  1     | Subcase or mode number. (Integer)         |
+|        |  2     | Zero or frequency. (Real)                 |
+|        |  3     | Number of words per entry in next record. |
+|        | 4-5    | Original data file name, 2 BCD words      |
+|        | 6-7    | " GLOBAL " if BASIC=0, 2 BCD words        |
+|        |        | "  BASIC " if BASIC=1                     |
+|        | 8-13   | CODE (See note below; 6 integers)         |
+|        | 14-45  | Title,    32 BCD words                    |
+|        | 46-77  | Subtitle, 32 BCD words                    |
+|        | 78-109 | Label,    32 BCD words                    |
++--------+--------+-------------------------------------------+
 
 NOTE: Each code word holds 8 digits. Therefore there are 48 digits, from
 CODE(1) through CODE(6), and from left to right, they describe the data type
@@ -2816,70 +2824,70 @@ The first digit points to the first data word; 2nd, 3rd, 4th, etc. point to
 
 DISPLACEMENT RECORDS IN UNFORMATTED TAPE - IN ONE LONG RECORD:
 
-ÚÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-³ RECORD ³ WORD  ³          CONTENT (UNFORMATTED)                   ³
-ÃÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
-³    3   ³  1    ³ No. of words (excluding this first word) in this ³
-³        ³       ³ record. (Integer)                                ³
-³        ³  2    ³ External grid point number. (Integer)            ³
-³        ³  3    ³ Point type (1=grid pt.  2=scalar pt.             ³
-³        ³       ³             3=extra pt. 4=modal pt., integer)    ³
-³        ³ 4-9   ³ Displacements. (Real parts,                      ³
-³        ³       ³ t1,t2,t3,r1,r2,r3, single precision real)        ³
-³        ³ 10-15 ³ (COMPLEX data only)                              ³
-³        ³       ³ Displacements. (Imaginary parts,                 ³
-³        ³       ³ t1,t2,t3,r1,r2,r3, single precision real)        ³
-³        ³  :    ³ Repeat words 2 thru 9 (or 15) as many times as   ³
-³        ³       ³ there are grid points in OUGV file               ³
-³    :   ³  :    ³ Repeat record 3 as many times as there are       ³
-³        ³       ³ subcases or frequencies                          ³
-ÀÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
++--------+-------+--------------------------------------------------+
+| RECORD | WORD  |          CONTENT (UNFORMATTED)                   |
++--------+-------+--------------------------------------------------+
+|    3   |  1    | No. of words (excluding this first word) in this |
+|        |       | record. (Integer)                                |
+|        |  2    | External grid point number. (Integer)            |
+|        |  3    | Point type (1=grid pt.  2=scalar pt.             |
+|        |       |             3=extra pt. 4=modal pt., integer)    |
+|        | 4-9   | Displacements. (Real parts,                      |
+|        |       | t1,t2,t3,r1,r2,r3, single precision real)        |
+|        | 10-15 | (COMPLEX data only)                              |
+|        |       | Displacements. (Imaginary parts,                 |
+|        |       | t1,t2,t3,r1,r2,r3, single precision real)        |
+|        |  :    | Repeat words 2 thru 9 (or 15) as many times as   |
+|        |       | there are grid points in OUGV file               |
+|    :   |  :    | Repeat record 3 as many times as there are       |
+|        |       | subcases or frequencies                          |
++--------+-------+--------------------------------------------------+
 
 DISPLACEMENT HEADER RECORD FOR FORMATTED TAPE
 
-ÚÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄ¿
-³ RECORD ³ WORD  ³        CONTENT (FORMATTED)               ³  FORMAT   ³
-ÃÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄ´
-³    2   ³  1-2  ³ " CASE = " or " MODE = "                 ³ 8 letters ³
-³        ³    3  ³ Subcase number                           ³     I8    ³
-³        ³    4  ³ Zero or frequency                        ³ 1PE12.5   ³
-³        ³  5-6  ³ " WORDS ="                               ³ 8 letters ³
-³        ³    7  ³ NWDS, number of words per entry in next  ³     I8    ³
-³        ³       ³ record (=8 for REAL data, or =14 COMPLEX,³           ³
-³        ³       ³ for all displacement records)            ³           ³
-³        ³  8-9  ³ " INPUT ="                               ³ 8 letters ³
-³        ³ 10-11 ³ Original GINO file name                  ³    2A4    ³
-³        ³ 12-13 ³ " COORD ="                               ³ 8 letters ³
-³        ³ 14-15 ³ " BASIC  " or "GLOBAL  "                 ³    2A4    ³
-³        ³ 16-17 ³ "  CODE ="                               ³ 8 letters ³
-³        ³ 18-22 ³ Format code                              ³    5I8    ³
-³        ³       ³ 8 digits per word,  1 for INTEGER        ³           ³
-³        ³       ³                     2 for REAL           ³           ³
-³        ³       ³ Ex.  13222200       3 for BCD            ³           ³
-³        ³       ³                     0 not applicable     ³           ³
-³        ³   23  ³ NA4, number of words per entry in next   ³     I8    ³
-³        ³       ³ record, in A4-word count                 ³           ³
-³    3   ³ 1-32  ³ Title,    32 BCD words                   ³   32A4    ³
-³    4   ³ 33-64 ³ Subtitle, 32 BCD words                   ³   32A4    ³
-³    5   ³ 65-96 ³ Label,    32 BCD words                   ³   32A4    ³
-ÀÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÙ
++--------+-------+------------------------------------------+-----------+
+| RECORD | WORD  |        CONTENT (FORMATTED)               |  FORMAT   |
++--------+-------+------------------------------------------+-----------+
+|    2   |  1-2  | " CASE = " or " MODE = "                 | 8 letters |
+|        |    3  | Subcase number                           |     I8    |
+|        |    4  | Zero or frequency                        | 1PE12.5   |
+|        |  5-6  | " WORDS ="                               | 8 letters |
+|        |    7  | NWDS, number of words per entry in next  |     I8    |
+|        |       | record (=8 for REAL data, or =14 COMPLEX,|           |
+|        |       | for all displacement records)            |           |
+|        |  8-9  | " INPUT ="                               | 8 letters |
+|        | 10-11 | Original GINO file name                  |    2A4    |
+|        | 12-13 | " COORD ="                               | 8 letters |
+|        | 14-15 | " BASIC  " or "GLOBAL  "                 |    2A4    |
+|        | 16-17 | "  CODE ="                               | 8 letters |
+|        | 18-22 | Format code                              |    5I8    |
+|        |       | 8 digits per word,  1 for INTEGER        |           |
+|        |       |                     2 for REAL           |           |
+|        |       | Ex.  13222200       3 for BCD            |           |
+|        |       |                     0 not applicable     |           |
+|        |   23  | NA4, number of words per entry in next   |     I8    |
+|        |       | record, in A4-word count                 |           |
+|    3   | 1-32  | Title,    32 BCD words                   |   32A4    |
+|    4   | 33-64 | Subtitle, 32 BCD words                   |   32A4    |
+|    5   | 65-96 | Label,    32 BCD words                   |   32A4    |
++--------+-------+------------------------------------------+-----------+
 
 DISPLACEMENT RECORDS IN FORMATTED TAPE - IN MULTIPLE SHORT RECORDS:
 
-ÚÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄ¿
-³ RECORD ³ WORD ³                 CONTENT                       ³  FORMAT   ³
-ÃÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄ´
-³    6   ³  1   ³  External grid point number. (Integer)        ³   I8      ³
-³        ³  2   ³  Point type (1=grid pt.  2=scalar pt.         ³   I8      ³
-³        ³      ³  3=extra pt. 4=modal pt., integer)            ³           ³
-³        ³ 3-8  ³  Displacements. (Real parts,                  ³ 6E12.6    ³
-³        ³      ³  t1,t2,t3,r1,r2,r3, single precision real)    ³           ³
-³    7   ³      ³  (COMPLEX DATA only)                          ³           ³
-³        ³ 1-6  ³  Displacements (Imaginary parts,              ³16X,6E12.6 ³
-³        ³      ³  t1,t2,t3,r1,r2,r3, single precision real)    ³           ³
-³    :   ³  :   ³  Repeat record 6 (records 6 and 7 if complex  ³           ³
-³        ³      ³  data) as many times as there are grid points ³           ³
-ÀÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÙ
++--------+------+-----------------------------------------------+-----------+
+| RECORD | WORD |                 CONTENT                       |  FORMAT   |
++--------+------+-----------------------------------------------+-----------+
+|    6   |  1   |  External grid point number. (Integer)        |   I8      |
+|        |  2   |  Point type (1=grid pt.  2=scalar pt.         |   I8      |
+|        |      |  3=extra pt. 4=modal pt., integer)            |           |
+|        | 3-8  |  Displacements. (Real parts,                  | 6E12.6    |
+|        |      |  t1,t2,t3,r1,r2,r3, single precision real)    |           |
+|    7   |      |  (COMPLEX DATA only)                          |           |
+|        | 1-6  |  Displacements (Imaginary parts,              |16X,6E12.6 |
+|        |      |  t1,t2,t3,r1,r2,r3, single precision real)    |           |
+|    :   |  :   |  Repeat record 6 (records 6 and 7 if complex  |           |
+|        |      |  data) as many times as there are grid points |           |
++--------+------+-----------------------------------------------+-----------+
 
 At the end of each subcase, if the output tape OUTTP is formatted, a ZERO
 record (two records if data is complex) is written out to OUTTP tape. This
@@ -2894,30 +2902,30 @@ out. It has the same form as the HEADER record:
 
 DISPLACEMENT ENDING RECORD
 
-ÚÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-³ RECORD ³ WORD ³   CONTENT (UNFORMATTED)                               ³
-ÃÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
-³  LAST  ³   1  ³   Zero. (Integer)                                     ³
-³        ³   2  ³   Zero. (Real)                                        ³
-³        ³   3  ³   Zero. (Integer)                                     ³
-³        ³ 4-5  ³   " -END-".  (BCD)                                    ³
-³        ³6-101 ³   96 Blank words. (BCD)                               ³
-ÀÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
++--------+------+-------------------------------------------------------+
+| RECORD | WORD |   CONTENT (UNFORMATTED)                               |
++--------+------+-------------------------------------------------------+
+|  LAST  |   1  |   Zero. (Integer)                                     |
+|        |   2  |   Zero. (Real)                                        |
+|        |   3  |   Zero. (Integer)                                     |
+|        | 4-5  |   " -END-".  (BCD)                                    |
+|        |6-101 |   96 Blank words. (BCD)                               |
++--------+------+-------------------------------------------------------+
 
-ÚÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-³ RECORD ³ WORD ³      CONTENT (FORMATTED)             ³     FORMAT     ³
-ÃÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
-³  LAST  ³ 1-2  ³  " CASE = " or " MODE = "            ³     8 letters  ³
-³        ³   3  ³  Minus 0 (Integer)                   ³       I8       ³
-³        ³   4  ³  Zero                                ³    1PE12.5     ³
-³        ³ 5-6  ³  " WORDS ="                          ³     8 letters  ³
-³        ³   7  ³  Minus 0 (Integer)                   ³       I8       ³
-³        ³ 8-11 ³  " INPUT = -END-  "                  ³  16 letters    ³
-³        ³12-17 ³  Blanks                              ³       4A4      ³
-³ LAST+1 ³ 1-32 ³  Blanks                              ³      32A4      ³
-³ LAST+2 ³ 1-32 ³  BLANKS                              ³      32A4      ³
-³ LAST+3 ³ 1-32 ³  Blanks                              ³      32A4      ³
-ÀÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
++--------+------+--------------------------------------+----------------+
+| RECORD | WORD |      CONTENT (FORMATTED)             |     FORMAT     |
++--------+------+--------------------------------------+----------------+
+|  LAST  | 1-2  |  " CASE = " or " MODE = "            |     8 letters  |
+|        |   3  |  Minus 0 (Integer)                   |       I8       |
+|        |   4  |  Zero                                |    1PE12.5     |
+|        | 5-6  |  " WORDS ="                          |     8 letters  |
+|        |   7  |  Minus 0 (Integer)                   |       I8       |
+|        | 8-11 |  " INPUT = -END-  "                  |  16 letters    |
+|        |12-17 |  Blanks                              |       4A4      |
+| LAST+1 | 1-32 |  Blanks                              |      32A4      |
+| LAST+2 | 1-32 |  BLANKS                              |      32A4      |
+| LAST+3 | 1-32 |  Blanks                              |      32A4      |
++--------+------+--------------------------------------+----------------+
 
 If OUGV is an element stress or an element force file, the stress or force
 data have variable length depending on the type of element. The stress or
@@ -2926,35 +2934,35 @@ the displacement records.
 
 The element stress or force record has the following forms:
 
-ÚÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-³ RECORD ³ WORD   ³          CONTENT (UNFORMATTED)                       ³
-ÃÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
-³    3   ³   1    ³  Number of words, excluding this first word,         ³
-³        ³        ³  in this record. (Integer)                           ³
-³        ³2-NWDS  ³  Element ID, stress or force data                    ³
-³        ³        ³  (Variable data types are described in "CODE")       ³
-³        ³   :    ³  Repeat (2-NWDS) words as many times as there        ³
-³        ³        ³  are elements.                                       ³
-³    :   ³   :    ³  Repeat record 3 as many times as there are subcases.³
-ÀÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
++--------+--------+------------------------------------------------------+
+| RECORD | WORD   |          CONTENT (UNFORMATTED)                       |
++--------+--------+------------------------------------------------------+
+|    3   |   1    |  Number of words, excluding this first word,         |
+|        |        |  in this record. (Integer)                           |
+|        |2-NWDS  |  Element ID, stress or force data                    |
+|        |        |  (Variable data types are described in "CODE")       |
+|        |   :    |  Repeat (2-NWDS) words as many times as there        |
+|        |        |  are elements.                                       |
+|    :   |   :    |  Repeat record 3 as many times as there are subcases.|
++--------+--------+------------------------------------------------------+
 
 where NWDS is the number of computer words per entry, and CODE is the 6-word
 format code, as described in header record.
 
 or
 
-ÚÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄ¿
-³ RECORD ³ WORD   ³        CONTENT (FORMATTED)                     ³FORMAT³
-ÃÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄ´
-³    6   ³ 1-NA4  ³  Element ID, stress or force data              ³ 33A4 ³
-³        ³        ³  (The data types are described in              ³      ³
-³        ³        ³  "CODE"; all integers in 2A4, real             ³      ³
-³        ³        ³  numbers in 3A4, and BCD in A4)                ³      ³
-³    :   ³   :    ³  (Maximum record length is 132 columns (33A4); ³      ³
-³        ³        ³  continuation into next record(s) if necessary)³      ³
-³    :   ³   :    ³  Repeat above record(s) as many times as there ³      ³
-³        ³        ³  are elements                                  ³      ³
-ÀÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÙ
++--------+--------+------------------------------------------------+------+
+| RECORD | WORD   |        CONTENT (FORMATTED)                     |FORMAT|
++--------+--------+------------------------------------------------+------+
+|    6   | 1-NA4  |  Element ID, stress or force data              | 33A4 |
+|        |        |  (The data types are described in              |      |
+|        |        |  "CODE"; all integers in 2A4, real             |      |
+|        |        |  numbers in 3A4, and BCD in A4)                |      |
+|    :   |   :    |  (Maximum record length is 132 columns (33A4); |      |
+|        |        |  continuation into next record(s) if necessary)|      |
+|    :   |   :    |  Repeat above record(s) as many times as there |      |
+|        |        |  are elements                                  |      |
++--------+--------+------------------------------------------------+------+
 
 where NA4 is the number of words per entry in A4-word count, and CODE is
 5-word format code.
@@ -2987,7 +2995,7 @@ in the computer system. On the other hand, only short records are written to
 the formatted OUTTP file, and the working space requirement is less critical.
 
 Remarks
-
+-------
 1. Conversion of element stresses or forces to the basic coordinates is not
    allowed.
 
@@ -3004,29 +3012,29 @@ Remarks
 Diagnostic Messages
 
 Message numbers 3001, 3002, and 3008 may be issued by DATABASE.
-=PAGE=
+
 GINOFILE - GINO File Creation
-
+=============================
 Purpose
-
+-------
 To capture data from a scratch file of a preceding DMAP module and copy the
 data to a NASTRAN GINO file. Type of data can be table or matrix. (Not
 available for CDC.)
 
 DMAP Calling Sequence
-
+---------------------
 GINOFILE  /FILE/C,N,P1/C,N,P2/C,N,P3   $
 
 Input Data Blocks
-
+-----------------
 None.
 
 Output Data Blocks
-
+------------------
 FILE       Any GINO output file name.
 
 Parameters
-
+----------
 P1         Any 300-series scratch file number (301,302,303,...), Integer.
 
 P2         Additional records to be skipped on P1 file before data transfer
@@ -3044,7 +3052,7 @@ Subroutine
 GINOFL     Subroutine in GINOFILE module.
 
 Method
-
+------
 At the end of a NASTRAN executable module, all the input files, output files,
 and scratch files are closed. The input files are read only and they will
 remain untouched. The output files are saved, and their names are preserved.
@@ -3099,40 +3107,40 @@ processed correctly.
 Diagnostic Messages
 
 Message numbers 3001, 3002, and 3008 may be issued by GINOFILE.
-=PAGE=
+
 INPUT - Input Generator
-
+=======================
 Purpose
-
+-------
 Generates the majority of the bulk data cards for selected academic problems.
 Used in many of the official NASTRAN Demonstration Problems.
 
 DMAP Calling Sequence
-
+---------------------
 INPUT  I1,I2,I3,I4,I5 / 0l,02,03,04,05 / C,N,a / C,N,b / C,N,c $
 
 Input Data Blocks
-
+-----------------
 Appropriate preface outputs.
 
 Output Data Blocks
-
+------------------
 Appropriate for the problem being generated.
 
 Parameters
-
+----------
 The three parameters are used in conjunction with data read by INPUT from the
 input stream to define the problem being generated.
 
 Method
-
+------
 Since INPUT is intimately related to bulk data card input, a detailed
 description of this module has been placed in Section 2.6.
-=PAGE=
+
 INPUTT1 - Read User Files
-
+=========================
 Purpose
-
+-------
 Recovers up to five data blocks from a user file (on either tapes or mass
 storage devices) and checks your file label where the expected format is that
 created by Utility Module OUTPUT1. Also used to position your file (including
@@ -3143,15 +3151,15 @@ available only on the IBM and UNIVAC versions.) (The companion module is
 OUTPUT1.)
 
 DMAP Calling Sequence
-
+---------------------
 INPUTT1 / DB1,DB2,DB3,DB4,DB5 / V,N,P1 / V,N,P2 / V,N,P3 / V,N,P4/ $
 
 Input Data Blocks
-
+-----------------
 Input data blocks are not used in this module call statement.
 
 Output Data Blocks
-
+------------------
 DBi        Data blocks which will be recovered from one of the NASTRAN
            permanent files INPT, INP1, INP2 through INP9. Any or all of the
            output data blocks may be purged. Only nonpurged data blocks will
@@ -3161,74 +3169,74 @@ DBi        Data blocks which will be recovered from one of the NASTRAN
            A,B,,, is equivalent to ,A,,B, or ,,,A,B.
 
 Parameters
-
+----------
 Parameters P1 and P2 are integer inputs. P3 and P4 are BCD.
 
 1. The meaning of the first parameter (P1) value is given in the table below.
    (The default value is 0.)
 
-ÚÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-³  P1 Value ³                  Meaning                                 ³
-ÃÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
-³     +n    ³ Skip forward n data blocks before reading.               ³
-³           ³                                                          ³
-³      0    ³ Data blocks are read starting at current position.       ³
-³           ³ Current position for first use of a file is at label     ³
-³           ³ (P3). Hence P3 counts as one data block.                 ³
-³           ³                                                          ³
-³     -1    ³ Rewind before reading, position file past label (P3).    ³
-³           ³                                                          ³
-³     -2*   ³ Mount new reel and position new reel past label (P3)     ³
-³           ³ before reading.                                          ³
-³           ³                                                          ³
-³     -3    ³ Print data block names and then rewind before reading.   ³
-³           ³                                                          ³
-³     -4*   ³ Current tape reel will have an end-of-file mark          ³
-³           ³ written on it, will be rewound and dismounted, and       ³
-³           ³ then a new tape reel will be mounted with ring out       ³
-³           ³ and rewound before reading the data blocks. This         ³
-³           ³ option should be used when a call to INPUTT1 is          ³
-³           ³ preceded by a call to OUTPUT1 using the same User Tape.  ³
-³           ³                                                          ³
-³     -5    ³ Search user file for first version of data block         ³
-³           ³ (DBi) requested. If any (DBi) are not found, fatal       ³
-³           ³ termination occurs.                                      ³
-³           ³                                                          ³
-³     -6    ³ Search user file for final version of data block         ³
-³           ³ (DBi) requested. If any (DBi) are not found, fatal       ³
-³           ³ termination occurs.                                      ³
-³           ³                                                          ³
-³     -7    ³ Search user file for first version of data block         ³
-³           ³ (DBi) requested. If any (DBi) are not found, a           ³
-³           ³ warning message is written on the output file and the    ³
-³           ³ run continues.                                           ³
-³           ³                                                          ³
-³     -8    ³ Search user file for final version of data block         ³
-³           ³ (DBi) requested. If any (DBi) are not found, a           ³
-³           ³ warning message is written on the output file and the    ³
-³           ³ run continues.                                           ³
-ÀÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
-ÄÄÄÄÄÄÄÄÄÄ
++-----------+----------------------------------------------------------+
+|  P1 Value |                  Meaning                                 |
++-----------+----------------------------------------------------------+
+|     +n    | Skip forward n data blocks before reading.               |
+|           |                                                          |
+|      0    | Data blocks are read starting at current position.       |
+|           | Current position for first use of a file is at label     |
+|           | (P3). Hence P3 counts as one data block.                 |
+|           |                                                          |
+|     -1    | Rewind before reading, position file past label (P3).    |
+|           |                                                          |
+|     -2*   | Mount new reel and position new reel past label (P3)     |
+|           | before reading.                                          |
+|           |                                                          |
+|     -3    | Print data block names and then rewind before reading.   |
+|           |                                                          |
+|     -4*   | Current tape reel will have an end-of-file mark          |
+|           | written on it, will be rewound and dismounted, and       |
+|           | then a new tape reel will be mounted with ring out       |
+|           | and rewound before reading the data blocks. This         |
+|           | option should be used when a call to INPUTT1 is          |
+|           | preceded by a call to OUTPUT1 using the same User Tape.  |
+|           |                                                          |
+|     -5    | Search user file for first version of data block         |
+|           | (DBi) requested. If any (DBi) are not found, fatal       |
+|           | termination occurs.                                      |
+|           |                                                          |
+|     -6    | Search user file for final version of data block         |
+|           | (DBi) requested. If any (DBi) are not found, fatal       |
+|           | termination occurs.                                      |
+|           |                                                          |
+|     -7    | Search user file for first version of data block         |
+|           | (DBi) requested. If any (DBi) are not found, a           |
+|           | warning message is written on the output file and the    |
+|           | run continues.                                           |
+|           |                                                          |
+|     -8    | Search user file for final version of data block         |
+|           | (DBi) requested. If any (DBi) are not found, a           |
+|           | warning message is written on the output file and the    |
+|           | run continues.                                           |
++-----------+----------------------------------------------------------+
+----------
 * Valid only for files that reside on physical tape. User tape reel switching is
 available only on the IBM and UNIVAC versions.
 
 2. The second parameter (P2) for this module is your File Code shown in the
    table below. (The default value is 0.)
 
-ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-³  User File Code ³  GINO File Name  ³
-ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
-³         0       ³        INPT      ³
-³         1       ³        INP1      ³
-³         2       ³        INP2      ³
-³         3       ³        INP3      ³
-³         4       ³        INP4      ³
-³         5       ³        INP5      ³
-³         6       ³        INP6      ³
-³         7       ³        INP7      ³
-³         8       ³        INP8      ³
-³         9       ³        INP9      ³
-ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
++-----------------+------------------+
+|  User File Code |  GINO File Name  |
++-----------------+------------------+
+|         0       |        INPT      |
+|         1       |        INP1      |
+|         2       |        INP2      |
+|         3       |        INP3      |
+|         4       |        INP4      |
+|         5       |        INP5      |
+|         6       |        INP6      |
+|         7       |        INP7      |
+|         8       |        INP8      |
+|         9       |        INP9      |
++-----------------+------------------+
 
 3. The third parameter (P3) for this module is used as your File Label for
    NASTRAN identification. The label (P3) is an alphanumeric variable of eight
@@ -3237,27 +3245,27 @@ available only on the IBM and UNIVAC versions.
    the value on your file is dependent on the value of P1 as shown in the
    table below. (The default value for P3 is XXXXXXXX).
 
-ÚÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-³ P1 Value  ³  File Label Checked  ³
-ÃÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
-³    +n     ³          No          ³
-³     0     ³          No          ³
-³    -1     ³          Yes         ³
-³    -2     ³    Yes (On new reel) ³
-³    -3     ³   Yes (Warning Check)³
-³    -4     ³    Yes (On new reel) ³
-³    -5     ³          Yes         ³
-³    -6     ³          Yes         ³
-³    -7     ³          Yes         ³
-³    -8     ³          Yes         ³
-ÀÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
++-----------+----------------------+
+| P1 Value  |  File Label Checked  |
++-----------+----------------------+
+|    +n     |          No          |
+|     0     |          No          |
+|    -1     |          Yes         |
+|    -2     |    Yes (On new reel) |
+|    -3     |   Yes (Warning Check)|
+|    -4     |    Yes (On new reel) |
+|    -5     |          Yes         |
+|    -6     |          Yes         |
+|    -7     |          Yes         |
+|    -8     |          Yes         |
++-----------+----------------------+
 
 4. If the fourth parameter, P4, is set to "MSC", the FORTRAN input tape is
    assumed to be written in MSC/INPUTT1 compatible record formats. Default is
    blank.
 
 Examples
-
+--------
 (Most examples use the default value for P2 and P3 which means the use of
 permanent NASTRAN file INPT and NASTRAN user file label of XXXXXXXX.)
 
@@ -3310,7 +3318,7 @@ positioned at the beginning of the 17th data block if present.
 More Difficult Examples Using Both INPUTT1 and OUTPUT1
 
 Example 1
-
+---------
 a. Objectives:
 
    1. Obtain printout of the names of all data blocks on INPT.
@@ -3350,7 +3358,7 @@ c. Remarks:
       mistakenly writing on INPT prematurely.
 
 Example 2
-
+---------
 a. Objectives:
 
    1. Write data blocks A, B, and C on INPT.
@@ -3400,11 +3408,11 @@ c. Remarks:
       OUTPUT1 D,E,,, // C,N,0 / C,N,2 $
       OUTPUT1 , ,,,, // C,N,-3 / C,N,2 $
       END $
-=PAGE=
+
 INPUTT2 - Read User-Written FORTRAN Files
-
+=========================================
 Purpose
-
+-------
 Recovers up to five data blocks from a FORTRAN-written user file (either on
 tape or mass storage). This file may be written either by a user-written
 FORTRAN program or by the companion module OUTPUT2. The Programmer's Manual
@@ -3412,16 +3420,16 @@ describes the format of the file which must be written in order to be readable
 by INPUTT2.
 
 DMAP Calling Sequence
-
+---------------------
 INPUTT2  / DB1,DB2,DB3,DB4,DB5 / V,N,P1 / V,N,P2 / V,N,P3 /V,N,P4 /
            V,N,P5 / V,N,P6 $
 
 Input Data Blocks
-
+-----------------
 Input data blocks are not used in this module call statement.
 
 Output Data Blocks
-
+------------------
 DBi        Data blocks which will be recovered from one of the NASTRAN
            FORTRAN tape files UT1, UT2, through UT5. Any or all of the output
            data blocks may be purged. Only non-purged data blocks will be
@@ -3431,48 +3439,48 @@ DBi        Data blocks which will be recovered from one of the NASTRAN
            A,B,,, is equivalent to ,A,,B, or ,,,A,B.
 
 Parameters
-
+----------
 Parameters P1, P2, P4, and P5 are integer inputs. P3 and P6 are BCD.
 
 1. The meaning of the first parameter (P1) value is given in the table below.
    (The default value is 0.)
 
-ÚÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-³  P1 Value ³                  Meaning                                 ³
-ÃÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
-³     +n    ³ Skip forward n data blocks before reading.               ³
-³           ³                                                          ³
-³      0    ³ Data blocks are read starting at the current             ³
-³           ³ position. The current position for the first use of a    ³
-³           ³ file is at the label (P3). Hence, P3 counts as one       ³
-³           ³ data block.                                              ³
-³           ³                                                          ³
-³     -1    ³ Rewind before reading, position file past label (P3).    ³
-³           ³                                                          ³
-³     -3    ³ Print data block names and then rewind before            ³
-³           ³ reading.                                                 ³
-³           ³                                                          ³
-³     -5    ³ Search user file for first version of data block         ³
-³           ³ (DBi) requested. If any (DBi) are not found, fatal       ³
-³           ³ termination occurs.                                      ³
-³           ³                                                          ³
-³     -6    ³ Search user file for final version of data block         ³
-³           ³ (DBi) requested. If any (DBi) are not found, fatal       ³
-³           ³ termination occurs.                                      ³
-³           ³                                                          ³
-³     -7    ³ Search user file for first version of data block         ³
-³           ³ (DBi) requested. If any (DBi) are not found, a           ³
-³           ³ warning message is written on the output file and the    ³
-³           ³ run continues.                                           ³
-³           ³                                                          ³
-³     -8    ³ Search user file for final version of data block         ³
-³           ³ (DBi) requested. If any (DBi) are not found, a           ³
-³           ³ warning message is written on the output file and the    ³
-³           ³ run continues.                                           ³
-ÀÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
++-----------+----------------------------------------------------------+
+|  P1 Value |                  Meaning                                 |
++-----------+----------------------------------------------------------+
+|     +n    | Skip forward n data blocks before reading.               |
+|           |                                                          |
+|      0    | Data blocks are read starting at the current             |
+|           | position. The current position for the first use of a    |
+|           | file is at the label (P3). Hence, P3 counts as one       |
+|           | data block.                                              |
+|           |                                                          |
+|     -1    | Rewind before reading, position file past label (P3).    |
+|           |                                                          |
+|     -3    | Print data block names and then rewind before            |
+|           | reading.                                                 |
+|           |                                                          |
+|     -5    | Search user file for first version of data block         |
+|           | (DBi) requested. If any (DBi) are not found, fatal       |
+|           | termination occurs.                                      |
+|           |                                                          |
+|     -6    | Search user file for final version of data block         |
+|           | (DBi) requested. If any (DBi) are not found, fatal       |
+|           | termination occurs.                                      |
+|           |                                                          |
+|     -7    | Search user file for first version of data block         |
+|           | (DBi) requested. If any (DBi) are not found, a           |
+|           | warning message is written on the output file and the    |
+|           | run continues.                                           |
+|           |                                                          |
+|     -8    | Search user file for final version of data block         |
+|           | (DBi) requested. If any (DBi) are not found, a           |
+|           | warning message is written on the output file and the    |
+|           | run continues.                                           |
++-----------+----------------------------------------------------------+
 
-Important Note
-
+Important NOTE
+----
 On the UNIVAC and DEC VAX versions, the FORTRAN files used with the
 INPUTT2/OUTPUT2 modules are automatically rewound every time a link change
 occurs in the program. In general, a link change can be assumed to occur
@@ -3482,25 +3490,25 @@ statement follows an OUTPUT2 statement. For this reason, the following
 cautions should be noted on these versions when using the various values for
 the parameter P1 in an INPUTT2 or OUTPUT2 DMAP statement.
 
-ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-³                 Cautions for UNIVAC and DEC VAX versions              ³
-ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
-³  Parameter P1   ³                 Remarks                             ³
-ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
-³    0 or +n      ³  You must be certain that this INPUTT2              ³
-³                 ³  statement immediately follows another INPUTT2      ³
-³                 ³  statement; or that this OUTPUT2 statement          ³
-³                 ³  immediately follows another OUTPUT2 statement, to  ³
-³                 ³  avoid a link change that would cause the           ³
-³                 ³  rewinding of the FORTRAN file.                     ³
-³                 ³                                                     ³
-³  -1 to -8       ³  No cautions.                                       ³
-³                 ³                                                     ³
-³      -9         ³  You must be certain that this OUTPUT2              ³
-³                 ³  statement immediately follows another OUTPUT2      ³
-³                 ³  statement, to avoid a link change that would       ³
-³                 ³  cause the rewinding of the FORTRAN file.           ³
-ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
++-----------------------------------------------------------------------+
+|                 Cautions for UNIVAC and DEC VAX versions              |
++-----------------+-----------------------------------------------------+
+|  Parameter P1   |                 Remarks                             |
++-----------------+-----------------------------------------------------+
+|    0 or +n      |  You must be certain that this INPUTT2              |
+|                 |  statement immediately follows another INPUTT2      |
+|                 |  statement; or that this OUTPUT2 statement          |
+|                 |  immediately follows another OUTPUT2 statement, to  |
+|                 |  avoid a link change that would cause the           |
+|                 |  rewinding of the FORTRAN file.                     |
+|                 |                                                     |
+|  -1 to -8       |  No cautions.                                       |
+|                 |                                                     |
+|      -9         |  You must be certain that this OUTPUT2              |
+|                 |  statement immediately follows another OUTPUT2      |
+|                 |  statement, to avoid a link change that would       |
+|                 |  cause the rewinding of the FORTRAN file.           |
++-----------------+-----------------------------------------------------+
 
 2. The second parameter (P2) for this module is the FORTRAN unit number from
    which the data blocks will be read. The allowable values for this parameter
@@ -3509,24 +3517,24 @@ the parameter P1 in an INPUTT2 or OUTPUT2 DMAP statement.
 
    For CDC machine (default is 11):
 
-ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-³ User File Code ³  FORTRAN File Name ³
-ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
-³        11      ³         UT1        ³
-³        12      ³         UT2        ³
-ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
++----------------+--------------------+
+| User File Code |  FORTRAN File Name |
++----------------+--------------------+
+|        11      |         UT1        |
+|        12      |         UT2        |
++----------------+--------------------+
 
    For all others (default is INPT):
 
-ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-³ User File Code ³  FORTRAN File Name ³
-ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
-³        14      ³        INPT        ³
-³        15      ³        INP1        ³
-³        16      ³        INP2        ³
-³        :       ³         :          ³
-³        23      ³        INP9        ³
-ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
++----------------+--------------------+
+| User File Code |  FORTRAN File Name |
++----------------+--------------------+
+|        14      |        INPT        |
+|        15      |        INP1        |
+|        16      |        INP2        |
+|        :       |         :          |
+|        23      |        INP9        |
++----------------+--------------------+
 
    IBM/MVS only: INPT is user file code 24.
 
@@ -3538,18 +3546,18 @@ the parameter P1 in an INPUTT2 or OUTPUT2 DMAP statement.
    dependent on the value of P1 as shown in the table below. (The default
    value for P3 is XXXXXXXX.)
 
-ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-³     P1 Value   ³ File Label Checked ³
-ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
-³        +n      ³         No         ³
-³         0      ³         No         ³
-³        -1      ³         Yes        ³
-³        -3      ³ Yes (Warning Check)³
-³        -5      ³         Yes        ³
-³        -6      ³         Yes        ³
-³        -7      ³         Yes        ³
-³        -8      ³         Yes        ³
-ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
++----------------+--------------------+
+|     P1 Value   | File Label Checked |
++----------------+--------------------+
+|        +n      |         No         |
+|         0      |         No         |
+|        -1      |         Yes        |
+|        -3      | Yes (Warning Check)|
+|        -5      |         Yes        |
+|        -6      |         Yes        |
+|        -7      |         Yes        |
+|        -8      |         Yes        |
++----------------+--------------------+
 
 4. The fourth parameter (P4) is not used. P4 is used only in the OUTPUT2
    module to specify the maximum record size.
@@ -3567,34 +3575,34 @@ the parameter P1 in an INPUTT2 or OUTPUT2 DMAP statement.
    Default P6 is blank.
 
 Examples
-
+--------
 INPUTT2 is intended to have the same logical action as the GINO User File
 module INPUTT1 except for tape reel switching. It is therefore suggested that
 the examples shown under module INPUTT1 be used for INPUTT2 as well, excepting
 the ones involving tape reel switching.
-=PAGE=
+
 INPUTT3 - Auxiliary Input File Processor
 
 Purpose
-
+-------
 Reads matrix data from a specially formatted file into specified GINO matrix
 data blocks.
 
 DMAP Calling Sequence
-
+---------------------
 INPUTT3   /01,02,03,04,05/ V,N,UNIT/ V,N,ERRFLG/ V,N,TEST $
 
 Input Data Blocks
-
+-----------------
 No GINO data blocks. See parameter UNIT for FORTRAN input unit.
 
 Output Data Blocks
-
+------------------
 0i         GINO written matrix data blocks. Any or all of the output data
            blocks may be purged.
 
 Parameters
-
+----------
 UNIT       Input, FORTRAN input tape unit number; default is 11. Tape is
            rewound before read if UNIT is negative.
 
@@ -3609,14 +3617,14 @@ TEST       Input, file name check:
            = 0, no check of file names on tape and DMAP 0i names.
 
 Remarks
-
+-------
 1. Input tape unit must be written according to special format specification,
    including header, end-of-data mark, and matrix data.
-=PAGE=
+
 INPUTT4 - Read User Tape
-
+========================
 Purpose
-
+-------
 Reads user tape, as generated by OUTPUT4, MSC/NASTRAN/OUTPUTi, where i = 1, 2,
 3, or 4. Recovers up to five matrix data blocks from a user tape and checks
 your tape label where the expected format is that created by utility modules
@@ -3627,15 +3635,15 @@ message is written for each data block successfully recovered. User tape from
 OUTPUT1 and OUTPUT2 is binary. Tape from OUTPUT4 can be binary or ASCII.
 
 DMAP Calling Sequence
-
+---------------------
 INPUTT4   / DB1,DB2,DB3,DB4,DB5 / V,N,P1 / V,N,P2 / V,N,P3 / V,N,P4 $
 
 Input Data Blocks
-
+-----------------
 None.
 
 Output Data Blocks
-
+------------------
 DBi              Data blocks which will be recovered from one of the NASTRAN
                  permanent files INPT, INP1, INP2 through INP9 (UT1 or UT2
                  for CDC machine). Any or all of the output data blocks may
@@ -3648,7 +3656,7 @@ DBi              Data blocks which will be recovered from one of the NASTRAN
                  block on the input tape. (See Example 1.)
 
 Parameters
-
+----------
 Parameters P1, P2, and P4 are integer inputs. P3 is BCD.
 
 P1               Tape position control.
@@ -3693,7 +3701,7 @@ Parameters equivalence for COSMIC/INPUTT4 and MSC/INPUTT4/OUTPUT4:
                  P4                     BCDOPT
 
 Methods
-
+-------
 If the input tape was created by MSC/OUTPUT1, INPUTT4 calls COSMIC/INPUTT1
 module to read the tape, with additional information that the tape was not
 created by COSMIC/OUTPUT1 module. Similarly, INPUTT4 module calls
@@ -3704,7 +3712,7 @@ calls a special subroutine, INPUT4, to read the tape, formatted (ASCII), or
 binary (unformatted).
 
 Examples
-
+--------
 1.    Input tape INP1 (logical unit 15) contains 5 matrices, written by COSMIC
       or MSC/OUTPUT4, binary format. We want to copy file 3 to A, and file 5
       to B.
@@ -3723,7 +3731,7 @@ Examples
       INPUTT4   /,A,B,,/-3/3/*MYFILE*/-1  $
 
 Remarks
-
+-------
 1.    Companion OUTPUT4 module does not generate OUTPUT1 or OUTPUT2 type of
       records.
 
@@ -3759,11 +3767,11 @@ Remarks
 7.    See OUTPUT4 module for record construction.
 
 8.    The tape label P3 is not used in INPUTT4 and OUTPUT4.
-=PAGE=
+
 INPUTT5 - Read User-Written FORTRAN File
-
+========================================
 Purpose
-
+-------
 Recovers up to five data blocks from a FORTRAN-written user file, formatted or
 unformatted. (The FORTRAN file may reside either on physical tape or on a mass
 storage device.) This file may be written either by a user-written FORTRAN
@@ -3775,7 +3783,7 @@ created and read by different computers (CDC, UNIVAC, IBM, and VAX). The data
 blocks to be recovered can be matrices, tables, or both.
 
 DMAP Calling Sequence
-
+---------------------
 INPUTT5  /DB1,DB2,DB3,DB4,DB5/C,N,P1/C,N,P2/C,N,P3/C,N,P4 $
 
 INPUTT5 is intended to have the same logical action as the FORTRAN User File
@@ -3785,11 +3793,11 @@ and OUTPUT1 be used for OUTPUT5 as well, excepting the addition of the P4
 parameter.
 
 Input Data Blocks
-
+-----------------
 None.
 
 Output Data Blocks
-
+------------------
 DBi        Data blocks which will be recovered from one of the NASTRAN tape
            files INP1, INP2 through INP9 (UT1, UT2 for CDC computer). Any or
            all of the output data blocks may be purged. Only non-purged data
@@ -3801,26 +3809,26 @@ DBi        Data blocks which will be recovered from one of the NASTRAN tape
            or ,,,A,B.
 
 Parameters
-
+----------
 1. The meanings of the first three parameter values (P1, P2, P3) are the same
    as those described for INPUTT2 Module, except (1) values -5 through -8 for
    P1 are not available, and a new P1=-9 to rewind input tape; and (2) your
    file code and the FORTRAN file name are given below. (The default value for
    P2 is 16, or 12 for a CDC computer.)
 
-ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-³ FORTRAN LOGICAL  ³                        ³
-³    UNIT, P2      ³     USER FILE CODE     ³
-ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
-³       11         ³     UT1 (CDC only)     ³
-³       12         ³     UT2 (CDC only)     ³
-³       14         ³     INPT (UNIVAC,VAX)  ³
-³       15         ³     INP1 (All          ³
-³       16         ³     INP2  machines     ³
-³        :         ³       :   except       ³
-³       23         ³     INP9  CDC)         ³
-³       24         ³     INPT (IBM only)    ³
-ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
++------------------+------------------------+
+| FORTRAN LOGICAL  |                        |
+|    UNIT, P2      |     USER FILE CODE     |
++------------------+------------------------+
+|       11         |     UT1 (CDC only)     |
+|       12         |     UT2 (CDC only)     |
+|       14         |     INPT (UNIVAC,VAX)  |
+|       15         |     INP1 (All          |
+|       16         |     INP2  machines     |
+|        :         |       :   except       |
+|       23         |     INP9  CDC)         |
+|       24         |     INPT (IBM only)    |
++------------------+------------------------+
 
 2. The fourth parameter (P4) for this module is used to specify whether your
    tape was written with formats (P4=1 or 2), or binary tape (P4=0). Default
@@ -3842,7 +3850,7 @@ Parameters
    with respect to the content of the tape.
 
 Methods
-
+-------
 Since INPUTT5 is intended to be a companion module to OUTPUT5, it is therefore
 suggested that you should refer to the Methods and Remarks sections of the
 OUTPUT5 module for input tape structure.
@@ -3907,21 +3915,21 @@ Notice the formatted record was written in the units of 5-byte character
 words, and the first byte of each unit indicates what data type follows. The
 following table summarizes the method to decode the character data in ARRAY.
 
-ÚÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄ¿
-³            ³  DATA TYPE  ³             ³          ³
-³ FIRST BYTE ³  OF ARRAY   ³ UNITS USED  ³ FORMAT   ³
-ÃÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄ´
-³     "/"    ³  BCD word   ³      1      ³   A4     ³
-³     "I"    ³  Integer    ³      2      ³   I9     ³
-³     "R"    ³  Real, s.p. ³      3      ³  E14.7   ³
-³     "D"    ³  Real, d.p. ³      3      ³  D14.7   ³
-³     "X"    ³  Filler     ³      1      ³   4X     ³
-ÀÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÙ
++------------+-------------+-------------+----------+
+|            |  DATA TYPE  |             |          |
+| FIRST BYTE |  OF ARRAY   | UNITS USED  | FORMAT   |
++------------+-------------+-------------+----------+
+|     "/"    |  BCD word   |      1      |   A4     |
+|     "I"    |  Integer    |      2      |   I9     |
+|     "R"    |  Real, s.p. |      3      |  E14.7   |
+|     "D"    |  Real, d.p. |      3      |  D14.7   |
+|     "X"    |  Filler     |      1      |   4X     |
++------------+-------------+-------------+----------+
 
 Table data ends with a (1,"0") record.
 
 Examples
-
+--------
 $  COPY KJI AND KGG TO INP1 (UNIT 15), SEQUENTIAL FORMATTED TAPE
    OUTPUT5 KJI,KGG,,,//-1/15/*MYTAPE*/1  $
 
@@ -3929,7 +3937,7 @@ $  RECOVER THE 2 FILES FROM INP1 AND MAKE THEM NASTRAN GINO FILES
    INPUTT5 /OKJI,OKGG,,,/-1/15/*MYTAPE*/1  $
 
 Remarks
-
+-------
 1. Since open core is used to receive data from user input tape, INPUTT5 can
    handle all kinds and all sizes of data blocks.
 
@@ -3943,39 +3951,39 @@ Remarks
 
 4. Since INPUTT5 is a companion module of OUTPUT5, it is recommended that you
    read the Methods and Remarks sections of the OUTPUT5 module.
-=PAGE=
+
 LAMX - LAMA Data Block Editor or Generator
-
+==========================================
 Purpose
-
+-------
 Allows modification of mode frequencies, which is useful in dynamics rigid
 formats. This can be used, for example, to test the effects of structural
 uncertainties. It does not require a new eigensolution.
 
 DMAP Calling Sequence
-
+---------------------
 LAMX   EDIT,LAMA/LAMB/C,Y,NLAM $
 
 Input Data Blocks
-
+-----------------
 EDIT       The editing instruction in the form of a DMI matrix.
 LAMA       An output of the READ module which contains frequencies and
            generalized masses. If purged, the output is generated solely from
            EDIT information.
 
 Output Data Blocks
-
+------------------
 LAMB       An edited version of LAMA, which is suitable for input to GKAM and
            OFP modules, or a matrix from LAMA.
 
 Parameters
-
+----------
 NLAM       Integer. The maximum number of modes in the output data block. If
            NLAM = 0, the number of modes in LAMB is equal to that of LAMA. If
            NLAM < 0, LAMB will be a matrix.
 
 Method
-
+------
 The DMI matrix (named EDIT in the above calling sequence) has one column for
 each mode. Each column has, at most, three entries (rows). Let R1n, R2n, and
 R3n be the entries in the first through third rows of the nth column. The nth
@@ -4010,12 +4018,12 @@ and generalized stiffness until the generalized mass is zero. The number of
 rows should then match the number of eigenvectors requested.
 
 Remarks
-
+-------
 1. LAMA may be purged. If LAMA is purged, than a LAMB is created from the EDIT
    information.
 
 Examples
-
+--------
 1. Assume that ten modes were found by READ and it is desired to do the
    following:
 
@@ -4036,15 +4044,15 @@ Examples
    card would be:
 
     1        2       3       4       5       6       7       8       9     10
-ÚÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÂÄÄÄÄÄ¿
-³DMI     ³LLLL   ³0      ³2      ³1      ³1      ³       ³3      ³7      ³     ³
-ÃÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄ´
-³DMI     ³LLLL   ³4      ³1      ³0.     ³-.2    ³       ³       ³       ³     ³
-ÃÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄ´
-³DMI     ³LLLL   ³6      ³1      ³0.     ³0.     ³-1.    ³       ³       ³     ³
-ÃÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄ´
-³DMI     ³LLLL   ³7      ³1      ³173.20 ³-1.    ³       ³       ³       ³     ³
-ÀÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÁÄÄÄÄÄÙ
++--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|DMI     |LLLL   |0      |2      |1      |1      |       |3      |7      |     |
++--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|DMI     |LLLL   |4      |1      |0.     |-.2    |       |       |       |     |
++--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|DMI     |LLLL   |6      |1      |0.     |0.     |-1.    |       |       |     |
++--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|DMI     |LLLL   |7      |1      |173.20 |-1.    |       |       |       |     |
++--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 2. Create a LAMA with fi = 10., 20., 30., 40., and mi = 1., 1., 1., 2.
 
@@ -4053,27 +4061,27 @@ Examples
    OFP     LAMA,,,,,// $
 
     1        2       3       4       5       6       7       8       9     10
-ÚÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÂÄÄÄÄÄ¿
-³DMI     ³EDIT   ³0      ³2      ³1      ³1      ³       ³3      ³4      ³     ³
-ÃÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄ´
-³DMI     ³EDIT   ³1      ³1      ³10.    ³0.     ³1.     ³       ³       ³     ³
-ÃÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄ´
-³DMI     ³EDIT   ³2      ³1      ³20.    ³0.     ³1.     ³       ³       ³     ³
-ÃÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄ´
-³DMI     ³EDIT   ³3      ³1      ³30.    ³0.     ³1.     ³       ³       ³     ³
-ÃÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄ´
-³DMI     ³EDIT   ³4      ³1      ³40.    ³0.     ³2.     ³       ³       ³     ³
-ÀÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÁÄÄÄÄÄÙ
-=PAGE=
++--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|DMI     |EDIT   |0      |2      |1      |1      |       |3      |4      |     |
++--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|DMI     |EDIT   |1      |1      |10.    |0.     |1.     |       |       |     |
++--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|DMI     |EDIT   |2      |1      |20.    |0.     |1.     |       |       |     |
++--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|DMI     |EDIT   |3      |1      |30.    |0.     |1.     |       |       |     |
++--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|DMI     |EDIT   |4      |1      |40.    |0.     |2.     |       |       |     |
++--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+
 MATGPR - Structural Matrix Printer
-
+==================================
 Purpose
-
+-------
 Prints matrices generated by a Solution Sequence. External grid
 point/component identification of each nonzero element is printed.
 
 DMAP Calling Sequence
-
+---------------------
 A. For matrices whose degrees of freedom relate to grid or scalar points:
 
    MATGPR  GPL,USET,SIL,M//C,N,c/C,N,r/V,N,PRNTOPT=ALL/V,N,TINY=1.E-6/V,N,F1 $
@@ -4085,7 +4093,7 @@ B. For matrices whose degrees of freedom relate to grid, scalar, or extra
            V,N,F1 $
 
 Input Data Blocks
-
+-----------------
 GPL        Grid Point List
 
 GPLD       Grid Point List (Dynamics)
@@ -4101,11 +4109,11 @@ SILD       Scalar Index List (Dynamics)
 M          Any displacement approach matrix
 
 Output Data Blocks
-
+------------------
 None
 
 Parameters
-
+----------
 c          row size (number of columns); must be the appropriate BCD value
            from the table in Section 1.4.10. Input, no default. 
 
@@ -4134,7 +4142,7 @@ F1         Real-default = 0.0. If F1 is not zero, then printed output will be
            aij < 0.0. 
 
 Remarks
-
+-------
 1. When using the form specified in DMAP Calling Sequence A, this module may
    not be scheduled until after GP4 since data blocks generated by GP4 are
    required inputs. When using the form specified in DMAP Calling Sequence B,
@@ -4148,7 +4156,7 @@ Remarks
    and column position of each term. 
 
 Examples
-
+--------
 Display terms of KGG:
 
    MATGPR     GPL,USET,SIL,KGG//G $
@@ -4171,27 +4179,27 @@ Also good for any single column
 Display all terms of KGG outside the range of 0 through 107: 
 
    MATGPR     GPL,USET,SIL,KGG//G/G//1.E7/1.E1 $ 
-=PAGE=
+
 MATPRN - General Matrix Printer
 
 Purpose
-
+-------
 To print general matrix data blocks.
 
 DMAP Calling Sequence
-
+---------------------
 MATPRN   M1,M2,M3,M4,M5 // C,N,P1/C,N,P2/C,N,P3/C,N,P4/C,N,P5  $
 
 Input Data Blocks
-
+-----------------
 Mi         Matrix data blocks, any of which may be purged.
 
 Output Data Blocks
-
+------------------
 None.
 
 Parameters
-
+----------
 P1 and P2 are print format controls.
 
 P1    = 0, matrices are printed in their original precision (default).
@@ -4220,43 +4228,43 @@ P5    = k, each printed column will not exceed k lines long and the remaining
       P2=10 and P5=4.
 
 Output
-
+------
 The nonzero band of each column of each input matrix data block is unpacked
 and printed in single precision.
 
 Remarks
-
+-------
 1. Any or all input data blocks can be purged.
 
 2. If any data block is not matrix type, the TABPT routine will be called.
 
 Examples
-
+--------
 1. MATPRN   KGG,,,, // $
 
 2. MATPRN   KGG,PL,PG,BGG,UPV // $
-=PAGE=
+
 MATPRT - Matrix Printer
-
+=======================
 Purpose
-
+-------
 To print matrix data blocks associated with grid points only.
 
 DMAP Calling Sequence
-
+---------------------
 MATPRT   X // C,N,rc / C,N,y $
 
 Input Data Blocks
-
+-----------------
 X          Matrix data block to be printed. If [X] is purged, then nothing is
            done.
 
 Output Data Blocks
-
+------------------
 None.
 
 Parameters
-
+----------
 rc         indicates whether [X] is stored by rows (rc = 1) or by columns (rc
            = 0) (Input-Integer, default value = 0).
 
@@ -4265,50 +4273,50 @@ y          indicates whether [X] is to be printed even if not purged (y < 0,
            = 0).
 
 Method
-
+------
 Each column (or row) of the matrix is broken into groups of 6 terms (3 terms
 if complex) per printed line. If all the terms in a group = 0, the line is not
 printed. If the entire column (or row) = 0, it is not printed. If the entire
 matrix = 0, it is not printed.
 
 Remarks
-
+-------
 1. MATPRT should not be used if scalar or extra points are present. For this
    case, use MATPRN.
 
 2. Only one matrix data block is printed by this instruction. However, the
    instruction may be repeated as many times as required.
-=PAGE=
+
 NORM - Normalize a Matrix
-
+=========================
 Purpose
-
+-------
 To normalize a matrix, each vector by its largest element. To compute the
 square root of the sum of the squares for each row of a matrix (SRSS).
 
 DMAP Calling Sequence
-
+---------------------
 NORM    PHIG/PHIG1/V,N,NCOL/V,N,NROW/V,N,XNORM/V,N,IOPT $
 
 Input Data Blocks
-
+-----------------
 PHIG       Any matrix (real or complex)
 
 Output Data Blocks
-
+------------------
 PHIG1      IOPT=1, copy of PHIG such that for any columnj||max(aij)|| for all
            i = 1.0.
            IOPT=2, contains a single column {ai} where
 
                              NCOL         _
-               ai  =  SQRT (  ä     (uij * uij) )
+               ai  =  SQRT (  -     (uij * uij) )
                              j=1
 
            where uij are the terms in the matrix PHIG and ij are the complex
            conjugates.
 
 Parameters
-
+----------
 NCOL       Integer-output-default = 0. Number of columns in PHIG.
 
 NROW       Integer-output-default = 0. Number of rows in PHIG.
@@ -4320,7 +4328,7 @@ IOPT       Integer-input-default = 1. IOPT=1, normalize by largest element;
            IOPT=2, compute SRSS.
 
 Examples
-
+--------
 Normalize PHIG so that the maximum deflection is 1.0 (or -1.0):
 
    EQUIV    PHIG,PHIG1/NEVER $
@@ -4328,11 +4336,11 @@ Normalize PHIG so that the maximum deflection is 1.0 (or -1.0):
    CHKPNT   PHIG1 $
    EQUIV    PHIG1,PHIG/ALWAYS $
    CHKPNT   PHIG $
-=PAGE=
+
 OUTPUT1 - Create User Files
-
+===========================
 Purpose
-
+-------
 Writes up to five data blocks and a user file label onto a user file (either
 on tape or mass storage) for use at a later date. (See User Module INPUTT1 for
 recovery procedures.) OUTPUT1 is also used to position your file (including
@@ -4346,72 +4354,72 @@ are written, an EOF will be written at the completion of each call, which has
 the effect of destroying anything on the file forward of the current position.
 
 DMAP Calling Sequence
-
+---------------------
 OUTPUT1   DB1,DB2,DB3,DB4,DB5 // V,N,P1 / V,N,P2 / V,N,P3 $
 
 Input Data Blocks
-
+-----------------
 DBi        Any data block which you desire to be placed on one of the NASTRAN
            permanent files INPT, INP1, INP2 thru INP9. Any or all of the
            input data blocks may be purged. Only nonpurged data blocks will
            be placed on the file.
 
 Output Data Blocks
-
+------------------
 None.
 
 Parameters
-
+----------
 1. The meaning of the first parameter (P1) value is given in the table below.
    (The default value is O.)
 
-ÚÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-³  P1 Value ³                  Meaning                                 ³
-ÃÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
-³     +n    ³ Skip forward n data blocks before reading.               ³
-³           ³                                                          ³
-³      0    ³ Data blocks are read starting at the current             ³
-³           ³ position. The current position for the first use of a    ³
-³           ³ file is at the label (P3). Hence, P3 counts as one       ³
-³           ³ data block.                                              ³
-³           ³                                                          ³
-³     -1    ³ Rewind before writing. (This is dangerous!) An EOF is    ³
-³           ³ written at the end of each call to OUTPUT1.              ³
-³           ³                                                          ³
-³     -2    ³ Valid only for files residing on physical tape.          ³
-³           ³ Mount new reel before writing. An EOF mark is written    ³
-³           ³ on the tape to be switched. Be careful when switching    ³
-³           ³ from a user tape being read by INPUTT1 to a tape to be   ³
-³           ³ written by OUTPUT1.                                      ³
-³           ³                                                          ³
-³     -3    ³ Rewind files, print data block names, and then write     ³
-³           ³ after the last data block on the file.                   ³
-³           ³                                                          ³
-³     -4    ³ Valid only for files residing on physical tape.          ³
-³           ³ Current tape reel will be rewound and dismounted and     ³
-³           ³ a new tape reel will be mounted with ring in and         ³
-³           ³ rewound before writing the data blocks. This option      ³
-³           ³ should be used when a call to OUTPUT1 is preceded        ³
-³           ³ by a call to INPUTT1 using the same User Tape.           ³
-ÀÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
++-----------+----------------------------------------------------------+
+|  P1 Value |                  Meaning                                 |
++-----------+----------------------------------------------------------+
+|     +n    | Skip forward n data blocks before reading.               |
+|           |                                                          |
+|      0    | Data blocks are read starting at the current             |
+|           | position. The current position for the first use of a    |
+|           | file is at the label (P3). Hence, P3 counts as one       |
+|           | data block.                                              |
+|           |                                                          |
+|     -1    | Rewind before writing. (This is dangerous!) An EOF is    |
+|           | written at the end of each call to OUTPUT1.              |
+|           |                                                          |
+|     -2    | Valid only for files residing on physical tape.          |
+|           | Mount new reel before writing. An EOF mark is written    |
+|           | on the tape to be switched. Be careful when switching    |
+|           | from a user tape being read by INPUTT1 to a tape to be   |
+|           | written by OUTPUT1.                                      |
+|           |                                                          |
+|     -3    | Rewind files, print data block names, and then write     |
+|           | after the last data block on the file.                   |
+|           |                                                          |
+|     -4    | Valid only for files residing on physical tape.          |
+|           | Current tape reel will be rewound and dismounted and     |
+|           | a new tape reel will be mounted with ring in and         |
+|           | rewound before writing the data blocks. This option      |
+|           | should be used when a call to OUTPUT1 is preceded        |
+|           | by a call to INPUTT1 using the same User Tape.           |
++-----------+----------------------------------------------------------+
 
 2. The second parameter (P2) for this module is your File Code shown in the
    table below. (The default value is 0.)
 
-ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-³  User File Code ³  GINO File Name  ³
-ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
-³         0       ³        INPT      ³
-³         1       ³        INP1      ³
-³         2       ³        INP2      ³
-³         3       ³        INP3      ³
-³         4       ³        INP4      ³
-³         5       ³        INP5      ³
-³         6       ³        INP6      ³
-³         7       ³        INP7      ³
-³         8       ³        INP8      ³
-³         9       ³        INP9      ³
-ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
++-----------------+------------------+
+|  User File Code |  GINO File Name  |
++-----------------+------------------+
+|         0       |        INPT      |
+|         1       |        INP1      |
+|         2       |        INP2      |
+|         3       |        INP3      |
+|         4       |        INP4      |
+|         5       |        INP5      |
+|         6       |        INP6      |
+|         7       |        INP7      |
+|         8       |        INP8      |
+|         9       |        INP9      |
++-----------------+------------------+
 
 3. The third parameter (P3) for this module is used to define your File Label.
    The label is used for NASTRAN identification. The label (P3) is an
@@ -4420,22 +4428,22 @@ Parameters
    dependent on the value of P1 as follows (The default value for P3 is
    XXXXXXXX).
 
-ÚÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-³ P1 Value  ³  File Label Written  ³
-ÃÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
-³    +n     ³          No          ³
-³     0     ³          No          ³
-³    -1     ³          Yes         ³
-³    -2     ³    Yes (On new reel) ³
-³    -3     ³    No (Warning Check)³
-³    -4     ³    Yes (On new reel) ³
-ÀÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
++-----------+----------------------+
+| P1 Value  |  File Label Written  |
++-----------+----------------------+
+|    +n     |          No          |
+|     0     |          No          |
+|    -1     |          Yes         |
+|    -2     |    Yes (On new reel) |
+|    -3     |    No (Warning Check)|
+|    -4     |    Yes (On new reel) |
++-----------+----------------------+
 
    You may specify the third parameter as V, Y, name. You then must also
    include a PARAM card in the bulk data deck to set a value for name.
 
 Examples
-
+--------
 1. OUTPUT1   A,B,,, // C,N,0 / C,N,0 $   or   OUTPUT1   A,B,,, // $
 
    Write data blocks A and then B onto user file INPT starting wherever INPT
@@ -4518,7 +4526,7 @@ Examples
 Difficult Examples Using INPUTT1 and OUTPUT1
 
 Example 1
-
+---------
 a. Objectives:
 
 1. Obtain printout of the names of all data blocks on INPT.
@@ -4540,7 +4548,7 @@ b. DMAP Sequence:
    END $
 
 c. Remarks
-
+----------
 1. DMAP sequence (2) accomplishes objective 1 and rewinds INPT.
 
 2. DMAP sequence (3) recovers data blocks 7, 8, and 9. This is necessary
@@ -4558,7 +4566,7 @@ c. Remarks
    mistakenly writing on INPT prematurely.
 
 Example 2
-
+---------
 a. Objectives:
 
 1. Write data blocks A, B, and C on INPT.
@@ -4605,11 +4613,11 @@ c. Remarks:
    OUTPUT1 D,E,,, // C,N,0 / C,N,2 $
    OUTPUT1 , ,,,, // C,N,-3 / C,N,2 $
    END $
-=PAGE=
+
 OUTPUT2 - Create User-Written FORTRAN Files
-
+===========================================
 Purpose
-
+-------
 Writes up to five data blocks and a user file label onto a FORTRAN-written
 user file (either on tape or mass storage) for subsequent use at a later date.
 OUTPUT2 is also used to position your file prior to writing the data blocks.
@@ -4622,48 +4630,48 @@ effect of destroying anything on the tape forward of the current position.
 (The companion module is INPUTT2.)
 
 DMAP Calling Sequence
-
+---------------------
 OUTPUT2 DB1,DB2,DB3,DB4,DB5 // V,N,P1 / V,N,P2 / V,N,P3 / V,N,P4 /
                                V,N,P5 / V,N,P6 $
 
 Input Data Blocks
-
+-----------------
 DBi        Any data block which you desire to be written on one of the
            NASTRAN FORTRAN files INPT, INP1 through INP9. Any or all of the
            input data blocks may be purged. Only nonpurged data blocks will
            be placed on the file.
 
 Output Data Blocks
-
+------------------
 None.
 
 Parameters
-
+----------
 P1, P2, P4, and P5 are integer inputs. P3 and P6 are BCD.
 
 1. The meaning of the first parameter (P1) value is given in the table below.
    (The default value is 0.)
 
-ÚÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-³  P1 Value ³                  Meaning                                 ³
-ÃÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
-³     +n    ³ Skip forward n data blocks before writing.               ³
-³           ³                                                          ³
-³      0    ³ Data blocks are written starting at the current          ³
-³           ³ position. The current position for the first use of a    ³
-³           ³ file is at the label (P3). Hence, P3 counts as one       ³
-³           ³ data block.                                              ³
-³           ³                                                          ³
-³     -1    ³ Rewind before writing.                                   ³
-³           ³                                                          ³
-³     -3    ³ Rewind files, print data block names, and then write     ³
-³           ³ after the last data block on the file.                   ³
-³           ³                                                          ³
-³     -9    ³ Write a final EOF on the file.                           ³
-ÀÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
++-----------+----------------------------------------------------------+
+|  P1 Value |                  Meaning                                 |
++-----------+----------------------------------------------------------+
+|     +n    | Skip forward n data blocks before writing.               |
+|           |                                                          |
+|      0    | Data blocks are written starting at the current          |
+|           | position. The current position for the first use of a    |
+|           | file is at the label (P3). Hence, P3 counts as one       |
+|           | data block.                                              |
+|           |                                                          |
+|     -1    | Rewind before writing.                                   |
+|           |                                                          |
+|     -3    | Rewind files, print data block names, and then write     |
+|           | after the last data block on the file.                   |
+|           |                                                          |
+|     -9    | Write a final EOF on the file.                           |
++-----------+----------------------------------------------------------+
 
-   Important Notes
-
+   Important NOTES
+-----
    a. It is a good practice for you to ensure that a sequence of OUTPUT2
       statements always ends with a statement of the form
 
@@ -4684,25 +4692,25 @@ P1, P2, P4, and P5 are integer inputs. P3 and P6 are BCD.
       various values for the parameter P1 in an INPUTT2 or OUTPUT2 DMAP
       statement.
 
-ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-³                 Cautions for UNIVAC and DEC VAX versions              ³
-ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
-³  Parameter P1   ³                 Remarks                             ³
-ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
-³    0 or +n      ³  You must be certain that this INPUTT2              ³
-³                 ³  statement immediately follows another INPUTT2      ³
-³                 ³  statement; or that this OUTPUT2 statement          ³
-³                 ³  immediately follows another OUTPUT2 statement, to  ³
-³                 ³  avoid a link change that would cause the           ³
-³                 ³  rewinding of the FORTRAN file.                     ³
-³                 ³                                                     ³
-³  -1 to -8       ³  No cautions.                                       ³
-³                 ³                                                     ³
-³      -9         ³  You must be certain that this OUTPUT2              ³
-³                 ³  statement immediately follows another OUTPUT2      ³
-³                 ³  statement, to avoid a link change that would       ³
-³                 ³  cause the rewinding of the FORTRAN file.           ³
-ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
++-----------------------------------------------------------------------+
+|                 Cautions for UNIVAC and DEC VAX versions              |
++-----------------+-----------------------------------------------------+
+|  Parameter P1   |                 Remarks                             |
++-----------------+-----------------------------------------------------+
+|    0 or +n      |  You must be certain that this INPUTT2              |
+|                 |  statement immediately follows another INPUTT2      |
+|                 |  statement; or that this OUTPUT2 statement          |
+|                 |  immediately follows another OUTPUT2 statement, to  |
+|                 |  avoid a link change that would cause the           |
+|                 |  rewinding of the FORTRAN file.                     |
+|                 |                                                     |
+|  -1 to -8       |  No cautions.                                       |
+|                 |                                                     |
+|      -9         |  You must be certain that this OUTPUT2              |
+|                 |  statement immediately follows another OUTPUT2      |
+|                 |  statement, to avoid a link change that would       |
+|                 |  cause the rewinding of the FORTRAN file.           |
++-----------------+-----------------------------------------------------+
 
 2. The second parameter (P2) for this module is the FORTRAN unit number onto
    which the data blocks will be written. The allowable values for this
@@ -4712,24 +4720,24 @@ P1, P2, P4, and P5 are integer inputs. P3 and P6 are BCD.
 
    For CDC machine (default is 11):
 
-ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-³ User File Code ³  FORTRAN File Name ³
-ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
-³        11      ³         UT1        ³
-³        12      ³         UT2        ³
-ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
++----------------+--------------------+
+| User File Code |  FORTRAN File Name |
++----------------+--------------------+
+|        11      |         UT1        |
+|        12      |         UT2        |
++----------------+--------------------+
 
    For all others (default is INPT):
 
-ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-³ User File Code ³  FORTRAN File Name ³
-ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
-³        14      ³        INPT        ³
-³        15      ³        INP1        ³
-³        16      ³        INP2        ³
-³        :       ³         :          ³
-³        23      ³        INP9        ³
-ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
++----------------+--------------------+
+| User File Code |  FORTRAN File Name |
++----------------+--------------------+
+|        14      |        INPT        |
+|        15      |        INP1        |
+|        16      |        INP2        |
+|        :       |         :          |
+|        23      |        INP9        |
++----------------+--------------------+
 
    IBM/MVS only: INPT is user file code 24.
 
@@ -4740,15 +4748,15 @@ P1, P2, P4, and P5 are integer inputs. P3 and P6 are BCD.
    label is dependent on the value of P1 as follows: (The default value for P3
    is XXXXXXXX.)
 
-ÚÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-³ P1 Value  ³  File Label Written  ³
-ÃÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
-³    +n     ³          No          ³
-³     0     ³          No          ³
-³    -1     ³          Yes         ³
-³    -3     ³    No (Warning Check)³
-³    -9     ³          No          ³
-ÀÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
++-----------+----------------------+
+| P1 Value  |  File Label Written  |
++-----------+----------------------+
+|    +n     |          No          |
+|     0     |          No          |
+|    -1     |          Yes         |
+|    -3     |    No (Warning Check)|
+|    -9     |          No          |
++-----------+----------------------+
 
    If the label is written, eight additional records are placed at the
    beginning of the FORTRAN file.
@@ -4797,7 +4805,7 @@ P1, P2, P4, and P5 are integer inputs. P3 and P6 are BCD.
    Default P6 is blank.
 
 Examples
-
+--------
 OUTPUT2 is intended to have the same logical action as the GINO User File
 module OUTPUT1 except for tape reel switching. It is therefore suggested that
 the examples shown under module OUTPUT1 be used for OUTPUT2 as well, excepting
@@ -4805,7 +4813,7 @@ the ones involving tape reel switching. All examples should be ended with a
 call to OUTPUT2 with P1 = -9.
 
 Remarks
-
+-------
 The primary objective of this module is to write files using simple FORTRAN so
 that you can read NASTRAN generated data with your own program. Similarly,
 matrices can be generated with externally written simple FORTRAN programs and
@@ -4822,44 +4830,44 @@ zero, and was explained previously.
 The correspondence between FORTRAN records and GINO-written NASTRAN files is
 shown in the following sample:
 
-ÚÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-³ FORTRAN ³          ³                     ³   NASTRAN  ³   File        ³
-³ Record  ³  Length  ³  Contents           ³    File    ³  Record       ³
-ÃÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
-³   1     ³   1      ³  KEY1 > 0, KEY2     ³     1      ³     1         ³
-ÃÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´            ³               ³
-³   2     ³   KEY1   ³ {Data}              ³            ³               ³
-ÃÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´            ³               ³
-³   3     ³   1      ³  KEY1 > 0, KEY2     ³            ³               ³
-ÃÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´            ³               ³
-³   4     ³   KEY1   ³ {Data}              ³            ³               ³
-ÃÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´            ³               ³
-³   5     ³   1      ³  KEY1 < 0 (EOR),    ³            ³               ³
-³         ³          ³  KEY2               ³            ³               ³
-ÃÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´            ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
-³   6     ³   1      ³  KEY1 > 0, KEY2     ³            ³     2         ³
-ÃÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´            ³               ³
-³   7     ³   KEY1   ³ {Data}              ³            ³               ³
-ÃÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´            ³               ³
-³   8     ³   1      ³  KEY1 < 0 (EOR),    ³            ³               ³
-³         ³          ³  KEY2               ³            ³               ³
-ÃÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´            ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
-³   9     ³   1      ³  KEY1 = 0 (EOF),    ³            ³     EOF       ³
-³         ³          ³  KEY2               ³            ³               ³
-ÃÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
-³  10     ³   1      ³  KEY1 > 0, KEY2     ³     2      ³     1         ³
-ÃÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´            ³               ³
-³  11     ³   KEY1   ³ {Data}              ³            ³               ³
-ÃÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´            ³               ³
-³  12     ³   1      ³  KEY1 < 0 (EOR),    ³            ³               ³
-³         ³          ³  KEY2               ³            ³               ³
-ÃÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´            ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
-³  13     ³   1      ³  KEY1 = 0 (EOF),    ³            ³     EOF       ³
-³         ³          ³  KEY2               ³            ³               ³
-ÃÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
-³  14     ³   1      ³  KEY1 = 0 (EOF=EOD),³     3      ³     EOF       ³
-³         ³          ³  KEY2               ³            ³               ³
-ÀÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
++---------+----------+---------------------+------------+---------------+
+| FORTRAN |          |                     |   NASTRAN  |   File        |
+| Record  |  Length  |  Contents           |    File    |  Record       |
++---------+----------+---------------------+------------+---------------+
+|   1     |   1      |  KEY1 > 0, KEY2     |     1      |     1         |
++---------+----------+---------------------+            |               |
+|   2     |   KEY1   | {Data}              |            |               |
++---------+----------+---------------------+            |               |
+|   3     |   1      |  KEY1 > 0, KEY2     |            |               |
++---------+----------+---------------------+            |               |
+|   4     |   KEY1   | {Data}              |            |               |
++---------+----------+---------------------+            |               |
+|   5     |   1      |  KEY1 < 0 (EOR),    |            |               |
+|         |          |  KEY2               |            |               |
++---------+----------+---------------------+            +---------------+
+|   6     |   1      |  KEY1 > 0, KEY2     |            |     2         |
++---------+----------+---------------------+            |               |
+|   7     |   KEY1   | {Data}              |            |               |
++---------+----------+---------------------+            |               |
+|   8     |   1      |  KEY1 < 0 (EOR),    |            |               |
+|         |          |  KEY2               |            |               |
++---------+----------+---------------------+            +---------------+
+|   9     |   1      |  KEY1 = 0 (EOF),    |            |     EOF       |
+|         |          |  KEY2               |            |               |
++---------+----------+---------------------+------------+---------------+
+|  10     |   1      |  KEY1 > 0, KEY2     |     2      |     1         |
++---------+----------+---------------------+            |               |
+|  11     |   KEY1   | {Data}              |            |               |
++---------+----------+---------------------+            |               |
+|  12     |   1      |  KEY1 < 0 (EOR),    |            |               |
+|         |          |  KEY2               |            |               |
++---------+----------+---------------------+            +---------------+
+|  13     |   1      |  KEY1 = 0 (EOF),    |            |     EOF       |
+|         |          |  KEY2               |            |               |
++---------+----------+---------------------+------------+---------------+
+|  14     |   1      |  KEY1 = 0 (EOF=EOD),|     3      |     EOF       |
+|         |          |  KEY2               |            |               |
++---------+----------+---------------------+------------+---------------+
 
 
 KEY2s are zeros except when parameter P5 is non-zero, and the next records are
@@ -4867,32 +4875,32 @@ data records (KEY1 > 0). When parameter P5 is zero, effectively only one key,
 KEY1, is used.
 
 KEY2s are not generated when parameter P6 is *MSC*.
-=PAGE=
+
 OUTPUT3 - Punch Matrix Data Blocks Onto Cards
 
 Purpose
-
+-------
 Punches up to five matrix data blocks onto DMI bulk data cards. These cards
 may then read into NASTRAN as ordinary bulk data to reestablish the matrix
 data block at a later date.
 
 DMAP Calling Sequence
-
+---------------------
 OUTPUT3  M1,M2,M3,M4,M5 // C,N,P1 / C,Y,N1=ABC / C,Y,N2=DEF / C,Y,N3=GHI
                                     C,Y,N4=JKL / C,Y,N5=MNO $
 
 Input Data Blocks
-
+-----------------
 Mi         Any matrix data block which you desire to be punched on DMI cards.
            Any or all of the input data blocks may be purged. Only nonpurged
            data blocks will be punched.
 
 Output Data Blocks
-
+------------------
 None.
 
 Parameters
-
+----------
 The first parameter (P1) controls the writing of the DMI card images on a
 FORTRAN unit as follows:
 
@@ -4909,52 +4917,52 @@ OUTPUT3. (Input-BCD, default values are N1 = no default, N2 = N3 = N4 = N5 =
 XXX).
 
 Method
-
+------
 The nonzero elements of each matrix are punched on double-field DMI cards as
 shown in the example below. The name of the matrix is obtained from the header
 record of the data block. Field 10 contains the three character parameter
 value in columns 74-76 and an incremented integer card count in columns 77-80.
 
 Example
-
+-------
 Let the data block MAT contain the matrix
 
-                Ú                                     ¿
-                ³ 1.0   0.0    6.0   0.0    0.0   0.0 ³
-                ³ 0.0   0.0    7.0   0.0    0.0   0.0 ³
-   [MAT]  =     ³ 2.0   4.0    0.0   0.0    0.0   0.0 ³
-                ³ 0.0   5.0    0.0   0.0    0.0   9.0 ³
-                ³ 3.0   0.0    8.0   0.0    0.0   0.0 ³
-                À                                     Ù
+                +                                     +
+                | 1.0   0.0    6.0   0.0    0.0   0.0 |
+                | 0.0   0.0    7.0   0.0    0.0   0.0 |
+   [MAT]  =     | 2.0   4.0    0.0   0.0    0.0   0.0 |
+                | 0.0   5.0    0.0   0.0    0.0   9.0 |
+                | 3.0   0.0    8.0   0.0    0.0   0.0 |
+                +                                     +
 
 The DMAP instruction OUTPUT3 MAT,,,, // C,N,0 / C,N,XYZ $ will then punch out
 the DMI cards shown below.
 
     1        2       3       4       5       6       7       8       9     10
-ÚÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÂÄÄÄÄÄ¿
-³DMI     ³MAT    ³      0³      2³      1³      2³       ³      5³      6³+XYZ0³
-ÀÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÁÄÄÄÄÄÙ
-ÚÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄ¿
-³DMI*    ³MAT            ³              1³              1³ 1.000000E 00  ³*XYZ1³
-ÃÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄ´
-³*XYZ   1³              3³ 2.000000E 00  ³              5³ 3.000000E 00  ³*XYZ2³
-ÀÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÙ
-ÚÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄ¿
-³DMI*    ³MAT            ³              2³              3³ 4.000000E 00  ³*XYZ3³
-ÃÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄ´
-³*XYZ   3³ 5.000000E 00  ³               ³               ³               ³*XYZ4³
-ÀÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÙ
-ÚÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄ¿
-³DMI*    ³MAT            ³              3³              1³ 6.000000E 00  ³*XYZ5³
-ÃÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄ´
-³*XYZ   5³ 7.000000E 00  ³              5³ 8.000000E 00  ³               ³*XYZ6³
-ÀÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÙ
-ÚÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄ¿
-³DMI*    ³MAT            ³              6³              4³ 9.000000E 00  ³*XYZ7³
-ÀÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÙ
++--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|DMI     |MAT    |      0|      2|      1|      2|       |      5|      6|+XYZ0|
++--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
++--------+---------------+---------------+---------------+---------------+-----+
+|DMI*    |MAT            |              1|              1| 1.000000E 00  |*XYZ1|
++--------+---------------+---------------+---------------+---------------+-----+
+|*XYZ   1|              3| 2.000000E 00  |              5| 3.000000E 00  |*XYZ2|
++--------+---------------+---------------+---------------+---------------+-----+
++--------+---------------+---------------+---------------+---------------+-----+
+|DMI*    |MAT            |              2|              3| 4.000000E 00  |*XYZ3|
++--------+---------------+---------------+---------------+---------------+-----+
+|*XYZ   3| 5.000000E 00  |               |               |               |*XYZ4|
++--------+---------------+---------------+---------------+---------------+-----+
++--------+---------------+---------------+---------------+---------------+-----+
+|DMI*    |MAT            |              3|              1| 6.000000E 00  |*XYZ5|
++--------+---------------+---------------+---------------+---------------+-----+
+|*XYZ   5| 7.000000E 00  |              5| 8.000000E 00  |               |*XYZ6|
++--------+---------------+---------------+---------------+---------------+-----+
++--------+---------------+---------------+---------------+---------------+-----+
+|DMI*    |MAT            |              6|              4| 9.000000E 00  |*XYZ7|
++--------+---------------+---------------+---------------+---------------+-----+
 
 Remarks
-
+-------
 1. Only real single- or double-precision matrices may be output.
 
 2. All matrices are output on double-field cards in single-precision.
@@ -4966,31 +4974,31 @@ Remarks
 4. The auxiliary subroutine PHDMIA used by module OUTPUT3 can be used with
    stand-alone FORTRAN programs. See Section 4 of the Programmer's Manual for
    details.
-=PAGE=
+
 OUTPUT4 - Write a Matrix to a FORTRAN Readable File
-
+===================================================
 Purpose
-
+-------
 To write a matrix to an ASCII or FORTRAN binary file so that user processing
 can be done.
 OUTPUT4 can also handle six special tables: KELM, MELM, BELM, KDICT, MDICT,
 and BDICT.
 
 DMAP Calling Sequence
-
+---------------------
 OUTPUT4   M1,M2,M3,M4,M5 // V,N,P1 / V,Y,P2 / V,N,P3 $
 
 Input Data Blocks
-
+-----------------
 Mi         Up to five matrix data blocks, including any of the six special
            table data blocks.
 
 Output Data Blocks
-
+------------------
 None (written to user tape; see Remarks for the format).
 
 Parameters
-
+----------
 P1         Input-integer-default = 0. P1 controls the status of the unit
            before OUTPUT4 starts to write any matrices as follows:
 
@@ -5008,7 +5016,7 @@ P3         If P3 = 1 the file is written in FORTRAN binary format (default).
            10 - 13.
 
 Remarks
-
+-------
 1. Each matrix will be written on unit P2 as follows:
 
    Record No. Word Type  Meaning
@@ -5125,11 +5133,11 @@ Remarks
       The whole table therefore is in pure integer form, and is written out by
       a 10I13 format. In rigid format heat analyses, these six special tables,
       prefixed by an "L", work also with OUTPUT4.
-=PAGE=
+
 OUTPUT5 - Create User-Written FORTRAN File
-
+==========================================
 Purpose
-
+-------
 Writes up to five NASTRAN GINO data blocks to a user FORTRAN file using a
 FORTRAN write, formatted or unformatted. (The FORTRAN file may reside either
 on physical tape or on a mass storage device.) If the data block contains
@@ -5159,7 +5167,7 @@ will be written at the completion of each call, which has the effect of
 destroying anything on the tape forward of the current position.
 
 DMAP Calling Sequence
-
+---------------------
 OUTPUT5  DB1,DB2,DB3,DB4,DB5//C,N,P1/C,N,P2/C,N,P3/C,N,P4/C,N,T1/C,N,T2/
          C,N,T3/...C,N,T10 $
 
@@ -5170,36 +5178,36 @@ and OUTPUT1 be used for OUTPUT5 as well, excepting the addition of the P4
 parameter. All samples should be ended with a call to OUTPUT5 with P1=-9.
 
 Input Data Blocks
-
+-----------------
 DBi        Any data block which you desire to be written on one of the
            NASTRAN FORTRAN user files INPT, INP1, INP2,..., INP9. Any or all
            of the input data blocks may be purged. Only unpurged data blocks
            will be placed on your file.
 
 Output Data Blocks
-
+------------------
 None.
 
 Parameters
-
+----------
 1. The meanings of the first three parameter values (P1, P2, P3) are the same
    as those described for the OUTPUT2 module, except your file code and the
    FORTRAN file name are given below. (The default value for P2 is 15, or 11
    for a CDC machine.)
 
-ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-³ FORTRAN LOGICAL ³                         ³
-³    UNIT, P2     ³      USER FILE CODE     ³
-ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
-³       11        ³      UT1 (CDC only)     ³
-³       12        ³      UT2 (CDC only)     ³
-³       14        ³      INPT (UNIVAC,VAX)  ³
-³       15        ³      INP1 (All          ³
-³       16        ³      INP2  machines     ³
-³        :        ³        :   except       ³
-³       23        ³      INP9  CDC)         ³
-³       24        ³      INPT (IBM only)    ³
-ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
++-----------------+-------------------------+
+| FORTRAN LOGICAL |                         |
+|    UNIT, P2     |      USER FILE CODE     |
++-----------------+-------------------------+
+|       11        |      UT1 (CDC only)     |
+|       12        |      UT2 (CDC only)     |
+|       14        |      INPT (UNIVAC,VAX)  |
+|       15        |      INP1 (All          |
+|       16        |      INP2  machines     |
+|        :        |        :   except       |
+|       23        |      INP9  CDC)         |
+|       24        |      INPT (IBM only)    |
++-----------------+-------------------------+
 
 2. The fourth parameter (P4) for this module is used to specify whether your
    output tape is to be written formatted (P4=1 or 2), or unformatted  (P4=0,
@@ -5243,7 +5251,7 @@ c. The values of digits and their meanings are:
    0111111322222000
 
 Methods
-
+-------
 The methods used to transfer data from NASTRAN GINO data blocks to your output
 tape (or file) depend on whether
 
@@ -5383,7 +5391,7 @@ The matrix data blocks are handled by the main routine OUTPT5. OUTPT5 calls
 TABLE5 only when the former encounters a table data block input.
 
 Examples
-
+--------
 $  Copy KJI, KGG, and CASECC to INP2 (unit 16), sequential formatted tape
    OUTPUT5 KJI,KGG,CASECC,,//-1/16/*MYTAPE*/1  $
 
@@ -5391,7 +5399,7 @@ $  Recover the files from INP2 (unit 16) and make them NASTRAN GINO files
    INPUTT5 /OKJI,OKGG,OCASECC,,/-1/16/*MYTAPE*/1  $
 
 Remarks
-
+-------
 1. Formatted tape (P4 = 1 or 2) takes a longer time and more space to write
    than the unformatted tape. Unless the tape is intended to be used later by
    a different computer, unformatted tape should be selected (P4=0).
@@ -5409,15 +5417,15 @@ Remarks
 
 4. The first tape header record is composed of 9 words as shown below:
 
-ÚÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄ¿
-³ RECORD ³ WORD ³        CONTENTS                ³  P4=0 ³  P4=1 ³
-ÃÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄ´
-³   0    ³ 1,2  ³ Tapeid (=P2)                   ³ 2*BCD ³  2A4  ³
-³        ³ 3,4  ³ Machine (CDC,UNIVAC,IBM,VAX)   ³ 2*BCD ³  2A4  ³
-³        ³ 5-7  ³ Date                           ³ 3*INT ³  3I8  ³
-³        ³   8  ³ System BUFFER SIZE             ³   INT ³   I8  ³
-³        ³   9  ³ P4 used in creating tape (0,1) ³   INT ³   I8  ³
-ÀÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÙ
++--------+------+--------------------------------+-------+-------+
+| RECORD | WORD |        CONTENTS                |  P4=0 |  P4=1 |
++--------+------+--------------------------------+-------+-------+
+|   0    | 1,2  | Tapeid (=P2)                   | 2*BCD |  2A4  |
+|        | 3,4  | Machine (CDC,UNIVAC,IBM,VAX)   | 2*BCD |  2A4  |
+|        | 5-7  | Date                           | 3*INT |  3I8  |
+|        |   8  | System BUFFER SIZE             |   INT |   I8  |
+|        |   9  | P4 used in creating tape (0,1) |   INT |   I8  |
++--------+------+--------------------------------+-------+-------+
 
 5. This remark and the next one deal only with matrix data blocks.
 
@@ -5448,57 +5456,57 @@ Remarks
    In the above WRITE statements, the value of I is used to indicate the type
    of record just read.
 
-ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-³ VALUE OF I   ³    TYPE OF RECORD          ³
-ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
-³     0        ³    Matrix header record    ³
-³    +n        ³    Nth matrix column data  ³
-³    -1        ³    End-of-matrix           ³
-ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
++--------------+----------------------------+
+| VALUE OF I   |    TYPE OF RECORD          |
++--------------+----------------------------+
+|     0        |    Matrix header record    |
+|    +n        |    Nth matrix column data  |
+|    -1        |    End-of-matrix           |
++--------------+----------------------------+
 
    The column data is written to tape from the first non-zero row position (J)
    to the last non-zero row position (K). The following table describes the
    contents of the data records written to tape by the OUTPUT5 module.
 
-ÚÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄ¿
-³ RECORD+³ WORD ³        CONTENTS                 ³  P4=0 ³  P4=1   ³
-ÃÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄ´
-³   1    ³      ³ Matrix header record -          ³       ³         ³
-³        ³  1   ³ 0                               ³   INT ³    I8   ³
-³        ³ 2,3  ³ 1,1                             ³ 2*INT ³   2I8   ³
-³        ³  4   ³ 0.0                             ³   F.P.³ E13.6 or³
-³        ³      ³                                 ³       ³ D26.17  ³
-³        ³ 5-10 ³ Matrix trailer                  ³ 6*INT ³   6I8   ³
-³        ³      ³ (Col,Row,Form,Type,Max,Density) ³       ³         ³
-³        ³ 11,12³ DMAP Name of DB1                ³ 2*BCD ³   2A4   ³
-³        ³      ³                                 ³       ³         ³
-³   2    ³  1   ³ 1 (First matrix column)         ³   INT ³    I8   ³
-³        ³  2   ³ Row pos. of first non-zero elem.³   INT ³    I8   ³
-³        ³  3   ³ Row pos. of last  non-zero elem.³   INT ³    I8   ³
-³        ³ 4-W  ³ First banded column data        ³ 6*INT ³   (**)  ³
-³        ³      ³ (W=Word3-Word2)                 ³       ³         ³
-³        ³      ³                                 ³       ³         ³
-³   3    ³  1   ³ 2 (Second matrix column)        ³   INT ³    I8   ³
-³        ³  2   ³ Row pos. of first non-zero elem.³   INT ³    I8   ³
-³        ³  3   ³ Row pos. of last  non-zero elem.³   INT ³    I8   ³
-³        ³ 4-W  ³ Second banded column data       ³ 6*INT ³   (**)  ³
-³        ³      ³                                 ³       ³         ³
-³   4    ³  1   ³ 3 (Third matrix column)         ³   INT ³    I8   ³
-³        ³  2   ³ Row pos. of first non-zero elem.³   INT ³    I8   ³
-³        ³  3   ³ Row pos. of last  non-zero elem.³   INT ³    I8   ³
-³        ³ 4-W  ³ Third banded column data        ³ 6*INT ³   (**)  ³
-³        ³      ³                                 ³       ³         ³
-³   :    ³  :   ³     :                           ³       ³         ³
-³        ³      ³                                 ³       ³         ³
-³   L    ³  1   ³ L-1 (last matrix column)        ³   INT ³    I8   ³
-³        ³  2   ³ Row pos. of first non-zero elem.³   INT ³    I8   ³
-³        ³  3   ³ Row pos. of last  non-zero elem.³   INT ³    I8   ³
-³        ³ 4-W  ³ Last banded column data         ³ 6*INT ³   (**)  ³
-³        ³      ³                                 ³       ³         ³
-³  L+1   ³  1   ³ -1                              ³   INT ³    I8   ³
-³        ³ 2,3  ³ 1,1                             ³ 2*INT ³   2I8   ³
-³        ³  4   ³ 0.0                             ³   F.P.³ D26.17  ³
-ÀÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÙ
++--------+------+---------------------------------+-------+---------+
+| RECORD+| WORD |        CONTENTS                 |  P4=0 |  P4=1   |
++--------+------+---------------------------------+-------+---------+
+|   1    |      | Matrix header record -          |       |         |
+|        |  1   | 0                               |   INT |    I8   |
+|        | 2,3  | 1,1                             | 2*INT |   2I8   |
+|        |  4   | 0.0                             |   F.P.| E13.6 or|
+|        |      |                                 |       | D26.17  |
+|        | 5-10 | Matrix trailer                  | 6*INT |   6I8   |
+|        |      | (Col,Row,Form,Type,Max,Density) |       |         |
+|        | 11,12| DMAP Name of DB1                | 2*BCD |   2A4   |
+|        |      |                                 |       |         |
+|   2    |  1   | 1 (First matrix column)         |   INT |    I8   |
+|        |  2   | Row pos. of first non-zero elem.|   INT |    I8   |
+|        |  3   | Row pos. of last  non-zero elem.|   INT |    I8   |
+|        | 4-W  | First banded column data        | 6*INT |   (**)  |
+|        |      | (W=Word3-Word2)                 |       |         |
+|        |      |                                 |       |         |
+|   3    |  1   | 2 (Second matrix column)        |   INT |    I8   |
+|        |  2   | Row pos. of first non-zero elem.|   INT |    I8   |
+|        |  3   | Row pos. of last  non-zero elem.|   INT |    I8   |
+|        | 4-W  | Second banded column data       | 6*INT |   (**)  |
+|        |      |                                 |       |         |
+|   4    |  1   | 3 (Third matrix column)         |   INT |    I8   |
+|        |  2   | Row pos. of first non-zero elem.|   INT |    I8   |
+|        |  3   | Row pos. of last  non-zero elem.|   INT |    I8   |
+|        | 4-W  | Third banded column data        | 6*INT |   (**)  |
+|        |      |                                 |       |         |
+|   :    |  :   |     :                           |       |         |
+|        |      |                                 |       |         |
+|   L    |  1   | L-1 (last matrix column)        |   INT |    I8   |
+|        |  2   | Row pos. of first non-zero elem.|   INT |    I8   |
+|        |  3   | Row pos. of last  non-zero elem.|   INT |    I8   |
+|        | 4-W  | Last banded column data         | 6*INT |   (**)  |
+|        |      |                                 |       |         |
+|  L+1   |  1   | -1                              |   INT |    I8   |
+|        | 2,3  | 1,1                             | 2*INT |   2I8   |
+|        |  4   | 0.0                             |   F.P.| D26.17  |
++--------+------+---------------------------------+-------+---------+
    (Repeat records 1 through L+1 for next matrix data block.)
     Where (**) is (10E13.6), (5D26.17), or (5E26.17 for long word machines).
    (+ RECORD number does not correspond one to one to the actual
@@ -5548,27 +5556,27 @@ Remarks
 
 9. Since open core is used in data processing, the OUTPUT5 module is capable
    of handling all kinds and all sizes of input data blocks.
-=PAGE=
+
 PARAM - Parameter Processor
-
+===========================
 Purpose
-
+-------
 To perform specified operations on integer DMAP parameters.
 
 DMAP Calling Sequence
-
+---------------------
 PARAM // C,N,op / V,N,OUT / V,N,IN1 / V,N,IN2 $
 
 Input Data Blocks
-
+-----------------
 None.
 
 Output Data Blocks
-
+------------------
 None.
 
 Parameters
-
+----------
 op         a BCD operation code from the table below (Input, no default). op
            is usually specified as a "C,N" parameter.
 
@@ -5582,80 +5590,80 @@ IN2        the name of a parameter whose value is used to compute OUT
            according to the table below (Input-Integer, default = 1).
 
 Remarks
-
+-------
 1. The tables below give the results for OUT as a function of op, IN1, and
    IN2.
 
-ÚÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-³ Param  ³             Arithmetic Operations               ³
-ÃÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄ´
-³  op    ³  ADD    ³  SUB    ³  MPY    ³  DIV    ³  NOT    ³
-ÃÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄ´
-³  OUT   ³ IN1+IN2 ³ IN1-IN2 ³ IN1xIN2 ³ IN1/IN2 ³ -IN1    ³
-ÀÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÙ
++--------+-------------------------------------------------+
+| Param  |             Arithmetic Operations               |
++--------+---------+---------+---------+---------+---------+
+|  op    |  ADD    |  SUB    |  MPY    |  DIV    |  NOT    |
++--------+---------+---------+---------+---------+---------+
+|  OUT   | IN1+IN2 | IN1-IN2 | IN1xIN2 | IN1/IN2 | -IN1    |
++--------+---------+---------+---------+---------+---------+
 
- ÚÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
- ³ Param  ³              Logical Operations               ³
- ÃÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
- ³  op    ³     AND       ³      OR       ³     IMPL      ³
- ÃÄÄÄÄÄÄÄÄÅÄÄÄÂÄÄÄÂÄÄÄÂÄÄÄÅÄÄÄÂÄÄÄÂÄÄÄÂÄÄÄÅÄÄÄÂÄÄÄÂÄÄÄÂÄÄÄ´
- ³  IN1   ³<0 ³<0 ³>=0³>=0³<0 ³<0 ³>=0³>=0³<0 ³<0 ³>=0³>=0³
- ÃÄÄÄÄÄÄÄÄÅÄÄÄÅÄÄÄÅÄÄÄÅÄÄÄÅÄÄÄÅÄÄÄÅÄÄÄÅÄÄÄÅÄÄÄÅÄÄÄÅÄÄÄÅÄÄÄ´
- ³  IN2   ³<0 ³>=0³<0 ³>=0³<0 ³>=0³<0 ³>=0³<0 ³>=0³<0 ³>=0³
- ÃÄÄÄÄÄÄÄÄÅÄÄÄÅÄÄÄÅÄÄÄÅÄÄÄÅÄÄÄÅÄÄÄÅÄÄÄÅÄÄÄÅÄÄÄÅÄÄÄÅÄÄÄÅÄÄÄ´
- ³  OUT   ³-1 ³+1 ³+1 ³+1 ³-1 ³-1 ³-1 ³+1 ³-1 ³+1 ³-1 ³-1 ³
- ÀÄÄÄÄÄÄÄÄÁÄÄÄÁÄÄÄÁÄÄÄÁÄÄÄÁÄÄÄÁÄÄÄÁÄÄÄÁÄÄÄÁÄÄÄÁÄÄÄÁÄÄÄÁÄÄÄÙ
+ +--------+-----------------------------------------------+
+ | Param  |              Logical Operations               |
+ +--------+---------------+---------------+---------------+
+ |  op    |     AND       |      OR       |     IMPL      |
+ +--------+---+---+---+---+---+---+---+---+---+---+---+---+
+ |  IN1   |<0 |<0 |>=0|>=0|<0 |<0 |>=0|>=0|<0 |<0 |>=0|>=0|
+ +--------+---+---+---+---+---+---+---+---+---+---+---+---+
+ |  IN2   |<0 |>=0|<0 |>=0|<0 |>=0|<0 |>=0|<0 |>=0|<0 |>=0|
+ +--------+---+---+---+---+---+---+---+---+---+---+---+---+
+ |  OUT   |-1 |+1 |+1 |+1 |-1 |-1 |-1 |+1 |-1 |+1 |-1 |-1 |
+ +--------+---+---+---+---+---+---+---+---+---+---+---+---+
 
-ÚÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-³ Param ³                Arithmetic Relational Operations                 ³
-ÃÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄ´
-³  op   ³    EQ    ³    GE    ³    GT    ³    LE    ³    LT    ³    NE    ³
-ÃÄÄÄÄÄÄÄÅÄÄÄÂÄÄÄÂÄÄÅÄÄÄÂÄÄÄÂÄÄÅÄÄÄÂÄÄÄÂÄÄÅÄÄÄÂÄÄÄÂÄÄÅÄÄÄÂÄÄÄÂÄÄÅÄÄÄÂÄÄÄÂÄÄ´
-³IN1-IN2³<0 ³=0 ³>0³<0 ³=0 ³>0³<0 ³=0 ³>0³<0 ³=0 ³>0³<0 ³=0 ³>0³<0 ³=0 ³>0³
-ÃÄÄÄÄÄÄÄÅÄÄÄÅÄÄÄÅÄÄÅÄÄÄÅÄÄÄÅÄÄÅÄÄÄÅÄÄÄÅÄÄÅÄÄÄÅÄÄÄÅÄÄ´ÄÄÄÅÄÄÄÅÄÄ´ÄÄÄÅÄÄÄÅÄÄ´
-³  OUT  ³+1 ³-1 ³+1³+1 ³-1 ³-1³+1 ³+1 ³-1³-1 ³-1 ³+1³-1 ³+1 ³+1³-1 ³+1 ³-1³
-ÀÄÄÄÄÄÄÄÁÄÄÄÁÄÄÄÁÄÄÁÄÄÄÁÄÄÄÁÄÄÁÄÄÄÁÄÄÄÁÄÄÁÄÄÄÁÄÄÄÁÄÄÁÄÄÄÁÄÄÄÁÄÄÁÄÄÄÁÄÄÄÁÄÄÙ
++-------+-----------------------------------------------------------------+
+| Param |                Arithmetic Relational Operations                 |
++-------+----------+----------+----------+----------+----------+----------+
+|  op   |    EQ    |    GE    |    GT    |    LE    |    LT    |    NE    |
++-------+---+---+--+---+---+--+---+---+--+---+---+--+---+---+--+---+---+--+
+|IN1-IN2|<0 |=0 |>0|<0 |=0 |>0|<0 |=0 |>0|<0 |=0 |>0|<0 |=0 |>0|<0 |=0 |>0|
++-------+---+---+--+---+---+--+---+---+--+---+---+--+---+---+--+---+---+--+
+|  OUT  |+1 |-1 |+1|+1 |-1 |-1|+1 |+1 |-1|-1 |-1 |+1|-1 |+1 |+1|-1 |+1 |-1|
++-------+---+---+--+---+---+--+---+---+--+---+---+--+---+---+--+---+---+--+
 
-ÚÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-³ Param  ³                           Special Operations                     ³
-ÃÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
-³  op    ³                                  OUT                             ³
-ÃÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
-³ NOP    ³  OUT (unchanged)                                                 ³
-³        ³                                                                  ³
-³ KLOCK  ³  Current CPU time in integer seconds from the start of the job.  ³
-³        ³                                                                  ³
-³ TMTOGO ³  Remaining CPU time in integer seconds based on the TIME card.   ³
-³        ³                                                                  ³
-³ PREC   ³  Returns the currently requested precision; single precision (1) ³
-³        ³  or double precision (2).                                        ³
-³        ³                                                                  ³
-³ DIAG   ³  Turn on DIAGs IN1 through IN2.                                  ³
-³        ³    IN1 >= IN2 will turn on DIAG IN1                              ³
-³        ³    IN1 < IN2 will turn on DIAG IN1 through DIAG IN2              ³
-³        ³                                                                  ³
-³ DIAGOFF³  Turn off DIAGs IN1 through IN2 as used for DIAG.                ³
-³        ³                                                                  ³
-³ SSST   ³  Turns DIAG OUT on if OUT > 0.                                   ³
-³        ³  Turns DIAG |OUT| off if OUT <= 0.                               ³
-³        ³                                                                  ³
-³ SSSR   ³  Saves DIAG IN1 in OUT if IN1 >= 0.                              ³
-³        ³  Restores DIAG |IN1| to OUT if IN1 < 0.                          ³
-³        ³                                                                  ³
-³ STSR   ³  Saves SYSTEM(IN1) in OUT if IN1 >= 0.                           ³
-³        ³  Restores SYSTEM(IN1) to OUT if IN1 < 0.                         ³
-³        ³  (SYSTEM(IN1) is the IN1-th word in /SYSTEM/ common block.)      ³
-³        ³                                                                  ³
-³ SYSR   ³  Saves SYSTEM(IN1) in OUT.                                       ³
-³        ³                                                                  ³
-³ SYST   ³  Sets the value of both SYSTEM(IN1) and OUT to IN2.              ³
-ÀÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
++--------+------------------------------------------------------------------+
+| Param  |                           Special Operations                     |
++--------+------------------------------------------------------------------+
+|  op    |                                  OUT                             |
++--------+------------------------------------------------------------------+
+| NOP    |  OUT (unchanged)                                                 |
+|        |                                                                  |
+| KLOCK  |  Current CPU time in integer seconds from the start of the job.  |
+|        |                                                                  |
+| TMTOGO |  Remaining CPU time in integer seconds based on the TIME card.   |
+|        |                                                                  |
+| PREC   |  Returns the currently requested precision; single precision (1) |
+|        |  or double precision (2).                                        |
+|        |                                                                  |
+| DIAG   |  Turn on DIAGs IN1 through IN2.                                  |
+|        |    IN1 >= IN2 will turn on DIAG IN1                              |
+|        |    IN1 < IN2 will turn on DIAG IN1 through DIAG IN2              |
+|        |                                                                  |
+| DIAGOFF|  Turn off DIAGs IN1 through IN2 as used for DIAG.                |
+|        |                                                                  |
+| SSST   |  Turns DIAG OUT on if OUT > 0.                                   |
+|        |  Turns DIAG |OUT| off if OUT <= 0.                               |
+|        |                                                                  |
+| SSSR   |  Saves DIAG IN1 in OUT if IN1 >= 0.                              |
+|        |  Restores DIAG |IN1| to OUT if IN1 < 0.                          |
+|        |                                                                  |
+| STSR   |  Saves SYSTEM(IN1) in OUT if IN1 >= 0.                           |
+|        |  Restores SYSTEM(IN1) to OUT if IN1 < 0.                         |
+|        |  (SYSTEM(IN1) is the IN1-th word in /SYSTEM/ common block.)      |
+|        |                                                                  |
+| SYSR   |  Saves SYSTEM(IN1) in OUT.                                       |
+|        |                                                                  |
+| SYST   |  Sets the value of both SYSTEM(IN1) and OUT to IN2.              |
++--------+------------------------------------------------------------------+
 
 2. PARAM does its own SAVE; therefore, a SAVE is not needed following the
    module.
 
 Examples
-
+--------
 1. To change the sense of parameter NOXYZ (which may be useful for the COND or
    EQUIV instructions):
 
@@ -5695,29 +5703,29 @@ Examples
    PARAM // *DIAG* // 1 / 6 $
 
    This can also be done with the Executive Control card DIAG 1,2,3,4,5,6.
-=PAGE=
+
 PARAMD - Parameter Processor, Double Precision
-
+==============================================
 Purpose
-
+-------
 To perform specified arithmetic, logical, and conversion operations on double
 precision real or double precision complex parameters.
 
 DMAP Calling Sequence
-
+---------------------
 PARAMD  // C,N,OP / V,N,OUTD / V,N,IND1 / V,N,IND2 / V,N,OUTC /
                    V,N,INC1 / V,N,INC2 /  V,N,FLAG   $
 
 Input Data Blocks
-
+-----------------
 None.
 
 Output Data Blocks
-
+------------------
 None.
 
 Parameters
-
+----------
 OP         Input-BCD operation code from the table below, no default.
 
 OUTD       Output-Double precision, default = 0.0D+0.
@@ -5745,7 +5753,7 @@ ERR        If FLAG is set to 0 (or by default), NASTRAN system NOGO flag (the
            preceding PARAMD (or PARAMR) has non-fatal error(s).
 
 Remarks
-
+-------
 1. All parameters, except OP, must be "V" type. Default parameter values will
    be used in case of error. Error in input parameter(s) would cause output
    parameter(s) to pick up the original default value(s).
@@ -5768,7 +5776,7 @@ Remarks
    code is also available in PARAMR.
 
 Examples
-
+--------
 PARAMR  //*ERR*  $
 PARAMR  //*ADD*     /V,N,R1SP4  /V,N,R1    /V,N,SP4   $
 PARAMR  //*SUB*     /V,N,R1SP4  /V,N,R1    /V,N,SP4   $
@@ -5785,30 +5793,30 @@ PARAMD  //*EQ*     //V,N,EXPX   /V,N,DP4////V,N,EQFLG $
 PARAMD  //*DIVC* ////V,N,DIVCX  /C,Y,DCPLX4/V,N,CDP4  $
 PARAMD  //*ERR*  ////  //       /C,N,1                $
 PRTPARM // 0     $
-=PAGE=
+
 PARAML - Abstract Parameters From a List
-
+========================================
 Purpose
-
+-------
 To convert an element from a GINO matrix or table data block to a legitimate
 NASTRAN parameter, or parameters.
 
 DMAP Calling Sequence
-
+---------------------
 PARAML  DB // C,N,OP / V,N,P1 / V,N,P2 / V,N,RSP/ V,N,INT/ V,N,RDP/
               V,N,BCD/ V,N,CSX/ V,N,CDX   $
 
 Input Data Blocks
-
+-----------------
 DB         Any GINO data block file (table or matrix, single precision or
            double precision, real or complex).
 
 Output Data Blocks
-
+------------------
 None.
 
 Parameters
-
+----------
 OP         One of the following key words, BCD input, no default. "MATRIX",
            "NULL", "PRESENCE", "TRAILER", "TABLE1", "TABLE2", or "TABLE4".
 
@@ -5829,7 +5837,7 @@ CSX        Output, single precision complex number, default = (0.,0.).
 CDX        Output, double precision complex, default = (0.D+0,0.D+0).
 
 Remarks
-
+-------
 1. RSP, INT, RDP, BCD, CSX and CDX will be set by the module whenever they are
    present and of the "V" type parameters. The parameters will be printed out
    in their respective formats according to their precision types. Warning
@@ -5904,16 +5912,16 @@ are not saved.
 9. If OP = TRAILER, P2 is output as the value of ith word of the matrix
    trailer where i is set by P1 in accordance with the following table.
 
-ÚÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-³ P1 ³             TERM OF MATRIX TRAILER                          ³
-ÃÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
-³  1 ³ Numbers of columns                                          ³
-³  2 ³ Number of rows                                              ³
-³  3 ³ Form of matrix                                              ³
-³  4 ³ Precision of matrix                                         ³
-³  5 ³ Maximum number of nonzero terms in any column of the matrix ³
-³  6 ³ Matrix density                                              ³
-ÀÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
++----+-------------------------------------------------------------+
+| P1 |             TERM OF MATRIX TRAILER                          |
++----+-------------------------------------------------------------+
+|  1 | Numbers of columns                                          |
+|  2 | Number of rows                                              |
+|  3 | Form of matrix                                              |
+|  4 | Precision of matrix                                         |
+|  5 | Maximum number of nonzero terms in any column of the matrix |
+|  6 | Matrix density                                              |
++----+-------------------------------------------------------------+
 
 10.   One or more of the output parameters can be requested simultaneously.
 
@@ -5925,7 +5933,7 @@ are not saved.
 12.   See SCALAR module for similar capability.
 
 Examples
-
+--------
 Obtain the value in column 1, row 4 of a real matrix, and record 2 word 5 of a
 table.
 
@@ -5946,30 +5954,30 @@ CSTERM,TERM3 = KGG(4,1), in single precision complex expression,
 CDTERM,TERM4 = KGG(4,1), in double precision complex expression
 ATERM  = 2nd word of the 2nd record of CASECC, integer, and
 BTERM  = 5th and 6th words of the 2nd record of CASECC, 2 BCD words.
-=PAGE=
+
 PARAMR - Parameter Processor, Real
-
+==================================
 Purpose
-
+-------
 To perform specified arithmetic, logical, and conversion operations on real or
 complex parameters.
 
 DMAP Calling Sequence
-
+---------------------
 PARAMR  // C,N,OP / V,N,OUTR / V,N,INR1 / V,N,INR2
                     V,N,OUTC / V,N,INC1 / V,N,INC2
                     V,N,FLAG $
 
 Input Data Blocks
-
+-----------------
 None.
 
 Output Data Blocks
-
+------------------
 None.
 
 Parameters
-
+----------
 OP         Input-BCD operation code from the table below, no default.
 
 OUTR       Output-Real, default = 0.0.
@@ -6027,7 +6035,7 @@ FIX       FLAG = FIX (OUTR)
 FLOAT     OUTR = FLOAT(FLAG)
 
 Remarks
-
+-------
 1. Any output parameter must be "V" type if the parameter is used by "OP" as
    output.
 
@@ -6038,28 +6046,28 @@ Remarks
 
 4. For OP = SIN, OP = COS, or OP = TAN, the input must be expressed in
    radians.
-=PAGE=
+
 PRTPARM - Parameter and DMAP Message Printer
-
+============================================
 Purpose
-
+-------
 A. Prints parameter values.
 B. Prints DMAP messages.
 
 DMAP Calling Sequence
-
+---------------------
 PRTPARM // C,N,a / C,N,b / C,N,c $
 
 Input Data Blocks
-
+-----------------
 None.
 
 Output Data Blocks
-
+------------------
 None.
 
 Parameters
-
+----------
 a          Integer value (no default value).
 
 b          BCD value (default value = XXXXXXXX).
@@ -6067,7 +6075,7 @@ b          BCD value (default value = XXXXXXXX).
 c          Integer value (default value = 0).
 
 Method
-
+------
 A. As a parameter printer, use a = 0. There are two options:
 
    1. b = parameter name will cause the printout of the value of that
@@ -6096,7 +6104,7 @@ B. As a DMAP message printer, use a not equal to 0. There are two options:
       Example: PRTPARM  // C,N,-2 / C,N,PLA $
 
 Remarks
-
+-------
 1. b is always a value.
 
 2. Meaningless values of a and b will result in diagnostic messages from
@@ -6104,45 +6112,45 @@ Remarks
 
 3. Following is a table of b category values.
 
-ÚÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄ¿
-³   ³                                              ³             ³  Number of ³
-³   ³        DISPLACEMENT Rigid Formats            ³ Value of b  ³  Messages  ³
-ÃÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄ´
-³ 1 ³  Static Analysis                             ³  STATICS    ³      5     ³
-³ 2 ³  Static Analysis with Inertia Relief         ³  INERTIA    ³      6     ³
-³ 3 ³  Normal Mode Analysis                        ³  MODES      ³      4     ³
-³ 4 ³  Static Analysis with Differential Stiffness ³  DIFFSTIF   ³      5     ³
-³ 5 ³  Buckling Analysis                           ³  BUCKLING   ³      6     ³
-³ 6 ³  Piecewise Linear Static Analysis            ³  PLA        ³      5     ³
-³ 7 ³  Direct Complex Eigenvalue Analysis          ³  DIRCEAD    ³      3     ³
-³ 8 ³  Direct Frequency and Random Response        ³  DIRFRRD    ³      4     ³
-³ 9 ³  Direct Transient Response                   ³  DIRTRD     ³      3     ³
-³10 ³  Modal Complex Eigenvalue Analysis           ³  MDLCEAD    ³      5     ³
-³11 ³  Modal Frequency and Random Response         ³  MDLFRRD    ³      7     ³
-³12 ³  Modal Transient Response                    ³  MDLTRD     ³      6     ³
-³13 ³  Normal Modes Analysis with Differential     ³  NMDSTIF    ³      6     ³
-³   ³  Stiffness                                   ³             ³            ³
-³14 ³  Static Analysis with Cyclic Symmetry        ³  CYCSTAT    ³      6     ³
-³15 ³  Normal Modes Analysis with Cyclic Symmetry  ³  CYCMODES   ³      6     ³
-³16 ³  Static Aerothermoelastic Design/Analysis    ³  ASTAT      ³      5     ³
-³   ³  of Axial-Flow Compressors                   ³             ³            ³
-ÃÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄ´
-³   ³          HEAT Rigid Formats                  ³             ³            ³
-ÃÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄ´
-³ 1 ³  Static Heat Transfer                        ³  HSTAT      ³      4     ³
-³ 3 ³  Nonlinear Static Heat Transfer              ³  HNLIN      ³      3     ³
-³ 9 ³  Transient Heat Transfer                     ³  HTRD       ³      2     ³
-ÃÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄ´
-³   ³          AERO Rigid Formats                  ³             ³            ³
-ÃÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄ´
-³ 9 ³  Blade Cyclic Modal Flutter Analysis         ³  BLADE      ³      7     ³
-³10 ³  Modal Flutter Analysis                      ³  FLUTTER    ³      5     ³
-³11 ³  Modal Aeroelastic Response                  ³  AERORESP   ³      4     ³
-ÃÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄ´
-³   ³  Direct Matrix Abstraction Program           ³             ³            ³
-ÃÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄ´
-³   ³  DMAP                                        ³  DMAP       ³See Remark 5³
-ÀÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÙ
++---+----------------------------------------------+-------------+------------+
+|   |                                              |             |  Number of |
+|   |        DISPLACEMENT Rigid Formats            | Value of b  |  Messages  |
++---+----------------------------------------------+-------------+------------+
+| 1 |  Static Analysis                             |  STATICS    |      5     |
+| 2 |  Static Analysis with Inertia Relief         |  INERTIA    |      6     |
+| 3 |  Normal Mode Analysis                        |  MODES      |      4     |
+| 4 |  Static Analysis with Differential Stiffness |  DIFFSTIF   |      5     |
+| 5 |  Buckling Analysis                           |  BUCKLING   |      6     |
+| 6 |  Piecewise Linear Static Analysis            |  PLA        |      5     |
+| 7 |  Direct Complex Eigenvalue Analysis          |  DIRCEAD    |      3     |
+| 8 |  Direct Frequency and Random Response        |  DIRFRRD    |      4     |
+| 9 |  Direct Transient Response                   |  DIRTRD     |      3     |
+|10 |  Modal Complex Eigenvalue Analysis           |  MDLCEAD    |      5     |
+|11 |  Modal Frequency and Random Response         |  MDLFRRD    |      7     |
+|12 |  Modal Transient Response                    |  MDLTRD     |      6     |
+|13 |  Normal Modes Analysis with Differential     |  NMDSTIF    |      6     |
+|   |  Stiffness                                   |             |            |
+|14 |  Static Analysis with Cyclic Symmetry        |  CYCSTAT    |      6     |
+|15 |  Normal Modes Analysis with Cyclic Symmetry  |  CYCMODES   |      6     |
+|16 |  Static Aerothermoelastic Design/Analysis    |  ASTAT      |      5     |
+|   |  of Axial-Flow Compressors                   |             |            |
++---+----------------------------------------------+-------------+------------+
+|   |          HEAT Rigid Formats                  |             |            |
++---+----------------------------------------------+-------------+------------+
+| 1 |  Static Heat Transfer                        |  HSTAT      |      4     |
+| 3 |  Nonlinear Static Heat Transfer              |  HNLIN      |      3     |
+| 9 |  Transient Heat Transfer                     |  HTRD       |      2     |
++---+----------------------------------------------+-------------+------------+
+|   |          AERO Rigid Formats                  |             |            |
++---+----------------------------------------------+-------------+------------+
+| 9 |  Blade Cyclic Modal Flutter Analysis         |  BLADE      |      7     |
+|10 |  Modal Flutter Analysis                      |  FLUTTER    |      5     |
+|11 |  Modal Aeroelastic Response                  |  AERORESP   |      4     |
++---+----------------------------------------------+-------------+------------+
+|   |  Direct Matrix Abstraction Program           |             |            |
++---+----------------------------------------------+-------------+------------+
+|   |  DMAP                                        |  DMAP       |See Remark 5|
++---+----------------------------------------------+-------------+------------+
 
 4. For details on error messages for the ith Displacement Rigid Format, see
    Section 3.(i+1). The Heat and Aero Rigid Formats follow these.
@@ -6150,28 +6158,28 @@ Remarks
 5. The message number, a, may be any integer for DMAP messages.
 
 6. The third parameter is not used.
-=PAGE=
+
 SCALAR - Convert Matrix Element to Parameter
-
+============================================
 Purpose
-
+-------
 To extract a specified element from a matrix for use as a parameter.
 
 DMAP Calling Sequence
-
+---------------------
 SCALAR  DB // C,N,ROW/C,N,COL/V,N,RSP/V,N,RDP/V,N,CSX/V,N,CDX   $
 
 Input Data Blocks
-
+-----------------
 DB         May be any type of matrix (single precision or double precision,
            real or complex).
 
 Output Data Blocks
-
+------------------
 None.
 
 Parameters
-
+----------
 ROW        Row number of element to be extracted from [DB]. Input-Integer,
            default = 1.
 
@@ -6190,7 +6198,7 @@ CDX        Output, value of element (ROW,COL) in single precision complex,
            default = (0.D+0,0.D+0).
 
 Remarks
-
+-------
 1. RSP, RDP, CSX, and CDX will be set by the module whenever they are present
    and of the "V" type parameters. The parameters will be printed out in their
    respective formats according to their precision types. Warning message will
@@ -6213,7 +6221,7 @@ Remarks
 6. See PARAML for a similar capability.
 
 Examples
-
+--------
 Obtain the value of the element in column 8 and row 2 of the matrix KLL.
 
 SCALAR  KLL//C,N,2/C,N,8  /V,N,S1  $
@@ -6225,29 +6233,29 @@ S1 = KLL(2,8), in single precision real,
 D1 = KLL(2,8), in double precision real,
 S2 = KLL(2,8), in single precision complex expression, and
 D2 = KLL(2,8), in double precision complex expression.
-=PAGE=
+
 SEEMAT - Pictorial Matrix Output
-
+-------
 Purpose
-
+-------
 To display nonzero elements of a matrix on printer or plotter output
 positioned pictorially by row and column within the outlines of the matrix.
 
 DMAP Calling Sequence
-
+---------------------
 SEEMAT  M1,M2,M3,M4,M5 // C,N,OPTION/V,N,PFILE/V,N,PACK/
         C,N,MODEL/C,N,TYPING/C,N,PAPERX/C,N,PAPERY $
 
 Input Data Blocks
-
+-----------------
 M1,M2,M3,M4,M5  Matrix data blocks, any of which may be purged.
 
 Output Data Blocks
-
+------------------
 None.
 
 Parameters
-
+----------
 OPTION     Input BCD value, default = PRINT. This parameter specifies the
            output option. PRINT implies the use of the system output file.
            PLOT implies the use of the NASTRAN General Purpose Plotter
@@ -6293,7 +6301,7 @@ PAPERY     Input-Real, default = 0.0. This parameter specifies the vertical
            size for microfilm plotters.
 
 Method
-
+------
 The matrix is partitioned into blocks which can be printed on a single sheet
 of output paper or frame on the plotter selected. Only blocks containing
 nonzero elements will be output. Row and column indices are indicated. 
@@ -6303,7 +6311,7 @@ of the MAXLINES card in the Case Control Deck (see Section 2.3). The transpose
 of the matrix is output.
 
 Remarks
-
+-------
 1. If a plotter is used, the file PLT2 (either on tape or mass storage) must
    be made available to NASTRAN.
 
@@ -6324,7 +6332,7 @@ Remarks
    inches and is not under user control.
 
 Examples
-
+--------
 1. Specify a table plotter with typing capability as follows:
 
    SEEMAT    M1,M2,M3,M4,M5 //*PLOT*/S,N,PFILE//*T*/0 $
@@ -6343,16 +6351,16 @@ Examples
    SEEMAT    M1,M2,M3,M4,M5 // $
 
 5. For additional examples, see Section 5.8.8.
-=PAGE=
+
 SETVAL - Set Values
-
+===================
 Purpose
-
+-------
 Set integer DMAP parameter variable values equal to other integer DMAP
 parameter variables or integer DMAP parameter constants.
 
 DMAP Calling Sequence
-
+---------------------
 SETVAL  // V,N,X1 / V,N,A1 /
            V,N,X2 / V,N,A2 /
            V,N,X3 / V,H,A3 /
@@ -6360,15 +6368,15 @@ SETVAL  // V,N,X1 / V,N,A1 /
            V,N,X5 / V,N,A5 $
 
 Input Data Blocks
-
+-----------------
 None.
 
 Output Data Blocks
-
+------------------
 None.
 
 Parameters
-
+----------
 X1, X2, X3, X4, X5  Output-Integers, variables (default values = -1, except
 for X1, which has no default).
 
@@ -6376,12 +6384,12 @@ A1, A2, A3, A4, A5  Input-Integers, variables or constants (default values =
 -1).
 
 Method
-
+------
 This module sets X1 = A1, X2 = A2, X3 = A3, X4 = A4, and X5 = A5. Only two
 parameters need be specified in the calling sequence (X1 and A1).
 
 Remarks
-
+-------
 1. SETVAL does its own SAVE; therefore, a SAVE is not needed following the
    module.
 
@@ -6395,71 +6403,71 @@ Remarks
 
    PARAM //*ADD*/X1/A1/0 $
    PARAM //*NOP*/X2 = 3 $
-=PAGE=
+
 SWITCH - Interchange Data Block Names
-
+=====================================
 Purpose
-
+-------
 To interchange two data block names.
 
 DMAP Calling Sequence
-
+---------------------
 SWITCH DB1,DB2 // PARAM $
 
 Input Data Blocks
-
+-----------------
 DB1        Any NASTRAN data block.
 DB2        Any NASTRAN data block.
 
 Output Data Blocks
-
+------------------
 None.
 
 Parameters
-
+----------
 PARAM   If PARAM < 0, the switch will be performed - Input-Integer, default =
         -1.
 
 Method
-
+------
 If PARAM >= 0, a return is made; otherwise the names of the data blocks are
 interchanged. All attributes of the data within the blocks remains constant;
 only the names are changed.
 
 Remarks
-
+-------
 1. Neither input data block may be purged.
 
 2. This option is of use in iterative DMAP operations.
-=PAGE=
+
 TABPCH - Table Punch
-
+====================
 Purpose
-
+-------
 To punch NASTRAN tables onto DTI cards in order to allow transfer of data from
 one NASTRAN run to another, or to allow user postprocessing.
 
 DMAP Calling Sequence
-
+---------------------
 TABPCH TAB1,TAB2,TAB3,TAB4,TAB5 // C,N,A1 / C,N,A2 / C,N,A3 / C,N,A4 / C,N,A5 $
 
 Input Data Blocks
-
+-----------------
 TAB1, TAB2, TAB3, TAB4, TAB5  Any NASTRAN tables.
 
 Output Data Blocks
-
+------------------
 None. All output is punched onto DTI cards.
 
 Parameters
-
+----------
 A1, A2, A3, A4, A5  Input-BCD; defaults are AA, AB, AC, AD, AE.  These
 parameters are used to form the       first two characters (columns 74,
                                       75) of the continuation field for
                                       each table respectively.
 
 Remarks
-
+-------
 1. Any or all tables may be purged.
 
 2. Integer and BCD characters will be punched onto single-field cards. Real
@@ -6473,30 +6481,30 @@ Remarks
 5. Tables with 1 word BCD values (ELSETS) cannot be punched correctly.
 
 Examples
-
+--------
 TABPCH EST,,,, // C,N,ES $ will punch the EST onto cards with a continuation
 mnemonic of +ESbbbbi (where i is the sequence number).
-=PAGE=
+
 TABPRT - Formatted Table Printer
-
+================================
 Purpose
-
+-------
 To print selected table data blocks with format for ease of reading.
 
 DMAP Calling Sequence
-
+---------------------
 TABPRT     TDB // C,N,KEY / C,N,OPT1 / C,N,OPT2 $
 
 Input Data Blocks
-
+-----------------
 TDB        Table Data Block from list given under X.
 
 Output Data Blocks
-
+------------------
 None.
 
 Parameters
-
+----------
 KEY        Alphanumeric value, no default. Identifies the format to be used
            in printing the table. The allowable list is given under X.
 
@@ -6507,17 +6515,17 @@ OPT1       Integer, default value = 0. If 0, no blank lines are written
 OPT2       Integer, default value = 0. Not used at present.
 
 Output
-
+------
 The contents of the table are formatted and written on the system output file.
 
 Remarks
-
+-------
 1. The module returns in the event of any difficulty.
 
 2. The TABPT module can be used to print the contents of any data block.
 
 Examples
-
+--------
 1. TABPRT   CSTM // C,N,CSTM $
 
 2. TABPRT   GPL // C,N,GPL / C,N,1 $
@@ -6539,33 +6547,33 @@ acceptable.)
    GPL                  GPL
    GPLD                 GPLD
    GPTT                 GPTT
-=PAGE=
+
 TABPT - Table Printer
-
+=====================
 Purpose
-
+-------
 To print table data blocks (may be used for matrix data blocks if desired).
 
 DMAP Calling Sequence
-
+---------------------
 TABPT   TAB1,TAB2,TAB3,TAB4,TAB5 // $
 
 Input Data Blocks
-
+-----------------
 TAB1, TAB2, TAB3, TAB4, TAB5  Any NASTRAN data block.
 
 NOTE: Any or all input data blocks can be purged.
 
 Output Data Blocks
-
+------------------
 None.
 
 Parameters
-
+----------
 None.
 
 Remarks
-
+-------
 1. Each input data block is treated as a table and its contents are printed on
    the system output file via a prescribed format. Each word of the table is
    identified by the module as to type (Real, BCD, Integer) and an appropriate
@@ -6576,31 +6584,31 @@ Remarks
 3. Purged input data blocks are not printed.
 
 Examples
-
+--------
 TABPT   GEOM1,,,, // $
 
 TABPT   GEOM1 ,GEOM2 ,GEOM3 ,GEOM4 ,GEOM5 // $
-=PAGE=
+
 TIMETEST - Timing Data for Unit Operations
-
+==========================================
 Purpose
-
+-------
 To produce timing data for specific NASTRAN unit operations.
 
 DMAP Calling Sequence
-
+---------------------
 TIMETEST   /, / C,N,N / C,N,M / C,N,T / C,N,01 / C,N,02 $
 
 Input Data Blocks
-
+-----------------
 None.
 
 Output Data Blocks
-
+------------------
 FILE1, FILE2  Reserved for future implementation
 
 Parameters
-
+----------
 N          Outer loop index.
 
 M          Inner loop index.
@@ -6615,21 +6623,21 @@ See Section 4.140 of the NASTRAN Programmer's Manual for further description
 of the parameters.
 
 Examples
-
+--------
 TIMETEST   / , / C,N,100 / C,N,100 / C,N,1 / C,N,2 $
 
 TIMETEST   / , / C,N,10 / C,N,10 / C,N,3 / C,N,1 / C,N,127 $
-=PAGE=
+
 VEC - Create Partitioning Vector
 
 Purpose
-
+-------
 To create a partitioning vector for matrices using USET that may be used by
 matrix operation modules MERGE and PARTN. This allows you to split up long
 running modules such as SMP1.
 
 DMAP Calling Sequence
-
+---------------------
 A. For matrices generated in Rigid Formats 1-6 or prior to module GKAD (or
 GKAM) in Rigid Formats 7 - 12:
 
@@ -6640,7 +6648,7 @@ B. For matrices generated in Rigid Formats 7 - 12 after module GKAD (or GKAM):
 VEC   USETD / V / C,N,SET / C,N,SET0 / C,N,SET1 / V,N,ID $
 
 Input Data Blocks
-
+-----------------
 USET       Displacement set definition (statics).
 USETD      Displacement set definition (dynamics).
 HUSET      Displacement set definition (heat transfer).
@@ -6650,16 +6658,16 @@ NOTE: The set definition input data block may not be missing and must fit into
 open core.
 
 Output Data Blocks
-
+------------------
 V          Partitioning vector.
 
 NOTES
-
+-----
 1. If all elements are in SET0 or SET1 then V will be purged.
 2. V may not be purged prior to execution.
 
 Parameters
-
+----------
 SET        Matrix set to be partitioned (Input-BCD, no default).
 
 SET0       Upper partition of SET (Input-BCD, no default).
@@ -6670,7 +6678,7 @@ ID         Identification of bit position (see table below) (Input-Integer,
            default = 0).
 
 NOTES
-
+-----
 1. Legal parameter values are given in the table below.
 2. See Section 1.4 for a description of set notation.
 
@@ -6698,7 +6706,7 @@ NOTES
          PA                 UpA                                13
 
 Remarks
-
+-------
 1. Parameters SET0 and SET1 must be a subset of the SET matrix parameter. A
    degree of freedom may not be in both subsets.
 
@@ -6711,7 +6719,7 @@ Remarks
    SET1 will correspond to the non-zeros in the IDth position.
 
 Examples
-
+--------
 1. To partition [Kff] into a- and o- set based matrices, use
 
    VEC   USET / V / C,N,F / C,N,O / C,N,A $
@@ -6731,9 +6739,9 @@ Examples
 
    VEC   USET / V / C,N,BITID / C,N,X / C,N,X / C,N,25 $
 
-=PAGE=
-5.6  USER MODULES
 
+5.6  USER MODULES
+=================
 Module                      Basic Function                         Page
 
 DDR            User Dummy Module                                  5.6-2
@@ -6769,48 +6777,48 @@ such user module in this section. All necessary interfaces with the Executive
 System have been completed for these user modules. The procedures for
 implementing a user module are described in Section 6.12 of the Programmer's
 Manual.
-=PAGE=
+
 DDR - User Dummy Module
-
+=======================
 Purpose
-
+-------
 Can be used for any desired purpose.
 
 DMAP Calling Sequence
-
+---------------------
 (See Remarks below.)
 
 DDR   A/X/C,N,ABC/C,N,DEF/C,N,GHI $
 
 Input Data Blocks
-
+-----------------
 As desired by author of module.
 
 Output Data Blocks
-
+------------------
 As desired by author of module.
 
 Parameters
-
+----------
 Parameters may be used as desired by the author of the module. The parameter
 types are indicated by the constants in the calling sequence shown above.
 
 Remarks
-
+-------
 This module has been provided for those who may want to include a module of
 their own design in the system. The number of inputs and outputs, as well as
 the number, type, and default values of the parameters, may be changed by
 changing the Module Properties List (MPL) in subroutine XMPLDD (see Section 2
 of the Programmer's Manual).
-=PAGE=
+
 DUMMOD1 - Dummy Module 1
-
+========================
 Purpose
-
+-------
 Can be used for any desired purpose.
 
 DMAP Calling Sequence
-
+---------------------
 (See Remarks below.)
 
 DUMMOD1  I1,I2,I3,I4,I5,I6,I7,I8 /
@@ -6823,34 +6831,34 @@ DUMMOD1  I1,I2,I3,I4,I5,I6,I7,I8 /
          C,Y,P10=(-l.0D0,-1.0D0) $
 
 Input Data Blocks
-
+-----------------
 As desired by author of module.
 
 Output Data Blocks
-
+------------------
 As desired by author of module.
 
 Parameters
-
+----------
 Parameters may be used as desired by the author of the module. The parameter
 types are indicated by the default values shown in the calling sequence above.
 
 Remarks
-
+-------
 This module has been provided for those who may want to include a module of
 their own design in the system. The number of inputs and outputs, as well as
 the number, type, and default values of the parameters, may be changed by
 changing the Module Properties List (MPL) in subroutine XMPLDD (see Section 2
 of the Programmer's Manual).
-=PAGE=
+
 DUMMOD2 - Dummy Module 2
-
+========================
 Purpose
-
+-------
 Can be used for any desired purpose.
 
 DMAP Calling Sequence
-
+---------------------
 (See Remarks below.)
 
 DUMMOD2  I1,I2,I3,I4,I5,I6,I7,I8 /
@@ -6863,34 +6871,34 @@ DUMMOD2  I1,I2,I3,I4,I5,I6,I7,I8 /
          C,Y,P10=(-1.0D0,-1.0D0) $
 
 Input Data Blocks
-
+-----------------
 As desired by author of module.
 
 Output Data Blocks
-
+------------------
 As desired by author of module.
 
 Parameters
-
+----------
 Parameters may be used as desired by the author of the module. The parameter
 types are indicated by the default values shown in the calling sequence above.
 
 Remarks
-
+-------
 This module has been provided for those who may want to include a module of
 their own design in the system. The number of inputs and outputs, as well as
 the number, type, and default values of the parameters, may be changed by
 changing the Module Properties List (MPL) in subroutine XMPLDD (see Section 2
 of the Programmer's Manual).
-=PAGE=
+
 DUMMOD3 - Dummy Module 3
-
+========================
 Purpose
-
+-------
 Can be used for any desired purpose.
 
 DMAP Calling Sequence
-
+---------------------
 (See Remarks below.)
 
 DUMMOD3  I1,I2,I3,I4,I5,I6,I7,I8 /
@@ -6903,34 +6911,34 @@ DUMMOD3  I1,I2,I3,I4,I5,I6,I7,I8 /
          C,Y,P10=(-1.0D0,-1.0D0) $
 
 Input Data Blocks
-
+-----------------
 As desired by author of module.
 
 Output Data Blocks
-
+------------------
 As desired by author of module.
 
 Parameters
-
+----------
 Parameters may be used as desired by the author of the module. The parameter
 types are indicated by the default values shown in the calling sequence above.
 
 Remarks
-
+-------
 This module has been provided for those who may want to include a module of
 their own design in the system. The number of inputs and outputs, as well as
 the number, type, and default values of the parameters, may be changed by
 changing the Module Properties List (MPL) in subroutine XMPLDD (see Section 2
 of the Programmer's Manual).
-=PAGE=
+
 DUMMOD4 - Dummy Module 4
-
+========================
 Purpose
-
+-------
 Can be used for any desired purpose.
 
 DMAP Calling Sequence
-
+---------------------
 (See Remarks below.)
 
 DUMMOD4  I1,I2,I3,I4,I5,I6,I7,I8 /
@@ -6943,30 +6951,30 @@ DUMMOD4  I1,I2,I3,I4,I5,I6,I7,I8 /
          C,Y,P10=(-1.0D0,-1.0D0) $
 
 Input Data Blocks
-
+-----------------
 As desired by author of module.
 
 Output Data Blocks
-
+------------------
 As desired by author of module.
 
 Parameters
-
+----------
 Parameters may be used as desired by the author of the module. The parameter
 types are indicated by the default values shown in the calling sequence above.
 
 Remarks
-
+-------
 This module has been provided for those who may want to include a module of
 their own design in the system. The number of inputs and outputs, as well as
 the number, type, and default values of the parameters, may be changed by
 changing the Module Properties List (MPL) in subroutine XMPLDD (see Section 2
 of the Programmer's Manual).
-=PAGE=
+
 DUMMOD5 - Dummy Module 5
-
+========================
 Purpose
-
+-------
 Converts certain NASTRAN output tabular data blocks into NASTRAN matrix data
 blocks (GINO files) or to a magnetic tape of special matrix form (by column,
 unpacked, from first non-zero term to last non-zero term), similar to that
@@ -6974,12 +6982,12 @@ generated by OUTPUT5. The data on the tape can be read into NASTRAN by the
 INPUTT5 module. DUMMOD5 handles only single precision data blocks.
 
 DMAP Calling Sequence
-
+---------------------
 DUMMOD5  T1,T2,T3,T4,T5 / 01,02,03,04,05 / C,N,P1 / C,N,P2 / C,N,P3 /
          C,N,P4 / C,N,P5 / C,N,Q $
 
 Input Data Blocks
-
+-----------------
 Ti         NASTRAN GINO single precision files, such as OEF1, OQG1, or
            similar type of tabular data blocks, whose fixed length records
            can be rearranged into the columns of a matrix. Any or all of the
@@ -6987,7 +6995,7 @@ Ti         NASTRAN GINO single precision files, such as OEF1, OQG1, or
            be processed.
 
 Output Data Blocks
-
+------------------
 All output data blocks are written in single precision. See Method below for
 more details.
 
@@ -6997,7 +7005,7 @@ more details.
 INP1       Unit 15, FORTRAN written tape, unformatted.
 
 Parameters
-
+----------
 Pi         Each Pi parameter corresponds to each Ti-0i conversion process.
            The tabular input data records in Ti are mapped into a Pi by 8
            two-dimensional matrix space. See Method below for more details.
@@ -7011,7 +7019,7 @@ Q          Print-punch control of the element/grid table gathered from the
            =  /2/, print contents of output tape INP1 after it is generated.
 
 Method
-
+------
 A record of the input data block (Ti) is read. The first word is saved in an
 element/grid table. The next eight words are saved in the Pi by 8 matrix
 space, row-wise. If the record has more than nine words, the rest of the
@@ -7030,53 +7038,53 @@ matrix is then written out to INP1 tape (unit 15), column-wise, unpacked, from
 first non-zero term to last non-zero term, in binary records. The content of
 INP1 tape is written similarly to those written by OUTPUT5, as shown below.
 
-ÚÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄ¿
-³  RECORD  ³   WORD  ³   CONTENTS                                ³   TYPE    ³
-ÃÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄ´
-³      0   ³         ³   Tape header record                      ³           ³
-³          ³   1,2   ³   "xxxxxxxx" (tape ID)                    ³  2*BCD    ³
-³          ³   3,4   ³   Machine type                            ³  2*BCD    ³
-³          ³   5,7   ³   Date                                    ³  3*INT    ³
-³          ³     8   ³   System buffer size                      ³    INT    ³
-³          ³     9   ³   0, binary tape                          ³    INT    ³
-³          ³         ³                                           ³           ³
-³      1   ³         ³   First matrix (01) header                ³           ³
-³          ³     1   ³   0                                       ³    INT    ³
-³          ³   2,3   ³   1,1                                     ³  2*INT    ³
-³          ³     4   ³   0.0D0                                   ³   D.P.    ³
-³          ³  5-10   ³   6 words from matrix trailer             ³  6*INT    ³
-³          ³         ³   (col,row,form,type,max,density          ³           ³
-³          ³         ³    where type=1 or 3)                     ³           ³
-³          ³  11,12  ³   Matrix DMAP name                        ³  2*BCD    ³
-³          ³         ³                                           ³           ³
-³      2   ³     1   ³   1 (first column ID)                     ³    INT    ³
-³          ³     2   ³   Location of first non-zero element      ³    INT    ³
-³          ³     3   ³   Location of last non-zero element       ³    INT    ³
-³          ³   4-n   ³   S.P. data                               ³   REAL    ³
-³          ³         ³                                           ³           ³
-³      3   ³     1   ³   2 (second column ID)                    ³           ³
-³          ³   2-n   ³   Same as record 1                        ³           ³
-³      :   ³   1-n   ³   Repeat for more columns                 ³           ³
-³          ³         ³                                           ³           ³
-³     (x   ³     1   ³   x (x-th column ID, a null column        ³    INT    ³
-³          ³   2,3   ³   1,1                                     ³    INT    ³
-³          ³   4,5   ³   0.0, 0.0                                ³   REAL    ³
-³          ³         ³                                           ³           ³
-³      l   ³   1-n   ³   l-1, last column, same as record 1      ³           ³
-³    l+1   ³     1   ³   -1 (element) or -2 (grid)               ³    INT    ³
-³          ³     2   ³   1                                       ³    INT    ³
-³          ³     3   ³   Length of element/grid table, T         ³    INT    ³
-³          ³ 4-(T+4) ³   Table of element or grid IDs            ³    INT    ³
-³          ³         ³                                           ³           ³
-³    l+2   ³         ³   Second matrix (02) header               ³           ³
-³      :   ³     :   ³   Repeat above 1 through l+1 for 02       ³           ³
-³          ³         ³                                           ³           ³
-³      :   ³     :   ³   Repeat, up to 5 output data blocks      ³           ³
-³          ³         ³   per tape                                ³           ³
-ÀÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÙ
++----------+---------+-------------------------------------------+-----------+
+|  RECORD  |   WORD  |   CONTENTS                                |   TYPE    |
++----------+---------+-------------------------------------------+-----------+
+|      0   |         |   Tape header record                      |           |
+|          |   1,2   |   "xxxxxxxx" (tape ID)                    |  2*BCD    |
+|          |   3,4   |   Machine type                            |  2*BCD    |
+|          |   5,7   |   Date                                    |  3*INT    |
+|          |     8   |   System buffer size                      |    INT    |
+|          |     9   |   0, binary tape                          |    INT    |
+|          |         |                                           |           |
+|      1   |         |   First matrix (01) header                |           |
+|          |     1   |   0                                       |    INT    |
+|          |   2,3   |   1,1                                     |  2*INT    |
+|          |     4   |   0.0D0                                   |   D.P.    |
+|          |  5-10   |   6 words from matrix trailer             |  6*INT    |
+|          |         |   (col,row,form,type,max,density          |           |
+|          |         |    where type=1 or 3)                     |           |
+|          |  11,12  |   Matrix DMAP name                        |  2*BCD    |
+|          |         |                                           |           |
+|      2   |     1   |   1 (first column ID)                     |    INT    |
+|          |     2   |   Location of first non-zero element      |    INT    |
+|          |     3   |   Location of last non-zero element       |    INT    |
+|          |   4-n   |   S.P. data                               |   REAL    |
+|          |         |                                           |           |
+|      3   |     1   |   2 (second column ID)                    |           |
+|          |   2-n   |   Same as record 1                        |           |
+|      :   |   1-n   |   Repeat for more columns                 |           |
+|          |         |                                           |           |
+|     (x   |     1   |   x (x-th column ID, a null column        |    INT    |
+|          |   2,3   |   1,1                                     |    INT    |
+|          |   4,5   |   0.0, 0.0                                |   REAL    |
+|          |         |                                           |           |
+|      l   |   1-n   |   l-1, last column, same as record 1      |           |
+|    l+1   |     1   |   -1 (element) or -2 (grid)               |    INT    |
+|          |     2   |   1                                       |    INT    |
+|          |     3   |   Length of element/grid table, T         |    INT    |
+|          | 4-(T+4) |   Table of element or grid IDs            |    INT    |
+|          |         |                                           |           |
+|    l+2   |         |   Second matrix (02) header               |           |
+|      :   |     :   |   Repeat above 1 through l+1 for 02       |           |
+|          |         |                                           |           |
+|      :   |     :   |   Repeat, up to 5 output data blocks      |           |
+|          |         |   per tape                                |           |
++----------+---------+-------------------------------------------+-----------+
 
 Remarks
-
+-------
 1. This module is very limited in scope. It handles only some special types of
    tabular input data blocks. This module is designed to be used for a
    particular job or jobs.
@@ -7092,210 +7100,210 @@ Remarks
 3. The INP1 tape generated by DUMMOD5 can be read by the INPUTT5 module. Any
    future changes in the tape format must also appear in the INPUTT5 and
    OUTPUT5 modules.
-=PAGE=
+
 MATGEN - User Dummy Module
-
+==========================
 Purpose
-
+-------
 Can be used for any desired purpose.
 
 DMAP Calling Sequence
-
+---------------------
 (See Remarks below.)
 
 MATGEN   I01,I02,...,I20,I21 / O1,O2,O3 / V,N,Pl=0 /
          V,N,P2=0 / ... / V,N,P22=0 $
 
 Input Data Blocks
-
+-----------------
 As desired by author of module.
 
 Output Data Blocks
-
+------------------
 As desired by author of module.
 
 Parameters
-
+----------
 Parameters may be used as desired by the author of the module. The parameter
 types are indicated by the default values shown in the calling sequence above.
 
 Remarks
-
+-------
 This module has been provided for those who may want to include a module of
 their own design in the system. The number of inputs and outputs, as well as
 the number, type, and default values of the parameters, may be changed by
 changing the Module Properties List (MPL) in subroutine XMPLDD (see Section 2
 of the Programmer's Manual).
-=PAGE=
+
 MODA - User Dummy Module
-
+========================
 Purpose
-
+-------
 Can be used for any desired purpose.
 
 DMAP Calling Sequence
-
+---------------------
 (See Remarks below.)
 
 MODA   / W,X,Y,Z / C,N,0.0 / C,N,0.0 / C,N,0.0 / C,N,0.0 / C,N,0.0 / C,N,0 /
          C,N,0 / C,N,0 / C,N,0 / C,N,0 / C,N,0.0 / C,N,0 / C,N,0 $
 
 Input Data Blocks
-
+-----------------
 None.
 
 Output Data Blocks
-
+------------------
 As desired by author of module.
 
 Parameters
-
+----------
 Parameters may be used as desired by the author of the module. The parameter
 types are indicated by the default values shown in the calling sequence above.
 
 Remarks
-
+-------
 This module has been provided for those who may want to include a module of
 their own design in the system. The number of inputs and outputs, as well as
 the number, type, and default values of the parameters, may be changed by
 changing the Module Properties List (MPL) in subroutine XMPLDD (see Section 2
 of the Programmer's Manual).
-=PAGE=
+
 MODB - User Dummy Module
 
 Purpose
-
+-------
 Can be used for any desired purpose.
 
 DMAP Calling Sequence
-
+---------------------
 (See Remarks below.)
 
 MODB   / W,X,Y,Z / C,N,1.0 / C,N,1.0 / C,N,1.0 / C,N,1.0 / C,N,0 / C,N,0 /
          C,N,0 / C,N,1.0 / C,N,0 / C,N,0 / C,N,0  $
 
 Input Data Blocks
-
+-----------------
 As desired by author of module.
 
 Output Data Blocks
-
+------------------
 As desired by author of module.
 
 Parameters
-
+----------
 Parameters may be used as desired by the author of the module. The parameter
 types are indicated by the default values shown in the calling sequence above.
 
 Remarks
-
+-------
 This module has been provided for those who may want to include a module of
 their own design in the system. The number of inputs and outputs, as well as
 the number, type, and default values of the parameters, may be changed by
 changing the Module Properties List (MPL) in subroutine XMPLDD (see Section 2
 of the Programmer's Manual).
-=PAGE=
+
 MODC - User Dummy Module
 
 Purpose
-
+-------
 Can be used for any desired purpose.
 
 DMAP Calling Sequence
-
+---------------------
 (See Remarks below.)
 
 MODC   A,B // C,N,-l $
 
 Input Data Blocks
-
+-----------------
 As desired by author of module.
 
 Output Data Blocks
-
+------------------
 None.
 
 Parameters
-
+----------
 Parameters may be used as desired by the author of the module. The parameter
 types are indicated by the default values shown in the calling sequence above.
 
 Remarks
-
+-------
 This module has been provided for those who may want to include a module of
 their own design in the system. The number of inputs and outputs, as well as
 the number, type, and default values of the parameters, may be changed by
 changing the Module Properties List (MPL) in subroutine XMPLDD (see Section 2
 of the Programmer's Manual).
-=PAGE=
+
 OUTPUT - Auxiliary Output File Processor
-
+========================================
 Purpose
-
+-------
 A user-written module to generate printer, plotter, or punch output.
 
 DMAP Calling Sequence
-
+---------------------
 (See Remarks below.)
 
 OUTPUT   IN // C,Y,P=-l $
 
 Input Data Blocks
-
+-----------------
 IN         Contains any desired information which the module extracts and
            writes on the system output file, punch, or either of the two
            plotters. May be purged.
 
 Output Data Blocks
-
+------------------
 None.
 
 Parameters
-
+----------
 Parameters may be used as desired by the author of the module. Type is Integer
 with MPL default value of -1 as shown above.
 
 Remarks
-
+-------
 This module has been provided for those who may want to process their own
 output. The number of inputs as well as the number, type, and default values
 of parameters may be changed by changing the Module Properties List (MPL) in
 subroutine XMPLDD (see Section 2 of the Programmer's Manual).
-=PAGE=
+
 XYPRNPLT - User Dummy Module
 
 Purpose
-
+-------
 Can be used for any desired purpose.
 
 DMAP Calling Sequence
-
+---------------------
 (See Remarks below.)
 
 XYPRNPLT   A // $
 
 Input Data Blocks
-
+-----------------
 As desired by the author of module.
 
 Output Data Blocks
-
+------------------
 None.
 
 Parameters
-
+----------
 None.
 
 Remarks
-
+-------
 This module has been provided for those who may want to process their own
 output. The number of inputs and outputs as well as the number, type, and
 default values of parameters may be changed by changing the Module Properties
 List (MPL) in subroutine XMPLDD (see Section 2 of the Programmer's Manual).
 
-=PAGE=
-5.7  EXECUTIVE OPERATION MODULES
 
+5.7  EXECUTIVE OPERATION MODULES
+================================
 Module                     Basic Function                         Page
 
 BEGIN          Always first in DMAP; begin DMAP program          5.7-2
@@ -7337,20 +7345,20 @@ described in this section. Additional discussions concerning the interaction
 of the Executive Modules with themselves and with the NASTRAN Executive System
 are contained in Section 5.2.3.
 
-=PAGE=
+
 BEGIN - Begin DMAP Program
-
+==========================
 Purpose
-
+-------
 BEGIN is a declarative DMAP instruction which may be used to denote the
 beginning of a DMAP program.
 
 DMAP Calling Sequence
-
+---------------------
 BEGIN $
 
 Remarks
-
+-------
 1.BEGIN is a non-executable DMAP instruction which is used only by the DMAP
   compiler for information purposes.
 
@@ -7360,16 +7368,16 @@ Remarks
 
 3.The use of BEGIN implicitly elects all compiler defaults. (See XDMAP
   instruction.)
-=PAGE=
+
 CHKPNT - Checkpoint
 
 Purpose
-
+-------
 Causes data blocks to be written on the New Problem Tape (NPTP) to enable the
 problem to be restarted with a minimum of redundant processing.
 
 DMAP Calling Sequence
-
+---------------------
 CHKPNT D1,D2,...,DN $
 
 where D1,D2,...,DN (N >= 1) are data blocks to be copied onto the problem tape
@@ -7398,18 +7406,18 @@ Rules
   written on the Problem Tape.
 
 Remarks
-
+-------
 1.See the PRECHK instruction for an automated CHKPNT capability.
-=PAGE=
+
 COMPOFF - Conditional DMAP Compilation Off
-
+==========================================
 Purpose
-
+-------
 To allow blocks of DMAP statements to be compiled or skipped depending upon
 the value of a bulk data parameter. (The companion module is COMPON.)
 
 DMAP Calling Sequence
-
+---------------------
 COMPOFF LBLNAME,PARNAME $
          or
 COMPOFF c,PARNAME $
@@ -7425,13 +7433,13 @@ where:
 3.PARNAME is the name of a parameter that appears on a PARAM bulk data card.
 
 Method
-
+------
 The block of DMAP statements specified by the label or count is skipped if the
 value of the parameter is < 0. The block of DMAP statements will be compiled
 if the value of the parameter is >= 0.
 
 Example
-
+-------
 COMPOFF LBL,NAM1 $
 MODULE1 A/B/L $
 MODULE2 C/D/M $
@@ -7450,7 +7458,7 @@ compiled if the value of parameter NAM1 is < 0 and modules MODULE4 and MODULE5
 will not be compiled if the value of parameter NAM2 is < 0.
 
 Remarks
-
+-------
 1.If no PARAM bulk data card is provided to define the parameter, a value of
   0 is assumed.
 
@@ -7462,16 +7470,16 @@ Remarks
 
 4.COMPOFF and COMPON instructions may be nested up to five levels using the
   same rules as for FORTRAN DO loops.
-=PAGE=
+
 COMPON - Conditional DMAP Compilation On
-
+========================================
 Purpose
-
+-------
 To allow blocks of DMAP statements to be compiled or skipped depending upon
 the value of a bulk data parameter. (The companion module is COMPOFF.)
 
 DMAP Calling Sequence
-
+---------------------
 COMPON LBLNAME,PARNAME $
          or
 COMPON c,PARNAME $
@@ -7487,13 +7495,13 @@ where:
 3.PARNAME is the name of a parameter that appears on a PARAM bulk data card.
 
 Method
-
+------
 The block of DMAP statements specified by the label or count is skipped if the
 value of the parameter is >= 0. The block of DMAP statements will be compiled
 if the value of the parameter is < 0.
 
 Example
-
+-------
 COMPON LBL,NAM1 $
 MODULE1 A/B/L $
 MODULE2 C/D/M $
@@ -7512,7 +7520,7 @@ compiled if the value of parameter NAM1 is >= 0 and modules MODULE4 and
 MODULE5 will not be compiled if the value of parameter NAM2 is >= 0.
 
 Remarks
-
+-------
 1.If no PARAM bulk data card is provided to define the parameter, a value of
   0 is assumed.
 
@@ -7524,16 +7532,16 @@ Remarks
 
 4.COMPOFF and COMPON instructions may be nested up to five levels using the
   same rules as for FORTRAN DO loops.
-=PAGE=
+
 COND - Conditional Transfer
-
+===========================
 Purpose
-
+-------
 To alter the normal order of execution of DMAP modules by conditionally
 transferring program control to a specified location in the DMAP program.
 
 DMAP Calling Sequence
-
+---------------------
 COND n,V $
 
 where:
@@ -7545,7 +7553,7 @@ where:
   not to execute the transfer. If V < 0 the transfer is executed.
 
 Example
-
+-------
 BEGIN $
   :
   :
@@ -7563,43 +7571,43 @@ If K >= 0, MODULE1 is executed. If K < 0 control is transferred to the label
 L1 and MODULEN is executed.
 
 Remarks
-
+-------
 1.Only forward transfers are allowed. See the REPT instruction for backward
   transfers.
-=PAGE=
+
 END - End DMAP Program
-
+======================
 Purpose
-
+-------
 Denotes the end of a DMAP program.
 
 DMAP Calling Sequence
-
+---------------------
 END $
 
 Remarks
-
+-------
 1.The END instruction also acts as an implied EXIT instruction.
 
 2.The END card is required whenever APP DMAP is selected in the Executive
   Control Deck.
-=PAGE=
+
 EQUIV - Data Block Name Equivalence
-
+===================================
 Purpose
-
+-------
 To attach one or more equivalent (alias) data block names to an existing data
 block so that the data block can be referenced by several equivalent names.
 
 DMAP Calling Sequence
-
+---------------------
 EQUIV DBN1A,DBN2A,DBN3A / PARMA / DBN1B,DBN2B / PARMB $
 
 NOTE: The number of data block names (DBNij) prior to each parameter (PARMj)
 and the number of such groups in a particular calling sequence are variable.
 
 Input Data Blocks
-
+-----------------
 DBN1A,DBN2A, etc.  Any data block names appearing within the DMAP sequence. 
             The first data block name in each group (DBN1A and DBN1B in the
             examples above) is known as the primary data block and the second,
@@ -7608,15 +7616,15 @@ DBN1A,DBN2A, etc.  Any data block names appearing within the DMAP sequence.
             are known as secondary data blocks.
 
 Output Data Blocks
-
+------------------
 None specified or permitted.
 
 Parameters
-
+----------
 PARMA, etc. One required for each set of data block names.
 
 Method
-
+------
 The data block names in each group are made equivalent if the value of the
 associated parameter is < 0. If a number of data blocks are already
 equivalenced and the parameter value is >= 0, the equivalence is broken and
@@ -7624,7 +7632,7 @@ the data block names again become unique. If the data blocks are not
 equivalenced and the parameter value is >= 0, no action is taken.
 
 Remarks
-
+-------
 1. An EQUIV statement may appear at any time as long as the primary data block
    name has been previously defined.
 
@@ -7633,15 +7641,15 @@ Remarks
    For example,
 
    EQUIV DB1,DB2 // DB3,DB4 $
-=PAGE=
+
 EXIT - Terminate DMAP Program
-
+=============================
 Purpose
-
+-------
 To conditionally terminate the execution of the DMAP program.
 
 DMAP Calling Sequence
-
+---------------------
 EXIT  c $
 
 where c is an integer constant which specifies the number of times the
@@ -7649,37 +7657,37 @@ instruction is to be ignored before terminating the program. If c = 0 the
 calling sequence may be shortened to EXIT.
 
 Example
-
+-------
        BEGIN  $
          :
          :
-     Ú LABEL L1 $
-     ³ MODULE1 A/B/V,Y,P1 $
-DMAP ³   :
-loop ³   :
-     ³ EXIT 3 $
-     À REPT L1,3 $
+     + LABEL L1 $
+     | MODULE1 A/B/V,Y,P1 $
+DMAP |   :
+loop |   :
+     | EXIT 3 $
+     + REPT L1,3 $
          :
          :
 
        END $
 
 Remarks
-
+-------
 1. The EXIT instruction will be executed the third time the loop is repeated
    (that is, the instructions within the loop will be executed four times).
 
 2. EXIT may appear anywhere within the DMAP sequence.
-=PAGE=
+
 FILE - File Allocation Aid
-
+==========================
 Purpose
-
+-------
 To inform the File Allocator (see Section 4.9 of the Programmer's Manual) of
 any special characteristics of a data block.
 
 DMAP Calling Sequence
-
+---------------------
 FILE  A=a1,a2...aa / B=b1,b2...bb / ... / Z=z1,z2...zz $
 
 where:
@@ -7704,7 +7712,7 @@ TAPE        Indicates that data block is to be written on a physical tape if a
             physical tape is available.
 
 Remarks
-
+-------
 1. Data blocks created by the NASTRAN preface may not appear in FILE
    declarations.
 
@@ -7717,59 +7725,59 @@ Remarks
 4. A data block name may appear only once in all FILE statements; otherwise
    the first appearance will determine all special characteristics applied to
    the data block.
-=PAGE=
+
 JUMP - Unconditional Transfer
-
+=============================
 Purpose
-
+-------
 To alter the normal order of execution of DMAP modules by unconditionally
 transferring program control to a specified location in the DMAP program. The
 normal order of execution of DMAP modules is the order of occurrence of the
 modules as DMAP instructions in the DMAP program.
 
 DMAP Calling Sequence
-
+---------------------
 JUMP n $
 
 where n is a BCD name appearing on a LABEL instruction which specifies where
 control is to be transferred.
 
 Remarks
-
+-------
 1. Jumps must be forward in the DMAP sequence. See the REPT instruction for
    backward jumps.
-=PAGE=
+
 LABEL - DMAP Location
 
 Purpose
-
+-------
 To label a location in the DMAP program so that the location may be referenced
 by the DMAP instructions JUMP, COND, and REPT.
 
 DMAP Calling Sequence
-
+---------------------
 LABEL n $
 
 where n is a BCD name.
 
 Remarks
-
+-------
 1. The LABEL instruction is inserted just ahead of the DMAP instruction to be
    executed when transfer of control is made to the label.
 
 2. LABEL is a non-executable DMAP instruction which is used only by the DMAP
    compiler for information purposes.
-=PAGE=
+
 PRECHK - Predefined Automated Checkpoint
 
 Purpose
-
+-------
 To allow you to specify a single, or limited number, of checkpoint
 declarations, thereby removing the need for a large number of individual
 CHKPNT instructions to appear in a DMAP program.
 
 DMAP Calling Sequence
-
+---------------------
 PRECHK namelist $
 PRECHK ALL $
 PRECHK ALL EXCEPT namelist $
@@ -7778,7 +7786,7 @@ where namelist is a list of data block names separated by commas and not
 exceeding 50 data blocks per command.
 
 Remarks
-
+-------
 1. PRECHK is, in itself, a non-executable DMAP instruction which actuates the
    automatic generation of explicit CHKPNT instructions during the DMAP
    compilation.
@@ -7802,15 +7810,16 @@ Remarks
    CHKPNT instructions. Instead, for the sake of efficiency, each rigid format
    includes a single PRECHK ALL instruction towards the beginning of the DMAP
    sequence.
-=PAGE=
+
 PURGE - Explicit Data Block Purge
+=================================
 
 Purpose
-
+-------
 To flag a data block so that it will not be assigned to a physical file.
 
 DMAP Calling Sequence
-
+---------------------
 PURGE DBN1A,DBN2A,DBN3A / PARMA / DBN1B,DBN2B / PARMB $
 
 NOTE: The number of data block names (DBNij) prior to each parameter (PARMj)
@@ -7818,19 +7827,19 @@ and the number of groups of data block names and parameters in a particular
 calling sequence is variable.
 
 Input Data Blocks
-
+-----------------
 DBN1A,DBN2A, etc.  Any data block names appearing within the DMAP sequence.
 
 Output Data Blocks
-
+------------------
 None specified or permitted.
 
 Parameters
-
+----------
 PARMA, etc. One required for each group of data block names.
 
 Method
-
+------
 The data blocks in a group are purged if the value of the associated parameter
 is < 0. If a data block is already purged and the parameter value is >= 0, the
 purged data block is unpurged so that it may be subsequently reallocated. If
@@ -7838,20 +7847,21 @@ the data block is not purged and the parameter value is >= 0, no action is
 taken.
 
 Remarks
-
+-------
 1. If a purge is to be made at all times, i.e., the parameter value is always
    negative, it is not necessary to specify a parameter name. For example,
 
    PURGE DB1,DB2,DB3,DB4 $
-=PAGE=
+
 REPT - Repeat
+=============
 
 Purpose
-
+-------
 To repeat a group of DMAP instructions a specified number of times.
 
 DMAP Calling Sequence
-
+---------------------
 REPT n,c $ or REPT n,p $
 
 where:
@@ -7867,7 +7877,7 @@ where:
    the number of times to repeat the instructions.
 
 Example
-
+-------
 BEGIN  $                                   BEGIN  $
   :                                          :
   :                                          :
@@ -7883,7 +7893,7 @@ END $                                        :
                                            END  $
 
 Remarks
-
+-------
 1. REPT is placed at the end of the group of instructions to be repeated.
 
 2. When a variable number of loops is to be performed as in the second example
@@ -7896,16 +7906,17 @@ Remarks
 
 4. In the first example, the instructions MODULE1 to MODULEN will be repeated
    three times (that is, executed four times).
-=PAGE=
+
 SAVE - Save Variable Parameter Values
+=====================================
 
 Purpose
-
+-------
 To specify which variable parameter values are to be saved from the preceding
 functional module DMAP instruction for use by subsequent modules.
 
 DMAP Calling Sequence
-
+---------------------
 SAVE V1,V2,...,VN $
 
 where the V1,V2,...,VN (N > 0) are the BCD names of some or all of the
@@ -7913,21 +7924,21 @@ variable parameters which appear in the immediately preceding functional
 module DMAP instruction.
 
 Remarks
-
+-------
 1. A SAVE instruction must immediately follow the functional module
    instruction wherein the parameters being saved are generated.
 
 2. See Section 5.2.1.5 for a description of the alternate method of saving
    parameter values by means of the parameter specification statement.
-=PAGE=
+
 XDMAP - Execute DMAP Program
-
+============================
 Purpose
-
+-------
 To control the DMAP compiler options.
 
 DMAP Calling Sequence
-
+---------------------
       É      »    É         »    É        »    É        »    É         »
       º GO   º    º ERR = 2 º    º LIST   º    º NODECK º    º NOOSCAR º
 XDMAP º NOGO º  , º ERR = 1 º  , º NOLIST º  , º DECK   º  , º OSCAR   º  ,
@@ -7972,7 +7983,7 @@ REF         a cross reference listing of the DMAP program will be printed.
 NOREF       no cross reference listing (default).
 
 Remarks
-
+-------
 1. The XDMAP card is optional and may be replaced by a BEGIN instruction.
    However, one or the other must appear in an APP DMAP execution.
 
@@ -8003,9 +8014,9 @@ Remarks
    printed before the DMAP source listing, reflects the DIAG selections, if
    any.
 
-=PAGE=
-5.8  DMAP EXAMPLES
 
+5.8  DMAP Examples
+==================
 In order to facilitate the use of DMAP, several examples are provided in this
 section. You are urged to study these examples both from the viewpoint of
 performing a sequence of matrix operations and from that of a DMAP flow. In
@@ -8013,9 +8024,9 @@ addition, some examples have been written to illustrate the improved DMAP
 syntax. 
 
 5.8.1  DMAP to Print Table and Matrix Data Blocks and Parameters
-
+----------------------------------------------------------------
 Objective
-
+---------
 1. Print the contents of table data block A.
 
 2. Print matrix data blocks B, C, and D.
@@ -8033,7 +8044,7 @@ PARAM     // C,N,NOP / V,N,P3=-7 $       PARAM     // *NOP* / P3=-7 $
 END       $                              END       $
 
 Remarks
-
+-------
 1. To be a practical example, a restart situation is assumed. You are
    cautioned to remember to reenter at DMAP instruction 2 by changing the last
    reentry point in the restart dictionary. 
@@ -8074,7 +8085,7 @@ MATPRN  U2,,,, // $                             MATPRN  U2// $
 END     $                                       END     $
 
 Remarks
-
+-------
 1. [Kll] is assumed symmetric.
 
 2. In the example above, KLL will be decomposed twice. A more efficient DMAP
@@ -8116,7 +8127,7 @@ PRTPARM   // C,N,0 $
 END       $
 
 Remarks
-
+-------
 1. GEOM1, GEOM2, PCDB, and CASECC are generated by the Input File Processor.
 
 2. PRTPARM is used to print all current variable parameter values.
@@ -8138,13 +8149,13 @@ OFP       OPHIG,OQG1,OEF1,OES1,, // $
 END       $
 
 Remarks
-
+-------
 1. A restart from a successfully executed modal formulation is assumed.
 
 2. This DMAP sequence contains several structurally oriented modules.
 
 5.8.5  DMAP Using a User-Written Module
-
+---------------------------------------
 As an example of how you might perform matrix operations of your own design,
 the following DMAP is provided. Functional modules MODA, MODB, and MODC are
 assumed to be written by you and added to the NASTRAN system, replacing dummy
@@ -8214,9 +8225,8 @@ below:
 20 Prints out the converged solutions {x} and {y}. This module is assumed to
    be written by you. 
 
-5.8.6  DMAP ALTER Package for Using a User-Written Auxiliary Input File 
-Processor 
-
+5.8.6  DMAP ALTER Package for Using a User-Written Auxiliary Input File Processor 
+---------------------------------------------------------------------------------
 ALTER       1
 INPUT       GEOM1,,,, / G1,,,G4, / C,N,3 $
 PARAM       // C,N,NOP / V,N,TRUE=-1 $
@@ -8227,7 +8237,7 @@ LABEL       LBLXXX $
 ENDALTER
 
 Remarks
-
+-------
 1. This is an ALTER package that could be used by any Rigid Format.
 
 2. The last three instructions are needed to avoid violating the equivalence
@@ -8261,7 +8271,7 @@ MATPRN     PHIA,,,, // $
 END        $
 
 Remarks
-
+-------
 1. The echo of a test problem bulk data deck for the preceding DMAP sequence
    follows. 
 
@@ -8323,7 +8333,7 @@ LABEL     FINIS $
 END       $
 
 Remarks
-
+-------
 1. The echo of a test problem bulk data deck for the preceding DMAP sequence
    follows. 
 
@@ -8368,7 +8378,7 @@ Remarks
 8.  END        $
 
 Remarks
-
+-------
 1. Instruction number 2 causes the picture to be generated on the printer.
 
 2. Instruction number 3 causes the picture to be generated on a microfilm
@@ -8406,7 +8416,7 @@ Remarks
    from a run in which KGG and KLL were generated and checkpointed. 
 
 5.8.9  DMAP to Compute the r-th Power of a Matrix [Q]
-
+-----------------------------------------------------
 BEGIN      $
 MATPRN     Q,,,, // $
 PARAM      // C,N,NOP / V,N,TRUE=-1 $
@@ -8438,7 +8448,7 @@ MATPRN     P // $
 END        $
 
 Remarks
-
+-------
 1. The matrix [Q] is assumed input via DMI bulk data cards.
 
 2. The parameter R is assumed input on a PARAM bulk data card.
@@ -8448,26 +8458,26 @@ Remarks
 4. The improved DMAP to perform the same operation can be done with
    substantially fewer commands. 
 
-=PAGE=
-5.8.10  Usage of UPARTN, VEC, and PARTN
 
+5.8.10  Usage of UPARTN, VEC, and PARTN
+---------------------------------------
 In Rigid Format No. 7, the functional modules SMP1 and SMP2 (the latter used
 three times) together perform the following matrix operations: 
 
-               Ú _         ¿
-               ³ Kaa ³ Kao ³
-     [Kff] =>  ³ ÄÄÄÄÅÄÄÄÄ ³
-               ³ Koa ³ Koo ³
-               À           Ù
+               + _         +
+               | Kaa | Kao |
+     [Kff] =>  | ----+---- |
+               | Koa | Koo |
+               +           +
 
                    -1
      [Go]  = -[Koo]   [Koa]
 
-               Ú _         ¿
-               ³ Maa ³ Mao ³
-     [Mff] =>  ³ ÄÄÄÄÅÄÄÄÄ ³
-               ³ Moa ³ Moo ³
-               À           Ù
+               + _         +
+               | Maa | Mao |
+     [Mff] =>  | ----+---- |
+               | Moa | Moo |
+               +           +
 
      [A]   = [Moo] [Go] + [Moa]
 
@@ -8477,12 +8487,12 @@ three times) together perform the following matrix operations:
                  T
      [Maa] = [Go]  [A] + [B]
 
-               Ú _4  ³  4  ¿
-       4       ³ Kaa ³ Kao ³
-     [Kff] =>  ³ ÄÄÄÄÅÄÄÄÄ ³
-               ³  4  ³  4  ³
-               ³ Koa ³ Koo ³
-               À           Ù
+               + _4  |  4  +
+       4       | Kaa | Kao |
+     [Kff] =>  | ----+---- |
+               |  4  |  4  |
+               | Koa | Koo |
+               +           +
 
                4            4
      [A]   = [Koo] [Go] + [Koa]
@@ -8493,11 +8503,11 @@ three times) together perform the following matrix operations:
        4         T
      [Kaa] = [Go]  [A] + [B]
 
-               Ú _         ¿
-               ³ Baa ³ Bao ³
-     [Bff] =>  ³ ÄÄÄÄÅÄÄÄÄ ³
-               ³ Boa ³ Boo ³
-               À           Ù
+               + _         +
+               | Baa | Bao |
+     [Bff] =>  | ----+---- |
+               | Boa | Boo |
+               +           +
 
      [A]   = [Boo] [Go] + [Boa]
 
@@ -8584,22 +8594,22 @@ $
 ENDALTER $
 
 5.8.11  DMAP to Perform Matrix Operations Using Conditional Logic
-
+-----------------------------------------------------------------
 Let A, B, and C be matrices whose values are to be defined at execution time.
-Let á be a real constant whose value is to be defined at execution time. Let à
+Let + be a real constant whose value is to be defined at execution time. Let +
 be an integer constant whose value (defined at execution time) determines the
 operations to be performed to compute matrix X as follows: 
 
-              Ú
-              ³ [A][B] + [C]     , à < 0
-              ³             T
-   [X]    =   ³ [á[A] + [B]]     , à = 0
-              ³    2   -1
-              ³ [A] [C]          , à > O
-              À
+              +
+              | [A][B] + [C]     , + < 0
+              |             T
+   [X]    =   | [+[A] + [B]]     , + = 0
+              |    2   -1
+              | [A] [C]          , + > O
+              +
 
 Write a DMAP to accomplish the above, assuming A, B, and C will be defined by
-DMI bulk data cards and that à and á will be defined on PARAM bulk data cards.
+DMI bulk data cards and that + and + will be defined on PARAM bulk data cards.
 Print the inputs and outputs using the DMAP Utility Functional Modules MATPRN
 and PRTPARM. Use the DMAP Utility Module SEEMAT to print a topology display of
 [A] and [X]. 
@@ -8653,9 +8663,9 @@ DMI     C       2       2       1.01
 PARAM   ALPHA   -1
 PARAM   BETA    1.0      .0
 ENDDATA
-=PAGE=
-5.9  AUTOMATIC SUBSTRUCTURE DMAP ALTERS
 
+5.9  AUTOMATIC SUBSTRUCTURE DMAP ALTERS
+=======================================
   In the automated substructure process, your commands (described in Section
 2.7) are converted to the form of DMAP instructions via ALTER card
 equivalents. This section describes the resulting DMAP data for each command.
@@ -8687,34 +8697,34 @@ ALTER cards generated. This feature allows you to modify these ALTERs and
 execute under APP DMAP,SUBS.
 
 5.9.1  Index of Substructure DMAP ALTERs
-
+----------------------------------------
 ALTER               Basic Function                                Page
 
 BRECOVER            Convert Phase 2 results to solution vectors  5.9-2
 COMBINE             Combine several substructures                5.9-3
 CREDUCE             Complex modal reduction of a substructure    5.9-4
-DELETE           ¿
-DESTROY          ³
-EDIT             ³  Internal utility commands                    5.9-5
-EQUIV            ³
-RENAME           ³
-SOFPRINT         Ù
+DELETE           +
+DESTROY          |
+EDIT             |  Internal utility commands                    5.9-5
+EQUIV            |
+RENAME           |
+SOFPRINT         +
 MREDUCE             Real modal reduction of a substructure       5.9-6
 PLOT                Plot substructures                           5.9-7
 RECOVER, MRECOVER   Recover and output Phase 2 solution data or  5.9-8
                     Phase 1, 2 modal reduction data
 REDUCE              Initiate matrix partitioning operations      5.9-9
 RUN                 Define the DRY parameter                    5.9-10
-SOFIN            ¿
-SOFOUT           ³
-RESTORE          ³  File operators                              5.9-11
-DUMP             ³
-CHECK            Ù
+SOFIN            +
+SOFOUT           |
+RESTORE          |  File operators                              5.9-11
+DUMP             |
+CHECK            +
 SOLVE               Provide data for execution of the solution phase5.9-12
 SUBSTRUCTURE        Initiate the automatic DMAP process         5.9-14
-=PAGE=
-DMAP for Command BRECOVER (Phase 3)
 
+DMAP for Command BRECOVER (Phase 3)
+===================================
   The BRECOVER command converts the results of a Phase 2 substructure
 analysis to NASTRAN solution vectors for the detailed calculation of basic
 structure (or an equivalent basic substructure) displacements, forces, loads,
@@ -8724,32 +8734,32 @@ execution either as a restart of the Phase 1 run or as an independent run,
 which recalculates the necessary data blocks.
 
 Raw DMAP
-
+--------
  1   ALTER     (Remove solution)
  2   PARAM     //*NOP*/ALWAYS=-1 $
- 3   SSG1      SLT,BGPDT,CSTM,SIL,EST,MPT,GPTT,EDT,MGG,CASECC,DIT/   ¿
- 4             PG/LUSET/NSKIP $   (R.F. 9 only)                      ³ (P or PA
- 5   SSG2      USET,GM,YS,KFS,GO,,PG/                                ³  only)
-               QR,PO,PS,PL $ (R.F. 1,2,3 or 9 only)                  Ù
+ 3   SSG1      SLT,BGPDT,CSTM,SIL,EST,MPT,GPTT,EDT,MGG,CASECC,DIT/   +
+ 4             PG/LUSET/NSKIP $   (R.F. 9 only)                      | (P or PA
+ 5   SSG2      USET,GM,YS,KFS,GO,,PG/                                |  only)
+               QR,PO,PS,PL $ (R.F. 1,2,3 or 9 only)                  +
  6   RCOVR3    ,PG,PS,PO,YS/UAS,QAS,PGS,PSS,POS,YSS,LAMA/SOLN/
  7             *NAME*/NDUE $
- 8   EQUIV     PGS,PG/ALWAYS $                          ¿
- 9   EQUIV     PSS,PS/ALWAYS $                          ³
-10   EQUIV     POS,PO/ALWAYS $                          ³
-11   EQUIV     YSS,YS/ALWAYS $  (R.F. 1 or 2 only)      ³ (P or PA only)
-12   COND      LBSSTP,OMIT $                            ³
-13   FBS       LOO,,POS/UOOV/1/1/PREC/0 $               ³
-14   LABEL     LBSSTP $                                 Ù
+ 8   EQUIV     PGS,PG/ALWAYS $                          +
+ 9   EQUIV     PSS,PS/ALWAYS $                          |
+10   EQUIV     POS,PO/ALWAYS $                          |
+11   EQUIV     YSS,YS/ALWAYS $  (R.F. 1 or 2 only)      | (P or PA only)
+12   COND      LBSSTP,OMIT $                            |
+13   FBS       LOO,,POS/UOOV/1/1/PREC/0 $               |
+14   LABEL     LBSSTP $                                 +
 15   OFP       LAMA,,,,,//CARDNO $  (R.F. 3 only)
 16   ALTER     (After SDRI)
 17   UMERGE    USET,QAS,/QGS/*G*/*A*/*O* $
 18   ADD       QG,QGS/QGT $
 19   EQUIV     QGT,QG/ALWAYS $
-20   EQUIV     CASECC,CASEXX/ALWAYS $  ¿ (R.F. 8 or 9 only)
-21   ALTER     (Remove repeat logic)   Ù
+20   EQUIV     CASECC,CASEXX/ALWAYS $  + (R.F. 8 or 9 only)
+21   ALTER     (Remove repeat logic)   +
 
 Variables
-
+---------
 YS,PO                Remove if not P or PA, or if not R.F. 1 or 2.
 PG,PS                Remove if not P or PA, or if not R.F. 1, 2, or 9.
 
@@ -8767,9 +8777,9 @@ NAME                 Name of basic Phase 1 substructure, corresponding to
 NOUE                 Remove if not R.F. 8 or 9.
 STP                  Step number.
 PREC                 Precision.
-=PAGE=
-DMAP for Command COMBINE
 
+DMAP for Command COMBINE
+========================
   The COMBINE command initiates the process for combining several
 substructures defined on the SOF files. The COMB1 module reads the control
 deck and the bulk data cards and builds the tables and transformation matrices
@@ -8779,43 +8789,43 @@ as NASTRAN data blocks. The resultant matrices are stored on the SOF file and
 retained as NASTRAN data blocks.
 
 Raw DMAP
-
+--------
  1   COMB1     CASECC,GEOM4//STP/S,N,DRY/*PVEC* $
  2   COND      LBSTP,DRY $
- 3   COMB2     ,KN0l,KN02,KN03,KN04,KN05,KN06,KN07/KNSC/S,N,DRY      ¿
- 4             /*K*/*     */*NAME0001*/*NAME0002*/*NAME0003*/        ³ (K only)
- 5             *NAME0004*/*NAME0005*/*NAME0006*/*NAME0007* $         ³
- 6   SOFO      ,KNSC,,,,//S,N,DRY/*NAMEC   */*KMTX* $                Ù
- 7   COMB2     ,MN01,MN02,MN03,MN04,MN05,MN06,MN07/MNSC/S,N,DRY/     ¿
- 8             *M*/*     */*NAME000l*/*NAME0002*/*NAME0003*/         ³ (M only)
- 9             *NAME0004*/*NAME0005*/*NAME0006*/*NAME0007* $         ³
-10   SOFO      ,MNSC,,,,//S,N,DRY/*NAMEC   */*MMTX* $                Ù
-11   COMB2     ,PN01,PN02,PN03,PN04,PN05,PN06,PN07/PNSC/S,N.DRY/     ¿
-12             *P*/*PVEC*/*NAME0001*/*NAME0002*/*NAME0003*/          ³ (P or PA
-13             *NAME0004*/*NAME0005*/*NAME0006*/*NAME0007* $         ³  only)
-14   SOFO      ,PNSC,,,,//S,N,DRY/*NAMEC   */*PVEC $                 Ù
-15   COMB2     ,BN0l,BN02,BN03,BN04,BN05,BN06,BN07/BNSC/S,N,DRY/     ¿
-16             *B*/*     */*NAME0001*/*NAME0002*/*NAME0003*/         ³ (B only)
-17             *NAME0004*/*NAME0005*/*NAME0006*/*NAME0007* $         ³
-18   SOFO      ,BNSC,,,,//S,N,DRY/*NAMEC   */*BMTX* $                Ù
-19   COMB2     ,K4N01,K4N02,K4N03,K4N04,K4N05,K4N06,K4N07/K4NSC/     ¿
-20             S,N,DRY/*K4*/*    */*NAME000l*/*NAME0002*/*NAME0003*/ ³ (K4 only)
-21             *NAME0004*/*NAME0005*/*NAME0006*/*NAME0007* $         ³
-22   SOFO      ,K4NSC,,,,//S,N,DRY/*NAMEC   */*K4MX* $               Ù
+ 3   COMB2     ,KN0l,KN02,KN03,KN04,KN05,KN06,KN07/KNSC/S,N,DRY      +
+ 4             /*K*/*     */*NAME0001*/*NAME0002*/*NAME0003*/        | (K only)
+ 5             *NAME0004*/*NAME0005*/*NAME0006*/*NAME0007* $         |
+ 6   SOFO      ,KNSC,,,,//S,N,DRY/*NAMEC   */*KMTX* $                +
+ 7   COMB2     ,MN01,MN02,MN03,MN04,MN05,MN06,MN07/MNSC/S,N,DRY/     +
+ 8             *M*/*     */*NAME000l*/*NAME0002*/*NAME0003*/         | (M only)
+ 9             *NAME0004*/*NAME0005*/*NAME0006*/*NAME0007* $         |
+10   SOFO      ,MNSC,,,,//S,N,DRY/*NAMEC   */*MMTX* $                +
+11   COMB2     ,PN01,PN02,PN03,PN04,PN05,PN06,PN07/PNSC/S,N.DRY/     +
+12             *P*/*PVEC*/*NAME0001*/*NAME0002*/*NAME0003*/          | (P or PA
+13             *NAME0004*/*NAME0005*/*NAME0006*/*NAME0007* $         |  only)
+14   SOFO      ,PNSC,,,,//S,N,DRY/*NAMEC   */*PVEC $                 +
+15   COMB2     ,BN0l,BN02,BN03,BN04,BN05,BN06,BN07/BNSC/S,N,DRY/     +
+16             *B*/*     */*NAME0001*/*NAME0002*/*NAME0003*/         | (B only)
+17             *NAME0004*/*NAME0005*/*NAME0006*/*NAME0007* $         |
+18   SOFO      ,BNSC,,,,//S,N,DRY/*NAMEC   */*BMTX* $                +
+19   COMB2     ,K4N01,K4N02,K4N03,K4N04,K4N05,K4N06,K4N07/K4NSC/     +
+20             S,N,DRY/*K4*/*    */*NAME000l*/*NAME0002*/*NAME0003*/ | (K4 only)
+21             *NAME0004*/*NAME0005*/*NAME0006*/*NAME0007* $         |
+22   SOFO      ,K4NSC,,,,//S,N,DRY/*NAMEC   */*K4MX* $               +
 23   LABEL     LBSTP $
 24   LODAPP    PNSC,//*NAMEC   */S,N,DRY $   (PA only)
 
 Variables
-
+---------
 STP                     Step number.
 PVEC                    PVEC for P option, PAPP for PA option.
 N01,N02,...etc.               Internal numbers for structures to be combined.
 NSC                     Internal number of combined structure.
 NAME000l,NAME0002,...,etc. Names of pseudostructures to be combined.
 NAMEC                Name of combined structure.
-=PAGE=
-DMAP for Command CREDUCE
 
+DMAP for Command CREDUCE
+========================
    The CREDUCE command performs a complex modal synthesis reduction for a
 component substructure. The resulting generalized coordinates for the reduced
 substructure will consist of selected boundary point displacements and
@@ -8827,33 +8837,33 @@ number of modal degrees of freedom is a calculated value, the RUN = DRY option
 is not allowed for complex modal reduction.
 
 Raw DMAP
-
+--------
  1   PARAM     //*NOP*/ALWAYS=-1 $
  2   MRED1     CASECC,GEOM4,DYNAMICS,CSTM/USETR,EEDR,EQST,DMR/*NAMEA   */
  3             S,N,DRY/STP/S,N,NOFIX/S,N,SKIPM/*COMPLEX* $
  4   COND      LBM3STP,DRY $
  5   SOFI      /KNOA,MNOA,PNOA,BNOA,K4NOA/S,N,DRY/*NAMEA   */*KMTX*/*MNTX*/
  6             *PVEC*/*BMTX*/*K4MX* $
- 7   COND      LBM2STP,SKIPM $                                  ¿
- 8   EQUIV     KNOA,KFFX/NOFIX $     (K only)                   ³
- 9   EQUIV     MNOA,MFFX/NOFIX $     (M only)                   ³
-10   EQUIV     BNOA,BFFX/NOFIX $     (B only)                   ³
-11   EQUIV     K4NOA,K4FFX/NOFIX $   (K4 only)                  ³
-12   COND      LBM1STP,NOF1X $                                  ³
-13   SCE1      USETR,KNOA,MNOA,BNOA,K4NOA/KFFX,KFSX,KSSX,MFFX,  ³
-14             BFFX,K4FFX $                                     ³ (Remove for
-15   LABEL     LBM1STP $                                        ³  option PA)
-16   PARAMR    //*COMPLEX*//1,0/GPARAM  /G $                    ³
-17   ADD       KFFX,K4FFX/KDD/G/(0,0,1,0) $                     ³
-18   EQUIV     KDD,KFFX/ALWAYS $                                ³
-19   CEAD      KFFX,BFFX,MFFX,EEDR,/PHIDR,CLAMA,OCEIGS,PHIDL    ³
-20             /NEIGVS $                                        ³
-21   OFP       CLAMA,OCEIGS,,,,// $                             ³
-22   EQUIV     PHIDR,PHIFR/NOFIX $                              ³
-23   EQUIV     PHIDL,PHIFL/NOFIX $                              ³
-24   COND      LBM2STP,NOFIX $                                  ³
-25   UMERGE    USETR,PHIDR,/PHIFR/*N*/*F*/*S* $                 ³
-26   UMERGE    USETR,PHIDL,/PHIFL/*N*/*F*/*S* $                 Ù
+ 7   COND      LBM2STP,SKIPM $                                  +
+ 8   EQUIV     KNOA,KFFX/NOFIX $     (K only)                   |
+ 9   EQUIV     MNOA,MFFX/NOFIX $     (M only)                   |
+10   EQUIV     BNOA,BFFX/NOFIX $     (B only)                   |
+11   EQUIV     K4NOA,K4FFX/NOFIX $   (K4 only)                  |
+12   COND      LBM1STP,NOF1X $                                  |
+13   SCE1      USETR,KNOA,MNOA,BNOA,K4NOA/KFFX,KFSX,KSSX,MFFX,  |
+14             BFFX,K4FFX $                                     | (Remove for
+15   LABEL     LBM1STP $                                        |  option PA)
+16   PARAMR    //*COMPLEX*//1,0/GPARAM  /G $                    |
+17   ADD       KFFX,K4FFX/KDD/G/(0,0,1,0) $                     |
+18   EQUIV     KDD,KFFX/ALWAYS $                                |
+19   CEAD      KFFX,BFFX,MFFX,EEDR,/PHIDR,CLAMA,OCEIGS,PHIDL    |
+20             /NEIGVS $                                        |
+21   OFP       CLAMA,OCEIGS,,,,// $                             |
+22   EQUIV     PHIDR,PHIFR/NOFIX $                              |
+23   EQUIV     PHIDL,PHIFL/NOFIX $                              |
+24   COND      LBM2STP,NOFIX $                                  |
+25   UMERGE    USETR,PHIDR,/PHIFR/*N*/*F*/*S* $                 |
+26   UMERGE    USETR,PHIDL,/PHIFL/*N*/*F*/*S* $                 +
 27   LABEL     LBM2STP $
 28   CMRED2    CASECC,CLAMA,PHIFR,PHIFL,EQST,USETR,KNOA,MNOA,BNOA,K4NOA,PNOA/
 29             KNOB,MNOB,BNOB,K4NOB,PNOB,PONOB/STP/S,N,DRY/*PVEC* $
@@ -8862,7 +8872,7 @@ Raw DMAP
 32   COND      FINIS,DRY $
 
 Variables
-
+---------
 STP                     Step number.
 PVEC                    PVEC for option P, PAPP for option PA.
 NAMEA                Name of input substructure, A.
@@ -8874,7 +8884,7 @@ MFFX                    M only.
 BFFX                    B only.
 K4FFX                   K4 only.
 CLAMA,PHIFR,PHIFL       Remove for option PA.
-=PAGE=
+
 DMAP for Utility Commands DELETE, DESTROY, EDIT, EQUIV, RENAME, SOFPRINT
 
    Several internal operations of the SOF may be performed with the utility
@@ -8882,12 +8892,12 @@ commands which create various calls to the SOFUT module. Each of the commands
 and associated data are inserted as parameters.
 
 Raw DMAP
-
+--------
 1    SOFUT     //DRY/*NAME    */*OPER*/OPT/*NAME0002*/*PREF*/*ITM1*/*ITM2*/
 2              *ITM3*/*ITM4*/*ITM5* $
 
 Variables
-
+---------
 NAME                    Name of substructure.
 OPER                    Operation to be performed (first four characters of
                         command, for example, EDIT).
@@ -8898,24 +8908,24 @@ ITM1,ITM2, etc.         SOF data item names.
 
 The following table describes the variables used for each command.
 
-ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-³ Command     NAME   OPER   OPT   NAME0002   PREF   ITM1, etc. ³
-ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
-³ DELETE       X      X                                 X      ³
-³                                                              ³
-³ DESTROY      X      X                                        ³
-³                                                              ³
-³ EDIT         X      X      X                                 ³
-³                                                              ³
-³ EQUIV        X      X              X        X                ³
-³                                                              ³
-³ RENAME       X      X              X                         ³
-³                                                              ³
-³ SOFPRINT     X      X      X                          X      ³
-ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
-=PAGE=
-DMAP for Command MREDUCE
++--------------------------------------------------------------+
+| Command     NAME   OPER   OPT   NAME0002   PREF   ITM1, etc. |
++--------------------------------------------------------------+
+| DELETE       X      X                                 X      |
+|                                                              |
+| DESTROY      X      X                                        |
+|                                                              |
+| EDIT         X      X      X                                 |
+|                                                              |
+| EQUIV        X      X              X        X                |
+|                                                              |
+| RENAME       X      X              X                         |
+|                                                              |
+| SOFPRINT     X      X      X                          X      |
++--------------------------------------------------------------+
 
+DMAP for Command MREDUCE
+------------------------
    The MREDUCE command performs a modal synthesis reduction for a component
 substructure. The resulting generalized coordinates for the reduced
 substructure will consist of selected boundary point displacements and
@@ -8927,27 +8937,27 @@ because the number of modal degrees of freedom is a calculated value, the RUN
 = DRY option is not allowed for modal reduction.
 
 Raw DMAP
-
+--------
  1   MRED1     CASECC,GEOM4,DYNAMICS,CSTM/USETR,EEDR,EQST,DMR/*NAMEA   */
  2             S,N,DRY/STP/S,N,NOFIX/S,N,SKIPM/*REAL* $
  3   COND      LBM3STP,DRY $
  4   SOFI      /KNOA,MNOA,PNOA,BNOA,K4NOA/S,N,DRY/*NAMEA   */*KMTX*/*MMTX*/
  5             *PVEC*/*BMTX*/*K4MX* $
- 6   COND      LBM2STP,SKIPM $                               ¿
- 7   EQUIV     KNOA,KFFX/NOFIX $     (K only)                ³
- 8   EQUIV     MNOA,MFFX/NOFIX $     (M only)                ³
- 9   EQUIV     BN0A,BFFX/NOFIX $     (B only)                ³
-10   EQUIV     K4NOA,K4FFX/NOFIX $   (K4 only)               ³
-11   COND      LBM1STP,NOFIX $                               ³
-12   SCE1      USETR,KNOA,MNOA,BNOA,K4NOA/KFFX,KFSX,KSSX,    ³  (Remove for
-13             MFFX,BFFX,K4FFX $                             ³   PA)
-14   LABEL     LBM1STP $                                     ³
-15   READ      KFFX,MFFX,BFFX,K4FFX,EEDR,USETR,/LAMAR,PHIR,  ³
-16             MIR,OEIGR/*MODES*/NEIGVS $                    ³
-17   OFP       LAMAR,OEIGR,,,,// $                           ³
-18   EQUIV     PHIR,PHIS/NOFIX $                             ³
-19   COND      LBM2STP,NOFIX $                               ³
-20   UMERGE    USETR,PHIR,/PHIS/*N*/*F*/*S* $                Ù
+ 6   COND      LBM2STP,SKIPM $                               +
+ 7   EQUIV     KNOA,KFFX/NOFIX $     (K only)                |
+ 8   EQUIV     MNOA,MFFX/NOFIX $     (M only)                |
+ 9   EQUIV     BN0A,BFFX/NOFIX $     (B only)                |
+10   EQUIV     K4NOA,K4FFX/NOFIX $   (K4 only)               |
+11   COND      LBM1STP,NOFIX $                               |
+12   SCE1      USETR,KNOA,MNOA,BNOA,K4NOA/KFFX,KFSX,KSSX,    |  (Remove for
+13             MFFX,BFFX,K4FFX $                             |   PA)
+14   LABEL     LBM1STP $                                     |
+15   READ      KFFX,MFFX,BFFX,K4FFX,EEDR,USETR,/LAMAR,PHIR,  |
+16             MIR,OEIGR/*MODES*/NEIGVS $                    |
+17   OFP       LAMAR,OEIGR,,,,// $                           |
+18   EQUIV     PHIR,PHIS/NOFIX $                             |
+19   COND      LBM2STP,NOFIX $                               |
+20   UMERGE    USETR,PHIR,/PHIS/*N*/*F*/*S* $                +
 21   LABEL     LBM2STP $
 22   MRED2     CASECC,LAMAR,PHIS,EQST,USETR,KNOA,MNOA,BNOA,K4NOA,PNOA,DMR,
 23             QSM/KNOB,MNOB,BNOB,K4NOB,PNOB,PONOB/STP/S,N,DRY/*PVEC* $
@@ -8956,7 +8966,7 @@ Raw DMAP
 26   COND      FINIS,DRY $
 
 Variables
-
+---------
 STP                     Step number.
 PVEC                    PVEC for option P, PAPP for option PA.
 NAMEA                Name of input substructure, A.
@@ -8969,15 +8979,15 @@ BFFX                    B only.
 K4FFX                   K4 only.
 LAMAR,PHIS              Remove for option PA.
 QSM                     Remove for R.F. 9.
-=PAGE=
-DMAP for Substructure Plots: PLOT
 
+DMAP for Substructure Plots: PLOT
+---------------------------------
    Any level of substructure may be plotted as an undeformed shape using the
 existing NASTRAN plot logic. The plot sets generated in Phase 1 are combined
 and transformed for that plotting.
 
 Raw DMAP
-
+--------
 1    PLTMRG    CASECC,PCDB/PLTSTP,GPSTP,ELSTP,BGSTP,CASSTP,EQSTP/*NAME   */
 2              S,N,NGP/S,N,LSIL/S,N,NPSET $
 3    SETVAL    //S,N,PLTFLG/1/S,N,PFIL/0 $
@@ -8986,12 +8996,12 @@ Raw DMAP
 6    PRTMSG    PMSTP// $
 
 Variables
-
+---------
 NAME                    Name of substructure to be plotted.
 STP                     Step number.
-=PAGE=
-DMAP for Commands RECOVER (Phase 2), MRECOVER (Phase 1, 2)
 
+DMAP for Commands RECOVER (Phase 2), MRECOVER (Phase 1, 2)
+----------------------------------------------------------
    RECOVER performs the recovery and output of the Phase 2 solution data.
 MRECOVER performs the recovery and output subsequent to a Phase 1 or 2 MREDUCE
 or CREDUCE operation. The NASTRAN solution displacement vector (either
@@ -9002,7 +9012,7 @@ processed. The RCOVR module selects the substructure to be processed with the
 loop counter, ILOOP.
 
 Raw DMAP
-
+--------
 1    FILE      U1=APPEND/U2=APPEND/U3=APPEND/U4=APPEND/U5=APPEND $
 2    PARAM     //*ADD*/ILOOP/0/0 $
 3    LABEL     LBSTP $
@@ -9022,7 +9032,7 @@ Raw DMAP
 17   SOFO      ,U1,U2,U3,U4,U5//-1/*xxxxxxxx* $
 
 Variables
-
+---------
 KGG                     K option only.
 MGG                     M option only.
 BGG                     B option only.
@@ -9042,9 +9052,9 @@ OPG1, OPG               Remove if R.F. 3.
 NSOL                    Rigid Format solution number.
 NEIGV                   R.F. 3 only.
 NAMEFSS                 Name of solution structure.
-=PAGE=
-DMAP for Command REDUCE
 
+DMAP for Command REDUCE
+-----------------------
    The REDUCE command initiates the matrix partitioning operations to be
 performed on the stiffness, mass, damping, and load vectors in order to
 produce a set of matrices defined by a subset of the original degrees of
@@ -9054,33 +9064,33 @@ substructure tables stored on the SOF. The remainder of the DMAP sequence
 directs the actual matrix operations.
 
 Raw DMAP
-
+--------
  1   REDUCE    CASECC,GEOM4/PVNOA,USSTP,INSTP/STP/S,N,DRY/*PVEC* $
  2   COND      LBRSTP,DRY $
  3   SOFI      /KNOA,MNOA,PNOA,BNOA,K4NOA/S,N,DRY/*NAME000A*/*KMTX*/*MMTX*/
  4             *PVEC*/*BMTX*/*K4MX* $
  5   COND      LBRSTP,DRY $
- 6   SMP1      USSTP,KNOA,,,/GONOA,KNOB,KONOA,LONOA,,,,, $     ¿
- 7   MERGE     GONOA,INSTP,,,,PVNOA/GNOA/1/TYP/2 $             ³  (K only)
- 8   SOFO      ,GNOA,LONOA,,,//DRY/*NAME000A*/*HORG*/*LMTX* $  Ù
+ 6   SMP1      USSTP,KNOA,,,/GONOA,KNOB,KONOA,LONOA,,,,, $     +
+ 7   MERGE     GONOA,INSTP,,,,PVNOA/GNOA/1/TYP/2 $             |  (K only)
+ 8   SOFO      ,GNOA,LONOA,,,//DRY/*NAME000A*/*HORG*/*LMTX* $  +
  9   SOFO      ,KNOB,,,,//DRY/*NAME000B*/*KMTX* $
 10   SOF1      /GNOA,,,,/S,N,DRY/*NAME000A*/*HORG* $   (all except K)
-11   MPY3      GNOA,MNOA,/MNOB/0/0 $                           ¿  (M only)
-12   SOFO      `MNOB,,,,//DRY/*NAME000B*/*MMTX* $              Ù
-13   MPY3      GNOA,BNOA,/BNOB/0/0 $                           ¿  (B only)
-14   SOFO      ,BNOB,,,,//DRY/*NAME000B*/*BMTX* $              Ù
-15   MPY3      GNOA,K4NOA,/K4NOB/0/0 $                         ¿  (K4 only)
-16   SOFO      ,K4NOB,,,,//DRY/*NAME000B*/*K4MX* $             Ù
-17   PARTN     PNOA,,PVNOA/PONOA,,,/1/1/2 $                    ¿  (P or PA
-18   MPYAD     GNOA,PNOA,/PNOB/1/1/0/1 $                       ³   only)
-19   SOFO      ,PONOA,,,,//DRY/*NAME000A*/*POVE* $             Ù
+11   MPY3      GNOA,MNOA,/MNOB/0/0 $                           +  (M only)
+12   SOFO      `MNOB,,,,//DRY/*NAME000B*/*MMTX* $              +
+13   MPY3      GNOA,BNOA,/BNOB/0/0 $                           +  (B only)
+14   SOFO      ,BNOB,,,,//DRY/*NAME000B*/*BMTX* $              +
+15   MPY3      GNOA,K4NOA,/K4NOB/0/0 $                         +  (K4 only)
+16   SOFO      ,K4NOB,,,,//DRY/*NAME000B*/*K4MX* $             +
+17   PARTN     PNOA,,PVNOA/PONOA,,,/1/1/2 $                    +  (P or PA
+18   MPYAD     GNOA,PNOA,/PNOB/1/1/0/1 $                       |   only)
+19   SOFO      ,PONOA,,,,//DRY/*NAME000A*/*POVE* $             +
 20   SOFO      ,PVNOA,,,,//DRY/*NAME000A*/*UPRT* $
 21   S9F9      ,PNOB,,,,//DRY/*NAME000B*/*PVEC* $   (P or PA only)
 22   LABEL     LBRSTP $
 23   LODAPP    PNOB,PONOA//*NAME000B*/S,N,DRY $      (PA only)
 
 Variables
-
+---------
 STP                     Step number.
 NAME000A             Name of input structure, A.
 NAME000B             Name of output structure, B.
@@ -9088,19 +9098,19 @@ NOA,NOB                 Internal numbers of substructures A and B.
 TYP                     Matrix precision flag (1 = single).
 PVEC                    PVEC for P option, PAPP for PA option.
 POVE                    POVE for P option, POAP for PA option.
-=PAGE=
-DMAP for Command RUN
 
+DMAP for Command RUN
+--------------------
    The RUN command defines the DRY parameter for use by the subsequent DMAP
 instructions. If you specify RUN = DRY, a special set of DMAP instructions is
 placed at the end of the entire command sequence.
 
 Raw DMAP
-
+--------
  PARAM         //*ADD*/DRY/I  /0$
 
 Variables
-
+---------
 I                       Integer code for RUN option (DRY = -1, GO = 0, STEP =
                         1).
 
@@ -9113,20 +9123,20 @@ I                       Integer code for RUN option (DRY = -1, GO = 0, STEP =
                         COND           FINIS,DRY $
                         REPT           LBSBEG,1 $
                         JUMP           FINIS $
-=PAGE=
-DMAP for External I/O Commands SOFIN, SOFOUT, RESTORE, DUMP, CHECK
 
+DMAP for External I/O Commands SOFIN, SOFOUT, RESTORE, DUMP, CHECK
+------------------------------------------------------------------
    Several operations may be performed on the NASTRAN user files and the SOF
 file using the EXIO module. The various input parameters are set by the
 Substructure Commands.
 
 Raw DMAP
-
+--------
 EXIO           //S,N,DRY/MACH/*DEVI*/*UNITNAME*/*FORM*/*MODE*/*POSI*/*ITEM*/
                *NAME0001*/*NAME0002*/*NAME0003*/*NAME0004*/*NAME0005* $
 
 Variables
-
+---------
 MODE                    First four characters of command name (that is,
                         "SOFI", "REST").
 DEVI                    Device used for I/O file ("TAPE" or "DISK").
@@ -9139,22 +9149,22 @@ NAME0001, etc.          Names of substructures to be copied.
 
 The following table describes the variables used for each command:
 
-ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-³ Command   MODE   DEVI   UNITNAME   FORM   POSI   ITEM   NAME000i ³
-ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
-³ SOFlN      X       X        X        X      X      X       X     ³
-³                                                                  ³
-³ SOFOUT     X       X        X        X      X      X       X     ³
-³                                                                  ³
-³ RESTORE    X       X        X                                    ³
-³                                                                  ³
-³ DUMP       X       X        X                                    ³
-³                                                                  ³
-³ CHECK      X       X        X                                    ³
-ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
-=PAGE=
-DMAP for Command SOLVE
++------------------------------------------------------------------+
+| Command   MODE   DEVI   UNITNAME   FORM   POSI   ITEM   NAME000i |
++------------------------------------------------------------------+
+| SOFlN      X       X        X        X      X      X       X     |
+|                                                                  |
+| SOFOUT     X       X        X        X      X      X       X     |
+|                                                                  |
+| RESTORE    X       X        X                                    |
+|                                                                  |
+| DUMP       X       X        X                                    |
+|                                                                  |
+| CHECK      X       X        X                                    |
++------------------------------------------------------------------+
 
+DMAP for Command SOLVE
+----------------------
    The SOLVE command provides the necessary data for execution of the solution
 phase of NASTRAN. Module SGEN replaces the NASTRAN GP1 module for the purpose
 of defining an equivalent pseudostructure from data blocks. The new data
@@ -9165,7 +9175,7 @@ user matrix terms. The static and dynamic analysis rigid formats require
 separate raw DMAP. Both sets of raw DMAP are shown below.
 
 Raw DMAP, Rigid Formats 1-3
-
+---------------------------
  1   ALTER     (Remove GP1)
  2   PARAM     //*NOP*/ALWAYS=-1 $
  3   SGEN      CASECC,GEOM3,GEOM4,DYNAMICS/CASESS,CASEI,GPL,EQUEXIN,GPDT,
@@ -9196,13 +9206,13 @@ Raw DMAP, Rigid Formats 1-3
 28   ALTER     (Remove SDR2 - PLOT)
 
 Variables
-
+---------
 NAMESOLS             Name of solution structure.
 NOS                     Internal number of solution structure.
 STP                     Step number.
 
 Raw DMAP, Rigid Formats 8, 9
-
+----------------------------
  1   ALTER     (Remove GP1)
  2   PARAM     //*NOP*/ALWAYS=-1 $
  3   SGEN      CASECC,GEOM3,GEOM4,DYNAMICS/CASESS,CASEI,GPL,EQEXIN,GPDT,
@@ -9217,25 +9227,25 @@ Raw DMAP, Rigid Formats 8, 9
 12   ALTER     (Remove GPWG and SMA3)
 13   SOFI      /KNOS,MNOS,BNOS,K4NOS,/DRY/*NAMESOLS*/*KMTX*/*MMTX*/*BMTX*/
 14             *K4MX* $
-15   EQUIV     KNOS,KGG/NOKGGX $   ¿
-16   COND      LB2K,NOKGGX $       ³  (K only)
-17   ADD       KGGX,KNOS/KGG $     ³
-18   LABEL     LB2K $              Ù
-19   EQUIV     MNOS,MGG/NOMGG $    ¿
-20   COND      LB2M,NOMGG $        ³
-21   ADD       MGG,MNOS/MGGX $     ³  (M only)
-22   EQUIV     MGGX,MGG/ALWAYS $   ³
-23   LABEL     LB2M $              Ù
-24   EQUIV     BN0S,BGG/NOBGG $    ¿
-25   COND      LB2B,NOBGG $        ³
-26   ADD       BGG,BNOS/BGGX $     ³  (B only)
-27   EQUIV     BGGX,BGG/ALWAYS $   ³
-28   LABEL     LB2B $              Ù
-29   EQUIV     K4NOS,K4GG/NOK4GG $ ¿
-30   COND      LB2K4,NOK4GG $      ³
-31   ADD       K4GG,K4NOS/K4GGX $  ³  (K4 only)
-32   EQUIV     K4GGX,K4GG/ALWAYS $ ³
-33   LABEL     LB2K4 $             Ù
+15   EQUIV     KNOS,KGG/NOKGGX $   +
+16   COND      LB2K,NOKGGX $       |  (K only)
+17   ADD       KGGX,KNOS/KGG $     |
+18   LABEL     LB2K $              +
+19   EQUIV     MNOS,MGG/NOMGG $    +
+20   COND      LB2M,NOMGG $        |
+21   ADD       MGG,MNOS/MGGX $     |  (M only)
+22   EQUIV     MGGX,MGG/ALWAYS $   |
+23   LABEL     LB2M $              +
+24   EQUIV     BN0S,BGG/NOBGG $    +
+25   COND      LB2B,NOBGG $        |
+26   ADD       BGG,BNOS/BGGX $     |  (B only)
+27   EQUIV     BGGX,BGG/ALWAYS $   |
+28   LABEL     LB2B $              +
+29   EQUIV     K4NOS,K4GG/NOK4GG $ +
+30   COND      LB2K4,NOK4GG $      |
+31   ADD       K4GG,K4NOS/K4GGX $  |  (K4 only)
+32   EQUIV     K4GGX,K4GG/ALWAYS $ |
+33   LABEL     LB2K4 $             +
 34             LBSTP $
 35   CHKPNT    MGG,BGG,K4GG $
 36   ALTER     (Remove MDEMA, KDEK2 PARAM)
@@ -9260,14 +9270,14 @@ Raw DMAP, Rigid Formats 8, 9
 55   LABEL     LBUE $
 
 Variables
-
+---------
 NAMESOLS             Name of solution structure.
 NOS                     Internal number of solution structure.
 STP                     Step number.
 UDVF                    UDVF for R.F. 8, UDVT for R.F. 9.
-=PAGE=
-DMAP for Command SUBSTRUCTURE
 
+DMAP for Command SUBSTRUCTURE
+-----------------------------
    The SUBSTRUCTURE command is necessary to initiate the automatic DMAP
 process. In Phase 1, the SUBPH1 module is used to build the substructure
 tables on the SOF from the NASTRAN grid point tables and the SOFO module is
@@ -9275,7 +9285,7 @@ used to copy the matrices onto the SOF. In Phase 2 and Phase 3, the initial
 value of the DRY parameter is set and the DMAP sequence is initiated.
 
 Raw DMAP
-
+--------
                                     PHASE 1
 
  1   ALTER     2,0
@@ -9287,21 +9297,21 @@ Raw DMAP
  7   PARAM     //*ADD*/DRY-1 /0 $
  8   LABEL     LBSBEG $
  9   COND      LBLIS,DRY $   (R.F. 1, 2, 3, and 9 only)
-10   SSG1      SLT,BGPDT,CSTM,SIL,EST,MPT,GPTT,EDT,MGG,CASECC,DIT/   ¿ (R.F.
-11             PG/LUSET/NSKIP $                                      ³ 9 & P
-12   CHKPNT    PG $                                                  Ù or PA
+10   SSG1      SLT,BGPDT,CSTM,SIL,EST,MPT,GPTT,EDT,MGG,CASECC,DIT/   + (R.F.
+11             PG/LUSET/NSKIP $                                      | 9 & P
+12   CHKPNT    PG $                                                  + or PA
 13   ALTER     (Remove DECOMP)                                         only)
-14   SSG2      USET,GM,,KFS,GO,,PG/QR,PO,PS,PL $                     ¿ (R.F.
-15   CHKPNT    PO,PS,PL $                                            Ù 9 & P
+14   SSG2      USET,GM,,KFS,GO,,PG/QR,PO,PS,PL $                     + (R.F.
+15   CHKPNT    PO,PS,PL $                                            + 9 & P
 16   LABEL     LBLIS $   (R.F. 1, 2, 3, and 9 only)                    or PA
 17   ALTER     (Remove solution)                                       only)
 18   SUBPH1    CASECC,EQEXIN,USET,BGPDT,CSTM,GPSETS,ELSETS//S,N,DRY/
 19             *NAME    */PLOTID /*PVEC* $
 20   COND      LBSEND,DRY $
-21   EQUIV     PG,PL/NOSET $                                         ¿ R.F. 1,
-22   COND      LBL10,NOSET $                                         ³ 2, or 3
-23   SSG2      USET,GM,YS,KFS,GO,,PG/QR,PO,PS,PL  $                  ³ & P or
-24   CHKPNT    PO,PS,PL $                                            Ù PA only)
+21   EQUIV     PG,PL/NOSET $                                         + R.F. 1,
+22   COND      LBL10,NOSET $                                         | 2, or 3
+23   SSG2      USET,GM,YS,KFS,GO,,PG/QR,PO,PS,PL  $                  | & P or
+24   CHKPNT    PO,PS,PL $                                            + PA only)
 25   LABEL     LBL10 R
 26   SOFO      ,KAA,MAA,PL,BAA,K4AA//S,N,DRY/*NAME*/*KMTX*/*MMTX*/PVEC*/
 27             *BMTX*/*K4MX* $
@@ -9321,16 +9331,16 @@ Raw DMAP
  3   LABEL     LBSBEG $
 
 Variables
-
+---------
 I                       Integer RUN option code (see RUN command).
 NAME                    Phase 1 substructure name.
 PLOTID                  Phase 1 Plot Set ID.
 KAA, MAA, PL, BAA, K4AA Data blocks dependent on OPTION.
 PVEC                    PVEC for option P, PAPP for option PA.
 
-=PAGE=
-5.10  SUPPLEMENTARY FUNCTIONAL MODULES
 
+5.10  SUPPLEMENTARY FUNCTIONAL MODULES
+======================================
    Module  Basic Function                                          Page
 
    EMA1    Alternative Element Matrix Generator                  5.10-2
@@ -9342,16 +9352,16 @@ PVEC                    PVEC for option P, PAPP for option PA.
 However, since they are not incorporated in any of the Rigid Formats, they are
 included here for reference purposes. These modules must be ALTERed into Rigid
 Formats.
-=PAGE=
+
 EMA1 - Element Matrix Assembler
-
+===============================
 Purpose
-
+-------
 This module superimposes matrices corresponding to elements into a structural
 matrix corresponding to all degrees of freedom at all grid points.
 
 DMAP Calling Sequence
-
+---------------------
               É       »   É      »            É      »
 EMA1   GPECT, º KDICT º , º KELM º , SIL,ECT/ º KGGX º ,
               º MDICT º   º MELM º            º MGG  º
@@ -9360,7 +9370,7 @@ EMA1   GPECT, º KDICT º , º KELM º , SIL,ECT/ º KGGX º ,
        GPST/C,N,NOK4/C,N,WTMASS   $
 
 Input Data Blocks
-
+-----------------
 GPECT      Grid Point Element Connection Table.
 KDICT, MDICT  Element Matrix Dictionaries.
 KELM, MELM Element Matrix Partitions.
@@ -9368,7 +9378,7 @@ SIL        Scalar Index List.
 ECT        Element Connection Table.
 
 Output Data Blocks
-
+------------------
 KGGX       Assembled Structural Matrix.
 MGG        Assembled Mass Matrix.
 GPST       Grid Point Singularity Table.
@@ -9376,7 +9386,7 @@ GPST       Grid Point Singularity Table.
 NOTE: GPST may be purged.
 
 Parameters
-
+----------
 NOK4       Input-Integer, default = -1. Flag which specifies whether damping
            factor is to be used in assembling matrix (-1 ignores factor).
 
@@ -9384,7 +9394,7 @@ WTMASS     Input-Real, default = 1.0. Constant by which all element matrix
            terms are multiplied.
 
 Example
-
+-------
 To replace the current module EMA with module EMA1 in DISP Static Analysis
 (DISP Rigid Format 1), the following ALTERs must be made:
 
@@ -9395,11 +9405,11 @@ ALTER  n2,n2 $ MASS MATRIX (where n2 = DMAP statement number of the EMA module
                             corresponding to the mass matrix)
 EMA1    GPECT,MDICT,MELM,SIL,ECT/MGG,/-1/C,Y,WTMASS=1.0 $
 ENDALTER $
-=PAGE=
+
 GPSPC - Constrain Stiffness Matrix Singularities
-
+================================================
 Purpose
-
+-------
 The GPST data block contains data on potential stiffness matrix singularities.
 These singularities may have been removed through the application of single or
 multipoint constraints. The GPSPC module checks each singularity against the
@@ -9408,12 +9418,12 @@ warning for you and on your option automatically constrains the singularity.
 This module will not be used if GENELs are present.
 
 DMAP Calling Sequence
-
+---------------------
 GPSPC  GPL,GPST,USET,SIL / OGPST,USETC / V,N,NOGPST / V,Y,SINCON / V,N,SINGLE /
        V,N,OMIT / V,N,REACT / V,N,NOSET / V,N,NOL / V,N,NOA $
 
 Input Data Blocks
-
+-----------------
 GPL        Grid Point List.
 GPST       Grid Point Singularity Table.
 USET       Displacement Set Definitions Table.
@@ -9422,14 +9432,14 @@ SIL        Scalar Index List.
 NOTE: No input data block can be purged.
 
 Output Data Blocks
-
+------------------
 OGPST      Tabular list of grid point singularities not removed by you. This
            data block will be processed by the OFP (Output File Processor)
            module.
 USETC      Displacement Set Definition Table with singularities constrained.
 
 Parameters
-
+----------
 NOGPST     Output-Integer, default = 1. If positive, OGPST was created.
 
 SINCON     Input and Output-Integer, default = -1. If SINCON is negative on
@@ -9461,7 +9471,7 @@ NOA        Input and Output-Integer, no default. See description of GP4
            parameters of the same name in Programmer's Manual Section 4.31.
            Values are corrected only if singularities were constrained.  
 Examples
-
+--------
 1. To use the GPSPC module instead of the standard GPSP module in a static
    analysis (DISP Rigid Format 1), module GPSP is replaced by module GPSPC and
    the USET data block is replaced by the USETC data block. In this case, the
@@ -9518,4 +9528,3 @@ Examples
    using a PARAM bulk data card with a different value. When SINCON = -1, the
    strongest combination of possible singularities is automatically
    constrained and noted in the GPST output.
-
