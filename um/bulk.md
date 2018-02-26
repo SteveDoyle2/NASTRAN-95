@@ -773,6 +773,11 @@ Used to define the number of independent degrees of freedom.
 Format and Example
 ------------------
 
+|   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
+| ASET1  |   C   |   G   |   G   |   G   |   G   |   G   |   G   |   G   | abc |
+| ASET1  |  345  |   2   |   1   |   3   |   10  |   9   |   6   |   5   | ABC |
+
 +--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
 +========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
@@ -1637,10 +1642,10 @@ Remarks
           |     | +        + | +   +  |        |
           |    8*         +  *10 +  + *12      |
         2 *-----+---------|--*------|-+--------* 3
-          |               |  6      |                    É
-          |               |         + LISTC2 grid points ºif control
-          |               +---------- LISTC1 grid points ºsurfaces exist
-           x     = x                                     È
+          |               |  6      |                    Ã‰
+          |               |         + LISTC2 grid points Âºif control
+          |               +---------- LISTC1 grid points Âºsurfaces exist
+           x     = x                                     Ãˆ
             aero    elem
 
              Figure 2.4-1. CAERO3 numbering and coordinate system
@@ -1813,36 +1818,36 @@ Remarks
                                    
 
                           dg
-                     g  ð -- = slope of airfoil semithickness
-                      î   dî
+                     g  Ã° -- = slope of airfoil semithickness
+                      Ã®   dÃ®
 
-                    ô 1                                ô 1
-              I  =  |   g dî                     J  =  |    g dî
-               1    õ0   î                        1    õî    î
+                    Ã´ 1                                Ã´ 1
+              I  =  |   g dÃ®                     J  =  |    g dÃ®
+               1    Ãµ0   Ã®                        1    ÃµÃ®    Ã®
                                                          h
-                    ô 1                                ô 1
-              I  =  |   îg dî                    J  =  |   îg dî
-               2    õ0    î                       2    õî    î
-                                                         h
-
-                    ô 1                                ô 1
-              I  =  |   îýg dî                   J  =  |   îýg dî
-               3    õ0     î                      3    õî     î
+                    Ã´ 1                                Ã´ 1
+              I  =  |   Ã®g dÃ®                    J  =  |   Ã®g dÃ®
+               2    Ãµ0    Ã®                       2    ÃµÃ®    Ã®
                                                          h
 
-                    ô 1                                ô 1
-              I  =  |   gýdî                     J  =  |    gýdî
-               4    õ0   î                        4    õî    î
+                    Ã´ 1                                Ã´ 1
+              I  =  |   Ã®Ã½g dÃ®                   J  =  |   Ã®Ã½g dÃ®
+               3    Ãµ0     Ã®                      3    ÃµÃ®     Ã®
                                                          h
 
-                    ô 1                                ô 1
-              I  =  |   îgýdî                    J  =  |   îgýdî
-               5    õ0    î                       5    õî    î
+                    Ã´ 1                                Ã´ 1
+              I  =  |   gÃ½dÃ®                     J  =  |    gÃ½dÃ®
+               4    Ãµ0   Ã®                        4    ÃµÃ®    Ã®
                                                          h
 
-                    ô 1                                ô 1
-              I  =  |   îýgýdî                   J  =  |   îýgýdî
-               6    õ0     î                      6    õî     î
+                    Ã´ 1                                Ã´ 1
+              I  =  |   Ã®gÃ½dÃ®                    J  =  |   Ã®gÃ½dÃ®
+               5    Ãµ0    Ã®                       5    ÃµÃ®    Ã®
+                                                         h
+
+                    Ã´ 1                                Ã´ 1
+              I  =  |   Ã®Ã½gÃ½dÃ®                   J  =  |   Ã®Ã½gÃ½dÃ®
+               6    Ãµ0     Ã®                      6    ÃµÃ®     Ã®
                                                          h
 
       Figure 2.4-2. CAERO5 I and J thickness integral definitions
@@ -2832,7 +2837,7 @@ Remarks
                                        / | \
                        +              /  |  \
                Polar   |         14  /   |   \
-               axis    *____________/120 |    \     í = 0.0
+               axis    *____________/120 |    \     Ã­ = 0.0
                        |            \   F|     \
                        |             \   |      \
                        |  100         \  | 110   \
@@ -4057,17 +4062,17 @@ Remarks
 2.The three points G1, G2, G3 must be noncollinear.
 
 3.The location of a grid point (P in Figure 2.4-13) in this coordinate system
-  is given by (R, é, Z) where é is measured in degrees.
+  is given by (R, Ã©, Z) where Ã© is measured in degrees.
 
 4.The displacement coordinate directions at P are dependent on the location
-  of P as shown in Figure 2.4-13 by (ur, ué, uz).
+  of P as shown in Figure 2.4-13 by (ur, uÃ©, uz).
 
 5.Points on the z-axis may not have their displacement directions defined in
   this coordinate system since an ambiguity results.
 
 6.One or two coordinate systems may be defined on a single card.
                                      z     uz
-                                     |     |  ué
+                                     |     |  uÃ©
                                      |     | /
                                      |     |/
                                    G2*   p |\
@@ -4078,7 +4083,7 @@ Remarks
                                G3*   |     |
                                  | G1*---------------------y
                                  |  / \    |
-                                 | / é \R  |
+                                 | / Ã© \R  |
                                  |/     \  |
                                  /       \ |
                                 /         \|
@@ -4187,28 +4192,28 @@ Remarks
 2.The three points G1, G2, G3 must be noncollinear.
 
 3.The location of a grid point (P in Figure 2.4-15) in this coordinate system
-  is given by (R, é, è) where é and è are measured in degrees.
+  is given by (R, Ã©, Ã¨) where Ã© and Ã¨ are measured in degrees.
 
 4.The displacement coordinate directions at P are dependent on the location
-  of P as shown in Figure 2.4-15 by (ur, ué, uè).
+  of P as shown in Figure 2.4-15 by (ur, uÃ©, uÃ¨).
 
 5.Points on the polar axis may not have their displacement directions defined
   in this coordinate system since an ambiguity results.
 
 6.One or two coordinate systems may be defined on a single card.
 
-                                     z        ur    .uè
+                                     z        ur    .uÃ¨
                                      |       /   .
                                      |      / .
                                      |    P*
                                    G2*    /| \
-                                    /| é / |  \
-                                   / |  /  |   ué
+                                    /| Ã© / |  \
+                                   / |  /  |   uÃ©
                                   /  | /R  |
                                G3*   |/    |
                                  | G1*---------------------y
                                  |  / \    |
-                                 | / è \   |
+                                 | / Ã¨ \   |
                                  |/     \  |
                                  /       \ |
                                 /         \|
@@ -4266,15 +4271,15 @@ Remarks
 4.An RID of zero references the basic coordinate system.
 
 5.The location of a grid point (P in Figure 2.4-16) in this coordinate system
-  is given by (R, é, Z) where é is measured in degrees.
+  is given by (R, Ã©, Z) where Ã© is measured in degrees.
 
 6.The displacement coordinate directions at P are dependent on the location
-  of P as shown in Figure 2.4-16 by (ur, ué, uz).
+  of P as shown in Figure 2.4-16 by (ur, uÃ©, uz).
 
 7.Points on the z-axis may not have their displacement direction defined in
   this coordinate system, since an ambiguity results.
                                      z     uz
-                                     |     |  ué
+                                     |     |  uÃ©
                                      |     | /
                                      |     |/
                                     B*   p |\
@@ -4285,7 +4290,7 @@ Remarks
                                 C*   |     |
                                  |  A*---------------------y
                                  |  / \    |
-                                 | / é \R  |
+                                 | / Ã© \R  |
                                  |/     \  |
                                  /       \ |
                                 /         \|
@@ -4418,26 +4423,26 @@ Remarks
 4.An RID of zero references the basic coordinate system.
 
 5.The location of a grid point (P in Figure 2.4-18) in this coordinate system
-  is given by (R, é, è) where é and è are measured in degrees.
+  is given by (R, Ã©, Ã¨) where Ã© and Ã¨ are measured in degrees.
 
 6.The displacement coordinate directions at P are shown in Figure 2.4-18 by
-  (ur, ué, uí).
+  (ur, uÃ©, uÃ­).
 
 7.Points on the polar axis may not have their displacement directions defined
   in this coordinate system since an ambiguity results.
 
-                                     z        ur    .uí
+                                     z        ur    .uÃ­
                                      |       /   .
                                      |      / .
                                      |    P*
                                    B *    /| \
-                                    /| é / |  \
-                                   / |  /  |   ué
+                                    /| Ã© / |  \
+                                   / |  /  |   uÃ©
                                   /  | /R  |
                                C *   |/    |
                                  |  A*---------------------y
                                  |  / \    |
-                                 | / í \   |
+                                 | / Ã­ \   |
                                  |/     \  |
                                  /       \ |
                                 /         \|
@@ -7288,7 +7293,7 @@ DELAY - Dynamic Load Time Delay
 Description
 -----------
 The DELAY card is used in conjunction with the RLOAD1, RLOAD2, TLOAD1 and
-TLOAD2 data cards and defines the time delay term ç in the equations of the
+TLOAD2 data cards and defines the time delay term Ã§ in the equations of the
 loading function.
 
 Format and Example
@@ -7311,7 +7316,7 @@ P         Grid or scalar point identification number (Integer > 0).
 C         Component number (1 - 6 for grid point, blank or 0 for scalar
           point).
 
-T         Time delay ç for designated coordinate (Real).
+T         Time delay Ã§ for designated coordinate (Real).
 
 Remarks
 -------
@@ -7323,7 +7328,7 @@ DELAYS - Dynamic Load Time Delay, Substructure Analysis
 Description
 -----------
 The DELAYS card is used in conjunction with the RLOAD1, RLOAD2, TLOAD1 and
-TLOAD2 data cards and defines the time delay term ç in the equations of the
+TLOAD2 data cards and defines the time delay term Ã§ in the equations of the
 loading function.
 
 Format and Example
@@ -7348,7 +7353,7 @@ P         Grid or scalar point identification number (Integer > 0).
 C         Component number (1 - 6 for grid point, blank or 0 for scalar
           point).
 
-T         Time delay ç for designated coordinate (Real).
+T         Time delay Ã§ for designated coordinate (Real).
 
 Remarks
 -------
@@ -7736,7 +7741,7 @@ DPHASE - Dynamic Load Phase Lead
 Description
 -----------
 The DPHASE card is used in conjunction with the RLOAD1 and RLOAD2 data cards
-to define the phase lead term é in the equation of the loading function.
+to define the phase lead term Ã© in the equation of the loading function.
 
 Format and Example
 ------------------
@@ -7758,7 +7763,7 @@ P          Grid or scalar point identification number (Integer > 0).
 C          Component number (1 - 6 for grid point, 0 or blank for scalar
            point).
 
-TH         Phase lead é (in degrees) for designated coordinate (Real).
+TH         Phase lead Ã© (in degrees) for designated coordinate (Real).
 
 Remarks
 -------
@@ -7770,7 +7775,7 @@ DPHASES - Dynamic Load Phase Lead, Substructure Analysis
 Description
 -----------
 The DPHASES card is used in conjunction with the RLOAD1 and RLOAD2 data cards
-to define the phase lead term é in the equation of the loading function.
+to define the phase lead term Ã© in the equation of the loading function.
 
 Format and Example
 ------------------
@@ -7794,7 +7799,7 @@ P          Grid or scalar point identification number (Integer > 0).
 C          Component number (1 - 6 for grid point, 0 or blank for scalar
            point).
 
-TH         Phase lead é (in degrees) for designated coordinate (Real).
+TH         Phase lead Ã© (in degrees) for designated coordinate (Real).
 
 Remarks
 -------
@@ -8526,8 +8531,8 @@ Remarks
 
 3.The card is not required if no planes of symmetry are involved.
 
-4.First plane of symmetry is assumed to be at í = 0. Second plane of symmetry
-  is assumed to be at í = 360 degrees/M.
+4.First plane of symmetry is assumed to be at Ã­ = 0. Second plane of symmetry
+  is assumed to be at Ã­ = 360 degrees/M.
 
 5.Symmetric and antisymmetric constraints for the structure must, in
   addition, be provided by you.
@@ -8746,7 +8751,7 @@ HID         Harmonic identification number (Integer >= 0 or a sequence of
 
 S           Scale factor for load (Real).
 
-FR, FP, FZ  Load components in r, í, z directions (Real).
+FR, FP, FZ  Load components in r, Ã­, z directions (Real).
 
 Remarks
 -------
@@ -8782,7 +8787,7 @@ Format and Example
 +--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
 +========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
-|FREEPT  |  IDF  |       |  IDP  |   í   |  IDP  |   í   |  IDP  |   í   |     |
+|FREEPT  |  IDF  |       |  IDP  |   Ã­   |  IDP  |   Ã­   |  IDP  |   Ã­   |     |
 +--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |FREEPT  |   3   |       |  301  | 22.5  |  302  | 90.0  |  303  | 370.0 |     |
 +--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
@@ -8793,7 +8798,7 @@ IDF         Fluid point (RINGFL) identification number (Integer > 0).
 
 IDP         Free surface point identification number (Integer > 0).
 
-í           Azimuthal position of FREEPT on fluid point (RINGFL), in fluid
+Ã­           Azimuthal position of FREEPT on fluid point (RINGFL), in fluid
             coordinate system (Real).
 
 Remarks
@@ -9358,8 +9363,8 @@ Remarks
 |     Type           X1           X2           X3    |
 +----------------------------------------------------|
 |  Rectangular       X            Y            Z     |
-|  Cylindrical       R       é(degrees)        Z     |
-|  Spherical         R       é(degrees)   è(degrees) |
+|  Cylindrical       R       Ã©(degrees)        Z     |
+|  Spherical         R       Ã©(degrees)   Ã¨(degrees) |
 +----------------------------------------------------+
 
 3. The collection of all CD coordinate systems defined on all GRID cards is
@@ -9381,7 +9386,7 @@ Format and Example
 +--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
 +========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
-|GRIDB   |   ID  |       |       |   í   |       |   CD  |   PS  |  IDF  |     |
+|GRIDB   |   ID  |       |       |   Ã­   |       |   CD  |   PS  |  IDF  |     |
 +--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |GRIDB   |   30  |       |       |  30.0 |       |   3   |  345  |   20  |     |
 +--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
@@ -9390,7 +9395,7 @@ Field       Contents
 -----       --------
 ID          Grid point identification number (Integer > 0).
 
-í           Azimuthal position in the fluid in degrees (Real).
+Ã­           Azimuthal position in the fluid in degrees (Real).
 
 CD          Identification number of the coordinate system in which
             displacements are defined at the grid point (Integer >= 0).
@@ -9891,13 +9896,13 @@ Remarks
 4. The convention for the Gij in fields 3 through 8 is represented by the
    following matrix relationship.
 
-   É    »   +-                  -+  É    »
-   º +1 º   | G11     G12    G13 |  º îl º
-   º    º   |                    |  º    º
-   º +2 º = | G12     G22    G23 |  º î2 º
-   º    º   |                    |  º    º
-   º ç12º   | G13     G23    G33 |  º +12º
-   È    ¼   +-                  -+  È    ¼
+   Ã‰    Â»   +-                  -+  Ã‰    Â»
+   Âº +1 Âº   | G11     G12    G13 |  Âº Ã®l Âº
+   Âº    Âº   |                    |  Âº    Âº
+   Âº +2 Âº = | G12     G22    G23 |  Âº Ã®2 Âº
+   Âº    Âº   |                    |  Âº    Âº
+   Âº Ã§12Âº   | G13     G23    G33 |  Âº +12Âº
+   Ãˆ    Â¼   +-                  -+  Ãˆ    Â¼
 
 5. MCSID (> 0) is required if stresses or strains/curvatures are to be
    computed in a material coordinate system. This is applicable only for
@@ -10182,13 +10187,13 @@ Remarks
 
 +-------------------------------------------------------------+
 |          +                         +                        |
-|  î       |  1/E1   -NU12/E1    é   |   +                A1  |
+|  Ã®       |  1/E1   -NU12/E1    Ã©   |   +                A1  |
 |   1      |                         |    1                   |
 |          |                         |                        |
-|  î    =  |-NU12/E1    1/E2     é   |   +    + (T-TREF)  A2  |
+|  Ã®    =  |-NU12/E1    1/E2     Ã©   |   +    + (T-TREF)  A2  |
 |   2      |                         |    2                   |
 |          |                         |                        |
-|  ç       |    é         é    1/G12 |   +                é   |
+|  Ã§       |    Ã©         Ã©    1/G12 |   +                Ã©   |
 |   12     |                         |    12                  |
 |          +                         +                        |
 |                                                             |
@@ -10196,10 +10201,10 @@ Remarks
 
 +-------------------------------------------+
 |               +--        --+              |
-|    +          |  G1Z    é  |      ç       |
+|    +          |  G1Z    Ã©  |      Ã§       |
 |     xz        |            |       xz     |
 |           =   |            |              |
-|    +          |   é    G2Z |      ç       |
+|    +          |   Ã©    G2Z |      Ã§       |
 |     yz        |            |       yz     |
 |               +---       --+              |
 +-------------------------------------------+
@@ -10212,8 +10217,8 @@ Remarks
 4. The F12 field is used only for composite materials when the Tsai-Wu failure
    theory is used and failure calculations are requested.
 
-5. NU12 is Poisson's Ratio (î1/î2 for uniaxial loading in 1-direction). Note
-   that NU21 = î1/î2, uniaxial loading in 2-direction, is related to NU12, E1,
+5. NU12 is Poisson's Ratio (Ã®1/Ã®2 for uniaxial loading in 1-direction). Note
+   that NU21 = Ã®1/Ã®2, uniaxial loading in 2-direction, is related to NU12, E1,
    and E2 by the relationship, (NU12) (E2) = (NU12) (E1).
 
 MATF - Fluid Material Property Definition
@@ -10267,7 +10272,7 @@ Format and Example
 +--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 +--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |        |       | S     | S     |       |       |       |       |       |     |
-|+a      |  d15  |î  /î  |î  /î  |  RHO  |   A   | TREF  |  GE   |       |     |
+|+a      |  d15  |Ã®  /Ã®  |Ã®  /Ã®  |  RHO  |   A   | TREF  |  GE   |       |     |
 |        |       | 11  0 | 33  0 |       |       |       |       |       |     |
 +--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+A      | 496.0 | 730.0 | 635.0 | 7500.0|       |       |       |       |     |
@@ -10279,7 +10284,7 @@ MID         Material identification number (Integer > 0).
 
 SE11 - d15  Piezoelectric constants multiplied by 10**12 (Real).
 
-îS11/î0, îS33/î0  Piezoelectric constants, where î0 is taken to be 8.854 x
+Ã®S11/Ã®0, Ã®S33/Ã®0  Piezoelectric constants, where Ã®0 is taken to be 8.854 x
             10**(-12) farad/meter (Real).
 
 RHO         Mass density (Real).
@@ -10835,7 +10840,7 @@ HID         Harmonic identification number (Integer >= 0 or a sequence of
 
 S           Scale factor (Real).
 
-MR, MP, MZ  Moment components in the r, í, z directions (Real).
+MR, MP, MZ  Moment components in the r, Ã­, z directions (Real).
 
 Remarks
 -------
@@ -11418,9 +11423,9 @@ Remarks
            u    -  u
    .        j,t     j,t-1
    u    =  ---------------
-    j,t        ët
+    j,t        Ã«t
 
-   where ët is the time increment and uj,t and uj,t-1 are the displacements at
+   where Ã«t is the time increment and uj,t and uj,t-1 are the displacements at
    time t and at the previous time step respectively.
 
 NOLIN2 - Nonlinear Transient Response Dynamic Load
@@ -11504,9 +11509,9 @@ Remarks
            u    - u                          u    -  u
    .       j,t     j,t-1            .         k,t     k,t-1
    u    = -----------------    or   u     = -----------------
-    j,t        ët                    k,t           ët
+    j,t        Ã«t                    k,t           Ã«t
 
-   where ët is the time increment, uj,t and uk,t are the displacements at the
+   where Ã«t is the time increment, uj,t and uk,t are the displacements at the
    time t and uj,t-1 and uk,t-1 are the displacements at the previous time step.
 
 6. xj and yk need not both represent displacements or velocities. One of them
@@ -11592,9 +11597,9 @@ Remarks
             u     -  u
    .         j,t      j,t-1
    u    =  -----------------
-    j,t           ët
+    j,t           Ã«t
 
-   where ët is the time increment and uj,t and uj,t-1 are the displacements at
+   where Ã«t is the time increment and uj,t and uj,t-1 are the displacements at
    time t and at the previous time step, respectively.
 
 NOLIN4 - Linear Transient Response Dynamic Load
@@ -11677,9 +11682,9 @@ Remarks
             u     -  u
    .         j,t      j,t-1
    u    =  -----------------
-    j,t           ët
+    j,t           Ã«t
 
-   where ët is the time increment and uj,t and uj,t-1 are the displacements at
+   where Ã«t is the time increment and uj,t and uj,t-1 are the displacements at
    time t and at the previous time step, respectively.
 
 NOLIN5 - Nonlinear Transient Load for Radiant Heat Transfer
@@ -11833,9 +11838,9 @@ Remarks
             x      x
      .       j,t -  j,t-1
      x    =  _________________   ,
-      j,t         ët
+      j,t         Ã«t
 
-   where ët is the time increment and xj,t and xj,t-1 are the displacements at
+   where Ã«t is the time increment and xj,t and xj,t-1 are the displacements at
    time t and at the previous time step respectively.
 
 6. Since the forcing function Pi(t) is a product of TABLEDi, displacement,
@@ -12064,7 +12069,7 @@ LRIB      ID of an AEFACT data card containing a list of interference body
 LTH1, LTH2ID of AEFACT data cards for defining theta arrays for interference
           calculations (Integer >= 0 or blank).
 
-THIi, THNiThe first and last interference element of a body to use the éi
+THIi, THNiThe first and last interference element of a body to use the Ã©i
           array (Integer >= 0).
 
 Remarks
@@ -12104,15 +12109,15 @@ Remarks
                                   +------+ half width
                                   |
                                   |
-                            é3 O  |  O é2       .
+                            Ã©3 O  |  O Ã©2       .
                                   |        .
-         End View       é4 O      |    . O é1         Theta array, receiving
-    (looking forward)             | .  é              points for interference
+         End View       Ã©4 O      |    . O Ã©1         Theta array, receiving
+    (looking forward)             | .  Ã©              points for interference
                                   +------------ y     body elements
 
-                        é5 O             O é8
+                        Ã©5 O             O Ã©8
 
-                            é6 O     O é7
+                            Ã©6 O     O Ã©7
 
                          Figure 2.4-43. PAERO2 diagram
 
@@ -12332,18 +12337,18 @@ NALPHA    Number of angles of attack (+) input per Mach number (m, of
 LALPHA    ID number of the required AEFACT data card which lists the +'s
           (Integer > 0).
 
-NXIS      Number of dimensionless chordwise coordinates (î) used to define
+NXIS      Number of dimensionless chordwise coordinates (Ã®) used to define
           the geometry of the strips (Integer >= 0 or blank) (see Remark 4
           below).
 
-LXIS      ID number of the AEFACT data card which lists the î`s (Integer = 0
+LXIS      ID number of the AEFACT data card which lists the Ã®`s (Integer = 0
           if Ca = 0, NTHICK > 0, Integer > 0 if Ca > 0, NTHICK = 0) where Ca
           is control surface chord length.
 
-NTAUS     Number of thickness ratios (ç) used to define the geometry of the
+NTAUS     Number of thickness ratios (Ã§) used to define the geometry of the
           strips (Integer >= 0 or blank).
 
-LTAUS     ID number of the AEFACT data card which lists the ç`s (Integer = 0
+LTAUS     ID number of the AEFACT data card which lists the Ã§`s (Integer = 0
           or blank if NTAUS = 0, Integer > 0 if NTAUS > 0).
 
 CAOCi     Ratio of chord of control surface to chord of strip (Ca/c) for
@@ -12421,47 +12426,47 @@ Remarks
      (d)        12           AEFACT, ID, I , ..., I , J , ..., J
                                           1        6   1        6
 
-     (e)        1            AEFACT, ID, î
+     (e)        1            AEFACT, ID, Ã®
                                           h
 
-     (f)      NSTRlP         AEFACT, ID, î  , î  , ..., î
+     (f)      NSTRlP         AEFACT, ID, Ã®  , Ã®  , ..., Ã®
                                           h1   h2        h
                                                           NSTRIP
 
-     (g)        2            AEFACT, ID, î , î
+     (g)        2            AEFACT, ID, Ã® , Ã®
                                           m   h
 
-     (h)        3            AEFACT, ID, ç , ç , ç
+     (h)        3            AEFACT, ID, Ã§ , Ã§ , Ã§
                                           m   h   t
 
-     (i)     2*NSTRIP        AEFACT, ID, î  , î  , ..., î
+     (i)     2*NSTRIP        AEFACT, ID, Ã®  , Ã®  , ..., Ã®
                                           m1   h1        h
                                                           NSTRIP
 
-     (j)     3*NSTRIP        AEFACT, ID, ç  , ç  , ç  , ..., ç
+     (j)     3*NSTRIP        AEFACT, ID, Ã§  , Ã§  , Ã§  , ..., Ã§
                                           m1   h1   t1        t
                                                                NSTRIP
 
-    Note:   If there is no hinge, you may put î  = ç  = 0.
+    Note:   If there is no hinge, you may put Ã®  = Ã§  = 0.
                                                h    h
 
 Dimensions of symmetrical airfoil, internal integral calculation are shown in
 Figure 2.4-44.
 
-                  ç                             +----- ç
+                  Ã§                             +----- Ã§
                   +      +--- g                 |       h
-                  |      |     î                | +--- Hinge Line
+                  |      |     Ã®                | +--- Hinge Line
                   |      |         .     .     .| |
-     Flow         |      |   .           |ç     | |  .
+     Flow         |      |   .           |Ã§     | |  .
      ---------+   |    .                 | m               .   |
-                  +----------------------+------+-+-----------------+ î
-                 -+ î  +-                |      | |        |   |
-                  +--------î ------------+        |        |   ç
+                  +----------------------+------+-+-----------------+ Ã®
+                 -+ Ã®  +-                |      | |        |   |
+                  +--------Ã® ------------+        |        |   Ã§
                   |         m            |        |        |    t
                   |                               |        |
-                  +--------------î ---------------+        |
+                  +--------------Ã® ---------------+        |
                   |               h                        |
-                  +------------------î=1-------------------+
+                  +------------------Ã®=1-------------------+
 
                          Figure 2.4-44. PAERO5 diagram
 
@@ -13661,7 +13666,7 @@ Format and Example
 |PELBOW  |   2   | 6061  | 16.0  | 211.0 | 211.0 | 422.0 |  6.0  |       |+P1  |
 +--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 +--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|+abc    |   r1  |   é1  |   r2  |   é2  |   r3  |   é3  |   r4  |   é4  |+def |
+|+abc    |   r1  |   Ã©1  |   r2  |   Ã©2  |   r3  |   Ã©3  |   r4  |   Ã©4  |+def |
 +--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+P1     |   5.3 |  0.0  |   5.3 |  90.0 |   5.3 | 180.0 |   5.3 | 270.0 |+P2  |
 +--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
@@ -13687,7 +13692,7 @@ J         Torsional constant (Real).
 
 NSM       Nonstructural mass per unit length (Real).
 
-ri, éi    Stress recovery coefficients (Real, é in degrees) (See Figure 2.4-
+ri, Ã©i    Stress recovery coefficients (Real, Ã© in degrees) (See Figure 2.4-
           45.)
 
 K1, K2    Area factors for shear (Real).
@@ -13725,7 +13730,7 @@ Remarks
               .              Xe                          |   /
      |     .         ->      |                           |ri/
    C |  .  +   Ye    v       |   GA                      | /
-     .-----------------------*                           |/ éi
+     .-----------------------*                           |/ Ã©i
      |\             M2a -----|----- V1a        ----------+--------- Xe  Plane 1
      | \                     |Fxa                        |
        Center of                                         |
@@ -14895,7 +14900,7 @@ Format and Example
 +--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
 +========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
-|PRESPT  |  IDF  |       |  IDP  |   í   |  IDP  |   í   |  IDP  |   í   |     |
+|PRESPT  |  IDF  |       |  IDP  |   Ã­   |  IDP  |   Ã­   |  IDP  |   Ã­   |     |
 +--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |PRESPT  |   14  |       |  141  |  0.0  |       |       |  142  |  90.0 |     |
 +--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
@@ -14906,7 +14911,7 @@ IDF       Fluid point (RINGFL) identification number (Integer > 0).
 
 IDP       Unique pressure point identification number (Integer > 0).
 
-í         Azimuthal position on fluid point, referenced by IDF, in fluid
+Ã­         Azimuthal position on fluid point, referenced by IDF, in fluid
           coordinate system (Real).
 
 Remarks
@@ -15031,7 +15036,7 @@ Remarks
 
                                                       YBASIC
                                                       |
-                                                  \ é |
+                                                  \ Ã© |
                                                    \  |
                                                     \ |
                                                      \|
@@ -15042,7 +15047,7 @@ Remarks
   numbers will vary depending on the number of longitudinal segments). Note
   that the first set of grid points specified (starting with G3) corresponds
   to the start of the first circumferential segment, which must be in the X-Y
-  plane at é = 0 degree in the prolate spheroidal coordinate system.
+  plane at Ã© = 0 degree in the prolate spheroidal coordinate system.
 
 3.The number of longitudinal segments must be the same for every
   circumferential segment.
@@ -15267,11 +15272,11 @@ plane (beam-column effect) forces. The latter coupling can be accounted for
 only in differential stiffness and/or buckling analysis. Parameter 12I/T3
 (field 6) can be calculated by using the following definition for I:
 
-              +þ                    þ+
+              +Ã¾                    Ã¾+
               |  1  T 3   T TS   T 2 |
         I = 2 | ---(-)  + -(-- + -)  |
               | 12  2     2  2   4   |
-              +þ                    þ+
+              +Ã¾                    Ã¾+
 
 I is basically the moment of inertia of the face sheets about the neutral axis
 (centroidal). It is assumed that the face sheets are symmetric about the
@@ -16025,7 +16030,7 @@ Remarks
    used in statics. The power contributed into an element via this card is
    given by the equation:
 
-   P   = [(Effective area)*Q0+A] *F(t-ç)
+   P   = [(Effective area)*Q0+A] *F(t-Ã§)
     in
 
    where effective area is taken from PHBDY cards and A is taken from DAREA
@@ -16035,10 +16040,10 @@ Remarks
    analysis. The power contributed into an element via this card is given by
    the equation:
 
-   P  (t) = [(Effective area)*Q0] *F(t-ç)
+   P  (t) = [(Effective area)*Q0] *F(t-Ã§)
     in
 
-   where the function of time, F(t-ç), is specified on a TLOAD or TLOAD2 card.
+   where the function of time, F(t-Ã§), is specified on a TLOAD or TLOAD2 card.
 
 3. Q0 is positive for heat input.
 
@@ -16089,10 +16094,10 @@ Remarks
    may have individual delays. The power contributed into each point, i, or an
    element via this card is given by
 
-   P (t)  =  AREA  * Q0 * F(t-ç )
+   P (t)  =  AREA  * Q0 * F(t-Ã§ )
     i            i     i       i
 
-   where F(t-çi) is a function of time specified on a TLOAD1 or TLOAD2 card.
+   where F(t-Ã§i) is a function of time specified on a TLOAD1 or TLOAD2 card.
 
 3. Q0i is positive for heat flux input to the element.
 
@@ -16143,8 +16148,8 @@ Remarks
 
 3. In statics, the load is applied with the Case Control request: LOAD = SID.
    In dynamics, the load is applied by reference on a TLOADi data card. The
-   load at each point will be multiplied by the function of time F(t-çi)
-   defined on the TLOADi card. çi is the delay factor for each point.
+   load at each point will be multiplied by the function of time F(t-Ã§i)
+   defined on the TLOADi card. Ã§i is the delay factor for each point.
 
 4. The number of connected points for the five types are 1(POINT),
    2(LINE,REV), 3(AREA3), 4(AREA4). Any unused Gi entries must be on the
@@ -16223,7 +16228,7 @@ Remarks
    element via this card is given by
 
                  _    _
-   P (t)  =  -+A(e(t)*n)*Q0*F(t-ç)
+   P (t)  =  -+A(e(t)*n)*Q0*F(t-Ã§)
     l
 
    where:
@@ -16238,8 +16243,8 @@ Remarks
             its value is used directly; if Ei is blank, its
             value is zero.
 
-   F(t-ç) is a function of time specified or referenced by
-            the parent TLOAD1 or TLOAD2 card. The value ç is
+   F(t-Ã§) is a function of time specified or referenced by
+            the parent TLOAD1 or TLOAD2 card. The value Ã§ is
             calculated for each loaded point.
 
 3. If the referenced HBDY element is of TYPE = ELCYL, the power input is an
@@ -16302,11 +16307,11 @@ Remarks
    equivalent power contributed via this card into each grid point i,
    connected to each element listed, is
 
-   P  = QV * VOL * F(t-ç )
+   P  = QV * VOL * F(t-Ã§ )
     i           i       i
 
-   where VOLi is the portion of the volume associated with point i and F(t-çi)
-   is the function of time defined by a TLOADi card. çi is the delay for each
+   where VOLi is the portion of the volume associated with point i and F(t-Ã§i)
+   is the function of time defined by a TLOADi card. Ã§i is the delay for each
    point i.
 
 3. EID may be specified as individual references or as sequential lists (THRU
@@ -16765,9 +16770,9 @@ Remarks
 2. All fluid point identification numbers must be unique with respect to other
    scalar, structural and fluid points.
 
-3. X1, X2, X3 are (r, í, z) for a cylindrical coordinate system and (p, é, í)
-   for a spherical coordinate system. é and í are in degrees. The value of é
-   must be greater than zero. The value of í must be blank or zero.
+3. X1, X2, X3 are (r, Ã­, z) for a cylindrical coordinate system and (p, Ã©, Ã­)
+   for a spherical coordinate system. Ã© and Ã­ are in degrees. The value of Ã©
+   must be greater than zero. The value of Ã­ must be blank or zero.
 
 4. One or two fluid points may be defined per card.
 
@@ -16778,7 +16783,7 @@ Description
 -----------
 Defines a frequency dependent dynamic load of the form
 
-                              i{é - 2+fç}
+                              i{Ã© - 2+fÃ§}
    {P(f)} =  A[C(f) + iD(f)] e
 
 for use in frequency response problems.
@@ -16801,11 +16806,11 @@ SID        Set identification number (Integer > 0).
 L          Identification number of DAREA or DAREAS and LOADC card set which
            defines A (Integer > 0).
 
-M          Identification number of DELAY or DELAYS card set which defines ç
+M          Identification number of DELAY or DELAYS card set which defines Ã§
            (Integer >= 0).
 
 N          Identification number of DPHASE or DPHASES card set which defines
-           é (Integer >= 0).
+           Ã© (Integer >= 0).
 
 TC         Set identification number of TABLEDi card which gives C(f)
            (Integer >= 0; TC + TD > 0).
@@ -16815,7 +16820,7 @@ TD         Set identification number of TABLEDi card which gives D(f)
 
 Remarks
 -------
-1. If any of M, N, TC, or TD are blank or zero, the corresponding ç, é, C(f),
+1. If any of M, N, TC, or TD are blank or zero, the corresponding Ã§, Ã©, C(f),
    or D(f) will be zero.
 
 2. Dynamic load sets must be selected in the Case Control Deck (DLOAD = SID)
@@ -16840,7 +16845,7 @@ Description
 -----------
 Defines a frequency dependent dynamic load of the form
 
-                    i{í(f) + é  - 2+fç}
+                    i{Ã­(f) + Ã©  - 2+fÃ§}
    {P(f)}  =  AB(f)e
 
 for use in frequency response problems.
@@ -16863,21 +16868,21 @@ SID        Set identification number (Integer > 0).
 L          Identification number of DAREA or DAREAS and LOADC card set which
            defines A (Integer > 0).
 
-M          Identification number of DELAY or DELAYS card set which defines ç
+M          Identification number of DELAY or DELAYS card set which defines Ã§
            (Integer >= 0).
 
 N          Identification number of DPHASE or DPHASES card set which defines
-           é in degrees (Integer >= 0).
+           Ã© in degrees (Integer >= 0).
 
 TB         Set identification number of TABLEDi card which gives B(f)
            (Integer >= 0).
 
-TP         Set identification number of TABLEDi card which gives í(f) in
+TP         Set identification number of TABLEDi card which gives Ã­(f) in
            degrees (Integer >= 0).
 
 Remarks
 -------
-1. If any of M, N, or TP are zero, the corresponding ç, é, or í(f) will be
+1. If any of M, N, or TP are zero, the corresponding Ã§, Ã©, or Ã­(f) will be
    zero.
 
 2. Dynamic load sets must be selected in the Case Control Deck (DLOAD = SID)
@@ -19029,7 +19034,7 @@ Remarks
    TEMP(LOAD) is specified in the Case Control Deck.
 
 5. At least two different angles are required for each RID and temperature set
-   to specify the subtended angle [íb-ía] over which the temperature applies.
+   to specify the subtended angle [Ã­b-Ã­a] over which the temperature applies.
 
 6. For a discussion of the conical shell problem, see Section 5.9 of the
    Theoretical Manual.
@@ -19174,8 +19179,8 @@ Remarks
 4. For a temperature field other than a constant gradient the effective
    gradient for a homogeneous plate is:
 
-           1   ô
-   T'  =  ---  õ T(z)z dz
+           1   Ã´
+   T'  =  ---  Ãµ T(z)z dz
            I   z
 
    where I is the bending inertia, and z is the distance from the neutral
@@ -19183,8 +19188,8 @@ Remarks
 
 5. The average temperature for a homogeneous plate is
 
-             1      ô
-   T  =   --------  õ  T dVolume
+             1      Ã´
+   T  =   --------  Ãµ  T dVolume
            Volume   Volume
 
 6. If the element material is temperature dependent, its properties are
@@ -19270,9 +19275,9 @@ Remarks
 4. The thermal moments in the element coordinate system may be calculated from
    the formula:
 
-   Mx       ô
+   Mx       Ã´
    My   = - | [Ge] {+ } T(z)z dz
-   Mxy      õ        e
+   Mxy      Ãµ        e
 
    where the integration is performed over the bending material properties in
    the element coordinate system.
@@ -19479,13 +19484,13 @@ Remarks
    BAR element are defined by the following integrals over the cross-section.
    For end a (end b is similar):
 
-             1   ô
-   T'    =  ---  õ T (y,z)y dA
+             1   Ã´
+   T'    =  ---  Ãµ T (y,z)y dA
     1a       I   A  a
               1
 
-             1   ô
-   T'    =  ---  õ T (y,z)z dA
+             1   Ã´
+   T'    =  ---  Ãµ T (y,z)z dA
     2a       I   A  a
               2
 
@@ -19665,7 +19670,7 @@ Description
 -----------
 Defines a time-dependent dynamic load of the form
 
-   {P(t)} = {A F(t - ç)}
+   {P(t)} = {A F(t - Ã§)}
 
 for use in transient response problems.
 
@@ -19689,15 +19694,15 @@ L          Identification number of DAREA card set or a thermal load set
            substructuring, reference a DAREAS card set. If desired, the set
            identification may also reference LOADC cards.
 
-M          Identification number of DELAY or DELAYS card set which defines ç
+M          Identification number of DELAY or DELAYS card set which defines Ã§
            (Integer >= 0).
 
-TF         Identification number of TABLEDi card which gives F(t - ç)
+TF         Identification number of TABLEDi card which gives F(t - Ã§)
            (Integer > 0).
 
 Remarks
 -------
-1. If M is zero, ç will be zero.
+1. If M is zero, Ã§ will be zero.
 
 2. Field 5 must be blank.
 
@@ -19733,18 +19738,18 @@ Description
 -----------
 Defines a time-dependent dynamic load of the form
 
-              É
-              º      ~         ~
-              º {O}, t < 0  or t > T2 - T1
-              º
-   {P(t)}  =  º É                        »
-              º º       ~                º
-              º º  ~B  Ct          ~     º        ~
-              º ºA t  e   cos (2piFt + P)º , 0 <= t <= T2 - T1
-              º È                        ¼
-              È
+              Ã‰
+              Âº      ~         ~
+              Âº {O}, t < 0  or t > T2 - T1
+              Âº
+   {P(t)}  =  Âº Ã‰                        Â»
+              Âº Âº       ~                Âº
+              Âº Âº  ~B  Ct          ~     Âº        ~
+              Âº ÂºA t  e   cos (2piFt + P)Âº , 0 <= t <= T2 - T1
+              Âº Ãˆ                        Â¼
+              Ãˆ
 
-for use in transient response problems where t-tilde = t - T1 - ç.
+for use in transient response problems where t-tilde = t - T1 - Ã§.
 
 Format and Example
 ------------------
@@ -19771,7 +19776,7 @@ L          Identification number of DAREA card set or a thermal load set
            substructuring, reference a DAREAS card set. If desired, the set
            identification may also reference LOADC cards.
 
-M          Identification number of DELAY or DELAYS card set which defines ç
+M          Identification number of DELAY or DELAYS card set which defines Ã§
            (Integer >= 0).
 
 T1         Time constant (Real >= 0.0).
@@ -19788,7 +19793,7 @@ B          Growth coefficient (Real).
 
 Remarks
 -------
-1. If M is zero, ç will be zero.
+1. If M is zero, Ã§ will be zero.
 
 2. Field 5 must be blank.
 
