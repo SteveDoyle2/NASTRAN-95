@@ -554,7 +554,6 @@ restart or the User's Master File.
 |--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |/       |   K1  |   K2  |       |       |       |       |       |       |     |
 |/       |   4   |       |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -598,9 +597,7 @@ NP         Number of additional entries on PDUMi property card (Integer >=
 ND         Number of displacement components at each grid point used in
            generation of differential stiffness matrix (Integer 3 or 6).
 
-AEFACT - Aerodynamic Spanwise Divisions
-=======================================
-
+# AEFACT - Aerodynamic Spanwise Divisions
 ## Description
 
 Used to specify box division points for flutter analysis.
@@ -649,10 +646,8 @@ Di         Division point (Real).
    points. Dmid = 2D1DND/(D1+DND) gives equal values to increments of the
    reciprocal of D1.
 
-================================
-AERO - Aerodynamic Physical Data
-================================
 
+# AERO - Aerodynamic Physical Data
 ## Description
 
 Gives basic aerodynamic parameters.
@@ -689,9 +684,8 @@ SYMXY      Symmetry key for aero coordinate x-y plane can be used to simulate
 2. The ACSID must be a rectangular coordinate system. Flow is in the positive
    x direction.
 
-ASET - Selected Coordinates
-===========================
 
+# ASET - Selected Coordinates
 ## Description
 
 Defines coordinates (degrees of freedom) to be placed in the analysis set.
@@ -729,10 +723,8 @@ C          Component number, zero or blank for scalar points, any unique
 4. ASET or OMIT data are not recommended for use in heat transfer analysis
    with radiation effects.
 
-============================
-ASET1 - Selected Coordinates
-============================
 
+# ASET1 - Selected Coordinates
 ## Description
 
 Defines coordinates (degrees of freedom) to be placed in the analysis set.
@@ -782,9 +774,8 @@ G, ID1, ID2Grid or scalar point identification numbers (Integer > 0, ID1 <
 4. ASET or OMIT data are not recommended for use in heat transfer analysis
    with radiation effects.
 
-AXIC - Axisymmetric Problem Flag
-================================
 
+# AXIC - Axisymmetric Problem Flag
 ## Description
 
 Defines the existence of a model containing CCONEAX, CTRAPAX, or CTRIAAX
@@ -850,32 +841,23 @@ Defines basic parameters and the existence of an axisymmetric fluid analysis.
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
 |--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |AXIF    |  CID  |   G   | DRHO  |  DB   | NOSYM |   F   |       |       |abc  |
-|AXIF    |   2   | 32.2  | 0.12  | 2.5+5 |  YES  |       |       |       |CARD1|
-
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     |   N1  |  N2   |  N3   |  N4   |  N5   |  N6   |  N7   |  N8   |def  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|AXIF    |   2   | 32.2  | 0.12  | 2.5+5 |  YES  |       |       |       |CARD1|
 |+ARD1   |   1   |   2   |   3   |       |   4   |       |   7   |  10   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-                                 etc. 
 
-Alternate Form of Continuation Card:
+## Alternate Form of Continuation Card
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |+bc     |   N1  |"THRU" |  Ni   |       |       |       |       |       |def  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+ARD1   |   0   | THRU  |  10   |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-                                 etc. 
 
-Alternate Form of Continuation Card:
+## Alternate Form of Continuation Card
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |+bc     |   N1  |"THRU" |  Ni   |"STEP" |   NS  |       |       |       |def  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+ARD1   |   0   | THRU  |   9   | STEP  |   3   |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-                                 etc. 
 
 Field      Contents
 -----      --------
@@ -1045,13 +1027,9 @@ REDUCE operation.
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
 |--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |BDYC    |   ID  | NAME1 |  SID1 | NAME2 |  SID2 | NAME3 |  SID3 |       |ghi  |
-|BDYC    |  157  |WINGRT |   7   | MIDWG |   15  |FUSELAG|   32  |       |GHI  |
-
-+--------+-------+-------+-------+-------------------------------+-------+-----+
 |+hi     |       | NAMEi |  SIDi |                 etc.          |       |jkl  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|BDYC    |  157  |WINGRT |   7   | MIDWG |   15  |FUSELAG|   32  |       |GHI  |
 |+HI     |       | POD1  | 175   |WINGRT |   15  | CABIN |  16   |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -1229,16 +1207,14 @@ Specifies coordinate system for magnetic induction output.
 |BFIELD  |  CID  | EID1  |  EID2 |  EID3 |  EID4 |  EID5 |  EID6 |  EID7 |     |
 |BFIELD  |   3   |  12   |   5   |   6   |       |       |       |       |     |
 
-First Alternate Form:
----------------------
+## First Alternate Form
 
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
 |--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |BFIELD  |  CID  |  EID1 |"THRU" |  EID2 |       |       |       |       |     |
 |BFIELD  |   5   |   8   | THRU  |   27  |       |       |       |       |     |
 
-Second Alternate Form:
-----------------------
+## Second Alternate Form
 
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
 |--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
@@ -1802,14 +1778,14 @@ GO         Grid point identification number to optionally supply X1, X2, X3
 
 F          Flag to specify the nature of fields 6-8 as follows:
 
-                           6       7       8
-           +----------+-------+---------+---------+
+           |          |    6  |    7    |  8      |
+           |----------|-------|---------|---------|
            |F = blank |       |         |         |
-           +----------+-------+---------+---------+
+           |----------|-------|---------|---------|
            |F = 1     |   X1  |   X2    |   X3    |
-           +----------+-------+---------+---------+
+           |----------|-------|---------|---------|
            |F = 2     |   GO  | blank/0 | blank/0 |
-           +----------+-------+---------+---------+
+           |----------|-------|---------|---------|
 
            This F flag is optional (not required). See BAROR card for default
            options.
@@ -5813,9 +5789,7 @@ TH        Material property orientation angle in degrees (Real). Figure
                  Figure 2.4-31. CTRIA1 sign convention for TH
 
 
-CTRIA2 - Triangular Element Connection
-======================================
-
+# CTRIA2 - Triangular Element Connection
 ## Description
 
 Defines a triangular membrane and bending element (TRIA2) of the structural
@@ -5862,9 +5836,7 @@ TH        Material property orientation angle in degrees (Real). Figure
                  Figure 2.4-32. CTRIA2 sign convention for TH
 
 
-CTRIA3 - Triangular Element Connection
-======================================
-
+# CTRIA3 - Triangular Element Connection
 ## Description
 
 Defines a triangular plate element (CTRIA3) of the structural model. This is
@@ -5949,9 +5921,7 @@ Ti        Membrane thickness of element at grid points Gi (Real or blank;
 
                         Figure 2.4-33. CTRIA3 geometry
 
-CTRIAAX - Triangular Ring Element Connection
-============================================
-
+# CTRIAAX - Triangular Ring Element Connection
 ## Description
 
 Defines an axisymmetric triangular cross-section ring element with
@@ -6007,9 +5977,7 @@ TH        Material property orientation angle in degrees (Real). Figure
                  Figure 2.4-34. CTRIAAX sign convention for TH
 
 
-CTRIARG - Triangular Ring Element Connection
-============================================
-
+# CTRIARG - Triangular Ring Element Connection
 ## Description
 
 Defines an axisymmetric triangular cross section ring element (TRIARG) of the
@@ -6068,9 +6036,7 @@ MID       Material identification number (Integer 0).
            Figure 2.4-35. CTRIARG grid point identification numbers
 
 
-CTRIM6 - Linear Strain Triangular Element Connection
-====================================================
-
+# CTRIM6 - Linear Strain Triangular Element Connection
 ## Description
 
 Defines a linear strain triangular membrane element (TRIM6) of the structural
@@ -6132,9 +6098,7 @@ TH        Material property orientation angle in degrees (Real). Figure
                  Figure 2.4-36. CTRIM6 sign convention for TH
 
 
-CTRMEM - Triangular Element Connection
-======================================
-
+# CTRMEM - Triangular Element Connection
 ## Description
 
 Defines a triangular membrane element (TRMEM) of the structural model.
@@ -6180,9 +6144,7 @@ TH        Material property orientation angle in degrees (Real). Figure
                  Figure 2.4-37. CTRMEM sign convention for TH
 
 
-CTRPLT - Triangular Element Connection
-======================================
-
+# CTRPLT - Triangular Element Connection
 ## Description
 
 Defines a triangular bending element (TRPLT) of the structural model.
@@ -6230,9 +6192,7 @@ TH        Material property orientation angle in degrees (Real). Figure
                  Figure 2.4-38. CTRPLT sign convention for TH
 
 
-CTRPLT1 - Triangular Element Connection
-=======================================
-
+# CTRPLT1 - Triangular Element Connection
 ## Description
 
 Defines a higher order triangular bending element (TRPLT1) of the structural
@@ -6286,9 +6246,7 @@ TH        Material property orientation angle in degrees (Real). Figure
                  Figure 2.4-39. CTRPLT1 sign convention for TH
 
 
-CTRSHL - Triangular Shell Element Connection
-============================================
-
+# CTRSHL - Triangular Shell Element Connection
 ## Description
 
 Defines a triangular thin shallow shell element (TRSHL) of the structural
@@ -6341,9 +6299,7 @@ TH        Material property orientation angle in degrees (Real). Figure
 
                  Figure 2.4-40. CTRSHL sign convention for TH
 
-CTUBE - Tube Element Connection
-===============================
-
+# CTUBE - Tube Element Connection
 ## Description
 
 Defines a tension-compression-torsion element (TUBE) of the structural model.
@@ -6373,9 +6329,7 @@ G1, G2    Grid point identification numbers of connection points (Integer >
 2.One or two TUBE elements may be defined on a single card.
 
 
-CTWIST - Twist Panel Element Connection
-=======================================
-
+# CTWIST - Twist Panel Element Connection
 ## Description
 
 Defines a twist panel element (TWIST) of the structural model.
@@ -6408,9 +6362,7 @@ G1,...,G4 Grid point identification numbers of connection points (Integer >
 3.All interior angles must be less than 180 degrees.
 
 
-CVISC - Viscous Damper Connection
-=================================
-
+# CVISC - Viscous Damper Connection
 ## Description
 
 Defines a viscous damper element (VISC) of the structural model.
@@ -6442,9 +6394,7 @@ G1, G2    Grid point identification numbers of connection points (Integer >
 3.Used only for direct formulation of dynamic analyses.
 
 
-CWEDGE - Wedge Element Connection
-=================================
-
+# CWEDGE - Wedge Element Connection
 ## Description
 
 Defines a wedge element (three dimensional solid, with three quadrilateral
@@ -6501,9 +6451,7 @@ G1,...,G6 Grid point identification numbers of connection points (Integers >
             Figure 2.4-41. CWEDGE grid point identification numbers
 
 
-CYJOIN - Cyclic Symmetry Boundary Points
-========================================
-
+# CYJOIN - Cyclic Symmetry Boundary Points
 ## Description
 
 Defines the boundary points of a segment for cyclic symmetry structural
@@ -6551,9 +6499,7 @@ Gi, GIDi  Grid or scalar point identification numbers (Integer > 0).
   segments, except those constrained by SPC, MPC, or OMIT.
 
 
-DAREA - Dynamic Load Scale Factor
-=================================
-
+# DAREA - Dynamic Load Scale Factor
 ## Description
 
 The DAREA card is used in conjunction with the RLOAD1, RLOAD2, TLOAD1, and
@@ -6587,9 +6533,7 @@ A         Scale (area) factor A for the designated coordinate (Real).
 
   P = Your (or external) ring ID + 10**6 x (harmonic + 1)
 
-DAREAS - Dynamic Load Scale Factor, Substructure Analysis
-=========================================================
-
+# DAREAS - Dynamic Load Scale Factor, Substructure Analysis
 ## Description
 
 The DAREAS card is used in conjunction with the RLOAD1, RLOAD2, TLOAD1, and
@@ -6625,9 +6569,7 @@ A         Scale (area) factor A for the designated coordinate (Real).
 3.Points referenced must exist in the SOLVEd structure.
 
 
-DEFORM - Element Deformation
-============================
-
+# DEFORM - Element Deformation
 ## Description
 
 Defines enforced axial deformation for one-dimensional elements for use in
@@ -6660,9 +6602,7 @@ D         Deformation (+ = elongation) (Real).
   card.
 
 
-DELAY - Dynamic Load Time Delay
-===============================
-
+# DELAY - Dynamic Load Time Delay
 ## Description
 
 The DELAY card is used in conjunction with the RLOAD1, RLOAD2, TLOAD1 and
@@ -6692,9 +6632,7 @@ T         Time delay ç for designated coordinate (Real).
 1.One or two dynamic load time delays may be defined on a single card.
 
 
-DELAYS - Dynamic Load Time Delay, Substructure Analysis
-=======================================================
-
+# DELAYS - Dynamic Load Time Delay, Substructure Analysis
 ## Description
 
 The DELAYS card is used in conjunction with the RLOAD1, RLOAD2, TLOAD1 and
@@ -6730,9 +6668,7 @@ T         Time delay ç for designated coordinate (Real).
 3.Points referenced must exist in the SOLVEd structure.
 
 
-DLOAD - Dynamic Load Combination (Superposition)
-================================================
-
+# DLOAD - Dynamic Load Combination (Superposition)
 ## Description
 
 Defines a dynamic loading condition for frequency response or transient
@@ -6789,9 +6725,7 @@ Li        Load set identification numbers defined via card types enumerated
 9.SID must be unique for all TLOAD1, TLOAD2, RLOAD1, and RLOAD2 cards.
 
 
-DMI - Direct Matrix Input
-=========================
-
+# DMI - Direct Matrix Input
 ## Description
 
 Used to define matrix data blocks directly. Generates a matrix of the form
@@ -6912,9 +6846,7 @@ A(Ix,J)    Element of A (See TIN) (Real).
 |DMI     |  QQQ  |   1   |   3   |  3.14 | THRU  |   6   |   9   |  2.0  |     |
 
 
-DMIAX - Direct Axisymmetric Matrix Input
-========================================
-
+# DMIAX - Direct Axisymmetric Matrix Input
 ## Description
 
 Defines axisymmetric (fluid or structure) related direct input matrix terms.
@@ -6996,9 +6928,7 @@ Xij, Yij   Real and imaginary parts of matrix element; row (GI, CI, NI)
    FORCE, MATPOOL, PCDB, XYCDB, CASECC, any DTI names, and SCRATCH1 through
    SCRATCH9.
 
-DMIG - Direct Matrix Input at Grid Points
-=========================================
-
+# DMIG - Direct Matrix Input at Grid Points
 ## Description
 
 Defines structure-related direct input matrices.
@@ -7074,9 +7004,7 @@ Xij, Yij   Real and imaginary parts of matrix element.
    SCRATCH9.
 
 
-DPHASE - Dynamic Load Phase Lead
-================================
-
+# DPHASE - Dynamic Load Phase Lead
 ## Description
 
 The DPHASE card is used in conjunction with the RLOAD1 and RLOAD2 data cards
@@ -7105,9 +7033,7 @@ TH         Phase lead é (in degrees) for designated coordinate (Real).
 1. One or two dynamic load phase lead terms may be defined on a single card.
 
 
-DPHASES - Dynamic Load Phase Lead, Substructure Analysis
-========================================================
-
+# DPHASES - Dynamic Load Phase Lead, Substructure Analysis
 ## Description
 
 The DPHASES card is used in conjunction with the RLOAD1 and RLOAD2 data cards
@@ -7141,9 +7067,7 @@ TH         Phase lead é (in degrees) for designated coordinate (Real).
 
 3. Points referenced must exist in the SOLVEd structure.
 
-DSFACT - Differential Stiffness Factor
-======================================
-
+# DSFACT - Differential Stiffness Factor
 ## Description
 
 Used to define a scale factor for applied loads and stiffness matrix in a
@@ -7236,9 +7160,7 @@ ENDREC     The BCD value ENDREC which flags the end of the string of values
    SCRATCH9.
 
 
-EIGB - Buckling Analysis Data
-=============================
-
+# EIGB - Buckling Analysis Data
 ## Description
 
 Defines data needed to perform buckling analysis.
@@ -7320,9 +7242,7 @@ C          Component number (one of the integers 1 - 6) (required if and only
 7. If NORM = POINT, the selected component must be in the analysis set.
 
 
-EIGC - Complex Eigenvalue Extraction Data
-=========================================
-
+# EIGC - Complex Eigenvalue Extraction Data
 ## Description
 
 Defines data needed to perform complex eigenvalue analysis.
@@ -7458,9 +7378,7 @@ Ndj        Desired number of roots in each region (default is 3Nej) (Integer
 10.   The default of NORM is MAX.
 
 
-EIGP - Poles in Complex Plane
-=============================
-
+# EIGP - Poles in Complex Plane
 ## Description
 
 Defines poles that are used in complex eigenvalue extraction.
@@ -7493,9 +7411,7 @@ M         Multiplicity of complex root at pole defined by (+,w) (Integer >
 4.One or two poles may be defined on a single card.
 
 
-EIGR - Real Eigenvalue Extraction Data
-======================================
-
+# EIGR - Real Eigenvalue Extraction Data
 ## Description
 
 Defines data needed to perform real eigenvalue analysis.
@@ -7636,9 +7552,7 @@ C         Component number (One of the integers 1 - 6) (Required if and only
      may take two to three times longer to compute than FEER or FEER-X.
 
 
-ENDDATA - End of Bulk Data
-==========================
-
+# ENDDATA - End of Bulk Data
 ## Description
 
 Defines the end of the Bulk Data Deck.
@@ -7677,9 +7591,7 @@ Second Alternate Form:
   steps occur within the same job submittal on the CDC computer.
 
 
-EPOINT - Extra Point
-====================
-
+# EPOINT - Extra Point
 ## Description
 
 Defines extra points of the structural model for use in dynamics problems.
@@ -7713,9 +7625,7 @@ ID, ID1, ID2  Extra point identification number (Integer > 0; ID1 < ID2).
 3.If the alternate form is used, extra points ID1 through ID2 are defined.
 
 
-FLFACT - Aerodynamic Physical Data
-==================================
-
+# FLFACT - Aerodynamic Physical Data
 ## Description
 
 Used to specify densities, Mach numbers, or interblade phase angles, and
@@ -7765,9 +7675,7 @@ Fi        Aerodynamic factor (Real).
   reciprocal of F1.
 
 
-FLSYM - Axisymmetric Symmetry Control
-=====================================
-
+# FLSYM - Axisymmetric Symmetry Control
 ## Description
 
 Defines the relationship between the axisymmetric fluid and a structural
@@ -7815,9 +7723,7 @@ boundary constraints are S-S, the compatible cosine harmonics are:  0, 2, 4,
 etc. If S-A is used the compatible cosine harmonics are 1, 3, 5, ..., etc.
 
 
-FLUTTER - Aerodynamic Flutter Data
-==================================
-
+# FLUTTER - Aerodynamic Flutter Data
 ## Description
 
 Defines data needed to perform flutter analysis.
@@ -7869,9 +7775,7 @@ EPS         Convergence parameter for k; used in the P-K method (Real)
 4. An eigenvalue is accepted in the P-K method when | k - kestimate | < EPS.
 
 
-FORCE - Static Load
-===================
-
+# FORCE - Static Load
 ## Description
 
 Defines a static load at a grid point by specifying a vector.
@@ -7942,9 +7846,7 @@ G1, G2      Grid point identification numbers (Integer > 0; G1 not equal G2).
    by NASTRAN.
 
 
-FORCE2 - Static Load
-====================
-
+# FORCE2 - Static Load
 ## Description
 
 Used to define a static load by specification of a value and four grid points
@@ -7977,9 +7879,7 @@ G1,...,G4   Grid point identification numbers (Integer > 0; G1 through G4 must
    by NASTRAN.
 
 
-FORCEAX - Axisymmetric Static Load
-==================================
-
+# FORCEAX - Axisymmetric Static Load
 ## Description
 
 Defines a static loading for a model containing CCONEAX, CTRAPAX, or CTRIAAX
@@ -8026,9 +7926,7 @@ FR, FP, FZ  Load components in r, í, z directions (Real).
    Theoretical Manual.
 
 
-FREEPT - Fluid Free Surface Point
-=================================
-
+# FREEPT - Fluid Free Surface Point
 ## Description
 
 Defines the location of points on the surface of a fluid for recovery of
@@ -8068,9 +7966,7 @@ IDP         Free surface point identification number (Integer > 0).
 6. Output requests for velocity and acceleration can be made at these points.
 
 
-FREQ - Frequency List
-=====================
-
+# FREQ - Frequency List
 ## Description
 
 Defines a set of frequencies to be used in the solution of frequency response
@@ -8102,9 +7998,7 @@ F           Frequency value (Real > 0.0).
    identification numbers.
 
 
-FREQ1 - Frequency List
-======================
-
+# FREQ1 - Frequency List
 ## Description
 
 Defines a set of frequencies to be used in the solution of frequency response
@@ -8145,9 +8039,7 @@ NDF         Number of frequency increments (Integer > 0).
    identification numbers.
 
 
-FREQ2 - Frequency List
-======================
-
+# FREQ2 - Frequency List
 ## Description
 
 Defines a set of frequencies to be used in the solution of frequency response
@@ -8196,9 +8088,7 @@ NF          Number of logarithmic intervals (Integer > 0).
    identification numbers.
 
 
-FSLIST - Free Surface List
-==========================
-
+# FSLIST - Free Surface List
 ## Description
 
 Declares the fluid points (RINGFL) which lie on a free surface boundary.
@@ -8236,9 +8126,7 @@ IDFi        Identification number of RINGFL point (Integer > 0 or BCD "AXIS".
    fluid points.
 
 
-GEMLOOP - General Current Loop
-==============================
-
+# GEMLOOP - General Current Loop
 ## Description
 
 Defines a general current loop in magnetic field problems.
@@ -8438,9 +8326,7 @@ The data cards necessary to input this general element are shown below:
 |  +6    |  8.5  |       |       |       |       |       |       |       |     |
 
 
-GRAV - Gravity Vector
-=====================
-
+# GRAV - Gravity Vector
 ## Description
 
 Used to define gravity vectors for use in determining gravity loading for the
@@ -8480,9 +8366,7 @@ N1, N2, N3  Gravity vector components (Real; N1**2 + N2**2 + N3**2 > 0.0).
    by NASTRAN.
 
 
-GRDSET - Grid Point Default
-===========================
-
+# GRDSET - Grid Point Default
 ## Description
 
 Defines default options for fields 3, 7, and 8 of all GRID cards.
@@ -8523,9 +8407,7 @@ PS          Permanent single-point constraints associated with grid point (any
 3. At least one of the entries CP, CD, or PS must be nonzero.
 
 
-GRID - Grid Point
-=================
-
+# GRID - Grid Point
 ## Description
 
 Defines the location of a geometric grid point of the structural model, the
@@ -8579,9 +8461,7 @@ PS          Permanent single-point constraints associated with grid point (any
    and solution vectors are expressed in the global coordinate system.
 
 
-GRIDB - Axisymmetric Problem Grid Point
-=======================================
-
+# GRIDB - Axisymmetric Problem Grid Point
 ## Description
 
 Defines the location of a geometric grid point on a RINGFL for an axisymmetric
@@ -8635,9 +8515,7 @@ IDF         Identification number of a RINGFL (Integer > 0).
    data card).
 
 
-GRIDF - Fluid Point
-===================
-
+# GRIDF - Fluid Point
 ## Description
 
 Defines a scalar degree of freedom for harmonic analysis of a fluid.
@@ -8676,9 +8554,7 @@ Z           Axial location of point in basic coordinate system (Real).
    constraint causes zero pressure at the point.
 
 
-GRIDS - Slot Surface Point
-==========================
-
+# GRIDS - Slot Surface Point
 ## Description
 
 Defines a scalar degree of freedom with a two dimensional location. Used in
@@ -8732,9 +8608,7 @@ IDF         Identification number to define a GRIDF point (Integer > 0, or
    constraint causes zero pressure at the point.
 
 
-GTRAN - Grid Point Transformation
-=================================
-
+# GTRAN - Grid Point Transformation
 ## Description
 
 This card defines the output coordinate system transformation to be applied to
@@ -8777,9 +8651,7 @@ TRAN        Identification number of a TRANS bulk data card (Integer >= 0).
    system.
 
 
-GUST - Aerodynamic Gust Load Description
-========================================
-
+# GUST - Aerodynamic Gust Load Description
 ## Description
 
 Defines a stationary vertical gust for use in aeroelastic analysis.
@@ -8826,9 +8698,7 @@ V           Velocity of vehicle (Real > 0.0).
 4. X0 and V may not change between subcases under one execution.
 
 
-LOAD - Static Load Combination (Superposition)
-==============================================
-
+# LOAD - Static Load Combination (Superposition)
 ## Description
 
 Defines a static load as a linear combination of load sets defined via FORCE,
@@ -8878,9 +8748,7 @@ Li          Load set identification numbers defined via card types enumerated
    another LOAD card.
 
 
-LOADC - Substructure Static Loading Combination
-===============================================
-
+# LOADC - Substructure Static Loading Combination
 ## Description
 
 Defines the static load for a substructuring analysis as a linear combination
@@ -8928,9 +8796,7 @@ Si          Scale factor (Real).
    by NASTRAN.
 
 
-MAT1 - Material Property Definition
-===================================
-
+# MAT1 - Material Property Definition
 ## Description
 
 Defines the material properties for linear, temperature-independent, isotropic
@@ -9005,9 +8871,7 @@ MCSID       Material coordinate system identification number (Integer >= 0 or
       TRIA1, TRIA2, QUAD1, and QUAD2 elements.
 
 
-MAT2 - Material Property Definition
-===================================
-
+# MAT2 - Material Property Definition
 ## Description
 
 Defines the material properties for linear, temperature-independent,
@@ -9072,9 +8936,7 @@ MCSID       Material coordinate system identification number (Integer >= 0 or
    TRIA1, TRIA2, QUAD1, and QUAD2 elements.
 
 
-MAT3 - Material Property Definition
-===================================
-
+# MAT3 - Material Property Definition
 ## Description
 
 Defines the material properties for linear, temperature-independent,
@@ -9129,9 +8991,7 @@ GE          Structural element damping coefficient (Real).
    TRIARG, TRAPRG, CTRIAAX, CTRAPAX, and TORDRG elements.
 
 
-MAT4 - Thermal Material Property Definition
-===========================================
-
+# MAT4 - Thermal Material Property Definition
 ## Description
 
 Defines the thermal material properties for temperature-independent, isotropic
@@ -9164,9 +9024,7 @@ CP          Thermal capacity per unit volume (Real > 0.0 or blank), or film
 3. MAT4 materials may be made temperature dependent by use of the MATT4 card.
 
 
-MAT5 - Thermal Material Property Definition
-===========================================
-
+# MAT5 - Thermal Material Property Definition
 ## Description
 
 Defines the thermal material properties for temperature-independent,
@@ -9205,9 +9063,7 @@ CP          Thermal capacity per unit volume (Real >= 0.0 or blank).
 3. MAT5 materials may be made temperature dependent by use of the MATT5 card.
 
 
-MAT6 - Material Property Definition
-===================================
-
+# MAT6 - Material Property Definition
 ## Description
 
 Defines the material properties for linear, temperature-independent,
@@ -9250,9 +9106,7 @@ GE          Structural damping coefficient (Real).
    conform to NASTRAN's ordering of the stress and strain vectors.
 
 
-MAT8 - Orthotropic Plate Material Property Definition
-=====================================================
-
+# MAT8 - Orthotropic Plate Material Property Definition
 ## Description
 
 Defines the material property for an orthotropic material for plate elements.
@@ -9351,9 +9205,7 @@ F12         Tsai-Wu interaction term (Real) (See Remark 4.)
    and E2 by the relationship, (NU12) (E2) = (NU12) (E1).
 
 
-MATF - Fluid Material Property Definition
-=========================================
-
+# MATF - Fluid Material Property Definition
 ## Description
 
 Defines the fluid density in a hydroelastic analysis.
@@ -9376,9 +9228,7 @@ RHO         Mass density (Real > 0.0).
 1. The material identification number may be the same as that of a MAT1, MAT2,
    or MAT3 card, but must be unique with respect to other MATF cards.
 
-MATPZ1 - Piezoelectric Material Property Definition
-===================================================
-
+# MATPZ1 - Piezoelectric Material Property Definition
 ## Description
 
 Defines the material properties for linear, temperature-independent
@@ -9386,16 +9236,17 @@ piezoelectric materials.
 
 ## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |        |       |   E   |   E   |   E   |   E   |   E   |       |       |     |
 |MATPZ1  |  MID  |  S    |  S    |  S    |  S    |  S    |  d    |  d    |+a   |
 |        |       |   11  |   33  |   44  |   12  |   13  |   31  |   33  |     |
 +--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |MATPZ1  |   1   | 12.3  | 15.5  | 39.0  | -4.05 | -5.31 |-123.0 | 289.0 |+A   |
 +--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+
+|   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |        |       | S     | S     |       |       |       |       |       |     |
 |+a      |  d15  |î  /î  |î  /î  |  RHO  |   A   | TREF  |  GE   |       |     |
 |        |       | 11  0 | 33  0 |       |       |       |       |       |     |
@@ -9432,9 +9283,7 @@ GE          Structural element damping coefficient (Real).
 4. Matrix [SE] must be nonsingular.
 
 
-MATPZ2 - Piezoelectric Material Property Definition
-===================================================
-
+# MATPZ2 - Piezoelectric Material Property Definition
 ## Description
 
 Defines the material properties for linear, temperature-independent,
@@ -9485,9 +9334,7 @@ GE          Structural element damping coefficient (Real).
 4. See CAUTION discussed in Section 1.17.3.2.
 
 
-MATS1 - Material Stress Dependence
-==================================
-
+# MATS1 - Material Stress Dependence
 ## Description
 
 Specifies table references for material properties on a MAT1 card that are
@@ -9515,9 +9362,7 @@ R1          Reference to table identification number (Integer >= 0 or blank).
 2. TABLES1 type tables must be used.
 
 
-MATT1 - Material Temperature Dependence
-=======================================
-
+# MATT1 - Material Temperature Dependence
 ## Description
 
 Specifies table references for isotropic material properties on a MAT1 card
@@ -9552,9 +9397,7 @@ Ri          References to table identification numbers (Integer > 0 or blank)
    required) tables must be input to define the relationship.
 
 
-MATT2 - Material Temperature Dependence
-=======================================
-
+# MATT2 - Material Temperature Dependence
 ## Description
 
 Specifies table references for anisotropic material properties on a MAT2 card
@@ -9589,9 +9432,7 @@ Ri          References to table identification numbers (Integer >= 0 or blank)
    required) tables must be input to define the relationship.
 
 
-MATT3 - Material Temperature Dependence
-=======================================
-
+# MATT3 - Material Temperature Dependence
 ## Description
 
 Specifies table references for orthotropic material properties on a MAT3 card
@@ -9626,9 +9467,7 @@ Ri          References to table identification numbers (Integer > 0 or blank)
    required) tables must be input to define the relationship.
 
 
-MATT4 - Thermal Material Temperature Dependence
-===============================================
-
+# MATT4 - Thermal Material Temperature Dependence
 ## Description
 
 Specifies table reference for temperature dependent thermal conductivity or
@@ -9662,9 +9501,7 @@ T(K)        Identification number of a TABLEMi card which gives temperature
    on the basic MAT4 card. For this case, the MATT4 card is not required.
 
 
-MATT5 - Thermal Material Temperature Dependence
-===============================================
-
+# MATT5 - Thermal Material Temperature Dependence
 ## Description
 
 Specifies table references for thermal conductivity matrix terms on a MAT5
@@ -9702,9 +9539,7 @@ T(K--)      Identification number of a TABLEMi card which gives temperature
    required) tables must be input to define the relationship.
 
 
-MATT6 - Material Temperature Dependence
-=======================================
-
+# MATT6 - Material Temperature Dependence
 ## Description
 
 Specifies table references for material properties on a MAT6 card that are
@@ -9738,9 +9573,7 @@ Ri          References to table identification numbers (Integer >= 0 or
 
 2. TABLEM1, TABLEM2, TABLEM3, and TABLEM4 type tables may be used.
 
-MDIPOLE - Magnetic Dipole Moment
-================================
-
+# MDIPOLE - Magnetic Dipole Moment
 ## Description
 
 Defines a magnetic dipole moment in magnetic field problems.
@@ -9787,9 +9620,7 @@ MAX         Maximum distance from dipole to grid point for computing magnetic
 4. The continuation card is required.
 
 
-MKAERO1 - Mach Number, Frequency Table
-======================================
-
+# MKAERO1 - Mach Number, Frequency Table
 ## Description
 
 Provides a table of Mach numbers or interblade phase angles (m) and reduced
@@ -9826,9 +9657,7 @@ Kj          List of reduced frequencies (Real > 0.0, 1 <= j <= 8).
    angles for blade flutter analysis.
 
 
-MKAERO2 - Mach Number, Frequency Table
-======================================
-
+# MKAERO2 - Mach Number, Frequency Table
 ## Description
 
 Provides a list of Mach numbers or interblade phase angles (m) and reduced
@@ -9861,9 +9690,7 @@ Ki          List of reduced frequencies (Real > 0.0).
    angles for blade flutter analysis.
 
 
-MOMAX - Conical Shell Static Moment
-===================================
-
+# MOMAX - Conical Shell Static Moment
 ## Description
 
 Defines a static moment loading of a conical shell coordinate.
@@ -9907,9 +9734,7 @@ MR, MP, MZ  Moment components in the r, í, z directions (Real).
    "S0T10".
 
 
-MOMENT - Static Moment
-======================
-
+# MOMENT - Static Moment
 ## Description
 
 Defines a static moment at a grid point by specifying a vector.
@@ -9947,9 +9772,7 @@ N1, N2, N3  Components of vector measured in coordinate system defined by CID
 3. A CID of zero references the basic coordinate system.
 
 
-MOMENT1 - Static Moment
-=======================
-
+# MOMENT1 - Static Moment
 ## Description
 
 Used to define a static moment by specification of a value and two grid points
@@ -9979,9 +9802,8 @@ G1, G2      Grid point identification numbers (Integer > 0; G1 not equal G2).
 2. Load sets must be selected in the Case Control Deck (LOAD = SID) to be used
    by NASTRAN.
 
-MOMENT2 - Static Moment
-=======================
 
+# MOMENT2 - Static Moment
 ## Description
 
 Used to define a static moment by specification of a value and four grid
@@ -10013,9 +9835,8 @@ G1,...,G4   Grid point identification numbers (Integer > 0; G1 not equal G2;
 2. Load sets must be selected in the Case Control Deck (LOAD = SID) to be used
    by NASTRAN.
 
-MPC - Multipoint Constraint
-===========================
 
+# MPC - Multipoint Constraint
 ## Description
 
 Defines a multipoint constraint equation of the form
@@ -10059,8 +9880,8 @@ A           Coefficient (Real; the first A must be nonzero).
    implied on ASET, ASET1, or MPCADD cards. They also may not appear as
    dependent coordinates in CRIGD1, CRIGD2, CRIGD3, or CRIGDR elements.
 
-MPCADD - Multipoint Constraint Set Definition
-=============================================
+
+# MPCADD - Multipoint Constraint Set Definition
 
 ## Description
 
@@ -10097,9 +9918,7 @@ Sj          Set identification numbers of multipoint constraint sets defined
    problems.
 
 
-MPCAX - Axisymmetric Multipoint Constraint
-==========================================
-
+# MPCAX - Axisymmetric Multipoint Constraint
 ## Description
 
 Defines a multipoint constraint equation of the form
@@ -10150,9 +9969,7 @@ A           Coefficient (Real; the first A must be nonzero).
    Theoretical Manual.
 
 
-MPCS - Substructure Multipoint Constraints
-==========================================
-
+# MPCS - Substructure Multipoint Constraints
 ## Description
 
 Defines multipoint constraints within or between substructures.
@@ -10211,9 +10028,7 @@ Ai          Coefficient (Real; A must be non-zero).
 7. MPCS cards may be referenced by an MPCADD card.
 
 
-MTTPZ1 - Piezoelectric Material Temperature Dependence
-======================================================
-
+# MTTPZ1 - Piezoelectric Material Temperature Dependence
 ## Description
 
 Specifies table references for piezoelectric material properties on a MATPZ1
@@ -10248,8 +10063,7 @@ Ri          References to table identification numbers for the corresponding
    tables must be input to define the relationship.
 
 
-MTTPZ2 - Piezoelectric Material Temperature Dependence
-======================================================
+# MTTPZ2 - Piezoelectric Material Temperature Dependence
 ## Description
 
 Specifies table references for piezoelectric material properties on a MATPZ2
@@ -10290,9 +10104,7 @@ Ri          References to table identification numbers for the corresponding
    tables must be input to define the relationship.
 
 
-NFTUBE - Nonlinear Transient Response Load
-==========================================
-
+# NFTUBE - Nonlinear Transient Response Load
 ## Description
 
 Defines a nonlinear transient element for heat convection.
@@ -10341,9 +10153,7 @@ VOLRT       Volume flow rate,  (Real or Integer). If real, the value is used;
    accumulation of fluid mass at any grid point.
 
 
-NOLIN1 - Nonlinear Transient Response Dynamic Load
-==================================================
-
+# NOLIN1 - Nonlinear Transient Response Dynamic Load
 ## Description
 
 Defines nonlinear transient forcing functions of the form
@@ -10418,9 +10228,7 @@ T           Identification number of a TABLEDi card (Integer > 0).
    where ët is the time increment and uj,t and uj,t-1 are the displacements at
    time t and at the previous time step respectively.
 
-NOLIN2 - Nonlinear Transient Response Dynamic Load
-==================================================
-
+# NOLIN2 - Nonlinear Transient Response Dynamic Load
 ## Description
 
 Defines nonlinear transient forcing functions of the form
@@ -10503,9 +10311,7 @@ CK          Component number if GK is a grid point (0 < Integer <= 6; 11 <=
 6. xj and yk need not both represent displacements or velocities. One of them
    may be a displacement and the other may be a velocity.
 
-NOLIN3 - Nonlinear Transient Response Dynamic Load
-==================================================
-
+# NOLIN3 - Nonlinear Transient Response Dynamic Load
 ## Description
 
 Defines nonlinear transient forcing functions of the form
@@ -10584,9 +10390,7 @@ A           Amplification factor (Real).
    where ët is the time increment and uj,t and uj,t-1 are the displacements at
    time t and at the previous time step, respectively.
 
-NOLIN4 - Linear Transient Response Dynamic Load
-===============================================
-
+# NOLIN4 - Linear Transient Response Dynamic Load
 ## Description
 
 Defines nonlinear transient forcing functions of the form
@@ -10665,9 +10469,7 @@ A           Amplification factor (Real).
    where ët is the time increment and uj,t and uj,t-1 are the displacements at
    time t and at the previous time step, respectively.
 
-NOLIN5 - Nonlinear Transient Load for Radiant Heat Transfer
-===========================================================
-
+# NOLIN5 - Nonlinear Transient Load for Radiant Heat Transfer
 ## Description
 
 Defines nonlinear transient radiant heat transfer with temperature dependent
@@ -10730,9 +10532,7 @@ GB1,...,GB4 Grid points associated with Area B (Integer or blank) (GB1 > 0).
    TABLEDi data card for temperature-dependent parameters.
 
 
-NOLIN6 - Nonlinear Transient Response Dynamic Load
-==================================================
-
+# NOLIN6 - Nonlinear Transient Response Dynamic Load
 ## Description
 
 Defines nonlinear transient forcing functions of the form
@@ -10818,9 +10618,7 @@ T           Identification number of a TABLEDi card (Integer > 0).
    structure.
 
 
-OMIT - Omitted Coordinates
-==========================
-
+# OMIT - Omitted Coordinates
 ## Description
 
 Defines coordinates (degrees of freedom) to be omitted from the problem
@@ -10854,8 +10652,7 @@ C           Component number, zero, or blank for scalar points, any unique
 3. ASET or OMIT data are not recommended for use in heat transfer analysis
    with radiation effects.
 
-OMIT1 - Omitted Coordinates
-===========================
+# OMIT1 - Omitted Coordinates
 ## Description
 
 Defines coordinates (degrees of freedom) to be omitted from the problem
@@ -10902,9 +10699,7 @@ G, ID1, ID2 Grid or scalar point identification number (Integer > 0; ID1 <
 3. ASET or OMIT data are not recommended for use in heat transfer analysis
    with radiation effects.
 
-OMITAX - Axisymmetric Omitted Coordinate
-========================================
-
+# OMITAX - Axisymmetric Omitted Coordinate
 ## Description
 
 Defines coordinates to be omitted from a model containing CCONEAX, CTRAPAX, or
@@ -10942,9 +10737,7 @@ C           Component number (any unique combination of the digits 1 - 6).
    Theoretical Manual.
 
 
-PAERO1 - Aerodynamic Panel Property
-===================================
-
+# PAERO1 - Aerodynamic Panel Property
 ## Description
 
 Gives associated bodies for the panels in the Doublet-Lattice method.
@@ -10973,9 +10766,7 @@ B1,...,B6   ID of associated body (Integer >= 0 or blank).
    completely.
 
 
-PAERO2 - Aerodynamic Body Properties
-====================================
-
+# PAERO2 - Aerodynamic Body Properties
 ## Description
 
 Defines the cross-section properties of aerodynamic bodies.
@@ -11065,9 +10856,7 @@ THIi, THNiThe first and last interference element of a body to use the éi
                          Figure 2.4-43. PAERO2 diagram
 
 
-PAERO3 - Aerodynamic Mach Box Surface Properties
-================================================
-
+# PAERO3 - Aerodynamic Mach Box Surface Properties
 ## Description
 
 Defines the number of Mach boxes in the flow direction and the location of
@@ -11110,9 +10899,7 @@ X5-Y12    Location of points 5 through 12, which are in the element
 4.The relations Y7 >= Y8, Y9 >= Y10, and Y11 >= Y12 must hold.
 
 
-PAERO4 - Aerodynamic Supersonic Strip Properties
-================================================
-
+# PAERO4 - Aerodynamic Supersonic Strip Properties
 ## Description
 
 Gives properties of each strip element for the strip theory.
@@ -11233,9 +11020,7 @@ GAPOCi    g/c = control surface gap divided by strip chord (Real >= 0.0).
                     1   01   11   11   21   21   31   31   2
 
 
-PAERO5 - Aerodynamic Strip Element Properties
-=============================================
-
+# PAERO5 - Aerodynamic Strip Element Properties
 ## Description
 
 Gives properties of each strip element for piston theory.
@@ -11393,9 +11178,7 @@ Figure 2.4-44.
                          Figure 2.4-44. PAERO5 diagram
 
 
-PARAM - Parameter
-=================
-
+# PARAM - Parameter
 ## Description
 
 Specifies values for parameters used in DMAP sequences (including rigid
@@ -12023,9 +11806,7 @@ Ci, Di, Ei, Fi  Stress recovery coefficients (Real).
   (12*E*I1)/(L*L*L); K2 = (12*EII2)/(L*L*L).
 
 
-PCOMP - Layered Composite Element Property
-==========================================
-
+# PCOMP - Layered Composite Element Property
 ## Description
 
 Defines the properties of an n-ply laminated composite material.
@@ -12201,9 +11982,7 @@ CASE 3            |                                                       | +ZOC
                           BOTTOM                               TOP
 
 
-PCOMP1 - Layered Composite Element Property
-===========================================
-
+# PCOMP1 - Layered Composite Element Property
 ## Description
 
 Defines the properties of an n-ply laminated composite material where all
@@ -12275,9 +12054,7 @@ THi       Angle between the longitudinal direction of the fibers of the ith
 7.See "Guidelines for the Use of PCOMP, PCOMP1, and PCOMP2" in PCOMP card.
 
 
-PCOMP2 - Layered Composite Element Property
-===========================================
-
+# PCOMP2 - Layered Composite Element Property
 ## Description
 
 Defines the properties of an n-ply laminated composite material where all
@@ -12353,9 +12130,7 @@ THi       Angle between the longitudinal direction of the fibers of the ith
 8.See "Guidelines for the Use of PCOMP, PCOMP1, and PCOMP2" in PCOMP card.
 
 
-PCONEAX - Conical Shell Element Property
-========================================
-
+# PCONEAX - Conical Shell Element Property
 ## Description
 
 Defines the properties of a conical shell element described on a CCONEAX card.
@@ -12411,9 +12186,7 @@ PHIi      Azimuthal coordinates (in degrees) for stress recovery (Real).
   Theoretical Manual.
 
 
-PDAMP - Scalar Damper Property
-==============================
-
+# PDAMP - Scalar Damper Property
 ## Description
 
 Used to define the damping value of a scalar damper element which is defined
@@ -12445,9 +12218,7 @@ B         Value of scalar damper (Real).
   Manual.
 
 
-PDUMi - Dummy Element Property
-==============================
-
+# PDUMi - Dummy Element Property
 ## Description
 
 Defines the properties of a dummy element (1 <= i <= 9). Referenced by the
@@ -12475,9 +12246,7 @@ A1...AN   Additional entries (Real or Integer).
 1.The additional entries are defined in your element routines.
 
 
-PELAS - Scalar Elastic Property
-===============================
-
+# PELAS - Scalar Elastic Property
 ## Description
 
 Used to define the stiffness, damping coefficient, and stress coefficient of a
@@ -12511,9 +12280,7 @@ S         Stress coefficient (Real).
   Manual.
 
 
-PELBOW - Curved Beam or Elbow Property
-======================================
-
+# PELBOW - Curved Beam or Elbow Property
 ## Description
 
 Defines the properties of a curved beam or elbow element which is used to
@@ -12521,23 +12288,14 @@ create curved pipe or beam elements via the CELBOW card.
 
 ## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |PELBOW  |  PID  |  MID  |   A   |  I1   |  I2   |   J   |  NSM  |       |+abc |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|PELBOW  |   2   | 6061  | 16.0  | 211.0 | 211.0 | 422.0 |  6.0  |       |+P1  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+abc    |   r1  |   é1  |   r2  |   é2  |   r3  |   é3  |   r4  |   é4  |+def |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|+P1     |   5.3 |  0.0  |   5.3 |  90.0 |   5.3 | 180.0 |   5.3 | 270.0 |+P2  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+def    |  K1   |  K2   |   C   |   Kx  |   Ky  |   Kz  |   R   |   +   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|PELBOW  |   2   | 6061  | 16.0  | 211.0 | 211.0 | 422.0 |  6.0  |       |+P1  |
+|+P1     |   5.3 |  0.0  |   5.3 |  90.0 |   5.3 | 180.0 |   5.3 | 270.0 |+P2  |
 |+P2     |  2.0  |  2.0  |  1.0  |  1.0  |  5.76 |  5.76 |  15.0 |  90.0 |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -12606,9 +12364,7 @@ R         Radius of curvature of the element (Real > 0.0).
                          Figure 2.4-45. PELBOW diagram
 
 
-PERMBDY - Permeability Boundary
-===============================
-
+# PERMBDY - Permeability Boundary
 ## Description
 
 Specifies grid points on boundaries of dissimilar magnetic permeability.
@@ -12722,9 +12478,7 @@ R1, R2    Radii of elliptic cylinder. Used for HBDY type ELCYL. See the HBDY
   calculated for other HBDY types.
 
 
-PIHEX - Isoparametric Hexahedron Property
-=========================================
-
+# PIHEX - Isoparametric Hexahedron Property
 ## Description
 
 Defines the properties of an isoparametric solid element, including a material
@@ -12802,9 +12556,7 @@ BETA      Maximum angle in degrees between the vector connecting a corner
   be removed in a future release of NASTRAN.
 
 
-PIS2D8 - Quadratic Isoparametric Element Property
-=================================================
-
+# PIS2D8 - Quadratic Isoparametric Element Property
 ## Description
 
 Used to define the properties of a quadriparabolic isoparametric membrane
@@ -12832,26 +12584,19 @@ T         Thickness of membrane (Real).
 2.The material property identification number must reference only a MAT1 or
   MAT2 card.
 
-PLFACT - Piecewise Linear Analysis Factor Definition
-
+# PLFACT - Piecewise Linear Analysis Factor Definition
 ## Description
 
 Defines scale factors for piecewise linear analysis loading.
 
 ## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |PLFACT  |  SID  |  B1   |  B2   |  B3   |  B4   |  B5   |  B6   |  B7   |+abc |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|PLFACT  |   6   |  0.2  |  0.3  |  0.4  |  0.5  |  0.6  |  0.7  |  0.8  |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+abc    |   B8  |  B9   |  etc. |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|PLFACT  |   6   |  0.2  |  0.3  |  0.4  |  0.5  |  0.6  |  0.7  |  0.8  |ABC  |
 |+BC     |   0.9 |  1.0  |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -12885,9 +12630,7 @@ Bi        Loading factor (Real).
   Deck (PLCOEFF = SID) to be used by NASTRAN.
 
 
-PLIMIT - Property Optimization Limits
-=====================================
-
+# PLIMIT - Property Optimization Limits
 ## Description
 
 Defines the maximum and minimum limits for ratio of new property to original
@@ -12941,9 +12684,7 @@ PIDn      List of property identification numbers associated with KMIN
 7.One of KMIN or KMAX may be blank but not both.
 
 
-PLOAD - Static Pressure Load
-============================
-
+# PLOAD - Static Pressure Load
 ## Description
 
 Defines a static pressure load.
@@ -12983,9 +12724,7 @@ G1,...,G4 Grid point identification numbers (Integer > 0; G4 may be zero).
   by NASTRAN.
 
 
-PLOAD2 - Pressure Load
-======================
-
+# PLOAD2 - Pressure Load
 ## Description
 
 Defines a uniform static pressure load applied to two-dimensional elements.
@@ -13041,9 +12780,7 @@ EID,EIDm,EIDn  Element identification numbers (Integer > 0; EIDm < EIDn).
   the element.
 
 
-PLOAD3 - Pressure Load on a Face of an Isoparametric Element
-============================================================
-
+# PLOAD3 - Pressure Load on a Face of an Isoparametric Element
 ## Description
 
 Defines a uniform static pressure load applied to a surface of an
@@ -13080,9 +12817,8 @@ G11,G12; G21,G22  Grid point identification number of two grid points at
 4.Computations consider the pressure to act positive outward on specified
   face of element.
 
-PLOAD4 - Pressure Loads on Face of Structural Elements
-======================================================
 
+# PLOAD4 - Pressure Loads on Face of Structural Elements
 ## Description
 
 Defines a load on a face of a QUAD4 or CTRIA3 element.
@@ -13186,9 +12922,7 @@ Ni        Components of a vector in system CID that defines the direction
           TWO TRIA3 B-A-D, C-D-B        -2     0     -2    0
 
 
-PLOTEL - Dummy Element Definition
-=================================
-
+# PLOTEL - Dummy Element Definition
 ## Description
 
 Defines a dummy one-dimensional element for use in plotting. This element is
@@ -13250,9 +12984,7 @@ M         Value of scalar mass (Real).
   Manual.
 
 
-POINTAX - Axisymmetric Point
-============================
-
+# POINTAX - Axisymmetric Point
 ## Description
 
 Defines the location of a point on an axisymmetric ring at which loads may be
@@ -13290,9 +13022,8 @@ PHI       Azimuthal angle in degrees (Real).
 5.For a discussion of the axisymmetric solid problem, see Section 5.11 of the
   Theoretical Manual.
 
-POPT - Property Optimization Parameter
-======================================
 
+# POPT - Property Optimization Parameter
 ## Description
 
 Defines the basic parameters and existence of a property optimization
@@ -13349,9 +13080,7 @@ PUNCH     Property card punch option. If YES, properties that were optimized
   stress limits (see Section 1.13).
 
 
-PPSE - Pressure Stiffness Element Property
-==========================================
-
+# PPSE - Pressure Stiffness Element Property
 ## Description
 
 Defines properties of a pressure stiffness element. Referenced by the CPSE2,
@@ -13384,9 +13113,7 @@ P1...P4   Applied pressure load, real.
 4.See Remarks for the CPSEi elements.
 
 
-PQDMEM - Quadrilateral Membrane Property
-========================================
-
+# PQDMEM - Quadrilateral Membrane Property
 ## Description
 
 Used to define the properties of a quadrilateral membrane. Referenced by the
@@ -13417,9 +13144,7 @@ NSM       Nonstructural mass per unit area (Real).
   card.
 
 
-PQDMEM1 - Isoparametric Quadrilateral Membrane Property
-=======================================================
-
+# PQDMEM1 - Isoparametric Quadrilateral Membrane Property
 ## Description
 
 Used to define the properties of an isoparametric quadrilateral membrane.
@@ -13450,9 +13175,7 @@ NSM       Nonstructural mass per unit area (Real).
   on a single card.
 
 
-PQDMEM2 - Quadrilateral Membrane Property
-=========================================
-
+# PQDMEM2 - Quadrilateral Membrane Property
 ## Description
 
 Used to define the properties of a quadrilateral membrane. Referenced by the
@@ -13482,9 +13205,8 @@ NSM       Nonstructural mass per unit area (Real).
 2.One or two quadrilateral membrane properties may be defined on a single
   card.
 
-PQDPLT - Quadrilateral Plate Property
-=====================================
 
+# PQDPLT - Quadrilateral Plate Property
 ## Description
 
 Used to define the bending properties of a quadrilateral plate element.
@@ -13523,9 +13245,7 @@ Z1, Z2    Fiber distances for stress computation, positive according to the
 
 3.No structural mass is generated for this element.
 
-PQUAD1 - General Quadrilateral Element Property
-===============================================
-
+# PQUAD1 - General Quadrilateral Element Property
 ## Description
 
 Defines the properties of a general quadrilateral element of the structural
@@ -13573,9 +13293,7 @@ Z1, Z2    Fiber distances for stress computation, positive according to the
   element.
 
 
-PQUAD2 - Homogeneous Quadrilateral Property
-===========================================
-
+# PQUAD2 - Homogeneous Quadrilateral Property
 ## Description
 
 Defines the properties of a homogeneous quadrilateral element of the
@@ -13615,9 +13333,7 @@ NSM       Nonstructural mass per unit area (Real).
   card.
 
 
-PRESAX - Axisymmetric Pressure Load
-===================================
-
+# PRESAX - Axisymmetric Pressure Load
 ## Description
 
 Defines the static pressure loading for a model containing CCONEAX, CTRAPAX,
@@ -13653,9 +13369,7 @@ PHI1, PHI2Azimuthal angles in degrees (Real, PHI1 not equal PHI2).
 4.For a discussion of the axisymmetric solid problem, see Section 5.11 of the
   Theoretical Manual.
 
-PRESPT - Fluid Pressure Point
-=============================
-
+# PRESPT - Fluid Pressure Point
 ## Description
 
 Defines the location of pressure points in the fluid for recovery of pressure
@@ -13693,9 +13407,7 @@ IDP       Unique pressure point identification number (Integer > 0).
 5.Output requests for velocity and acceleration of these degrees of freedom
   will result in derivatives of pressure with respect to time.
 
-PROD - Rod Property
-===================
-
+# PROD - Rod Property
 ## Description
 
 Defines the properties of a rod which is referenced by the CROD card.
@@ -13730,9 +13442,7 @@ NSM       Nonstructural mass per unit length (Real).
 3.For heat transfer problems, PROD cards may only reference MAT4 or MAT5
   cards.
 
-PROLATE - Prolate Spheroidal Surface
-====================================
-
+# PROLATE - Prolate Spheroidal Surface
 ## Description
 
 Specifies a prolate spheroidal surface of the finite element model in
@@ -13740,17 +13450,10 @@ magnetostatics problems.
 
 Format
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |PROLATE |   A   |   B   | NSEGS | MSEGS |  NN   |  NM   |  G1   |  G2   |+P1  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+P1     |  G3   |  G4   |   .   |   .   |   .   |   .   |   .   |   .   |+P2  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-                     .                                      .
-                     .                                      .
-                     .                                      .
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+PN     |   .   |   .   |   .   | ENDT  |       |       |       |       |     |
 +--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
@@ -13879,9 +13582,7 @@ NSM       Nonstructural mass per unit area (Real).
 3.One or two shear panel properties may be defined on a single card.
 
 
-PSHELL - Shell Element Property
-===============================
-
+# PSHELL - Shell Element Property
 ## Description
 
 Defines the membrane, bending, transverse shear, and coupling properties of
@@ -14091,9 +13792,7 @@ shear when the MID3 field is blank. The easiest way to avoid shear stiffness
 over-estimation is not to leave MID3 blank when MID2 is specified.
 
 
-PTORDRG - Toroidal Ring Property
-================================
-
+# PTORDRG - Toroidal Ring Property
 ## Description
 
 Used to define membrane and flexure (bending) properties of a toroidal ring
@@ -14126,9 +13825,7 @@ TF        Thickness for flexure (Real).
 3.One or two toroidal ring properties may be defined on a single card.
 
 
-PTRAPAX - Triangular Ring Element Property
-==========================================
-
+# PTRAPAX - Triangular Ring Element Property
 ## Description
 
 Defines the properties of an axisymmetric trapezoidal cross-section ring
@@ -14164,9 +13861,7 @@ PHIi      Azimuthal coordinates (in degrees) for stress recovery (Real).
 4.A maximum of 14 azimuthal coordinates for stress recovery may be specified.
 
 
-PTRBSC - Basic Bending Triangle Property
-========================================
-
+# PTRBSC - Basic Bending Triangle Property
 ## Description
 
 Defines basic bending triangle (TRBSC) properties. Referenced by the CTRBSC
@@ -14206,9 +13901,7 @@ Z1, Z2    Fiber distances for shear computation, positive according to the
 3.No structural mass is generated by this element.
 
 
-PTRIA1 - General Triangular Element Property
-============================================
-
+# PTRIA1 - General Triangular Element Property
 ## Description
 
 Defines the properties of a general triangular element of the structural
@@ -14255,9 +13948,7 @@ Z1, Z2    Fiber distances for stress calculations, positive according to the
 3.The membrane thickness, T1, is used to compute the structural mass for this
   element.
 
-PTRIA2 - Homogeneous Triangular Element Property
-================================================
-
+# PTRIA2 - Homogeneous Triangular Element Property
 ## Description
 
 Defines the properties of a homogeneous triangular element of the structural
@@ -14296,9 +13987,8 @@ NSM       Nonstructural mass per unit area (Real).
 5.One or two homogeneous triangular element properties may be defined on a
   single card.
 
-PTRIAAX - Triangular Ring Element Property
-==========================================
 
+# PTRIAAX - Triangular Ring Element Property
 ## Description
 
 Defines the properties of an axisymmetric triangular cross-section ring
@@ -14334,9 +14024,7 @@ PHIi      Azimuthal coordinates (in degrees) for stress recovery (Real).
 4.A maximum of 14 azimuthal coordinates for stress recovery may be specified.
 
 
-PTRIM6 - Linear Strain Triangular Membrane Property
-===================================================
-
+# PTRIM6 - Linear Strain Triangular Membrane Property
 ## Description
 
 Defines the properties of a linear strain triangular membrane element.
@@ -14369,9 +14057,7 @@ NSM       Nonstructural mass per unit area (Real).
   specified 0.0 or blank, it will be set equal to T1.
 
 
-PTRMEM - Triangular Membrane Property
-=====================================
-
+# PTRMEM - Triangular Membrane Property
 ## Description
 
 Used to define the properties of a triangular membrane element. Referenced by
@@ -14401,9 +14087,7 @@ NSM       Nonstructural mass per unit area (Real).
 2.One or two triangular membrane properties may be defined on a single card.
 
 
-PTRPLT - Triangular Plate Property
-==================================
-
+# PTRPLT - Triangular Plate Property
 ## Description
 
 Used to define the bending properties of a triangular plate element.
@@ -14443,9 +14127,7 @@ Z1, Z2    Fiber distances for stress computation, positive according to the
 3.No structural mass is generated by this element.
 
 
-PTRPLT1 - Triangular Plate Property
-===================================
-
+# PTRPLT1 - Triangular Plate Property
 ## Description
 
 Defines the bending properties of a higher order triangular plate element.
@@ -14500,9 +14182,7 @@ Z11, Z21, Z13; Z23, Z15, Z25  Fiber distances for stress computation at grid
 6. The continuation card is required, even if blank.
 
 
-PTRSHL - Higher Order Triangular Shell Element Property
-=======================================================
-
+# PTRSHL - Higher Order Triangular Shell Element Property
 ## Description
 
 Defines the membrane bending and transverse shear properties of a higher order
@@ -14565,9 +14245,7 @@ Z11, Z21, Z13, Z23, Z15, Z25  Fiber distances for stress computation at grid
 7. Both continuation cards are required, even if blank.
 
 
-PTUBE - Tube Property
-=====================
-
+# PTUBE - Tube Property
 ## Description
 
 Defines the properties of a thin-walled cylindrical tube element. Referenced
@@ -14605,9 +14283,7 @@ NSM        Nonstructural mass per unit length (Real).
    material cards.
 
 
-PTWIST - Twist Panel Property
-=============================
-
+# PTWIST - Twist Panel Property
 ## Description
 
 Defines the elastic properties of a twist panel element. Referenced by the
@@ -14639,9 +14315,7 @@ NSM        Nonstructural mass per unit area (Real).
 3. One or two twist panel properties may be defined on a single card.
 
 
-PVISC - Viscous Element Property
-================================
-
+# PVISC - Viscous Element Property
 ## Description
 
 Defines the viscous properties of a one-dimensional viscous element which is
@@ -14674,9 +14348,7 @@ C1, C2     Viscous coefficients for extension and rotation (Real).
 5. This card is used only for direct formulation of dynamic analyses.
 
 
-QBDY1 - Boundary Heat Flux Load
-===============================
-
+# QBDY1 - Boundary Heat Flux Load
 ## Description
 
 Defines a uniform heat flux into HBDY elements.
@@ -14728,9 +14400,7 @@ EID, EIDm, EIDn  HBDY elements (Integer > 0; EIDm < EIDn).
    are used).
 
 
-QBDY2 - Boundary Heat Flux Load
-===============================
-
+# QBDY2 - Boundary Heat Flux Load
 ## Description
 
 Defines grid point heat flux into an HBDY element.
@@ -14773,9 +14443,7 @@ Q0i        Heat flux at the ith grid point on the referenced HBDY element
 3. Q0i is positive for heat flux input to the element.
 
 
-QHBDY - Boundary Heat Flux Load
-===============================
-
+# QHBDY - Boundary Heat Flux Load
 ## Description
 
 Defines a uniform heat flux into a set of grid points.
@@ -14833,9 +14501,7 @@ G1,...,G4  Grid point identification of connected points (Integer > 0 or
    description.
 
 
-QVECT - Thermal Flux Vector Load
-================================
-
+# QVECT - Thermal Flux Vector Load
 ## Description
 
 Defines thermal flux vector from a distant source into HBDY elements.
@@ -14919,9 +14585,7 @@ EIDi       Element identification numbers of HBDY elements irradiated by the
    data is allowed with this option.
 
 
-QVOL - Volume Heat Addition
-===========================
-
+# QVOL - Volume Heat Addition
 ## Description
 
 Defines a rate of internal heat generation in an element.
@@ -14975,9 +14639,7 @@ EID, EIDm, EIDn  Heat conduction element identification numbers (Integer > 0;
    are used).
 
 
-RADLST - List of Radiation Areas
-================================
-
+# RADLST - List of Radiation Areas
 ## Description
 
 A list of HBDY identification numbers given in the same order as the columns
@@ -15014,9 +14676,7 @@ EIDi       The element identification numbers of the HBDY elements, given in
    view factor matrix.
 
 
-RADMTX - Radiation Matrix
-=========================
-
+# RADMTX - Radiation Matrix
 ## Description
 
 Matrix of radiation exchange coefficients (area times view factor) for
@@ -15068,9 +14728,7 @@ Fi+k,i     The matrix values (Real), starting on the diagonal, continuing
    sink (radiation loss) is present.
 
 
-RANDPS - Power Spectral Density Specification
-=============================================
-
+# RANDPS - Power Spectral Density Specification
 ## Description
 
 Defines load set power spectral density factors for use in random analysis
@@ -15157,9 +14815,7 @@ TMAX       Maximum time lag (Real > T0).
 3. Time lag sets must be selected in the Case Control Deck (RANDOM = SID) to
    be used by NASTRAN.
 
-RELES - Release Substructure Connectivities
-===========================================
-
+# RELES - Release Substructure Connectivities
 ## Description
 
 Defines sets of component degrees of freedom at substructure grid points which
@@ -15203,9 +14859,7 @@ Ci         Component number; any unique combination of the digits 1 - 6 (with
    one of the basic substructures associated with that connectivity.
 
 
-REMFLUX - Remanent Flux Density
-===============================
-
+# REMFLUX - Remanent Flux Density
 ## Description
 
 Specifies remanent flux density for selected elements.
@@ -15250,9 +14904,7 @@ EID1, EID2, EID3  Element identification numbers (Integer > 0).
 4. CID must presently be 0 or blank.
 
 
-RFORCE - Rotational Force
-=========================
-
+# RFORCE - Rotational Force
 ## Description
 
 Defines a static loading condition due to a centrifugal force field.
@@ -15309,9 +14961,7 @@ N1, N2, N3 Rectangular components of rotation direction vector (Real; N1**2 +
    be 0 or blank; N1 and N2 must be 0.0.
 
 
-RINGAX - Axisymmetric Ring
-==========================
-
+# RINGAX - Axisymmetric Ring
 ## Description
 
 Defines a ring for a model containing CCONEAX, CTRAPAX, or CTRIAAX elements.
@@ -15354,9 +15004,7 @@ PS         Permanent single-point constraints (any unique combination of the
    Theoretical Manual.
 
 
-RINGFL - Axisymmetric Fluid Point
-=================================
-
+# RINGFL - Axisymmetric Fluid Point
 ## Description
 
 Defines a circle (fluid point) in an axisymmetric fluid model.
@@ -15390,9 +15038,7 @@ X1, X2, X3 Coordinates of point in fluid coordinate system defined on AXIF
 4. One or two fluid points may be defined per card.
 
 
-RLOAD1 - Frequency Response Dynamic Load
-========================================
-
+# RLOAD1 - Frequency Response Dynamic Load
 ## Description
 
 Defines a frequency dependent dynamic load of the form
@@ -15449,9 +15095,7 @@ TD         Set identification number of TABLEDi card which gives D(f)
    identification and non-zero loads must also exist.
 
 
-RLOAD2 - Frequency Response Dynamic Load
-========================================
-
+# RLOAD2 - Frequency Response Dynamic Load
 ## Description
 
 Defines a frequency dependent dynamic load of the form
@@ -15508,9 +15152,7 @@ TP         Set identification number of TABLEDi card which gives í(f) in
    identification and non-zero loads must also exist.
 
 
-SECTAX - Axisymmetric Sector
-============================
-
+# SECTAX - Axisymmetric Sector
 ## Description
 
 Defines a sector of a model containing CCONEAX, CTRAPAX, or CTRIAAX elements.
@@ -15546,9 +15188,7 @@ PHI1, PHI2 Azimuthal limits of sector in degrees (Real).
    Theoretical Manual.
 
 
-SEQEP - Extra Point Resequencing
-================================
-
+# SEQEP - Extra Point Resequencing
 ## Description
 
 The purpose of the SEQEP card is to allow re-identifying the formation
@@ -15593,9 +15233,7 @@ SEQID      Sequence identification number (a special number described below).
 5. From one to four extra points may be resequenced on a single card.
 
 
-SEQGP - Grid and Scalar Point Resequencing
-==========================================
-
+# SEQGP - Grid and Scalar Point Resequencing
 ## Description
 
 Used to order the grid points and user-supplied scalar points of the problem.
@@ -15644,9 +15282,7 @@ once.
 6. SEQGP is not available for axisymmetric and hydroelastic problems.
 
 
-SET1 - Grid Point List
-======================
-
+# SET1 - Grid Point List
 ## Description
 
 Defines a set of structural grid points by a list.
@@ -15674,9 +15310,7 @@ G1, G2, etc.  List of structural grid points (Integer > 0 or THRU).
    word THRU may not appear in field 3 or 9 (2 or 9 for continuation cards.)
 
 
-SET2 - Grid Point List
-======================
-
+# SET2 - Grid Point List
 ## Description
 
 Defines a set of structural grid points in terms of aerodynamic macro
@@ -15739,9 +15373,7 @@ ZMAX, ZMIN Top and bottom z coordinates (using right-hand rule with the order
 4. To find the (internal) grid ID's found, use DIAG 18.
 
 
-SLBDY - Slot Boundary List
-==========================
-
+# SLBDY - Slot Boundary List
 ## Description
 
 Defines a list of slot points which lie on an interface between an
@@ -15780,9 +15412,7 @@ IDj        Identification numbers of GRIDS slot points at boundary with
 4. More than one logical boundary card may be used.
 
 
-SLOAD - Static Scalar Load
-==========================
-
+# SLOAD - Static Scalar Load
 ## Description
 
 Used to apply static loads to scalar points.
@@ -15867,9 +15497,7 @@ D          Value of enforced displacement for all coordinates designated by G
    analysis (Rigid Format 1 only). See Section 1.8 for methods of defining
    boundary temperatures in other Rigid Formats.
 
-SPC1 - Single-Point Constraint
-==============================
-
+# SPC1 - Single-Point Constraint
 ## Description
 
 Defines sets of single-point constraints.
@@ -15927,9 +15555,7 @@ Gi, GIDi   Grid or scalar point identification numbers (Integer > 0).
 7. C is 1 only for a heat problem.
 
 
-SPCADD - Single-Point Constraint
-================================
-
+# SPCADD - Single-Point Constraint
 ## Description
 
 Defines a single-point constraint set as a union of single-point constraint
@@ -15966,9 +15592,7 @@ Si         Identification numbers of single-point constraint sets defined via
    problems.
 
 
-SPCAX - Axisymmetric Single-Point Constraint
-============================================
-
+# SPCAX - Axisymmetric Single-Point Constraint
 ## Description
 
 Defines sets of single-point constraints for a model containing CCONEAX,
@@ -16012,9 +15636,7 @@ V          Enforced displacement value (Real).
    Theoretical Manual.
 
 
-SPCD - Enforced Displacement Value
-==================================
-
+# SPCD - Enforced Displacement Value
 ## Description
 
 Defines an enforced displacement value for static analysis, which is requested
@@ -16062,9 +15684,7 @@ D          Value of enforced displacement for all coordinates designated by G
    defining boundary temperatures in other Rigid Formats.
 
 
-SPCFLD - Specified Magnetic Field
-=================================
-
+# SPCFLD - Specified Magnetic Field
 ## Description
 
 Specifies magnetic field at selected grid points.
@@ -16114,9 +15734,7 @@ Gi, GIDi   Grid point identification numbers (Integer > 0).
 3. CID must presently be 0 or blank.
 
 
-SPCS - Substructure Single Point Constraints
-============================================
-
+# SPCS - Substructure Single Point Constraints
 ## Description
 
 Defines a set of single point constraints on a specified basic substructure.
@@ -16162,9 +15780,7 @@ Ci         Component number; any unique combination of the digits 1 - 6 (with
    connected must be referenced separately.
 
 
-SPCS1 - Substructure Single Point Constraints
-=============================================
-
+# SPCS1 - Substructure Single Point Constraints
 ## Description
 
 Defines a set of single point constraints on a specified basic substructure.
@@ -16211,9 +15827,7 @@ Gi         Grid or scalar point identification numbers (Integer > 0).
    connected must be referenced separately.
 
 
-SPCSD - Substructure Enforced Displacement Values
-=================================================
-
+# SPCSD - Substructure Enforced Displacement Values
 ## Description
 
 Defines enforced displacement values for a given substructure during static
@@ -16252,9 +15866,7 @@ Di         Value of enforced displacement for all coordinates designated by
    cards is required in the LOAD set selected in case control (LOAD = SID).
 
 
-SPLINE1 - Surface Spline
-========================
-
+# SPLINE1 - Surface Spline
 ## Description
 
 Defines a surface spline for interpolating out-of-plane motion for aeroelastic
@@ -16286,19 +15898,19 @@ DZ         Linear attachment flexibility (Real >= 0).
 1. The interpolated points (k-set) will be defined by aero-cells. The sketch
    shows the cells for which uk is interpolated if BOX1 = 111 and BOX2 = 118.
 
-+----------+----------+----------+----------+
-|//////////|//////////|//////////|          |
-|///111////|///114////|///117////|   120    |
-|//////////|//////////|//////////|          |
-+----------+----------+----------+----------+
-|//////////|//////////|//////////|          |
-|///112////|///115////|///118////|   121    |
-|//////////|//////////|//////////|          |
-+----------+----------+----------+----------+
-|          |          |          |          |
-|   113    |   116    |   119    |   122    |
-|          |          |          |          |
-+----------+----------+----------+----------+
+  +----------+----------+----------+----------+
+  |//////////|//////////|//////////|          |
+  |///111////|///114////|///117////|   120    |
+  |//////////|//////////|//////////|          |
+  +----------+----------+----------+----------+
+  |//////////|//////////|//////////|          |
+  |///112////|///115////|///118////|   121    |
+  |//////////|//////////|//////////|          |
+  +----------+----------+----------+----------+
+  |          |          |          |          |
+  |   113    |   116    |   119    |   122    |
+  |          |          |          |          |
+  +----------+----------+----------+----------+
 
 2. The attachment flexibility (units of area) is used for smoothing the
    interpolation. If DZ = 0, the spline will pass through all deflected grid
@@ -16306,9 +15918,7 @@ DZ         Linear attachment flexibility (Real >= 0).
    Intermediate values will provide smoothing.
 
 
-SPLINE2 - Linear Spline
-=======================
-
+# SPLINE2 - Linear Spline
 ## Description
 
 Defines a beam spline for interpolating panels and bodies for aeroelastic
@@ -16363,9 +15973,7 @@ y-axis; used for slope of bodies (Real).
 5. The SPLINE2 EID must be unique with respect to all SPLINEi data cards.
 
 
-SPLINE3 - Constraint Equation for Aeroelastic Problems
-======================================================
-
+# SPLINE3 - Constraint Equation for Aeroelastic Problems
 ## Description
 
 Defines a constraint equation for aeroelastic problems. Useful for control
@@ -16419,9 +16027,7 @@ Ai         Coefficient of constraint relationship (Real).
 3. The SPLINE3 EID must be unique with respect to all SPLINEi data cards.
 
 
-SPOINT - Scalar Point
-=====================
-
+# SPOINT - Scalar Point
 ## Description
 
 Defines scalar points of the structural model.
@@ -16462,9 +16068,7 @@ ID, ID1, ID2  Scalar point identification number (Integer > 0; IDl < ID2).
    Manual.
 
 
-STREAML1 - Blade Streamline Grid Data
-=====================================
-
+# STREAML1 - Blade Streamline Grid Data
 ## Description
 
 Defines grid points on a blade streamline from the blade leading edge to the
@@ -16517,9 +16121,7 @@ Gi, GIDi   Grid point identification numbers (Integer > 0).
    in the correct positional order.
 
 
-STREAML2 - Blade Streamline Flow Data
-=====================================
-
+# STREAML2 - Blade Streamline Flow Data
 ## Description
 
 Defines aerodynamic data for a blade streamline.
@@ -16582,9 +16184,7 @@ FLOWA/SWEEP  Relative flow angle at blade leading edge (for flutter analysis
    NASTRAN SYSTEM(93) = 1
 
 
-SUPAX - Axisymmetric Fictitious Support
-=======================================
-
+# SUPAX - Axisymmetric Fictitious Support
 ## Description
 
 Defines coordinates at which determinate reactions are to be applied during
@@ -16622,9 +16222,7 @@ C          Component number (any unique combination of the digits 1 - 6).
    Theoretical Manual.
 
 
-SUPORT - Fictitious Support
-===========================
-
+# SUPORT - Fictitious Support
 ## Description
 
 Defines coordinates at which determinate reactions are to be applied to a free
@@ -16655,9 +16253,7 @@ C          Component number (zero or blank for scalar points; any unique
    card.
 
 
-TABDMP1 - Structural Damping Table
-==================================
-
+# TABDMP1 - Structural Damping Table
 ## Description
 
 Defines structural damping as a tabular function of frequency.
@@ -16718,9 +16314,7 @@ Gi         Damping value (Real).
    damping. See PARAM bulk data card.
 
 
-TABLED1 - Dynamic Load Tabular Function
-=======================================
-
+# TABLED1 - Dynamic Load Tabular Function
 ## Description
 
 Defines a tabular function for use in generating frequency-dependent and
@@ -16776,9 +16370,7 @@ Xi, Yi     Tabular entries (Real).
    function is zero outside the range.
 
 
-TABLED2 - Dynamic Load Tabular Function
-=======================================
-
+# TABLED2 - Dynamic Load Tabular Function
 ## Description
 
 Defines a tabular function for use in generating frequency-dependent and
@@ -16839,9 +16431,7 @@ xi, yi     Tabular entries (Real).
    function is zero outside the range.
 
 
-TABLED3 - Dynamic Load Tabular Function
-=======================================
-
+# TABLED3 - Dynamic Load Tabular Function
 ## Description
 
 Defines a tabular function for use in generating frequency-dependent and
@@ -16901,9 +16491,7 @@ xi, yi     Tabular entries (Real).
    function is zero outside the range.
 
 
-TABLED4 - Dynamic Load Tabular Function
-=======================================
-
+# TABLED4 - Dynamic Load Tabular Function
 ## Description
 
 Defines coefficients of a power series for use in generating
@@ -16949,9 +16537,7 @@ Ai         Coefficient entries (Real).
    There are no error returns from this table look-up procedure.
 
 
-TABLEM1 - Material Property Table
-=================================
-
+# TABLEM1 - Material Property Table
 ## Description
 
 Defines a tabular function for use in generating temperature dependent
@@ -17004,9 +16590,7 @@ xi, yi     Tabular entries (Real).
    no error returns from this table look-up procedure.
 
 
-TABLEM2 - Material Property Table
-=================================
-
+# TABLEM2 - Material Property Table
 ## Description
 
 Defines a tabular function for use in generating temperature dependent
