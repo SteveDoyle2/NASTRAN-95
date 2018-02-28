@@ -1,5 +1,5 @@
-=PAGE=
-2.7  SUBSTRUCTURE CONTROL DECK
+
+# 2.7  SUBSTRUCTURE CONTROL DECK
 
    The Substructure Control Deck options provide to you commands needed to
 control the execution of NASTRAN for automated multi-stage substructure
@@ -40,7 +40,7 @@ substructure commands into DMAP ALTER sequences, and the format conventions to
 be used. The bulk data cards provided for substructure analyses are included
 with the standard bulk data descriptions in Section 2.3 and they are
 summarized for convenient reference in Table 2.7-2.
-=PAGE=
+
 Table 2.7-1. Summary of Substructure Commands
 
  # Mandatory Control Cards  * Required Subcommand
@@ -111,7 +111,7 @@ C. Substructure Operations
                        defined boundary set
         USERMODES      Flag to indicate modal data have been input on bulk data
         OUTPUT         Specifies optional output requests
-=PAGE=
+
 Table 2.7-1. Summary of Substructure Commands (continued)
 
         RSAVE          Indicates the decomposition product of the interior
@@ -155,7 +155,7 @@ Table 2.7-1. Summary of Substructure Commands (continued)
              STEPS     Frequency or time step output request
     BRECOVER           Basic Substructure data recovery, Phase 3
     PLOT               Initiates substructure undeformed plots
-=PAGE=
+
 Table 2.7-2. Substructure Bulk Data Card Summary.
 
 A. Bulk Data Used for Processing Substructure Commands REDUCE, MREDUCE, and
@@ -191,7 +191,7 @@ C. Bulk Data used for Processing Substructure Command SOLVE
    TICS      Defines transient initial conditions
 
 
-2.7.1  Commands and Their Execution
+## 2.7.1  Commands and Their Execution
 
    The sequence of operations is controlled by the order in which NASTRAN
 encounters the sub-structure commands. A few special data cards are required
@@ -254,7 +254,7 @@ without changing the original Case Control and Bulk Data Decks.
 from the Substructure Control Deck commands. This user interaction with the
 DMAP operations is explained in the following section.
 
-2.7.2  Interface with NASTRAN DMAP
+## 2.7.2  Interface with NASTRAN DMAP
 
    Each substructure command card produces a set of DMAP ALTER cards which are
 automatically inserted into the Rigid Format called for execution on the SOL
@@ -287,7 +287,7 @@ following options:
       deck must not be changed, to insure proper sequencing of the requested
       operations.
 
-2.7.3  Substructure Control Card Descriptions
+## 2.7.3  Substructure Control Card Descriptions
 
    The format of the substructure control cards is free-field. Blanks are used
 to separate the control words. Either a blank or an equal sign (=) can be used
@@ -319,7 +319,7 @@ following conventions are used:
 
    The Case Control Deck, which follows the ENDSUBS card of the Substructure
 Control Deck, is described in Section 2.3.
-=PAGE=
+
 BRECOVER - Basic Substructure Data Recovery
 
 Purpose
@@ -347,7 +347,7 @@ Remarks
 
 2. Phase 3 may be a RESTART of the original Phase 1 run or it may be executed
    from the original input data.
-=PAGE=
+
 CHECK - Check Contents of External File
 
 Purpose
@@ -379,7 +379,7 @@ Remarks
 
 1. The substructure name, item name, and the date and time the item was
    written are listed for each item on the file.
-=PAGE=
+
 COMBINE - Combine Sets of Substructures
 
 Purpose
@@ -565,7 +565,7 @@ Examples
    NAME = WING
    COMPONENT LWING
    SYMT = Y
-=PAGE=
+
 CREDUCE - Reduces Substructure Matrices Using Complex Modes
 
 Purpose
@@ -688,7 +688,7 @@ pseudostructure.
    point stiffness matrix (LMTX item) is saved on the SOF file. This matrix
    will be used in the data recovery for the omitted points. If it is not
    saved, it will be regenerated when needed.
-=PAGE=
+
 DELETE - Delete Items from SOF
 
 Purpose
@@ -723,7 +723,7 @@ Remarks
 
 4. See the EDIT and DESTROY commands for other means of removing substructure
    data.
-=PAGE=
+
 DESTROY - Removes All Data Referencing a Component Substructure
 
 Purpose
@@ -759,7 +759,7 @@ Remarks
 
 2. See related commands EDIT and DELETE for additional means of removing
    substructure data.
-=PAGE=
+
 DUMP - Copy SOF to External File
 
 Purpose
@@ -798,7 +798,7 @@ Remarks
 
 5. It is more efficient to use operating system utility programs, if
    available, to create back-up copies of the SOF.
-=PAGE=
+
 EDIT - Selectively Removes Data from SOF File
 
 Purpose
@@ -851,7 +851,7 @@ Remarks
    SOFOUT to ensure the existence of backup data if there is an error.
 
 5. See DELETE and DESTROY for other means of removing substructure data.
-=PAGE=
+
 ENDSUBS - Defines the End of the Substructure Control Deck.
 
 Purpose
@@ -866,7 +866,7 @@ ENDSUBS
 Subcommands
 
 None.
-=PAGE=
+
 EQUIV - Create a New Equivalent Substructure
 
 Purpose
@@ -907,7 +907,7 @@ Remarks
 
 4. An EDIT or DELETE operation on the primary substructure will not remove
    data of the secondary substructure and vice versa.
-=PAGE=
+
 MRECOVER - Eigenvector Recovery for Modal Synthesis Operations
 
 Purpose
@@ -1065,7 +1065,7 @@ Remarks
 
 12.   Since the subcommands of the MRECOVER command are all associated with a
       component structure, multiple use of these subcommands is permitted.
-=PAGE=
+
 MREDUCE - Reduces Substructure Matrices Using Real, Normal Modes
 
 Purpose
@@ -1276,7 +1276,7 @@ Remarks
 12.   Note on RGRID: Your choice of one grid point or another for inertia
       relief modes does not in any way determine the net reaction forces, but
       operates solely as a convenience as to choice of reference origin.
-=PAGE=
+
 OPTIONS - Defines Matrix Types
 
 Purpose
@@ -1340,7 +1340,7 @@ Remarks
 
 7. When executing the SOLVE command, the option selected must provide the
    matrices required for the rigid format being executed.
-=PAGE=
+
 PASSWORD - Substructure Operating File Declaration
 
 Purpose
@@ -1360,7 +1360,7 @@ None.
 Definitions
 
 password   BCD password for the SOF (8 characters maximum).
-=PAGE=
+
 PLOT - Substructure Plot Command
 
 Purpose
@@ -1400,7 +1400,7 @@ Remarks
 
 3. The structure plotter output request packet, while part of the standard
    Case Control Deck, is treated separately in Sections 4.1 and 4.2.
-=PAGE=
+
 RECOVER - Phase 2 Solution Data Recovery
 
 Purpose
@@ -1599,7 +1599,7 @@ Remarks
    UTHRESH displacement, velocity, and acceleration
    PTHRESH load threshold
    QTHRESH reaction force threshold
-=PAGE=
+
 REDUCE - Phase 2 Reduction to Retained Degrees of Freedom
 
 Purpose
@@ -1670,7 +1670,7 @@ pseudostructure.
    point stiffness matrix (LMTX item) is saved on the SOF file. This matrix
    will be used in the data recovery for the omitted points. If it is not
    saved, it will be regenerated when needed.
-=PAGE=
+
 RESTORE - Reload SOF
 
 Purpose
@@ -1709,7 +1709,7 @@ Remarks
 4. The SOF size declarations for the RESTORE command must be exactly the same
    as for the SOF which was DUMPed. The DUMP/RESTORE commands cannot be used
    to increase the size of the SOF.
-=PAGE=
+
 RUN - Specifies Run Options
 
 Purpose
@@ -1761,7 +1761,7 @@ Remarks
 
 4. The RUN = GO and OPTIONS = K combination is illegal for any of the reduce
    operations, REDUCE, MREDUCE, or CREDUCE.
-=PAGE=
+
 SOF - Assigns Physical Files for Storage of the SOF
 
 Purpose
@@ -2007,7 +2007,7 @@ Remarks
       The file NASTRAN.COM contains the command procedure for executing
       NASTRAN and the file TEST2.DT contains the NASTRAN data including the
       SOF declaration--SOF(1) = FT22,1000
-=PAGE=
+
 SOFIN - Copy Items from File to SOF
 
 Purpose
@@ -2120,7 +2120,7 @@ Remarks
 
 9. Only one item may appear as an ITEMS subcommand per NAMES subcommand.
    Selective items may be referenced by repeating the NAMES subcommand.
-=PAGE=
+
 SOFOUT - Copy Items from SOF to File
 
 Purpose
@@ -2219,7 +2219,7 @@ Remarks
 
 9. Only one item may appear as an ITEMS subcommand per NAMES subcommand.
    Selective items may be referenced by repeating the NAMES subcommand.
-=PAGE=
+
 SOFPRINT - Requests SOF File Verification
 
 Purpose
@@ -2271,7 +2271,7 @@ Remarks
 
    Any of the above types will have a prefix "I" if it is an image
    substructure resulting from an EQUIV operation.
-=PAGE=
+
 SOLVE - Substructure Solution
 
 Purpose
@@ -2317,7 +2317,7 @@ Remarks
    the solution data are saved on the SOF.
 
 6. The SOLVE command may only be used in Phase 2 executions.
-=PAGE=
+
 SUBSTRUCTURE - Initiates the Substructure Control Data Deck
 
 Purpose

@@ -1447,10 +1447,9 @@ REFERENCES
              Figure 1.2-7. Matrix for square model example
 
 
-1.3  STRUCTURAL ELEMENTS
-------------------------
-1.3.1  Element Definition
--------------------------
+# 1.3  STRUCTURAL ELEMENTS
+## 1.3.1  Element Definition
+
    Structural elements are defined on connection cards that identify the grid
 points to which the elements are connected. The mnemonics for all such cards
 have a prefix of the letter "C", followed by an indication of the type of
@@ -1531,10 +1530,9 @@ define the items on the connection and property cards. Detailed instructions
 for coding dummy element routines are given in Section 6.8.5 of the
 Programmer's Manual.
 
-1.3.2  Beam Elements
---------------------
-1.3.2.1  Simple Beam or Bar Element
------------------------------------
+# 1.3.2  Beam Elements
+## 1.3.2.1  Simple Beam or Bar Element
+
    The simple beam or bar element is defined with a CBAR card and its
 properties (constant over the length) are defined with a PBAR card. The bar
 element includes extension, torsion, bending in two perpendicular planes, and
@@ -1607,8 +1605,8 @@ used to define default values on the CBAR card for the property identification
 number and the orientation vector for the reference axes. The default values
 are used only when the corresponding fields on the CBAR card are blank.
 
-1.3.2.2  Curved Beam or Elbow Element
--------------------------------------
+### 1.3.2.2  Curved Beam or Elbow Element
+
    The curved beam or elbow element is a three-dimensional element with
 extension, torsion, and bending capabilities and the associated shears. No
 offset of the elastic axis is allowed nor are pin releases permitted to
@@ -1789,8 +1787,8 @@ density will also have to be adjusted on a MAT1 card. The element coordinate
 system and directions for positive forces are shown in Figure 1.3-4. Stress
 recovery is similar to that for shear panels.
 
-1.3.5  Plate and Membrane Elements
-----------------------------------
+## 1.3.5  Plate and Membrane Elements
+
    NASTRAN includes two different shapes of plate and membrane elements
 (triangular and quadrilateral) and two different stress systems (inplane and
 bending) which are uncoupled. There are different forms of elements available
@@ -1966,8 +1964,8 @@ kept as nearly equilateral as practicable, because the accuracy tends to
 deteriorate as the angles become obtuse and as the ratio of the longest to the
 shortest side increases.
 
-1.3.6  Axisymmetric Shell Elements
-----------------------------------
+## 1.3.6  Axisymmetric Shell Elements
+
    The properties of axisymmetric shells can be specified with either of two
 elements, the conical shell (CONEAX) or the toroidal ring (TORDRG). However,
 these cannot be used together in the same model. Also available for thick
@@ -1975,7 +1973,7 @@ shells of revolution are the axisymmetric solid elements (TRIARG, TRAPRG,
 TRIAAX, and TRAPAX) which are described in the next section. Thin shell
 (TRSHL) modeling is described in Section 1.3.12.
 
-1.3.6.1  Conical Shell (CONEAX) Element
+### 1.3.6.1  Conical Shell (CONEAX) Element
 
    The properties of the conical shell element are assumed to be symmetrical
 with respect to the axis of the shell. However, the loads and deflections need
@@ -2115,8 +2113,8 @@ at specified locations on request:
    The manner in which the data cards for the CONEAX element (as well as for
 the TRAPAX and TRIAAX elements) are processed is described in Section 1.3.7.3.
 
-1.3.6.2  Toroidal Ring (TORDRG) Element
----------------------------------------
+### 1.3.6.2  Toroidal Ring (TORDRG) Element
+
    The cylindrical coordinate system for the toroidal ring is implied by the
 use of the toroidal element, and hence, no explicit definition is required.
 The toroidal element may use orthotropic materials. The axes of orthotropy are
@@ -2186,8 +2184,8 @@ element, are output on request:
 
    -  Shearing stress (Force per unit length)
 
-1.3.7  Axisymmetric Solid Elements
-----------------------------------
+## 1.3.7  Axisymmetric Solid Elements
+
    Two sets of elements are provided for representing thick axisymmetric shell
 and/or solid structures (see Section 5.11 of the Theoretical Manual). The
 first set, the triangular ring TRIARG and trapezoidal ring TRAPRG, is
@@ -2200,8 +2198,8 @@ of one set may not be used together with elements of the other set nor with
 any other elements except the combination of TRIAAX and TRAPAX elements with
 the conical shell element (CONEAX).
 
-1.3.7.1  TRIARG and TRAPRG Elements
------------------------------------
+### 1.3.7.1  TRIARG and TRAPRG Elements
+
    The triangular and trapezoidal ring elements may be used for modeling
 axisymmetric thick-walled structures of arbitrary profile. In the limiting
 case only the TRAPRG element may become a solid core element.
@@ -2248,8 +2246,8 @@ stresses at the four connected grid points of the trapezoid, similar stresses
 are provided at a point of average radius and average z-distance from the four
 points.
 
-1.3.7.2  TRIAAX and TRAPAX Elements
------------------------------------
+### 1.3.7.2  TRIAAX and TRAPAX Elements
+
    The two solid of revolution elements which are provided for representing
 nonaxisymmetric loadings on axisymmetric structures with thick or solid cross
 sections are the TRIAAX and TRAPAX elements. These define a triangle and a
@@ -2367,8 +2365,8 @@ your or external identification numbers) in specifying the data for plotting
 purposes. (See, for instance, the description of the SET card in Section
 4.2.2.4.)
 
-1.3.8  Scalar Elements
-----------------------
+## 1.3.8  Scalar Elements
+
    Scalar elements are connected between pairs of degrees of freedom (at
 either scalar or geometric grid points) or between one degree of freedom and
 ground. Scalar elements are available as springs, masses, and viscous dampers.
@@ -2407,8 +2405,8 @@ such cards are needed.
 manner similar to the scalar spring definitions. The associated PDAMP card
 contains only a value for the scalar damper.
 
-1.3.9  Mass
------------
+## 1.3.9  Mass
+
    Inertia properties are specified directly as mass elements attached to grid
 points and indirectly as the properties of matrix structural elements. In
 addition, dynamic analysis mass matrix coefficients may be specified that are
@@ -2419,8 +2417,8 @@ assumptions or coupled mass considerations. Additional information on
 treatment of inertia properties is given in Section 5.5 of the Theoretical
 Manual.
 
-1.3.9.1  Lumped Mass
---------------------
+### 1.3.9.1  Lumped Mass
+
    The partitions of the lumped mass matrix are explained in Section 5.5.3 of
 the Theoretical Manual, but to aid you the form is repeated here in Equation
 1.
@@ -2455,8 +2453,8 @@ the Theoretical Manual Sections 5.3 and 5.8). The lumped mass matrix is
 independent of the elastic properties of elements. There are no other
 automatic routines for providing mass terms for the lumped mass approach.
 
-1.3.9.2  Coupled Mass
----------------------
+### 1.3.9.2  Coupled Mass
+
    In the coupled mass approach, properties of mass pertaining to a single
 structural element include off-diagonal coefficients that couple action at
 adjacent grid points. For further amplification of the techniques used in the
@@ -2481,8 +2479,8 @@ dependent coordinate will be transformed to the connected independent
 coordinates, thereby coupling them together. Mathematically, these operations
 and the element coupled mass formulations described above are closely related.
 
-1.3.9.3  Mass Input
--------------------
+### 1.3.9.3  Mass Input
+
    In many cases it may be desired to add mass terms to the structure in
 addition to those generated by the structural elements. For instance, in a
 lumped mass formulation any additional masses involving rotational degrees of
@@ -2530,8 +2528,8 @@ the COUPMASS parameter, while other contributions to the same grid points can
 be made by direct matrix input through DMIG cards. The information from these
 several sources will be summed in the formation of the final mass matrix.
 
-1.3.9.4  Output from the Grid Point Weight Generator
-----------------------------------------------------
+### 1.3.9.4  Output from the Grid Point Weight Generator
+
    The Grid Point Weight Generator (GPWG) module computes the rigid body mass
 properties of an entire structure with respect to your specified point and
 with respect to the center of mass.
@@ -2588,8 +2586,9 @@ from an eigenvalue analysis of the I(S) matrix.
 
    Q is the coordinate transformation between the S axes and the Q axes.
 
-1.3.9.5  Bulk Data Cards for Mass
----------------------------------
+
+### 1.3.9.5  Bulk Data Cards for Mass
+
    A summary chart is given in Table 1.3-1 to help in the selection of the
 method of input for a given type of mass information. Descriptions of
 individual cards for the entering of mass information into the bulk data are
@@ -2744,8 +2743,8 @@ hexahedron are obtained as the weighted average of the stresses in the
 subtetrahedra. The weighting factor for each tetrahedron is proportional to
 its volume.
 
-1.3.11  Isoparametric Solid Hexahedron Elements
------------------------------------------------
+## 1.3.11  Isoparametric Solid Hexahedron Elements
+
    Three types of isoparametric solid hexahedron elements are provided for
 general solid structures. These elements (see Figure 1.3-13) are a linear, a
 quadratic, and a cubic isoparametrIc hexahedron. The theory is given in
@@ -2791,8 +2790,8 @@ and the octahedral shear stress
                       2            2            2  1/2
    +o = {1/3[(Sx + +n)  + (Sy + +n)  + (Sz + +n) ]}
 
-1.3.12  Shallow Shell Element
------------------------------
+## 1.3.12  Shallow Shell Element
+
    A higher order shallow triangular shell element (TRSHL) formulated from the
 TRIM6 and TRPLT1 elements is available. The inplane and bending properties are
 coupled and the geometry of the element may be curved. If the element is flat
@@ -3274,8 +3273,8 @@ elements
 Figure 1.3-14. Triangular shallow shell element geometry and coordinate systems
 
 
-1.4  CONSTRAINTS AND PARTITIONING
-=================================
+# 1.4  CONSTRAINTS AND PARTITIONING
+
    Structural matrices are initially assembled in terms of all structural grid
 points, which excludes only the extra scalar points introduced for dynamic
 analysis. These matrices are generated with six degrees of freedom for each
@@ -3301,8 +3300,8 @@ definition of constraints:
 
 The latter type does not produce constraint forces in static analysis.
 
-1.4.1  Single-Point Constraints
--------------------------------
+## 1.4.1  Single-Point Constraints
+
    A single-point constraint applies a fixed value to a translational or
 rotational component at a geometric grid point or to a scalar point. One of
 the most common uses of single-point constraints is to specify the boundary
@@ -3358,8 +3357,8 @@ case, however, the constraints are part of the model and modifications cannot
 be made at the subcase level. Also, only zero displacements can be specified
 on the GRID card.
 
-1.4.2  Multipoint Constraints and Rigid Elements
-------------------------------------------------
+## 1.4.2  Multipoint Constraints and Rigid Elements
+
    Multipoint constraints and rigid elements are used to constrain one or more
 degrees of freedom to be equal to linear combinations of the values of other
 degrees of freedom. In the former case, you must explicitly provide the
@@ -3367,8 +3366,8 @@ coefficients of the equations. In the latter case, you provides only the
 connection data and the program internally generates the required
 coefficients.
 
-1.4.2.1  Multipoint Constraints
--------------------------------
+### 1.4.2.1  Multipoint Constraints
+
    Each multipoint constraint is described by a single equation that specifies
 a linear relationship for two or more degrees of freedom. Multiple sets of
 multipoint constraints can be provided in the Bulk Data Deck, with selections
@@ -3413,8 +3412,8 @@ multipoint constraints are:
    You provide the coefficients in the multipoint constraint equations defined
 on MPC, MPCADD, and MPCAX cards.
 
-1.4.2.2  Rigid Elements
------------------------
+### 1.4.2.2  Rigid Elements
+
    Rigid elements provide a convenient means of specifying very stiff
 connections. You do not provide the required coefficients directly. The
 program internally generates them from the connection data. Rigid elements are
@@ -3446,8 +3445,8 @@ element.
 often find it useful to turn on DIAGs 21 and 22 in the Executive Control Deck
 to obtain the GP4 definition of sets of degrees of freedom.
 
-1.4.3  Free Body Supports
--------------------------
+## 1.4.3  Free Body Supports
+
    In the following discussion, a free body is defined as a structure that is
 capable of motion without internal stress; that is, it has one or more rigid
 body degrees of freedom. The stiffness matrix for a free body is singular with
@@ -3510,8 +3509,8 @@ solution can be made on a free-body, the static solution cannot be performed
 without removing the singularities in the stiffness matrix associated with the
 rigid body motions.
 
-1.4.4  Partitioning
--------------------
+## 1.4.4  Partitioning
+
    A two-way partitioning scheme is provided as an optional feature for the
 NASTRAN model. The partitions are defined by listing the degrees of freedom
 for one of the partitions on the OMIT card. These degrees of freedom are
@@ -3570,8 +3569,8 @@ to make modest reductions in the order of the problem by placing a few
 scattered grid points in the omitted set. If the points in the omitted set are
 uncoupled, the sparseness in the matrices will be well preserved.
 
-1.4.5  The Nested Vector Set Concept Used to Represent Components of Displacement
----------------------------------------------------------------------------------
+## 1.4.5  The Nested Vector Set Concept Used to Represent Components of Displacement
+
    In constructing the matrices used in the displacement approach, each row
 and/or column of a matrix is associated closely with a grid point, a scalar
 point, or an extra point. Every grid point has 6 degrees of freedom associated
@@ -3709,10 +3708,9 @@ following diagram:
 
 The upa set replaces the up set for output at grid, scalar, and extra points.
 
-1.5  APPLIED LOADS
-==================
-1.5.1  Static Loads
--------------------
+# 1.5  APPLIED LOADS
+## 1.5.1  Static Loads
+
 In NASTRAN, static loads are applied to geometric and scalar grid points in a
 variety of ways, including:
 
@@ -3887,7 +3885,7 @@ only the diagonal terms (j=k) need be defined. The RANDT1 card is used to
 specify the time lag constants for use in the computation of the
 autocorrelation functions. 
 
-1.5.3  Time-Dependent Loads
+## 1.5.3  Time-Dependent Loads
 
    A discussion of transient response calculations is given in Section 11 of
 the Theoretical Manual. The DLOAD card is used to define linear combinations
@@ -3959,8 +3957,8 @@ and Nn-1 are the values of the nonlinear loads at time steps preceding the
 solution time step. Section 11.4 of the Theoretical Manual discusses the
 integration of coupled equations.
 
-1.6  DYNAMIC MATRICES
-=====================
+# 1.6  DYNAMIC MATRICES
+
    The dynamic matrices are defined as the stiffness, mass, and damping
 matrices used in either the direct or modal formulation of dynamics problems.
 The assembly of dynamics matrices is discussed in Section 9.3 of the
@@ -4030,8 +4028,8 @@ points introduced for dynamic analysis.
    The modal matrices are obtained from real eigenvalue analysis using the
 stiffness and mass matrices generated by the structural matrix assembler.
 
-1.6.1  Direct Formulation
--------------------------
+## 1.6.1  Direct Formulation
+
    In the direct method of dynamic problem formulation, the degrees of freedom
 are simply the displacements at grid points. The dynamic matrices are
 assembled from the direct input matrices and the stiffness, mass, and damping
@@ -4082,8 +4080,8 @@ transient analysis. You specify the values of þ3 and þ4 on PARAM cards W3 and
 W4 (see PARAM bulk data card). If þ3 and þ4 are omitted, the corresponding
 terms are ignored.
 
-1.6.2  Modal Formulation
-------------------------
+## 1.6.2  Modal Formulation
+
    In the modal method of dynamic problem formulation, the vibration modes of
 the structure in a selected frequency range are used as degrees of freedom,
 thereby reducing the number of degrees of freedom while maintaining accuracy
@@ -4162,10 +4160,9 @@ which define the pressure in the fluid at specified locations. The structure
 may be modeled arbitrarily using conventional NASTRAN elements. The fluids are
 assumed to be incompressible, irrotational, and non-viscous.
 
-1.7.1  Axisymmetric Hydroelastic Modeling
------------------------------------------
-1.7.1.1  Solution of the NASTRAN Fluid Model
---------------------------------------------
+## 1.7.1  Axisymmetric Hydroelastic Modeling
+### 1.7.1.1  Solution of the NASTRAN Fluid Model
+
    The NASTRAN axisymmetric hydroelastic option allows you to solve a wide
 variety of fluid problems having structural interfaces, compressibility, and
 gravity effects. A complete derivation of the NASTRAN model and an explanation
@@ -4271,8 +4268,8 @@ are as follows:
       in the axisymmetric conical shell problem, the Case Control request
       HARMONICS = N is used to select up to the Nth harmonic for output.
 
-1.7.1.2  Hydroelastic Input Data
---------------------------------
+### 1.7.1.2  Hydroelastic Input Data
+
    A number of special NASTRAN data cards are required for fluid analysis
 problems. These cards are compatible with structural NASTRAN data. A brief
 description of the uses for each bulk data card follows.
@@ -4404,8 +4401,8 @@ difference being the capability to specify the harmonic numbers for the
 degrees of freedom. A matrix may be defined with either DMIG or DMIAX cards,
 but not with both.
 
-1.7.1.3  Rigid Formats
-----------------------
+### 1.7.1.3  Rigid Formats
+
    The characteristics of the fluid analysis problems which cause restrictions
 on the type of solution are:
 
@@ -4479,8 +4476,8 @@ boundary coupling is not provided with Rigid Formats 10, 11, and 12. However,
 the capability may be provided by means of an ALTER using the same logic as in
 the direct formulations.
 
-1.7.1.4  Hydroelastic Data Processing
--------------------------------------
+### 1.7.1.4  Hydroelastic Data Processing
+
    The fluid related data cards submitted by you are processed by the NASTRAN
 Preface to produce equivalent grid point, scalar point, element connection,
 and constraint data card images. Each specified harmonic, N, of the Fourier
@@ -4680,8 +4677,8 @@ solution with either direct or modal formulation.
 formulation. These parameters are all described in Section 1.7.2.4 under the
 description of the hydroelastic Bulk Data Deck.
 
-1.7.2.3  Case Control Deck
---------------------------
+### 1.7.2.3  Case Control Deck
+
    The Case Control data for normal modes analysis, Rigid Format 3, is not
 modified for direct hydroelastic solutions. For modal formulation, the data is
 similar except that two sets of subcases must be provided. The first set must
@@ -4763,8 +4760,8 @@ control both the fluid and structure outputs. The following data is available:
    5. The use of the MODES card to control output requests is described under
       the Case Control Deck section.
 
-1.7.2.4  Bulk Data Deck
------------------------
+### 1.7.2.4  Bulk Data Deck
+
    The bulk data cards that pertain specifically to three-dimensional
 hydroelastic modeling are CFFREE, CFHEXi (i = 1 or 2), CFLSTR, CFTETRA,
 CFWEDGE, and MATF. These are all described in Section 2.4 along with all other
@@ -4877,10 +4874,9 @@ REFERENCE
    Theory and Results, (by Universal Analytics, Inc.), National Aeronautics
    and Space Administration, NASA-CR-150393, May 1977.
 
-1.8  HEAT TRANSFER PROBLEMS
-===========================
-1.8.1  Introduction to NASTRAN Heat Transfer
---------------------------------------------
+# 1.8  HEAT TRANSFER PROBLEMS
+## 1.8.1  Introduction to NASTRAN Heat Transfer
+
    NASTRAN heat flow capability may be used either as a separate analysis to
 determine temperatures and fluxes, or to determine temperature inputs for
 structural problems. Steady and transient problems can be solved, including
@@ -4915,8 +4911,8 @@ EPOINT, GRDSET, GRID, LOAD, MPC, MPCADD, NOLINi, OMITi, PARAM, Piii (for
 elements requiring properties), PLOTEL, SEQiP, SLOAD, SPCi, SPCADD, SPOINT,
 TABLEDi, TABLEMi, TEMPii, TF, TLOADi, and TSTEP.
 
-1.8.2  Heat Transfer Elements
------------------------------
+## 1.8.2  Heat Transfer Elements
+
    The basic heat conduction elements are the same as NASTRAN structural
 elements. These elements are shown in the following table:
 
@@ -5019,8 +5015,8 @@ so limited. You will be responsible to satisfy the equivalence requirement, by
 having only two entries on the MPC data card, with equal (but opposite in
 sign) coefficients.
 
-1.8.4  Thermal Loads
---------------------
+## 1.8.4  Thermal Loads
+
    Thermal "loads" may be boundary heat fluxes or volume heat addition. As in
 the case of structural analysis, the method of specifying loads is different
 for static and transient analysis. The HBDY element is used for boundaries of
@@ -5041,15 +5037,15 @@ and/or the QBDY1, QBDY2, QHBDY, QVECT, QVOL, and SLOAD cards. The resultant
 thermal load will be the sum of all loads applied. This means the LOAD SIDs
 and DAREA SIDs must be the same when referenced on a TLOADi card.
 
-1.8.5  Linear Static Analysis
------------------------------
+## 1.8.5  Linear Static Analysis
+
    Linear static analysis uses APProach HEAT, SOLution 1. The rigid format is
 the same as that used for static structural analysis. This implies that
 several loading conditions and constraint sets can be solved in one job, by
 using subcases in the Case Control deck.
 
-1.8.6  Nonlinear Static Analysis
---------------------------------
+## 1.8.6  Nonlinear Static Analysis
+
    Nonlinear static analysis uses APProach HEAT, SOLution 3. This rigid format
 will allow temperature dependent conductivities of the elements, nonlinear
 radiation exchange, and a limited use of multipoint constraints. There is no
@@ -5090,8 +5086,8 @@ Executive Control card DIAG 18, where îp is the ratio of the Euclidian norms
 of the residual (error) loads to the applied loads on the unconstrained
 degrees of freedom.
 
-1.8.7  Transient Analysis
--------------------------
+## 1.8.7  Transient Analysis
+
    Transient analysis uses APProach HEAT, SOLution 9. This rigid format may
 include conduction, film heat transfer, nonlinear radiation, and NASTRAN
 nonlinear elements. Extra points are used as in structural transient analysis.
@@ -5117,7 +5113,7 @@ radiation, and is requested by TEMP(MATERIAL). The parameters available are:
 
    Time steps are specified on TSTEP data cards.
 
-1.8.8  Compatibility with Structural Analysis
+## 1.8.8  Compatibility with Structural Analysis
 
    Grid point temperatures for thermal stress analysis (static structural
 analysis) are specified on TEMP Bulk Data cards. If punched output is
@@ -5220,10 +5216,9 @@ triangles and x = 4 for quadrilaterals.
   Figure 1.8-2. HBDY element orientation (for QVECT flux) (concluded)
 
 
-1.9  ACOUSTIC CAVITY MODELING
-=============================
-1.9.1  Data Card Functions
---------------------------
+# 1.9  ACOUSTIC CAVITY MODELING
+## 1.9.1  Data Card Functions
+
    The NASTRAN structural analysis system is used as the basis for acoustic
 cavity analysis. Many of the structural analysis options, such as selecting
 boundary conditions, applying loading conditions, and selecting output data,
@@ -5295,8 +5290,8 @@ and scalar elements may be introduced to account for special effects. The
 reader is referred to Sections 1.4 and 1.5 for instruction in the use of these
 cards.
 
-1.9.2  Assumptions and Limitations
-----------------------------------
+## 1.9.2  Assumptions and Limitations
+
    The accuracy of the acoustic model will be dependent on the selection of
 the mesh of finite elements. The assumption for each element is that the
 pressure field has a linear variation over the cross section and a sinusoidal
@@ -5353,8 +5348,8 @@ card "SET n INCLUDE PLOTEL" must be used, where n is a set number.
                Figure 1.9-1. Modeling errors for various shapes
 
 
-1.10  SUBSTRUCTURING
-====================
+# 1.10  SUBSTRUCTURING
+
    Substructuring is an analytical technique used to facilitate the solution 
 of structural problems by subdividing the structural models into smaller, more 
 manageable components. The most elementary component, or basic substructure, 
@@ -5420,8 +5415,8 @@ approaches are described below, starting with the manual, single-stage
 substructuring, followed by the automated multi-stage substructuring 
 capabilities. 
 
-1.10.1  Manual Single-Stage Substructuring
-------------------------------------------
+## 1.10.1  Manual Single-Stage Substructuring
+
    The theoretical basis for NASTRAN manual substructuring is given in Section 
 4.3 of the Theoretical Manual. This technique may be used with any of the 
 rigid formats, except Piecewise Linear Analysis. The following sections 
@@ -5485,8 +5480,8 @@ substructures. In this case, the amount of effort and computer time required
 for changes in the model can be substantially reduced if the unchanged 
 substructures are initially combined into a single intermediate substructure. 
 
-1.10.1.1  Basic Manual Substructure Analysis
---------------------------------------------
+### 1.10.1.1  Basic Manual Substructure Analysis
+
    Basic manual substructure analysis will be described with reference to the 
 simple beam structure shown in Figure 1.10-1. The beam is arbitrarily 
 separated into two substructures, referred to as substructure 1 and 
@@ -5742,8 +5737,8 @@ condition in Phase 2. This requires that you construct the proper partitioning
 vector for each boundary condition. Also, appropriate modifications would have 
 to be made to the suggested DMAP sequence for Phase 2. 
 
-1.10.1.3  Normal Modes Analysis
--------------------------------
+### 1.10.1.3  Normal Modes Analysis
+
    Substructuring for normal modes analysis is performed in much the same way 
 as that for static analysis. A NASTRAN Data Deck for use in Phase 1 of a 
 Normal Modes Analysis (Rigid Format 3) is shown in Table 1.10-13. 
@@ -5792,8 +5787,8 @@ eigenvectors. The zero parameter at the end of the statement should be
 incremented one for each substructure in order to point to the proper 
 eigenvector partition. 
 
-1.10.1.4  Dynamic Analysis
---------------------------
+### 1.10.1.4  Dynamic Analysis
+
    Manual substructuring may be used with any of the other dynamics rigid 
 formats. The NASTRAN Data Decks will be similar to those used for Normal Modes 
 Analysis. All dynamic loads must be applied in Phase 2. If the SUPORT card is 
@@ -5827,8 +5822,8 @@ as their only purpose is to serve as input for the Phase 3 runs. If output is
 desired for dependent response quantities or element stresses and forces, a 
 Phase 3 run must be made for each substructure of interest. 
 
-1.10.1.5  DMAP Loops for Phase 2
---------------------------------
+### 1.10.1.5  DMAP Loops for Phase 2
+
    The DMAP sequences for the substructure example in Section 1.10.1.1 use 
 repeated blocks of code for each substructure. Cards 209 through 215 are 
 associated with input for substructure 1. Cards 216 through 222 perform the 
@@ -5875,8 +5870,8 @@ needed, or perhaps by inserting the DMI cards for the partitioning vectors in
 the Bulk Data Deck for Phase 2. If Phase 3 runs are not required, no output 
 sequence is necessary. 
 
-1.10.1.6  Identical Substructures
----------------------------------
+### 1.10.1.6  Identical Substructures
+
    In the case of identical substructures, the substructuring procedures can 
 be organized to take full advantage of the repetitive parts. The substructures 
 only have to appear identical in Phase 1. The loading conditions and boundary 
@@ -6589,8 +6584,8 @@ ENDDATA
                  Figure 1.10-1. Manual substructuring problem
 
 
-1.10.2  Automated Multi-Stage Substructuring
---------------------------------------------
+## 1.10.2  Automated Multi-Stage Substructuring
+
    Large and complex structural analysis problems can be solved for static and 
 dynamic response and/or normal mode shapes using the automated multi-stage 
 substructuring features of NASTRAN. As with all substructuring approaches, you 
@@ -6616,8 +6611,8 @@ design concepts used in developing this automated substructuring capability
 are described below. The theory is presented in Section 4.6 of the Theoretical 
 Manual. 
 
-1.10.2.1  Basic Concepts
-------------------------
+### 1.10.2.1  Basic Concepts
+
    Automated substructuring analysis is available for use with NASTRAN Rigid 
 Formats 1, 2, 3, 8, and 9. This provides capability for static analysis, 
 static analysis with inertial relief for unsupported structures, and normal 
@@ -6693,8 +6688,8 @@ of the DMAP ALTERs generated by each substructure command are presented in
 Section 5.9. Descriptions of the corresponding modules provided for 
 substructuring are found in the NASTRAN Programmer's Manual. 
 
-1.10.2.2  Substructure Operations and Control Functions
--------------------------------------------------------
+### 1.10.2.2  Substructure Operations and Control Functions
+
    User control of the automated multi-stage substructuring system is obtained 
 via the Substructure Control Deck commands. The key terms used to describe 
 these commands and their functions are defined in Table 1.10-16. A summary of 
@@ -6837,8 +6832,8 @@ the analysis be prepared ahead of time to help avoid these problems. This pre-
 planning also will be an invaluable aid to the task of data preparation and 
 proper sequencing of the individual steps in the analysis. 
 
-1.10.2.3  Input Data Checking and Interpretation of Output
-----------------------------------------------------------
+### 1.10.2.3  Input Data Checking and Interpretation of Output
+
    The automated substructuring system provides several methods for input data 
 checking, diagnostic output, and substructure-oriented data output. 
 
@@ -7173,8 +7168,8 @@ command for the component substructures B and C individually, as shown below.
                                                       |          |
                                                       +----------+
 
-1.10.2.4  Substructure Operating File (SOF)
--------------------------------------------
+### 1.10.2.4  Substructure Operating File (SOF)
+
    The data required for each basic substructure and for all subsequent 
 combinatIons of substructures are stored on the Substructure Operating File 
 (SOF). The SOF data are stored in direct access format on disk or drum during 
@@ -7265,8 +7260,8 @@ and/or if that data is no longer needed for subsequent analyses. Also, data
 may be selectively stored on a backup tape for later retrieval, thus releasing 
 needed space for subsequent operations. 
 
-1.10.2.5  The Case Control Deck for Automated Substructure Analyses
--------------------------------------------------------------------
+### 1.10.2.5  The Case Control Deck for Automated Substructure Analyses
+
    The Case Control Deck for substructuring analysis controls loading 
 conditions, constraint set selection, output requests, and method of analysis 
 just as in any non-substructuring analysis. However, in a substructuring 
@@ -7325,8 +7320,8 @@ same subcases in both Phase 1 and Phase 2 in order to provide the correct load
 correction data to the Phase 3 output processing of element forces and 
 stresses. 
 
-1.10.2.6  User Aids for Automated Substructure Analyses
--------------------------------------------------------
+### 1.10.2.6  User Aids for Automated Substructure Analyses
+
    The following suggestions, recommendations, and cautions should be 
 considered when using automated multi-stage substructuring. The automated 
 substructuring capability offers you flexibility in the performance of an 
@@ -7939,9 +7934,8 @@ Note: If all processing is performed on the same computer, SOF tape output is
  Figure 1.10-5. Data file organization for NASTRAN multi-stage substructuring
 
 
-1.11  AEROELASTIC MODELING
-
-1.11.1  Introduction
+# 1.11  AEROELASTIC MODELING
+## 1.11.1  Introduction
 
    The NASTRAN aeroelastic capability is intended for the study of stability
 and response of aeroelastic systems. It is compatible with the general
@@ -7973,7 +7967,7 @@ This includes frequency response, transient response, and random analysis. The
 excitation may consist of applied forces or gusts (Doublet-Lattice theory
 only).
 
-1.11.2  Aerodynamic Modeling
+## 1.11.2  Aerodynamic Modeling
 
    Aerodynamic elements define the interaction between the structure and an
 airflow. Since the elements usually occur in regular arrays, the connection
@@ -7995,7 +7989,7 @@ parameters. Lists of real numbers are sometimes required, which are given on
 AEFACT lists. These lists may include division points (for unequal box sizes)
 and parameter values.
 
-1.11.2.1  Doublet-Lattice Panels
+### 1.11.2.1  Doublet-Lattice Panels
 
    The lifting surfaces are idealized as planes parallel to the flow. The
 configuration is divided into plane panels (macro-elements), each of constant
@@ -8042,7 +8036,7 @@ displacement coordinate system has component T1 in the flow direction and
 component T3 in the direction normal to the panel (the element coordinate
 system of CAERO1).
 
-1.11.2.2  Slender and Interference Bodies
+### 1.11.2.2  Slender and Interference Bodies
 
    The bodies are idealized as either "slender" or "interference" elements.
 The major purpose of the slender body elements is to account for the forces
@@ -8087,7 +8081,7 @@ associated with a panel is limited to six. You should be cautious about the
 use of associated interference bodies since they tend to increase computing
 time significantly.
 
-1.11.2.3  Mach Box Theory
+### 1.11.2.3  Mach Box Theory
 
    Mach box aerodynamics may be used to compute unsteady supersonic
 aerodynamic forces for a flat, isolated wing at supersonic speeds. The surface
@@ -8167,7 +8161,7 @@ starting with the element ID, and must be distinct from all other grid points.
    12.  The edge 1-2 will be taken as a plane of symmetry unless SYMXZ=-l
         (see AERO data card).
 
-1.11.2.4  Strip Theory
+### 1.11.2.4  Strip Theory
 
    Modified strip theory can be used for unsteady aerodynamic forces on a high
 aspect ratio lifting surface. Each strip may have two or three degrees of
@@ -8212,7 +8206,7 @@ and +n is left to you so that you may select values suitable for your
 requirement. Reference 3 gives values for various Mach numbers and aspect
 ratios.
 
-1.11.2.5  Piston Theory
+### 1.11.2.5  Piston Theory
 
    Piston theory in NASTRAN is a form of strip theory. The aerodynamic forces
 are computed from third order piston theory, which is valid for high Mach
@@ -8266,8 +8260,8 @@ used by piston theory is shown in the remarks on the PAERO5 data card. If
 thickness integrals are input on AEFACT data cards, see the thickness integral
 definitions on the CAERO5 data card.
 
-1.11.3  The Interconnection Between Structure and Aerodynamic Models
---------------------------------------------------------------------
+## 1.11.3  The Interconnection Between Structure and Aerodynamic Models
+
    The interpolation between the structural and aerodynamic degrees of freedom
 is based upon the theory of splines (Figure 1.11-6). High aspect ratio wings,
 bodies, or other beamlike structures should use linear splines. Low aspect
@@ -8347,7 +8341,7 @@ required or should not be used. The following special cases should be noted.
    For linear splines used with wings, the parameter DTOR should be selected
 as a representative value of EI/GJ.
 
-1.11.4  Modal Flutter Analysis
+## 1.11.4  Modal Flutter Analysis
 
    The purpose of modal flutter analysis is to study the stability of an
 aeroelastic system with a minimum number of degrees of freedom. A prerequisite
@@ -8421,7 +8415,7 @@ run is possible.
    Subsets of flutter analysis for checking data are listed under the
 description of the SOL card in Section 2.2.3.
 
-1.11.5  Modal Aeroelastic Response Analysis
+## 1.11.5  Modal Aeroelastic Response Analysis
 
    The purpose of the modal aeroelastic response analysis is to study the
 behavior of an aeroelastic system resulting from applied loads and gusts. One
@@ -8612,7 +8606,7 @@ REFERENCES
 
 
 
-1.12  CYCLIC SYMMETRY
+# 1.12  CYCLIC SYMMETRY
 
    Many structures, including pressure vessels, rotating machines, and
 antennae for space communications, are made up of virtually identical segments
@@ -8793,7 +8787,7 @@ efficiency when all of the interior points have been omitted.
                        Figure 1.12-2. Dihedral symmetry
 
 
-1.13  FULLY STRESSED DESIGN
+# 1.13  FULLY STRESSED DESIGN
 
    The fully stressed design option is part of the static analysis rigid
 format for structural analysis. Functional modules (OPTPR1 and OPTPR2) are
@@ -8916,9 +8910,8 @@ modified using the same scale factor.
 |       |                          | +s                |                      |
 +-------+--------------------------+-------------------+----------------------+
 
-1.14  THE CONGRUENT FEATURE
-
-1.14.1  Introduction
+# 1.14  THE CONGRUENT FEATURE
+## 1.14.1  Introduction
 
    An important step in any NASTRAN problem is the generation of element
 matrices (stiffness, mass, and damping matrices, as required) in the EMG
@@ -8943,7 +8936,7 @@ feature can result in substantial savings in the computational effort. In some
 problems, over 99 percent reductions in EMG module CPU times have been
 obtained.
 
-1.14.2  Congruent Feature Usage
+# 1.14.2  Congruent Feature Usage
 
    The congruent feature is specified in NASTRAN by means of one or more
 CNGRNT cards in the Bulk Data Deck (see Section 2.4). Any number of such cards
@@ -9039,7 +9032,7 @@ elements increase or decrease in the same order as we go around the elements.
 In the latter case, the grid point numbers of the two congruent elements
 increase or decrease in different orders as we go around the elements.
 
-1.14.4  Examples of Congruent Feature Usage
+## 1.14.4  Examples of Congruent Feature Usage
 
    The congruent feature is employed in fifteen (15) of the NASTRAN
 demonstration problems. A comparison of the EMG module CPU times (on IBM
@@ -9078,9 +9071,8 @@ Table 1.14-1. Examples of Congruent Feature Usage in NASTRAN Demonstration Probl
 * All problems were run on the IBM S/360-95 computer.
 ** ((b-a)/b)*100
 
-1.15  MAGNETIC FIELD PROBLEMS
-
-1.15.1  Introduction
+# 1.15  MAGNETIC FIELD PROBLEMS
+## 1.15.1  Introduction
 
 The determination of the magnetic fields in and about ferromagnetic bodies
 is an important step in the design of many structures and components. In
@@ -9088,7 +9080,7 @@ commercial applications, knowledge of the fields in and near transformers and
 electrical machinery is often desired because of their effect on performance.
 This is discussed further in Reference 1.
 
-1.15.2  Theory
+## 1.15.2  Theory
 
 The governing equations of classical electromagnetic wave theory are
 Maxwell's equations:
@@ -9188,7 +9180,7 @@ V í = 0                                                          (9)
 may be solved, in the proper coordinates, using the potentials on the
 enclosing surface as an interior boundary condition.
 
-1.15.3  Prolate Spheroidal Harmonic Expansion
+## 1.15.3  Prolate Spheroidal Harmonic Expansion
 
 Most applications require only prolate spheroidal coordinates. The solution
 of Laplace's equation in these coordinates is
@@ -9230,14 +9222,14 @@ discretization of the reference surface itself must be fine enough to allow
 for an accurate representation of the integrals in the computation of the
 coefficients Amn and Bmn.
 
-1.15.4  Input Data for Magnetostatic Analysis
+## 1.15.4  Input Data for Magnetostatic Analysis
 
 This section provides user information needed to perform a magnetostatic
 analysis with NASTRAN. This information is divided into six parts:  NASTRAN
 Card, Executive Control Deck, Case Control Deck, Bulk Data Deck, Data Cards
 with Different Meanings, and Output.
 
-1.15.4.1  NASTRAN Card
+### 1.15.4.1  NASTRAN Card
 
 In magnetostatic problems, functional module SSG1 (Static Solution
 Generator - Phase 1) generates a data block, HCFLD, that contains the source
@@ -9248,7 +9240,7 @@ purposes, the costlier computation of grid point source magnetic fields due to
 current coils and dipoles is left as an option to you. If these fields are to
 be computed for HCFLD, the NASTRAN card must contain MODCOM (9) = 1.
 
-1.15.4.2  Executive Control Deck
+### 1.15.4.2  Executive Control Deck
 
 Magnetostatic analysis is performed by using the steady-state heat transfer
 capability (Rigid Format 1, Approach HEAT) in NASTRAN. Therefore, the
@@ -9303,7 +9295,7 @@ information to FORTRAN-readable file UT1, which can be used as input to an
 interactive graphics post-processor. The TABPT instruction prints that file
 for user inspection.
 
-1.15.4.3  Case Control Deck
+### 1.15.4.3  Case Control Deck
 
 The FORCE (or ELFORCE) card is an optional request used to output the
 finite element anomaly and total magnetic fields. The anomaly field is output
@@ -9365,7 +9357,7 @@ often the situation when the Earth's magnetic field is the source field. When
 a current coil is the source, the total potential and field are usually
 needed, in which case ANOM would be omitted.
 
-1.15.4.4  Bulk Data Deck
+### 1.15.4.4  Bulk Data Deck
 
     There are eight bulk data cards that pertain specifically to magnetostatics
 analysis. A brief description of each card follows.
@@ -9454,7 +9446,7 @@ analysis. A brief description of each card follows.
        intensity at selected grid points. One use of this card is to specify
        the Earth's magnetic fields.
 
-1.15.4.5  Data Cards with Different Meanings
+### 1.15.4.5  Data Cards with Different Meanings
 
     In a standard NASTRAN steady-state heat transfer analysis, the basic
 unknown in the problem is the temperature at each grid point. In a
@@ -9468,7 +9460,7 @@ a carryover from structural analysis), and TEMPERATURE output.
 cards MAT4 and MAT5. In heat transfer, these cards contain thermal
 conductivity values. In magnetostatics, they specify magnetic permeability.
 
-1.15.4.6  Output
+### 1.15.4.6  Output
 
     The output available from a magnetostatic analysis is similar to that from
 a heat transfer analysis. The temperature output obtained from a DISPLACEMENT
@@ -9493,9 +9485,8 @@ REFERENCE
     Problems with NASTRAN," David W. Taylor Naval Ship Research and Development
     Center, DTNSRDC-82/106, December 1982.
 
-1.16  DYNAMIC DESIGN-ANALYSIS
-
-1.16.1  Introduction
+# 1.16  DYNAMIC DESIGN-ANALYSIS
+## 1.16.1  Introduction
 
    The Dynamic Design-Analysis Method (DDAM) is the standard procedure for
 shock design of equipment. Often, the equipment is first analyzed using
@@ -9504,7 +9495,7 @@ in DDAM. Incorporating DDAM into NASTRAN has enabled the entire process to be
 performed more efficiently. (The details of the implementation of DDAM into
 NASTRAN are described in Reference 1.)
 
-1.16.2  Theory
+## 1.16.2  Theory
 
    The steps of the DDAM procedure are described here very briefly. A more
 complete description is given in Reference 2.
@@ -9669,7 +9660,7 @@ where Sjm = maximum stress at the jth point (taken over the modes under
 consideration in one desired direction) and Sjb = stresses (other than the
 maximum) at the jth point corresponding to the modes described for Sjm.
 
-1.16.3  DDAM Implementation in NASTRAN
+## 1.16.3  DDAM Implementation in NASTRAN
 
    Since DDAM requires the determination of natural frequencies and mode
 shapes, a NASTRAN/DDAM analysis involves the use of Rigid Format 3 (Approach
@@ -9679,7 +9670,7 @@ instructions for NASTRAN to execute eight functional modules that pertain
 specifically to DDAM. These modules are briefly described in the following
 sections.
 
-1.16.3.1  GENCOS
+### 1.16.3.1  GENCOS
 
    GENCOS generates the direction cosine matrix [V] in Equation 2. You may
 specify a coordinate system which defines the shock directions. A PARAM bulk
@@ -9700,7 +9691,7 @@ default is 123, that is, all three directions will be considered.
    GENCOS   BGPDT,CSTM/DIRCOS/C,Y,SHOCK=0/C,Y,DIRECT=123/
                   V,N,LUSET/V,N,NSCALE $
 
-1.16.3.2  DDAMAT
+### 1.16.3.2  DDAMAT
 
    DDAMAT calculates a matrix outer product such as that in Equation 6, and
 multiplies the result by parameter GG. For example, to compute effective
@@ -9714,7 +9705,7 @@ units of pounds and inches are used.
 Parameter GG must be given a value on a PARAM bulk data card or in the DMAP
 statement itself.
 
-1.16.3.3  GENPART
+### 1.16.3.3  GENPART
 
    It is assumed that, in the eigenvalue analysis, the lowest N modes were
 computed. If, in the static analyses (or equivalent static analyses), fewer
@@ -9731,7 +9722,7 @@ Parameter LMODES is the integer value of the number of lowest modes to be used
 in the static analyses. The value of this parameter must be specified on a
 PARAM bulk data card, or else a fatal error will result.
 
-1.16.3.4  DESVEL
+### 1.16.3.4  DESVEL
 
    DESVEL computes design velocity and acceleration spectra. The assumed form
 for velocity is
@@ -9814,7 +9805,7 @@ then values of 0. must be specified.
    Acceleration parameters ACC1 through ACCD are similar to VEL1 through VELC
 and refer to Equations 18 and 19.
 
-1.16.3.5  DDAMPG
+### 1.16.3.5  DDAMPG
 
    DDAMPG creates the static load vectors of Equation 9 or the maximum
 responses of Equation 15. For the former, the matrix [MP] = [M][í] is input to
@@ -9853,7 +9844,7 @@ replaces [PVW], where w = wa for the ath row of [Amin].
 
    DDAMPG   PHIG,PVOW/UGV/V,N,NMODES/V,N,NDIR $
 
-1.16.3.6  CASEGEN
+### 1.16.3.6  CASEGEN
 
    The static load and maximum response vectors created in DDAMPG are
 considered individual load cases by NASTRAN and must, therefore, be selected
@@ -9869,7 +9860,7 @@ which includes the required cards.
    Parameter LMODES has the same meaning here as in functional module GENPART
 and must appear on a PARAM bulk data card, or else a fatal error will result.
 
-1.16.3.7  NRLSUM
+### 1.16.3.7  NRLSUM
 
    Functional module NRLSUM computes the NRL stresses and forces over the m
 maximum responses for a given direction for each requested element. The NRL
@@ -9907,7 +9898,7 @@ Integer parameter SQRSS indicates whether the summing process should use NRL
 sums or the SQRSS method. A value of 0 (the default) indicates NRL sums; a
 value of 1 indicates SQRSS.
 
-1.16.3.8  COMBUGV
+### 1.16.3.8  COMBUGV
 
    COMBUGV combines the direction-dependent maximum response in a number of
 ways. The method used is intended for DDAM analyses, but seismic analyses,
@@ -9932,13 +9923,13 @@ obtained from UGVADD and UGVSQR, respectively, by combining the total modal
 responses using the SQRSS method. Data block UGVNRL contains the NRL sums of
 the displacements.
 
-1.16.4  Input Data for DDAM
+## 1.16.4  Input Data for DDAM
 
    A complete DDAM analysis with NASTRAN is performed in one normal modes
 analysis run with a set of DMAP ALTERs. This section describes the input
 details for such a run.
 
-1.16.4.1  Executive Control Deck
+### 1.16.4.1  Executive Control Deck
 
    In addition to standard Executive Control Deck cards, the Executive Control
 Deck for the normal modes analysis must include the proper Rigid Format
@@ -10100,9 +10091,8 @@ REFERENCES
 3. "Shock Design Criteria for Surface Ships," Naval Sea Systems Command,
    Report NAVSEA 0908-LP-000-3010, May 1976.
 
-1.17  PIEZOELECTRIC MODELING
-
-1.17.1  Introduction
+# 1.17  PIEZOELECTRIC MODELING
+## 1.17.1  Introduction
 
    The analysis of sonar transducers requires accounting for the effects of
 their piezoelectric materials. The theory for these materials couples
@@ -10113,7 +10103,7 @@ These elements, trapezoidal and triangular in cross-section respectively, are
 solid, axisymmetric rings whose degrees-of-freedom are expanded into Fourier
 series, thus allowing non-axisymmetric loads.
 
-1.17.2  Theory
+## 1.17.2  Theory
 
    The constitutive relations of a piezoelectric material may be written as
 
@@ -10208,7 +10198,7 @@ structural form; that is, the mass matrix does not couple the structural and
 electrical unknowns. The structural damping matrix also is of standard
 structural form. Both point charges and surface charges are also available.
 
-1.17.3  Input Data for Piezoelectric Modeling
+## 1.17.3  Input Data for Piezoelectric Modeling
 
    Piezoelectric modeling requires some special input data. These include the
 specification of a parameter on the NASTRAN card as well as the use of one or
@@ -10217,7 +10207,7 @@ modeling. In addition, some other bulk data cards are treated differently when
 used in piezoelectric modeling. The details are discussed in the following
 sections.
 
-1.17.3.1  NASTRAN Card
+### 1.17.3.1  NASTRAN Card
 
    The NASTRAN card allows you to override various NASTRAN system parameters
 by defining specific words in the /SYSTEM/ COMMON block (see Section 2.1). The
@@ -10248,7 +10238,7 @@ account.
       removed from the problem via SPCAX or RINGAX cards. If SYSTEM(78) = 1,
       only degrees-of-freedom 5 and 6 must be removed.
 
-1.17.3.2  Bulk Data Deck
+### 1.17.3.2  Bulk Data Deck
 
    There are four bulk data cards that pertain specifically to piezoelectric
 modeling. All these cards define piezoelectric material properties. These
@@ -10329,7 +10319,7 @@ PRESAX card (field 4) must be made negative if a surface charge is desired. A
 negative ring identification number is, however, allowed only when the
 parameter SYSTEM(78) is set to 1 on the NASTRAN card.
 
-1.17.4  Notes on Piezoelectric Modeling
+## 1.17.4  Notes on Piezoelectric Modeling
 
    The following notes summarize the important points about piezoelectric
 modeling and should prove helpful to you.
@@ -10402,10 +10392,8 @@ REFERENCE
    NASTRAN," David W. Taylor Naval Ship Research and Development Center,
    Report Number DTNSRDC-80/045, April 1980.
 
-1.18  FORCED VIBRATION ANALYSIS OF ROTATING CYCLIC STRUCTURES AND
-TURBOSYSTEMS
-
-1.18.1  Introduction
+# 1.18  FORCED VIBRATION ANALYSIS OF ROTATING CYCLIC STRUCTURES AND TURBOSYSTEMS
+## 1.18.1  Introduction
 
    Forced vibration analysis of rotating cyclic structures and turbosystems
 can be conducted using the capability described in this section. Two types of
@@ -10429,7 +10417,7 @@ vibration analysis of aerodynamically excited turbosystems and is accomplished
 by the use of the COSMFVA DMAP ALTER package. It is described in Section
 1.18.6. This capability is based on the work described in References 3 and 4.
 
-1.18.2  Problem Formulation
+## 1.18.2  Problem Formulation
 
    The forced vibration response of a tuned rotating cyclic structure or an
 aerodynamically excited turbosystem is collectively described by the following
@@ -10508,7 +10496,7 @@ even), the cyclic response can be further separated into cosine and sine
 components. For k = 0 and k = N/2, only cosine components are defined. (See
 Section 4.5 of the Theoretical Manual.)
 
-1.18.3  Coordinate Systems
+## 1.18.3  Coordinate Systems
 
    In order to conveniently pose and solve the forced vibration problem of
 general rotating cyclic structures as well as aerodynamically excited
@@ -10618,7 +10606,7 @@ xsyszs     Internally generated coordinate system on swept chord s
         edge with the xs directed aftward along the chord s. ys is defined
         normal to the blade local mean surface.
 
-1.18.4  Structural Modeling of Rotating Cyclic Structures and Turbosystems
+## 1.18.4  Structural Modeling of Rotating Cyclic Structures and Turbosystems
 
    In both types of analyses referred to above, you model only one
 rotationally cyclic sector (or segment) of the entire structure (or
@@ -10638,7 +10626,7 @@ efficiency.
 for modeling rotationally cyclic structures (see Section 1.12; see also
 Section 4.5 of the Theoretical Manual).
 
-1.18.5  Direct Forced Vibration Analysis of Rotating Cyclic Structures
+## 1.18.5  Direct Forced Vibration Analysis of Rotating Cyclic Structures
 
    This capability addresses the dynamic response of a cyclic structure
 rotating about its axis of symmetry at a constant angular velocity, and
@@ -10656,7 +10644,7 @@ terms are retained in the analysis.
 Reference 1. Complete details of the implementation of the capability in an
 earlier version of NASTRAN are given in Reference 2.
 
-1.18.5.1  Modeling Features
+### 1.18.5.1  Modeling Features
 
    The rotating structure can be loaded with steady-state sinusoidal or
 general periodic loads as follows:
@@ -10822,11 +10810,12 @@ this capability.
 
         READFILE COSDFVA
 
-1.18.5.3  Case Control Deck
+### 1.18.5.3  Case Control Deck
 
    The subcase definitions and the selection of other data items for the Case
 Control Deck are discussed below.
-1.18.5.3.1  Subcase Definitions
+
+#### 1.18.5.3.1  Subcase Definitions
 
    The bulk data parameters CYCIO (= +/- 1) and KMAX (>= 0, <= NSEGS/2 for
 even NSEGS, <= (NSEGS - 1)/2 for odd NSEGS, where NSEGS is the number of
@@ -10872,7 +10861,7 @@ information to generate null loads where applicable.
 PARAMeters BXTID etc., the corresponding inertial loads are internally
 calculated and assigned to "k" = 0, 1c, and 1s as applicable.
 
-1.18.5.3.2  Other Data Selection Items
+#### 1.18.5.3.2  Other Data Selection Items
 
    1. The SPC and MPC request must appear above the subcase level and may not
       be changed.
@@ -10941,7 +10930,7 @@ available for random response. Also, a printed summary is prepared for each
 X-Y plot which includes the maximum and minimum values of the plotted
 function.
 
-1.18.5.4  Bulk Data Deck
+### 1.18.5.4  Bulk Data Deck
 
    The bulk data parameters under user control are described in Section
 1.18.5.4.1. The usage of certain bulk data cards is discussed in Section
@@ -10964,7 +10953,7 @@ ROT to indicate rotational cyclic symmetry.
    The integer value of NLOAD specifies the number of loading conditions. This
 value is internally computed.
 
-1.18.5.4.1  Bulk Data Parameters
+#### 1.18.5.4.1  Bulk Data Parameters
 
    The following bulk data parameters are used in the direct forced vibration
 analysis of rotating cyclic structures:
@@ -11048,7 +11037,7 @@ analysis of rotating cyclic structures:
         generated in the EMA. Not recommended for use in hydroelastic
         problems.
 
-1.18.5.4.2  Usage of Certain Bulk Data Cards
+#### 1.18.5.4.2  Usage of Certain Bulk Data Cards
 
    The following items relate to restrictions on certain bulk data cards:
 
@@ -11064,7 +11053,7 @@ analysis of rotating cyclic structures:
       only one uniform time step interval must be specified. The skip factor
       for output, NO, on this card must be 1.
 
-1.18.6  Modal Forced Vibration Analysis of Aerodynamically Excited Turbosystems
+## 1.18.6  Modal Forced Vibration Analysis of Aerodynamically Excited Turbosystems
 
    This capability is designed to perform modal forced vibration analysis of
 turbosystems subjected to aerodynamic excitation.
@@ -11134,7 +11123,7 @@ and independent of, NASTRAN. However, this stand-alone program, called
 AIRLOADS, can also function as a pre-processor to NASTRAN analyses. It is
 available from COSMIC and is discussed in detail in Reference 5.
 
-1.18.6.1  Modeling Features
+### 1.18.6.1  Modeling Features
 
    The structural model is prepared using the general capabilities of NASTRAN
 for modeling rotationally cyclic structures as indicated in Section 1.18.4.
@@ -11245,7 +11234,7 @@ Figure 1.18-7b. Overall flowchart of modal forced vibration analysis
 capability for aerodynamically excited turbosystems
 
 
-1.18.6.2  Executive Control Deck 
+### 1.18.6.2  Executive Control Deck 
 
    The salient points are noted as follows:
 
@@ -11269,11 +11258,12 @@ capability for aerodynamically excited turbosystems
 
         READFILE COSMFVA
 
-1.18.6.3  Case Control Deck
+### 1.18.6.3  Case Control Deck
 
    The subcase definitions and the selection of other data items for the Case
 Control Deck are discussed below.
-1.18.6.3.1  Subcase Definitions
+
+#### 1.18.6.3.1  Subcase Definitions
 
    The bulk data parameter KMAX (>= 0, <= NSEGS/2 for even NSEGS, <= (NSEGS
 -1)/2 for odd NSEGS, where NSEGS is the number of cyclic sectors or segments)
@@ -11301,7 +11291,7 @@ KMAXc, as KMAXs does not exist.
 under the appropriate subcases. With RLOADi bulk data cards, null loads need
 not be specified by you.
 
-1.18.6.3.2  Other Data Selection Items
+#### 1.18.6.3.2  Other Data Selection Items
 
    1. The SPC and MPC request must appear above the subcase level and may not
       be changed.
@@ -11366,7 +11356,7 @@ available for random response. Also, a printed summary is prepared for each
 X-Y plot which includes the maximum and minimum values of the plotted
 function.
 
-1.18.6.4  Bulk Data Deck
+### 1.18.6.4  Bulk Data Deck
 
    The bulk data parameters under user control are described in Section
 1.18.6.4.1. The usage of certain bulk data cards is discussed in Section
@@ -11389,7 +11379,7 @@ ROT to indicate rotational cyclic symmetry.
    The integer value of NLOAD specifies the number of loading conditions. This
 value is internally computed.
 
-1.18.6.4.1  Bulk Data Parameters
+#### 1.18.6.4.1  Bulk Data Parameters
 
    The following bulk data parameters are used in the modal forced vibration
 analysis of aerodynamically excited turbosystems:
@@ -11505,7 +11495,7 @@ analysis of aerodynamically excited turbosystems:
         generated in the EMA. Not recommended for use in hydroelastic
         problems.
 
-1.18.6.4.2  Usage of Certain Bulk Data Cards
+#### 1.18.6.4.2  Usage of Certain Bulk Data Cards
 
    The following remarks relate to the usage of some of the bulk data cards:
 
@@ -11588,9 +11578,8 @@ REFERENCES
    Airloads on Blades of Turbosystems in Spatially Non-Uniform Inflow," NASA
    CR 174968, July 1985.
 
-1.19  STATIC AEROTHERMOELASTIC DESIGN/ANALYSIS OF AXIAL-FLOW COMPRESSORS
-
-1.19.1  Introduction
+# 1.19  STATIC AEROTHERMOELASTIC DESIGN/ANALYSIS OF AXIAL-FLOW COMPRESSORS
+## 1.19.1  Introduction
 
    The non-linear interactive influences between the flexible structure of the
 rotor/stator of a single-stage, or each stage of a multi-stage, axial-flow
@@ -11631,7 +11620,7 @@ subsequent process of analyzing the performance of "as manufactured" geometry
 at off-design operating conditions, including the effects of flexibility, is
 termed the "analysis" problem of axial-flow compressors.
 
-1.19.2.2  Problem Formulation
+### 1.19.2.2  Problem Formulation
 
    The static aerothermoelastic behavior of each cyclic sector of the tuned
 rotor/stator of an axial-flow compressor is described by the equation:
@@ -11756,7 +11745,7 @@ design/analysis rigid format for axial-flow compressors
  Figure 1.19-2b. Simplified problem flow for static aerothermoelastic
 design/analysis rigid format for axial-flow compressors
 
-1.19.2.3  NASTRAN Implementation
+### 1.19.2.3  NASTRAN Implementation
 
    A rigid format (DISP APP R.F. 16) has been developed specifically for the
 solution of "design/analysis" problems of axial-flow compressors. The rigid
@@ -11809,7 +11798,7 @@ for use in subsequent modal, modal flutter, and subcritical roots analyses.
 STREAML1 and STREAML2 bulk data cards specifying the aerodynamic grid and flow
 data can be punched out using the parameter STREAML.
 
-1.19.3  Aerodynamic Modeling
+## 1.19.3  Aerodynamic Modeling
 
    The aerodynamic model is based on a grid generated by the intersection of a
 series of streamlines and "computing stations" (similar to potential lines) as
@@ -11846,7 +11835,7 @@ flow. The location of the origin is arbitrary. The XZ-plane lies parallel to
 the "mean" meridional plane passing through the blade, with the Z-axis
 directed towards the blade.
 
-1.19.4  Aerodynamic Input Data
+## 1.19.4  Aerodynamic Input Data
 
    The aerodynamic input data consists of a set of initial directives and the
 remaining data which comprises two sections: the analytic meanline blade
@@ -11879,20 +11868,20 @@ Titles are input as alphanumeric (BCD) with the restriction that only
 alphabetic letters occupy the first character in each field of the DTI card.
 Titles may use up to nine DTI fields.
 
-1.19.4.1  Aerodynamic DTI Data Setup
+### 1.19.4.1  Aerodynamic DTI Data Setup
 
    In the following discussion, one line (which may be continued) corresponds
 to one logical record of a DTI card. The data items used here are defined in
 Section 1.19.4.2. For additional details, you may refer to Reference 4.
 
-1.19.4.1.1  Initial Directives
+#### 1.19.4.1.1  Initial Directives
 
    The following data items form the initial directives.
 
       TITLE1
       NANAL NAERO
 
-1.19.4.1.2  Analytic Meanline Blade Section
+#### 1.19.4.1.2  Analytic Meanline Blade Section
 
    The following set of data items is input to the analytic meanline blade
 section, and will occur NANAL times. The last record in this set is indicated
@@ -11940,7 +11929,7 @@ with an asterisk.
        *  RDTE DELTAD AC ]-Occurs NDATR times                    |
                                                                  +
 
-1.19.4.1.3  Aerodynamic Section
+#### 1.19.4.1.3  Aerodynamic Section
 
    The following set of data items is input to the aerodynamic section and the
 last record in this set is indicated with a double asterisk.
@@ -12010,7 +11999,7 @@ last record in this set is indicated with a double asterisk.
      **   R X XL II JJ - Occurs NSTRMS times for NSTNS stations if
                          NREAD = 1
 
-1.19.4.2   Aerodynamic DTI Data Item Definitions
+### 1.19.4.2   Aerodynamic DTI Data Item Definitions
 
    The aerodynamic input data may be specified in any self-consistent unit
 system and, additionally, a "linear dimension scaling factor" (SCLFAC) is
@@ -12034,7 +12023,7 @@ given below, together with the corresponding value of SCLFAC.
 some of the data names are used in more than one section; care should be taken
 to consult the correct section below for definitions.
 
-1.19.4.2.1  Initial Directives
+#### 1.19.4.2.1  Initial Directives
 
    TITLE1  This is a title card for the run.
 
@@ -12042,7 +12031,7 @@ to consult the correct section below for definitions.
 
    NAEROSet NAERO = 1
 
-1.19.4.2.2  Analytic Meanline Blade Section
+#### 1.19.4.2.2  Analytic Meanline Blade Section
 
    For a more detailed discussion of the input to this section, see Reference
 1. For this section, the dimensioned input is either in degrees (A) or in
@@ -12290,7 +12279,7 @@ DELTAD  Additional deviation angle added to that determined by deviation
 AC      Fraction of blade chord from leading edge where maximum camber
         occurs.
 
-1.19.4.2.3  Aerodynamic Section
+#### 1.19.4.2.3  Aerodynamic Section
 
 TITLE3  A title card for the aerodynamic section of the program.
 
@@ -12794,9 +12783,8 @@ XL      Estimated distance along computing station from hub to intersection
 II, JJ  Station and streamline number. These are merely read in and printed
         out to give a check on the order of the cards.
 
-1.19.5  Aerodynamic Output Data
-
-1.19.5.1  Analytic Meanline Blade Section
+## 1.19.5  Aerodynamic Output Data
+### 1.19.5.1  Analytic Meanline Blade Section
 
    Printed output may be considered to consist of four sections: a printout of
 the input data, details of the blade sections on each streamsurface, a listing
@@ -12873,9 +12861,8 @@ numbering scheme adopted is illustrated in Figure 1.19-3.
 
         Figure 1.19-3. Grid point and element numbering scheme.
 
-1.19.5.2  Aerodynamic Section
-
-1.19.5.2.1  Normal Output
+### 1.19.5.2  Aerodynamic Section
+#### 1.19.5.2.1  Normal Output
 
    The input data is first printed out in its entirety, and the results for
 each running point follow. The output is generally self-explanatory and
@@ -12970,7 +12957,7 @@ made "after the event" is first printed. Then follows a self-explanatory
 tabulation of various quantities involved in the re-determination of the loss
 coefficient on each streamline.
 
-1.19.5.2.2  Diagnostic Output
+#### 1.19.5.2.2  Diagnostic Output
 
    The various diagnostic messages that may be produced by the aerodynamic
 section of the program are all shown. Where a computed value will appear, "x"
@@ -13230,7 +13217,7 @@ indicate specific problems as follows.
    step downstream boundary is iteratively determined. This failure indicates
    that after 15 attempts, the procedure was unconverged.
 
-1.19.5.2.3  Aerodynamic Load and Temperature Output
+#### 1.19.5.2.3  Aerodynamic Load and Temperature Output
 
    Four output options may result in cards being punched by the aerodynamic
 section of the program. Use of the input item NOUT3 gives PLOAD2 and TEMP
@@ -13278,10 +13265,10 @@ REFERENCES
 4. Hearsey, R. M., "A Revised Computer Program for Axial Compressor Design,"
    ARL-75-0001, Vols. I and II, Wright-Patterson AFB, January 1975.
 
-1.20  MODAL FLUTTER ANALYSIS OF AXIAL-FLOW TURBOMACHINES AND ADVANCED
+# 1.20  MODAL FLUTTER ANALYSIS OF AXIAL-FLOW TURBOMACHINES AND ADVANCED
 TURBOPROPELLERS
 
-1.20.1  Introduction
+## 1.20.1  Introduction
 
    Unstalled flutter boundaries of axial-flow turbomachines (compressors and
 turbines) can be determined using the capability described in this section.
@@ -13298,7 +13285,7 @@ sweep and its spanwise variation are taken into account in computing the
 generalized unsteady aerodynamic loads. This capability is based on the work
 described in References 4 and 5.
 
-1.20.2  Problem Formulation
+## 1.20.2  Problem Formulation
 
    Impellers, propellers, fans, and bladed discs of turbomachines are some
 examples of structures that exhibit rotational cyclic symmetry in their
@@ -13335,7 +13322,7 @@ flutter problem can be posed in terms of either cosine or sine modes with
 identical results (Reference 2). In the present capability, this selection of
 mode type is provided as a user option.
 
-1.20.3  NASTRAN Implementation
+## 1.20.3  NASTRAN Implementation
 
    A rigid format (AERO APP R.F. 9) has been developed specifically for the
 modal flutter analysis of axial-flow turbomachines and advanced
@@ -13371,7 +13358,7 @@ module in NASTRAN.
 6 has been modified to include the effects of blade sweep and its radial
 variability (Reference 4).
 
-1.20.4  Usage of the Capability
+## 1.20.4  Usage of the Capability
 
    Due to rotational cyclic symmetry, only one cyclic sector need be modeled.
 The structural model is prepared using the general capabilities of NASTRAN for

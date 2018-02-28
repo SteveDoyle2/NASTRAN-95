@@ -1,5 +1,4 @@
-=PAGE=
-2.5  USER'S MASTER FILE
+# 2.5  USER'S MASTER FILE
 
    As a means of aiding you in handling the large (several boxes of cards)
 Bulk Data Decks which are typical of NASTRAN problems, the User's Master File
@@ -13,7 +12,7 @@ provides a convenient common source of data. Errors due to card handling are
 sharply reduced since a several-box input deck is reduced to a few cards.
 Finally, the convenience to you in submitting jobs should be emphasized. 
 
-2.5.1  Use of User's Master File
+## 2.5.1  Use of User's Master File
 
    Functionally, the User's Master File exhibits all of the properties of an
 Old Problem Tape (OPTP) which would result if a job were terminated after the
@@ -106,7 +105,7 @@ on the NUMHF and lists it in a table of contents.
    must not be done when using the Editor, since it reads data from this
    position. Data cards following the FINIS card are ignored, however. 
 
-2.5.4  Examples of User's Master File Editor Usage
+## 2.5.4  Examples of User's Master File Editor Usage
 
    Several examples of User's Master File Editor usage are given in this
 section. You are well-advised to study these examples both from the standpoint
@@ -116,7 +115,7 @@ contents of the UMF and/or NUMF used in each example is given along with an
 explanation of specific items of interest. These examples illustrate all of
 the capability of the User's Master File Editor. 
 
-=PAGE=
+
 Example 1. Create a User's Master File
 
 ID  A,B
@@ -169,7 +168,7 @@ Notes:
 6. Note that the problem identification numbers, pid, are increasing according
    to the data deck order. 
 
-=PAGE=
+
 Example 2. List and/or punch selected decks from a User's Master File
 
 ID A,B
@@ -214,7 +213,7 @@ Notes:
 8. The above requests will cause a sorted Bulk Data Deck echo to be made for
    decks 20 and 60; decks 50 and 60 will be punched. Example 3. Copy a User's
    Master File while listing and/or punching selected decks. 
-=PAGE=
+
 Example 3. Copy a User's Master File While Listing and/or Punching Selected 
 Decks 
 
@@ -269,7 +268,7 @@ Notes:
       The tape identification number will be different as explained in Note 7.
       
 
-=PAGE=
+
 Example 4. Edit a User's Master File
 
 ID A,B
@@ -337,7 +336,7 @@ Notes:
 11.   Deck 10 is removed because it appears prior to the first call to the
       Editor. This may be avoided by using a pid of zero and a dummy Bulk Data
       Deck as shown in Example 3. 
-=PAGE=
+
 Table 2.5-1. User's Master File Editor Control Card Actions.
 
 I.  UMF Only is Present
@@ -407,7 +406,7 @@ III. Both UMF and NUMF are Present
          3. Punch indicated Bulk Data Deck on punch.
       I. TOC tid           (Not Allowed)
       J. PRINT tid         (Not Allowed)
-=PAGE=
+
 Table 2.5-2. Summary of User's Master File Editor Control Cards.
 
 LIST pid   List the problem deck from UMF or copy the problem deck from UMF
@@ -431,8 +430,8 @@ TOC tid    List all problem decks (Summary Table of Contents) by UMF number
 
 UMF tid, pid  Copy UMF problem deck onto NUMF, list it, and punch UMF card.
 
-=PAGE=
-2.6  USER GENERATED INPUT
+
+# 2.6  USER GENERATED INPUT
 
    You may want to take a problem previously run on another program and run it
 using NASTRAN. In many instances, this provides you with the quickest means of
@@ -552,7 +551,7 @@ The scalar point id's are 1 through (N+1)2 except for 1, N+1, N(N+1)+1, and
 elements generated are shown below for each value of b for a typical cell.
 Elements between edge points are not generated. 
 
-=PAGE=
+
                   i+N+1                              i+N+1
                    *                                  *
                    ³    6                             ³    6
@@ -626,7 +625,7 @@ b. Options
 c. Notes
 
    (1) For b = 1, SPR = 1000+N must be selected in Case Control Deck.
-=PAGE=
+
 ID INPUT,CASE1
 TIME 30
 APP DISP
@@ -683,7 +682,7 @@ ENDDATA
 
 
                           Lines indicate scalar springs
-=PAGE=
+
 2.6.1.2  Rectangular Frame Made from BARs or RODs (a=2; b=1, 2, 3, or 4; c=0, 1, 
 2, or 3) 
 
@@ -738,7 +737,7 @@ frame shown.
 
                             cells other than on   (c = 3)  cells on left
                             left edge or bottom   (rods)   edge or bottom
-=PAGE=
+
 a. Data Card
 
    1    W    (I8)      No. cells in x-direction
@@ -775,7 +774,7 @@ c. Notes
    Data for c = 0; for c not equal 0 this is a PROD card.
 
    (2) If b = 1, SEQGP cards may be included in the Bulk Data.
-=PAGE=
+
 ID INPUT, CASE2
 TIME 30
 APP DISP
@@ -828,7 +827,7 @@ ENDDATA
                         ³   1    ³   2    ³   3    ³
                         ÀÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÙ
                        1        2        3        4
-=PAGE=
+
 2.6.1.3  Rectangular Plate Made from QUAD1s (a=3; b=1, 2, 3, or 4; c is not 
 used) 
 
@@ -878,7 +877,7 @@ requested) cards for the rectangular grid work shown.
                                ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
                                i                i+1
 
-=PAGE=
+
 a. Data Deck (2 cards required)
 
    First Card
@@ -931,7 +930,7 @@ c. Notes
    (3) IF SPCs are generated the set ID will be 1000NX + NY.
 
    (4) If b = 1, SEQGP cards may be included in the Bulk Data.
-=PAGE=
+
   ID INPUT, CASE3
   TIME 30
   APP DISP
@@ -994,7 +993,7 @@ c. Notes
 ³       ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
 ³
 ÀÄÄÄÄ SPC SET ID IS GIVEN BY 1000 * W + L
-=PAGE=
+
 2.6.1.4  Rectangular Plate Made from TRIA1s (a=4; b=1, 2, 3, or 4; c is not 
 used) 
 
@@ -1041,7 +1040,7 @@ rectangular grid work shown.
 
                    (c = 1)                          (c = 2)
 
-=PAGE=
+
 a. Data Deck (2 cards required)
 
    First Card
@@ -1089,7 +1088,7 @@ c. Notes
    (3) If SPCs are generated the set ID will be 1000NX + NY.
 
    (4) If b=1, SEQGP cards may be included in the Bulk Data.
-=PAGE=
+
 ID INPUT, CASE 4
 TIME 30
 APP DISP
@@ -1150,8 +1149,8 @@ ENDDATA
        ³                    ÀÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
        ³                                 ³
        ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
-=PAGE=
-2.6.1.5  N-Segment String (a=5; b and c are not used)
+
+### 2.6.1.5  N-Segment String (a=5; b and c are not used)
 
    INPUT generates CELAS4, CMASS4, and CDAMP4 cards for an N-segment string
 grounded at both ends. 
@@ -1182,7 +1181,7 @@ grounded at both ends.
                          ³            ÀÄÁ    6        ³
                          ³           b i+2x10         ³
                          ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
-=PAGE=
+
 a. Data Card
 
    1      N     (I8)       No. of segments
@@ -1202,7 +1201,7 @@ b. Notes
 
    (1) If any of k2, m, or b are zero, those elements will not be
        generated.
-=PAGE=
+
 ID INPUT, CASE 5
 TIME 30
 APP DISP
@@ -1234,8 +1233,8 @@ ENDDATA
    /³         2         3         4         5         6         7         ³/
    /³                                                                     ³/
    /
-=PAGE=
-2.6.1.6  N-Ce11 Bar (a=6; b and c are not used)
+
+### 2.6.1.6  N-Ce11 Bar (a=6; b and c are not used)
 
    INPUT generates GRID and CBAR cards for an N-cell bar. OMIT cards will also
 be created if requested. 
@@ -1281,7 +1280,7 @@ b. Notes
    (2) IFLG = 2 option is not allowed for this case.
 
    (3) Do not include G4 in alter packet unless IOX is greater than 0.
-=PAGE=
+
 ID INPUT, CASE 6
 TIME 30
 APP DISP
@@ -1317,8 +1316,8 @@ ENDDATA
      ÚÂÄÄÄÄÄÂÂÄÄÄÄÄÂÂÄÄÄÄÄÂÂÄÄÄÄÄÂÂÄÄÄÄÄÂÂÄÄÄÄÄÂÂÄÄÄÄÄÂÂÄÄÄÄÄÂÂÄÄÄÄÄÂÂÄÄÄÄÄÂ¿
      ÀÁÄÄÄÄÄÁÁÄÄÄÄÄÁÁÄÄÄÄÄÁÁÄÄÄÄÄÁÁÄÄÄÄÄÁÁÄÄÄÄÄÁÁÄÄÄÄÄÁÁÄÄÄÄÄÁÁÄÄÄÄÄÁÁÄÄÄÄÄÁÙ
      1      2      3      4      5      6      7      8      9      10     11
-=PAGE=
-2.6.1.7  Full Matrix with Optional Unit Load (a=7; b and c are not used)
+
+### 2.6.1.7  Full Matrix with Optional Unit Load (a=7; b and c are not used)
 
    INPUT generates N scalar points, all of which are interconnected giving
 N(N+1)/2 elements. On option, SLOAD cards are generated for each CELAS4 scalar
@@ -1336,7 +1335,7 @@ b. Notes
    (1) GP1 is altered as shown in the example in order to run efficiently.
 
    (2) If SLOAD cards are generated the load set ID is N.
-=PAGE=
+
 ID INPUT, CASE 7
 TIME 30
 APP DISP
@@ -1365,8 +1364,8 @@ BEGIN BULK
 
 ENDDATA
       10    1
-=PAGE=
-2.6.1.8  N-Spoked Wheel Made from BAR Elements (a=8; b and c are not used)
+
+### 2.6.1.8  N-Spoked Wheel Made from BAR Elements (a=8; b and c are not used)
 
    INPUT generates N+1 GRID points, all of which are connected to the last
 point, and N CBAR cards. The CBAR cards represent connections around the
@@ -1411,7 +1410,7 @@ b. Notes
        center, will reference this system.
 
    (4) The number of spokes, N, cannot exceed 255.
-=PAGE=
+
 ID INPUT, CASE 8
 TIME 10
 APP DISP

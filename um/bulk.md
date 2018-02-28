@@ -1,5 +1,4 @@
-2.4  BULK DATA DECK
-===================
+# 2.4  BULK DATA DECK
 
    The primary NASTRAN input medium is the bulk data card. These cards are
 used to define the structural model and various pools of data which may be
@@ -33,8 +32,8 @@ necessary in order to make modifications on a secondary execution using the
 Problem Tape. This echo is automatically provided unless specifically
 suppressed by you.
 
-2.4.1  Format of Bulk Data Cards
---------------------------------
+## 2.4.1  Format of Bulk Data Cards
+
    The bulk data cards can employ either the fixed-field format or the
 free-field format. The free-field format bulk data cards are converted
 internally by the program to appropriate fixed-field format cards.
@@ -56,8 +55,8 @@ allow you to execute only the NASTRAN Preface (Link 1), and to punch out
 generated card images. The various options can be invoked at any time during a
 free-field input session.
 
-2.4.1.1  Fixed-Field Input
---------------------------
+### 2.4.1.1  Fixed-Field Input
+
    The fixed-field input format is variable to the extent that any quantity
 except the mnemonic can be punched anywhere within a specified 8 or 16-column
 field. The normal card uses an 8-column field as indicated in the following
@@ -183,8 +182,8 @@ cases where field 10 is used as a pointer. However, column 73 could have been
 left blank or the same symbol used in column 1 of the following card could
 have been used (that is, the symbols * or +).
 
-2.4.1.2  Free-Field Input
--------------------------
+### 2.4.1.2  Free-Field Input
+
    The free-field input format can be used to create only small field cards.
 This capability is best understood by the following important rules and
 program features:
@@ -330,8 +329,8 @@ for the following changes:
    3. The punch option and catalog file (to save generated card images) are
       set at the beginning of this version.
 
-2.4.1.2.1  Free-Field Input Examples
-------------------------------------
+#### 2.4.1.2.1  Free-Field Input Examples
+
 The following examples illustrate the use of free-field input.
 
 Example 1
@@ -500,8 +499,8 @@ fixed-field bulk data cards.
   =,=,25,.0,26,.0
   ENDDATA
 
-2.4.2  Bulk Data Card Descriptions
-----------------------------------
+## 2.4.2  Bulk Data Card Descriptions
+
 The detailed descriptions of the bulk data cards are contained in this
 section in alphabetical order. For details pertaining to the use of each card
 and for a discussion of the cards in functional groups, you are referred to
@@ -523,17 +522,16 @@ contains data in fields 2-9. In addition, a double field format requires at
 least two cards (or subsequent multiples of two) so that 10 data fields are
 included. Thus, one or more double field cards may contain no data.
 
-$ - Comment
+# $ - Comment
 
-Description
------------
+## Description
+
 Comment cards are for user convenience in inserting commentary material into
 the unsorted echo of the input Bulk Data Deck. The $ card is otherwise ignored
 by the program. These cards will not appear in a sorted echo nor will they
 exist on the New Problem Tape.
 
-Format and Example
-------------------
+## Format and Example
 
 +--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
@@ -543,22 +541,18 @@ Format and Example
 |$       |THIS IS|A REMARK (*,'$$|-+/    |       |       |       |       |     |
 +--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
-/ - Delete
-==========
+# / - Delete
 
-Description
------------
+## Description
+
 Delete cards are used to remove cards from either the Old Problem Tape on
 restart or the User's Master File.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |/       |   K1  |   K2  |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |/       |   4   |       |       |       |       |       |       |       |     |
 +--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
@@ -568,8 +562,8 @@ K1         Sorted sequence number of first card in sequence to be removed.
 
 K2         Sorted sequence number of last card in sequence to be removed.
 
-Remarks
--------
+## Remarks
+
 1. The delete card causes bulk data cards having sort sequence numbers K1
    through K2 to be removed from the Bulk Data Deck.
 
@@ -578,24 +572,17 @@ Remarks
 3. If neither an Old Problem Tape nor a User's Master File is used in the
    current execution, the delete cards are ignored.
 
-================================
-ADUMi - Dummy Element Attributes
-================================
+# ADUMi - Dummy Element Attributes
 
-Description
------------
+## Description
 Defines attributes of the dummy elements (1 <= i <= 9).
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |ADUMi   |  NG   |  NC   |  NP   |  ND   |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |ADUM2   |   8   |   2   |   1   |   3   |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -614,35 +601,24 @@ ND         Number of displacement components at each grid point used in
 AEFACT - Aerodynamic Spanwise Divisions
 =======================================
 
-Description
------------
+## Description
+
 Used to specify box division points for flutter analysis.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |AEFACT  |  SID  |  D1   |  D2   |  D3   |  D4   |  D5   |  D6   |  D7   |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |AEFACT  |  97   |  .3   |  .7   |  1.0  |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+BC     |  D8   |  D9   |  etc. |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|        |       |       |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
-Alternate Form:
+## Alternate Form
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |AEFACT  | SID   | D1    | THRU  | DND   | ND    | DMID  |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |AEFACT  | 201   |.200   | THRU  | .100  | 11    |.133333|       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -650,8 +626,8 @@ SID        Set identification number (unique Integer > 0).
 
 Di         Division point (Real).
 
-Remarks
--------
+## Remarks
+
 1. These factors must be selected by a CAEROi or PAEROi data card to be used
    by NASTRAN.
 
@@ -677,20 +653,16 @@ Remarks
 AERO - Aerodynamic Physical Data
 ================================
 
-Description
------------
+## Description
+
 Gives basic aerodynamic parameters.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |AERO    |ACSID  |VEL    |REFC   |RHOREF |SYMXZ  |SYMXY  |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |AERO    |3      |1.3+4  |100.   |1.-5   |       |1      |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -709,8 +681,8 @@ SYMXZ      Symmetry key for aero coordinate x-z plane (Integer) (+1 for
 SYMXY      Symmetry key for aero coordinate x-y plane can be used to simulate
            ground effects (Integer), same code as SYMXZ.
 
-Remarks
--------
+## Remarks
+
 1. This card is required for aerodynamic response problems. Only one AERO card
    is allowed.
 
@@ -720,21 +692,17 @@ Remarks
 ASET - Selected Coordinates
 ===========================
 
-Description
------------
+## Description
+
 Defines coordinates (degrees of freedom) to be placed in the analysis set.
 Used to define the number of independent degrees of freedom.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 | ASET   |   ID  |   C   |   ID  |   C   |   ID  |   C   |   ID  |   C   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 | ASET   |   16  |   2   |   23  | 3516  |       |       |   1   |   4   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -743,8 +711,8 @@ ID         Grid or scalar point identification number (Integer > 0).
 C          Component number, zero or blank for scalar points, any unique
            combination of the digits 1 - 6 for grid points.
 
-Remarks
--------
+## Remarks
+
 1. Coordinates specified on ASET cards may not be specified on OMIT, OMIT1,
    ASET1, SPC, or SPC1 cards, nor may they appear as dependent coordinates in
    multipoint constraint relations (MPC), nor as rigid elements (CRIGD1,
@@ -765,41 +733,26 @@ Remarks
 ASET1 - Selected Coordinates
 ============================
 
-Description
------------
+## Description
+
 Defines coordinates (degrees of freedom) to be placed in the analysis set.
 Used to define the number of independent degrees of freedom.
 
-Format and Example
-------------------
+## Format and Example
 
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
 |--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 | ASET1  |   C   |   G   |   G   |   G   |   G   |   G   |   G   |   G   | abc |
 | ASET1  |  345  |   2   |   1   |   3   |   10  |   9   |   6   |   5   | ABC |
-
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
-| ASET1  |   C   |   G   |   G   |   G   |   G   |   G   |   G   |   G   | abc |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-| ASET1  |  345  |   2   |   1   |   3   |   10  |   9   |   6   |   5   | ABC |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |  +bc   |   G   |   G   |   G   |  etc. |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |  +BC   |   7   |   8   |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-                                 etc. 
 
-Alternate Form:
----------------
+## Alternate Form
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+
+|--------|-------+-------|-------|-------+-------|-------|-------|-------|-----|
 | ASET1  |   C   |  ID1  |"THRU" |  ID2  |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 | ASET1  |123456 |   7   |THRU   |  109  |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -811,8 +764,8 @@ C          Component number (any unique combination of the digits 1 - 6 [with
 G, ID1, ID2Grid or scalar point identification numbers (Integer > 0, ID1 <
            ID2).
 
-Remarks
--------
+## Remarks
+
 1. A coordinate referenced on this card may not appear as a dependent
    coordinate in a multipoint constraint relation (MPC card) nor as a degree
    of freedom on a rigid element (CRIGD1, CRIGD2, CRIGD3, CRIGDR), nor may it
@@ -832,28 +785,24 @@ Remarks
 AXIC - Axisymmetric Problem Flag
 ================================
 
-Description
------------
+## Description
+
 Defines the existence of a model containing CCONEAX, CTRAPAX, or CTRIAAX
 elements.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |AXIC    |   H   |       |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |AXIC    |   15  |       |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
 H          Highest harmonic defined for the problem (0 <= Integer <= 998).
 
-Remarks
--------
+## Remarks
+
 1. Only one (1) AXIC card is allowed. When the AXIC card is present, most
    other cards are not allowed. The types which are allowed with the AXIC card
    are listed below.
@@ -889,23 +838,19 @@ Remarks
 4. Machine bit limit may be exceeded on 32-bit word machines if H is greater
    than 16.
 
-AXIF - Fluid Related Axisymmetric Parameters
-============================================
 
-Description
------------
+# AXIF - Fluid Related Axisymmetric Parameters
+
+## Description
+
 Defines basic parameters and the existence of an axisymmetric fluid analysis.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |AXIF    |  CID  |   G   | DRHO  |  DB   | NOSYM |   F   |       |       |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |AXIF    |   2   | 32.2  | 0.12  | 2.5+5 |  YES  |       |       |       |CARD1|
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 +--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     |   N1  |  N2   |  N3   |  N4   |  N5   |  N6   |  N7   |  N8   |def  |
@@ -957,8 +902,8 @@ NS         Every NSth step of the harmonic numbers specified in the THRU
            range is used for solution (Integer if field 5 is STEP, Ni =
            I*NS+N1 where I is an integer).
 
-Remarks
--------
+## Remarks
+
 1. Only one (1) AXIF card is allowed.
 
 2. CID must reference a cylindrical or spherical coordinate system.
@@ -982,41 +927,29 @@ Remarks
 Example
 -------
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |AXIF    |  100  | -386.0|       |  0.0  |  NO   |       |       |       |+1   |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+1      |   0   | THRU  |  50   | STEP  |   5   |       |       |       |+2   |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+2      |   52  |       |       |       |       |       |       |       |+3   |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+3      |   54  | THRU  |  57   |       |       |       |       |       |+4   |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+4      |   61  | THRU  |  65   |       |       |       |       |       |+5   |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+5      |   68  |       |  71   |       |  72   |  75   |       |       |+6   |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+6      |   81  |  92   |       |       |       |       |       |       |END  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
-AXSLOT - Axisymmetric Slot Analysis Parameter
-=============================================
 
-Description
------------
+# AXSLOT - Axisymmetric Slot Analysis Parameter
+
+## Description
+
 Defines the harmonic index and the default values for acoustic analysis cards.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |AXSLOT  |RHOD   |  BD   |   N   |   WD  |   MD  |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |AXSLOT  | 0.003 | 1.5+2 |   3   |  0.75 |   6   |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -1032,8 +965,8 @@ WD         Default slot width (Real >= 0.0 or blank).
 
 MD         Default number of slots (Integer >= 0 or blank).
 
-Remarks
--------
+## Remarks
+
 1. No more than one AXSLOT card is permitted.
 
 2. The default values are used on the GRIDS, SLBDY, CAXIFi, and CSLOTi data
@@ -1048,23 +981,19 @@ Remarks
 5. A zero entry for bulk modulus is treated as if the fluid were
    incompressible.
 
-BAROR - Simple Beam Orientation Default
-=======================================
 
-Description
------------
+# BAROR - Simple Beam Orientation Default
+
+## Description
+
 Defines default values for fields 3 and 6-9 of the CBAR card.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |BAROR   |       |  PID  |       |       |X1,GO  |   X2  |   X3  |   F   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |BAROR   |       |   39  |       |       |  0.6  |  2.9  | -5.87 |   1   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -1080,16 +1009,13 @@ GO         Grid point identification number (Integer > 0; see below).
 
 F          Flag to specify the nature of fields 6-8 as follows:
 
-+-------+-------+-------+-------+
 |       |   6   |   7   |   8   |
-+-------+-------+-------+-------+
+|-------|-------|-------|-------|
 | F = 1 |   X1  |   X2  |   X3  |
-+-------+-------+-------+-------+
 | F = 2 |   GO  | blank | blank |
-+-------+-------+-------+-------+
 
-Remarks
--------
+## Remarks
+
 1. The contents of fields on this card will be assumed for any CBAR card whose
    corresponding fields are blank.
 
@@ -1108,22 +1034,19 @@ Remarks
 
 BDYC - Combination of Substructure Boundary Sets
 
-Description
------------
+## Description
+
 Defines a combination of boundary sets by basic substructure to define a set
 of grid points and components which may be used in a CREDUCE, MREDUCE, or
 REDUCE operation.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |BDYC    |   ID  | NAME1 |  SID1 | NAME2 |  SID2 | NAME3 |  SID3 |       |ghi  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |BDYC    |  157  |WINGRT |   7   | MIDWG |   15  |FUSELAG|   32  |       |GHI  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+
 +--------+-------+-------+-------+-------------------------------+-------+-----+
 |+hi     |       | NAMEi |  SIDi |                 etc.          |       |jkl  |
 +--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
@@ -1140,8 +1063,8 @@ NAMEi      Name of basic substructure which contains the grid points defined
 SIDi       Identification number of the boundary set associated with basic
            substructure NAMEi (Integer > 0).
 
-Remarks
--------
+## Remarks
+
 1. Boundary sets must be selected in the Substructure Control Deck (BOUNDARY =
    ID) to be used by NASTRAN. Note that "BOUNDARY" is a subcommand of the
    substructure CREDUCE, MREDUCE, and REDUCE commands.
@@ -1159,29 +1082,21 @@ Remarks
    of freedom are actually the same and may be referenced with any one of the
    substructure names. Redundant specification is allowed.
 
-BDYLIST - Fluid Boundary List
-=============================
 
-Description
------------
+# BDYLIST - Fluid Boundary List
+
+## Description
+
 Defines the boundary between a fluid and a structure.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |BDYLIST | RHO   | IDF1  | IDF2  | IDF3  | IDF4  | IDF5  | IDF6  | IDF7  |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|BDYLIST | .037  | 432   | 325   | 416   | 203   | 256   | 175   | 153   |345A |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     | IDF8  |  etc. |       |       |       |       |       |       |def  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|BDYLIST | .037  | 432   | 325   | 416   | 203   | 256   | 175   | 153   |345A |
 |+45A    |  101  |  105  | AXIS  |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-                                 etc. 
 
 Field      Contents
 -----      --------
@@ -1191,8 +1106,8 @@ RHO        Fluid mass density at boundary (Real >= 0.0 or blank. Default on
 IDFi       Identification number of a RINGFL point (Integer > 0 or BCD. AXIS
            may be first and/or last entry on the logical card.)
 
-Remarks
--------
+## Remarks
+
 1. This card is allowed only if an AXIF card is also present.
 
 2. Each logical card defines a boundary if RHO is not equal to 0.0. The order
@@ -1215,24 +1130,20 @@ Remarks
    plotting purposes. GRIDB points may be located on a fluid ring (RINGFL)
    only if the rings are included in a BDYLIST.
 
-BDYS - Boundary Set Definition
+# BDYS - Boundary Set Definition
 
-Description
------------
+## Description
+
 The BDYS card is used to define a boundary set of grid points and degrees of
 freedom for a basic substructure. The boundary set is used in the substructure
 REDUCE, CREDUCE, and MREDUCE operations.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |BDYS    |  SID  |  G1   |   C1  |  G2   |  C2   |   G3  |  C3   |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |BDYS    |   7   |  13   |123456 |  15   |  123  |   17  |123456 |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -1245,8 +1156,8 @@ Ci         Component number; any unique combination of the digits 1 - 6 (with
            no imbedded blanks) when the Gi are grid points, or null if they
            are scalar points.
 
-Remarks
--------
+## Remarks
+
 1. The set of boundary points defines the degrees of freedom which are to be
    retained in the matrices after the substructure REDUCE, CREDUCE or MREDUCE
    operation has been performed. An alternate input format is provided by the
@@ -1259,31 +1170,23 @@ Remarks
    Note that the same BDYS boundary set may be attached to more than one basic
    substructure name.
 
-BDYS1 - Boundary Set Definition
-===============================
 
-Description
------------
+# BDYS1 - Boundary Set Definition
+
+## Description
+
 The BDYS1 card is used to define a boundary set of grid points and degrees of
 freedom for a basic substructure. The boundary set is used in the substructure
 REDUCE, CREDUCE, and MREDUCE operations.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |BDYS1   | SID   |  C    |   G1  |  G2   |  G3   |  G4   |  G5   |   G6  |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|BDYS1   |  15   |123456 |  275  |  276  | THRU  |  457  |  589  |  102  |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-
-+--------+-------+-------+---------------+-------+-------+-------+-------+-----+
 | +bc    |  G7   |  G8   |      etc.     |   GN  |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|BDYS1   |  15   |123456 |  275  |  276  | THRU  |  457  |  589  |  102  |ABC  |
 | +BC    |  103  |  105  |       |       | 1275  |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -1296,8 +1199,8 @@ Ci         Component number; any unique combination of the digits 1 - 6 (with
 Gi         Grid or scalar point identification number of a basic substructure
            (Integer > 0).
 
-Remarks
--------
+## Remarks
+
 1. The set of boundary points defines the degrees of freedom which are to be
    retained in the matrices after the substructure REDUCE, CREDUCE or MREDUCE
    operation has been performed. An alternate format is provided by the BDYS
@@ -1312,43 +1215,35 @@ Remarks
    Note that the same BDYS boundary set may be attached to more than one basic
    substructure name.
 
-BFIELD - Magnetic Induction Output
-==================================
 
-Description
------------
+# BFIELD - Magnetic Induction Output
+
+## Description
+
 Specifies coordinate system for magnetic induction output.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |BFIELD  |  CID  | EID1  |  EID2 |  EID3 |  EID4 |  EID5 |  EID6 |  EID7 |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |BFIELD  |   3   |  12   |   5   |   6   |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 First Alternate Form:
 ---------------------
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |BFIELD  |  CID  |  EID1 |"THRU" |  EID2 |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |BFIELD  |   5   |   8   | THRU  |   27  |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Second Alternate Form:
 ----------------------
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |BFIELD  |  CID  |  -1   |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |BFIELD  |   7   |  -1   |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -1357,8 +1252,8 @@ CID        Coordinate system identification number (Integer > 0 or blank).
 EIDi       Element identification numbers of those elements whose magnetic
            induction are to be output in coordinate system CID (Integer > 0).
 
-Remarks
--------
+## Remarks
+
 1. The magnetic induction of any element not specified on a BFIELD card will
    be computed in the basic coordinate system. Therefore, no BFIELD cards are
    necessary if CID = 0 for all elements.
@@ -1371,28 +1266,22 @@ Remarks
    values of all elements in the problem will be computed in coordinate system
    CID.
 
-CAERO1 - Aerodynamic Panel Element Connection
-=============================================
 
-Description
------------
+# CAERO1 - Aerodynamic Panel Element Connection
+
+## Description
+
 Defines an aerodynamic macro element (panel) in terms of two leading edge
 locations and side chords for Doublet-Lattice Theory.
 
-Format and Example
-------------------
+## Format and Example
 
-    1        2       3       4       5       6       7       8       9     10
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CAERO1  | EID   | PID   | CP    | NSPAN | NCHORD| LSPAN | LCHORD| IGID  |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|CAERO1  | 1000  | 1     |       | 3     |       |       | 2     | 1     |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 | +BC    |  X1   |  Y1   |   Z1  |  X12  | X4    | Y4    | Z4    | X43   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|CAERO1  | 1000  | 1     |       | 3     |       |       | 2     | 1     |ABC  |
 | +BC    |  0.0  |  0.0  |  0.0  |  1.0  | 0.2   | 1.0   | 0.0   | 0.8   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -1425,8 +1314,8 @@ X1,Y1,Z1;X4,Y4,Z4  Location of points 1 and 4, in coordinate system CP (Real).
 X12; X43   Edge chord length (in aerodynamic coordinate system) (Real >= 0,
            and not both zero).
 
-Remarks
--------
+## Remarks
+
                        Z                                      Y
                         elem                                   elem
                     1  *-------+--------+--------*-----------
@@ -1465,29 +1354,21 @@ Remarks
 
 5. The continuation card is required.
 
-CAERO2 - Aerodynamic Body Connection
-====================================
 
-Description
------------
+# CAERO2 - Aerodynamic Body Connection
+
+## Description
+
 Defines an aerodynamic body for Doublet-Lattice aerodynamics.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CAERO2  |EID    |PID    |CP     |NSB    |NINT   |LSB    |LINT   |IGID   |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|CAERO2  |1500   |2      |100    |       |4      |99     |       |1      |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+BC     |X1     |Y1     |Z1     |X12    |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|CAERO2  |1500   |2      |100    |       |4      |99     |       |1      |abc  |
 |+bc     |-1.0   |100.   |-30.   |175.   |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -1520,8 +1401,8 @@ X1,Y1,Z1   Location of point 1 in coordinate system CP (Real).
 X12        Length of body in the x-direction of the aerodynamic coordinate
            system (Real > 0).
 
-Remarks
--------
+## Remarks
+
 1. Point 1 is the leading point of the body.
 
 2. All CAERO1 (panels) and CAERO2 (bodies) in the same group (IGID) will have
@@ -1546,31 +1427,22 @@ Remarks
 6. At least two slender body elements are required for every aerodynamic body
    specified by this card.
 
-================================================
-CAERO3 - Aerodynamic Mach Box Surface Connection
-================================================
 
-Description
------------
+# CAERO3 - Aerodynamic Mach Box Surface Connection
+
+## Description
+
 Defines the aerodynamic edges of a Mach Box lifting surface. If no cranks are
 present, this card defines the aerodynamic Mach Box lifting surface.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CAERO3  | EID   | PID   |  CP   | LISTW | LISTC1| LISTC2|       |       |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|CAERO3  | 2000  | 2001  |   0   |  22   |   33  |       |       |       |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+BC     | X1    |   Y1  |   Z1  |  X12  |  X4   |  Y4   |  Z4   |  X43  |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|CAERO3  | 2000  | 2001  |   0   |  22   |   33  |       |       |       |abc  |
 |+bc     | 1.0   |   0.0 |   0.0 |  100. |  17.  | 130.  |  0.   |  100. |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -1591,8 +1463,8 @@ X1,Y1,Z1;X4,Y4,Z4  Location of points 1 and 4 in coordinate system CP (Real).
 X12,X43    Edge chord lengths (in aerodynamic coordinate system) (Real >= 0,
            X12 not equal 0.).
 
-Remarks
--------
+## Remarks
+
 1. The x,y pairs of LISTW, LISTC1, and LISTC2 (AEFACT) data cards are in the
    aero element coordinate system.
 
@@ -1650,28 +1522,21 @@ Remarks
 
              Figure 2.4-1. CAERO3 numbering and coordinate system
 
-CAERO4 - Aerodynamic Macro-Strip Element Connection
-===================================================
 
-Description
------------
+# CAERO4 - Aerodynamic Macro-Strip Element Connection
+
+## Description
+
 Defines an aerodynamic macro element for strip theory.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CAERO4  | EID   | PID   |  CP   | NSPAN | LSPAN |       |       |       |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|CAERO4  | 6000  | 6001  | 100   |       |  315  |       |       |       |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+BC     | X1    |  Y1   |   Z1  |  X12  |  X4   |  Y4   |  Z4   |  X43  |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|CAERO4  | 6000  | 6001  | 100   |       |  315  |       |       |       |abc  |
 |+bc     | 0.0   |  0.0  |   0.0 |  1.0  |  0.2  |  1.0  |  0.0  |  0.8  |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -1708,8 +1573,8 @@ X12,X43    Edge chord lengths in aerodynamic coordinate system (Real >= 0,
                     x     = x
                      aero    elem
 
-Remarks
--------
+## Remarks
+
 1. The strips are numbered sequentially, beginning with EID. You must ensure
    that all strip numbers are unique and different from structural grid ID's.
 
@@ -1721,29 +1586,21 @@ Remarks
 
 3. A triangular element is formed if X12 or X43 = 0.
 
-CAERO5 - Aerodynamic Macro-Piston Theory Element Connection
-===========================================================
 
-Description
------------
+# CAERO5 - Aerodynamic Macro-Piston Theory Element Connection
+
+## Description
+
 Defines an aerodynamic macro-element for piston theory.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CAERO5  | EID   | PID   |  CP   | NSPAN | LSPAN | NTHRY |NTHICK |       |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|CAERO5  | 6000  | 6001  | 100   |       |  315  |   0   |   0   |       |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+BC     | X1    |  Y1   |   Z1  |  X12  |  X4   |  Y4   |  Z4   |  X43  |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|CAERO5  | 6000  | 6001  | 100   |       |  315  |   0   |   0   |       |abc  |
 |+bc     | 0.0   |  0.0  |   0.0 |  1.0  |  0.2  |  1.0  |  0.0  |  0.8  |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -1797,8 +1654,8 @@ X12,X43    Edge chord lengths in aerodynamic coordinate system (Real >= 0,
                      aero    elem
 
 
-Remarks
--------
+## Remarks
+
 1. The strips are numbered sequentially, beginning with EID. You must ensure
    that all strip numbers are unique and different from structural grid ID's.
 
@@ -1852,34 +1709,30 @@ Remarks
 
       Figure 2.4-2. CAERO5 I and J thickness integral definitions
 
-CAXIFi - Fluid Element Connections
-==================================
 
-Description
------------
+# CAXIFi - Fluid Element Connections
+
+## Description
+
 Defines an axisymmetric fluid element which connects i = 2, i = 3, or i = 4
 fluid points.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CAXIF2  |  EID  |  IDF1 |  IDF2 |       |       |  RHO  |   B   |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CAXIF2  |   11  |   23  |   25  |       |       |.25E-03|       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+
+|   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CAXIF3  |  EID  |  IDF1 |  IDF2 |  IDF3 |       |  RHO  |   B   |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CAXIF3  |  105  |   31  |   32  |   33  |       |       | 6.7E4 |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+
+|   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CAXIF4  |  EID  |  IDF1 |  IDF2 |  IDF3 |  IDF4 |  RHO  |   B   |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CAXIF4  |  524  |  421  |  425  |  424  |  422  |  .5-3 | 2.5+3 |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -1892,8 +1745,8 @@ RHO        Fluid density in mass units (Real > 0.0 or blank).
 
 B          Fluid bulk modulus (Real >= 0.0 or blank).
 
-Remarks
--------
+## Remarks
+
 1. This card is allowed only if an AXSLOT card is also present.
 
 2. The element identification number (EID) must be unique with respect to all
@@ -1910,28 +1763,21 @@ Remarks
 
 5. If B = 0.0, the fluid is considered to be incompressible.
 
-CBAR - Simple Beam Element Connection
-=====================================
 
-Description
------------
+# CBAR - Simple Beam Element Connection
+
+## Description
+
 Defines a simple beam element (BAR) of the structural model.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CBAR    |  EID  |  PID  |   GA  |  GB   |X1 ,GO |  X2   |   X3  |   F   |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|CBAR    |   2   |   39  |   7   |   3   |  13   |       |       |   2   |123  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     |  PA   |   PB  |  Z1A  |  Z2A  |  Z3A  |  Z1B  |  Z2B  |  Z3B  |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|CBAR    |   2   |   39  |   7   |   3   |  13   |       |       |   2   |123  |
 |+23     |       |  513  |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -1982,8 +1828,8 @@ Z1A,Z2A,Z3A;Z1B,Z2B,Z3B  Components of offset vectors wa and wb, respectively,
            (see Figure 1.3-1a in Section 1.3.2.1) in displacement coordinate
            systems at points GA and GB, respectively. (Real or blank).
 
-Remarks
--------
+## Remarks
+
 1. Each element identification number must be unique with respect to all other
    element identification numbers.
 
@@ -1997,23 +1843,19 @@ Remarks
 5. If bar offset vectors are present, NASTRAN plotting will plot the bar
    connecting to the tip of the offset, not to the associating grid point.
 
-CCONEAX - Axisymmetric Shell Element Connection
-===============================================
 
-Description
------------
+# CCONEAX - Axisymmetric Shell Element Connection
+
+## Description
+
 Defines the connection of a conical shell element.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CCONEAX |  EID  |  PID  |  RA   |  RB   |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CCONEAX |   1   |   2   |   3   |   4   |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -2028,30 +1870,26 @@ RA         Identification number of a RINGAX card (Integer > 0; RA not equal
 RB         Identification number of a RINGAX card (Integer > 0; RA not equal
            RB).
 
-Remarks
--------
+## Remarks
+
 1. This card is allowed if and only if an AXIC card is also present.
 
 2. For a discussion of the conical shell problem, see Section 5.9 of the
    Theoretical Manual.
 
-CDAMP1 - Scalar Damper Connection
-=================================
 
-Description
------------
+# CDAMP1 - Scalar Damper Connection
+
+## Description
+
 Defines a scalar damper element of the structural model.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CDAMP1  |  EID  |  PID  |  G1   |  C1   |  G2   |  C2   |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CDAMP1  |   19  |   6   |   0   |       |  23   |  2    |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -2064,8 +1902,8 @@ G1, G2     Geometric grid point identification number (Integer >= 0).
 
 C1, C2     Component number (6 >= Integer >= 0).
 
-Remarks
--------
+## Remarks
+
 1. Scalar points may be used for G1 and/or G2, in which case the corresponding
    C1 and/or C2 must be zero or blank. Zero or blank may be used to indicate a
    grounded terminal G1 or G2 with a corresponding blank or zero C1 or C2. If
@@ -2084,24 +1922,20 @@ Remarks
 5. In heat transfer analysis, the CDAMP1 card may be used to define a lumped
    thermal capacitance Q=BT (if connected to grid point S1).
 
-CDAMP2 - Scalar Damper Property and Connection
-==============================================
 
-Description
------------
+# CDAMP2 - Scalar Damper Property and Connection
+
+## Description
+
 Defines a scalar damper element of the structural model without reference to a
 property value.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CDAMP2  |  EID  |   B   |  G1   |  C1   |  G2   |  C2   |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CDAMP2  |   16  |-2.98  |  32   |  1    |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -2113,8 +1947,8 @@ G1, G2     Geometric grid point identification number (Integer >= 0).
 
 C1, C2     Component number (6 >= Integer >= 0).
 
-Remarks
--------
+## Remarks
+
 1. Scalar points may be used for G1 and/or G2, in which case the corresponding
    C1 and/or C2 must be zero or blank. Zero or blank may be used to indicate a
    grounded terminal G1 or G2 with a corresponding blank or zero C1 or C2. If
@@ -2136,24 +1970,20 @@ Remarks
 6. In heat transfer analysis the CDAMP2 card may be used to define a lumped
    thermal capacitance Q=BT (if connected to grid point S1).
 
-CDAMP3 - Scalar Damper Connection
-=================================
 
-Description
------------
+# CDAMP3 - Scalar Damper Connection
+
+## Description
+
 Defines a scalar damper element of the structural model which is connected
 only to scalar points.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CDAMP3  |  EID  |  PID  |  S1   |  S2   |  EID  |  PID  |  S1   |  S2   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CDAMP3  |   16  |  978  |  24   |  36   |   17  |  978  |  24   |  37   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -2165,8 +1995,8 @@ PID        Identification number of a PDAMP property card (default is EID)
 S1, S2     Scalar point identification numbers (Integer >= 0; S1 not equal
            S2).
 
-Remarks
--------
+## Remarks
+
 1. S1 or S2 may be blank or zero indicating a constrained coordinate.
 
 2. Each element identification number must be unique with respect to all other
@@ -2180,24 +2010,20 @@ Remarks
 5. In heat transfer analysis the CDAMP3 card may be used to define a lumped
    thermal capacitance Q=BT (if connected to grid point S1).
 
-CDAMP4 - Scalar Damper Property and Connection
-==============================================
 
-Description
------------
+# CDAMP4 - Scalar Damper Property and Connection
+
+## Description
+
 Defines a scalar damper element of the structural model which is connected
 only to scalar points.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CDAMP4  |  EID  |   B   |  S1   |  S2   |  EID  |   B   |  S1   |  S2   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CDAMP4  |   16  | -2.6  |  4    |  9    |   17  | +8.6  |  3    |  7    |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -2208,8 +2034,8 @@ B          The scalar damper value (Real).
 S1, S2     Scalar point identification numbers (Integer >= 0; S1 not equal
            S2).
 
-Remarks
--------
+## Remarks
+
 1. S1 or S2 may be blank or zero indicating a constrained coordinate.
 
 2. Each element identification number must be unique with respect to all other
@@ -2226,28 +2052,21 @@ Remarks
 6. In heat transfer analysis the CDAMP4 card may be used to define a lumped
    thermal capacitance Q=BT (if connected to grid point S1).
 
-CDUMi - Dummy Element Connection
-================================
 
-Description
------------
+# CDUMi - Dummy Element Connection
+
+## Description
+
 Defines a dummy element (1 <= i <= 9).
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CDUMi   |  EID  |  PID  |   G1  |  G2   |  G3   |  G4   | etc.  |   GN  |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|CDUM2   |  114  |  108  |    2  |   5   |   6   |   8   |       |   11  |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 | +bc    |  A1   |  A2   | etc.  |       |       |  AN   |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|CDUM2   |  114  |  108  |    2  |   5   |   6   |   8   |       |   11  |ABC  |
 | +BC    |  2.4  |       | 3.E4  |   2   |       |  50   |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -2260,8 +2079,8 @@ G1...GN    Grid point identification numbers of connection points (Integer >
 
 A1...AN    Additional entries (Real or Integer).
 
-Remarks
--------
+## Remarks
+
 1. You must code the associated element routines for matrix generation, stress
    recovery, etc., and perform a link edit to replace the dummy routines.
 
@@ -2270,23 +2089,19 @@ Remarks
 
 3. Additional entries are defined in your element routines.
 
-CELAS1 - Scalar Spring Connection
-=================================
 
-Description
------------
+# CELAS1 - Scalar Spring Connection
+
+## Description
+
 Defines a scalar spring element of the structural model.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CELAS1  |  EID  |  PID  |   G1  |  C1   |  G2   |  C2   |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CELAS1  |   2   |   6   |       |       |   8   |   1   |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -2299,8 +2114,8 @@ G1, G2     Geometric grid point identification number (Integer > 0).
 
 C1, C2     Component number (6 >= Integer >= 0).
 
-Remarks
--------
+## Remarks
+
 1. Scalar points may be used for G1 and/or G2, in which case the corresponding
    C1 and/or C2 must be zero or blank. Zero or blank may be used to indicate a
    grounded terminal G1 or G2 with a corresponding blank or zero C1 or C2. If
@@ -2320,24 +2135,20 @@ Remarks
    conduction or convection between two points or to ground (Q = K*dT) where
    dT is delta T.
 
-CELAS2 - Scalar Spring Property and Connection
-==============================================
 
-Description
------------
+# CELAS2 - Scalar Spring Property and Connection
+
+## Description
+
 Defines a scalar spring element of the structural model without reference to a
 property value.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CELAS2  |  EID  |   K   |   G1  |  C1   |  G2   |  C2   |  GE   |   S   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CELAS2  |   28  | 6.2+3 |   32  |       |  19   |   4   |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -2354,8 +2165,8 @@ GE         Damping coefficient (Real).
 
 S          Stress coefficient (Real).
 
-Remarks
--------
+## Remarks
+
 1. Scalar points may be used for G1 and/or G2, in which case the corresponding
    C1 and/or C2 must be zero or blank. Zero or blank may be used to indicate a
    grounded terminal G1 or G2 with a corresponding blank of zero C1 or C2. If
@@ -2378,24 +2189,20 @@ Remarks
    conduction or convection between two points or to ground (Q = K*dT) where
    dT is delta T.
 
-CELAS3 - Scalar Spring Connection
-=================================
 
-Description
------------
+# CELAS3 - Scalar Spring Connection
+
+## Description
+
 Defines a scalar spring element of the structural model which is connected
 only to scalar points.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CELAS3  |  EID  |  PID  |  S1   |  S2   |  EID  |  PID  |  S1   |  S2   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CELAS3  |   19  |   2   |  14   |  15   |   2   |   3   |  0    |  28   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -2407,8 +2214,8 @@ PID        Identification number of a PELAS property card (default is EID)
 S1, S2     Scalar point identification numbers (Integer >= 0; S1 not equal
            S2).
 
-Remarks
--------
+## Remarks
+
 1. S1 or S2 may be blank or zero indicating a constrained coordinate.
 
 2. Each element identification number must be unique with respect to all other
@@ -2423,24 +2230,20 @@ Remarks
    conduction or convection between two points or to ground (Q=K*dT) where dT
    is delta T.
 
-CELAS4 - Scalar Spring Property and Connection
-==============================================
 
-Description
------------
+# CELAS4 - Scalar Spring Property and Connection
+
+## Description
+
 Defines a scalar element of the structural model which is connected only to
 scalar points without reference to a property value.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CELAS4  |  EID  |   K   |  S1   |  S2   |  EID  |   K   |  S1   |  S2   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CELAS4  |   42  | 6.2-3 |   2   |       |   13  | 6.2-3 |  0    |   2   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -2451,8 +2254,8 @@ K          The scalar spring value (Real).
 S1, S2     Scalar point identification numbers (Integer >= 0; S1 not equal
            S2).
 
-Remarks
--------
+## Remarks
+
 1. S1 or S2, but not both, may be blank or zero indicating a constrained
    coordinate.
 
@@ -2475,23 +2278,18 @@ Remarks
    conduction or convection between two points or to ground (Q=K*dT) where dT
    is delta T.
 
-CELBOW - Curved Beam or Elbow Element
-=====================================
+# CELBOW - Curved Beam or Elbow Element
 
-Description
------------
+## Description
+
 Defines a curved beam or elbow element of the structural model.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CELBOW  |  EID  |  PID  |  GA   |  GB   |   X1  |   X2  |   X3  |   1   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CELBOW  |   29  |   2   |   3   |  45   |  -1.0 |   0.0 |  0.0  |   1   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -2508,8 +2306,8 @@ X1, X2, X3 Components of vector v at end A (see Figure 2.4-3 below), measured
            (center of curvature), and is used to orient the element
            coordinate system for the ELBOW (real, X1**2 + X2**2 + X3**2 > 0).
 
-Remarks
--------
+## Remarks
+
 1. The product moment of inertia is neglected (I12 = 0). This assumes that at
    least one axis of symmetry of the element cross section exists, for
    example, tube, I-beam, channel, tee, etc.
@@ -2552,28 +2350,20 @@ Remarks
 
              Figure 2.4-3. CELBOW element local coordinate system
 
-CEMLOOP - Circular Current Loop
-===============================
 
-Description
------------
+# CEMLOOP - Circular Current Loop
+
+## Description
+
 Defines a circular current loop in magnetic field problems.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CEMLOOP |  SID  |   I   |  AXI  |  X1   |  Y1   |  Z1   |  X2   |   Y2  |+a   |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|CEMLOOP |   3   |  2.5  |   1   |  5.2  |  0.0  | 2.25  |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+a      |  Z2   |  XC   |  YC   |  ZC   |  CID  |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|        |       |       |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|CEMLOOP |   3   |  2.5  |   1   |  5.2  |  0.0  | 2.25  |       |       |     |
 
 Field      Contents
 -----      --------
@@ -2593,8 +2383,8 @@ XC, YC, ZC Coordinates of center of loop (given in coordinate system CID)
 
 CID        Coordinate system identification number (Integer > 0).
 
-Remarks
--------
+## Remarks
+
 1. Load sets must be selected in the Case Control Deck (LOAD = SID) to be used
    by NASTRAN.
 
@@ -2618,23 +2408,19 @@ Remarks
    be much closer to the loop. If convergence fails, a message is output, and
    the computations continue with the last iterated value. 
 
-CFFREE - Free Fluid Surface
-===========================
-Description
------------
+
+# CFFREE - Free Fluid Surface
+## Description
+
 Defines the fluid elements composing the free fluid surface in a hydroelastic
 analysis.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CFFREE  | EIDF  | GRAVID| FACE  |       | EIDF  | GRAVID| FACE  |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CFFREE  |  100  |  100  |  3    |       |  101  |  100  |  4    |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -2645,37 +2431,30 @@ GRAVID     Identification number of a GRAV gravity vector set (Integer > 0).
 FACE       Identification number of the face of the fluid element, EIDF,
            forming the free surface (0 < Integer <= 6) (see Remark 2).
 
-Remarks
--------
+## Remarks
+
 1. Allowable fluid element types are CFHEX1, CFHEX2, CFTETRA, and CFWEDGE.
 
 2. The numbering conventions for solid faces are defined in fluid element
    connection bulk data card descriptions.
 
-CFHEXi - Fluid Hexahedral Element Connection
-============================================
 
-Description
------------
+# CFHEXi - Fluid Hexahedral Element Connection
+
+## Description
+
 Defines two types of fluid hexahedral elements (three-dimensional solids with
 eight vertices and six quadrilateral faces) to be used in hydroelastic
 analysis.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CFHEXi  |  EID  |  MID  |  G1   |  G2   |  G3   |  G4   |  G5   |  G6   |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|CFHEX2  |   15  |  100  |   1   |   2   |   3   |   4   |   5   |   6   |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     |   G7  |   G8  |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|CFHEX2  |   15  |  100  |   1   |   2   |   3   |   4   |   5   |   6   |ABC  |
 |+BC     |    7  |    8  |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -2688,8 +2467,8 @@ MID        Material identification number (Integer > 0).
 G1,...,G8  Grid point identification numbers of connection points (Integers >
            0, G1 through G8 must be unique).
 
-Remarks
--------
+## Remarks
+
 1. Each element identification number must be unique with respect to all other
    element identification numbers.
 
@@ -2725,36 +2504,28 @@ Remarks
             Figure 2.4-4. CFHEXi grid point identification numbers
                                    
 
-CFLSTR - Fluid/Structure Interface
-==================================
 
-Description
------------
+# CFLSTR - Fluid/Structure Interface
+
+## Description
+
 Defines fluid/structure interfaces in hydroelastic analysis.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CFLSTR  | EIDF  |GRAVID | EIDS1 | EIDS2 | EIDS3 | EIDS4 | EIDS5 | EIDS6 |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|CFLSTR  |  100  |  10   |   1   |   2   |  11   |  12   |  21   |  22   |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     | EIDS7 | EIDS8 |       |  etc. |       |       |       |       |def  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|CFLSTR  |  100  |  10   |   1   |   2   |  11   |  12   |  21   |  22   |ABC  |
 |+BC     |   31  |   32  |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
-Alternate Form:
+## Alternate Form
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CFLSTR  | EIDF  |GRAVID | EID1  | "THRU"| EID2  |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CFLSTR  |  200  |  100  |  101  |  THRU |  106  |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -2764,8 +2535,8 @@ GRAVID     Identification number of a GRAV gravity vector set (Integer > 0).
 
 EIDSi, EIDiStructural element identification numbers (Integer > 0).
 
-Remarks
--------
+## Remarks
+
 1. As many continuation cards as desired may appear when THRU is not used.
 
 2. All element identification numbers between EID1 and EID2 must exist when
@@ -2773,33 +2544,29 @@ Remarks
 
 3. Allowable fluid element types are CFHEX1, CFHEX2, CFTETRA, and CFWEDGE.
 
-CFLUIDi - Fluid Element Connections
-===================================
 
-Description
------------
+# CFLUIDi - Fluid Element Connections
+
+## Description
+
 Defines three types of fluid elements for axisymmetric fluid model.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CFLUID2 |  EID  |  IDF1 |  IDF2 |       |       |  RHO  |   B   |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CFLUID2 |  100  |   11  |   14  |       |       | .025  |  0.0  |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+
+|   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CFLUID3 |  EID  |  IDF1 |  IDF2 |  IDF3 |       |  RHO  |   B   |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CFLUID3 |  110  |   15  |   13  |   12  |       |  1.2  |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+
+|   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CFLUID4 |  EID  |  IDF1 |  IDF2 |  IDF3 |  IDF4 |  RHO  |   B   |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CFLUID4 |  120  |   11  |   15  |   12  |   14  |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -2814,8 +2581,8 @@ RHO        Mass density (Real >  0.0 or blank; if blank, the AXIF default
 B          Bulk modulus, pressure per volume ratio (Real or blank. Default
            value on AXIF card is used if blank.)
 
-Remarks
--------
+## Remarks
+
 1. This card is allowed only if an AXIF card is also present.
 
 2. Element identification number must be unique with respect to all other
@@ -2848,24 +2615,20 @@ Remarks
 
                        Figure 2.4-5. CFLUID2 coordinates
 
-CFTETRA - Fluid Tetrahedral Element Connection
-==============================================
 
-Description
------------
+# CFTETRA - Fluid Tetrahedral Element Connection
+
+## Description
+
 Defines a fluid tetrahedral element (three-dimensional solid, with four
 vertices and four triangular faces) to be used in hydroelastic analysis.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CFTETRA |  EID  |  MID  |  G1   |  G2   |  G3   |  G4   |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CFTETRA |   25  |   6   |   1   |   2   |   3   |   4   |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -2876,8 +2639,8 @@ MID        Material identification number (Integer > 0).
 G1,G2,G3,G4Grid point identification numbers of connection points (Integers >
            0, G1 through G4 must be unique).
 
-Remarks
--------
+## Remarks
+
 1. Each element identification number must be unique with respect to all other
    element identification numbers.
 
@@ -2906,23 +2669,19 @@ Remarks
 
             Figure 2.4-6. CFTETRA grid point identification numbers
 
-CFTUBE - Fluid Tube Connection
-==============================
 
-Description
------------
+# CFTUBE - Fluid Tube Connection
+
+## Description
+
 Defines a fluid tube element of the heat transfer model.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CFTUBE  |  EID  |  PID  |  G1   |  G2   |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CFTUBE  |  200  |   5   |   8   |  12   |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -2932,8 +2691,8 @@ PID        Identification number of PFTUBE property card (Integer > 0).
 
 G1, G2     Identification numbers of connected grid points (Integers > 0).
 
-Remarks
--------
+## Remarks
+
 1. The FTUBE element should only be used in nonlinear and transient heat
    transfer analysis. Use in linear static analysis produces an unsymmetric
    matrix which leads to incorrect results.
@@ -2943,25 +2702,21 @@ Remarks
 3. It is your responsibility to ensure flow continuity. There must be no
    accumulation of fluid mass at any grid point.
 
-CFWEDGE - Fluid Wedge Element Connection
-========================================
 
-Description
------------
+# CFWEDGE - Fluid Wedge Element Connection
+
+## Description
+
 Defines a fluid wedge element (three-dimensional solid, with three
 quadrilateral faces and two opposing triangular faces) to be used in
 hydroelastic analysis.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CFWEDGE |  EID  |  MID  |  G1   |  G2   |  G3   |  G4   |  G5   |  G6   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CFWEDGE |   25  |  100  |   1   |   2   |   3   |   4   |   5   |   6   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -2972,8 +2727,8 @@ MID        Material identification number (Integer > 0).
 G1,...,G6  Grid point identification numbers of connection points (Integers >
            0; G1 through G6 must be unique).
 
-Remarks
--------
+## Remarks
+
 1. Each element identification number must be unique with respect to all other
    element identification numbers.
 
@@ -3000,29 +2755,22 @@ Remarks
 
             Figure 2.4-7. CFWEDGE grid point identification numbers
 
-CHBDY - Heat Boundary Element
-=============================
 
-Description
------------
+# CHBDY - Heat Boundary Element
+
+## Description
+
 Defines a boundary element for heat transfer analysis which is used for heat
 flux, thermal vector flux, convection, and/or radiation.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CHBDY   |  EID  |  PID  |  TYPE |  G1   |  G2   |  G3   |  G4   |       |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|CHBDY   |  721  |  100  |  LINE |  101  |  98   |       |       |       |+BD21|
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     |  GA1  |  GA2  |  GA3  |  GA4  |  V1   |  V2   |  V3   |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|CHBDY   |  721  |  100  |  LINE |  101  |  98   |       |       |       |+BD21|
 |+BD21   |  102  |  102  |       |       | 1.00  |  0.0  |  0.0  |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -3042,8 +2790,8 @@ GA1,...,GA4Grid or scalar point identification numbers of associated ambient
 V1, V2, V3 Vector (in the basic coordinate system) used for element
            orientation (real or blank).
 
-Remarks
--------
+## Remarks
+
 1. The continuation card is not required.
 
 2. The six types have the following characteristics:
@@ -3092,29 +2840,22 @@ Remarks
    elements. See Section 1.8 for the definition of the normal vector for each
    element type.
 
-CHEXAi - Hexahedron Element Connection
-======================================
 
-Description
------------
+# CHEXAi - Hexahedron Element Connection
+
+## Description
+
 Defines two types of hexahedron elements (3 dimensional solid with 8 vertices
 and 6 quadrilateral faces, HEXAi) of the structural model.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CHEXAi  |  EID  |  MID  |  G1   |  G2   |  G3   |  G4   |  G5   |  G6   |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|CHEXA2  |   15  |   2   |   7   |   8   |   9   |  10   |  15   |  16   |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     |  G7   |  G8   |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|CHEXA2  |   15  |   2   |   7   |   8   |   9   |  10   |  15   |  16   |ABC  |
 |+BC     |  17   |  18   |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -3127,8 +2868,8 @@ MID        Material identification number (Integer > 0).
 G1,...,G8  Grid point identification numbers of connection points (Integers >
            0, G1 through G8 must be unique).
 
-Remarks
--------
+## Remarks
+
 1. Each element identification number must be unique with respect to all other
    element identification numbers.
 
@@ -3167,28 +2908,21 @@ Remarks
 
             Figure 2.4-8. CHEXAi grid point identification numbers
 
-CIHEX1 - Linear Isoparametric Hexahedron Element Connection
-===========================================================
 
-Description
------------
+# CIHEX1 - Linear Isoparametric Hexahedron Element Connection
+
+## Description
+
 Defines a linear isoparametric hexahedron element of the structural model.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CIHEX1  |  EID  |  PID  |  G1   |  G2   |  G3   |  G4   |  G5   |  G6   |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|CIHEX1  |  137  |   5   |   3   |   8   |   5   |   4   |   9   |  14   |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     |  G7   |  G8   |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|CIHEX1  |  137  |   5   |   3   |   8   |   5   |   4   |   9   |  14   |ABC  |
 |+BC     |  11   |  10   |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -3199,8 +2933,8 @@ PIP        Identification number of a PIHEX property card (Integer > 0).
 G1,...,G8  Grid point identification numbers of connection points (Integers >
            0, G1 through G8 must be unique).
 
-Remarks
--------
+## Remarks
+
 1. Each element identification number must be unique with respect to all other
    element identification numbers.
 
@@ -3232,33 +2966,23 @@ Remarks
 
             Figure 2.4-9. CIHEX1 grid point identification numbers
 
-CIHEX2 - Quadratic Isoparametric Hexahedron Element Connection
-==============================================================
 
-Description
------------
+# CIHEX2 - Quadratic Isoparametric Hexahedron Element Connection
+
+## Description
+
 Defines a quadratic isoparametric hexahedron element of the structural model.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CIHEX2  |  EID  |  PID  |  G1   |  G2   |  G3   |  G4   |  G5   |  G6   |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|CIHEX2  |  110  |   7   |   3   |   8   |  12   |  13   |  14   |   9   |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     |  G7   |  G8   |  G9   | G10   | G11   | G12   | G13   | G14   |def  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|+BC     |   5   |   4   |  16   |  19   |  20   |  17   |  23   |  27   |DEF  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+ef     | G15   | G16   | G17   | G18   | G19   | G20   |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|CIHEX2  |  110  |   7   |   3   |   8   |  12   |  13   |  14   |   9   |ABC  |
+|+BC     |   5   |   4   |  16   |  19   |  20   |  17   |  23   |  27   |DEF  |
 |+EF     |  31   |  32   |  33   |  28   |  25   |  24   |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -3269,8 +2993,8 @@ PID        Identification number of a PIHEX property card (Integer > 0).
 G1,...,G20 Grid point identification numbers of connection points (Integers >
            0, G1 through G20 must be unique).
 
-Remarks
--------
+## Remarks
+
 1. Each element identification number must be unique with respect to all other
    element identification numbers.
 
@@ -3303,43 +3027,27 @@ Remarks
 
             Figure 2.4-10. CIHEX2 grid point identification numbers
 
-CIHEX3 - Cubic Isoparametric Hexahedron Element Connection
-==========================================================
 
-Description
------------
+# CIHEX3 - Cubic Isoparametric Hexahedron Element Connection
+
+## Description
+
 Defines a cubic isoparametric hexahedron element of the structural model.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CIHEX3  |  EID  |  PID  |  G1   |  G2   |  G3   |  G4   |  G5   |  G6   |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|CIHEX3  |   15  |   3   |   4   |   9   |  12   |  17   |  18   |  19   |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     |  G7   |  G8   |  G9   | G10   | G11   | G12   | G13   | G14   |def  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|+BC     |  20   |  13   |  10   |   7   |   6   |   5   |  22   |  25   |DEF  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+ef     | G15   | G16   | G17   | G18   | G19   | G20   | G21   | G22   |ghi  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|+EF     |  26   |  23   |  28   |  31   |  32   |  29   |  36   |  41   |GHI  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+hi     | G23   | G24   | G25   | G26   | G27   | G28   | G29   | G30   |jkl  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|+HI     |  44   |  49   |  50   |  51   |  52   |  45   |  42   |  39   |JKL  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+kl     | G31   | G32   |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|CIHEX3  |   15  |   3   |   4   |   9   |  12   |  17   |  18   |  19   |ABC  |
+|+BC     |  20   |  13   |  10   |   7   |   6   |   5   |  22   |  25   |DEF  |
+|+EF     |  26   |  23   |  28   |  31   |  32   |  29   |  36   |  41   |GHI  |
+|+HI     |  44   |  49   |  50   |  51   |  52   |  45   |  42   |  39   |JKL  |
 |+KL     |  38   |  37   |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -3350,8 +3058,8 @@ PID        Identification number of a PIHEX property card (Integer > 0).
 G1,...,G32 Grid point identification numbers of connection points (Integers >
            0, G1 through G32 must be unique).
 
-Remarks
--------
+## Remarks
+
 1. Each element identification number must be unique with respect to all other
    element identification numbers.
 
@@ -3384,29 +3092,22 @@ Remarks
 
             Figure 2.4-11. CIHEX3 grid point identification numbers
 
-CIS2D8 - Quadratic Isoparametric Element Connection
-===================================================
 
-Description
------------
+# CIS2D8 - Quadratic Isoparametric Element Connection
+
+## Description
+
 Defines a quadriparabolic isoparametric membrane element (IS2D8) of the
 structural model.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CIS2D8  |  EID  |  PID  |  G1   |  G2   |  G3   |  G4   |  G5   |  G6   |+abc |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|CIS2D8  |   16  |   2   |  12   |  10   |  15   |  18   |  22   |   3   |+ABC |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+abc    |  G7   |  G8   | ID1   |  TH   |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|CIS2D8  |   16  |   2   |  12   |  10   |  15   |  18   |  22   |   3   |+ABC |
 |+ABC    |   7   |  11   |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -3422,8 +3123,8 @@ ID1        Number of Gauss quadrature points (ID1 = 2 or 3; default is 2).
 TH         Material property orientation angle in degrees (Real). Figure
            2.4-12 gives the sign convention for TH.
 
-Remarks
--------
+## Remarks
+
 1. Each element identification number must be unique with respect to all other
    element identification numbers.
 
@@ -3459,23 +3160,19 @@ Remarks
 
                  Figure 2.4-12. CIS2D8 sign convention for TH
 
-CMASS1 - Scalar Mass Connection
-===============================
 
-Description
------------
+# CMASS1 - Scalar Mass Connection
+
+## Description
+
 Defines a scalar mass element of the structural model.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CMASS1  |  EID  |  PID  |  G1   |  C1   |  G2   |  C2   |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CMASS1  |   32  |   6   |   2   |   1   |   2   |   3   |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -3488,8 +3185,8 @@ G1, G2     Geometric grid point identification number (Integer > 0).
 
 C1, C2     Component number (6 >= Integer >= 0).
 
-Remarks
--------
+## Remarks
+
 1. Scalar points may be used for G1 and/or G2, in which case the corresponding
    C1 and/or C2 must be zero or blank. Zero or blank may be used to indicate a
    grounded terminal G1 or G2 with a corresponding blank or zero C1 or C2. If
@@ -3505,24 +3202,20 @@ Remarks
 4. For a discussion of the scalar elements, see Section 5.6 of the Theoretical
    Manual.
 
-CMASS2 - Scalar Mass Property and Connection
-============================================
 
-Description
------------
+# CMASS2 - Scalar Mass Property and Connection
+
+## Description
+
 Defines a scalar mass element of the structural model without reference to a
 property value.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CMASS2  |  EID  |   M   |  G1   |  C1   |  G2   |  C2   |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CMASS2  |   32  |  9.25 |   6   |   1   |   7   |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -3534,8 +3227,8 @@ G1, G2     Geometric grid point identification number (Integer >= 0).
 
 C1, C2     Component number (6 >= Integer >= 0).
 
-Remarks
--------
+## Remarks
+
 1. Scalar points may be used for G1 and/or G2, in which case the corresponding
    C1 and/or C2 must be zero or blank. Zero or blank may be used to indicate a
    grounded terminal G1 or G2 with a corresponding blank or zero C1 or C2. If
@@ -3554,24 +3247,20 @@ Remarks
 5. For a discussion of the scalar elements, see Section 5.6 of the Theoretical
    Manual.
 
-CMASS3 - Scalar Mass Connection
-===============================
 
-Description
------------
+# CMASS3 - Scalar Mass Connection
+
+## Description
+
 Defines a scalar mass element of the structural model which is connected only
 to scalar points.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CMASS3  |  EID  |  PID  |  S1   |  S2   |  EID  |  PID  |  S1   |  S2   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CMASS3  |   13  |   42  |  62   |   1   |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -3583,8 +3272,8 @@ PID        Identification number of a PMASS property card (default is EID)
 S1, S2     Scalar point identification numbers (Integer >= 0; S1 not equal
            S2).
 
-Remarks
--------
+## Remarks
+
 1. S1 or S2 may be blank or zero indicating a constrained coordinate.
 
 2. Each element identification number must be unique with respect to all other
@@ -3595,24 +3284,20 @@ Remarks
 4. For a discussion of the scalar elements, see Section 5.6 of the Theoretical
    Manual.
 
-CMASS4 - Scalar Mass Property and Connection
-============================================
 
-Description
------------
+# CMASS4 - Scalar Mass Property and Connection
+
+## Description
+
 Defines a scalar mass element of the structural model which is connected only
 to scalar points without reference to a property value.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CMASS4  |  EID  |   M   |  S1   |  S2   |  EID  |   M   |  S1   |  S2   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CMASS4  |   23  | 14.92 |   6   |  23   |   2   | -16.3 |   0   |  29   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -3623,8 +3308,8 @@ M          The scalar mass value (Real).
 S1, S2     Scalar point identification numbers (Integer > 0; S1 not equal
            S2).
 
-Remarks
--------
+## Remarks
+
 1. S1 or S2 may be blank or zero indicating a constrained coordinate.
 
 2. Each element identification number must be unique with respect to all other
@@ -3638,36 +3323,29 @@ Remarks
 5. For a discussion of the scalar elements, see Section 5.6 of the Theoretical
    Manual.
 
-CNGRNT - Identical (Congruent) Elements Indicator
-=================================================
+# CNGRNT - Identical (Congruent) Elements Indicator
 
-Description
------------
+## Description
+
 Designates secondary element(s) identical (or congruent) to a primary element.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CNGRNT  |  PRID | SECID1| SECID2| SECID3| SECID4| SECID5| SECID6| SECID7|abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CNGRNT  |  11   |   2   |   17  |   34  |   35  |   36  |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+
+|   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |+bc     | SECID8| SECID9|       |  etc. |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|        |       |       |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
-Alternate Form:
+## Alternate Form
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CNGRNT  |  PRID | SECID1| "THRU"| SECID2|       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CNGRNT  |   7   |   10  |  THRU |   55  |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -3677,8 +3355,8 @@ PRID       Identification number of the primary element (not necessarily the
 SECIDi     Identification number(s) of secondary element(s) whose matrices
            will be identical (or congruent) to those of the primary element.
 
-Remarks
--------
+## Remarks
+
 1. Orientation, geometry, etc. must be truly identical such that the same
    stiffness, mass, and damping matrices are generated in the global
    coordinate system.
@@ -3713,29 +3391,25 @@ Remarks
 
 9. See Section 1.14 for a detailed discussion of the congruent feature.
 
-CONCT - Substructure Connectivity
-=================================
 
-Description
------------
+# CONCT - Substructure Connectivity
+
+## Description
+
 Defines the grid point and degree of freedom connectivities between two
 substructures for a manual COMBINE operation.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CONCT   |  SID  |   C   |  SUBA |  SUBB |       |       |       |       |def  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CONCT   |  307  |  1236 |WINGRT |FUSELAG|       |       |       |       |DEF  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+
+|   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |+ef     |  GA1  |  GB1  |  GA2  |  GB2  |  GA3  |  GB3  |  GA4  |  GB4  |hij  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+EF     |  201  |  207  |  958  |  214  |  971  |  216  |  982  |       |HIJ  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -3751,8 +3425,8 @@ GAi, GBi   Grid or scalar point identification numbers GAi from SUBA connects
            to GBi from SUBB by the degrees of freedom specified in C (Integer
            > 0).
 
-Remarks
--------
+## Remarks
+
 1. At least one continuation card must be present.
 
 2. Components specified on a CONCT card will be overridden by RELES cards.
@@ -3793,34 +3467,24 @@ Remarks
                                 TOLER = 0.01
                                 CONNECT = 307
 
-CONCT1 - Substructure Connectivity
-==================================
 
-Description
------------
+# CONCT1 - Substructure Connectivity
+
+## Description
+
 Defines the grid point and degree of freedom connectivities between two or
 more substructures for a manual COMBINE operation.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CONCT1  |  SID  | NAME1 | NAME2 | NAME3 | NAME4 | NAME5 | NAME6 | NAME7 |def  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CONCT1  |  805  |WINGRT |FUSELAG| MIDWG |  POD  |       |       |       |DEF  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+ef     |   C1  |  G11  |  G12  |  G13  |  G14  |  G15  |  G16  |  G17  |hij  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|+EF     |  123  |  528  |   17  |   32  |  106  |       |       |       |HIJ  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+ij     |   C2  |  G21  |  G22  |  G23  |  G24  |  G25  |  G26  |  G27  |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|+EF     |  123  |  528  |   17  |   32  |  106  |       |       |       |HIJ  |
 |+IJ     |   46  |  518  |       |       |       |       |       |       |etc. |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -3835,8 +3499,8 @@ Ci         Component number; any unique combination of the digits 1 - 6 (with
 Gij        Grid or scalar point identification number in substructure namej
            with components Ci (Integer > 0).
 
-Remarks
--------
+## Remarks
+
 1. At least one continuation card must be present.
 
 2. Components specified on CONCT1 card will not be overridden by RELES cards.
@@ -3864,34 +3528,23 @@ Remarks
    CONCT and CONCT1 cards must be defined in terms of the revised coordinate
    system.
 
-CONM1 - Concentrated Mass Element Connection
-============================================
+# CONM1 - Concentrated Mass Element Connection
 
-Description
------------
+## Description
+
 Defines a 6x6 symmetric mass matrix at a geometric grid point of the
 structural model.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CONM1   |  EID  |   G   |  CID  |  M11  |  M21  |  M22  |  M31  |  M32  |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|CONM1   |   2   |   22  |   2   |  2.9  |       |  6.3  |       |       |+1   |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     |  M33  |  M41  |  M42  |  M43  |  M44  |  M51  |  M52  |  M53  |def  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|+1      |  4.8  |       |       |       |  28.6 |       |       |       |+2   |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+ef     |  M54  |  M55  |  M61  |  M62  |  M63  |  M64  |  M65  |  M66  |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|CONM1   |   2   |   22  |   2   |  2.9  |       |  6.3  |       |       |+1   |
+|+1      |  4.8  |       |       |       |  28.6 |       |       |       |+2   |
 |+2      |       |  28.6 |       |       |       |       |       |  28.6 |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -3904,36 +3557,29 @@ CID        Coordinate system identification number for the mass matrix
 
 Mij        Mass matrix values (Real).
 
-Remarks
--------
+## Remarks
+
 1. For a less general means of defining concentrated mass at grid points, see
    CONM2.
 
 2. Each element identification number must be unique with respect to all other
    element identification numbers.
 
-CONM2 - Concentrated Mass Element Connection
-============================================
 
-Description
------------
+# CONM2 - Concentrated Mass Element Connection
+
+## Description
+
 Defines a concentrated mass at a grid point of the structural model.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CONM2   |  EID  |   G   |  CID  |   M   |   X1  |   X2  |   X3  |       |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|CONM2   |   2   |   15  |   6   |  49.7 |       |       |       |       |123  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     |  I11  |  I21  |  I22  |  I31  |  I32  |  I33  |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|CONM2   |   2   |   15  |   6   |  49.7 |       |       |       |       |123  |
 |+23     | 16.2  |       | 16.2  |       |       |  7.8  |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -3951,8 +3597,8 @@ X1, X2, X3 Offset distances for the mass in the coordinate system defined in
 Iij        Mass moments of inertia measured at the mass c.g. in coordinate
            system defined by field 4 (Real).
 
-Remarks
--------
+## Remarks
+
 1. Each element identification number must be unique with respect to all other
    element identification numbers.
 
@@ -3978,24 +3624,19 @@ Remarks
    where BI11 = I11 + M(X2**2 + X3**2), BI21 = I21 + (M)(X1)(X2), and BI22,
    BI31, BI32, and BI33 are similarly defined.
 
-CONROD - Rod Element Property and Connection
-============================================
+# CONROD - Rod Element Property and Connection
 
-Description
------------
+## Description
+
 Defines a rod element of the structural model without reference to a property
 card.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CONROD  |  EID  |  G1   |  G2   |  MID  |   A   |   J   |   C   |  NSM  |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CONROD  |   2   |  16   |  17   |  23   |  2.69 |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -4014,8 +3655,8 @@ C         Coefficient for torsional stress determination (Real).
 
 NSM       Nonstructural mass per unit length (Real).
 
-Remarks
--------
+## Remarks
+
 1.Each element identification number must be unique with respect to all other
   element identification numbers.
 
@@ -4025,27 +3666,23 @@ Remarks
 3.For heat transfer problems, CONROD cards may only reference MAT4 or MAT5
   material cards.
 
-CORD1C - Cylindrical Coordinate System Definition
-=================================================
 
-Description
------------
+# CORD1C - Cylindrical Coordinate System Definition
+
+## Description
+
 Defines a cylindrical coordinate system by reference to three grid points.
 These points must be defined in coordinate systems whose definition does not
 involve the coordinate system being defined. The first point is the origin,
 the second lies on the z-axis, and the third lies in the plane of the
 azimuthal origin.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CORD1C  |  CID  |  G1   |  G2   |  G3   |  CID  |  G1   |  G2   |  G3   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CORD1C  |   3   |  16   |  32   |  19   |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -4054,8 +3691,8 @@ CID       Coordinate system identification number (Integer > 0).
 G1, G2, G3Grid point identification numbers (Integer > 0; G1 through G3 must
           be unique).
 
-Remarks
--------
+## Remarks
+
 1.Coordinate system identification numbers on all CORD1R, CORD1C, CORD1S,
   CORD2R, CORD2C, and CORD2S cards must be unique.
 
@@ -4092,26 +3729,22 @@ Remarks
 
                     Figure 2.4-13. CORD1C coordinate system
 
-CORD1R - Rectangular Coordinate System Definition
-=================================================
 
-Description
------------
+# CORD1R - Rectangular Coordinate System Definition
+
+## Description
+
 Defines a rectangular coordinate system by reference to three grid points.
 These points must be defined in coordinate systems whose definition does not
 involve the coordinate system being defined. The first point is the origin,
 the second lies on the z-axis, and the third lies in the x-z plane.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CORD1R  |  CID  |  G1   |  G2   |  G3   |  CID  |  G1   |  G2   |  G3   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CORD1R  |   3   |  16   |  32   |  19   |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -4120,8 +3753,8 @@ CID       Coordinate system identification number (Integer > 0).
 G1, G2, G3Grid point identification numbers (Integer > 0; G1 through G3 must
           be unique).
 
-Remarks
--------
+## Remarks
+
 1.Coordinate system identification numbers on all CORD1R, CORD1C, CORD1S,
   CORD2R, CORD2C, and CORD2S cards must be unique.
 
@@ -4156,26 +3789,21 @@ Remarks
 
                     Figure 2.4-14. CORD1R coordinate system
 
-CORD1S - Spherical Coordinate System Definition
-===============================================
+# CORD1S - Spherical Coordinate System Definition
 
-Description
------------
+## Description
+
 Defines a spherical coordinate system by reference to three grid points. These
 points must be defined in coordinate systems whose definition does not involve
 the coordinate system being defined. The first point is the origin, the second
 lies on the z-axis, and the third lies in the plane of the azimuthal origin.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CORD1S  |  CID  |  G1   |  G2   |  G3   |  CID  |  G1   |  G2   |  G3   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CORD1S  |   3   |  16   |  32   |  19   |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -4184,8 +3812,8 @@ CID       Coordinate system identification number (Integer > 0).
 G1, G2, G3Grid point identification numbers (Integer > 0; G1 through G3 must
           be unique).
 
-Remarks
--------
+## Remarks
+
 1.Coordinate system identification numbers on all CORD1R, CORD1C, CORD1S,
   CORD2R, CORD2C, and CORD2S cards must be unique.
 
@@ -4222,31 +3850,24 @@ Remarks
 
                     Figure 2.4-15. CORD1S coordinate system
 
-CORD2C - Cylindrical Coordinate System Definition
-=================================================
 
-Description
------------
+# CORD2C - Cylindrical Coordinate System Definition
+
+## Description
+
 Defines a cylindrical coordinate system by reference to the coordinates of
 three points. The first point defines the origin. The second point defines the
 direction of the z-axis. The third lies in the plane of the azimuthal origin.
 The reference coordinate must be independently defined.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CORD2C  |  CID  |  RID  |   A1  |   A2  |   A3  |   B1  |   B2  |   B3  |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|CORD2C  |   3   |   17  |  -2.9 |  1.0  |  0.0  |   3.6 |  0.0  |  1.0  |123  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+BC     |  C1   |  C2   |  C3   |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|CORD2C  |   3   |   17  |  -2.9 |  1.0  |  0.0  |   3.6 |  0.0  |  1.0  |123  |
 |+23     |  5.2  |  1.0  |  -2.9 |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -4258,8 +3879,8 @@ RID       Reference to a coordinate system which is defined independently of
 A1,A2,A3; B1,B2,B3; C1,C2,C3  Coordinates of three points in coordinate system
           defined in field 3 (Real).
 
-Remarks
--------
+## Remarks
+
 1.Continuation card must be present.
 
 2.The three points (A1, A2, A3), (B1, B2, B3), (C1, C2, C3) must be unique
@@ -4299,32 +3920,24 @@ Remarks
 
                     Figure 2.4-16. CORD2C coordinate system
 
-CORD2R - Rectangular Coordinate System Definition
-=================================================
+# CORD2R - Rectangular Coordinate System Definition
 
-Description
------------
+## Description
+
 Defines a rectangular coordinate system by reference to the coordinates of
 three points. The first point defines the origin. The second point defines the
 direction of the z-axis. The third point defines a vector which, with the
 z-axis, defines the x-z plane. The reference coordinate must be independently
 defined.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CORD2R  |  CID  |  RID  |   A1  |   A2  |   A3  |   B1  |   B2  |   B3  |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|CORD2R  |   3   |   17  |  -2.9 |  1.0  |  0.0  |   3.6 |  0.0  |  1.0  |123  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+BC     |  C1   |  C2   |  C3   |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|CORD2R  |   3   |   17  |  -2.9 |  1.0  |  0.0  |   3.6 |  0.0  |  1.0  |123  |
 |+23     |  5.2  |  1.0  |  -2.9 |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -4336,8 +3949,8 @@ RID       Reference to a coordinate system which is defined independently of
 A1,A2,A3; B1,B2,B3; C1,C2,C3  Coordinates of three points in coordinate system
           defined in field 3 (Real).
 
-Remarks
--------
+## Remarks
+
 1.Continuation card must be present.
 
 2.The three points (A1, A2, A3), (B1, B2, B3), (C1, C2, C3) must be unique
@@ -4374,31 +3987,23 @@ Remarks
 
                     Figure 2.4-17. CORD2R coordinate system
 
-CORD2S - Spherical Coordinate System Definition
-===============================================
+# CORD2S - Spherical Coordinate System Definition
 
-Description
------------
+## Description
+
 Defines a spherical coordinate system by reference to the coordinates of three
 points. The first point defines the origin. The second point defines the
 direction of the z-axis. The third lies in the plane of the azimuthal origin.
 The reference coordinate must be independently defined.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CORD2S  |  CID  |  RID  |   A1  |   A2  |   A3  |   B1  |   B2  |   B3  |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|CORD2S  |   3   |   17  |  -2.9 |  1.0  |  0.0  |   3.6 |  0.0  |  1.0  |123  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+BC     |  C1   |  C2   |  C3   |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|CORD2S  |   3   |   17  |  -2.9 |  1.0  |  0.0  |   3.6 |  0.0  |  1.0  |123  |
 |+23     |  5.2  |  1.0  |  -2.9 |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -4410,8 +4015,8 @@ RID       Reference to a coordinate system which is defined independently of
 A1,A2,A3; B1,B2,B3; C1,C2,C3  Coordinates of three points in coordinate system
           defined in field 3 (Real).
 
-Remarks
--------
+## Remarks
+
 1.Continuation card must be present.
 
 2.The three points (A1, A2, A3), (B1, B2, B3), (C1, C2, C3) must be unique
@@ -4451,23 +4056,19 @@ Remarks
 
                     Figure 2.4-18. CORD2S coordinate system
 
-CPSEi - Pressure Stiffness Element Connection
-=============================================
 
-Description
------------
+# CPSEi - Pressure Stiffness Element Connection
+
+## Description
+
 Defines a pressure stiffness element CPSEi (i = 2, 3, 4).
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CPSEi   |  EID  |  PID  |   G1  |  G2   |  G3   |  G4   |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CPSE3   |  34   |   1   |   11  |  10   |  12   |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -4478,8 +4079,8 @@ PID       Identification number of a PPSE property card (Integer > 0).
 G1...GN   Grid point identification numbers of connection points (N = 2 for
           CPSE2, N = 3 for CPSE3, and N = 4 for CPSE4).
 
-Remarks
--------
+## Remarks
+
 1.Element identification numbers must be unique with respect to all other
   element identification numbers.
 
@@ -4502,24 +4103,20 @@ Remarks
 7.Reference: E. Christensen, "Advanced Solid Rocket Motor (ASRM) Math Models
   - Pressure Stiffness Effects Analysis", Aug. 1991, NASA TD612-001-02.
 
-CQDMEM - Quadrilateral Element Connection
-=========================================
 
-Description
------------
+# CQDMEM - Quadrilateral Element Connection
+
+## Description
+
 Defines a quadrilateral membrane element (QDMEM) of the structural model
 consisting of four overlapping TRMEM elements.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CQDMEM  |  EID  |  PID  |  G1   |  G2   |  G3   |  G4   |  TH   |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CQDMEM  |   72  |   13  |  13   |  14   |  15   |  16   |  29.2 |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -4534,8 +4131,8 @@ G1,...,G4 Grid point identification numbers of connection points (Integer >
 TH        Material property orientation angle in degrees (Real). Figure
           2.4-19 gives the sign convention for TH.
 
-Remarks
--------
+## Remarks
+
 1.Each element identification number must be unique with respect to all other
   element identification numbers.
 
@@ -4559,24 +4156,20 @@ Remarks
 
                  Figure 2.4-19. CQDMEM sign convention for TH
 
-CQDMEM1 - Isoparametric Quadrilateral Element Connection
-========================================================
 
-Description
------------
+# CQDMEM1 - Isoparametric Quadrilateral Element Connection
+
+## Description
+
 Defines an isoparametric quadrilateral membrane element (QDMEM1) of the
 structural model.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CQDMEM1 |  EID  |  PID  |  G1   |  G2   |  G3   |  G4   |  TH   |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CQDMEM1 |   72  |   13  |  13   |  14   |  15   |  16   |  29.2 |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -4591,8 +4184,8 @@ G1,...,G4 Grid point identification numbers of connection points (Integer >
 TH        Material property orientation angle in degrees (Real). Figure
           2.4-20 gives the sign convention for TH.
 
-Remarks
--------
+## Remarks
+
 1.Each element identification number must be unique with respect to all other
   element identification numbers.
 
@@ -4619,24 +4212,20 @@ Remarks
 
                  Figure 2.4-20. CQDMEM1 sign convention for TH
 
-CQDMEM2 - Quadrilateral Element Connection
-==========================================
 
-Description
------------
+# CQDMEM2 - Quadrilateral Element Connection
+
+## Description
+
 Defines a quadrilateral membrane element (QDMEM2) of the structural model
 consisting of four non-overlapping TRMEM elements.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CQDMEM2 |  EID  |  PID  |  G1   |  G2   |  G3   |  G4   |  TH   |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CQDMEM2 |   72  |   13  |  13   |  14   |  15   |  16   |  29.2 |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -4651,8 +4240,8 @@ G1,...,G4 Grid point identification numbers of connection points (Integer >
 TH        Material property orientation angle in degrees (Real). Figure
           2.4-21 gives the sign convention for TH.
 
-Remarks
--------
+## Remarks
+
 1.Each element identification number must be unique with respect to all other
   element identification numbers.
 
@@ -4679,23 +4268,18 @@ Remarks
 
                  Figure 2.4-21. CQDMEM2 sign convention for TH
 
-CQDPLT - Quadrilateral Element Connection
-=========================================
+# CQDPLT - Quadrilateral Element Connection
 
-Description
------------
+## Description
+
 Defines a quadrilateral bending element (QDPLT) of the structural model.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CQDPLT  |  EID  |  PID  |  G1   |  G2   |  G3   |  G4   |  TH   |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CQDPLT  |   72  |   13  |  13   |  14   |  15   |  16   |  29.2 |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -4710,8 +4294,8 @@ G1,...,G4 Grid point identification numbers of connection points (Integer >
 TH        Material property orientation angle in degrees (Real). Figure
           2.4-22 gives the sign convention for TH.
 
-Remarks
--------
+## Remarks
+
 1.Each element identification number must be unique with respect to all other
   element identification numbers.
 
@@ -4737,24 +4321,20 @@ Remarks
 
                  Figure 2.4-22. CQDPLT sign convention for TH
 
-CQUAD1 - Quadrilateral Element Connection
-=========================================
 
-Description
------------
+# CQUAD1 - Quadrilateral Element Connection
+
+## Description
+
 Defines a quadrilateral membrane and bending element (QUAD1) of the structural
 model.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CQUAD1  |  EID  |  PID  |  G1   |  G2   |  G3   |  G4   |  TH   |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CQUAD1  |   72  |   13  |  13   |  14   |  15   |  16   |  29.2 |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -4769,8 +4349,8 @@ G1,...,G4 Grid point identification numbers of connection points (Integer >
 TH        Material property orientation angle in degrees (Real). Figure
           2.4-23 gives the sign convention for TH.
 
-Remarks
--------
+## Remarks
+
 1.Each element identification number must be unique with respect to all other
   element identification numbers.
 
@@ -4794,24 +4374,20 @@ Remarks
 
                  Figure 2.4-23. CQUAD1 sign convention for TH
 
-CQUAD2 - Quadrilateral Element Connection
-=========================================
 
-Description
------------
+# CQUAD2 - Quadrilateral Element Connection
+
+## Description
+
 Defines a homogeneous quadrilateral membrane and bending element (QUAD2) of
 the structural model.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CQUAD2  |  EID  |  PID  |  G1   |  G2   |  G3   |  G4   |  TH   |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CQUAD2  |   72  |   13  |  13   |  14   |  15   |  16   |  29.2 |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -4826,8 +4402,8 @@ G1,...,G4 Grid point identification numbers of connection points (Integer >
 TH        Material property orientation angle in degrees (Real). Figure
           2.4-24 gives the sign convention for TH.
 
-Remarks
--------
+## Remarks
+
 1.Each element identification number must be unique with respect to all other
   element identification numbers.
 
@@ -4851,30 +4427,23 @@ Remarks
 
                  Figure 2.4-24. CQUAD2 sign convention for TH
 
-CQUAD4 - Quadrilateral Element Connection
-=========================================
 
-Description
------------
+# CQUAD4 - Quadrilateral Element Connection
+
+## Description
+
 Defines a quadrilateral plate element (QUAD4) of the structural model. This is
 an isoparametric membrane-bending element, with variable element thickness,
 layered composite material, and thermal analysis capabilities.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CQUAD4  |  EID  |  PID  |  G1   |  G2   |  G3   |  G4   |  TM   |  ZO   | abc |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|CQUAD4  |  101  |   17  |  1001 |  1005 |  1010 |  1024 |  45.0 |  0.01 | ABC |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     |       |       |  T1   |  T2   |  T3   |  T4   |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|CQUAD4  |  101  |   17  |  1001 |  1005 |  1010 |  1024 |  45.0 |  0.01 | ABC |
 |+BC     |       |       |  0.03 | 0.125 |  0.05 |  0.04 |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -4901,8 +4470,8 @@ TM        Material property orientation specification (Real or blank,
 Ti        Membrane thickness of element at grid points Gi (Real
           or blank; see Remark 4 for default).
 
-Remarks
--------
+## Remarks
+
 1.       The QUAD4 geometry, coordinate systems, and numbering are shown in
          Figure 2.4-25.
 
@@ -4993,7 +4562,7 @@ Parameter TM
 Parameter TM defines the material property orientation. There are two options
 for this definition.
 
-Option 1
+## Option 1
 
 Define the angle between the side of the element (connecting G1 and G2) and
 the material axis. This is the least desirable option. It is prone to errors,
@@ -5001,14 +4570,14 @@ because every time the sequence of the element connection changes, the angle
 must be changed. Also in a complex three dimensional model it is not easy to
 determine this angle without writing a preprocessor.
 
-Option 2
+## Option 2
 
 The integer option is preferable. An integer in field 8 refers to a separate
 coordinate system for defining the orientation of the material axis of the
 element. The material property definition is now independent of the connection
 sequence. The new coordinate system can be defined with a coordinate card.
 
-Offset Parameter ZO
+## Offset Parameter ZO
 
 The offset parameter provision in the QUAD4 element constitutes a significant
 enhancement for plate elements. Before, the QUAD4 grid points of the structure
@@ -5051,23 +4620,19 @@ CASE 3            |                                                       | +ZO
                       +--------------+                  +--------------+
                           BOTTOM                               TOP
 
-CRBAR - Rigid Bar
-=================
 
-Description
------------
+# CRBAR - Rigid Bar
+
+## Description
+
 Defines a rigid bar with six degrees of freedom at each end.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CRBAR   |  EID  |  G1   |  G2   |  IC1  |  IC2  |  DC1  |  DC2  |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CRBAR   |   5   |   1   |   2   |  234  |  123  |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -5084,8 +4649,8 @@ DCi       Dependent degrees of freedom in the global coordinate system
           with no imbedded blanks. Integers > 0 or blank.) See Remarks 3 and
           4.
 
-Remarks
--------
+## Remarks
+
 1.Each element identification number must be unique with respect to all other
   element identification numbers.
 
@@ -5123,38 +4688,26 @@ Remarks
 
 9.See Section 1.4.2.2 for a discussion of rigid elements.
 
-CRBE1 - Rigid Body Element, Form 1
-==================================
 
-Description
------------
+# CRBE1 - Rigid Body Element, Form 1
+
+## Description
+
 Defines a rigid body connected to an arbitrary number of grid points.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CRBE1   |  EID  |  IG1  |  IC1  |  IG2  |  IC2  |  IG3  |  IC3  |       |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|CRBE1   |  103  |  11   |   1   |  12   |   2   |  13   |   4   |       |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     |       |  IG4  |  IC4  |  IG5  |  IC5  |  IG6  |  IC6  |       |def  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|+BC     |       |  14   |  35   |  15   |   6   |       |       |       |CDF  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+ef     | "UM"  |  DG1  |  DC1  |  DG2  |  DC2  |  DG3  |  DC3  |       |ghi  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|+DF     |  UM   |  21   |  123  |  22   |   1   |  23   | 123456|       |EFI  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+hi     |       |  DG4  |  DC4  |  DG5  |  DC5  |  etc. |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|CRBE1   |  103  |  11   |   1   |  12   |   2   |  13   |   4   |       |ABC  |
+|+BC     |       |  14   |  35   |  15   |   6   |       |       |       |CDF  |
+|+DF     |  UM   |  21   |  123  |  22   |   1   |  23   | 123456|       |EFI  |
 |+FI     |       |  24   |  456  |  25   |   2   |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+
 
 Field     Contents
 -----     --------
@@ -5176,8 +4729,8 @@ DCi       Dependent degrees of freedom in the global coordinate system for
           the preceding dependent grid point (any of the digits 1 - 6 with
           no imbedded blanks. Integer > 0.) See Remarks 4 and 5.
 
-Remarks
--------
+## Remarks
+
 1.Each element identification number must be unique with respect to all other
   element identification numbers.
 
@@ -5220,30 +4773,22 @@ Remarks
 
 10.  See Section 1.4.2.2 for a discussion of rigid elements.
 
-CRBE2 - Rigid Body Element, Form 2
-==================================
+# CRBE2 - Rigid Body Element, Form 2
 
-Description
------------
+## Description
+
 Defines a rigid body whose independent degrees of freedom are specified at a
 single grid point and whose dependent degrees of freedom are specified at an
 arbitrary number of grid points.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CRBE2   |  EID  |  IG   |   C   |  G1   |  G2   |  G3   |  G4   |  G5   |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|CRBE2   |   9   |   8   |  12   |  10   |  12   |  14   |  15   |  16   |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     |  G6   |  G7   |  G8   |  etc. |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|CRBE2   |   9   |   8   |  12   |  10   |  12   |  14   |  15   |  16   |ABC  |
 |+BC     |  20   |       |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -5260,8 +4805,8 @@ C         The dependent degrees of freedom in the global coordinate system
 Gi        Identification numbers of the dependent grid points (Integers >
           0).
 
-Remarks
--------
+## Remarks
+
 1.Each element identification number must be unique with respect to all other
   element identification numbers.
 
@@ -5290,44 +4835,27 @@ Remarks
 
 7.See Section 1.4.2.2 for a discussion of rigid elements.
 
-CRBE3 - Rigid Body Element, Form 3
-==================================
 
-Description
------------
+# CRBE3 - Rigid Body Element, Form 3
+
+## Description
+
 Defines the motion at a reference grid point as the weighted average of the
 motions at a set of other grid points.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CRBE3   |  EID  |       |  IG   |  IC   |  W1   |  C1   | G1,1  | G1,2  |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|CRBE3   |  14   |       |  100  | 1234  |  1.0  |  123  |   1   |  3    |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     | G1,3  |  W2   |  C2   |  G2,1 |  G2,2 |  G2,3 |  W3   |  C3   |def  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|+BC     |  5    |  4.7  |   1   |   2   |   4   |   6   |  5.2  |   2   |DEF  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+ef     | G3,1  | G3,2  | G3,3  |  W4   |  C4   | G4,1  | G4,2  | G4,3  |ghi  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|+EF     |  7    |   8   |       |  5.1  |   1   |  15   |  16   |       |GHI  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+hi     | "UM"  |  DG1  |  DC1  |  DG2  |  DC2  |  DG3  |  DC3  |       |jkl  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|+HI     |  UM   |  100  |  14   |   5   |   3   |   7   |   2   |       |JKL  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+kl     |       |  DG4  |  DC4  |  DG5  |  DC5  |  DG6  |  DC6  |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|+KL     |       |       |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|CRBE3   |  14   |       |  100  | 1234  |  1.0  |  123  |   1   |  3    |ABC  |
+|+BC     |  5    |  4.7  |   1   |   2   |   4   |   6   |  5.2  |   2   |DEF  |
+|+EF     |  7    |   8   |       |  5.1  |   1   |  15   |  16   |       |GHI  |
+|+HI     |  UM   |  100  |  14   |   5   |   3   |   7   |   2   |       |JKL  |
 
 Field     Contents
 -----     --------
@@ -5359,8 +4887,8 @@ DGi       Grid points with components DCi in {um} (Integers > 0).
 DCi       Components of motion at grid point DGi (any of the digits 1 - 6
           with no imbedded blanks, Integers > 0).
 
-Remarks
--------
+## Remarks
+
 1.Each element identification number must be unique with respect to all other
   element identification numbers.
 
@@ -5399,38 +4927,29 @@ Remarks
   (in single precision version and in double precision version) was written
   to handle these two special rigid elements.
 
-CRIGD1 - Rigid Element Connection
-=================================
+# CRIGD1 - Rigid Element Connection
 
-Description
------------
+## Description
+
 Defines a rigid element in which all six degrees of freedom of each of the
 dependent grid points are coupled to all six degrees of freedom of the
 reference grid point.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CRIGD1  |  EID  |  IG   |  G1   |  G2   |  G3   |  G4   |  G5   |  G6   |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|CRIGD1  |  101  |  15   |  18   |  43   |   9   |  26   |  35   |  41   |123  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     |  G7   |  G8   |  G9   |  etc. |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|CRIGD1  |  101  |  15   |  18   |  43   |   9   |  26   |  35   |  41   |123  |
 |+23     |  8    |  63   |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
-Alternate Form:
+## Alternate Form
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CRIGD1  |  EID  |  IG   | GID1  |"THRU" | GID2  |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CRIGD1  |  201  |  25   |  71   | THRU  |  80   |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -5440,8 +4959,8 @@ IG        Identification number of the reference grid point (Integer > 0).
 
 Gi, GIDi  Identification numbers of the dependent grid points (Integer > 0).
 
-Remarks
--------
+## Remarks
+
 1.Each element identification number must be unique with respect to all other
   element identification numbers.
 
@@ -5464,30 +4983,23 @@ Remarks
 7.For a discussion of rigid elements, see Section 3.5.6 of the Theoretical
   Manual.
 
-CRIGD2 - Rigid Element Connection
-=================================
 
-Description
------------
+# CRIGD2 - Rigid Element Connection
+
+## Description
+
 Defines a rigid element in which selected degrees of freedom of the dependent
 grid points are coupled to all six degrees of freedom of the reference grid
 point.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CRIGD2  |  EID  |  IG   |  G1   |  C1   |  G2   |  C2   |  G3   |  C3   |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|CRIGD2  |  102  |  20   |  9    |  12   |  45   |  123  |  53   |  135  |123  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     |   G4  |  C4   |  etc. |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|CRIGD2  |  102  |  20   |  9    |  12   |  45   |  123  |  53   |  135  |123  |
 |+23     |   27  |  456  |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -5501,8 +5013,8 @@ Ci        List of selected degrees of freedom associated with the preceding
           dependent grid point (any of the digits 1 - 6 with no imbedded
           blanks).
 
-Remarks
--------
+## Remarks
+
 1.Each element identification number must be unique with respect to all other
   element identification numbers.
 
@@ -5521,39 +5033,27 @@ Remarks
 6.For a discussion of rigid elements, see Section 3.5.6 of the Theoretical
   Manual.
 
-CRIGD3 - General Rigid Element Connection
-=========================================
-Description
------------
+
+# CRIGD3 - General Rigid Element Connection
+
+## Description
+
 Defines a rigid element in which selected degrees of freedom of the dependent
 grid points are coupled to six selected degrees of freedom at one or more (up
 to six) reference grid points.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CRIGD3  |  EID  |  IG1  |  IC1  |  IG2  |  IC2  |  IG3  |  IC3  |       |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|CRIGD3  |  103  |  11   |   1   |  12   |   2   |  13   |   4   |       |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     |       |  IG4  |  IC4  |  IG5  |  IC5  |  IG6  |  IC6  |       |def  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|+BC     |       |  14   |  35   |  15   |   6   |       |       |       |DEF  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+ef     | "MSET"|  DG1  |  DC1  |  DG2  |  DC2  |  DG3  |  DC3  |       |ghi  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|+EF     |  MSET |  21   |  123  |  22   |   1   |  23   | 123456|       |GHI  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+hi     |       |  DG4  |  DC4  |  DG5  |  DC5  |  etc. |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|CRIGD3  |  103  |  11   |   1   |  12   |   2   |  13   |   4   |       |ABC  |
+|+BC     |       |  14   |  35   |  15   |   6   |       |       |       |DEF  |
+|+EF     |  MSET |  21   |  123  |  22   |   1   |  23   | 123456|       |GHI  |
 |+HI     |       |  24   |  456  |  25   |   2   |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -5574,8 +5074,8 @@ DCi       List of selected degrees of freedom associated with the preceding
           dependent grid point (any of the digits 1 - 6 with no imbedded
           blanks).
 
-Remarks
--------
+## Remarks
+
 1.Each element identification number must be unique with respect to all other
   element identification numbers.
 
@@ -5601,23 +5101,19 @@ Remarks
 8.For a discussion of rigid elements, see Section 3.5.6 of the Theoretical
   Manual.
 
-CRIGDR - Rigid Rod Element Connection
-=====================================
 
-Description
------------
+# CRIGDR - Rigid Rod Element Connection
+
+## Description
+
 Defines a pin-ended rod element that is rigid in extension-compression.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CRIGDR  |  EID  |   G   |  G1   |  C1   |  EID  |   G   |  G1   |  C1   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CRIGDR  |  104  |   5   |  9    |  3    |  302  |   12  |   4   |   2   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -5631,8 +5127,8 @@ G1        Identification number of the dependent grid point (Integer > 0; G1
 C1        Dependent translational degree of freedom of grid point G1 (1 <=
           Integer <= 3).
 
-Remarks
--------
+## Remarks
+
 1.Each element identification number must be unique with respect to all other
   element identification numbers.
 
@@ -5655,23 +5151,19 @@ Remarks
 7.For a discussion of rigid elements, see Section 3.5.6 of the Theoretical
   Manual.
 
-CROD - Rod Element Connection
-=============================
 
-Description
------------
+# CROD - Rod Element Connection
+
+## Description
+
 Defines a tension-compression-torsion element (ROD) of the structural model.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CROD    |  EID  |  PID  |  G1   |  G2   |  EID  |  PID  |  G1   |  G2   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CROD    |   12  |   13  |  21   |  23   |   3   |   12  |  24   |   5   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -5683,8 +5175,8 @@ PID       Identification number of a PROD property card (default is EID)
 G1, G2    Grid point identification numbers of connection points (Integer >
           0; G1 not equal G2).
 
-Remarks
--------
+## Remarks
+
 1.Each element identification number must be unique with respect to all other
   element identification numbers.
 
@@ -5692,22 +5184,19 @@ Remarks
 
 3.One or two ROD elements may be defined on a single card.
 
-CRROD - Rigid Pin-Ended Rod
 
-Description
------------
+# CRROD - Rigid Pin-Ended Rod
+
+## Description
+
 Defines a pin-ended rod that is rigid in extension.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CRROD   |  EID  |   G1  |  G2   |  C1   |  C2   |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CRROD   |   14  |   1   |  2    |  2    |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -5721,8 +5210,8 @@ Ci        Component number of one and only one dependent translational
           contain an integer and the other must be blank. See Remarks 2 and
           3.
 
-Remarks
--------
+## Remarks
+
 1.Each element identification number must be unique with respect to all other
   element identification numbers.
 
@@ -5757,28 +5246,22 @@ Remarks
 
 9.See Section 1.4.2.2 for a discussion of rigid elements.
 
-CRSPLINE - Interpolation Constraint Element
-===========================================
-Description
------------
+
+# CRSPLINE - Interpolation Constraint Element
+
+## Description
+
 Defines multipoint constraints for the interpolation of displacements at grid
 points.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CRSPLINE|  EID  |  D/L  |  G1   |  G2   |  C2   |  G3   |  C3   |  G4   |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|CRSPLINE|   73  |  .05  |  27   |  28   | 123456|  29   |       |  30   |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     |  C4   |   G5  |  C5   |  G6   |  etc. |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|CRSPLINE|   73  |  .05  |  27   |  28   | 123456|  29   |       |  30   |ABC  |
 |+BC     |  123  |   75  |  123  |  71   |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -5793,8 +5276,8 @@ Gi        Identification number of the ith grid point (Integer > 0).
 Ci        Components to be constrained at the ith grid point (any of the
           digits 1 - 6 with no imbedded blanks, or blank). See Remark 3.
 
-Remarks
--------
+## Remarks
+
 1.Each element identification number must be unique with respect to all other
   element identification numbers.
 
@@ -5829,28 +5312,20 @@ Remarks
   subroutine (in single precision version and in double precision version)
   was written to handle these two special rigid elements.
 
-CRTRPLT - Rigid Triangular Plate
-================================
 
-Description
------------
+# CRTRPLT - Rigid Triangular Plate
+
+## Description
+
 Defines a rigid triangular plate.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CRTRPLT |  EID  |  G1   |  G2   |  G3   |  IC1  |  IC2  |  IC3  |       |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|CRTRPLT |   7   |   1   |   2   |   3   |  1236 |   3   |   3   |       |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     |  DC1  |  DC2  | DC3   |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|+BC     |       |       |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|CRTRPLT |   7   |   1   |   2   |   3   |  1236 |   3   |   3   |       |ABC  |
 
 Field     Contents
 -----     --------
@@ -5867,8 +5342,8 @@ DCi       Dependent degrees of freedom in the global coordinate system (any
           of the digits 1 - 6 with no imbedded blanks. Integers > 0 or
           blank.) See Remarks 3 and 4.
 
-Remarks
--------
+## Remarks
+
 1.Each element identification number must be unique with respect to all other
   element identification numbers.
 
@@ -5908,23 +5383,19 @@ Remarks
 
 9.See Section 1.4.2.2 for a discussion of rigid elements.
 
-CSHEAR - Shear Panel Element Connection
-=======================================
 
-Description
------------
+# CSHEAR - Shear Panel Element Connection
+
+## Description
+
 Defines a shear panel element (SHEAR) of the structural model.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CSHEAR  |  EID  |  PID  |  G1   |  G2   |  G3   |  G4   |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CSHEAR  |   3   |   6   |   1   |   5   |   3   |   7   |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -5936,8 +5407,8 @@ PID       Identification number of a PSHEAR property card (default is EID)
 G1,...,G4 Grid point identification numbers of connection points (Integer >
           0; G1 through G4 must be unique).
 
-Remarks
--------
+## Remarks
+
 1.Each element identification number must be unique with respect to all other
   element identification numbers.
 
@@ -5946,30 +5417,26 @@ Remarks
 
 3.All interior angles must be less than 180 degrees.
 
-CSLOTi - Slot Element Connections
-=================================
 
-Description
------------
+# CSLOTi - Slot Element Connections
+
+## Description
+
 Defines an element connecting i = 3 or i = 4 points which solves the wave
 equation in two dimensions. Used in acoustic cavity analysis for the
 definition of evenly spaced radial slots.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CSLOT3  |  EID  |  IDS1 |  IDS2 |  IDS3 |       |  RHO  |   B   |   M   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CSLOT3  |  100  |   1   |   3   |   2   |       | 3.E-3 |       |   6   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+
+|   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CSLOT4  |  EID  |  IDS1 |  IDS2 |  IDS3 |  IDS4 |  RHO  |   B   |   M   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CSLOT4  |  101  |   1   |   3   |   2   |   4   |       | 6.2+4 |   3   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -5985,8 +5452,8 @@ B         Fluid bulk modulus (Real >= 0.0 or blank).
 M         Number of slots in circumferential direction (Integer >= 0, or
           blank).
 
-Remarks
--------
+## Remarks
+
 1.This card is allowed only if an AXSLOT card is also present.
 
 2.The element identification number (EID) must be unique with respect to all
@@ -6004,24 +5471,20 @@ Remarks
 
 6.If M = 0 no matrices for CSLOTi elements are generated.
 
-CTETRA - Tetrahedron Element Connection
-=======================================
 
-Description
------------
+# CTETRA - Tetrahedron Element Connection
+
+## Description
+
 Defines a tetrahedron element (3 dimensional solid with 4 vertices and 4
 triangular faces, TETRA) of the structural model.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CTETRA  |  EID  |  PID  |  G1   |  G2   |  G3   |  G4   |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CTETRA  |  15   |   2   |   4   |   7   |   9   |  11   |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -6032,8 +5495,8 @@ MID       Material identification number (Integer > 0).
 G1,...,G4 Grid point identification numbers of connection points (Integers >
           0, G1 through G4 must be unique). See Figure 2.4-26.
 
-Remarks
--------
+## Remarks
+
 1.Each element identification number must be unique with respect to all other
   element identification numbers.
 
@@ -6062,23 +5525,19 @@ Remarks
 
             Figure 2.4-26. CTETRA grid point identification numbers
 
-CTORDRG - Toroidal Ring Element Connection
-==========================================
-Description
------------
+
+# CTORDRG - Toroidal Ring Element Connection
+## Description
+
 Defines an axisymmetric toroidal cross-section ring element (TORDRG) of the
 structural model.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CTORDRG |  EID  |  PID  |  G1   |  G2   |  A1   |  A2   |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CTORDRG |  25   |   2   |  47   |  48   |  30.0 |  60.0 |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -6095,8 +5554,8 @@ A1        Angle of curvature at grid point 1 in degrees (Real; 0 degrees <=
 A2        Angle of curvature at grid point 2 in degrees (Real; 0 degrees <=
           A2 <= 180 degrees; A2 >= A1). See Figure 2.4-27.
 
-Remarks
--------
+## Remarks
+
 1.Each element identification number must be unique with respect to all other
   element identification numbers.
 
@@ -6123,25 +5582,20 @@ Remarks
 
            Figure 2.4-27. CTORDRG grid point identification numbers
 
-CTRAPAX - Trapezoidal Ring Element Connection
-=============================================
+# CTRAPAX - Trapezoidal Ring Element Connection
 
-Description
------------
+## Description
+
 Defines an axisymmetric trapezoidal cross-section ring element with
 non-axisymmetric deformation of the structural model with reference to
 property card.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CTRAPAX |  EID  |  PID  |  R1   |  R2   |  R3   |  R4   |  TH   |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CTRAPAX |  15   |   5   |  10   |  11   |  12   |  13   | 30.0  |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -6155,8 +5609,8 @@ R1, R2, R3, R4  Identification numbers of RINGAX cards (Integer > 0; R1
 TH        Material property orientation angle in degrees (Real). Figure
           2.4-28 gives the sign convention for TH.
 
-Remarks
--------
+## Remarks
+
 1.CTRAPAX card is allowed if and only if an AXIC card is also present.
 
 2.Each element identification number must be unique with respect to all other
@@ -6191,24 +5645,19 @@ Remarks
 
                  Figure 2.4-28. CTRAPAX sign convention for TH
 
-CTRAPRG - Trapezoidal Ring Element Connection
-=============================================
+# CTRAPRG - Trapezoidal Ring Element Connection
 
-Description
------------
+## Description
+
 Defines an axisymmetric trapezoidal cross-section ring element (TRAPRG) of the
 structural model without reference to a property card.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CTRAPRG |  EID  |  G1   |  G2   |  G3   |  G4   |  TH   |  MID  |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CTRAPRG |   72  |  13   |  14   |  15   |  16   | 29.2  |  13   |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -6222,8 +5671,8 @@ TH        Material property orientation angle in degrees (Real). Figure
 
 MID       Material property identification number (Integer > 0).
 
-Remarks
--------
+## Remarks
+
 1.Each element identification number must be unique with respect to all other
   element identification numbers.
 
@@ -6266,22 +5715,19 @@ Remarks
 
            Figure 2.4-29. CTRAPRG grid point identification numbers
 
-CTRBSC - Triangular Element Connection
 
-Description
------------
+# CTRBSC - Triangular Element Connection
+
+## Description
+
 Defines a basic triangular bending element (TRBSC) of the structural model.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CTRBSC  |  EID  |  PID  |  G1   |  G2   |  G3   |  TH   |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CTRBSC  |  16   |   2   |  12   |   1   |   3   | 16.2  |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -6296,8 +5742,8 @@ G1, G2, G3Grid point identification numbers of connection points (Integer >
 TH        Material property orientation angle in degrees (Real). Figure
           2.4-30 gives the sign convention for TH.
 
-Remarks
--------
+## Remarks
+
 1.Each element identification number must be unique with respect to all other
   element identification numbers.
 
@@ -6318,24 +5764,20 @@ Remarks
 
                  Figure 2.4-30. CTRBSC sign convention for TH
 
-CTRIA1 - Triangular Element Connection
-======================================
 
-Description
------------
+# CTRIA1 - Triangular Element Connection
+
+## Description
+
 Defines a triangular membrane and bending element (TRIA1) of the structural
 model.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CTRIA1  |  EID  |  PID  |  G1   |  G2   |  G3   |  TH   |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CTRIA1  |  16   |   2   |  12   |   1   |   3   | 16.2  |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -6350,8 +5792,8 @@ G1, G2, G3Grid point identification numbers of connection points (Integer >
 TH        Material property orientation angle in degrees (Real). Figure
           2.4-31 gives the sign convention for TH.
 
-Remarks
--------
+## Remarks
+
 1.Each element identification number must be unique with respect to all other
   element identification numbers.
 
@@ -6370,24 +5812,21 @@ Remarks
 
                  Figure 2.4-31. CTRIA1 sign convention for TH
 
+
 CTRIA2 - Triangular Element Connection
 ======================================
 
-Description
------------
+## Description
+
 Defines a triangular membrane and bending element (TRIA2) of the structural
 model.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CTRIA2  |  EID  |  PID  |  G1   |  G2   |  G3   |  TH   |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CTRIA2  |  16   |   2   |  12   |   1   |   3   | 16.2  |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -6402,8 +5841,8 @@ G1, G2, G3Grid point identification numbers of connection points (Integer >
 TH        Material property orientation angle in degrees (Real). Figure
           2.4-32 gives the sign convention for TH.
 
-Remarks
--------
+## Remarks
+
 1.Each element identification number must be unique with respect to all other
   element identification numbers.
 
@@ -6422,30 +5861,24 @@ Remarks
 
                  Figure 2.4-32. CTRIA2 sign convention for TH
 
+
 CTRIA3 - Triangular Element Connection
 ======================================
 
-Description
------------
+## Description
+
 Defines a triangular plate element (CTRIA3) of the structural model. This is
 an isoparametric membrane-bending element, with variable element thickness,
 layered composite material, and thermal analysis capabilities.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CTRIA3  |  EID  |  PID  |  G1   |  G2   |  G3   |  TM   |  ZO   |       |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|CTRIA3  |  101  |  17   | 1001  | 1005  | 1010  | 45.0  | 0.01  |       |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     |       |       |  T1   |  T2   |  T3   |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|CTRIA3  |  101  |  17   | 1001  | 1005  | 1010  | 45.0  | 0.01  |       |ABC  |
 |+BC     |       |       | 0.03  | 0.125 | 0.05  |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -6470,8 +5903,8 @@ TM        Material property orientation specification (Real or blank, or 0
 Ti        Membrane thickness of element at grid points Gi (Real or blank;
           see Remark 4 for default).
 
-Remarks
--------
+## Remarks
+
 1.The TRIA3 geometry, coordinate systems, and numbering are shown in Figure
   2.4-33.
 
@@ -6519,22 +5952,18 @@ Remarks
 CTRIAAX - Triangular Ring Element Connection
 ============================================
 
-Description
------------
+## Description
+
 Defines an axisymmetric triangular cross-section ring element with
 non-axisymmetric deformation of the structural model with reference to
 property card.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CTRIAAX |  EID  |  PID  |  R1   |  R2   |  R3   |  TH   |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CTRIAAX |  20   |   15  |  42   |  43   |  52   | 60.0  |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -6548,8 +5977,8 @@ R1, R2, R3Identification numbers of RINGAX cards (Integer > 0; R1 through R3
 TH        Material property orientation angle in degrees (Real). Figure
           2.4-34 gives the sign convention for TH.
 
-Remarks
--------
+## Remarks
+
 1.The CTRIAAX card is allowed if and only if an AXIC card is also present.
 
 2.Each element identification number must be unique with respect to all other
@@ -6577,24 +6006,21 @@ Remarks
 
                  Figure 2.4-34. CTRIAAX sign convention for TH
 
+
 CTRIARG - Triangular Ring Element Connection
 ============================================
 
-Description
------------
+## Description
+
 Defines an axisymmetric triangular cross section ring element (TRIARG) of the
 structural model without reference to a property card.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CTRIARG |  EID  |  G1   |  G2   |  G3   |  TH   |  MID  |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CTRIARG |   16  |  12   |  13   |  14   | 29.2  |  17   |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -6608,8 +6034,8 @@ TH        Material property orientation angle in degrees (Real). Figure
 
 MID       Material identification number (Integer 0).
 
-Remarks
--------
+## Remarks
+
 1.Each element identification number must be unique with respect to all other
   element identification numbers.
 
@@ -6641,29 +6067,23 @@ Remarks
 
            Figure 2.4-35. CTRIARG grid point identification numbers
 
+
 CTRIM6 - Linear Strain Triangular Element Connection
 ====================================================
 
-Description
------------
+## Description
+
 Defines a linear strain triangular membrane element (TRIM6) of the structural
 model.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CTRIM6  |  EID  |  PID  |  G1   |  G2   |  G3   |  G4   |  G5   |  G6   |+abc |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|CTRIM6  |  220  |  666  | 100   |  110  |  120  |  210  |  220  |  320  | AC3 |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+abc    |  TH   |       |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|CTRIM6  |  220  |  666  | 100   |  110  |  120  |  210  |  220  |  320  | AC3 |
 |+C3     |  90.0 |       |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -6678,8 +6098,8 @@ G1,...,G6 Grid point identification numbers of connection points (Integers >
 TH        Material property orientation angle in degrees (Real). Figure
           2.4-36 gives the sign convention for TH.
 
-Remarks
--------
+## Remarks
+
 1.Each element identification number must be unique with respect to all other
   element identification numbers.
 
@@ -6711,23 +6131,20 @@ Remarks
 
                  Figure 2.4-36. CTRIM6 sign convention for TH
 
+
 CTRMEM - Triangular Element Connection
 ======================================
 
-Description
------------
+## Description
+
 Defines a triangular membrane element (TRMEM) of the structural model.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CTRMEM  |  EID  |  PID  |  G1   |  G2   |  G3   |  TH   |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CTRMEM  |  16   |   2   |  12   |   1   |   3   | 16.3  |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -6742,8 +6159,8 @@ G1, G2, G3Grid point identification numbers of connection points (Integer >
 TH        Material property orientation angle in degrees (Real). Figure
           2.4-37 gives the sign convention for TH.
 
-Remarks
--------
+## Remarks
+
 1.Each element identification number must be unique with respect to all other
   element identification numbers.
 
@@ -6762,23 +6179,20 @@ Remarks
 
                  Figure 2.4-37. CTRMEM sign convention for TH
 
+
 CTRPLT - Triangular Element Connection
 ======================================
 
-Description
------------
+## Description
+
 Defines a triangular bending element (TRPLT) of the structural model.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CTRPLT  |  EID  |  PID  |  G1   |  G2   |  G3   |  TH   |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CTRPLT  |  16   |   2   |  12   |   1   |   3   | 16.2  |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -6793,8 +6207,8 @@ G1, G2, G3Grid point identification numbers of connection points (Integer >
 TH        Material property orientation angle in degrees (Real). Figure
           2.4-38 gives the sign convention for TH.
 
-Remarks
--------
+## Remarks
+
 1.Each element identification number must be unique with respect to all other
   element identification numbers.
 
@@ -6815,29 +6229,23 @@ Remarks
 
                  Figure 2.4-38. CTRPLT sign convention for TH
 
+
 CTRPLT1 - Triangular Element Connection
 =======================================
 
-Description
------------
+## Description
+
 Defines a higher order triangular bending element (TRPLT1) of the structural
 model.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CTRPLT1 |  EID  |  PID  |  G1   |  G2   |  G3   |  G4   |  G5   |  G6   |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|CTRPLT1 |  160  |   20  |  120  |  10   |  30   |  40   |  70   |  110  |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     |  TH   |       |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|CTRPLT1 |  160  |   20  |  120  |  10   |  30   |  40   |  70   |  110  |ABC  |
 |+BC     |  16.2 |       |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -6852,8 +6260,8 @@ G1,...,G6 Grid point identification numbers of connection points (Integer >
 TH        Material property orientation angle in degrees (Real). Figure
           2.4-39 gives the sign convention for TH.
 
-Remarks
--------
+## Remarks
+
 1.Each element identification number must be unique with respect to all other
   element identification numbers.
 
@@ -6877,29 +6285,23 @@ Remarks
 
                  Figure 2.4-39. CTRPLT1 sign convention for TH
 
+
 CTRSHL - Triangular Shell Element Connection
 ============================================
 
-Description
------------
+## Description
+
 Defines a triangular thin shallow shell element (TRSHL) of the structural
 model.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CTRSHL  |  EID  |  PID  |  G1   |  G2   |  G3   |  G4   |  G5   |  G6   |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|CTRSHL  |  160  |   20  |  120  |  10   |  30   |  40   |  70   |  110  |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     |  TH   |       |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|CTRSHL  |  160  |   20  |  120  |  10   |  30   |  40   |  70   |  110  |ABC  |
 |+BC     |  16.2 |       |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -6914,8 +6316,8 @@ G1,...,G6 Grid point identification numbers of connection points (Integers >
 TH        Material property orientation angle in degrees (Real). Figure
           2.4-40 gives the sign convention for TH.
 
-Remarks
--------
+## Remarks
+
 1.Each element identification number must be unique with respect to all other
   element identification numbers.
 
@@ -6942,20 +6344,16 @@ Remarks
 CTUBE - Tube Element Connection
 ===============================
 
-Description
------------
+## Description
+
 Defines a tension-compression-torsion element (TUBE) of the structural model.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CTUBE   |  EID  |  PID  |  G1   |  G2   |  EID  |  PID  |  G1   |  G2   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CTUBE   |   12  |   13  |  21   |  23   |   3   |   12  |  24   |   5   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -6967,30 +6365,27 @@ PID       Identification number of a PTUBE property card (default is EID)
 G1, G2    Grid point identification numbers of connection points (Integer >
           0; G1 not equal G2).
 
-Remarks
--------
+## Remarks
+
 1.Each element identification number must be unique with respect to all other
   element identification numbers.
 
 2.One or two TUBE elements may be defined on a single card.
 
+
 CTWIST - Twist Panel Element Connection
 =======================================
 
-Description
------------
+## Description
+
 Defines a twist panel element (TWIST) of the structural model.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CTWIST  |  EID  |  PID  |  G1   |  G2   |  G3   |  G4   |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CTWIST  |   2   |   6   |  1    |  5    |   3   |  7    |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -7002,8 +6397,8 @@ PID       Identification number of a PTWIST property card (default is EID)
 G1,...,G4 Grid point identification numbers of connection points (Integer >
           0; G1 through G4 must be unique).
 
-Remarks
--------
+## Remarks
+
 1.Each element identification number must be unique with respect to all other
   element identification numbers.
 
@@ -7012,23 +6407,20 @@ Remarks
 
 3.All interior angles must be less than 180 degrees.
 
+
 CVISC - Viscous Damper Connection
 =================================
 
-Description
------------
+## Description
+
 Defines a viscous damper element (VISC) of the structural model.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CVISC   |  EID  |  PID  |  G1   |  G2   |  EID  |  PID  |  G1   |  G2   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CVISC   |   21  |  6327 |  29   |  31   |  22   |  6527 |  35   |  33   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -7040,8 +6432,8 @@ PID       Identification number of PVISC property card (default is EID)
 G1, G2    Grid point identification numbers of connection points (Integer >
           0; G1 not equal G2).
 
-Remarks
--------
+## Remarks
+
 1.Each element identification number must be unique with respect to all other
   element identification numbers.
 
@@ -7049,24 +6441,21 @@ Remarks
 
 3.Used only for direct formulation of dynamic analyses.
 
+
 CWEDGE - Wedge Element Connection
 =================================
 
-Description
------------
+## Description
+
 Defines a wedge element (three dimensional solid, with three quadrilateral
 faces and two opposing triangular faces, WEDGE) of the structural model.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CWEDGE  |  EID  |  MID  |  G1   |  G2   |  G3   |  G4   |  G5   |  G6   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CWEDGE  |   15  |   2   |   3   |   6   |   9   |  12   |  15   |  18   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -7077,8 +6466,8 @@ MID       Material identification number (Integer > 0).
 G1,...,G6 Grid point identification numbers of connection points (Integers >
           0, G1 through G6 must be unique). See Figure 2.4-41.
 
-Remarks
--------
+## Remarks
+
 1.Each element identification number must be unique with respect to all other
   element identification numbers.
 
@@ -7111,37 +6500,30 @@ Remarks
 
             Figure 2.4-41. CWEDGE grid point identification numbers
 
+
 CYJOIN - Cyclic Symmetry Boundary Points
 ========================================
 
-Description
------------
+## Description
+
 Defines the boundary points of a segment for cyclic symmetry structural
 models.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CYJOIN  |  SIDE |   C   |  G1   |  G2   |  G3   |  G4   |  G5   |  G6   |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|CYJOIN  |   1   |       |   7   |   9   |  16   |  25   |  33   |  64   |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     |  G7   |  G8   |  G9   | etc.  |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|CYJOIN  |   1   |       |   7   |   9   |  16   |  25   |  33   |  64   |ABC  |
 |+BC     |  72   |       |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
-Alternate Form:
+## Alternate Form
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |CYJOIN  |  SIDE |   C   |  GID1 |"THRU" |  GID2 |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |CYJOIN  |   2   |   S   |   6   | THRU  |  32   |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -7151,8 +6533,8 @@ C         Coordinate system (BCD value R, C, or S, or blank).
 
 Gi, GIDi  Grid or scalar point identification numbers (Integer > 0).
 
-Remarks
--------
+## Remarks
+
 1.CYJOIN bulk data cards are only used for cyclic symmetry problems. A
   parameter (CTYPE) must specify rotational or dihedral symmetry.
 
@@ -7168,25 +6550,22 @@ Remarks
 4.All components of displacement at boundary points are connected to adjacent
   segments, except those constrained by SPC, MPC, or OMIT.
 
+
 DAREA - Dynamic Load Scale Factor
 =================================
 
-Description
------------
+## Description
+
 The DAREA card is used in conjunction with the RLOAD1, RLOAD2, TLOAD1, and
 TLOAD2 data cards and defines the point where the dynamic load is to be
 applied with the scale (area) factor A.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |DAREA   |  SID  |   P   |   C   |   A   |   P   |   C   |   A   |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |DAREA   |   3   |   6   |   2   |  8.2  |   15  |   1   |  10.1 |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -7199,8 +6578,8 @@ C         Component number (1 - 6 for grid point: blank or 0 for scalar
 
 A         Scale (area) factor A for the designated coordinate (Real).
 
-Remarks
--------
+## Remarks
+
 1.One or two scale factors may be defined on a single card.
 
 2.For axisymmetric problems, P represents the NASTRAN (or internal) grid ID
@@ -7211,22 +6590,18 @@ Remarks
 DAREAS - Dynamic Load Scale Factor, Substructure Analysis
 =========================================================
 
-Description
------------
+## Description
+
 The DAREAS card is used in conjunction with the RLOAD1, RLOAD2, TLOAD1, and
 TLOAD2 data cards and defines the point where the dynamic load is to be
 applied with the scale (area) factor A.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |DAREAS  |  SID  |  NAME |   P   |   C   |   A   |   P   |   C   |   A   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |DAREAS  |   3   |  SKIN |   6   |   2   |  8.2  |   15  |   1   |  10.1 |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -7241,32 +6616,29 @@ C         Component number (1 - 6 for grid point; blank or 0 for scalar
 
 A         Scale (area) factor A for the designated coordinate (Real).
 
-Remarks
--------
+## Remarks
+
 1.One or two scale factors may be defined on a single card.
 
 2.Used in substructure SOLVE operation.
 
 3.Points referenced must exist in the SOLVEd structure.
 
+
 DEFORM - Element Deformation
 ============================
 
-Description
------------
+## Description
+
 Defines enforced axial deformation for one-dimensional elements for use in
 statics problems.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |DEFORM  |  SID  |  EID  |   D   |  EID  |   D   |  EID  |   D   |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |DEFORM  |   1   |  535  |  .05  |  536  | -.10  |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -7276,8 +6648,8 @@ EID       Element number (Integer > 0).
 
 D         Deformation (+ = elongation) (Real).
 
-Remarks
--------
+## Remarks
+
 1.The referenced element must be one-dimensional (that is, a ROD (including
   CONROD), TUBE, or BAR).
 
@@ -7287,25 +6659,22 @@ Remarks
 3.From one to three enforced element deformations may be defined on a single
   card.
 
+
 DELAY - Dynamic Load Time Delay
 ===============================
 
-Description
------------
+## Description
+
 The DELAY card is used in conjunction with the RLOAD1, RLOAD2, TLOAD1 and
 TLOAD2 data cards and defines the time delay term ç in the equations of the
 loading function.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |DELAY   |  SID  |   P   |   C   |   T   |   P   |   C   |   T   |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |DELAY   |   5   |   21  |   6   |  4.25 |   7   |   6   |  8.1  |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -7318,29 +6687,26 @@ C         Component number (1 - 6 for grid point, blank or 0 for scalar
 
 T         Time delay ç for designated coordinate (Real).
 
-Remarks
--------
+## Remarks
+
 1.One or two dynamic load time delays may be defined on a single card.
+
 
 DELAYS - Dynamic Load Time Delay, Substructure Analysis
 =======================================================
 
-Description
------------
+## Description
+
 The DELAYS card is used in conjunction with the RLOAD1, RLOAD2, TLOAD1 and
 TLOAD2 data cards and defines the time delay term ç in the equations of the
 loading function.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |DELAYS  |  SID  |  NAME |   P   |   C   |   T   |   P   |   C   |   T   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |DELAYS  |   5   |  SKIN |   21  |   6   |  4.25 |   7   |   6   |  8.1  |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -7355,40 +6721,33 @@ C         Component number (1 - 6 for grid point, blank or 0 for scalar
 
 T         Time delay ç for designated coordinate (Real).
 
-Remarks
--------
+## Remarks
+
 1.One or two dynamic load time delays may be defined on a single card.
 
 2.Used in substructure SOLVE operation.
 
 3.Points referenced must exist in the SOLVEd structure.
 
+
 DLOAD - Dynamic Load Combination (Superposition)
 ================================================
 
-Description
------------
+## Description
+
 Defines a dynamic loading condition for frequency response or transient
 response problems as a linear combination of load sets defined via RLOAD1 or
 RLOAD2 cards (for frequency response) or TLOAD1 or TLOAD2 cards (for transient
 response).
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |DLOAD   |  SID  |   S   |  S1   |  L1   |  S2   |  L2   |  S3   |  L3   |+abc |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|DLOAD   |   17  |  1.0  |  2.0  |   6   | -2.0  |   7   |  2.0  |  8    |+A   |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+abc    |  S4   |  L4   |       | etc.  |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|DLOAD   |   17  |  1.0  |  2.0  |   6   | -2.0  |   7   |  2.0  |  8    |+A   |
 |+A      | -2.0  |  9    |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-                                etc. 
 
 Field     Contents
 -----     --------
@@ -7401,8 +6760,8 @@ Si        Scale factors (Real).
 Li        Load set identification numbers defined via card types enumerated
           above (Integer > 0).
 
-Remarks
--------
+## Remarks
+
 1.The load vector being defined by this card is given by
 
   {P}  =  S - Si{PLi}
@@ -7429,11 +6788,12 @@ Remarks
 
 9.SID must be unique for all TLOAD1, TLOAD2, RLOAD1, and RLOAD2 cards.
 
+
 DMI - Direct Matrix Input
 =========================
 
-Description
------------
+## Description
+
 Used to define matrix data blocks directly. Generates a matrix of the form
 
           +---                         ---+
@@ -7447,33 +6807,23 @@ Used to define matrix data blocks directly. Generates a matrix of the form
 where the elements Aij may be real or complex single-precision or double
 precision numbers.
 
-Format and Example
-------------------
+## Format and Example
 
 (The first logical card is a header card.)
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |DMI     | NAME  |  "0"  | FORM  |  TIN  | TOUT  |       |   M   |   N   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |DMI     |  QQQ  |   0   |   2   |   3   |   3   |       |   4   |   2   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+
+|   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |DMI     | NAME  |   J   |   I1  |A(I1,J)|       |       |  etc. |   I2  |+abc |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|DMI     |  QQQ  |   1   |   1   |  1.0  |  2.0  |  3.0  |  4.0  |   3   |+1   |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+abc    |A(I2,J)|       |  etc. |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|DMI     |  QQQ  |   1   |   1   |  1.0  |  2.0  |  3.0  |  4.0  |   3   |+1   |
 |+1      |  5.0  |  6.0  |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|        |       |       |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |DMI     |  QQQ  |   2   |   2   |  6.0  |  7.0  |   4   |  8.0  |  9.0  |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+
                    -etc. for each nonnull column-
 
 Field     Contents
@@ -7510,8 +6860,8 @@ I1, I2, etc.  Row number of A (Integer > 0).
 
 A(Ix,J)    Element of A (See TIN) (Real).
 
-Remarks
--------
+## Remarks
+
 1. You must write a DMAP (or make alterations to a rigid format) in order to
    use the DMI feature since he is defining a data block. All of the rules
    governing the use of data blocks in DMAP sequences apply. In the example
@@ -7556,39 +6906,33 @@ Remarks
    The THRU must follow an element value. In the example below, 3.14 will be
    in rows 3 through 6 of column 1 and 2.0 in row 9.
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |DMI     |  QQQ  |   0   |   2   |   1   |   1   |       |   9   |   1   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |DMI     |  QQQ  |   1   |   3   |  3.14 | THRU  |   6   |   9   |  2.0  |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+
 
 DMIAX - Direct Axisymmetric Matrix Input
 ========================================
 
-Description
------------
+## Description
+
 Defines axisymmetric (fluid or structure) related direct input matrix terms.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |DMIAX   | NAME  |  "0"  |  IFO  |  TIN  | TOUT  |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |DMIAX   | B2PP  |   0   |   1   |   3   |   4   |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+
+|   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |DMIAX   | NAME  |   GJ  |   CJ  |   NJ  |       |       |       |       |+abc |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|DMIAX   | B2PP  |   32  |       |       |       |       |       |       |+BG27|
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+abc    |   GI  |   CI  |   NI  |  Xij  |  Yij  |       |       |       |+def |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|DMIAX   | B2PP  |   32  |       |       |       |       |       |       |+BG27|
 |+BG27   | 1027  |   3   |       |4.35+6 |2.27+3 |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+
           -etc. for each column and row containing nonzero terms-
 
 Field      Contents
@@ -7626,8 +6970,8 @@ NJ, NI     Harmonic number of RINGFL point. Must be blank if a point type
 Xij, Yij   Real and imaginary parts of matrix element; row (GI, CI, NI)
            column (GJ, CJ, NJ).
 
-Remarks
--------
+## Remarks
+
 1. This card is allowed only if an AXIF card is also present.
 
 2. Matrices defined on this card may be used in dynamics by selection in the
@@ -7655,30 +6999,24 @@ Remarks
 DMIG - Direct Matrix Input at Grid Points
 =========================================
 
-Description
------------
+## Description
+
 Defines structure-related direct input matrices.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |DMIG    | NAME  |  "0"  |  IFO  |  TIN  | TOUT  |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |DMIG    | STIF  |   0   |   1   |   3   |   4   |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+
+|   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |DMIG    | NAME  |   GJ  |   CJ  |       |   GI  |   CI  |  Xij  |  Yij  |Xabc |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|DMIG    | STIF  |   27  |   1   |       |   2   |   3   | 3.+5  | 3.+3  |EKG1 |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+abc    |   GI  |   CI  |   Xij |  Yij  |  GI   |  CI   |  Xij  |  Yij  |Xcef |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|DMIG    | STIF  |   27  |   1   |       |   2   |   3   | 3.+5  | 3.+3  |EKG1 |
 |+KG1    |   2   |   4   | 2.5+10|   .0  |  50   |       |  1.0  |    0. |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+
               -etc. for each column containing nonzero terms-
 
 Field      Contents
@@ -7709,8 +7047,8 @@ CJ, CI     Component number for GJ a grid point (0 < CJ <= 6); blank or zero
 
 Xij, Yij   Real and imaginary parts of matrix element.
 
-Remarks
--------
+## Remarks
+
 1. Matrices defined on this card may be used in dynamics by selection in the
    Case Control Deck by K2PP=NAME, B2PP=NAME, or M2PP=NAME for [K2pp], [B2pp],
    or [M2pp], respectively.
@@ -7735,24 +7073,21 @@ Remarks
    FORCE, MATPOOL, PCDB, XYCDB, CASECC, and DTI names, and SCRATCH1 through
    SCRATCH9.
 
+
 DPHASE - Dynamic Load Phase Lead
 ================================
 
-Description
------------
+## Description
+
 The DPHASE card is used in conjunction with the RLOAD1 and RLOAD2 data cards
 to define the phase lead term é in the equation of the loading function.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |DPHASE  |  SID  |   P   |   C   |   TH  |   P   |   C   |   TH  |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |DPHASE  |   4   |   21  |   6   |  2.1  |   8   |   6   |  7.2  |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -7765,28 +7100,25 @@ C          Component number (1 - 6 for grid point, 0 or blank for scalar
 
 TH         Phase lead é (in degrees) for designated coordinate (Real).
 
-Remarks
--------
+## Remarks
+
 1. One or two dynamic load phase lead terms may be defined on a single card.
+
 
 DPHASES - Dynamic Load Phase Lead, Substructure Analysis
 ========================================================
 
-Description
------------
+## Description
+
 The DPHASES card is used in conjunction with the RLOAD1 and RLOAD2 data cards
 to define the phase lead term é in the equation of the loading function.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |DPHASES |  SID  | NAME  |   P   |   C   |   TH  |   P   |   C   |   TH  |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |DPHASES |   4   | SKIN  |   21  |   6   |  2.1  |   8   |   6   |  7.2  |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -7801,8 +7133,8 @@ C          Component number (1 - 6 for grid point, 0 or blank for scalar
 
 TH         Phase lead é (in degrees) for designated coordinate (Real).
 
-Remarks
--------
+## Remarks
+
 1. One or two dynamic load phase lead terms may be defined on a single card.
 
 2. Used in substructure SOLVE operation.
@@ -7812,21 +7144,17 @@ Remarks
 DSFACT - Differential Stiffness Factor
 ======================================
 
-Description
------------
+## Description
+
 Used to define a scale factor for applied loads and stiffness matrix in a
 Normal Modes with Differential Stiffness Analysis.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |DSFACT  |  SID  |   B   |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |DSFACT  |   97  |  -1.0 |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -7834,8 +7162,8 @@ SID        Set identification number (unique Integer > 0).
 
 B          Scale factor (Real).
 
-Remarks
--------
+## Remarks
+
 1. Load sets must be selected in the Case Control Deck (DSCO = SID) to be used
    by NASTRAN.
 
@@ -7843,39 +7171,26 @@ Remarks
 
 DTI - Direct Table Input
 
-Description
------------
+## Description
+
 Used to define table data blocks directly.
 
-Format and Example
-------------------
+## Format and Example
 
-(The first logical card is a header card.)
+The first logical card is a header card.
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |DTI     |  NAME |  "0"  |   T1  |   T2  |   T3  |   T4  |   T5  |   T6  |+00  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|DTI     |  XXX  |   0   |   3   |   4   |  4096 | 32768 |   1   |   0   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+00     |   V   |   V   |       | etc.  |ENDREC |       |       |       |+01  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|        |       |       |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-                                   etc. 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|DTI     |  XXX  |   0   |   3   |   4   |  4096 | 32768 |   1   |   0   |     |
+
+|   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |DTI     |  NAME |  IREC |   V   |   V   |   V   |   V   |   V   |   V   |+11  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|DTI     |  XXX  |   1   |  2.0  |  -6   |  ABC  | 6.0D0 |  -1   |   2   |+11  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+11     |   V   |   V   |   V   |   V   |  etc. |       |ENDREC |       |+12  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|DTI     |  XXX  |   1   |  2.0  |  -6   |  ABC  | 6.0D0 |  -1   |   2   |+11  |
 |+11     |   4   | -6.2  |  2.9  |   1   |  DEF  |  -1   |ENDREC |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-                                   etc. 
 
 Field      Contents
 -----      --------
@@ -7893,8 +7208,8 @@ V          Value (blank, integer, real, BCD (except ENDREC), double
 ENDREC     The BCD value ENDREC which flags the end of the string of values
            that constitute logical record IREC.
 
-Remarks
--------
+## Remarks
+
 1. Records may be made as long as desired via continuation cards.
 
 2. Values may be of any type (blank, integer, real, BCD, double precision)
@@ -7920,28 +7235,22 @@ Remarks
    FORCE, MATPOOL, PCDB, XYCDB, CASECC, any DTI names, and SCRATCH1 through
    SCRATCH9.
 
+
 EIGB - Buckling Analysis Data
 =============================
 
-Description
------------
+## Description
+
 Defines data needed to perform buckling analysis.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |EIGB    |  SID  |METHOD |   L1  |   L2  |  NEP  |  NDP  |  NDN  |   E   |+abc |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|EIGB    |   13  | DET   |  0.1  |  2.5  |   2   |   1   |   1   |  0.0  |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+abc    | NORM  |   G   |   C   |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|EIGB    |   13  | DET   |  0.1  |  2.5  |   2   |   1   |   1   |  0.0  |ABC  |
 |+BC     |  MAX  |       |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -7986,8 +7295,8 @@ G          Grid or scalar point identification number (Integer > 0) (required
 C          Component number (one of the integers 1 - 6) (required if and only
            if NORM = POINT and G is a geometric grid point.)
 
-Remarks
--------
+## Remarks
+
 1. Buckling analysis root extraction data sets must be selected in the Case
    Control Deck (METHOD = SID) to be used by NASTRAN.
 
@@ -8010,11 +7319,12 @@ Remarks
 
 7. If NORM = POINT, the selected component must be in the analysis set.
 
+
 EIGC - Complex Eigenvalue Extraction Data
 =========================================
 
-Description
------------
+## Description
+
 Defines data needed to perform complex eigenvalue analysis.
 
                                           /
@@ -8039,26 +7349,16 @@ Defines data needed to perform complex eigenvalue analysis.
 
                           Figure 2.4-42. EIGC diagram
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |EIGC    |  SID  |METHOD |  NORM |   G   |   C   |   E   |       |       |+abc |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|EIGC    |   14  | DET   |  POINT|   27  |       | 1.-8  |       |       |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+abc    | +a1   | wa1   | +b1   | wb1   | l1    | Ne1   | Nd1   |       |+def |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|+BC     | 2.0   | 5.6   | 2.0   | -3.4  | 2.0   |  4    |  4    |       |DEF  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+def    | +a2   | wa2   | +b2   | wb2   | l2    | Ne2   | Nd2   |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|EIGC    |   14  | DET   |  POINT|   27  |       | 1.-8  |       |       |ABC  |
+|+BC     | 2.0   | 5.6   | 2.0   | -3.4  | 2.0   |  4    |  4    |       |DEF  |
 |+EF     | -5.5  | -5.5  |  5.6  |  5.6  |  1.5  |  6    |  3    |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -8109,8 +7409,8 @@ Ndj        Desired number of roots in each region (default is 3Nej) (Integer
            > 0) Desired number of accurate roots for METHOD = FEER (default
            is 1).
 
-Remarks
--------
+## Remarks
+
 1. Each continuation card defines a rectangular search region. For METHOD =
    FEER, the card defines a circular search region, centered at (+aj, waj) and
    of sufficient radius to encompass Ndj roots. Any number of regions may be
@@ -8157,23 +7457,20 @@ Remarks
 
 10.   The default of NORM is MAX.
 
+
 EIGP - Poles in Complex Plane
 =============================
 
-Description
------------
+## Description
+
 Defines poles that are used in complex eigenvalue extraction.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |EIGP    |  SID  |   +   |   w   |   M   |   +   |   w   |   M   |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |EIGP    |   15  | -5.2  |  0.0  |   2   |  6.3  |  5.5  |   3   |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -8184,8 +7481,8 @@ SID       Set identification number (Integer > 0).
 M         Multiplicity of complex root at pole defined by (+,w) (Integer >
           0).
 
-Remarks
--------
+## Remarks
+
 1.Defines poles in complex plane that are used with associated EIGC card
   having same set number.
 
@@ -8195,28 +7492,22 @@ Remarks
 
 4.One or two poles may be defined on a single card.
 
+
 EIGR - Real Eigenvalue Extraction Data
 ======================================
 
-Description
------------
+## Description
+
 Defines data needed to perform real eigenvalue analysis.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |EIGR    |  SID  |METHOD |   F1  |   F2  |  NE   |  ND   |  NZ   |   E   |+abc |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|EIGR    |   13  | DET   |  1.9  | 15.6  |  10   |  12   |   0   |  1.-3 |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+abc    | NORM  |   G   |   C   |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|EIGR    |   13  | DET   |  1.9  | 15.6  |  10   |  12   |   0   |  1.-3 |ABC  |
 |+BC     | POINT |   32  |   4   |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -8290,8 +7581,8 @@ G         Grid or scalar point identification number (Required if and only
 C         Component number (One of the integers 1 - 6) (Required if and only
           if NORM=POINT and G is a geometric grid point).
 
-Remarks
--------
+## Remarks
+
 1.Real eigenvalue extraction data sets must be selected in the Case Control
   Deck (METHOD = SID) to be used by NASTRAN.
 
@@ -8344,42 +7635,34 @@ Remarks
      FEER-Q request would yield much better rigid body eigenvalues, but it
      may take two to three times longer to compute than FEER or FEER-X.
 
+
 ENDDATA - End of Bulk Data
 ==========================
 
-Description
------------
+## Description
+
 Defines the end of the Bulk Data Deck.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |ENDDATA |       |       |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|ENDDATA |       |       |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 First Alternate Form:
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |ENDATA  |       |       |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|ENDATA  |       |       |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Second Alternate Form:
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |END DATA|       |       |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|END DATA|       |       |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
-Remarks
--------
+## Remarks
+
 1.This card is required even if no physical data cards exist in the deck.
 
 2.ENDDATA may begin in column 1 or 2. If the first alternate form is used,
@@ -8393,39 +7676,34 @@ Remarks
   module data follows or when the UMF card FINIS follows or when multiple job
   steps occur within the same job submittal on the CDC computer.
 
+
 EPOINT - Extra Point
 ====================
 
-Description
------------
+## Description
+
 Defines extra points of the structural model for use in dynamics problems.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |EPOINT  |   ID  |   ID  |   ID  |   ID  |   ID  |   ID  |   ID  |   ID  |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |EPOINT  |   3   |   18  |   1   |   4   |   16  |   2   |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
-Alternate Form:
----------------
+## Alternate Form
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |EPOINT  |  ID1  | "THRU"|  ID2  |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |EPOINT  |  17   |  THRU |   43  |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
 ID, ID1, ID2  Extra point identification number (Integer > 0; ID1 < ID2).
 
-Remarks
--------
+## Remarks
+
 1.All extra point identification numbers must be unique with respect to all
   other structural, scalar, and fluid points.
 
@@ -8434,38 +7712,30 @@ Remarks
 
 3.If the alternate form is used, extra points ID1 through ID2 are defined.
 
+
 FLFACT - Aerodynamic Physical Data
 ==================================
 
-Description
------------
+## Description
+
 Used to specify densities, Mach numbers, or interblade phase angles, and
 reduced frequencies for flutter analysis.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |FLFACT  |  SID  |   F1  |   F2  |   F3  |   F4  |   F5  |   F6  |   F7  |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|FLFACT  |   97  |   .3  |   .7  |   3.5 |       |       |       |       |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+BC     |   F8  |   F9  | etc.  |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|        |       |       |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|FLFACT  |   97  |   .3  |   .7  |   3.5 |       |       |       |       |abc  |
 
-Alternate Form:
----------------
+## Alternate Form
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+
+|   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |FLFACT  |  SID  |   F1  |  THRU |  FNF  |   NF  |  FMID |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |FLFACT  |  201  |  .200 |  THRU |  .100 |   11  |.133333|       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -8473,8 +7743,8 @@ SID       Set identification number (unique Integer > 0).
 
 Fi        Aerodynamic factor (Real).
 
-Remarks
--------
+## Remarks
+
 1.These factors must be selected by a FLUTTER data card to be used by
   NASTRAN.
 
@@ -8494,24 +7764,22 @@ Remarks
   factors. Fmid = 2F1FNF/(F1+FNF) gives equal values to increments of the
   reciprocal of F1.
 
+
 FLSYM - Axisymmetric Symmetry Control
 =====================================
 
-Description
------------
+## Description
+
 Defines the relationship between the axisymmetric fluid and a structural
 boundary having symmetric constraints. The purpose is to allow fluid boundary
 matrices to conform to structural symmetry definitions.
 
-Format and Example
-------------------
+## Format and Example
 
-    1        2       3       4       5       6       7       8       9     10
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |FLSYM   |   M   |   S1  |   S2  |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |FLSYM   |   12  |   S   |   A   |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -8523,8 +7791,8 @@ S1, S2    Description of boundary constraints used on structure at first and
           second planes of symmetry. (BCD: S for symmetric, A for
           antisymmetric).
 
-Remarks
--------
+## Remarks
+
 1.This card is allowed only if an AXIF card is also present.
 
 2.Only one (1) FLSYM card is allowed.
@@ -8546,23 +7814,20 @@ If a quarter section of structure is used to model the boundary, M = 4. If the
 boundary constraints are S-S, the compatible cosine harmonics are:  0, 2, 4,
 etc. If S-A is used the compatible cosine harmonics are 1, 3, 5, ..., etc.
 
+
 FLUTTER - Aerodynamic Flutter Data
 ==================================
 
-Description
------------
+## Description
+
 Defines data needed to perform flutter analysis.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |FLUTTER |  SID  |METHOD | DENS  |  MACH | RFREQ | IMETH |NVALUE |  EPS  |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |FLUTTER |   19  |  K    |  119  |   219 |  319  |   S   |   5   |  1.-4 |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -8590,8 +7855,8 @@ NVALUE      Number of eigenvalues for output and plots (Integer > 0).
 EPS         Convergence parameter for k; used in the P-K method (Real)
             (default = 10**(-3)).
 
-Remarks
--------
+## Remarks
+
 1. The FLUTTER data card must be selected in Case Control Deck (FMETHOD =
    SID).
 
@@ -8603,26 +7868,23 @@ Remarks
 
 4. An eigenvalue is accepted in the P-K method when | k - kestimate | < EPS.
 
+
 FORCE - Static Load
 ===================
 
-Description
------------
+## Description
+
 Defines a static load at a grid point by specifying a vector.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |FORCE   |  SID  |   G   |  CID  |   F   |   N1  |   N2  |   N3  |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |FORCE   |   2   |   5   |   6   |  2.9  |  0.0  |  1.0  |  0.0  |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field       Contents
-
+-----       --------
 SID         Load set identification number (Integer > 0).
 
 G           Grid point identification number (Integer > 0).
@@ -8634,8 +7896,8 @@ F           Scale factor (Real).
 N1, N2, N3  Components of vector measured in coordinate system defined by CID
             (Real; N1**2 + N2**2 + N3**2 > 0.0).
 
-Remarks
--------
+## Remarks
+
 1. The static load applied to grid point G is given by
 
    ->      ->
@@ -8650,21 +7912,17 @@ Remarks
 
 FORCE1 - Static Load
 
-Description
------------
+## Description
+
 Used to define a static load by specification of a value and two grid points
 which determine the direction.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |FORCE1  |  SID  |   G   |   F   |   G1  |   G2  |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |FORCE1  |   6   |   13  | -2.93 |   16  |   13  |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field       Contents.
 
@@ -8676,34 +7934,31 @@ F           Value of load (Real).
 
 G1, G2      Grid point identification numbers (Integer > 0; G1 not equal G2).
 
-Remarks
--------
+## Remarks
+
 1. The direction of the force is determined by the vector from G1 to G2.
 
 2. Load sets must be selected in the Case Control Deck (LOAD = SID) to be used
    by NASTRAN.
 
+
 FORCE2 - Static Load
 ====================
 
-Description
------------
+## Description
+
 Used to define a static load by specification of a value and four grid points
 which determine the direction.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |FORCE2  |  SID  |   G   |   F   |   G1  |   G2  |   G3  |   G4  |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |FORCE2  |   6   |   13  | -2.93 |   16  |   13  |   17  |   13  |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field       Contents
-
+-----       --------
 SID         Load set identification number (Integer > 0).
 
 G           Grid point identification number (Integer > 0).
@@ -8713,35 +7968,32 @@ F           Value of load (Real).
 G1,...,G4   Grid point identification numbers (Integer > 0; G1 through G4 must
             be unique).
 
-Remarks
--------
+## Remarks
+
 1. The direction of the force is determined by the vector product whose
    factors are vectors from G1 to G2 and G3 to G4 respectively.
 
 2. Load sets must be selected in the Case Control Deck (LOAD = SID) to be used
    by NASTRAN.
 
+
 FORCEAX - Axisymmetric Static Load
 ==================================
 
-Description
------------
+## Description
+
 Defines a static loading for a model containing CCONEAX, CTRAPAX, or CTRIAAX
 elements.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |FORCEAX |  SID  |  RID  |  HID  |   S   |   FR  |   FP  |   FZ  |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |FORCEAX |   1   |   2   |   3   |  2.0  |  0.1  |  0.2  |  0.3  |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field       Contents
-
+-----       --------
 SID         Load set identification number (Integer > 0).
 
 RID         Ring identification number (see RINGAX) (Integer > 0).
@@ -8753,8 +8005,8 @@ S           Scale factor for load (Real).
 
 FR, FP, FZ  Load components in r, í, z directions (Real).
 
-Remarks
--------
+## Remarks
+
 1. This card is allowed if and only if an AXIC card is also present.
 
 2. Axisymmetric loads must be selected in the Case Control Deck (LOAD = SID)
@@ -8773,27 +8025,24 @@ Remarks
 6. For a discussion of the axisymmetric solid problem see Section 5.11 of the
    Theoretical Manual.
 
+
 FREEPT - Fluid Free Surface Point
 =================================
 
-Description
------------
+## Description
+
 Defines the location of points on the surface of a fluid for recovery of
 surface displacements in a gravity field.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
-|FREEPT  |  IDF  |       |  IDP  |   í   |  IDP  |   í   |  IDP  |   í   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
+|FREEPT  |  IDF  |       |  IDP  |  í   |  IDP  |  í   |  IDP  |  í   |     |
 |FREEPT  |   3   |       |  301  | 22.5  |  302  | 90.0  |  303  | 370.0 |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field       Contents
-
+-----       --------
 IDF         Fluid point (RINGFL) identification number (Integer > 0).
 
 IDP         Free surface point identification number (Integer > 0).
@@ -8801,8 +8050,8 @@ IDP         Free surface point identification number (Integer > 0).
 í           Azimuthal position of FREEPT on fluid point (RINGFL), in fluid
             coordinate system (Real).
 
-Remarks
--------
+## Remarks
+
 1. This card is allowed only if an AXIF card is also present.
 
 2. All free surface point identification numbers must be unique with respect
@@ -8818,30 +8067,23 @@ Remarks
 
 6. Output requests for velocity and acceleration can be made at these points.
 
+
 FREQ - Frequency List
 =====================
 
-Description
------------
+## Description
+
 Defines a set of frequencies to be used in the solution of frequency response
 problems.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |FREQ    |  SID  |   F   |   F   |   F   |   F   |   F   |   F   |   F   |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|FREQ    |   3   | 2.98  | 3.05  | 17.9  | 21.3  | 25.6  | 28.8  | 31.2  |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     |   F   |   F   |   F   |   F   |   F   |   F   |   F   |   F   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|FREQ    |   3   | 2.98  | 3.05  | 17.9  | 21.3  | 25.6  | 28.8  | 31.2  |ABC  |
 |+BC     | 29.2  | 22.4  | 19.3  |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-                                     etc. 
 
 Field       Contents
 
@@ -8849,8 +8091,8 @@ SID         Frequency set identification number (Integer > 0).
 
 F           Frequency value (Real > 0.0).
 
-Remarks
--------
+## Remarks
+
 1. The units for the frequencies are cycles per unit time.
 
 2. Frequency sets must be selected in the Case Control Deck (FREQ = SID) to be
@@ -8859,25 +8101,22 @@ Remarks
 3. All FREQ, FREQ1, and FREQ2 cards must have unique frequency set
    identification numbers.
 
+
 FREQ1 - Frequency List
 ======================
 
-Description
------------
+## Description
+
 Defines a set of frequencies to be used in the solution of frequency response
 problems by specification of a starting frequency, frequency increment, and
 number of increments desired.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |FREQ1   |  SID  |   F1  |   DF  |  NDF  |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |FREQ1   |   6   |  2.9  |  0.5  |   13  |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field       Contents
 
@@ -8889,8 +8128,8 @@ DF          Frequency increment (Real > 0.0).
 
 NDF         Number of frequency increments (Integer > 0).
 
-Remarks
--------
+## Remarks
+
 1. The units for the frequency F1 and the frequency increment DF are cycles
    per unit time.
 
@@ -8905,25 +8144,22 @@ Remarks
 4. All FREQ, FREQ1, and FREQ2 cards must have unique frequency set
    identification numbers.
 
+
 FREQ2 - Frequency List
 ======================
 
-Description
------------
+## Description
+
 Defines a set of frequencies to be used in the solution of frequency response
 problems by specification of a starting frequency, final frequency, and number
 of logarithmic increments desired.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |FREQ2   |  SID  |   F1  |   F2  |   NF  |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |FREQ2   |   6   |  1.0  |  1.E5 |   5   |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field       Contents
 
@@ -8935,8 +8171,8 @@ F2          Last frequency (Real > 0.0; F2 > F1).
 
 NF          Number of logarithmic intervals (Integer > 0).
 
-Remarks
--------
+## Remarks
+
 1. The units for the frequencies F1 and F2 are cycles per unit time.
 
 2. The frequencies defined by this card are given by
@@ -8959,29 +8195,22 @@ Remarks
 4. All FREQ, FREQ1, and FREQ2 cards must have unique frequency set
    identification numbers.
 
+
 FSLIST - Free Surface List
 ==========================
 
-Description
------------
+## Description
+
 Declares the fluid points (RINGFL) which lie on a free surface boundary.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |FSLIST  |  RHO  |  IDF1 |  IDF2 |  IDF3 |  IDF4 |  IDF5 |  IDF6 |  IDF7 |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|FSLIST  | 1.0-4 |   1   |   3   |   5   |   4   |   2   |   7   |   6   |+12FS|
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     |  IDF8 |  IDF9 |  etc. |       |       |       |       |       |def  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|FSLIST  | 1.0-4 |   1   |   3   |   5   |   4   |   2   |   7   |   6   |+12FS|
 |+12FS   |   8   |   9   |  10   |  11   | AXIS  |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-                                     etc. 
 
 Field       Contents
 
@@ -8991,8 +8220,8 @@ RHO         Mass density at the surface (Real > 0.0 or blank; if blank the
 IDFi        Identification number of RINGFL point (Integer > 0 or BCD "AXIS".
             The first and/or last entry may be AXIS).
 
-Remarks
--------
+## Remarks
+
 1. This card is allowed only if an AXIF card is also present.
 
 2. Each logical card defines a surface. The order of the points must be
@@ -9006,28 +8235,22 @@ Remarks
    along the boundary there must be one FSLIST card for each interval between
    fluid points.
 
+
 GEMLOOP - General Current Loop
 ==============================
 
-Description
------------
+## Description
+
 Defines a general current loop in magnetic field problems.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |GEMLOOP |  SID  |   I   |  CID  |  X1   |  Y1   |  Z1   |  X2   |  Y2   |+a   |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|GEMLOOP |   5   |  5.2  |   0   |  8.1  | 10.2  |  3.5  | 12.5  |  9.1  |+A   |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+a      |  Z2   |  X3   |  Y3   |  Z3   |       |       |       |       |+b   |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|GEMLOOP |   5   |  5.2  |   0   |  8.1  | 10.2  |  3.5  | 12.5  |  9.1  |+A   |
 |+A      |  1.3  | ENDT  |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field       Contents
 
@@ -9040,8 +8263,8 @@ CID         Coordinate system identification number (Integer > 0 or blank).
 Xi, Yi, Zi  Coordinates of points defining linear sections of coil in
             coordinate system CID (Real).
 
-Remarks
--------
+## Remarks
+
 1. Load sets must be selected in the Case Control Deck (LOAD = SID) to be used
    by NASTRAN.
 
@@ -9056,10 +8279,11 @@ Remarks
 
 6. CID must presently be 0 or blank.
 
-GENEL - General Element
 
-Description
------------
+# GENEL - General Element
+
+## Description
+
 Defines a general element using either of two approaches as follows.
 
    1. The stiffness approach:
@@ -9117,9 +8341,8 @@ Format
 
 (An example is given following.)
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |GENEL   |  EID  |       |  UI1  |  CI1  |  UI2  |  CI2  |  UI3  |  CI3  | X1  |
 +--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |  +1    |  UI4  |  CI4  |  UI5  |  CI5  |  UI6  |  CI6  |  UI7  |  CI7  | X2  |
@@ -9152,7 +8375,7 @@ Format
 +--------+---------------------------------------------------------------+-----+
 
 Field       Contents
-
+-----       --------
 EID         Unique element identification number, a positive integer.
 
 UI1, CI1 etc.; UD1, ED1, etc.  Identification numbers of coordinates in the UI
@@ -9170,8 +8393,8 @@ Sij         Values of the [S] matrix ordered by rows, according to the UD
 UD, K, Z, S BCD data words which indicate the start of data belonging to UD,
             [K], [Z], or [S].
 
-Remarks
--------
+## Remarks
+
 1. When the stiffness matrix, K, is input, the number of significant digits
    should be the same for all terms.
 
@@ -9204,42 +8427,31 @@ points.
 
 The data cards necessary to input this general element are shown below:
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |GENEL   |  629  |       |   1   |   1   |   13  |   4   |   42  |   0   | X1  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |  +1    |   24  |   2   |       |       |       |       |       |       | X2  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |  +2    |   UD  |       |   6   |   2   |   33  |   0   |       |       | X3  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |  +3    |   K   |  1.0  |  2.0  |  3.0  |  4.0  |  5.0  |  6.0  |  7.0  | X4  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |  +4    |  8.0  |  9.0  |  0.0  |       |       |       |       |       | X5  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |  +5    |   S   |  1.5  |  2.5  |  3.5  |  4.5  |  5.5  |  6.5  |  7.5  | X6  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |  +6    |  8.5  |       |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+
 
 GRAV - Gravity Vector
 =====================
 
-Description
------------
+## Description
+
 Used to define gravity vectors for use in determining gravity loading for the
 structural model.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |GRAV    |  SID  |  CID  |   G   |   N1  |   N2  |   N3  |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |GRAV    |   1   |   3   |  32.2 |  0.0  |  0.0  | -1.0  |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field       Contents
 -----       --------
@@ -9251,8 +8463,8 @@ G           Gravity vector scale factor (Real).
 
 N1, N2, N3  Gravity vector components (Real; N1**2 + N2**2 + N3**2 > 0.0).
 
-Remarks
--------
+## Remarks
+
 1. The gravity vector is defined by
 
    ->
@@ -9267,23 +8479,20 @@ Remarks
 4. Load sets must be selected in the Case Control Deck (LOAD = SID) to be used
    by NASTRAN.
 
+
 GRDSET - Grid Point Default
 ===========================
 
-Description
------------
+## Description
+
 Defines default options for fields 3, 7, and 8 of all GRID cards.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |GRDSET  |       |   CP  |       |       |       |   CD  |   PS  |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |GRDSET  |       |   16  |       |       |       |   32  |  3456 |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field       Contents
 -----       --------
@@ -9296,8 +8505,8 @@ CD          Identification number of default coordinate system in which
 PS          Permanent single-point constraints associated with grid point (any
             of the digits 1 - 6 with no imbedded blanks) (Integer >= 0).
 
-Remarks
--------
+## Remarks
+
 1. The contents of fields 3, 7, or 8 of this card are assumed for the
    corresponding fields of any GRID card whose fields 3, 7, and 8 are blank.
    If any of these fields on the GRID card are blank, the default option
@@ -9313,23 +8522,21 @@ Remarks
 
 3. At least one of the entries CP, CD, or PS must be nonzero.
 
+
 GRID - Grid Point
 =================
 
-Description
------------
+## Description
+
 Defines the location of a geometric grid point of the structural model, the
 directions of its displacement, and its permanent single-point constraints.
 
-Format and Example
-------------------
+## Format and Example
 
-    1        2       3       4       5       6       7       8       9     10
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |GRID    |   ID  |   CP  |   X1  |   X2  |   X3  |   CD  |   PS  |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |GRID    |   2   |   3   |  1.0  |  2.0  |  3.0  |       |  316  |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field       Contents
 -----       --------
@@ -9351,8 +8558,8 @@ PS          Permanent single-point constraints associated with grid point (any
             blank). (See the GRDSET card for default options for fields 3, 7,
             and 8.)
 
-Remarks
--------
+## Remarks
+
 1. Each grid point identification number must be unique with respect to all
    other structural, scalar, and fluid points.
 
@@ -9371,25 +8578,22 @@ Remarks
    called the global coordinate system. All degrees-of-freedom, constraints,
    and solution vectors are expressed in the global coordinate system.
 
+
 GRIDB - Axisymmetric Problem Grid Point
 =======================================
 
-Description
------------
+## Description
+
 Defines the location of a geometric grid point on a RINGFL for an axisymmetric
 fluid model and/or axisymmetric structure. Used to define the boundary of the
 fluid.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
-|GRIDB   |   ID  |       |       |   í   |       |   CD  |   PS  |  IDF  |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
+|GRIDB   |   ID  |       |       |  í   |       |   CD  |   PS  |  IDF  |     |
 |GRIDB   |   30  |       |       |  30.0 |       |   3   |  345  |   20  |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field       Contents
 -----       --------
@@ -9406,8 +8610,8 @@ PS          Permanent single-point constraints associated with the grid point
 
 IDF         Identification number of a RINGFL (Integer > 0).
 
-Remarks
--------
+## Remarks
+
 1. This card is allowed only if an AXIF card is also present.
 
 2. Each GRIDB identification number must be unique with respect to other
@@ -9430,23 +8634,20 @@ Remarks
 8. The referenced RINGFL point must be included in a boundary list (BDYLIST
    data card).
 
+
 GRIDF - Fluid Point
 ===================
 
-Description
------------
+## Description
+
 Defines a scalar degree of freedom for harmonic analysis of a fluid.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |GRIDF   |   ID  |   R   |   Z   |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |GRIDF   |   23  |  2.5  | -7.3  |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field       Contents
 
@@ -9456,8 +8657,8 @@ R           Radial location of point in basic coordinate system (Real > 0.0).
 
 Z           Axial location of point in basic coordinate system (Real).
 
-Remarks
--------
+## Remarks
+
 1. This card is allowed only if an AXSLOT card is also present.
 
 2. The identification number (ID) must be unique with respect to all other
@@ -9474,24 +8675,21 @@ Remarks
    point. Positive loads correspond to inward flow and a single point
    constraint causes zero pressure at the point.
 
+
 GRIDS - Slot Surface Point
 ==========================
 
-Description
------------
+## Description
+
 Defines a scalar degree of freedom with a two dimensional location. Used in
 defining pressure in slotted acoustic cavities.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |GRIDS   |   ID  |   R   |   Z   |   W   |  IDF  |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |GRIDS   |   25  |  2.5  | -7.3  |  0.5  |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field       Contents
 
@@ -9508,8 +8706,8 @@ W           Slot width or thickness at the GRIDS point (Real >= 0.0, or
 IDF         Identification number to define a GRIDF point (Integer > 0, or
             blank).
 
-Remarks
--------
+## Remarks
+
 1. This card is allowed only if an AXSLOT card is also present.
 
 2. The identification numbers (ID and IDF if present) must be unique with
@@ -9533,24 +8731,21 @@ Remarks
    point. Positive loads correspond to inward flow and a single point
    constraint causes zero pressure at the point.
 
+
 GTRAN - Grid Point Transformation
 =================================
 
-Description
------------
+## Description
+
 This card defines the output coordinate system transformation to be applied to
 the displacement set of a selected grid point.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |GTRAN   |  SID  |  NAME |  GID  |  TRAN |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |GTRAN   |   44  | GIMBAL| 1067  |   45  |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field       Contents
 
@@ -9562,8 +8757,8 @@ GID         Grid point identification (Integer > 0).
 
 TRAN        Identification number of a TRANS bulk data card (Integer >= 0).
 
-Remarks
--------
+## Remarks
+
 1. If TRAN = 0, the displacement set at the grid point will be transformed to
    the overall basic coordinate system.
 
@@ -9581,23 +8776,20 @@ Remarks
    that they are defined in terms of this revamped displacement coordinate
    system.
 
+
 GUST - Aerodynamic Gust Load Description
 ========================================
 
-Description
------------
+## Description
+
 Defines a stationary vertical gust for use in aeroelastic analysis.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |GUST    |  SID  | DLOAD |  WG   |  X0   |   V   |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |GUST    |  133  |   61  | 1.0   |   0.  |  1.+4 |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field       Contents
 -----       --------
@@ -9614,8 +8806,8 @@ X0          Location of reference plane in aerodynamic coordinates (Real >=
 
 V           Velocity of vehicle (Real > 0.0).
 
-Remarks
--------
+## Remarks
+
 1. The GUST card is selected in Case Control by GUST = SID.
 
 2. The gust angle is in the +z direction of the aerodynamic coordinate system.
@@ -9633,34 +8825,26 @@ Remarks
 
 4. X0 and V may not change between subcases under one execution.
 
+
 LOAD - Static Load Combination (Superposition)
 ==============================================
 
-Description
------------
+## Description
+
 Defines a static load as a linear combination of load sets defined via FORCE,
 MOMENT, FORCE1, MOMENT1, FORCE2, MOMENT2, PLOAD, PLOAD2, PLOAD3, FORCEAX,
 PRESAX, MOMAX, SLOAD, RFORCE, and GRAV cards.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |LOAD    |  SID  |   S   |   S1  |   L1  |   S2  |   L2  |   S3  |   L3  |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|LOAD    |  101  | -0.5  |  1.0  |   3   |  6.2  |   4   |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     |   S4  |   L4  |       | etc.  |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|        |       |       |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-                                     etc. 
+|LOAD    |  101  | -0.5  |  1.0  |   3   |  6.2  |   4   |       |       |     |
 
 Field       Contents
-
+-----       --------
 SID         Load set identification number (Integer > 0).
 
 S           Scale factor (Real).
@@ -9670,8 +8854,8 @@ Si          Scale factors (Real).
 Li          Load set identification numbers defined via card types enumerated
             above (Integer > 0).
 
-Remarks
--------
+## Remarks
+
 1. The load vector defined is given by
 
    {P}  =  S - S  {P  }
@@ -9693,32 +8877,26 @@ Remarks
 6. A LOAD card may not reference a set identification number defined by
    another LOAD card.
 
+
 LOADC - Substructure Static Loading Combination
 ===============================================
 
-Description
------------
+## Description
+
 Defines the static load for a substructuring analysis as a linear combination
 of load sets defined for each basic substructure.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |LOADC   |  SID  |   S   | NAME1 |  ID1  |   S1  | NAME2 |  ID2  |   S2  |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|LOADC   |   27  |  1.0  | WINGRT|   5   |  0.5  |FUSELAG|  966  |  2.5  |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     |       |       | NAME3 |  ID3  |   S3  | NAME4 |  ID4  |   S4  |def  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|LOADC   |   27  |  1.0  | WINGRT|   5   |  0.5  |FUSELAG|  966  |  2.5  |ABC  |
 |+BC     |       |       | MIDWG |   27  |  1.75 |       etc.    |       |     |
-+--------+-------+-------+-------+-------+-------+---------------+-------+-----+
 
 Field       Contents
-
+-----       --------
 SID         Load set identification number (Integer > 0).
 
 S           Scale factor applied to final load vector (Real).
@@ -9730,8 +8908,8 @@ IDi         Load set identification number of substructure NAMEi (Integer >
 
 Si          Scale factor (Real).
 
-Remarks
--------
+## Remarks
+
 1. The load vector is combined by:
 
    {P}  =  S - Si {P}
@@ -9749,32 +8927,26 @@ Remarks
 5. Load sets must be selected in the Case Control Deck (LOAD = SID) to be used
    by NASTRAN.
 
+
 MAT1 - Material Property Definition
 ===================================
 
-Description
------------
+## Description
+
 Defines the material properties for linear, temperature-independent, isotropic
 materials.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |MAT1    |  MID  |   E   |   G   |   NU  |  RHO  |   A   |  TREF |   GE  |+abc |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|MAT1    |   17  | 3.+7  | 1.9+7 |       | 4.28  | 0.19  | 5.37+2|  0.23 |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+abc    |   ST  |   SC  |   SS  | MCSID |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|MAT1    |   17  | 3.+7  | 1.9+7 |       | 4.28  | 0.19  | 5.37+2|  0.23 |ABC  |
 |+BC     | 20.+4 | 15.+4 | 12.+4 | 2004  |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field       Contents
-
+-----       --------
 MID         Material identification number (Integer > 0).
 
 E           Young's modulus (Real >= 0.0 or blank).
@@ -9798,8 +8970,8 @@ ST, SC, SS  Stress limits for tension, compression, and shear (Real) (Required
 MCSID       Material coordinate system identification number (Integer >= 0 or
             blank).
 
-Remarks
--------
+## Remarks
+
 1. One of E or G must be positive (that is, either E > 0.0 or G > 0.0 or both
    E and G may be > 0.0).
 
@@ -9832,34 +9004,25 @@ Remarks
       computed in a material coordinate system. This is applicable only for
       TRIA1, TRIA2, QUAD1, and QUAD2 elements.
 
+
 MAT2 - Material Property Definition
 ===================================
 
-Description
------------
+## Description
+
 Defines the material properties for linear, temperature-independent,
 anisotropic materials.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |MAT2    |  MID  |  G11  |  G12  |  G13  |  G22  |  G23  |  G33  |  RHO  |+abc |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|MAT2    |   13  | 6.2+3 |       |       | 6.2+3 |       | 5.1+3 | 0.056 |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+abc    |   A1  |   A2  |  A12  |   T0  |   GE  |   ST  |   SC  |   SS  |+def |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|+BC     | 0.15  |       |       |-500.0 | 0.002 | 20.+5 |       |       |DEF  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+def    | MCSID |       |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|MAT2    |   13  | 6.2+3 |       |       | 6.2+3 |       | 5.1+3 | 0.056 |ABC  |
+|+BC     | 0.15  |       |       |-500.0 | 0.002 | 20.+5 |       |       |DEF  |
 |+BC     |  1008 |       |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field       Contents
 
@@ -9882,8 +9045,8 @@ ST, SC, SS  Stress limits for tension, compression, and shear (Real). (Used
 MCSID       Material coordinate system identification number (Integer >= 0 or
             blank).
 
-Remarks
--------
+## Remarks
+
 1. The material identification numbers must be unique for all MAT1, MAT2, and
    MAT3 cards.
 
@@ -9908,29 +9071,23 @@ Remarks
    computed in a material coordinate system. This is applicable only for
    TRIA1, TRIA2, QUAD1, and QUAD2 elements.
 
+
 MAT3 - Material Property Definition
 ===================================
 
-Description
------------
+## Description
+
 Defines the material properties for linear, temperature-independent,
 orthotropic materials.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |MAT3    |  MID  |   EX  |   EY  |   EZ  |  NUXY |  NUYZ |  NUZX |  RHO  |+abc |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|MAT3    |   23  | 1.0+7 | 1.1+7 | 1.2+7 |   .3  |  .25  |  .27  | 1.0-5 |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+abc    |  GXY  |  GYZ  |  GZX  |   AX  |   AY  |   AZ  |  TREF |   GE  |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|MAT3    |   23  | 1.0+7 | 1.1+7 | 1.2+7 |   .3  |  .25  |  .27  | 1.0-5 |ABC  |
 |+BC     | 2.5+6 | 3.0+6 | 2.5+6 | 1.0-4 | 1.0-4 | 1.1-4 |  68.5 |  .23  |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field       Contents
 
@@ -9952,8 +9109,8 @@ TREF        Thermal expansion reference temperature (Real).
 
 GE          Structural element damping coefficient (Real).
 
-Remarks
--------
+## Remarks
+
 1. The material identification number must be unique with respect to the
    collection of all MATi cards.
 
@@ -9971,24 +9128,21 @@ Remarks
 6. The mass density, RHO, will be used to automatically compute mass for the
    TRIARG, TRAPRG, CTRIAAX, CTRAPAX, and TORDRG elements.
 
+
 MAT4 - Thermal Material Property Definition
 ===========================================
 
-Description
------------
+## Description
+
 Defines the thermal material properties for temperature-independent, isotropic
 materials.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |MAT4    |  MID  |   K   |   CP  |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |MAT4    |  103  |  .6   |   .2  |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field       Contents
 
@@ -9999,8 +9153,8 @@ K           Thermal conductivity (Real > 0.0), or convective film coefficient.
 CP          Thermal capacity per unit volume (Real > 0.0 or blank), or film
             capacity per unit area.
 
-Remarks
--------
+## Remarks
+
 1. The material identification number may be the same as a MAT1, MAT2, or MAT3
    card, but must be unique with respect to other MAT4 or MAT5 cards.
 
@@ -10009,24 +9163,21 @@ Remarks
 
 3. MAT4 materials may be made temperature dependent by use of the MATT4 card.
 
+
 MAT5 - Thermal Material Property Definition
 ===========================================
 
-Description
------------
+## Description
+
 Defines the thermal material properties for temperature-independent,
 anisotropic materials.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |MAT5    |  MID  |  KXX  |  KXY  |  KXZ  |  KYY  |  KYZ  |  KZZ  |   CP  |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |MAT5    |   24  | .092  |       |       | .083  |       | .020  |  0.2  |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field       Contents
 
@@ -10036,8 +9187,8 @@ KXX, KXY, KXZ, KYY, KYZ, KZZ  Thermal conductivity matrix terms (Real).
 
 CP          Thermal capacity per unit volume (Real >= 0.0 or blank).
 
-Remarks
--------
+## Remarks
+
 1. The thermal conductivity matrix has the form:
 
           +--            ---+
@@ -10053,39 +9204,26 @@ Remarks
 
 3. MAT5 materials may be made temperature dependent by use of the MATT5 card.
 
+
 MAT6 - Material Property Definition
 ===================================
 
-Description
------------
+## Description
+
 Defines the material properties for linear, temperature-independent,
 anisotropic materials for solid isoparametric elements.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |MAT6    |  MID  |  G11  |  G12  |  G13  |  G14  |  G15  |  G16  |  G22  |+a   |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|MAT6    |   31  |0.23+7 |-0.21+7| 0.32+6| 0.16+7| 0.11+7| 0.53+6| 0.74+7|+A   |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+a      |  G23  |  G24  |  G25  |  G26  |  G33  |  G34  |  G35  |  G36  |+b   |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|+A      |-0.21+7|-0.55+7|-0.37+7|-0.18+7| 0.23+7| 0.16+7| 0.11+7| 0.53+6|+B   |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+b      |  G44  |  G45  |  G46  |  G55  |  G56  |  G66  |  RHO  |  AXX  |+c   |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|+B      | 0.66+7| 0.28+7| 0.14+7| 0.43+7| 0.92+6| 0.30+7| 7.32-4|       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+c      |  AYY  |  AZZ  |  AXY  |  AY2  |  AZX  |  TREF |    GE |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|        |       |       |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|MAT6    |   31  |0.23+7 |-0.21+7| 0.32+6| 0.16+7| 0.11+7| 0.53+6| 0.74+7|+A   |
+|+A      |-0.21+7|-0.55+7|-0.37+7|-0.18+7| 0.23+7| 0.16+7| 0.11+7| 0.53+6|+B   |
+|+B      | 0.66+7| 0.28+7| 0.14+7| 0.43+7| 0.92+6| 0.30+7| 7.32-4|       |     |
 
 Field       Contents
 
@@ -10101,8 +9239,8 @@ TREF        Thermal expansion reference temperature (Real).
 
 GE          Structural damping coefficient (Real).
 
-Remarks
--------
+## Remarks
+
 1. The material property identification number must be unique with respect to
    all other material cards.
 
@@ -10111,36 +9249,27 @@ Remarks
 3. The ordering of the rows and columns of the matrix is critical and must
    conform to NASTRAN's ordering of the stress and strain vectors.
 
+
 MAT8 - Orthotropic Plate Material Property Definition
 =====================================================
 
-Description
------------
+## Description
+
 Defines the material property for an orthotropic material for plate elements.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |MAT8    |  MID  |  E1   |  E2   |  NU12 |  G12  |  G1Z  |   G2Z |  RH0  |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|MAT8    |  299  | 32.+6 | 4.2+5 |  0.33 | 2.9+6 |       |       | 0.042 |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     |  A1   |  A2   | TREF  |  XT   |  XC   |  YT   |  YC   |   S   |def  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|+BC     | 14.-6 | 2.3-6 |  175. |       |       |       |       |       |DEF  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+ef     |  GE   |  F12  |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|MAT8    |  299  | 32.+6 | 4.2+5 |  0.33 | 2.9+6 |       |       | 0.042 |ABC  |
+|+BC     | 14.-6 | 2.3-6 |  175. |       |       |       |       |       |DEF  |
 |+EF     |  2.5-4|       |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field       Contents
-
+-----       --------
 MID         Material identification number (Integer > 0).
 
 E1, E2      Modulus of elasticity in the material x and y directions (Real not
@@ -10178,8 +9307,8 @@ GE          Structural damping coefficient (Real).
 
 F12         Tsai-Wu interaction term (Real) (See Remark 4.)
 
-Remarks
--------
+## Remarks
+
 1. Material coordinate systems are defined by the plate element connection
    entries on the CQUAD4 and CTRIA3 cards.
 
@@ -10221,23 +9350,20 @@ Remarks
    that NU21 = î1/î2, uniaxial loading in 2-direction, is related to NU12, E1,
    and E2 by the relationship, (NU12) (E2) = (NU12) (E1).
 
+
 MATF - Fluid Material Property Definition
 =========================================
 
-Description
------------
+## Description
+
 Defines the fluid density in a hydroelastic analysis.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |MATF    |  MID  |  RHO  |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |MATF    |  103  |  0.6  |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field       Contents
 
@@ -10245,21 +9371,20 @@ MID         Material identification number (Integer > 0).
 
 RHO         Mass density (Real > 0.0).
 
-Remarks
--------
+## Remarks
+
 1. The material identification number may be the same as that of a MAT1, MAT2,
    or MAT3 card, but must be unique with respect to other MATF cards.
 
 MATPZ1 - Piezoelectric Material Property Definition
 ===================================================
 
-Description
------------
+## Description
+
 Defines the material properties for linear, temperature-independent
 piezoelectric materials.
 
-Format and Example
-------------------
+## Format and Example
 
 +--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
@@ -10295,8 +9420,8 @@ TREF        Thermal expansion reference temperature (Real).
 
 GE          Structural element damping coefficient (Real).
 
-Remarks
--------
+## Remarks
+
 1. MID must be unique with respect to all other material cards.
 
 2. MATPZ1 materials may be made temperature-dependent by use of the MTTPZ1
@@ -10306,54 +9431,33 @@ Remarks
 
 4. Matrix [SE] must be nonsingular.
 
+
 MATPZ2 - Piezoelectric Material Property Definition
 ===================================================
 
-Description
------------
+## Description
+
 Defines the material properties for linear, temperature-independent,
 piezoelectric materials.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |MATPZ2  |  MID  | CE11  | CE12  | CE13  | CE14  | CE15  | CE16  | CE22  |+a   |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|MATPZ2  |  23   |   1.  |   2.  |   3.  |   4.  |   5.  |   6.  |   1.  |+A   |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+a      |  CE23 | CE24  | CE25  | CE26  | CE33  | CE34  | CE35  | CE36  |+b   |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|+A      |   2.  |   3.  |   4.  |   5.  |   1.  |   2.  |   3.  |   4.  |+A   |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+b      |  CE44 | CE45  | CE46  | CE55  | CE56  | CE66  |  E11  |  E12  |+c   |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|+B      |   1.  |   2.  |   3.  |   1.  |   2.  |   1.  |   1.  |   2.  |+C   |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+c      |  E13  |  E14  |  E15  |  E16  |  E21  |  E22  |  E23  |  E24  |+d   |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|+C      |   3.  |   4.  |   5.  |   6.  |   1.  |   2.  |   3.  |   4.  |+D   |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+d      |  E25  |  E26  |  E31  |  E32  |  E33  |  E34  |  E35  |  E36  |+e   |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|+D      |   5.  |   6.  |   1.  |   2.  |   3.  |   4.  |   5.  |   6.  |+E   |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+e      | EPS11 | EPS12 | EPS13 | EPS22 | EPS23 | EPS33 |  RHO  |   AX  |+f   |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|+E      |   1.  |   2.  |   3.  |   4.  |   5.  |   6.  |  .15  | 6.-7  |+F   |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+f      |   AY  |  AZ   |  TREF |  GE   |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|MATPZ2  |  23   |   1.  |   2.  |   3.  |   4.  |   5.  |   6.  |   1.  |+A   |
+|+A      |   2.  |   3.  |   4.  |   5.  |   1.  |   2.  |   3.  |   4.  |+A   |
+|+B      |   1.  |   2.  |   3.  |   1.  |   2.  |   1.  |   1.  |   2.  |+C   |
+|+C      |   3.  |   4.  |   5.  |   6.  |   1.  |   2.  |   3.  |   4.  |+D   |
+|+D      |   5.  |   6.  |   1.  |   2.  |   3.  |   4.  |   5.  |   6.  |+E   |
+|+E      |   1.  |   2.  |   3.  |   4.  |   5.  |   6.  |  .15  | 6.-7  |+F   |
 |+F      | 6.-7  | 6.-7  |  70.  |  .2   |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field       Contents
 -----       --------
@@ -10369,8 +9473,8 @@ TREF        Thermal expansion reference temperature (Real).
 
 GE          Structural element damping coefficient (Real).
 
-Remarks
--------
+## Remarks
+
 1. MID must be unique with respect to all other material cards.
 
 2. MATPZ2 materials may be made temperature-dependent by use of the MTTPZ2
@@ -10380,24 +9484,21 @@ Remarks
 
 4. See CAUTION discussed in Section 1.17.3.2.
 
+
 MATS1 - Material Stress Dependence
 ==================================
 
-Description
------------
+## Description
+
 Specifies table references for material properties on a MAT1 card that are
 stress-dependent.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |MATS1   |  MID  |   R1  |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |MATS1   |   17  |   28  |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field       Contents
 
@@ -10406,36 +9507,30 @@ MID         Material property identification number which matches the
 
 R1          Reference to table identification number (Integer >= 0 or blank).
 
-Remarks
--------
+## Remarks
+
 1. A blank or zero entry means no table dependence of the referenced quantity,
    E, on the basic MAT1 card. For this case, the MATS1 card is not required.
 
 2. TABLES1 type tables must be used.
 
+
 MATT1 - Material Temperature Dependence
 =======================================
 
-Description
------------
+## Description
+
 Specifies table references for isotropic material properties on a MAT1 card
 that are temperature-dependent.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |MATT1   |  MID  |   R1  |   R2  |   R3  |   R4  |   R5  |   R6  |   R7  |+abc |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|MATT1   |   17  |   32  |       |       |       |   15  |       |       |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+abc    |   R8  |   R9  |  R10  |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|MATT1   |   17  |   32  |       |       |       |   15  |       |       |ABC  |
 |+BC     |   62  |       |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field       Contents
 
@@ -10445,8 +9540,8 @@ MID         Material property identification number which matches the
 Ri          References to table identification numbers (Integer > 0 or blank)
             for the corresponding fields on the MAT1 card.
 
-Remarks
--------
+## Remarks
+
 1. Blank or zero entries mean no table dependence of the referenced quantity
    on the basic MAT1 card, and the quantity remains constant.
 
@@ -10456,29 +9551,23 @@ Remarks
    or more quantities are to retain a fixed relationship, then two or more (as
    required) tables must be input to define the relationship.
 
+
 MATT2 - Material Temperature Dependence
 =======================================
 
-Description
------------
+## Description
+
 Specifies table references for anisotropic material properties on a MAT2 card
 that are temperature-dependent.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |MATT2   |  MID  |   R1  |   R2  |   R3  |   R4  |   R5  |   R6  |   R7  |+abc |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|MATT2   |   17  |   32  |       |       |       |   15  |       |       |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+abc    |   R8  |   R9  |  R10  |  R11  |  R12  |  R13  |  R14  |  R15  |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|MATT2   |   17  |   32  |       |       |       |   15  |       |       |ABC  |
 |+BC     |   62  |       |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field       Contents
 
@@ -10488,8 +9577,8 @@ MID         Material property identification number which matches the
 Ri          References to table identification numbers (Integer >= 0 or blank)
             for the corresponding fields on the MAT2 card.
 
-Remarks
--------
+## Remarks
+
 1. Blank or zero entries mean no table dependence of the referenced quantity
    on the basic MAT2 card, and the quantity remains constant.
 
@@ -10499,40 +9588,34 @@ Remarks
    or more quantities are to retain a fixed relationship, then two or more (as
    required) tables must be input to define the relationship.
 
+
 MATT3 - Material Temperature Dependence
 =======================================
 
-Description
------------
+## Description
+
 Specifies table references for orthotropic material properties on a MAT3 card
 that are temperature-dependent.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |MATT3   |  MID  |   R1  |   R2  |   R3  |   R4  |   R5  |   R6  |   R7  |+abc |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|MATT3   |   23  |   48  |       |       |   54  |       |       |       |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+abc    |   R8  |   R9  |  R10  |  R11  |  R12  |  R13  |  R14  |  R15  |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|MATT3   |   23  |   48  |       |       |   54  |       |       |       |ABC  |
 |+BC     |   74  |       |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field       Contents
-
+-----       --------
 MID         Material property identification number which matches the
             identification number on some basic MAT3 card (Integer > 0).
 
 Ri          References to table identification numbers (Integer > 0 or blank)
             for the corresponding fields on the MAT3 card.
 
-Remarks
--------
+## Remarks
+
 1. Blank or zero entries imply no table dependence of the referenced quantity
    on the basic MAT3 card, and the quantity remains constant.
 
@@ -10542,35 +9625,32 @@ Remarks
    or more quantities are to retain a fixed relationship, then two or more (as
    required) tables must be input to define the relationship.
 
+
 MATT4 - Thermal Material Temperature Dependence
 ===============================================
 
-Description
------------
+## Description
+
 Specifies table reference for temperature dependent thermal conductivity or
 convective film coefficient on a MAT4 card.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |MATT4   |  MID  |  T(K) |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |MATT4   |  103  |   73  |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field       Contents
-
+-----       --------
 MID         ID of a MAT4 which is to be temperature dependent (Integer > 0).
 
 T(K)        Identification number of a TABLEMi card which gives temperature
             dependence of the thermal conductivity or convective film
             coefficient (Integer >= 0 or blank).
 
-Remarks
--------
+## Remarks
+
 1. The thermal capacity may not be temperature dependent; field 4 must be
    blank.
 
@@ -10581,35 +9661,32 @@ Remarks
 3. A blank or zero entry means no table dependence of the referenced quantity
    on the basic MAT4 card. For this case, the MATT4 card is not required.
 
+
 MATT5 - Thermal Material Temperature Dependence
 ===============================================
 
-Description
------------
+## Description
+
 Specifies table references for thermal conductivity matrix terms on a MAT5
 card that are temperature-dependent.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |MATT5   |  MID  |T(KXX) |T(KXY) |T(KXZ) |T(KYY) |T(KYZ) |T(KZZ) |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |MATT5   |  24   |  73   |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field       Contents
-
+-----       --------
 MID         Identification number of a MATS, which is to be temperature
             dependent (Integer > 0).
 
 T(K--)      Identification number of a TABLEMi card which gives temperature
             dependence of the matrix term (Integer >= 0 or blank).
 
-Remarks
--------
+## Remarks
+
 1. The thermal capacity may not be temperature dependent. Field 9 must be
    blank.
 
@@ -10624,39 +9701,27 @@ Remarks
    or more quantities are to retain a fixed relationship, then two or more (as
    required) tables must be input to define the relationship.
 
+
 MATT6 - Material Temperature Dependence
 =======================================
 
-Description
------------
+## Description
+
 Specifies table references for material properties on a MAT6 card that are
 temperature-dependent.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |MATT6   |  MID  |   R1  |   R2  |   R3  |   R4  |   R5  |   R6  |   R7  |+a   |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|MATT6   |  115  |   101 |   102 |   103 |   104 |   105 |   106 |   107 |+A   |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+a      |   R8  |   R9  |  R10  |  R11  |  R12  |  R13  |  R14  |  R15  |+b   |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|+A      |   108 |   109 |  110  |  111  |  112  |  113  |  114  |  115  |+B   |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+b      |  R16  |  R17  |  R18  |  R19  |  R20  |  R21  |  R22  |  R23  |+c   |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|+B      |  116  |  117  |  118  |  119  |  120  |  121  |  122  |  123  |+C   |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+c      |  R24  |  R25  |  R26  |  R27  |  R28  |  R29  |  R30  |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|MATT6   |  115  |   101 |   102 |   103 |   104 |   105 |   106 |   107 |+A   |
+|+A      |   108 |   109 |  110  |  111  |  112  |  113  |  114  |  115  |+B   |
+|+B      |  116  |  117  |  118  |  119  |  120  |  121  |  122  |  123  |+C   |
 |+C      |  124  |  125  |  126  |  127  |  128  |  129  |  130  |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field       Contents
 
@@ -10666,8 +9731,8 @@ MID         Material property identification number which matches the
 Ri          References to table identification numbers (Integer >= 0 or
             blank).
 
-Remarks
--------
+## Remarks
+
 1. Blank or zero entries mean no table dependence of the referenced quantity
    on the basic MAT6 card.
 
@@ -10676,28 +9741,21 @@ Remarks
 MDIPOLE - Magnetic Dipole Moment
 ================================
 
-Description
------------
+## Description
+
 Defines a magnetic dipole moment in magnetic field problems.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |MDIPOLE |  SID  |  CID  |  CX   |  CY   |  CZ   |  MX   |  MY   |  MZ   |+a   |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|MDIPOLE |   5   |       |  1.0  |  2.1  |  3.0  | 10.0  | 20.0  | 30.0  |+A   |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+a      |  MIN  |  MAX  |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|MDIPOLE |   5   |       |  1.0  |  2.1  |  3.0  | 10.0  | 20.0  | 30.0  |+A   |
 |+A      |  0.0  |  0.0  |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field       Contents
-
+-----       --------
 SID         Load set identification number (Integer > 0).
 
 CID         Coordinate system identification number (Integer > 0).
@@ -10713,8 +9771,8 @@ MIN         Minimum distance from dipole to grid point for computing magnetic
 MAX         Maximum distance from dipole to grid point for computing magnetic
             equivalent loads (Real > 0.0).
 
-Remarks
--------
+## Remarks
+
 1. Load sets must be selected in the Case Control Deck (LOAD = SID) to be used
    by NASTRAN.
 
@@ -10728,39 +9786,33 @@ Remarks
 
 4. The continuation card is required.
 
+
 MKAERO1 - Mach Number, Frequency Table
 ======================================
 
-Description
------------
+## Description
+
 Provides a table of Mach numbers or interblade phase angles (m) and reduced
 frequencies (k) for aerodynamic matrix calculation.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |MKAERO1 |   M1  |   M2  |   M3  |   M4  |   M5  |   M6  |   M7  |   M8  |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|MKAERO1 |   .1  |   .7  |       |       |       |       |       |       |+ABC |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+BC     |   K1  |   K2  |   K3  |   K4  |   K5  |   K6  |   K7  |   K8  |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|MKAERO1 |   .1  |   .7  |       |       |       |       |       |       |+ABC |
 |+BC     |   .3  |   .6  |  1.0  |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field       Contents
-
+-----       --------
 Mi          List of Mach numbers or interblade phase angles (Real; 1 <= i <=
             8). See Remark 5.
 
 Kj          List of reduced frequencies (Real > 0.0, 1 <= j <= 8).
 
-Remarks
--------
+## Remarks
+
 1. Blank fields end the list, and thus cannot be used for 0.0.
 
 2. All combinations of (M,K) will be used.
@@ -10773,34 +9825,31 @@ Remarks
 5. Mach numbers are input for wing flutter analysis and interblade phase
    angles for blade flutter analysis.
 
+
 MKAERO2 - Mach Number, Frequency Table
 ======================================
 
-Description
------------
+## Description
+
 Provides a list of Mach numbers or interblade phase angles (m) and reduced
 frequencies (k) for aerodynamic matrix calculation.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |MKAERO2 |   M1  |   K1  |   M2  |   K2  |   M3  |   K3  |   M4  |   K4  |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |MKAERO2 |  .10  |  .30  |  .10  |  .60  |  .70  |  .30  |  .70  |  1.0  |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field       Contents
-
+-----       --------
 Mi          List of Mach numbers or interblade phase angles (Real > 0.0). See
             Remark 4.
 
 Ki          List of reduced frequencies (Real > 0.0).
 
-Remarks
--------
+## Remarks
+
 1. This card will cause the aerodynamic matrices to be computed for a set of
    parameter pairs.
 
@@ -10811,26 +9860,23 @@ Remarks
 4. Mach numbers are input for wing flutter analysis and interblade phase
    angles for blade flutter analysis.
 
+
 MOMAX - Conical Shell Static Moment
 ===================================
 
-Description
------------
+## Description
+
 Defines a static moment loading of a conical shell coordinate.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |MOMAX   |  SID  |  RID  |  HID  |   S   |   MR  |   MP  |   MZ  |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |MOMAX   |   1   |   2   |   3   |  1.0  |  0.1  |  0.2  |  0.3  |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field       Contents
-
+-----       --------
 SID         Load set identification number (Integer > 0).
 
 RID         Ring identification number (see RINGAX) (Integer > 0).
@@ -10842,8 +9888,8 @@ S           Scale factor (Real).
 
 MR, MP, MZ  Moment components in the r, í, z directions (Real).
 
-Remarks
--------
+## Remarks
+
 1. This card is allowed if and only if an AXIC card is also present.
 
 2. Load sets must be selected in the Case Control Deck (LOAD = SID) to be used
@@ -10860,26 +9906,23 @@ Remarks
    sequence, that is, for harmonics 0 through 10, the field would contain
    "S0T10".
 
+
 MOMENT - Static Moment
 ======================
 
-Description
------------
+## Description
+
 Defines a static moment at a grid point by specifying a vector.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |MOMENT  |  SID  |   G   |  CID  |   M   |   N1  |   N2  |   N3  |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |MOMENT  |   2   |   5   |   6   |  2.9  |  0.0  |  1.0  |  0.0  |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field       Contents
-
+-----       --------
 SID         Load set identification number (Integer > 0).
 
 G           Grid point identification number (Integer > 0).
@@ -10891,8 +9934,8 @@ M           Scale factor (Real).
 N1, N2, N3  Components of vector measured in coordinate system defined by CID
             (Real; N1**2 + N2**2 + N3**2 > 0.0).
 
-Remarks
--------
+## Remarks
+
 1. The static moment applied to grid point G is given by
 
    ->
@@ -10903,24 +9946,21 @@ Remarks
 
 3. A CID of zero references the basic coordinate system.
 
+
 MOMENT1 - Static Moment
 =======================
 
-Description
------------
+## Description
+
 Used to define a static moment by specification of a value and two grid points
 which determine the direction.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |MOMENT1 |  SID  |   G   |   M   |   G1  |   G2  |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |MOMENT1 |   6   |   13  | -2.93 |   16  |   13  |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field       Contents
 
@@ -10932,8 +9972,8 @@ M           Value of moment (Real).
 
 G1, G2      Grid point identification numbers (Integer > 0; G1 not equal G2).
 
-Remarks
--------
+## Remarks
+
 1. The direction of the moment is determined by the vector from G1 to G2.
 
 2. Load sets must be selected in the Case Control Deck (LOAD = SID) to be used
@@ -10942,21 +9982,17 @@ Remarks
 MOMENT2 - Static Moment
 =======================
 
-Description
------------
+## Description
+
 Used to define a static moment by specification of a value and four grid
 points which determine the direction.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |MOMENT2 |  SID  |   G   |   M   |   G1  |   G2  |   G3  |   G4  |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |MOMENT2 |   6   |   13  | -2.93 |   16  |   13  |   17  |   13  |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field       Contents
 
@@ -10969,8 +10005,8 @@ M           Value of moment (Real).
 G1,...,G4   Grid point identification numbers (Integer > 0; G1 not equal G2;
             G3 not equal G4).
 
-Remarks
--------
+## Remarks
+
 1. The direction of the force is determined by the vector product whose
    factors are vectors from G1 to G2 and G3 to G4 respectively.
 
@@ -10980,28 +10016,21 @@ Remarks
 MPC - Multipoint Constraint
 ===========================
 
-Description
------------
+## Description
+
 Defines a multipoint constraint equation of the form
 
    - A  u   =  0
    j  j  j
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |MPC     |  SID  |   G   |   C   |   A   |   G   |   C   |   A   |       |+abc |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|MPC     |   3   |   28  |   3   |  6.2  |   2   |       |  4.29 |       |+B   |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     |       |   G   |   C   |   A   |  etc. |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|MPC     |   3   |   28  |   3   |  6.2  |   2   |       |  4.29 |       |+B   |
 |+B      |       |   1   |   4   | -2.91 |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field       Contents
 
@@ -11015,8 +10044,8 @@ C           Component number - any one of the digits 1 - 6 in the case of
 
 A           Coefficient (Real; the first A must be nonzero).
 
-Remarks
--------
+## Remarks
+
 1. The first coordinate in the sequence is assumed to be the dependent
    coordinate and must be unique for all equations of the set.
 
@@ -11033,26 +10062,18 @@ Remarks
 MPCADD - Multipoint Constraint Set Definition
 =============================================
 
-Description
------------
+## Description
+
 Defines a multipoint constraint set as a union of multipoint constraint sets
 defined via MPC cards.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |MPCADD  |  SID  |   S1  |   S2  |   S3  |   S4  |   S5  |   S6  |   S7  |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|MPCADD  |  100  |   2   |   3   |   1   |   6   |   4   |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     |   S8  |   S9  |     etc.      |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|        |       |       |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|MPCADD  |  100  |   2   |   3   |   1   |   6   |   4   |       |       |     |
 
 Field       Contents
 
@@ -11062,8 +10083,8 @@ SID         Set identification number (Integer > 0; not equal 101 or 102 if
 Sj          Set identification numbers of multipoint constraint sets defined
             via MPC cards (Integer > 0; SID not equal Sj).
 
-Remarks
--------
+## Remarks
+
 1. The Sj must be unique.
 
 2. Multipoint constraint sets must be selected in the Case Control Deck (MPC =
@@ -11075,11 +10096,12 @@ Remarks
 4. Set identification numbers of 101 or 102 cannot be used in axisymmetric
    problems.
 
+
 MPCAX - Axisymmetric Multipoint Constraint
 ==========================================
 
-Description
------------
+## Description
+
 Defines a multipoint constraint equation of the form
 
    - A  u   =  0
@@ -11087,22 +10109,14 @@ Defines a multipoint constraint equation of the form
 
 for a model containing CCONEAX, CTRAPAX, or CTRIAAX elements.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |MPCAX   |  SID  |       |       |       |  RID  |  HID  |   C   |   A   |+abc |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|MPCAX   |   32  |       |       |       |   17  |   6   |   1   |  1.0  |+1   |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+abc    |  RID  |  HID  |   C   |   A   |  RID  |  HID  |   C   |   A   |+def |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|MPCAX   |   32  |       |       |       |   17  |   6   |   1   |  1.0  |+1   |
 |+1      |   23  |   4   |   2   | -6.8  |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-                                     etc. 
 
 Field       Contents
 
@@ -11116,8 +10130,8 @@ C           Component number (1 <= Integer <= 6).
 
 A           Coefficient (Real; the first A must be nonzero).
 
-Remarks
--------
+## Remarks
+
 1. This card is allowed if and only if an AXIC card is also present.
 
 2. The first coordinate in the sequence is assumed to be the dependent
@@ -11135,33 +10149,24 @@ Remarks
 6. For a discussion of the axisymmetric solid problem, see Section 5.11 of the
    Theoretical Manual.
 
+
 MPCS - Substructure Multipoint Constraints
 ==========================================
 
-Description
------------
+## Description
+
 Defines multipoint constraints within or between substructures.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |MPCS    |  SID  | NAME1 |   G1  |   C1  |   A1  |       |       |       |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|MPCS    |  171  |WINGRT |  966  |   1   |  1.0  |       |       |       |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     |       | NAME2 |  G21  |  C21  |  A21  |  G22  |  C22  |  A32  |def  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|+BC     |       |FUSELAG| 1036  |   1   | .031  | 1036  |   6   | 32.7  |DEF  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+ef     |       | NAME3 |  G31  |  C31  |  A31  |  G32  |  C32  |  A32  |ghi  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|MPCS    |  171  |WINGRT |  966  |   1   |  1.0  |       |       |       |ABC  |
+|+BC     |       |FUSELAG| 1036  |   1   | .031  | 1036  |   6   | 32.7  |DEF  |
 |+EF     |       | CABIN |   39  |   2   | .076  |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field       Contents
 
@@ -11178,8 +10183,8 @@ Ci          Component number - Any one of the digits 1 - 6 in the case of
 
 Ai          Coefficient (Real; A must be non-zero).
 
-Remarks
--------
+## Remarks
+
 1. The first degree of freedom in the sequence is the dependent degree of
    freedom and it must be unique for all equations of the set.
 
@@ -11205,29 +10210,23 @@ Remarks
 
 7. MPCS cards may be referenced by an MPCADD card.
 
+
 MTTPZ1 - Piezoelectric Material Temperature Dependence
 ======================================================
 
-Description
------------
+## Description
+
 Specifies table references for piezoelectric material properties on a MATPZ1
 card that are temperature-dependent.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |MTTPZ1  |  MID  |   R1  |   R2  |   R3  |   R4  |   R5  |   R6  |   R7  |+a   |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|MTTPZ1  |  703  |  201  |  202  |  203  |  204  |  205  |  206  |  207  |+A   |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+a      |   R8  |   R9  |  R10  |  R11  |  R12  |  R13  |  R14  |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|MTTPZ1  |  703  |  201  |  202  |  203  |  204  |  205  |  206  |  207  |+A   |
 |+A      |  208  |  209  |  210  |  211  |  212  |  213  |  214  |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field       Contents
 
@@ -11237,8 +10236,8 @@ MID         Material property identification number which matches the
 Ri          References to table identification numbers for the corresponding
             fields on the MATPZ1 card (Integer > 0 or blank).
 
-Remarks
--------
+## Remarks
+
 1. Blank or zero entries mean no table dependence of the referenced quantity
    on the basic MATPZ1 card, and the quantity remains constant.
 
@@ -11248,23 +10247,20 @@ Remarks
    two or more quantities are to retain a fixed relationship, then two or more
    tables must be input to define the relationship.
 
+
 MTTPZ2 - Piezoelectric Material Temperature Dependence
 ======================================================
-Description
------------
+## Description
+
 Specifies table references for piezoelectric material properties on a MATPZ2
 card that are temperature-dependent.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |MTTPZ2  |  MID  |   R1  |   R2  |   R3  |   R4  |   R5  |   R6  |   R7  |+a   |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |MTTPZ2  |   35  |  701  |  702  |  703  |  704  |  705  |  706  |  707  |+A   |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
         .                                      .
         .                                      .
         .                                      .
@@ -11282,8 +10278,8 @@ MID         Material property identification number which matches the
 Ri          References to table identification numbers for the corresponding
             fields on the MATPZ2 card (Integer > 0 or blank).
 
-Remarks
--------
+## Remarks
+
 1. Blank or zero entries mean no table dependence of the referenced quantity
    on the basic MATPZ2 card, and the quantity remains constant.
 
@@ -11293,23 +10289,20 @@ Remarks
    two or more quantities are to retain a fixed relationship, then two or more
    tables must be input to define the relationship.
 
+
 NFTUBE - Nonlinear Transient Response Load
 ==========================================
 
-Description
------------
+## Description
+
 Defines a nonlinear transient element for heat convection.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |NFTUBE  |  CID  |   G1  |   G2  |   CP  | VOLRT |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |NFTUBE  |   20  |   8   |   12  |  1.3  |  8.0  |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field       Contents
 -----       --------
@@ -11323,8 +10316,8 @@ CP          Heat capacity per unit volume (pCp) (Real).
 VOLRT       Volume flow rate,  (Real or Integer). If real, the value is used;
             if integer is given, it is the ID of a TABLEDi data card.
 
-Remarks
--------
+## Remarks
+
 1. Nonlinear loads are used only in transient analysis.
 
 2. The power into grid points G1 and G2 is given by:
@@ -11347,11 +10340,12 @@ Remarks
 4. It is your responsibility to ensure flow continuity. There must be no
    accumulation of fluid mass at any grid point.
 
+
 NOLIN1 - Nonlinear Transient Response Dynamic Load
 ==================================================
 
-Description
------------
+## Description
+
 Defines nonlinear transient forcing functions of the form
 
    P (t)  =  S T(x (t))   ,
@@ -11359,16 +10353,12 @@ Defines nonlinear transient forcing functions of the form
 
 where xj is either a displacement (uj) or a velocity (j).
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |NOLIN1  |  SID  |   GI  |   CI  |   S   |   GJ  |   CJ  |   T   |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |NOLIN1  |   21  |   3   |   4   |  2.1  |   3   |   1   |   6   |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field       Contents
 
@@ -11390,8 +10380,8 @@ CJ          Component number if GJ is a grid point (0 < Integer <= 6; 11 <=
 
 T           Identification number of a TABLEDi card (Integer > 0).
 
-Remarks
--------
+## Remarks
+
 1. Nonlinear loads must be selected in the Case Control Deck (NONLINEAR = SID)
    to be used by NASTRAN.
 
@@ -11431,8 +10421,8 @@ Remarks
 NOLIN2 - Nonlinear Transient Response Dynamic Load
 ==================================================
 
-Description
------------
+## Description
+
 Defines nonlinear transient forcing functions of the form
 
    P (t)  =  S x (t)y (t)
@@ -11440,16 +10430,12 @@ Defines nonlinear transient forcing functions of the form
 
 where xj and yk are either displacements (uj,uk) or velocities (j,k).
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |NOLIN2  |  SID  |   GI  |   CI  |   S   |   GJ  |   CJ  |   GK  |   CK  |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |NOLIN2  |   14  |   2   |   1   |  2.9  |   2   |   1   |   2   |   11  |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field       Contents
 
@@ -11475,8 +10461,8 @@ CK          Component number if GK is a grid point (0 < Integer <= 6; 11 <=
             Integer < 16); blank or zero or 10 if GK is a scalar or extra
             point (See Remark 4 below).
 
-Remarks
--------
+## Remarks
+
 1. Nonlinear loads must be selected in the Case Control Deck (NONLINEAR = SID)
    to be used by NASTRAN.
 
@@ -11520,8 +10506,8 @@ Remarks
 NOLIN3 - Nonlinear Transient Response Dynamic Load
 ==================================================
 
-Description
------------
+## Description
+
 Defines nonlinear transient forcing functions of the form
 
                     A
@@ -11533,16 +10519,12 @@ Defines nonlinear transient forcing functions of the form
 
 where xj is either a displacement (uj) or a velocity (j).
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |NOLIN3  |  SID  |   GI  |   CI  |   S   |   GJ  |   CJ  |   A   |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |NOLIN3  |   4   |   102 |       | -6.1  |   2   |   5   |  -3.5 |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field       Contents
 
@@ -11564,8 +10546,8 @@ CJ          Component number if GJ is a grid point (0 < Integer <= 6; 11 <=
 
 A           Amplification factor (Real).
 
-Remarks
--------
+## Remarks
+
 1. Nonlinear loads must be selected in the Case Control Deck (NONLINEAR = SID)
    to be used by NASTRAN.
 
@@ -11605,8 +10587,8 @@ Remarks
 NOLIN4 - Linear Transient Response Dynamic Load
 ===============================================
 
-Description
------------
+## Description
+
 Defines nonlinear transient forcing functions of the form
 
                       A
@@ -11618,16 +10600,12 @@ Defines nonlinear transient forcing functions of the form
 
 where xj is either a displacement (uj) or a velocity (j).
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |NOLIN4  |  SID  |   GI  |   CI  |   S   |   GJ  |   CJ  |   A   |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |NOLIN4  |   2   |   4   |   6   |  2.0  |  101  |       |  16.3 |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field       Contents
 
@@ -11649,8 +10627,8 @@ CJ          Component number if GJ is a grid point (0 < Integer <= 6; 11 <=
 
 A           Amplification factor (Real).
 
-Remarks
--------
+## Remarks
+
 1. Nonlinear loads must be selected in the Case Control Deck (NONLINEAR = SID)
    to be used by NASTRAN.
 
@@ -11690,26 +10668,19 @@ Remarks
 NOLIN5 - Nonlinear Transient Load for Radiant Heat Transfer
 ===========================================================
 
-Description
------------
+## Description
+
 Defines nonlinear transient radiant heat transfer with temperature dependent
 emissivities and absorptivities.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |NOLIN5  |  SID  |   AA  |   AB  |  FAB  |   EA  |   EB  |  ALPA |  ALPB |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|NOLIN5  |   6   |  6.5  |  8.3  |  6.5  |   66  |  .83  |   77  |  .88  |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     |  GA1  |  GA2  |  GA3  |  GA4  |  GB1  |  GB2  |  GB3  |  GB4  |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|NOLIN5  |   6   |  6.5  |  8.3  |  6.5  |   66  |  .83  |   77  |  .88  |ABC  |
 |+BC     |   7   |  12   |  13   |       |  16   |  18   |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field       Contents
 
@@ -11729,8 +10700,8 @@ GA1,...,GA4 Grid points associated with Area A (Integer or blank) (GA1 > 0).
 
 GB1,...,GB4 Grid points associated with Area B (Integer or blank) (GB1 > 0).
 
-Remarks
--------
+## Remarks
+
 1. This card describes the radiant exchange between two areas, A and B. From
    zero through four grid points can be associated with each area.
 
@@ -11758,11 +10729,12 @@ Remarks
    emissivity or absorptivity is desired, or an integer value for the ID of a
    TABLEDi data card for temperature-dependent parameters.
 
+
 NOLIN6 - Nonlinear Transient Response Dynamic Load
 ==================================================
 
-Description
------------
+## Description
+
 Defines nonlinear transient forcing functions of the form
 
    P (t) = S T(x (t)) | x (t) | x (t),     if CJ <= 6
@@ -11772,16 +10744,12 @@ Defines nonlinear transient forcing functions of the form
    P (t) = S T(x (t)) | x (t) | x (t),     if CJ >= 10
     i           j     |  j    |  j
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |NOLIN6  |  SID  |   GI  |   CI  |   S   |   GJ  |   CJ  |   T   |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |NOLIN6  |   21  |   3   |   4   |  2.1  |   3   |   1   |   6   |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field       Contents
 
@@ -11803,8 +10771,8 @@ CJ          Component number if GJ is a grid point (0 < Integer <= 6; 11 <=
 
 T           Identification number of a TABLEDi card (Integer > 0).
 
-Remarks
--------
+## Remarks
+
 1. Nonlinear loads must be selected in the Case Control Deck (NONLINEAR = SID)
    to be used by NASTRAN.
 
@@ -11849,25 +10817,22 @@ Remarks
    displacements or velocities are zero, and no other load is applied to the
    structure.
 
+
 OMIT - Omitted Coordinates
 ==========================
 
-Description
------------
+## Description
+
 Defines coordinates (degrees of freedom) to be omitted from the problem
 through matrix partitioning. Used to reduce the number of independent degrees
 of freedom.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |OMIT    |   ID  |   C   |   ID  |   C   |   ID  |   C   |   ID  |   C   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |OMIT    |   16  |   2   |   23  | 3516  |       |       |   1   |   4   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field       Contents
 
@@ -11876,8 +10841,8 @@ ID          Grid or scalar point identification number (Integer > 0).
 C           Component number, zero, or blank for scalar points, any unique
             combination of the digits 1 - 6 for grid points.
 
-Remarks
--------
+## Remarks
+
 1. Coordinates specified on OMIT cards may not be specified on OMIT1, ASET,
    ASET1, SUPORT, SPC, or SPC1 cards nor may they appear as dependent
    coordinates in multipoint constraint relations (MPC) or in rigid elements
@@ -11891,36 +10856,27 @@ Remarks
 
 OMIT1 - Omitted Coordinates
 ===========================
-Description
------------
+## Description
+
 Defines coordinates (degrees of freedom) to be omitted from the problem
 through matrix partitioning. Used to reduce the number of independent degrees
 of freedom.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |OMIT1   |   C   |   G   |   G   |   G   |   G   |   G   |   G   |   G   |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|OMIT1   |   3   |   2   |   1   |   3   |  10   |   9   |   6   |   5   |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     |   G   |   G   |   G   |  etc. |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|OMIT1   |   3   |   2   |   1   |   3   |  10   |   9   |   6   |   5   |ABC  |
 |+BC     |   7   |   8   |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-                                     etc. 
 
-Alternate Form:
+## Alternate Form
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |OMIT1   |   C   |  ID1  |"THRU" |  ID2  |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |OMIT1   |   0   |   17  | THRU  |  109  |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field       Contents
 
@@ -11932,8 +10888,8 @@ C           Component number (any unique combination of the digits 1 - 6 with
 G, ID1, ID2 Grid or scalar point identification number (Integer > 0; ID1 <
             ID2).
 
-Remarks
--------
+## Remarks
+
 1. A coordinate referenced on this card may not appear as a dependent
    coordinate in a multi-point constraint relation (MPC card) or as a degree
    of freedom on a rigid element (CRIGD1, CRIGD2, CRIGD3, CRIGDR), nor may it
@@ -11949,22 +10905,18 @@ Remarks
 OMITAX - Axisymmetric Omitted Coordinate
 ========================================
 
-Description
------------
+## Description
+
 Defines coordinates to be omitted from a model containing CCONEAX, CTRAPAX, or
 CTRIAAX elements through matrix partitioning. Used to reduce the number of
 independent degrees of freedom.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |OMITAX  |  RID  |  HID  |   C   |  RID  |  HID  |   C   |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |OMITAX  |   2   |   6   |   3   |   4   |   7   |   1   |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field       Contents
 
@@ -11974,8 +10926,8 @@ HID         Harmonic identification number (Integer > 0).
 
 C           Component number (any unique combination of the digits 1 - 6).
 
-Remarks
--------
+## Remarks
+
 1. This card is allowed if and only if an AXIC card is also present.
 
 2. Up to 12 coordinates may be omitted via this card.
@@ -11989,23 +10941,20 @@ Remarks
 5. For a discussion of the axisymmetric solid problem, see Section 5.11 of the
    Theoretical Manual.
 
+
 PAERO1 - Aerodynamic Panel Property
 ===================================
 
-Description
------------
+## Description
+
 Gives associated bodies for the panels in the Doublet-Lattice method.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |PAERO1  |  PID  |  B1   |  B2   |  B3   |  B4   |  B5   |  B6   |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |PAERO1  |   1   |  3    |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field       Contents
 
@@ -12014,8 +10963,8 @@ PID         Property identification number (referenced by CAERO1) (Integer >
 
 B1,...,B6   ID of associated body (Integer >= 0 or blank).
 
-Remarks
--------
+## Remarks
+
 1. The associated body must be in the same aerodynamic group (IGID).
 
 2. If there are no bodies, the card is still required.
@@ -12023,28 +10972,22 @@ Remarks
 3. The Bi numbers above must appear on a PAERO2 card to define these bodies
    completely.
 
+
 PAERO2 - Aerodynamic Body Properties
 ====================================
 
-Description
------------
+## Description
+
 Defines the cross-section properties of aerodynamic bodies.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |PAERO2  |  PID  |ORIENT | WIDTH |  AR   |  LRSB |  LRIB |  LTH1 |  LTH2 |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|PAERO2  |   2   |   Z   |  6.0  |  1.0  |  22   |   91  |  100  |       |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+BC     |  THI1 |  THN1 |  THI2 |  THN2 |  THI3 |  THN3 |  etc. |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|PAERO2  |   2   |   Z   |  6.0  |  1.0  |  22   |   91  |  100  |       |abc  |
 |+bc     |   1   |   3   |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -12072,8 +11015,8 @@ LTH1, LTH2ID of AEFACT data cards for defining theta arrays for interference
 THIi, THNiThe first and last interference element of a body to use the éi
           array (Integer >= 0).
 
-Remarks
--------
+## Remarks
+
 1.The EID of all CAERO2 elements in any IGID group must be ordered, so that
   their corresponding ORIENT values appear in the order Z, ZY, Y.
 
@@ -12121,34 +11064,25 @@ Remarks
 
                          Figure 2.4-43. PAERO2 diagram
 
+
 PAERO3 - Aerodynamic Mach Box Surface Properties
 ================================================
 
-Description
------------
+## Description
+
 Defines the number of Mach boxes in the flow direction and the location of
 cranks and control surfaces of a Mach box lifting surface.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |PAERO3  |  PID  | NBOX  | NCTRL |       |  X5   |  Y5   |  X6   |  Y6   |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|PAERO3  | 2001  |  15   |   2   |       |  0.   |  65.  |       |       |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+BC     |  X7   |  Y7   |  X8   |  Y8   |  X9   |  Y9   |  X10  |  Y10  |DEF  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|+bc     |  78.  |  65.  |  108. |  65.  |  82.  | 97.5  |  112. |  97.5 |def  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+EF     |  X11  |  Y11  |  X12  |  Y12  |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|PAERO3  | 2001  |  15   |   2   |       |  0.   |  65.  |       |       |abc  |
+|+bc     |  78.  |  65.  |  108. |  65.  |  82.  | 97.5  |  112. |  97.5 |def  |
 |+ef     |  86.  |  130. |  116. |  130. |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -12162,8 +11096,8 @@ X5-Y12    Location of points 5 through 12, which are in the element
           coordinate system, to define the cranks and control surface
           geometry (Real).
 
-Remarks
--------
+## Remarks
+
 1.The geometry is shown in Figure 2.4-1 at the CAERO3 Bulk Data card
   description.
 
@@ -12175,28 +11109,22 @@ Remarks
 
 4.The relations Y7 >= Y8, Y9 >= Y10, and Y11 >= Y12 must hold.
 
+
 PAERO4 - Aerodynamic Supersonic Strip Properties
 ================================================
 
-Description
------------
+## Description
+
 Gives properties of each strip element for the strip theory.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |PAERO4  |  PID  |  CLA  |  LCLA |  CIRC | LCIRC | DOC1  | CAOC1 |GAPOC1 |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|PAERO4  | 6001  |   1   |  501  |   0   |   0   |  0.0  |  0.0  | 0.0   |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+BC     |  DOC2 | CAOC2 |GAPOC2 | DOC3  | CAOC3 |GAPOC3 |. . . .| etc.  |. .  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|PAERO4  | 6001  |   1   |  501  |   0   |   0   |  0.0  |  0.0  | 0.0   |abc  |
 |+bc     |  0.50 | 0.25  | 0.02  | 0.53  | 0.24  | 0.0   |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -12238,8 +11166,8 @@ CAOCi     ca/c = control surface chord divided by strip chord (Real >= 0.0).
 
 GAPOCi    g/c = control surface gap divided by strip chord (Real >= 0.0).
 
-Remarks
--------
+## Remarks
+
 1.This card is required for strip theory with three entries (DOCi, CAOCi,
   GAPOCi) per strip.
 
@@ -12304,28 +11232,22 @@ Remarks
   (e)  AEFACT, ID, m , b  , b  , +  , b  , +  , b  , +  , m , etc.
                     1   01   11   11   21   21   31   31   2
 
+
 PAERO5 - Aerodynamic Strip Element Properties
 =============================================
 
-Description
------------
+## Description
+
 Gives properties of each strip element for piston theory.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |PAERO5  |  PID  |NALPHA |LALPHA |  NXIS |  NXIS | NTAUS | LTAUS |       |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|PAERO5  | 7001  |   1   |  702  |   1   |  701  |  1    |  700  |       |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+BC     | CAOC1 | CAOC2 | CAOC3 | CAOC4 | CAOC5 | etc.  |. . . .| . . . |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|PAERO5  | 7001  |   1   |  702  |   1   |  701  |  1    |  700  |       |abc  |
 |+bc     |  0.0  | 0.0   | 5.25  |3.99375| 0.0   |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -12354,8 +11276,8 @@ LTAUS     ID number of the AEFACT data card which lists the ç`s (Integer = 0
 CAOCi     Ratio of chord of control surface to chord of strip (Ca/c) for
           each strip (Real >= 0).
 
-Remarks
--------
+## Remarks
+
 1.A PAERO5 card is used for piston theory strip property definition and is
   referenced in the PID column of a CAERO5 card.
 
@@ -12470,24 +11392,21 @@ Figure 2.4-44.
 
                          Figure 2.4-44. PAERO5 diagram
 
+
 PARAM - Parameter
 =================
 
-Description
------------
+## Description
+
 Specifies values for parameters used in DMAP sequences (including rigid
 formats).
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |PARAM   |   N   |   V1  |   V2  |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |PARAM   | IRES  |   1   |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -12496,19 +11415,17 @@ N         Parameter name (one to eight alphanumeric characters, the first of
 
 V1, V2    Parameter value based on parameter type as follows:
 
-+----------------------------+-------------------+-----------------+
 |       Type                 |      V1           |       V2        |
-+----------------------------+-------------------+-----------------+
+|----------------------------|-------------------|-----------------|
 |  Integer                   |  Integer          | Blank           |
 |  Real, single-precision    |  Real             | Blank           |
 |  BCD (alphanumeric)        |  BCD              | Blank           |
 |  Real, double-precision    |  Double-precision | Blank           |
 |  Complex, single-precision |  Real             | Real            |
 |  Complex, double-precision |  Double-precision | Double-precision|
-+----------------------------+-------------------+-----------------+
 
-Remarks
--------
+## Remarks
+
 1.Only parameters for which assigned values are allowed may be given values
   via the PARAM card. Section 5 describes parameters as used in DMAP.
 
@@ -13054,34 +11971,23 @@ In bulk data section,
 
   PARAM, ABC  1.23D+4
 
-PBAR - Simple Beam Property
-===========================
 
-Description
------------
+# PBAR - Simple Beam Property
+
+## Description
+
 Defines the properties of a simple beam (bar) which is used to create bar
 elements via the CBAR card.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |PBAR    |  PID  |  MID  |   A   |   I1  |   I2  |   J   |  NSM  |       |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|PBAR    |   39  |   6   |  2.9  |       |  5.97 |       |       |       |123  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     |   C1  |   C2  |   D1  |   D2  |   E1  |   E2  |   F1  |   F2  |def  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|+23     |       |       |  2.0  |  4.0  |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+ef     |   K1  |   K2  |  I12  |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|        |       |       |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|PBAR    |   39  |   6   |  2.9  |       |  5.97 |       |       |       |123  |
+|+23     |       |       |  2.0  |  4.0  |       |       |       |       |     |
 
 Field     Contents
 -----     --------
@@ -13101,8 +12007,8 @@ K1, K2    Area factor for shear (Real).
 
 Ci, Di, Ei, Fi  Stress recovery coefficients (Real).
 
-Remarks
--------
+## Remarks
+
 1.For structural problems, PBAR cards may only reference MAT1 material cards.
 
 2.See Section 1.3.2 for a discussion of bar element geometry.
@@ -13116,33 +12022,24 @@ Remarks
   quantities are ignored if I12 is non-zero. Defaults for K1 and K2 are: K1 =
   (12*E*I1)/(L*L*L); K2 = (12*EII2)/(L*L*L).
 
+
 PCOMP - Layered Composite Element Property
 ==========================================
 
-Description
------------
+## Description
+
 Defines the properties of an n-ply laminated composite material.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |PCOMP   |  PID  |  ZOC  |  NSM  | SBOND |   FT  |       |       | LOPT  |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|PCOMP   |  100  |  -0.5 |  1.5  |  5.+3 |  HOFF |       |       |SYMMEM |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     | MID1  |  T1   |  TH1  | SOUT1 | MID2  |  T2   |  TH2  | SOUT2 |def  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|+BC     | 150   |  0.05 |  90.  | YES   |       |       | -45.  |       |DEF  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------------------------------+-----+
 |+ef     | MID3  |  T3   |  TH3  | SOUT3 |           .. etc. .           |     |
-+--------+-------+-------+-------+-------+-------------------------------+-----+
+|PCOMP   |  100  |  -0.5 |  1.5  |  5.+3 |  HOFF |       |       |SYMMEM |ABC  |
+|+BC     | 150   |  0.05 |  90.  | YES   |       |       | -45.  |       |DEF  |
 |+EF     |       |       |  45.0 |       |           .........           |     |
-+--------+-------+-------+-------+-------+-------------------------------+-----+
 
 Field     Contents
 -----     --------
@@ -13174,8 +12071,8 @@ THi       Angle between the longitudinal direction of the fibers of
 SOUTi     Stress output request for ith layer, one of the strings YES
           or NO. (Default is NO).
 
-Remarks
--------
+## Remarks
+
 1.      The plies are numbered from 1 to n beginning with the bottom layer.
 
 2.      The offset (ZOC) is not the same offset (ZO) used in the CQUAD4 and
@@ -13307,26 +12204,19 @@ CASE 3            |                                                       | +ZOC
 PCOMP1 - Layered Composite Element Property
 ===========================================
 
-Description
------------
+## Description
+
 Defines the properties of an n-ply laminated composite material where all
 plies are composed of the same material and are of equal thickness.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |PCOMP1  |  PID  |  ZOC  |  NSM  | SBOND |   FT  |  MID  | TPLY  | LOPT  |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|PCOMP1  |  100  |  -0.5 |  1.7  |  5.+3 |STRAIN |  200  | 0.25  | SYM   |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-----------------------+-----+
 |+bc     |  TH1  |  TH2  |  TH3  |  TH4  |  TH5  |       .. etc. .       |     |
-+--------+-------+-------+-------+-------+-------+-----------------------+-----+
+|PCOMP1  |  100  |  -0.5 |  1.7  |  5.+3 |STRAIN |  200  | 0.25  | SYM   |ABC  |
 |+EF     | -45.0 |  45.0 |  90.0 |  90.0 |  45.0 |                       |     |
-+--------+-------+-------+-------+-------+-------+-----------------------+-----+
 
 Field     Contents
 -----     --------
@@ -13354,8 +12244,8 @@ TPLY      Thickness of all layers (Real > 0.0 or blank).
 THi       Angle between the longitudinal direction of the fibers of the ith
           layer and the material X-axis (Real or blank).
 
-Remarks
--------
+## Remarks
+
 1.The plies are numbered from 1 to n beginning with the bottom layer.
 
 2.The offset (ZOC) is not the same offset (ZO) used in the CQUAD4 and CTRIA3
@@ -13384,29 +12274,23 @@ Remarks
 
 7.See "Guidelines for the Use of PCOMP, PCOMP1, and PCOMP2" in PCOMP card.
 
+
 PCOMP2 - Layered Composite Element Property
 ===========================================
 
-Description
------------
+## Description
+
 Defines the properties of an n-ply laminated composite material where all
 plies are composed of the same material.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |PCOMP2  |  PID  |  ZOC  |  NSM  | SBOND |   FT  |  MID  |       | LOPT  |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|PCOMP2  |  100  |  -0.5 |  1.7  |  5.+3 | TSAI  |  200  |       | SYM   |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+---------------+-----+
 |+bc     |  T1   |  TH1  |  T2   |  TH2  |  T3   |  TH3  |    . etc. .   |     |
-+--------+-------+-------+-------+-------+-------+-------+---------------+-----+
+|PCOMP2  |  100  |  -0.5 |  1.7  |  5.+3 | TSAI  |  200  |       | SYM   |ABC  |
 |+EF     |  0.25 | -45.0 |  0.5  |  90.0 |  0.25 |  45.0 |    ........   |     |
-+--------+-------+-------+-------+-------+-------+-------+---------------+-----+
 
 Field     Contents
 -----     --------
@@ -13435,8 +12319,8 @@ Ti        Thickness of the ith layer (Real > 0.0 or blank).
 THi       Angle between the longitudinal direction of the fibers of the ith
           layer and the material X-axis (Real or blank).
 
-Remarks
--------
+## Remarks
+
 1.The plies are numbered from 1 to n beginning with the bottom layer.
 
 2.The offset (ZOC) is not the same offset (ZO) used in CQUAD4 and CTRIA3
@@ -13468,33 +12352,24 @@ Remarks
 
 8.See "Guidelines for the Use of PCOMP, PCOMP1, and PCOMP2" in PCOMP card.
 
+
 PCONEAX - Conical Shell Element Property
 ========================================
 
-Description
------------
+## Description
+
 Defines the properties of a conical shell element described on a CCONEAX card.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |PCONEAX |   ID  |  MID1 |   T1  |  MID2 |   I   |  MID3 |   T2  |  NSM  |+abc |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|PCONEAX |   2   |   4   |  1.0  |   6   |  16.3 |   8   |  2.1  |  0.5  |+1   |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+abc    |   Z1  |   Z2  |  PHI1 |  PHI2 |  PHI3 |  PHI4 |  PHI5 |  PHI6 |+def |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|+1      | 0.001 |-0.002 |  23.6 |  42.9 |       |       |       |       |+2   |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+def    |  PHI7 |  PHI8 |  PHI9 | PHI10 | PHI11 | PHI12 | PHI13 | PHI14 |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|PCONEAX |   2   |   4   |  1.0  |   6   |  16.3 |   8   |  2.1  |  0.5  |+1   |
+|+1      | 0.001 |-0.002 |  23.6 |  42.9 |       |       |       |       |+2   |
 |+2      |       |       |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -13514,8 +12389,8 @@ Z1, Z2    Fiber distances for stress recovery (Real).
 
 PHIi      Azimuthal coordinates (in degrees) for stress recovery (Real).
 
-Remarks
--------
+## Remarks
+
 1.This card is allowed if and only if an AXIC card is also present.
 
 2.PCONEAX cards may only reference MAT1 material cards.
@@ -13535,24 +12410,21 @@ Remarks
 7.For a discussion of the conical shell problem, see Section 5.9 of the
   Theoretical Manual.
 
+
 PDAMP - Scalar Damper Property
 ==============================
 
-Description
------------
+## Description
+
 Used to define the damping value of a scalar damper element which is defined
 by means of the CDAMP1 or CDAMP3 cards.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |PDAMP   |  PID  |   B   |  PID  |   B   |  PID  |   B   |  PID  |   B   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |PDAMP   |   14  | -2.3  |   2   |  6.1  |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -13560,8 +12432,8 @@ PID       Property identification number (Integer > 0).
 
 B         Value of scalar damper (Real).
 
-Remarks
--------
+## Remarks
+
 1.This card defines a damper value. Be careful when using negative damper
   values. Damper values are defined directly on the CDAMP2 and CDAMP4 cards.
   A structural viscous damper, CVISC, may also be used for geometric grid
@@ -13572,29 +12444,23 @@ Remarks
 3.For a discussion of scalar elements, see Section 5.6 of the Theoretical
   Manual.
 
+
 PDUMi - Dummy Element Property
 ==============================
 
-Description
------------
+## Description
+
 Defines the properties of a dummy element (1 <= i <= 9). Referenced by the
 CDUMi card.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |PDUMi   |  PID  |  MID  |   A1  |   A2  |       |       | etc.  |       |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|PDUM3   |  108  |   2   |  2.4  |  9.6  |  1.E4 |  15.  |       |  3.5  |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     |       | etc.  |   AN  |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|PDUM3   |  108  |   2   |  2.4  |  9.6  |  1.E4 |  15.  |       |  3.5  |ABC  |
 |+BC     |   5   |       |    2  |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -13604,28 +12470,25 @@ MID       Material identification number (Integer > 0).
 
 A1...AN   Additional entries (Real or Integer).
 
-Remarks
--------
+## Remarks
+
 1.The additional entries are defined in your element routines.
+
 
 PELAS - Scalar Elastic Property
 ===============================
 
-Description
------------
+## Description
+
 Used to define the stiffness, damping coefficient, and stress coefficient of a
 scalar elastic element (spring) by means of the CELAS1 or CELAS3 card.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |PELAS   |  PID  |   K   |   GE  |   S   |  PID  |   K   |   GE  |   S   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |PELAS   |   7   | 4.29  | 0.06  | 7.92  |   27  |  2.17 |0.0032 |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -13637,8 +12500,8 @@ GE        Damping coefficient, ge (Real).
 
 S         Stress coefficient (Real).
 
-Remarks
--------
+## Remarks
+
 1.Be careful using negative spring values. (Values are defined directly on
   some of the CELASi card types.)
 
@@ -13647,16 +12510,16 @@ Remarks
 3.For a discussion of scalar elements, see Section 5.6 of the Theoretical
   Manual.
 
+
 PELBOW - Curved Beam or Elbow Property
 ======================================
 
-Description
------------
+## Description
+
 Defines the properties of a curved beam or elbow element which is used to
 create curved pipe or beam elements via the CELBOW card.
 
-Format and Example
-------------------
+## Format and Example
 
 +--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
@@ -13706,8 +12569,8 @@ R         Radius of curvature of the element (Real > 0.0).
 +         Angle, in degrees, from GA to GB (Real, 0. < + < 180.) (See Figure
           2.4-45.)
 
-Remarks
--------
+## Remarks
+
 1.For structural problems, PELBOW may only reference MAT1 cards.
 
 2.For APP HEAT problems, PELBOW cards may only reference MAT4 or MAT5
@@ -13742,35 +12605,29 @@ Remarks
 
                          Figure 2.4-45. PELBOW diagram
 
+
 PERMBDY - Permeability Boundary
 ===============================
 
-Description
------------
+## Description
+
 Specifies grid points on boundaries of dissimilar magnetic permeability.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |PERMBDY |  G1   |  G2   |  G3   |  G4   |  G5   |  G6   |  G7   |  G8   |+a   |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|PERMBDY |   1   |   5   |   7   |   8   |  10   |  12   |  20   |  25   |+A   |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+a      |   G9  |  G10  |  G11  |  G12  |  G13  |  G14  |  G15  |  G16  |+b   |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|PERMBDY |   1   |   5   |   7   |   8   |  10   |  12   |  20   |  25   |+A   |
 |+A      |   30  |  40   |  ENDT |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
 Gi        Grid point identification numbers (Integers > 0).
 
-Remarks
--------
+## Remarks
+
 1.There may be only one PERMBDY card.
 
 2.The grid points on PERMBDY are those points which are on boundaries between
@@ -13779,22 +12636,19 @@ Remarks
 3.The PERMBDY card is not required, but its use is recommended. See Section
   1.15.4.4 for more details.
 
-PFTUBE - Fluid Tube Property
 
-Description
------------
+# PFTUBE - Fluid Tube Property
+
+## Description
+
 Defines the parameter for the fluid tube element of the heat transfer model.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |PFTUBE  |  PID  |  CP   | VOLRT |  D1   |  D2   |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |PFTUBE  |   5   |  1.3  |  8.0  |  1.0  |  1.25 |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -13809,8 +12663,8 @@ D1        Diameter at inlet (Real > 0).
 D2        Diameter at outlet (Real > 0 or blank). If blank, the value D1
           will be used.
 
-Remarks
--------
+## Remarks
+
 1.The FTUBE element transports energy at the rate:
 
   Power = CP * VOLRT * U
@@ -13823,22 +12677,19 @@ Remarks
 
   where L is the distance between the connected grid points.
 
-PHBDY - Property of Heat Boundary Element
 
-Description
------------
+# PHBDY - Property of Heat Boundary Element
+
+## Description
+
 Defines the properties of the HBDY element.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |PHBDY   |  PID  |  MID  |   AF  |   E   | ALPHA |   R1  |   R2  |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |PHBDY   |  100  |  103  |  300. |  .79  |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -13859,8 +12710,8 @@ ALPHA     Absorbtivity (0.0 <= Real <= l.0 or blank). Used only for thermal
 R1, R2    Radii of elliptic cylinder. Used for HBDY type ELCYL. See the HBDY
           element description. (Real).
 
-Remarks
--------
+## Remarks
+
 1.The referenced material ID must be on a MAT4 card. The card defines the
   convective film coefficient and thermal capacity per unit area. If no
   material is referenced the element convection and heat capacity are zero.
@@ -13870,25 +12721,22 @@ Remarks
   FTUBE, AF = +(R1 + R2)(length). The effective area is automatically
   calculated for other HBDY types.
 
+
 PIHEX - Isoparametric Hexahedron Property
 =========================================
 
-Description
------------
+## Description
+
 Defines the properties of an isoparametric solid element, including a material
 reference and the number of integration points. Referenced by the CIHEX1,
 CIHEX2, and CIHEX3 cards.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |PIHEX   |  PID  |  MID  |  CID  |  NIP  |   AR  |  ALFA |  BETA |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |PIHEX   |   15  |   3   |       |   3   |       |       |   5.0 |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -13914,8 +12762,8 @@ BETA      Maximum angle in degrees between the vector connecting a corner
           midside point and the other midside or corner point (Real, 0.0 <=
           BETA <= 180.0, or blank).
 
-Remarks
--------
+## Remarks
+
 1.All PIHEX cards must have unique identification numbers.
 
 2.The default for NIP is 2 for IHEX1 and 3 for IHEX2 and IHEX3.
@@ -13953,24 +12801,21 @@ Remarks
 8.The restrictions represented by Remarks 4 through 7 above are expected to
   be removed in a future release of NASTRAN.
 
+
 PIS2D8 - Quadratic Isoparametric Element Property
 =================================================
 
-Description
------------
+## Description
+
 Used to define the properties of a quadriparabolic isoparametric membrane
 element. Referenced by the CIS2D8 card.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |PIS2D8  |  PID  |  MID  |   T   |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |PIS2D8  |   2   |   1   |  0.5  |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -13980,8 +12825,8 @@ MID       Material identification number (Integer > 0).
 
 T         Thickness of membrane (Real).
 
-Remarks
--------
+## Remarks
+
 1.All PIS2D8 cards must have unique property identification members.
 
 2.The material property identification number must reference only a MAT1 or
@@ -13989,12 +12834,11 @@ Remarks
 
 PLFACT - Piecewise Linear Analysis Factor Definition
 
-Description
------------
+## Description
+
 Defines scale factors for piecewise linear analysis loading.
 
-Format and Example
-------------------
+## Format and Example
 
 +--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
@@ -14015,8 +12859,8 @@ SID       Unique set identification number (Integer > 0).
 
 Bi        Loading factor (Real).
 
-Remarks
--------
+## Remarks
+
 1.The remainder of the physical card containing the last entry must be null.
 
 2.At any stage of the piecewise linear analysis, the accumulated load is
@@ -14040,37 +12884,30 @@ Remarks
 5.Piecewise linear analysis factor sets must be selected in the Case Control
   Deck (PLCOEFF = SID) to be used by NASTRAN.
 
+
 PLIMIT - Property Optimization Limits
 =====================================
 
-Description
------------
+## Description
+
 Defines the maximum and minimum limits for ratio of new property to original
 property.
 
-Format and Example
-------------------
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+## Format and Example
+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |PLIMIT  | ELTYP |  KMIN |  KMAX |  PID1 |  PID2 |  PID3 |  PID4 |  PID5 |+abc |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|PLIMIT  |  ROD  |   .01 |  1.5  |   1   |   3   |   5   |   4   |   2   |+ABC |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     |  PID6 |  etc. |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|PLIMIT  |  ROD  |   .01 |  1.5  |   1   |   3   |   5   |   4   |   2   |+ABC |
 |+BC     |       |  etc. |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
-Alternate Form:
+## Alternate Form
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |PLIMIT  | ELTYP |  KMIN |  KMAX |  PID1 |"THRU" |  PIDi |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |PLIMIT  |  ALL  |  .001 | 0.05  |   30  | THRU  |  36   |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -14085,8 +12922,8 @@ KMAX      Maximum property ratio (Real > KMIN or = 0.0 or blank).
 PIDn      List of property identification numbers associated with KMIN
           and/or KMAX (Integer > 0).
 
-Remarks
--------
+## Remarks
+
 1.This card is not required (default KMIN = KMAX = 0.0 for ALL elements).
 
 2.All PID values must be unique for each element type.
@@ -14103,23 +12940,20 @@ Remarks
 
 7.One of KMIN or KMAX may be blank but not both.
 
+
 PLOAD - Static Pressure Load
 ============================
 
-Description
------------
+## Description
+
 Defines a static pressure load.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |PLOAD   |  SID  |   P   |   G1  |   G2  |   G3  |   G4  |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |PLOAD   |   1   | -4.0  |   16  |   32  |   11  |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -14129,8 +12963,8 @@ P         Pressure (Real).
 
 G1,...,G4 Grid point identification numbers (Integer > 0; G4 may be zero).
 
-Remarks
--------
+## Remarks
+
 1.Grid points must be unique and noncollinear.
 
 2.If four grid points are given, four triangles are formed and half of P is
@@ -14148,33 +12982,25 @@ Remarks
 4.Load sets must be selected in the Case Control Deck (LOAD = SID) to be used
   by NASTRAN.
 
+
 PLOAD2 - Pressure Load
 ======================
 
-Description
------------
+## Description
+
 Defines a uniform static pressure load applied to two-dimensional elements.
 Only QUAD1, QUAD2, QUAD4, QDMEM, QDMEM1, QDMEM2, QDPLT, SHEAR, TRBSC, TRIA1,
 TRIA2, TRIA3, TRMEM, TRPLT, or TWIST elements may have a pressure load applied
 to them via this card.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |PLOAD2  |  SID  |   P   |  EID  |  EID  |  EIDm |"THRU" |  EIDn |  EID  |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|PLOAD2  |   21  | -3.6  |   1   |   4   |   16  |THRU   |   22  |   98  |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     |  EID  |  etc. |       |       |       |       |       |       |def  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|PLOAD2  |   21  | -3.6  |   1   |   4   |   16  |THRU   |   22  |   98  |ABC  |
 |+BC     |  127  |       |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-                                etc. 
 
 Field     Contents
 -----     --------
@@ -14184,8 +13010,8 @@ P         Pressure value (Real).
 
 EID,EIDm,EIDn  Element identification numbers (Integer > 0; EIDm < EIDn).
 
-Remarks
--------
+## Remarks
+
 1.EID must be 0 or blank for omitted entries.
 
 2.Load sets must be selected in the Case Control Deck (LOAD = SID) to be used
@@ -14214,24 +13040,21 @@ Remarks
   1, then the load is distributed in proportion to the angle at each grid for
   the element.
 
+
 PLOAD3 - Pressure Load on a Face of an Isoparametric Element
 ============================================================
 
-Description
------------
+## Description
+
 Defines a uniform static pressure load applied to a surface of an
 isoparametric hexahedron element only.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |PLOAD3  |  SID  |   P   |  EID1 |  G11  |  G12  |  EID2 |  G21  |  G22  |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |PLOAD3  |   3   | -15.1 |   15  |   7   |   25  |   16  |  117  |  135  |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -14245,8 +13068,8 @@ G11,G12; G21,G22  Grid point identification number of two grid points at
           diagonally opposite corners of the face on which the pressure acts
           (Integers > 0).
 
-Remarks
--------
+## Remarks
+
 1.Load sets must be selected in the Case Control Deck (LOAD = SID) to be used
   by NASTRAN.
 
@@ -14260,54 +13083,41 @@ Remarks
 PLOAD4 - Pressure Loads on Face of Structural Elements
 ======================================================
 
-Description
------------
+## Description
+
 Defines a load on a face of a QUAD4 or CTRIA3 element.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |PLOAD4  |  SID  |  EID  |   P1  |  P2   |  P3   |   P4  |       |       |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|PLOAD4  |  101  | 2043  |  15.  |  18.  |  23.6 |       |       |       |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     |  CID  |   N1  |   N2  |   N3  |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|PLOAD4  |  101  | 2043  |  15.  |  18.  |  23.6 |       |       |       |ABC  |
 |+BC     |  52   |  1.0  |   0.  |   0.  |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Alternate Form 1:
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |PLOAD4  |  SID  |  E1   |   P1  |  P2   |  P3   |   P4  |"THRU" |E2     |ghi  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|PLOAD4  | 1001  | 452   |  105. |       |       |       |THRU   | 568   |GHI  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+hi     | CID   |  N1   |   N2  |   N3  |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|PLOAD4  | 1001  | 452   |  105. |       |       |       |THRU   | 568   |GHI  |
 |+HI     | 2375  |  0.   |  1.   |  1.   |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Alternate Form 2:
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |PLOAD4  |  SID  |  P1   |  EID  |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |PLOAD4  |  101  |  15.  | 2042  |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Alternate Form 3:
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |PLOAD4  |  SID  |  P1   |  E1   |       |       |       |"THRU" |E2     |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |PLOAD4  | 1001  |  105. |  452  |       |       |       |THRU   |  568  |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -14323,8 +13133,8 @@ CID       Coordinate system identification number (Integer >= 0).
 Ni        Components of a vector in system CID that defines the direction
           (but not the magnitude) of the pressure (Real).
 
-Remarks
--------
+## Remarks
+
 1.For the plate elements QUAD4 and TRIA3, if the continuation entry is not
   given, the direction of the pressure is normal to the element in the
   element Z direction, according to the right-hand-rule. If only P1 is given,
@@ -14375,11 +13185,12 @@ Remarks
           TWO TRIA3 B-A-D, D-C-B        -2    -4     -2   -4
           TWO TRIA3 B-A-D, C-D-B        -2     0     -2    0
 
+
 PLOTEL - Dummy Element Definition
 =================================
 
-Description
------------
+## Description
+
 Defines a dummy one-dimensional element for use in plotting. This element is
 not used in the model during any of the solution phases of a problem. It is
 used to simplify plotting of structures with large numbers of collinear grid
@@ -14387,16 +13198,12 @@ points where the plotting of each one along with the elements connecting them
 would result in a confusing plot. The use of this "element" is entirely your
 responsibility.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |PLOTEL  |  EID  |   G1  |   G2  |       |  EID  |   G1  |   G2  |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |PLOTEL  |  29   |   35  |   16  |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -14405,8 +13212,8 @@ EID       Element identification number (Integer > 0).
 G1, G2    Grid point identification numbers of connection points (Integer >
           0; G1 not equal G2).
 
-Remarks
--------
+## Remarks
+
 1.Each element identification number must be unique with respect to all other
   element identification numbers.
 
@@ -14414,21 +13221,17 @@ Remarks
 
 PMASS - Scalar Mass Property
 
-Description
------------
+## Description
+
 Used to define the mass value of a scalar mass element which is defined by
 means of the CMASS1 or CMASS3 cards.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |PMASS   |  PID  |   M   |  PID  |   M   |  PID  |   M   |  PID  |   M   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |PMASS   |   7   |  4.29 |   6   | 13.2  |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -14436,8 +13239,8 @@ PID       Property identification number (Integer > 0).
 
 M         Value of scalar mass (Real).
 
-Remarks
--------
+## Remarks
+
 1.This card defines a mass value. Be careful when using negative mass values.
   (Values are defined directly on some of the CMASSi card types.)
 
@@ -14446,25 +13249,22 @@ Remarks
 3.For a discussion of scalar elements, see Section 5.6 of the Theoretical
   Manual.
 
+
 POINTAX - Axisymmetric Point
 ============================
 
-Description
------------
+## Description
+
 Defines the location of a point on an axisymmetric ring at which loads may be
 applied via the FORCE, FORCEAX, MOMENT, or MOMAX cards and at which
 displacements may be requested.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |POINTAX |   ID  |  RID  |  PHI  |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |POINTAX |   2   |   3   |  30.0 |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -14474,8 +13274,8 @@ RID       Identification number of a RINGAX card (Integer > 0).
 
 PHI       Azimuthal angle in degrees (Real).
 
-Remarks
--------
+## Remarks
+
 1.This card is allowed if and only if an AXIC card is also present.
 
 2.Each POINTAX identification number must be unique with respect to all other
@@ -14493,21 +13293,17 @@ Remarks
 POPT - Property Optimization Parameter
 ======================================
 
-Description
------------
+## Description
+
 Defines the basic parameters and existence of a property optimization
 analysis.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |POPT    |  MAX  |  EPS  |  GAMA | PRINT | PUNCH |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |POPT    |   2   |1.0E-3 |   0.9 |   2   |   NO  |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -14525,8 +13321,8 @@ PRINT     Print control for property parameters and OFP. Printout occurs
 PUNCH     Property card punch option. If YES, properties that were optimized
           are punched (BCD, YES or NO).
 
-Remarks
--------
+## Remarks
+
 1.Only one POPT card is allowed.
 
 2.All subcases will be analyzed MAX+1 times unless all properties converge.
@@ -14552,24 +13348,21 @@ Remarks
 6.The property entry optimized depends on the element type and the material
   stress limits (see Section 1.13).
 
+
 PPSE - Pressure Stiffness Element Property
 ==========================================
 
-Description
------------
+## Description
+
 Defines properties of a pressure stiffness element. Referenced by the CPSE2,
 CPSE3, and CPSE4 cards.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |PPSE    |  PID  |  P1   |   P2  |  P3   |  P4   |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |PPSE    |   1   |  500  |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -14577,8 +13370,8 @@ PID       Property identification number (Integer > 0).
 
 P1...P4   Applied pressure load, real.
 
-Remarks
--------
+## Remarks
+
 1.All PPSE cards must have unique identification numbers.
 
 2.P1 is the value of the applied pressure load. P2, P3, and P4 are reserved
@@ -14590,24 +13383,21 @@ Remarks
 
 4.See Remarks for the CPSEi elements.
 
+
 PQDMEM - Quadrilateral Membrane Property
 ========================================
 
-Description
------------
+## Description
+
 Used to define the properties of a quadrilateral membrane. Referenced by the
 CQDMEM card. No bending properties are included.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |PQDMEM  |  PID  |  MID  |   T   |  NSM  |  PID  |  MID  |   T   |  NSM  |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |PQDMEM  |  235  |   2   |  0.5  |  0.0  |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -14619,31 +13409,28 @@ T         Thickness of membrane (Real > 0.0).
 
 NSM       Nonstructural mass per unit area (Real).
 
-Remarks
--------
+## Remarks
+
 1.All PQDMEM cards must have unique property identification numbers.
 
 2.One or two quadrilateral membrane properties may be defined on a single
   card.
 
+
 PQDMEM1 - Isoparametric Quadrilateral Membrane Property
 =======================================================
 
-Description
------------
+## Description
+
 Used to define the properties of an isoparametric quadrilateral membrane.
 Referenced by the CQDMEM1 card. No bending properties are included.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |PQDMEM1 |  PID  |  MID  |   T   |  NSM  |  PID  |  MID  |   T   |  NSM  |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |PQDMEM1 |  235  |   2   |  0.5  |  0.0  |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -14655,31 +13442,28 @@ T         Thickness of membrane (Real > 0.0).
 
 NSM       Nonstructural mass per unit area (Real).
 
-Remarks
--------
+## Remarks
+
 1.All PQDMEM1 cards must have unique property identification numbers.
 
 2.One or two isoparametric quadrilateral membrane properties may be defined
   on a single card.
 
+
 PQDMEM2 - Quadrilateral Membrane Property
 =========================================
 
-Description
------------
+## Description
+
 Used to define the properties of a quadrilateral membrane. Referenced by the
 CQDMEM2 card. No bending properties are included.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |PQDMEM2 |  PID  |  MID  |   T   |  NSM  |  PID  |  MID  |   T   |  NSM  |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |PQDMEM2 |  235  |   2   |  0.5  |  0.0  |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -14691,8 +13475,8 @@ T         Thickness of membrane (Real > 0.0).
 
 NSM       Nonstructural mass per unit area (Real).
 
-Remarks
--------
+## Remarks
+
 1.All PQDMEM2 cards must have unique property identification numbers.
 
 2.One or two quadrilateral membrane properties may be defined on a single
@@ -14701,21 +13485,17 @@ Remarks
 PQDPLT - Quadrilateral Plate Property
 =====================================
 
-Description
------------
+## Description
+
 Used to define the bending properties of a quadrilateral plate element.
 Referenced by the CQDPLT card. No membrane properties are included.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |PQDPLT  |  PID  |  MID1 |   I   |  MID2 |   T   |  NSM  |   Z1  |   Z2  |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |PQDPLT  |   16  |   23  |  4.29 |   16  | 2.63  |1.982  |  0.05 | -0.05 |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -14735,8 +13515,8 @@ NSM       Nonstructural mass per unit area (Real).
 Z1, Z2    Fiber distances for stress computation, positive according to the
           right-hand sequences defined on the CQDPLT card (Real).
 
-Remarks
--------
+## Remarks
+
 1.All PQDPLT cards must have unique property identification numbers.
 
 2.If T is zero, the element is assumed to be rigid in transverse shear.
@@ -14746,27 +13526,20 @@ Remarks
 PQUAD1 - General Quadrilateral Element Property
 ===============================================
 
-Description
------------
+## Description
+
 Defines the properties of a general quadrilateral element of the structural
 model, including bending, membrane, and transverse shear effects. Referenced
 by the CQUAD1 card.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |PQUAD1  |  PID  |  MID1 |   T1  |  MID2 |   I   |  MID3 |   T3  |  NSM  |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|PQUAD1  |   32  |   16  |  2.98 |   9   | 6.45  |  16   |  5.29 |  6.32 |WXYZ1|
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     |   Z1  |   Z2  |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|PQUAD1  |   32  |   16  |  2.98 |   9   | 6.45  |  16   |  5.29 |  6.32 |WXYZ1|
 |+XYZ1   |  0.09 | -0.06 |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -14790,8 +13563,8 @@ NSM       Nonstructural mass per unit area (Real).
 Z1, Z2    Fiber distances for stress computation, positive according to the
           right-hand sequence defined on the CQUAD1 card (Real).
 
-Remarks
--------
+## Remarks
+
 1.All PQUAD1 cards must have unique property identification numbers.
 
 2.If T3 is zero, the element is assumed to be rigid in transverse shear.
@@ -14799,25 +13572,22 @@ Remarks
 3.The membrane thickness, T1, is used to compute the structural mass for this
   element.
 
+
 PQUAD2 - Homogeneous Quadrilateral Property
 ===========================================
 
-Description
------------
+## Description
+
 Defines the properties of a homogeneous quadrilateral element of the
 structural model, including bending, membrane and transverse shear effects.
 Referenced by the CQUAD2 card.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |PQUAD2  |  PID  |  MID  |   T   |  NSM  |  PID  |  MID  |   T   |  NSM  |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |PQUAD2  |   32  |   16  |  2.98 |  9.0  |   45  |   16  |  5.29 |  6.32 |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -14829,8 +13599,8 @@ T         Thickness (Real > 0.0).
 
 NSM       Nonstructural mass per unit area (Real).
 
-Remarks
--------
+## Remarks
+
 1.All PQUAD2 cards must have unique identification numbers.
 
 2.The thickness used to compute membrane and transverse shear properties is
@@ -14844,24 +13614,21 @@ Remarks
 5.One or two homogeneous quadrilateral properties may be defined on a single
   card.
 
+
 PRESAX - Axisymmetric Pressure Load
 ===================================
 
-Description
------------
+## Description
+
 Defines the static pressure loading for a model containing CCONEAX, CTRAPAX,
 or CTRIAAX elements.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |PRESAX  |  SID  |   P   |  RID1 |  RID2 |  PHI1 |  PHI2 |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |PRESAX  |   3   |  7.92 |   4   |   3   |  20.6 |  31.4 |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -14873,8 +13640,8 @@ RID1, RID2Ring identification numbers (see RINGAX card) (Integer > 0).
 
 PHI1, PHI2Azimuthal angles in degrees (Real, PHI1 not equal PHI2).
 
-Remarks
--------
+## Remarks
+
 1.This card is allowed if and only if an AXIC card is also present.
 
 2.Load sets must be selected in the Case Control Deck (LOAD = SID) in order
@@ -14889,21 +13656,17 @@ Remarks
 PRESPT - Fluid Pressure Point
 =============================
 
-Description
------------
+## Description
+
 Defines the location of pressure points in the fluid for recovery of pressure
 data.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |PRESPT  |  IDF  |       |  IDP  |   í   |  IDP  |   í   |  IDP  |   í   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |PRESPT  |   14  |       |  141  |  0.0  |       |       |  142  |  90.0 |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -14914,8 +13677,8 @@ IDP       Unique pressure point identification number (Integer > 0).
 í         Azimuthal position on fluid point, referenced by IDF, in fluid
           coordinate system (Real).
 
-Remarks
--------
+## Remarks
+
 1.This card is allowed only if an AXIF card is also present.
 
 2.All pressure point identification numbers must be unique with respect to
@@ -14933,20 +13696,16 @@ Remarks
 PROD - Rod Property
 ===================
 
-Description
------------
+## Description
+
 Defines the properties of a rod which is referenced by the CROD card.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |PROD    |  PID  |  MID  |   A   |   J   |   C   |  NSM  |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |PROD    |   17  |   23  |  42.6 | 17.92 | 4.236 |  0.5  |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -14962,8 +13721,8 @@ C         Coefficient to determine torsional stress (Real).
 
 NSM       Nonstructural mass per unit length (Real).
 
-Remarks
--------
+## Remarks
+
 1.PROD cards must all have unique property identification numbers.
 
 2.For structural problems, PROD cards may only reference MAT1 material cards.
@@ -14974,8 +13733,8 @@ Remarks
 PROLATE - Prolate Spheroidal Surface
 ====================================
 
-Description
------------
+## Description
+
 Specifies a prolate spheroidal surface of the finite element model in
 magnetostatics problems.
 
@@ -15016,8 +13775,8 @@ G2        Grid point Identification number at right end point (Integer > 0).
 Gi, i >= 3Grid point identification numbers of points defining the prolate
           spheroidal surface (Integer > 0).
 
-Remarks
--------
+## Remarks
+
 1.The major axis of the generating ellipse must lie on the X-axis of the
   basic coordinate system, the minor axis must lie on the Y-axis of the basic
   coordinate system, and the center of the ellipse must coincide with the
@@ -15086,23 +13845,20 @@ Remarks
 
                         Figure 2.4-46. PROLATE diagram
 
-PSHEAR - Shear Panel Property
 
-Description
------------
+# PSHEAR - Shear Panel Property
+
+## Description
+
 Defines the elastic properties of a shear panel. Referenced by the CSHEAR
 card.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |PSHEAR  |  PID  |  MID  |   T   |  NSM  |  PID  |  MID  |   T   |  NSM  |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |PSHEAR  |   13  |   2   |  4.9  |  16.2 |  14   |   6   |  4.9  |  14.7 |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -15114,37 +13870,31 @@ T         Thickness of shear panel (Real not equal 0.0).
 
 NSM       Nonstructural mass per unit area (Real).
 
-Remarks
--------
+## Remarks
+
 1.All PSHEAR cards must have unique identification numbers.
 
 2.PSHEAR cards may only reference MAT1 material cards.
 
 3.One or two shear panel properties may be defined on a single card.
 
+
 PSHELL - Shell Element Property
 ===============================
 
-Description
------------
+## Description
+
 Defines the membrane, bending, transverse shear, and coupling properties of
 the QUAD4 and CTRIA3 shell elements.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |PSHELL  |  PID  |  MID1 |   T   |  MID2 |12I/T3 |  MID3 | TS/T  |  NSM  |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|PSHELL  |  203  |  204  |  1.90 |  205  |  1.2  |  206  |  0.8  |  6.32 |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     |   Z1  |   Z2  |  MID4 | MCSID | SCSID |   ZO  |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|PSHELL  |  203  |  204  |  1.90 |  205  |  1.2  |  206  |  0.8  |  6.32 |ABC  |
 |+BC     |  +.95 |  -.95 |       |   0   |   0   |  0.01 |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -15191,8 +13941,8 @@ ZO        Offset of the element reference plane (element
           blank; default = .0. See Remark 11 and Guidelines in
           CQUAD4).
 
-Remarks
--------
+## Remarks
+
 1.      All PSHELL property entries must have unique identification numbers.
 
 2.      The structural mass is computed from the density using the membrane
@@ -15238,7 +13988,7 @@ Remarks
 11.     The value of ZO is the default value for the corresponding field on the
         CQUAD4 or CTRIA3 Bulk Data entries.
 
-Guidelines for the Use of PSHELL
+## Guidelines for the Use of PSHELL
 
 (Excerpt from "QUAD4 SEMINAR", WPAFB, WRDC-TR-89-3046, revised April 1993)
 
@@ -15340,24 +14090,21 @@ deformation is computed by assuming a material infinitely stiff in transverse
 shear when the MID3 field is blank. The easiest way to avoid shear stiffness
 over-estimation is not to leave MID3 blank when MID2 is specified.
 
+
 PTORDRG - Toroidal Ring Property
 ================================
 
-Description
------------
+## Description
+
 Used to define membrane and flexure (bending) properties of a toroidal ring
 element. Referenced by the CTORDRG card.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |PTORDRG |  PID  |  MID  |   TM  |   TF  |  PID  |  MID  |   TM  |   TF  |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |PTORDRG |   2   |   4   |  0.1  |  0.15 |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -15369,8 +14116,8 @@ TM        Thickness for membrane (Real > 0.0).
 
 TF        Thickness for flexure (Real).
 
-Remarks
--------
+## Remarks
+
 1.All PTORDRG cards must have unique property identification numbers.
 
 2.The material identification number MID must reference only a MAT1 or MAT3
@@ -15378,34 +14125,25 @@ Remarks
 
 3.One or two toroidal ring properties may be defined on a single card.
 
+
 PTRAPAX - Triangular Ring Element Property
 ==========================================
 
-Description
------------
+## Description
+
 Defines the properties of an axisymmetric trapezoidal cross-section ring
 element referenced by the CTRAPAX card.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |PTRAPAX |  PID  |       |  MID  | PHI1  | PHI2  | PHI3  | PHI4  | PHI5  |+abc |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|PTRAPAX |   5   |       |  15   |  0.0  |  5.0  |  6.0  |  7.0  |  8.0  |+N1  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+abc    | PHI6  | PHI7  | PHI8  | PHI9  | PHI10 | PHI11 | PHI12 | PHI13 |+def |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|+N1     | 9.0   | 10.0  | 15.0  | 20.0  | 25.0  | 30.0  | 35.0  | 40.0  |+N2  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+def    | PHI14 |       |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|PTRAPAX |   5   |       |  15   |  0.0  |  5.0  |  6.0  |  7.0  |  8.0  |+N1  |
+|+N1     | 9.0   | 10.0  | 15.0  | 20.0  | 25.0  | 30.0  | 35.0  | 40.0  |+N2  |
 |+N2     | 45.0  |       |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -15415,8 +14153,8 @@ MID       Material identification number (Integer > 0).
 
 PHIi      Azimuthal coordinates (in degrees) for stress recovery (Real).
 
-Remarks
--------
+## Remarks
+
 1.All PTRAPAX cards must have unique property identification numbers.
 
 2.This card is allowed if and only if an AXIC card is also present.
@@ -15425,24 +14163,21 @@ Remarks
 
 4.A maximum of 14 azimuthal coordinates for stress recovery may be specified.
 
+
 PTRBSC - Basic Bending Triangle Property
 ========================================
 
-Description
------------
+## Description
+
 Defines basic bending triangle (TRBSC) properties. Referenced by the CTRBSC
 card. No membrane properties are included.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |PTRBSC  |  PID  |  MID1 |   I   |  MID2 |   T   |  NSM  |   Z1  |   Z2  |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |PTRBSC  |   3   |   17  |  6.29 |   4   |  16.  | 1.982 |  0.05 | -0.05 |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -15462,38 +14197,32 @@ NSM       Nonstructural mass per unit area (Real).
 Z1, Z2    Fiber distances for shear computation, positive according to the
           right-hand sequence defined in the CTRBSC card (Real).
 
-Remarks
--------
+## Remarks
+
 1.All PTRBSC cards must have unique property identification numbers.
 
 2.If T is zero, the element is assumed to be rigid in transverse shear.
 
 3.No structural mass is generated by this element.
 
+
 PTRIA1 - General Triangular Element Property
 ============================================
 
-Description
------------
+## Description
+
 Defines the properties of a general triangular element of the structural
 model, including bending, membrane and transverse shear effects. Referenced by
 the CTRIA1 card.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |PTRIA1  |  PID  |  MID1 |   T1  |  MID2 |   I   |  MID3 |   T3  |  NSM  |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|PTRIA1  |   32  |   16  |  2.98 |   9   |  6.45 |   16  |  5.29 |  6.32 |QED  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     |   Z1  |   Z2  |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|PTRIA1  |   32  |   16  |  2.98 |   9   |  6.45 |   16  |  5.29 |  6.32 |QED  |
 |+ED     |       |       |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -15517,8 +14246,8 @@ NSM       Nonstructural mass per unit area (Real).
 Z1, Z2    Fiber distances for stress calculations, positive according to the
           right-hand sequence defined on the CTRIA1 card (Real).
 
-Remarks
--------
+## Remarks
+
 1.All PTRIA1 cards must have unique property identification numbers.
 
 2.If T3 is zero, the element is assumed to be rigid in transverse shear.
@@ -15529,22 +14258,18 @@ Remarks
 PTRIA2 - Homogeneous Triangular Element Property
 ================================================
 
-Description
------------
+## Description
+
 Defines the properties of a homogeneous triangular element of the structural
 model, including membrane, bending and transverse shear effects. Referenced by
 the CTRIA2 card.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |PTRIA2  |  PID  |  MID  |   T   |  NSM  |  PID  |  MID  |   T   |  NSM  |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |PTRIA2  |   2   |   16  | 3.92  |  14.7 |   6   |   16  |  2.96 |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -15556,8 +14281,8 @@ T         Thickness (Real > 0.0).
 
 NSM       Nonstructural mass per unit area (Real).
 
-Remarks
--------
+## Remarks
+
 1.All PTRIA2 cards must have unique identification numbers.
 
 2.The thickness used to compute the membrane and transverse shear properties
@@ -15574,31 +14299,21 @@ Remarks
 PTRIAAX - Triangular Ring Element Property
 ==========================================
 
-Description
------------
+## Description
+
 Defines the properties of an axisymmetric triangular cross-section ring
 element referenced by the CTRIAAX card.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |PTRIAAX |  PID  |       |  MID  | PHI1  | PHI2  | PHI3  | PHI4  | PHI5  |+abc |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|PTRIAAX |   5   |       |  15   |  0.0  |  5.0  |  6.0  |  7.0  |  8.0  |+N1  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+abc    | PHI6  | PHI7  | PHI8  | PHI9  | PHI10 | PHI11 | PHI12 | PHI13 |+def |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|+N1     | 9.0   | 10.0  | 15.0  | 20.0  | 25.0  | 30.0  | 35.0  | 40.0  |+N2  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+def    | PHI14 |       |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|PTRIAAX |   5   |       |  15   |  0.0  |  5.0  |  6.0  |  7.0  |  8.0  |+N1  |
+|+N1     | 9.0   | 10.0  | 15.0  | 20.0  | 25.0  | 30.0  | 35.0  | 40.0  |+N2  |
 |+N2     | 45.0  |       |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -15608,8 +14323,8 @@ MID       Material identification number (Integer > 0).
 
 PHIi      Azimuthal coordinates (in degrees) for stress recovery (Real).
 
-Remarks
--------
+## Remarks
+
 1.All PTRIAAX cards must have unique property identification numbers.
 
 2.This card is allowed if and only if an AXIC card is also present.
@@ -15618,24 +14333,21 @@ Remarks
 
 4.A maximum of 14 azimuthal coordinates for stress recovery may be specified.
 
+
 PTRIM6 - Linear Strain Triangular Membrane Property
 ===================================================
 
-Description
------------
+## Description
+
 Defines the properties of a linear strain triangular membrane element.
 Referenced by the CTRIM6 card. No bending properties are included.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |PTRIM6  |  PID  |  MID  |   T1  |   T3  |   T5  |  NSM  |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |PTRIM6  |  666  |  999  |  1.17 |  2.52 |  3.84 |  8.3  |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -15647,8 +14359,8 @@ T1, T3, T5Membrane thicknesses at the vertices of the element (Real).
 
 NSM       Nonstructural mass per unit area (Real).
 
-Remarks
--------
+## Remarks
+
 1.All PTRIM6 cards must have unique property identification numbers
 
 2.PTRIM6 cards may only reference MAT1 or MAT2 cards.
@@ -15656,24 +14368,21 @@ Remarks
 3.In general, the thickness varies linearly over the triangle. If T3 or T5 is
   specified 0.0 or blank, it will be set equal to T1.
 
+
 PTRMEM - Triangular Membrane Property
 =====================================
 
-Description
------------
+## Description
+
 Used to define the properties of a triangular membrane element. Referenced by
 the CTRMEM card. No bending properties are included.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |PTRMEM  |  PID  |  MID  |   T   |  NSM  |  PID  |  MID  |   T   |  NSM  |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |PTRMEM  |   17  |   23  | 4.25  |  0.2  |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -15685,30 +14394,27 @@ T         Membrane thickness (Real > 0.0).
 
 NSM       Nonstructural mass per unit area (Real).
 
-Remarks
--------
+## Remarks
+
 1.All PTRMEM cards must have unique property identification numbers.
 
 2.One or two triangular membrane properties may be defined on a single card.
 
+
 PTRPLT - Triangular Plate Property
 ==================================
 
-Description
------------
+## Description
+
 Used to define the bending properties of a triangular plate element.
 Referenced by the CTRPLT card. No membrane properties are included.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |PTRPLT  |  PID  |  MID1 |   I   |  MID2 |   T   |  NSM  |   Z1  |   Z2  |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |PTRPLT  |   17  |   26  |  4.29 |   16  | 3.9-4 | 2.634 |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -15728,37 +14434,31 @@ NSM       Nonstructural mass per unit area (Real).
 Z1, Z2    Fiber distances for stress computation, positive according to the
           right-hand sequence defined on the CTRPLT card (Real).
 
-Remarks
--------
+## Remarks
+
 1.All PTRPLT cards must have unique property identification numbers.
 
 2.If T is zero, the element is assumed to be rigid in transverse shear.
 
 3.No structural mass is generated by this element.
 
+
 PTRPLT1 - Triangular Plate Property
 ===================================
 
-Description
------------
+## Description
+
 Defines the bending properties of a higher order triangular plate element.
 Referenced by the CTRPLT1 card. No membrane properties are included.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |PTRPLT1 |  PID  |  MID1 |   R1  |   R3  |   R5  |  MID2 |  TS1  |  TS3  |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|PTRPLT1 |   15  |   25  |  20.0 |  30.0 |  40.0 |   35  |  3.0  |  1.15 |PQR  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     |  TS5  |  NSM  |  Z11  |  Z21  |  Z13  |  Z23  |  Z15  |  Z25  |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|PTRPLT1 |   15  |   25  |  20.0 |  30.0 |  40.0 |   35  |  3.0  |  1.15 |PQR  |
 |+QR     |  1.0  |  9.0  |  1.5  | -1.5  |  2.0  | -2.0  | +2.5  | -2.5  |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field     Contents
 -----     --------
@@ -15782,8 +14482,8 @@ Z11, Z21, Z13; Z23, Z15, Z25  Fiber distances for stress computation at grid
             points G1, G3, and G5, respectively; positive according to the
             right-hand sequence defined on the CTRPLT1 card (Real).
 
-Remarks
--------
+## Remarks
+
 1. All PTRPLT1 cards must have unique property identification numbers.
 
 2. If TS1 is zero, the element is assumed to be rigid in transverse shear.
@@ -15799,34 +14499,25 @@ Remarks
 
 6. The continuation card is required, even if blank.
 
+
 PTRSHL - Higher Order Triangular Shell Element Property
 =======================================================
 
-Description
------------
+## Description
+
 Defines the membrane bending and transverse shear properties of a higher order
 triangular shell element. Referenced by the CTRSHL card.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |PTRSHL  |  PID  |  MID1 |   T1  |   T3  |   T5  |  MID2 |   I1  |   I3  |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|PTRSHL  |   10  |   20  |   3.0 |   6.0 |   4.0 |   30  |  2.25 |  18.0 |PQR  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     |   I5  |  MID3 |  TS1  |  TS3  |  TS5  |  NSM  |  Z11  |  Z21  |def  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|+QR     |  5.33 |   40  |  2.5  |  5.0  |  3.5  |  50.0 |  1.5  | -1.5  |STU  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+ef     |  Z13  |  Z23  |  Z15  |  Z25  |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|PTRSHL  |   10  |   20  |   3.0 |   6.0 |   4.0 |   30  |  2.25 |  18.0 |PQR  |
+|+QR     |  5.33 |   40  |  2.5  |  5.0  |  3.5  |  50.0 |  1.5  | -1.5  |STU  |
 |+TU     |  3.0  | -3.0  |  2.0  | -2.0  |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field       Contents
 
@@ -15854,8 +14545,8 @@ Z11, Z21, Z13, Z23, Z15, Z25  Fiber distances for stress computation at grid
             points G1, G3, and G5 respectively, positive according to the
             right-hand sequence defined on the CTRSHL card (Real >= 0.0).
 
-Remarks
--------
+## Remarks
+
 1. All PTRSHL cards must have unique property identification numbers.
 
 2. If T3 or T5 are equal to 0.0 or blank, they will be set equal to T1.
@@ -15877,21 +14568,17 @@ Remarks
 PTUBE - Tube Property
 =====================
 
-Description
------------
+## Description
+
 Defines the properties of a thin-walled cylindrical tube element. Referenced
 by the CTUBE card.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |PTUBE   |  PID  |  MID  |   OD  |   T   |  NSM  |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |PTUBE   |   2   |   6   |  6.29 |  0.25 |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -15905,8 +14592,8 @@ T          Thickness of tube (Real; T <= 1/2 OD).
 
 NSM        Nonstructural mass per unit length (Real).
 
-Remarks
--------
+## Remarks
+
 1. If T is zero, a solid circular rod is assumed.
 
 2. PTUBE cards must all have unique property identification numbers.
@@ -15917,24 +14604,21 @@ Remarks
 4. For heat transfer problems, PTUBE cards may only reference MAT4 or MAT5
    material cards.
 
+
 PTWIST - Twist Panel Property
 =============================
 
-Description
------------
+## Description
+
 Defines the elastic properties of a twist panel element. Referenced by the
 CTWIST card.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |PTWIST  |  PID  |  MID  |   T   |  NSM  |  PID  |  MID  |   T   |  NSM  |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |PTWIST  |   4   |   6   |  2.3  |  9.4  |   5   |   6   |  1.6  |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -15946,32 +14630,29 @@ T          Thickness of twist panel (Real not equal 0.0).
 
 NSM        Nonstructural mass per unit area (Real).
 
-Remarks
--------
+## Remarks
+
 1. All PTWIST cards must have unique identification numbers.
 
 2. PTWIST cards may only reference MAT1 material cards.
 
 3. One or two twist panel properties may be defined on a single card.
 
+
 PVISC - Viscous Element Property
 ================================
 
-Description
------------
+## Description
+
 Defines the viscous properties of a one-dimensional viscous element which is
 used to create viscous elements by means of the CVISC card.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |PVISC   |  PID  |   C1  |   C2  |       |  PID  |   C1  |   C2  |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |PVISC   |   3   |  6.2  |  3.94 |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -15979,8 +14660,8 @@ PID        Property identification number (Integer > 0).
 
 C1, C2     Viscous coefficients for extension and rotation (Real).
 
-Remarks
--------
+## Remarks
+
 1. This card is used for both extensional and rotational viscous elements.
 
 2. This card has meaning for dynamics problems only.
@@ -15992,29 +14673,22 @@ Remarks
 
 5. This card is used only for direct formulation of dynamic analyses.
 
+
 QBDY1 - Boundary Heat Flux Load
 ===============================
 
-Description
------------
+## Description
+
 Defines a uniform heat flux into HBDY elements.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |QBDY1   |  SID  |  Q0   |  EID  |  EID  |  EIDm |"THRU" |  EIDn |  EID  |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|QBDY1   |  109  | 1.-5  |  721  |  723  |  731  | THRU  |  790  |  796  |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     |  EID  |  etc. |       |       |       |       |       |       |def  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|QBDY1   |  109  | 1.-5  |  721  |  723  |  731  | THRU  |  790  |  796  |ABC  |
 |+BC     |  801  |       |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-                                 etc. 
 
 Field      Contents
 -----      --------
@@ -16024,8 +14698,8 @@ Q0         Heat flux into element (Real).
 
 EID, EIDm, EIDn  HBDY elements (Integer > 0; EIDm < EIDn).
 
-Remarks
--------
+## Remarks
+
 1. QBDY1 cards must be selected in the Case Control Deck (LOAD = SID) to be
    used in statics. The power contributed into an element via this card is
    given by the equation:
@@ -16053,23 +14727,20 @@ Remarks
    QBDY1 card and in fields 2 and 9 of each continuation card (if all fields
    are used).
 
+
 QBDY2 - Boundary Heat Flux Load
 ===============================
 
-Description
------------
+## Description
+
 Defines grid point heat flux into an HBDY element.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |QBDY2   |  SID  |  EID  |  Q01  |  Q02  |  Q03  |  Q04  |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |QBDY2   |  109  |  721  | 1.-5  | 1.-5  | 2.-5  | 2.-5  |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -16080,8 +14751,8 @@ EID        Identification number of an HBDY element (Integer > 0).
 Q0i        Heat flux at the ith grid point on the referenced HBDY element
            (Real or blank).
 
-Remarks
--------
+## Remarks
+
 1. QBDY2 cards must be selected in the Case Control Deck (LOAD = SID) to be
    used in statics. The power contributed into each point, i, on an element
    via this card is given by
@@ -16101,23 +14772,20 @@ Remarks
 
 3. Q0i is positive for heat flux input to the element.
 
+
 QHBDY - Boundary Heat Flux Load
 ===============================
 
-Description
------------
+## Description
+
 Defines a uniform heat flux into a set of grid points.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |QHBDY   |  SID  |  FLAG |   Q0  |   AF  |   G1  |   G2  |   G3  |   G4  |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |QHBDY   |  120  |  LINE | 1.5+3 |  .75  |   13  |   15  |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -16133,8 +14801,8 @@ AF         Area factor depends on type (Real > 0.0 or blank).
 G1,...,G4  Grid point identification of connected points (Integer > 0 or
            blank).
 
-Remarks
--------
+## Remarks
+
 1. The heat flux applied to the area is transformed to loads on the points.
    These points need not correspond to an HBDY element.
 
@@ -16164,29 +14832,22 @@ Remarks
    For physical descriptions of the geometry involved, see the CHBDY
    description.
 
+
 QVECT - Thermal Flux Vector Load
 ================================
 
-Description
------------
+## Description
+
 Defines thermal flux vector from a distant source into HBDY elements.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |QVECT   |  SID  |  Q0   |  E1   |  E2   |  E3   |  EID1 |  EID2 |  EID3 |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|QVECT   |  333  | 1.-2  | -1.0  |  0.0  |  0.0  |  721  |  722  |  723  |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     |  EID4 |  EID5 |  etc. |       |       |       |       |       |def  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|QVECT   |  333  | 1.-2  | -1.0  |  0.0  |  0.0  |  721  |  722  |  723  |ABC  |
 |+BC     |  724  |       |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-                                 etc. 
 
 Field      Contents
 -----      --------
@@ -16201,8 +14862,8 @@ E1, E2, E3 Vector components (in basic coordinate system) of the thermal flux
 EIDi       Element identification numbers of HBDY elements irradiated by the
            distant source (Integer > 0).
 
-Remarks
--------
+## Remarks
+
 1. For statics, the load set is selected in the Case Control Deck (LOAD =
    SID). The power contributed into an element via this card is given by
 
@@ -16257,29 +14918,22 @@ Remarks
    the first element, the BCD string THRU, and the last element. No subsequent
    data is allowed with this option.
 
+
 QVOL - Volume Heat Addition
 ===========================
 
-Description
------------
+## Description
+
 Defines a rate of internal heat generation in an element.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |QVOL    |  SID  |  QV   |  EID  |  EID  |  EIDm |"THRU" |  EIDn |  EID  |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|QVOL    |  333  | 1.+2  |  301  |  303  |  317  | THRU  |  345  |  416  |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     |  EID7 |  etc. |       |       |       |       |       |       |def  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|QVOL    |  333  | 1.+2  |  301  |  303  |  317  | THRU  |  345  |  416  |ABC  |
 |+BC     |  527  |       |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-                                 etc. 
 
 Field      Contents
 -----      --------
@@ -16291,8 +14945,8 @@ QV         Power input per unit volume produced by a heat conduction element
 EID, EIDm, EIDn  Heat conduction element identification numbers (Integer > 0;
            EIDm < EIDn).
 
-Remarks
--------
+## Remarks
+
 1. In statics, the load is applied with the Case Control request, LOAD = SID.
    The equivalent power contributed via this card into each grid point, i,
    connected to each element listed, is given by
@@ -16320,30 +14974,23 @@ Remarks
    QVOL card and in fields 2 and 9 of each continuation card (if all fields
    are used).
 
+
 RADLST - List of Radiation Areas
 ================================
 
-Description
------------
+## Description
+
 A list of HBDY identification numbers given in the same order as the columns
 of the RADMTX matrix.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |RADLST  |  EID1 |  EID2 |  EID3 |  EID4 |  EID5 |  EID6 |  EID7 |  EID8 |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|RADLST  |   10  |   20  |   30  |   50  |   31  |   41  | THRU  |   61  |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     |  EID9 |  etc. |       |       |       |       |       |       |def  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|RADLST  |   10  |   20  |   30  |   50  |   31  |   41  | THRU  |   61  |ABC  |
 |+BC     |   71  |       |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-                                 etc. 
 
 Field      Contents
 -----      --------
@@ -16351,8 +14998,8 @@ EIDi       The element identification numbers of the HBDY elements, given in
            the order that they appear in the RADMTX matrix (Integer > 0 or
            BCD THRU).
 
-Remarks
--------
+## Remarks
+
 1. This card is required if a RADMTX is defined.
 
 2. Only one RADLST card string is allowed in a data deck.
@@ -16366,30 +15013,23 @@ Remarks
    panel are radiating, each side may participate in a different part of the
    view factor matrix.
 
+
 RADMTX - Radiation Matrix
 =========================
 
-Description
------------
+## Description
+
 Matrix of radiation exchange coefficients (area times view factor) for
 nonlinear heat transfer analysis.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |RADMTX  | INDEX |  Fi,i | Fi+1,i| Fi+2,i| Fi+3,i| Fi+4,i| Fi+5,i| Fi+6,i|abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|RADMTX  |   3   |   0.  |  9.3  |  17.2 |  16.1 |  .1   |   0.  |  6.2  |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     | Fi+7,i|  etc. |       |       |       |       |       |       |def  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|RADMTX  |   3   |   0.  |  9.3  |  17.2 |  16.1 |  .1   |   0.  |  6.2  |ABC  |
 |+BC     |  6.2  |       |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-                                 etc. 
 
 Field      Contents
 -----      --------
@@ -16400,8 +15040,8 @@ Fi+k,i     The matrix values (Real), starting on the diagonal, continuing
            be omitted. A blank field will end the column, which disallows
            imbedded blank fields.
 
-Remarks
--------
+## Remarks
+
 1. The INDEX numbers go from 1 through NA, where NA is the number of radiating
    areas.
 
@@ -16427,27 +15067,24 @@ Remarks
    of the matrix column to be filled with zeros. This implies an infinite heat
    sink (radiation loss) is present.
 
+
 RANDPS - Power Spectral Density Specification
 =============================================
 
-Description
------------
+## Description
+
 Defines load set power spectral density factors for use in random analysis
 having the frequency dependent form
 
    S  (F)  =  (X + iY) G(F)
     jk
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |RANDPS  |  SID  |   J   |   K   |   X   |   Y   |  TID  |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |RANDPS  |   5   |   3   |   7   |  2.0  |  2.5  |   4   |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -16463,8 +15100,8 @@ X, Y       Components of complex number (Real).
 TID        Identification number of a TABRNDi card which defines G(F)
            (Integer >= 0).
 
-Remarks
--------
+## Remarks
+
 1. If J = K, then Y must be 0.0.
 
 2. For TID = 0, G(F) = 1.0.
@@ -16480,23 +15117,20 @@ Remarks
 
 6. Subcase number must be specified in the Case Control Deck.
 
-RANDT1 - Autocorrelation Function Time Lag
 
-Description
------------
+# RANDT1 - Autocorrelation Function Time Lag
+
+## Description
+
 Defines time lag constants for use in random analysis autocorrelation function
 computation.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |RANDT1  |  SID  |   N   |   T0  |  TMAX |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |RANDT1  |   5   |   10  |  3.2  |  9.6  |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -16508,8 +15142,8 @@ T0         Starting time lag (Real >= 0.0).
 
 TMAX       Maximum time lag (Real > T0).
 
-Remarks
--------
+## Remarks
+
 1. At least one RANDPS card must be present with the same set identification
    number.
 
@@ -16526,26 +15160,19 @@ Remarks
 RELES - Release Substructure Connectivities
 ===========================================
 
-Description
------------
+## Description
+
 Defines sets of component degrees of freedom at substructure grid points which
 are not to be connected.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |RELES   |  SID  |  NAME |   G1  |   C1  |   G2  |   C2  |   G3  |   C3  |def  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|RELESL  |   6   |WINGRT |   17  |  456  |   18  |  456  |   21  |  123  |DEF  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+---------------+-------+-------+-------+-------+-----+
 |+ef     |   G4  |   C4  |      etc.     |   GN  |   CN  |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|RELESL  |   6   |WINGRT |   17  |  456  |   18  |  456  |   21  |  123  |DEF  |
 |+EF     |   253 |  456  |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -16559,8 +15186,8 @@ Ci         Component number; any unique combination of the digits 1 - 6 (with
            no imbedded blanks) when the Gi are grid points, or null if they
            are scalar points.
 
-Remarks
--------
+## Remarks
+
 1. The RELES data will override any connections generated automatically from
    geometry and any connections defined on CONCT data cards.
 
@@ -16575,32 +15202,27 @@ Remarks
    be retained and may be referenced by the grid point ID and component of any
    one of the basic substructures associated with that connectivity.
 
+
 REMFLUX - Remanent Flux Density
 ===============================
 
-Description
------------
+## Description
+
 Specifies remanent flux density for selected elements.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |REMFLUX |  SID  |  CID  |  BRX  |  BRY  |  BRZ  | EID1  | EID2  | EID3  |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |REMFLUX |   2   |       |   1.  |   2.  |   3.  |   1   |   2   |   3   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
-Alternate Form:
----------------
+## Alternate Form
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |REMFLUX |  SID  |  CID  |  BRX  |  BRY  |  BRZ  | EID1  |"THRU" | EID2  |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |REMFLUX |   2   |       |   1.  |   2.  |   3.  |   1   | THRU  |   3   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -16612,8 +15234,8 @@ BRX, BRY, BRZ  Remanent flux density in coordinate system CID (Real).
 
 EID1, EID2, EID3  Element identification numbers (Integer > 0).
 
-Remarks
--------
+## Remarks
+
 1. Load sets must be selected in the Case Control Deck (LOAD = SID) to be used
    by NASTRAN.
 
@@ -16627,23 +15249,20 @@ Remarks
 
 4. CID must presently be 0 or blank.
 
+
 RFORCE - Rotational Force
 =========================
 
-Description
------------
+## Description
+
 Defines a static loading condition due to a centrifugal force field.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |RFORCE  |  SID  |   G   |  CID  |   A   |   N1  |   N2  |   N3  |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |RFORCE  |   2   |   5   |       | -6.4  |  0.0  |  0.0  |  1.0  |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -16660,8 +15279,8 @@ A          Scale factor for rotational velocity in revolutions per unit time
 N1, N2, N3 Rectangular components of rotation direction vector (Real; N1**2 +
            N2**2 + N3**2 > 0.0) The vector defined will act at point G.
 
-Remarks
--------
+## Remarks
+
 1. G = 0 means the basic coordinate system origin.
 
 2. CID = 0 means the basic coordinate system.
@@ -16689,23 +15308,20 @@ Remarks
 8. When applying a rotational force to an axisymmetric element, G and CID must
    be 0 or blank; N1 and N2 must be 0.0.
 
+
 RINGAX - Axisymmetric Ring
 ==========================
 
-Description
------------
+## Description
+
 Defines a ring for a model containing CCONEAX, CTRAPAX, or CTRIAAX elements.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |RINGAX  |   ID  |       |   R   |   Z   |       |       |   PS  |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |RINGAX  |   3   |       |  2.0  | -10.0 |       |       |  162  |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -16718,8 +15334,8 @@ Z          Ring axial location (Real).
 PS         Permanent single-point constraints (any unique combination of the
            digits 1 - 6).
 
-Remarks
--------
+## Remarks
+
 1. This card is allowed if and only if an AXIC card is also present.
 
 2. The number of degrees of freedom defined is (6-PS)*H where H is the
@@ -16737,23 +15353,20 @@ Remarks
 6. For a discussion of the axisymmetric solid problem, see Section 5.11 of the
    Theoretical Manual.
 
+
 RINGFL - Axisymmetric Fluid Point
 =================================
 
-Description
------------
+## Description
+
 Defines a circle (fluid point) in an axisymmetric fluid model.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |RINGFL  |  IDF  |   X1  |   X2  |   X3  |  IDF  |   X1  |   X2  |   X3  |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |RINGFL  |   3   |  1.0  |       |  30.0 |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -16763,8 +15376,8 @@ IDF        Unique identification number of the fluid point (Integer, 0 < IDF
 X1, X2, X3 Coordinates of point in fluid coordinate system defined on AXIF
            card (Real; X1 > 0.0).
 
-Remarks
--------
+## Remarks
+
 1. This card is allowed only if an AXIF card is also present.
 
 2. All fluid point identification numbers must be unique with respect to other
@@ -16776,11 +15389,12 @@ Remarks
 
 4. One or two fluid points may be defined per card.
 
+
 RLOAD1 - Frequency Response Dynamic Load
 ========================================
 
-Description
------------
+## Description
+
 Defines a frequency dependent dynamic load of the form
 
                               i{é - 2+fç}
@@ -16788,16 +15402,12 @@ Defines a frequency dependent dynamic load of the form
 
 for use in frequency response problems.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |RLOAD1  |  SID  |   L   |   M   |   N   |   TC  |   TD  |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |RLOAD1  |   5   |   3   |   6   |   9   |   1   |   2   |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -16818,8 +15428,8 @@ TC         Set identification number of TABLEDi card which gives C(f)
 TD         Set identification number of TABLEDi card which gives D(f)
            (Integer >= 0; TC + TD > 0).
 
-Remarks
--------
+## Remarks
+
 1. If any of M, N, TC, or TD are blank or zero, the corresponding ç, é, C(f),
    or D(f) will be zero.
 
@@ -16838,11 +15448,12 @@ Remarks
 6. When L references LOADC cards, DAREAS cards with the same set
    identification and non-zero loads must also exist.
 
+
 RLOAD2 - Frequency Response Dynamic Load
 ========================================
 
-Description
------------
+## Description
+
 Defines a frequency dependent dynamic load of the form
 
                     i{í(f) + é  - 2+fç}
@@ -16850,16 +15461,12 @@ Defines a frequency dependent dynamic load of the form
 
 for use in frequency response problems.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |RLOAD2  |  SID  |   L   |   M   |   N   |   TB  |   TP  |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |RLOAD2  |   5   |   3   |   6   |   21  |   7   |   2   |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -16880,8 +15487,8 @@ TB         Set identification number of TABLEDi card which gives B(f)
 TP         Set identification number of TABLEDi card which gives í(f) in
            degrees (Integer >= 0).
 
-Remarks
--------
+## Remarks
+
 1. If any of M, N, or TP are zero, the corresponding ç, é, or í(f) will be
    zero.
 
@@ -16900,23 +15507,20 @@ Remarks
 6. When L references LOADC cards, DAREAS cards with the same set
    identification and non-zero loads must also exist.
 
+
 SECTAX - Axisymmetric Sector
 ============================
 
-Description
------------
+## Description
+
 Defines a sector of a model containing CCONEAX, CTRAPAX, or CTRIAAX elements.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |SECTAX  |   ID  |  RID  |   R   |  PHI1 |  PHI2 |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |SECTAX  |   1   |   2   |  3.0  |  30.0 |  40.0 |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -16928,8 +15532,8 @@ R          Effective radius (Real).
 
 PHI1, PHI2 Azimuthal limits of sector in degrees (Real).
 
-Remarks
--------
+## Remarks
+
 1. This card is allowed if and only if an AXIC card is also present.
 
 2. SECTAX identification numbers must be unique with respect to all other
@@ -16941,26 +15545,23 @@ Remarks
 4. For a discussion of the axisymmetric solid problem, see Section 5.11 of the
    Theoretical Manual.
 
+
 SEQEP - Extra Point Resequencing
 ================================
 
-Description
------------
+## Description
+
 The purpose of the SEQEP card is to allow re-identifying the formation
 sequence of the extra points of his structural model in such a way as to
 optimize bandwidth, which is essential for efficient solutions by the
 displacement method.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |SEQEP   |   ID  | SEQID |   ID  | SEQID |   ID  | SEQID |   ID  | SEQID |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |SEQEP   |  5392 |  15.6 |       |       |   2   |1.9.2.6|   3   |   2   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -16968,8 +15569,8 @@ ID         Extra point identification number (Integer > 0).
 
 SEQID      Sequence identification number (a special number described below).
 
-Remarks
--------
+## Remarks
+
 1. ID is any extra point identification number which is to be re-identified
    for sequencing purposes. The sequence number is a special number which may
    have any of the following forms where X is a decimal integer digit:
@@ -16991,27 +15592,24 @@ Remarks
 
 5. From one to four extra points may be resequenced on a single card.
 
+
 SEQGP - Grid and Scalar Point Resequencing
 ==========================================
 
-Description
------------
+## Description
+
 Used to order the grid points and user-supplied scalar points of the problem.
 The purpose of this card is to allow re-identifying the formation sequence of
 the grid and scalar points of his structural model in such a way as to
 optimize bandwidth, which is essential for efficient solutions by the
 displacement method.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |SEQGP   |   ID  | SEQID |   ID  | SEQID |   ID  | SEQID |   ID  | SEQID |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |SEQGP   |  5392 | 15.6  |       |       |   2   |1.9.2.6|   3   |   2   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -17020,8 +15618,8 @@ ID         Grid or scalar point identification number (Integer > 0).
 SEQID      Sequenced identification number (a special number described
            below).
 
-Remarks
--------
+## Remarks
+
 1. ID is any grid or scalar point identification number which is to be
    re-identified for sequencing purposes. The grid point sequence number
    (SEQID) is a special number which may have any of the following forms where
@@ -17045,28 +15643,22 @@ once.
 
 6. SEQGP is not available for axisymmetric and hydroelastic problems.
 
+
 SET1 - Grid Point List
 ======================
 
-Description
------------
+## Description
+
 Defines a set of structural grid points by a list.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |SET1    |  SID  |   G1  |   G2  |   G3  |   G4  |   G5  |   G6  |   G7  |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|SET1    |   3   |   31  |   62  |   93  |  124  |   16  |   17  |   18  |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+BC     |   G8  |  etc. |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|SET1    |   3   |   31  |   62  |   93  |  124  |   16  |   17  |   18  |ABC  |
 |+BC     |   19  |       |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -17074,31 +15666,28 @@ SID        Set of identification numbers (Integer > 0).
 
 G1, G2, etc.  List of structural grid points (Integer > 0 or THRU).
 
-Remarks
--------
+## Remarks
+
 1. These cards are referenced by the SPLINE data cards.
 
 2. When using the THRU option, all intermediate grid points must exist. The
    word THRU may not appear in field 3 or 9 (2 or 9 for continuation cards.)
 
+
 SET2 - Grid Point List
 ======================
 
-Description
------------
+## Description
+
 Defines a set of structural grid points in terms of aerodynamic macro
 elements.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |SET2    |  SID  | MACRO |  SP1  |  SP2  |  CH1  |  CH2  |  ZMAX |  ZMIN |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |SET2    |   3   |  111  |   .0  |  .75  |   .0  | .667  |  1.0  | -3.51 |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -17117,8 +15706,8 @@ ZMAX, ZMIN Top and bottom z coordinates (using right-hand rule with the order
            the corners are listed on a CAERO1 card) of the prism containing
            set (Real). Usually ZMAX >= 0, ZMIN <= 0.
 
-Remarks
--------
+## Remarks
+
 1. These cards are referenced by the SPLINEi data cards.
 
 2. Every grid point within the defined prism and within the height range will
@@ -17149,30 +15738,23 @@ Remarks
 
 4. To find the (internal) grid ID's found, use DIAG 18.
 
+
 SLBDY - Slot Boundary List
 ==========================
 
-Description
------------
+## Description
+
 Defines a list of slot points which lie on an interface between an
 axisymmetric fluid and a set of evenly spaced radial slots.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |SLBDY   |  RHO  |   M   |  ID1  |  ID2  |  ID3  |  ID4  |  ID5  |  ID6  |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|SLBDY   | 0.002 |   6   |   16  |   17  |   18  |   25  |   20  |   21  |+BDY |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     |  ID7  |  etc. |       |       |       |       |       |       |+def |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|SLBDY   | 0.002 |   6   |   16  |   17  |   18  |   25  |   20  |   21  |+BDY |
 |+BDY    |   22  |       |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-                                 etc. 
 
 Field      Contents
 -----      --------
@@ -17183,8 +15765,8 @@ M          Number of slots (Integer >= 0, or blank).
 IDj        Identification numbers of GRIDS slot points at boundary with
            axisymmetric fluid cavity, j = 1,2,...,J (Integer > 0).
 
-Remarks
--------
+## Remarks
+
 1. This card is allowed only if an AXSLOT card is also present.
 
 2. If RHO or M is blank the default value on the AXSLOT card is used. The
@@ -17197,23 +15779,20 @@ Remarks
 
 4. More than one logical boundary card may be used.
 
+
 SLOAD - Static Scalar Load
 ==========================
 
-Description
------------
+## Description
+
 Used to apply static loads to scalar points.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |SLOAD   |  SID  |   S   |   F   |   S   |   F   |   S   |   F   |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |SLOAD   |   16  |   2   |  5.9  |   17  | -6.3  |   14  | -2.93 |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -17223,8 +15802,8 @@ S          Scalar point identification number (Integer > 0).
 
 F          Load value (Real).
 
-Remarks
--------
+## Remarks
+
 1. Load sets must be selected in the Case Control Deck (LOAD = SID) to be used
    by NASTRAN.
 
@@ -17232,20 +15811,16 @@ Remarks
 
 SPC - Single-Point Constraint
 
-Description
------------
+## Description
+
 Defines sets of single-point constraints and enforced displacements.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |SPC     |  SID  |   G   |   C   |   D   |   G   |   C   |   D   |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |SPC     |   2   |   32  |  436  | -2.6  |   5   |       | +2.9  |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -17262,8 +15837,8 @@ C          Component number (any unique combination of the digits 1 - 6 (with
 D          Value of enforced displacement for all coordinates designated by G
            and C (Real).
 
-Remarks
--------
+## Remarks
+
 1. A coordinate referenced on this card may not appear as a dependent
    coordinate in a multipoint constraint relation (MPC card) or as a degree of
    freedom on a rigid element (CRIGD1, CRIGD2, CRIGD3, CRIGDR), nor may it be
@@ -17295,34 +15870,26 @@ Remarks
 SPC1 - Single-Point Constraint
 ==============================
 
-Description
------------
+## Description
+
 Defines sets of single-point constraints.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |SPC1    |  SID  |   C   |   G1  |   G2  |   G3  |   G4  |   G5  |   G6  |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|SPC1    |   3   |   2   |   1   |   3   |   10  |   9   |   6   |   5   |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     |   G7  |   G8  |   G9  |  etc. |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|SPC1    |   3   |   2   |   1   |   3   |   10  |   9   |   6   |   5   |ABC  |
 |+BC     |   2   |   8   |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Alternate Form
 --------------
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |SPC1    |  SID  |   C   |  GID1 |"THRU" |  GID2 |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |SPC1    |  313  | 12456 |   6   | THRU  |   32  |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -17336,8 +15903,8 @@ C          Component number (any unique combination of the digits 1 - 6 (with
 
 Gi, GIDi   Grid or scalar point identification numbers (Integer > 0).
 
-Remarks
--------
+## Remarks
+
 1. Note that enforced displacements are not available via this card. As many
    continuation cards as desired may appear when THRU is not used.
 
@@ -17359,30 +15926,23 @@ Remarks
 
 7. C is 1 only for a heat problem.
 
+
 SPCADD - Single-Point Constraint
 ================================
 
-Description
------------
+## Description
+
 Defines a single-point constraint set as a union of single-point constraint
 sets defined via SPC or SPC1 cards.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |SPCADD  |  SID  |   S1  |   S2  |   S3  |   S4  |   S5  |   S6  |   S7  |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|SPCADD  |  100  |   3   |   2   |   9   |   1   |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     |   S8  |   S9  |     etc.      |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|SPCADD  |  100  |   3   |   2   |   9   |   1   |       |       |       |     |
 |+BC     |       |       |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-                                 etc. 
 
 Field      Contents
 -----      --------
@@ -17392,8 +15952,8 @@ SID        Identification number for new single-point constraint set (Integer
 Si         Identification numbers of single-point constraint sets defined via
            SPC or SPC1 cards (Integer > 0; SID not equal Si).
 
-Remarks
--------
+## Remarks
+
 1. Single-point constraint sets must be selected in the Case Control Deck (SPC
    = SID) to be used by NASTRAN.
 
@@ -17405,24 +15965,21 @@ Remarks
 4. Set identification numbers of 101 or 102 cannot be used in axisymmetric
    problems.
 
+
 SPCAX - Axisymmetric Single-Point Constraint
 ============================================
 
-Description
------------
+## Description
+
 Defines sets of single-point constraints for a model containing CCONEAX,
 CTRAPAX, or CTRIAAX elements.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |SPCAX   |  SID  |  RID  |  HID  |   C   |   V   |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |SPCAX   |   2   |   3   |   4   |   13  |  6.0  |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -17438,8 +15995,8 @@ C          Component identification number (any unique combination of the
 
 V          Enforced displacement value (Real).
 
-Remarks
--------
+## Remarks
+
 1. This card is allowed if and only if an AXIC card is also present.
 
 2. Single-point constraint sets must be selected in the Case Control Deck (SPC
@@ -17454,24 +16011,21 @@ Remarks
 5. For a discussion of the axisymmetric solid problem, see Section 5.11 of the
    Theoretical Manual.
 
+
 SPCD - Enforced Displacement Value
 ==================================
 
-Description
------------
+## Description
+
 Defines an enforced displacement value for static analysis, which is requested
 as a LOAD.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |SPCD    |  SID  |   G   |   C   |   D   |   G   |   C   |   D   |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |SPCD    |  100  |   32  |  436  | -2.6  |   5   |       | +2.9  |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -17487,8 +16041,8 @@ C          Component number (any unique combination of the digits 1 - 6 (with
 D          Value of enforced displacement for all coordinates designated by G
            and C (Real).
 
-Remarks
--------
+## Remarks
+
 1. A coordinate referenced on this card must be referenced by a selected SPC
    or SPC1 data card.
 
@@ -17507,41 +16061,33 @@ Remarks
    statics analysis (Rigid Format 1 only). See Section 1.8 for methods of
    defining boundary temperatures in other Rigid Formats.
 
+
 SPCFLD - Specified Magnetic Field
 =================================
 
-Description
------------
+## Description
+
 Specifies magnetic field at selected grid points.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |SPCFLD  |  SID  |  CID  |  HCX  |  HCY  |  HCZ  |   G1  |   G2  |   G3  |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |SPCFLD  |   18  |       | 12.25 |   0.  |  62.  |    8  |   17  |   103 |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
-First Alternate Form:
----------------------
+### First Alternate Form:
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |SPCFLD  |  SID  |  CID  |  HCX  |  HCY  |  HCZ  |  GID1 |"THRU" |  GID2 |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |SPCFLD  |   18  |       | 12.25 |   0.  |  62.  |    9  | THRU  |   27  |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
-Second Alternate Form:
-----------------------
+### Second Alternate Form:
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|SPCFLD  |  SID  |  CID  |  HCX  |  HCY  |  HCZ  |   -1  |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |SPCFLD  |   18  |       | 12.25 |   0.  |  62.  |   -1  |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -17554,8 +16100,8 @@ HCX, HCY, HCZ  Components of specified Hc field in coordinate system CID
 
 Gi, GIDi   Grid point identification numbers (Integer > 0).
 
-Remarks
--------
+## Remarks
+
 1. Load sets must be selected in the Case Control Deck (LOAD = SID) to be used
    by NASTRAN.
 
@@ -17567,28 +16113,22 @@ Remarks
 
 3. CID must presently be 0 or blank.
 
+
 SPCS - Substructure Single Point Constraints
 ============================================
 
-Description
------------
+## Description
+
 Defines a set of single point constraints on a specified basic substructure.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |SPCS    |  SID  | NAME  |   G1  |   C1  |   G2  |   C2  |   G3  |   C3  |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|SPCS    |   61  | MIDWG |   9   |   45  |   18  |  124  |   36  |  456  |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     |   G4  |   C4  |   G5  |   C5  |   G6  |   C6  |   G7  |   C7  |def  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|SPCS    |   61  | MIDWG |   9   |   45  |   18  |  124  |   36  |  456  |ABC  |
 |+BC     |   88  |  136  |      etc.     |       |       |       |       |     |
-+--------+-------+-------+---------------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -17603,8 +16143,8 @@ Ci         Component number; any unique combination of the digits 1 - 6 (with
            no imbedded blanks) when the Gi are grid points, or null if they
            are scalar points.
 
-Remarks
--------
+## Remarks
+
 1. A coordinate referenced on this card may not appear as a dependent
    coordinate in a multipoint constraint relation, nor may it be referenced on
    a SPCS1, SPC, SP11, OMIT, OMIT1, or SUPORT card.
@@ -17621,28 +16161,22 @@ Remarks
    card. The degrees of freedom which were connected and those that were not
    connected must be referenced separately.
 
+
 SPCS1 - Substructure Single Point Constraints
 =============================================
 
-Description
------------
+## Description
+
 Defines a set of single point constraints on a specified basic substructure.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |SPCS1   |  SID  | NAME  |   C   |   G1  |   G2  |   G3  |   G4  |   G5  |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|SPCS1   |   15  |FUSELAG|  1236 |  1101 |  1102 |  1105 |  THRU |  1110 |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     |   G6  |   G7  |   G8  |   G9  |  G10  |  G11  |  G12  |  G13  |def  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|SPCS1   |   15  |FUSELAG|  1236 |  1101 |  1102 |  1105 |  THRU |  1110 |ABC  |
 |+BC     |  1121 |  1130 |  THRU |  1140 |  1143 |  1150 |      etc.     |     |
-+--------+-------+-------+-------+-------+-------+-------+---------------+-----+
 
 Field      Contents
 -----      --------
@@ -17656,8 +16190,8 @@ C          Component number; any unique combination of the digits 1 - 6 (with
 
 Gi         Grid or scalar point identification numbers (Integer > 0).
 
-Remarks
--------
+## Remarks
+
 1. THRU may appear in fields 6, 7, or 8 of the first card and anywhere in
    fields 3 through 8 on a continuation card.
 
@@ -17676,24 +16210,21 @@ Remarks
    card. The degrees of freedom which were connected and those that were not
    connected must be referenced separately.
 
+
 SPCSD - Substructure Enforced Displacement Values
 =================================================
 
-Description
------------
+## Description
+
 Defines enforced displacement values for a given substructure during static
 analysis, which are requested as a LOAD.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |SPCSD   |  SID  | NAME  |   G1  |   C1  |   D1  |   G2  |   C2  |   D2  |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |SPCSD   |   27  |LWINGRT|  965  |   3   |  3.6  |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -17710,8 +16241,8 @@ Ci         Component number; any unique combination of the digits 1 - 6 (with
 Di         Value of enforced displacement for all coordinates designated by
            Gi and Ci (Real).
 
-Remarks
--------
+## Remarks
+
 1. A coordinate referenced on this card must be referenced by a selected SPCS
    or SPCS1 data card.
 
@@ -17720,24 +16251,21 @@ Remarks
 3. At least one bulk data load card (LOADC or SLOAD) in addition to the SPCSD
    cards is required in the LOAD set selected in case control (LOAD = SID).
 
+
 SPLINE1 - Surface Spline
 ========================
 
-Description
------------
+## Description
+
 Defines a surface spline for interpolating out-of-plane motion for aeroelastic
 problems.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |SPLINE1 |  EID  | CAERO | BOX1  | BOX2  | SETG  |   DZ  |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |SPLINE1 |   3   |  111  | 111   | 118   |  14   |   0.  |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -17753,8 +16281,8 @@ SETG       Refers to a SETi card which lists the structural grid points to
 
 DZ         Linear attachment flexibility (Real >= 0).
 
-Remarks
--------
+## Remarks
+
 1. The interpolated points (k-set) will be defined by aero-cells. The sketch
    shows the cells for which uk is interpolated if BOX1 = 111 and BOX2 = 118.
 
@@ -17777,29 +16305,23 @@ Remarks
    points. If DZ >> (area of spline), a least squares plane fit will occur.
    Intermediate values will provide smoothing.
 
+
 SPLINE2 - Linear Spline
 =======================
 
-Description
------------
+## Description
+
 Defines a beam spline for interpolating panels and bodies for aeroelastic
 problems.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |SPLINE2 |  EID  | CAERO |  ID1  |  ID2  | SETG  |   DZ  |  DTOR |  CID  |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|SPLINE2 |   5   |   8   |  12   |  24   |  60   |   0.  |  1.0  |   3   |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+BC     |  DTHX | DTHY  |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|SPLINE2 |   5   |   8   |  12   |  24   |  60   |   0.  |  1.0  |   3   |abc  |
 |+bc     |  -1.  |       |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -17824,8 +16346,8 @@ DTHX, DTHY Rotational attachment flexibility. DTHX is for rotation about the
 x-axis; not used for bodies. DTHY is for rotation about the
 y-axis; used for slope of bodies (Real).
 
-Remarks
--------
+## Remarks
+
 1. The interpolated points (k-set) will be defined by aero boxes.
 
 2. For panels, the spline axis is the projection of the y-axis of coordinate
@@ -17840,30 +16362,23 @@ Remarks
 
 5. The SPLINE2 EID must be unique with respect to all SPLINEi data cards.
 
+
 SPLINE3 - Constraint Equation for Aeroelastic Problems
 ======================================================
 
-Description
------------
+## Description
+
 Defines a constraint equation for aeroelastic problems. Useful for control
 surface constraints.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |SPLINE3 |  EID  | CAERO | UKID  | COMP  |  G1   |  C1   |  A1   |       |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|SPLINE3 | 7000  |  107  | 109   |   6   |  33   |   5   |  1.0  |       |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+BC     |  G2   |  C2   |  A2   |       |  G3   |  C3   |  A3   |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|SPLINE3 | 7000  |  107  | 109   |   6   |  33   |   5   |  1.0  |       |abc  |
 |+bc     |  43   |  5    | -1.0  |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-                                 etc. 
 
 Field      Contents
 -----      --------
@@ -17888,8 +16403,8 @@ Ci         Component (in global coordinate system) to be used (one of the
 
 Ai         Coefficient of constraint relationship (Real).
 
-Remarks
--------
+## Remarks
+
 1. The independent grid points and components must refer to degrees of freedom
    in the ug point set.
 
@@ -17903,38 +16418,34 @@ Remarks
 
 3. The SPLINE3 EID must be unique with respect to all SPLINEi data cards.
 
+
 SPOINT - Scalar Point
 =====================
 
-Description
------------
+## Description
+
 Defines scalar points of the structural model.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |SPOINT  |   ID  |   ID  |   ID  |   ID  |   ID  |   ID  |   ID  |   ID  |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |SPOINT  |   3   |   18  |   1   |   4   |   16  |   2   |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
-Alternate Form:
+## Alternate Form
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |SPOINT  |  ID1  |"THRU" |  ID2  |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |SPOINT  |   5   | THRU  |  649  |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
 ID, ID1, ID2  Scalar point identification number (Integer > 0; IDl < ID2).
 
-Remarks
--------
+## Remarks
+
 1. Scalar points defined by their appearance on a scalar connection card need
    not appear on an SPOINT card.
 
@@ -17950,37 +16461,30 @@ Remarks
 5. For a discussion of scalar points, see Section 5.6 of the Theoretical
    Manual.
 
+
 STREAML1 - Blade Streamline Grid Data
 =====================================
 
-Description
------------
+## Description
+
 Defines grid points on a blade streamline from the blade leading edge to the
 blade trailing edge.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |STREAML1|  SLN  |   G1  |   G2  |   G3  |   G4  |   G5  |   G6  |   G7  |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|STREAML1|   3   |   2   |   4   |   6   |   8   |   10  |   14  |   16  |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     |   G8  |   G9  |  etc. |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|STREAML1|   3   |   2   |   4   |   6   |   8   |   10  |   14  |   16  |ABC  |
 |+BC     |   20  |   24  |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
-Alternate Form:
+## Alternate Form
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |STREAML1|  SLN  |  GID1 |"THRU" |  GID2 |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |STREAML1|   5   |   6   | THRU  |   12  |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -17988,8 +16492,8 @@ SLN        Streamline number (Integer > 0).
 
 Gi, GIDi   Grid point identification numbers (Integer > 0).
 
-Remarks
--------
+## Remarks
+
 1. This card is required for static aerothermoelastic design/analysis and
    blade cyclic modal flutter problems.
 
@@ -18012,30 +16516,24 @@ Remarks
    points must be input from the blade leading edge to the blade trailing edge
    in the correct positional order.
 
+
 STREAML2 - Blade Streamline Flow Data
 =====================================
 
-Description
------------
+## Description
+
 Defines aerodynamic data for a blade streamline.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |STREAML2|  SLN  | NSTNS |STAGGER| CHORD |RADIUS/| BSPACE|  MACH |  DEN  |abc  |
 |        |       |       |       |       | DCBDZB|       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|STREAML2|   2   |   3   |  23.5 |  1.85 |  6.07 |  .886 |  .934 |  .066 |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     |  VEL  | FLOWA/|       |       |       |       |       |       |     |
 |        |       |  SWEEP|       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|STREAML2|   2   |   3   |  23.5 |  1.85 |  6.07 |  .886 |  .934 |  .066 |ABC  |
 |+bc     |1014.2 | 55.12 |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -18066,8 +16564,8 @@ FLOWA/SWEEP  Relative flow angle at blade leading edge (for flutter analysis
            with sweep effects) (Real, -90.0 < FLOWA or SWEEP < 90.0 degrees).
            See Remark 4.
 
-Remarks
--------
+## Remarks
+
 1. At least three (3), and no more than fifty (50), STREAML2 cards are
    required for a blade cyclic modal flutter analysis.
 
@@ -18083,25 +16581,22 @@ Remarks
 
    NASTRAN SYSTEM(93) = 1
 
+
 SUPAX - Axisymmetric Fictitious Support
 =======================================
 
-Description
------------
+## Description
+
 Defines coordinates at which determinate reactions are to be applied during
 the analysis of a free body modeled with CCONEAX, CTRAPAX, or CTRIAAX
 elements.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |SUPAX   |  RID  |  HID  |   C   |  RID  |  HID  |   C   |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |SUPAX   |       |       |       |   4   |   3   |   2   |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -18111,8 +16606,8 @@ HID        Harmonic identification number (Integer >= 0).
 
 C          Component number (any unique combination of the digits 1 - 6).
 
-Remarks
--------
+## Remarks
+
 1. This card is allowed if and only if an AXIC card is also present.
 
 2. Up to 12 coordinates may appear on a single card.
@@ -18126,24 +16621,21 @@ Remarks
 5. For a discussion of the axisymmetric solid problem, see Section 5.11 of the
    Theoretical Manual.
 
+
 SUPORT - Fictitious Support
 ===========================
 
-Description
------------
+## Description
+
 Defines coordinates at which determinate reactions are to be applied to a free
 body during analysis.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |SUPORT  |   ID  |   C   |   ID  |   C   |   ID  |   C   |   ID  |   C   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |SUPORT  |   16  |  215  |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -18152,8 +16644,8 @@ ID         Grid or scalar point identification number (Integer > 0).
 C          Component number (zero or blank for scalar points; any unique
            combination of the digits 1 - 6 for grid points).
 
-Remarks
--------
+## Remarks
+
 1. Coordinates defined on this card may not appear on single-point constraint
    cards (SPC, SPC1), on omit cards (OMIT, OMIT1) or as dependent coordinates
    in multipoint constraint equations (MPC) or as degrees of freedom on rigid
@@ -18162,28 +16654,22 @@ Remarks
 2. From one to twenty-four support coordinates may be defined on a single
    card.
 
+
 TABDMP1 - Structural Damping Table
 ==================================
 
-Description
------------
+## Description
+
 Defines structural damping as a tabular function of frequency.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |TABDMP1 |   ID  |       |       |       |       |       |       |       |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|TABDMP1 |   3   |       |       |       |       |       |       |       |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     |  F1   |  G1   |  F2   |  G2   |  F3   |  G3   |  F4   |  G4   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|TABDMP1 |   3   |       |       |       |       |       |       |       |ABC  |
 |+BC     |  2.5  |.01057 |  2.6  |.01362 |  ENDT |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -18193,8 +16679,8 @@ Fi         Frequency value in cycles per unit time (Real >= 0.0).
 
 Gi         Damping value (Real).
 
-Remarks
--------
+## Remarks
+
 1. The Fi must be in either ascending or descending order but not both.
 
 2. Jumps (Fi = Fi+1) are allowed, but not at the end points.
@@ -18231,29 +16717,23 @@ Remarks
 9. A PARAM, KDAMP, is used in aeroelastic rigid formats to select the type of
    damping. See PARAM bulk data card.
 
+
 TABLED1 - Dynamic Load Tabular Function
 =======================================
 
-Description
------------
+## Description
+
 Defines a tabular function for use in generating frequency-dependent and
 time-dependent dynamic loads.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |TABLED1 |   ID  |       |       |       |       |       |       |       |+abc |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|TABLED1 |   32  |       |       |       |       |       |       |       |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+abc    |  X1   |  Y1   |  X2   |  Y2   |  X3   |  Y3   |  X4   |  Y4   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|TABLED1 |   32  |       |       |       |       |       |       |       |ABC  |
 |+BC     | -3.0  |  6.9  |  2.0  |  5.6  |  3.0  |  5.6  |  ENDT |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -18261,8 +16741,8 @@ ID         Table identification number (Integer > 0).
 
 Xi, Yi     Tabular entries (Real).
 
-Remarks
--------
+## Remarks
+
 1. The Xi must be in either ascending or descending order but not both.
 
 2. Jumps between two points (Xi = Xi+1) are allowed, but not at the end
@@ -18295,35 +16775,26 @@ Remarks
 7. Linear extrapolation is not used for Fourier Transform methods. The
    function is zero outside the range.
 
+
 TABLED2 - Dynamic Load Tabular Function
 =======================================
 
-Description
------------
+## Description
+
 Defines a tabular function for use in generating frequency-dependent and
 time-dependent dynamic loads. Also contains parametric data for use with the
 table.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |TABLED2 |   ID  |  X1   |       |       |       |       |       |       |+abc |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|TABLED2 |   15  | -10.5 |       |       |       |       |       |       |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+abc    |  x1   |  y1   |  x2   |  y2   |  x3   |  y3   |  x4   |  y4   |+def |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|+BC     |  1.0  | -4.5  |  2.0  | -4.2  |  2.0  |  2.8  |  7.0  |  6.5  |DEF  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+def    |  x5   |  y5   |  x6   |  y6   |  x7   |  y7   |  x8   |  y8   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|TABLED2 |   15  | -10.5 |       |       |       |       |       |       |ABC  |
+|+BC     |  1.0  | -4.5  |  2.0  | -4.2  |  2.0  |  2.8  |  7.0  |  6.5  |DEF  |
 |+EF     | SKIP  | SKIP  |  9.0  |  6.5  |  ENDT |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -18333,8 +16804,8 @@ X1         Table parameter (Real).
 
 xi, yi     Tabular entries (Real).
 
-Remarks
--------
+## Remarks
+
 1. The xi must be in either ascending or descending order but not both.
 
 2. Jumps between two points (xi = xi+1) are allowed, but not at the end
@@ -18367,30 +16838,24 @@ Remarks
 7. Linear extrapolation is not used for Fourier Transform methods. The
    function is zero outside the range.
 
+
 TABLED3 - Dynamic Load Tabular Function
 =======================================
 
-Description
------------
+## Description
+
 Defines a tabular function for use in generating frequency-dependent and
 time-dependent dynamic loads. Also contains parametric data for use with the
 table.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |TABLED3 |   ID  |   X1  |   X2  |       |       |       |       |       |+abc |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|TABLED3 |   62  | 126.9 |  30.0 |       |       |       |       |       |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+abc    |  x1   |  Yy   |  x2   |  y2   |  x3   |  y3   |  x4   |  y4   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|TABLED3 |   62  | 126.9 |  30.0 |       |       |       |       |       |ABC  |
 |+BC     |  2.9  |  2.9  |  3.6  |  4.7  |  5.2  |  5.7  |  ENDT |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -18400,8 +16865,8 @@ X1, X2     Table parameters (Real; X2 not equal 0.0).
 
 xi, yi     Tabular entries (Real).
 
-Remarks
--------
+## Remarks
+
 1. The xi must be in either ascending or descending order but not both.
 
 2. Jumps between two points (xi = xi+1) are allowed, but not at the end
@@ -18435,31 +16900,24 @@ Remarks
 7. Linear extrapolation is not used for Fourier Transform methods. The
    function is zero outside the range.
 
+
 TABLED4 - Dynamic Load Tabular Function
 =======================================
 
-Description
------------
+## Description
+
 Defines coefficients of a power series for use in generating
 frequency-dependent and time-dependent dynamic loads. Also contains parametric
 data for use with the table.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |TABLED4 |   ID  |   X1  |   X2  |   X3  |   X4  |       |       |       |+abc |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|TABLED4 |   28  |  0.0  |  1.0  |  0.0  |  100. |       |       |       |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+abc    |  A0   |  A1   |  A2   |  A3   |  A4   |  A5   |  A6   |  A7   |+def |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|TABLED4 |   28  |  0.0  |  1.0  |  0.0  |  100. |       |       |       |ABC  |
 |+BC     |  2.91 |-0.0329| 6.51-5|  0.0  |-3.4-7 |  ENDT |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-                                 etc. 
 
 Field      Contents
 -----      --------
@@ -18469,8 +16927,8 @@ X1,...,X4  Table parameters (Real; X2 not equal 0.0; X3 < X4).
 
 Ai         Coefficient entries (Real).
 
-Remarks
--------
+## Remarks
+
 1. At least one entry must be present.
 
 2. The end of the table is indicated by the existence of the BCD string ENDT
@@ -18490,30 +16948,23 @@ Remarks
    for X; whenever X > X4, use X4 for X. There are N + 1 entries in the table.
    There are no error returns from this table look-up procedure.
 
+
 TABLEM1 - Material Property Table
 =================================
 
-Description
------------
+## Description
+
 Defines a tabular function for use in generating temperature dependent
 material properties.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |TABLEM1 |   ID  |       |       |       |       |       |       |       |+abc |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|TABLEM1 |   32  |       |       |       |       |       |       |       |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+abc    |  x1   |  y1   |  x2   |  y2   |  x3   |  y3   |  x4   |  y4   |+def |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|TABLEM1 |   32  |       |       |       |       |       |       |       |ABC  |
 |+BC     | -3.0  |  6.9  |  2.0  |  5.6  |  3.0  |  5.6  |  ENDT |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-                                 etc. 
 
 Field      Contents
 -----      --------
@@ -18521,8 +16972,8 @@ ID         Table identification number (Integer > 0).
 
 xi, yi     Tabular entries (Real).
 
-Remarks
--------
+## Remarks
+
 1. The xi must be in either ascending or descending order but not both.
 
 2. Jumps between two points (xi = xi+1) are allowed, but not at the end
@@ -18552,35 +17003,25 @@ Remarks
    appropriate table end. At jump points the average yT(x) is used. There are
    no error returns from this table look-up procedure.
 
+
 TABLEM2 - Material Property Table
 =================================
 
-Description
------------
+## Description
+
 Defines a tabular function for use in generating temperature dependent
 material properties. Also contains parametric data for use with the table.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |TABLEM2 |   ID  |  X1   |       |       |       |       |       |       |+abc |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|TABLEM2 |   15  | -10.5 |       |       |       |       |       |       |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+abc    |  x1   |  y1   |  x2   |  y2   |  x3   |  y3   |  x4   |  y4   |+def |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|+BC     |  1.0  | -4.5  |  2.0  | -4.5  |  2.0  |  2.8  |  7.0  |  6.5  |DEF  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+def    |  x5   |  y5   |  x6   |  y6   |  x7   |  y7   |  x8   |  y8   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|TABLEM2 |   15  | -10.5 |       |       |       |       |       |       |ABC  |
+|+BC     |  1.0  | -4.5  |  2.0  | -4.5  |  2.0  |  2.8  |  7.0  |  6.5  |DEF  |
 |+EF     | SKIP  | SKIP  |  9.0  |  6.5  |  ENDT |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-                                 etc. 
 
 Field      Contents
 -----      --------
@@ -18590,8 +17031,8 @@ X1         Table parameter (Real).
 
 xi, yi     Tabular entries (Real).
 
-Remarks
--------
+## Remarks
+
 1. The xi must be in either ascending or descending order but not both.
 
 2. Jumps between two points (xi = xi+1) are allowed, but not at the end
@@ -18622,30 +17063,21 @@ Remarks
    points the average yT(x) is used. There are no error returns from this
    table look-up procedure.
 
-TABLEM3 - Material Property Table
-=================================
+# TABLEM3 - Material Property Table
 
-Description
------------
+## Description
+
 Defines a tabular function for use in generating temperature dependent
 material properties. Also contains parametric data for use with the table.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |TABLEM3 |  ID   |  X1   |  X2   |       |       |       |       |       |+abc |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|TABLEM3 |  62   | 126.9 | 30.0  |       |       |       |       |       |+ABC |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+abc    |  x1   |  y1   |  x2   |  y2   |  x3   |  y3   |  x4   |  y4   |+def |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|TABLEM3 |  62   | 126.9 | 30.0  |       |       |       |       |       |+ABC |
 |+BC     | 2.9   | 2.9   | 3.6   | 4.7   | 5.2   | 5.7   | ENDT  |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-                                 etc. 
 
 Field      Contents
 -----      --------
@@ -18655,8 +17087,8 @@ X1, X2     Table parameters (Real; X2 not equal 0.0).
 
 xi, yi     Tabular entries (Real).
 
-Remarks
--------
+## Remarks
+
 1. The xi must be in either ascending or descending order but not both.
 
 2. Jumps between two points (xi = xi+1) are allowed, but not at the end
@@ -18688,31 +17120,23 @@ Remarks
    end. At jump points the average yT(x) is used. There are no error returns
    from this table look-up procedure.
 
-TABLEM4 - Material Property Table
-=================================
 
-Description
------------
+# TABLEM4 - Material Property Table
+
+## Description
+
 Defines coefficients of a power series for use in generating temperature
 dependent material properties. Also contains parametric data for use with the
 table.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |TABLEM4 |  ID   |  X1   |  X2   |  X3   |  X4   |       |       |       |+abc |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|TABLEM4 |  28   | 0.0   | 1.0   | 0.0   | 100.  |       |       |       |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+abc    |  A0   |  A1   |  A2   |  A3   |  A4   |  A5   |  A6   |  A7   |+def |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|TABLEM4 |  28   | 0.0   | 1.0   | 0.0   | 100.  |       |       |       |ABC  |
 |+BC     | 2.91  |-0.0329|6.51-5 | 0.0   |-3.4-7 | ENDT  |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-                                 etc. 
 
 Field      Contents
 -----      --------
@@ -18722,8 +17146,8 @@ X1,...,X4  Table parameters (Real; X2 not equal 0.0; X3 < X4).
 
 Ai         Coefficient entries (Real).
 
-Remarks
--------
+## Remarks
+
 1. At least one entry must be present.
 
 2. The end of the table is indicated by the existence of the BCD string ENDT
@@ -18744,29 +17168,21 @@ Remarks
    X. There are N + 1 entries in the table. There are no error returns from
    this table look-up procedure.
 
-TABLES1 - Tabular Stress-Strain Function
-========================================
 
-Description
------------
+# TABLES1 - Tabular Stress-Strain Function
+
+## Description
+
 Defines a tabular stress-strain function for use in piecewise linear analysis.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |TABLES1 |  ID   |       |       |       |       |       |       |       |+abc |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|TABLES1 |  32   |       |       |       |       |       |       |       |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+abc    |  x1   |  y1   |  x2   |  y2   |  x3   |  y3   |  x4   |  y4   |+def |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|TABLES1 |  32   |       |       |       |       |       |       |       |ABC  |
 |+BC     | -3.0  |  6.9  |  2.0  |  5.6  |  3.0  |  5.6  | ENDT  |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-                                 etc. 
 
 Field      Contents
 -----      --------
@@ -18774,8 +17190,8 @@ ID         Table identification number (Integer > 0).
 
 xi, yi     Tabular entries (Real).
 
-Remarks
--------
+## Remarks
+
 1. The xi must be in either ascending or descending order but not both.
 
 2. For piecewise linear analysis, the yi numbers must form a non-decreasing
@@ -18810,30 +17226,21 @@ Remarks
 
 8. The table may have a zero slope only at its end.
 
-TABRND1 - Power Spectral Density Table
-======================================
+# TABRND1 - Power Spectral Density Table
 
-Description
------------
+## Description
+
 Defines power spectral density as a tabular function of frequency for use in
 random analysis. Referenced on the RANDPS card.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |TABRND1 |  ID   |       |       |       |       |       |       |       |abc  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|TABRND1 |  3    |       |       |       |       |       |       |       |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     |  f1   |  g1   |  f2   |  g2   |  f3   |  g3   |  f4   |  g4   |def  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|TABRND1 |  3    |       |       |       |       |       |       |       |ABC  |
 |+BC     | 2.5   |.01057 | 2.6   |.01362 | ENDT  |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-                                 etc. 
 
 Field      Contents
 -----      --------
@@ -18843,8 +17250,8 @@ fi         Frequency value in cycles per unit time (Real not equal 0.0).
 
 gi         Power spectral density (Real).
 
-Remarks
--------
+## Remarks
+
 1. The fi must be in either ascending or descending order but not both.
 
 2. Jumps between two points (fi = fi+1) are allowed, but not at the end
@@ -18873,23 +17280,18 @@ Remarks
    appropriate table end. At jump points the average gT(F) is used. There are
    no error returns from this table look-up procedure.
 
-TABRNDG - Gust Power Spectral Density
-=====================================
+# TABRNDG - Gust Power Spectral Density
 
-Description
------------
+## Description
+
 Defines the power spectral density of a gust for aeroelastic analysis.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |TABRNDG |  ID   | TYPE  |  LU   |  WG   |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |TABRNDG |  3    |   1   | 1.3   |  1.   |       |       |       |       |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -18903,8 +17305,8 @@ LU         L/U, scale of turbulence divided by velocity (units of time)
 
 WG         Root-mean-square gust velocity.
 
-Remarks
--------
+## Remarks
+
 1. This card must be referenced on a RANDPS data card.
 
 2. The power spectral density is given by:
@@ -18926,27 +17328,22 @@ Remarks
 
 3. Other PSD functions may be defined using the TABRND1 data card.
 
-TEMP - Grid Point Temperature Field
-===================================
+# TEMP - Grid Point Temperature Field
 
-Description
------------
+## Description
+
 Defines temperature at grid points for determination of:
 
    1. Thermal loading
    2. Temperature-dependent material properties
    3. Stress recovery
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |TEMP    |  SID  |   G   |   T   |   G   |   T   |   G   |   T   |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |TEMP    |   3   |  94   | 316.2 |  49   | 219.8 |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -18956,8 +17353,8 @@ G          Grid point identification number (Integer > 0).
 
 T          Temperature (Real).
 
-Remarks
--------
+## Remarks
+
 1. Temperature sets must be selected in the Case Control Deck (TEMP = SID) to
    be used by NASTRAN.
 
@@ -18992,24 +17389,20 @@ Remarks
    c. The Case Control card, IC, will select the initial conditions, that is,
       grid point temperatures, in transient analysis.
 
-TEMPAX - Axisymmetric Temperature
-=================================
 
-Description
------------
+# TEMPAX - Axisymmetric Temperature
+
+## Description
+
 Defines temperature sets for a model containing CCONEAX, CTRAPAX, or CTRIAAX
 elements.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |TEMPAX  |  SID  |  RID  |  PHI  | TEMP  |  SID  |  RID  |  PHI  | TEMP  |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |TEMPAX  |   4   |   7   | 30.0  |105.3  |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -19021,8 +17414,8 @@ PHI        Azimuthal angle in degrees (Real).
 
 TEMP       Temperature (Real).
 
-Remarks
--------
+## Remarks
+
 1. This card is allowed if and only if an AXIC card is also present.
 
 2. One or two temperatures may be defined on each card.
@@ -19042,24 +17435,20 @@ Remarks
 7. For a discussion of the axisymmetric solid problem, see Section 5.11 of the
    Theoretical Manual.
 
-TEMPD - Grid Point Temperature Field Default
-============================================
 
-Description
------------
+# TEMPD - Grid Point Temperature Field Default
+
+## Description
+
 Defines a temperature default for all grid points of the structural model
 which have not been given a temperature on a TEMP card.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |TEMPD   | SID   |   T   | SID   |   T   | SID   |   T   | SID   |   T   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |TEMPD   |  1    |216.3  |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -19067,8 +17456,8 @@ SID        Temperature set identification number (Integer > 0).
 
 T          Default temperature (Real).
 
-Remarks
--------
+## Remarks
+
 1. Temperature sets must be selected in the Case Control Deck (TEMP = SID) to
    be used by NASTRAN.
 
@@ -19103,11 +17492,11 @@ Remarks
    c. The Case Control card, IC, will select the initial conditions, that is,
       grid point temperatures, in transient analysis.
 
-TEMPP1 - Plate Element Temperature Field
-========================================
 
-Description
------------
+# TEMPP1 - Plate Element Temperature Field
+
+## Description
+
 Defines a temperature field for plate, membrane, and combination elements (by
 an average temperature and a thermal gradient over the cross-section) for
 determination of:
@@ -19116,31 +17505,21 @@ determination of:
    2. Temperature-dependent material properties
    3. Stress recovery
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |TEMPP1  |  SID  | EID1  |   T   |   T'  |   T1  |   T2  |       |       |+abc |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|TEMPP1  |   2   |  24   |  62.0 |  10.0 |  57.0 |  67.0 |       |       |A1A  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+abc    | EID2  | EID3  | EID4  | EID5  | EID6  | EID7  | EID8  | EID9  |+def |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|TEMPP1  |   2   |  24   |  62.0 |  10.0 |  57.0 |  67.0 |       |       |A1A  |
 |+1A     |  26   |  21   |  19   |  30   |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-                                 etc. 
 
-Alternate Form of Continuation Card:
-------------------------------------
+## Alternate Form of Continuation Card
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |+abc    | EID2  |"THRU" | EIDi  | EIDj  |"THRU" | EIDk  |       |       |+def |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+1A     |  1    | THRU  |  10   |  30   | THRU  |  61   |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -19161,8 +17540,8 @@ T1, T2     Temperatures for stress calculation, at points defined on the
            surface and T2 on the upper surface for the QUAD2 and TRIA2
            elements. These data are not used for membrane elements (Real).
 
-Remarks
--------
+## Remarks
+
 1. Temperature sets must be selected in the Case Control Deck (TEMP = SID) to
    be used by NASTRAN.
 
@@ -19198,11 +17577,10 @@ Remarks
 7. Set ID must be unique with respect to all other LOAD type cards if
    TEMP(LOAD) is specified in the Case Control Deck.
 
-TEMPP2 - Plate Element Temperature Field
-========================================
+# TEMPP2 - Plate Element Temperature Field
 
-Description
------------
+## Description
+
 Defines a temperature field for plate, membrane, and combination elements by
 an average temperature and thermal moments for determination of:
 
@@ -19210,32 +17588,21 @@ an average temperature and thermal moments for determination of:
    2. Temperature-dependent material properties
    3. Stress recovery
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |TEMPP2  |  SID  | EID1  |   T   |  MX   |  MY   | MXY   |  T1   |  T2   |+abc |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|TEMPP2  |   2   |  36   | 68.8  |       |       |       |       |       |XYZ  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+abc    | EID2  | EID3  | EID4  | EID5  | EID6  | EID7  | EID8  | EID9  |+def |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|TEMPP2  |   2   |  36   | 68.8  |       |       |       |       |       |XYZ  |
 |+YZ     | 400   |   1   |   2   |   5   |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-                                 etc. 
 
-Alternate Form of Continuation Card:
-------------------------------------
+## Alternate Form of Continuation Card
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |+abc    | EID2  |"THRU" | EIDi  | EIDj  |"THRU" | EIDk  |       |       |+def |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+YZ     |  37   | THRU  | 312   | 315   | THRU  | 320   |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-                                 etc. 
 
 Field      Contents
 -----      --------
@@ -19257,8 +17624,8 @@ T1, T2     Temperature for stress calculation at points defined on the
            surface and T2 on the upper surface for the QUAD2 and TRIA2
            elements. These data are not used for membrane elements (Real).
 
-Remarks
--------
+## Remarks
+
 1. Temperature sets must be selected in the Case Control Deck (TEMP = SID) to
    be used by NASTRAN.
 
@@ -19299,11 +17666,11 @@ Remarks
 6. Set ID must be unique with respect to all other LOAD type cards if
    TEMP(LOAD) is specified in the Case Control Deck.
 
-TEMPP3 - Plate Element Temperature Field
-========================================
 
-Description
------------
+# TEMPP3 - Plate Element Temperature Field
+
+## Description
+
 Defines a temperature field for homogeneous plate, membrane, and combination
 elements (by a tabular description of the thermal field over the
 cross-section) for determination of:
@@ -19312,42 +17679,25 @@ cross-section) for determination of:
    2. Temperature-dependent material properties
    3. Stress recovery.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |TEMPP3  | SID   | EID1  |  Z0   |  T0   |  Z1   |  T1   |  Z2   |  T2   |+abc |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|TEMPP3  |  17   |  39   | 0.0   | 32.9  | 2.0   | 43.4  | 2.5   | 45.0  |XY1  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+abc    |  Z3   |  T3   |  Z4   |  T4   |  Z5   |  T5   |  Z6   |  T6   |+def |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|+Y1     | 3.0   | 60.0  | 4.0   | 90.0  |       |       |       |       |XY2  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+def    |  Z7   |  T7   |  Z8   |  T8   |  Z9   |  T9   | Z10   | T10   |+ghi |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|+Y2     |       |       |       |       |       |       |       |       |XY3  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+ghi    | EID2  | EID3  | EID4  | EID5  | EID6  | EID7  | EID8  | EID9  |+jkl |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|TEMPP3  |  17   |  39   | 0.0   | 32.9  | 2.0   | 43.4  | 2.5   | 45.0  |XY1  |
+|+Y1     | 3.0   | 60.0  | 4.0   | 90.0  |       |       |       |       |XY2  |
+|+Y2     |       |       |       |       |       |       |       |       |XY3  |
 |+Y3     |   1   |   2   |   3   |   4   |   5   |   6   |   8   |  10   |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-                                 etc. 
 
-Alternate Form of Continuation Card Number 3:
----------------------------------------------
+## Alternate Form of Continuation Card Number 3
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |+ghi    | EID2  |"THRU" | EIDi  | EIDj  |"THRU" | EIDk  |       |       |+jkl |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+Y3     |       |       |       |  1    | THRU  |  10   |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-                                 etc. 
 
 Field      Contents
 -----      --------
@@ -19369,8 +17719,8 @@ T0         Temperature at the bottom surface (Real).
 
 Ti         Temperature at position Zi (Real).
 
-Remarks
--------
+## Remarks
+
 1. Temperature sets must be selected in the Case Control Deck (TEMP = SID) to
    be used by NASTRAN.
 
@@ -19401,11 +17751,10 @@ Remarks
 8. Set ID must be unique with respect to all other LOAD type cards if
    TEMP(LOAD) is specified in the Case Control Deck.
 
-TEMPRB - One-Dimensional Element Temperature Field
-==================================================
+# TEMPRB - One-Dimensional Element Temperature Field
 
-Description
------------
+## Description
+
 Defines a temperature field for the BAR, ROD, TUBE, and CONROD elements for
 determination of:
 
@@ -19413,37 +17762,23 @@ determination of:
    2. Temperature-dependent material properties
    3. Stress recovery
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |TEMPRB  |  SID  | EID1  |  TA   |  TB   | T'1a  | T'1b  | T'2a  | T'2b  |+abc |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|TEMPRB  |  200  |  1    | 68.0  | 23.0  | 0.0   | 28.0  |       | 2.5   |AXY10|
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+abc    |  TCa  |  TDa  | TEa   | TFa   | TCb   | TDb   | TEb   | TFb   |+def |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|+XY10   | 68.0  | 91.0  | 45.0  |       | 48.0  | 80.0  | 20.0  |       |AXY20|
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+def    | EID2  | EID3  | EID4  | EID5  | EID6  | EID7  | EID8  | EID9  |+ghi |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|TEMPRB  |  200  |  1    | 68.0  | 23.0  | 0.0   | 28.0  |       | 2.5   |AXY10|
+|+XY10   | 68.0  | 91.0  | 45.0  |       | 48.0  | 80.0  | 20.0  |       |AXY20|
 |+XY20   |  9    |  10   |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-                                 etc. 
 
-Alternate Form for Continuation Card Number 2:
-----------------------------------------------
+## Alternate Form for Continuation Card Number 2
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |+def    | EID2  |"THRU" | EIDi  | EIDj  |"THRU" | EIDk  |       |       |+ghi |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+XY20   |  2    | THRU  |  4    |  10   | THRU  |  14   |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-                                 etc. 
 
 Field      Contents
 -----      --------
@@ -19461,8 +17796,8 @@ T'ij       Effective linear gradient in direction i on end j (BAR only,
 Tij        Temperatures at point i as defined on the PBAR card(s) at end j.
            These data are used for stress recovery only (BAR only, Real).
 
-Remarks
--------
+## Remarks
+
 1. Temperature sets must be selected in the Case Control Deck (TEMP = SID) to
    be used by NASTRAN.
 
@@ -19512,11 +17847,10 @@ Remarks
 7. Set ID must be unique with respect to all other LOAD type cards if
    TEMP(LOAD) is specified in the Case Control Deck.
 
-TF - Dynamic Transfer Function
-==============================
+# TF - Dynamic Transfer Function
 
-Description
------------
+## Description
+
 1. May be used to define a transfer function of the form
 
                   2                                2
@@ -19525,21 +17859,14 @@ Description
 
 2. May be used as a means of direct matrix input.
 
-Format and Example
-------------------
+## Format and Example
 
-    1        2       3       4       5       6       7       8       9     10
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |TF      | SID   |  GD   |  CD   |  B0   |  B1   |  B2   |       |       |+abc |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|TF      |  1    |   2   |   3   |  4.0  |  5.0  |  6.0  |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+abc    | G(1)  | C(1)  |A0(1)  |A1(1)  |A2(1)  |       |       |       |+def |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|TF      |  1    |   2   |   3   |  4.0  |  5.0  |  6.0  |       |       |     |
 |+ABC    |  3    |   4   | 5.0   | 6.0   | 7.0   |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-                                 etc. 
 
 Field      Contents
 -----      --------
@@ -19552,8 +17879,8 @@ CD, C(i)   Component numbers (null or zero for scalar or extra points, any
 
 B0, B1, B2; A0(i), A1(i), A2(i)  Transfer function coefficients (Real).
 
-Remarks
--------
+## Remarks
+
 1. The matrix elements defined by this card are added to the dynamic matrices
    for the problem.
 
@@ -19563,25 +17890,21 @@ Remarks
 3. The constraint relation given above will hold only if no elements are
    connected to the dependent coordinate.
 
-TIC - Transient Initial Condition
-=================================
 
-Description
------------
+# TIC - Transient Initial Condition
+
+## Description
+
 Defines values for the initial conditions of coordinates used in transient
 analysis. Both displacement and velocity values may be specified at
 independent coordinates of the structural model.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |TIC     |  SID  |   G   |   C   |  U0   |  V0   |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |TIC     |   1   |   3   |   2   |  5.0  | -6.0  |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -19596,8 +17919,8 @@ U0         Initial displacement value (Real).
 
 V0         Initial velocity value (Real).
 
-Remarks
--------
+## Remarks
+
 1. Transient initial condition sets must be selected in the Case Control Deck
    (IC = SID) to be used by NASTRAN for structural analysis; however, this
    card should not be used to define initial temperatures in heat transfer
@@ -19611,25 +17934,21 @@ Remarks
 
 4. Initial conditions may be used only in direct formulation.
 
-TICS - Transient Initial Condition, Substructure Analysis
-=========================================================
 
-Description
------------
+# TICS - Transient Initial Condition, Substructure Analysis
+
+## Description
+
 Defines values for the initial conditions of coordinates used in direct
 transient analysis. Both displacement and velocity values may be specified at
 independent coordinates of the structural model.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |TICS    |  SID  | NAME  |   G   |   C   |  U0   |  V0   |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |TICS    |   1   | SPAR  |   3   |   2   | 5.0   | -6.0  |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -19646,8 +17965,8 @@ U0         Initial displacement value (Real).
 
 V0         Initial velocity value (Real).
 
-Remarks
--------
+## Remarks
+
 1. Transient initial condition sets must be selected in the Case Control Deck
    (IC = SID) to be used by NASTRAN.
 
@@ -19664,26 +17983,23 @@ Remarks
 
 5. Used in substructure SOLVE operation.
 
-TLOAD1 - Transient Response Dynamic Load
-========================================
-Description
------------
+
+# TLOAD1 - Transient Response Dynamic Load
+
+## Description
+
 Defines a time-dependent dynamic load of the form
 
    {P(t)} = {A F(t - ç)}
 
 for use in transient response problems.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |TLOAD1  |  SID  |   L   |   M   |       |  TF   |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |TLOAD1  |   5   |   7   |   9   |       |  13   |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -19700,8 +18016,8 @@ M          Identification number of DELAY or DELAYS card set which defines ç
 TF         Identification number of TABLEDi card which gives F(t - ç)
            (Integer > 0).
 
-Remarks
--------
+## Remarks
+
 1. If M is zero, ç will be zero.
 
 2. Field 5 must be blank.
@@ -19731,11 +18047,11 @@ Remarks
 10.   When L references LOADC cards, DAREAS cards with the same set
       identification and non-zero loads must also exist.
 
-TLOAD2 - Transient Response Dynamic Load
-========================================
 
-Description
------------
+# TLOAD2 - Transient Response Dynamic Load
+
+## Description
+
 Defines a time-dependent dynamic load of the form
 
               É
@@ -19751,21 +18067,14 @@ Defines a time-dependent dynamic load of the form
 
 for use in transient response problems where t-tilde = t - T1 - ç.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |TLOAD2  |  SID  |   L   |   M   |       |  T1   |  T2   |   F   |   P   |+abc |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|TLOAD2  |   4   |  10   |   7   |       |  2.1  |  4.7  | 12.0  | 30.0  |+12  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     |   C   |   B   |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|TLOAD2  |   4   |  10   |   7   |       |  2.1  |  4.7  | 12.0  | 30.0  |+12  |
 |+12     |  2.0  |  3.0  |       |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -19791,8 +18100,8 @@ C          Exponential coefficient (Real).
 
 B          Growth coefficient (Real).
 
-Remarks
--------
+## Remarks
+
 1. If M is zero, ç will be zero.
 
 2. Field 5 must be blank.
@@ -19816,11 +18125,11 @@ Remarks
 8. Fourier analysis will be used if this selection is an aeroelastic response
    problem.
 
-TRANS - Component Substructure Transformation Definition
-========================================================
 
-Description
------------
+# TRANS - Component Substructure Transformation Definition
+
+## Description
+
 Defines the location and orientation of the component substructure basic
 coordinate system axes relative to the basic coordinate system of the
 substructure formed as a result of the substructure COMBINE operation. The
@@ -19838,21 +18147,14 @@ substructure as follows:
    C  defines the location of a point in the positive x side of the xz plane
       of the basic coordinate system of the component substructure.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |TRANS   |  SID  |       |  A1   |  A2   |  A3   |  B1   |  B2   |  B3   |+abc |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|TRANS   |   1   |       |  0.0  |  0.0  |  0.0  |  0.0  | -0.5  | 10.0  |ABC  |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+bc     |  C1   |  C2   |  C3   |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|TRANS   |   1   |       |  0.0  |  0.0  |  0.0  |  0.0  | -0.5  | 10.0  |ABC  |
 |+BC     |  0.0  | 10.0  |  0.5  |       |       |       |       |       |     |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 
 Field      Contents
 -----      --------
@@ -19861,8 +18163,8 @@ SID        Set identification number (Integer > 0).
 A1, A2, A3; C1, C2, C3; B1, B2, B3  Coordinates of the points defining system
            as described above.
 
-Remarks
--------
+## Remarks
+
 1. Continuation card must be present.
 
 2. Coordinates A, B, C are given in BASIC coordinate system of the result
@@ -19881,30 +18183,22 @@ Remarks
 6. The three points (A1, A2, A3), (B1, B2, B3), (C1, C2, C3) must be unique
    and non-collinear.
 
-TSTEP - Transient Time Step
-===========================
 
-Description
------------
+# TSTEP - Transient Time Step
+
+## Description
+
 Defines time step intervals at which solution will be generated and output in
 transient analysis.
 
-Format and Example
-------------------
+## Format and Example
 
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |   1    |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   | 10  |
-+========+=======+=======+=======+=======+=======+=======+=======+=======+=====+
+|--------|-------|-------|-------|-------|-------|-------|-------|-------|-----|
 |TSTEP   |  SID  |  N(1) | DT(1) | NO(1) |       |       |       |       |+abc |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-|TSTEP   |   2   |  10   | .001  |  5    |       |       |       |       |+ABC |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
 |+abc    |       |  N(2) | DT(2) | NO(2) |       |       |       |       |+def |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
+|TSTEP   |   2   |  10   | .001  |  5    |       |       |       |       |+ABC |
 |+ABC    |       |   9   | 0.01  |  1    |       |       |       |       |+DEF |
-+--------+-------+-------+-------+-------+-------+-------+-------+-------+-----+
-                                 etc. 
 
 Field      Contents
 -----      --------
@@ -19917,8 +18211,8 @@ DT(i)      Time increment (Real > 0.0).
 NO(i)      Skip factor for output (every NO(i)th step will be saved for
            output.) (Integer > 0).
 
-Remarks
--------
+## Remarks
+
 1. TSTEP cards must be selected in the Case Control Deck (TSTEP = SID) in
    order to be used by NASTRAN.
 

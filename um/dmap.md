@@ -1,6 +1,5 @@
 
-5.1  INTRODUCTION
-==================
+# 5.1  INTRODUCTION
 
    In addition to using the rigid formats provided automatically by NASTRAN,
 you may wish to execute a series of modules in a different manner than
@@ -53,8 +52,7 @@ statements, the first of which is BEGIN or XDMAP and the last of which is END.
 The remaining statements consist of Executive Operation instructions and
 Functional Module calls.
 
-5.2.1  DMAP Rules for Functional Module Instructions
-====================================================
+## 5.2.1  DMAP Rules for Functional Module Instructions
 
    The primary characteristic of the Functional Module DMAP instruction is its
 prescribed format. The general form of the Functional Module DMAP statement
@@ -93,8 +91,7 @@ characters) and must correspond to an entry in the MPL. A Data Block name may
 be either a BCD value or null. The absence of a BCD value indicates that the
 Data Block is not needed for a particular application.
 
-5.2.1.1  Functional Module DMAP Statements
-------------------------------------------
+### 5.2.1.1  Functional Module DMAP Statements
 
    Each Functional Module DMAP statement must conform to the MPL regarding:
 
@@ -107,16 +104,15 @@ Data Block is not needed for a particular application.
    NOTE: See Sections 5.2.1.3 and 5.2.1.4 for allowable exceptions to these
 rules.
 
-5.2.1.2  Functional Module Names
---------------------------------
+### 5.2.1.2  Functional Module Names
 
    The only Functional Module DMAP names allowed are those contained in the
 MPL. Therefore, if you want to add a module, you must either use one of the
 User Module names provided (see Section 5.6) or add a name to the MPL. The
 Programmer's Manual should be consulted when adding a new module to NASTRAN.
 
-5.2.1.3  Functional Module Input Data Blocks
---------------------------------------------
+### 5.2.1.3  Functional Module Input Data Blocks
+
    In most cases an input data block should have been previously defined in a
 DMAP program before it is used. However, there may be instances in which a
 module can handle, or may even expect, a data block that is undefined at the
@@ -140,8 +136,8 @@ has been detected. This is also true if a previously undefined data block is
 used as input. Also, see the "error-level" option on the XDMAP compiler option
 card, which you may invoke to terminate execution in the event of such errors.
 
-5.2.1.4  Functional Module Output Data Blocks
----------------------------------------------
+### 5.2.1.4  Functional Module Output Data Blocks
+
    In general, a data block name will appear as output only once. However,
 there are cases in which an output data block may be of no subsequent use in a
 DMAP program. In such a case the name may be used again, but caution should be
@@ -150,8 +146,8 @@ is prescribed, the data block name list may be abbreviated in the manner of
 Section 5.2.1.3. Potentially fatal error messages will warn you if possible
 ambiguities may occur from these usages.
 
-5.2.1.5  Functional Module Parameters
--------------------------------------
+### 5.2.1.5  Functional Module Parameters
+
    Parameters may serve many purposes in a DMAP program. They may pass data
 values into and out from a module, or they may be used as flags to control the
 computational flow within the module or the DMAP program. There are two
@@ -289,8 +285,8 @@ be input, output, or both; initial value is the first of
 
               4. 0
 
-5.2.1.6  DMAP Compiler Options - The XDMAP Instruction (see Section 5.7)
-------------------------------------------------------------------------
+### 5.2.1.6  DMAP Compiler Options - The XDMAP Instruction (see Section 5.7)
+
    You can elect several options when compiling and executing a DMAP program
 by including an XDMAP compiler option instruction in the program. Similarly,
 the Rigid Formats may be altered by replacing the BEGIN statement with XDMAP
@@ -331,8 +327,8 @@ dealing with Executive Operation Modules. Note that an XDMAP card need not
 appear when all default values are elected, but may be replaced with a BEGIN
 instruction.
 
-5.2.1.7  Extended Error Handling Facility
------------------------------------------
+### 5.2.1.7  Extended Error Handling Facility
+
    There are three levels of error messages generated during the compilation
 of a DMAP sequence. These levels are WARNING MESSAGE, POTENTIALLY FATAL ERROR
 MESSAGE, and FATAL ERROR MESSAGE. You have, through available compiler
@@ -343,8 +339,8 @@ conveniences which, if not fully understood by you, could cause an erroneous
 or incorrect execution of the DMAP sequence. The default value for the error
 level is that of the FATAL ERROR MESSAGE.
 
-5.2.2  DMAP Rules for Executive Operation Instructions
-------------------------------------------------------
+## 5.2.2  DMAP Rules for Executive Operation Instructions
+
    Each executive operation statement has its own format which is generally
 open-ended, meaning the number of inputs, outputs, etc. is not prescribed.
 Executive operation instructions or statements are divided into general
@@ -364,8 +360,8 @@ categories as follows:
 The rules associated with the executive operation instructions are distinct
 for each instruction and are discussed individually in Section 5.7.
 
-5.2.3  Techniques and Examples of Executive Module Usage
---------------------------------------------------------
+## 5.2.3  Techniques and Examples of Executive Module Usage
+
    Even though the DMAP program may be interpretable by the DMAP compiler this
 does not guarantee that the program will yield the desired results. Therefore,
 this section is provided to acquaint you with techniques and examples used in
@@ -389,8 +385,8 @@ cannot be generated and any functional module attempting to use this data
 block as input or output will be informed that the purged data block is not
 available for use.
 
-5.2.3.1  The REPT and FILE Instructions (see Section 5.7)
----------------------------------------------------------
+### 5.2.3.1  The REPT and FILE Instructions (see Section 5.7)
+
    The DMAP instructions bounded by the REPT instruction and the label
 referenced by the REPT instruction are referred to as a loop. The location
 referenced by the REPT is called the top of the loop. In many respects a DMAP
@@ -482,8 +478,8 @@ executed
 
   END                                      Normal termination of problem.
 
-5.2.3.2  The EQUIV Instruction (see Section 5.7)
-------------------------------------------------
+### 5.2.3.2  The EQUIV Instruction (see Section 5.7)
+
    There are no restrictions on the status of data blocks referenced in an
 EQUIV instruction. Consider the instruction EQUIV A,B1,...,BN/P $ when P < 0.
 Data blocks B1,...,BN take on all the characteristics of data block A
@@ -572,8 +568,8 @@ loop  |  EQUIV     BB,B/LINK  $
 Data block BB is now internal; therefore, the instruction EQUIV B,BB/BREAK $
 is not needed.
 
-5.2.3.3  The PURGE Instruction (see Section 5.7)
-------------------------------------------------
+### 5.2.3.3  The PURGE Instruction (see Section 5.7)
+
    The status of a data block is changed to purged by explicitly or implicitly
 purging it. A data block is explicitly purged through the PURGE instruction,
 whereas it is implicitly purged if it is not created by the functional module
@@ -798,8 +794,8 @@ to this are the CASESS, CASEI, and CASECC data blocks appearing as output in
 substructure analyses.
 
 
-5.3  INDEX OF DMAP MODULE DESCRIPTIONS
-======================================
+# 5.3  INDEX OF DMAP MODULE DESCRIPTIONS
+
    Descriptions of all nonstructurally oriented modules are contained herein,
 arranged alphabetically by category as indicated by the lists below.
 Descriptions for the structurally oriented modules are contained in Section 4
@@ -935,8 +931,8 @@ By precision is meant one of the following:
         2        Double precision numbers
 
 
-5.4  MATRIX OPERATION MODULES
-=============================
+# 5.4  MATRIX OPERATION MODULES
+
 Module                   Basic Operation                        Page
 
 ADD           [X] = a[A] + b[B]                                5.4-2
